@@ -1,0 +1,336 @@
+\documentclass[a4paper]{article}
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{biblio.bib} %Import the bibliography file
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{verbatim}
+\usepackage{amsthm}
+\usepackage{geometry}
+\geometry{hmargin=2cm,vmargin=1.5cm}
+
+\newtheorem{prop1}{Proposition}
+\newtheorem{coro1}{Corollary}
+\newtheorem{thm}{Theorem}
+\newtheorem{def1}{Definition}
+\newtheorem{lem1}{Lemma}
+\newtheorem{rq1}{Remark}
+
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\fqm}{\mathbb{F}_{q^m}}
+\newcommand{\fq}{\mathbb{F}_{q}}
+
+
+\title{Hermitian-SSAG-code distinguisher}
+\author{Mathieu Lhotel}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+The goal of this note is an adaptation of a distinguisher for alternant and Goppa codes (see \cite{rocco}) in the case of SSAG-Hermitian one-point code, whose divisor is either a multiple of $P_{\infty}$ or a multiple of a degree 3 place. \\
+We work on the finite field $\mathbb{F}_{q^m}=\mathbb{F}_{q_0^2}$, were $q$ is a prime power. We denote by $\calH = \mathbb{F}_{q_0^2}(x,y)$ the Hermitian function field, defined by 
+\[ y^{q_0}+y=x^{q_0+1}.\]
+Throughout this paper, let
+\[\mathcal{C} := C_{\calL}(\calH,\mathcal{P},D) \]
+be an AG-code defined over $\calH$, where $D=sP_{\infty}$ or $D=sP$; $P$ being any degree 3 place on $\calH$. 
+In order to get a disinguisher, we start from the following result, which is a consequence of Delsarte's Theorem and Rocco's estimate (see \cite{rocco}, Proposition 15)
+
+\begin{thm} \label{th1}
+With usual definitions of the trace and the $\star$-product of codes, we have 
+\[ \Tr(\mathcal{C})^{\star2} := (\mathrm{SSAG}_{q}(\calH,\calP,D^{\perp})^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr(\mathcal{C}\star\mathcal{C}^{q^i}),\]
+where $D^{\perp}$ is the dual divisor of D, which can be explicitly described using $\calP$ and $D$ (see \cite{sti}, Proposition 2.2.10). \\
+Moreover, if $m$ is even (which is the case in our settings), we have 
+\[\dim_{\mathbb{F}_q}(\Tr(\calC \star \calC^{q^{m/2}})) \leq \frac{m}{2}\cdot (\dim_{\fqm}(\calC))^2.\]
+\end{thm}
+
+Before specifying to AG-codes, we also recall the following estimations (which can also be found in \cite{rocco}):
+
+\begin{lem1} \label{known_bounds}
+Let $\calC$ and $\calD$ be to linear codes over $\fqm$ with same length $n$ and respective dimension $k_{\calC}$ and $k_{\calD}$. We have
+\begin{itemize}
+    \item[$(1)$] $\dim_{\mathbb{F}_q}(\Tr(\calC)) \leq \min\{mk_{\calC},n\}$;
+    \item[$(2)$] $\dim_{\fqm}(\calC \star \calD) \leq \min\{k_{\calC}k_{\calD},n\}$;
+    \item[$(3)$] If $\calC$ is suffisciently random, we have
+     \[ \dim_{\mathbb{F}_{q^m}}(\calC^{\star2}) \leq \mathrm{min}\left(n,\binom{k_{\calC}+1}{2}\right) . \]
+     Espescially, if $\calC^{\star2}$ does not fill the full space, we expect to have 
+     \[ \dim_{\mathbb{F}_{q^m}}(\calC^{\star2}) = \binom{k_{\calC}+1}{2}.\]
+\end{itemize}
+\end{lem1}
+
+It is well-known that (3) above does not hold if $\calC$ has too much structure, which is the case for Reed-Solomon codes and more generally for AG-codes. In fact, we have (see \cite{mumford}, Theorem 6):
+
+\begin{prop1} \label{prop1}
+Let $F,G$ be two divisors in $\calH$ such that $\deg(G) \geq 2g(\calH)+1$ and $\deg(F) \geq 2g(\calH)$, where $g(\calH)$ is the genus of $\calH$. Then
+\[ \calL(F) \cdot \calL(G) = \calL(F+G),\]
+where $\calL(F) \cdot \calL(G) := \mathrm{span}_{\mathbb{F}_{q^m}}\{ f \cdot g : f,g \in \calL(F) \times \calL(G) \}$.\\ 
+As a consequence, if $deg(D) \geq 2g+1$, then 
+\[ (C_{\calL}(\calH,\mathcal{P},D))^{\star2} = C_{\calL}(\calH,\calP,2D).\]
+The Riemann-Roch theorem thus gives
+\[ \dim_{\mathbb{F}_{q^m}}(C_{\calL}(\calH,\mathcal{P},D)^{\star2}) = 2\deg(D)+1-g-\calH) = \deg(D) + \dim_{\fqm}(C_{\calL}(\calH,\mathcal{P},D)), \]
+which is much smaller than the expected dimension given in Lemma \ref{known_bounds}, and thus provides a distinguisher for AG-codes.
+\end{prop1}
+
+In what follow, we will be interseted in subfield subcodes of AG-code, meaning that we will rather need an estimation of the dimension of the square of a trace code (instead of the code itself). Theorem \ref{th1} can be used to get a first one, giving the following corollary.
+
+\begin{coro1} \label{1st bound square of trace}
+Let $\calC$ be any $\fqm$-linear code. Then 
+\[\dim_{\fqm}(\Tr(\mathcal{C})^{\star2}) \leq m \cdot \dim_{\fqm}(\calC^{\star 2}) + \binom{m}{2} (\dim_{\fqm}(\calC))^2.\]
+Moreover, if $\calC$ is an AG-code with dimension $k=s + 1 - g(\calH)$ and $\deg(D) \geq 2g(\calH)+1$, where $s:=\deg(D)$, we have
+\[ \dim_{\fqm}(\Tr(\mathcal{C})^{\star2}) \leq m(k+\deg(D)) + \binom{m}{2}k^2. \]
+\end{coro1}
+
+\begin{proof}
+See \cite{rocco}, (9) in Corollary 16 for the general case. Now, if $\calC$ is a AG-code satysfying $\deg(D) \geq 2g(\calH)+1$, a combination of Proposition \ref{prop1} and the Riemann-Roch theorem gives the estimation.
+\end{proof}
+
+In \cite{rocco}, the authors show that for a Goppa code $\calC = \mathbf{GRS}_r(x,y)$ defined over $\mathbb{F}_{q^m}$, where $y_i = 1/\Gamma(x_i)$ ($\Gamma$ being a degree $r$ polynomial), it holds
+\[\Tr(\calC\star\calC) \subseteq \Tr(\calC\star\calC^{q}) \subseteq \cdots \subseteq \Tr(\calC\star\calC^{q^u}),\]
+for any $0 \leq u \leq f$,
+where $f :=\lfloor\log_q(r)\rfloor $, or even without the Trace operator in the case of RS-codes. This allow them to use more efficiently Thereom \ref{th1} to get a better bound. \\
+Our plan is to show that the same kind of result still holds in the case of AG-codes over $\mathbb{F}_{q^m}$. In particular, some Magma experiments shows that for some integer $f$, and $0 \leq i \leq f \leq \lfloor m/2 \rfloor$, we have
+\begin{equation} \label{equality_of_codes}
+ \calC \star \calC^{q^i} = \calC^{q^i+1},
+\end{equation}
+which is equivalent to the equality of Riemann-Roch spaces
+\[ \calL(D) \cdot \calL(D)^{q^i} = \calL((q^i+1)D).\]
+In fact, if \eqref{equality_of_codes} holds, thus since 
+$\calC^{q^i+1} \subseteq \calC^{q^{i+1}+1}$ is true for every integer $i$, the sequence of inclusions 
+\[\calC\star\calC \subseteq \calC\star\calC^{q} \subseteq \cdots \subseteq \calC\star\calC^{q^f}\]
+also holds (with traces aswell), and can be used to estimate the dimension of $\Tr(\calC)^{\star2}$ using Theorem \ref{th1}.
+In what follows, we will study \eqref{equality_of_codes}, starting by noting: 
+
+\begin{lem1} \label{lemma1}
+For every integer $i \geq 0$, we have
+\[\calL(D) \cdot \calL(D)^{q^i} \subseteq \calL((q^i+1)D)\]
+\end{lem1}
+
+It remains to show in which conditions (on the degree of $D$ and the integer $i$), the reverse inclusion is also true. To study this, we specify the divisor $D$ as a multiple of the point at infinity or a degree 3 place, as these divisors give the most usable SSAG-codes. Section 2 is dedicated to the classical one-point Hermitian code whereas section 3 deals with degree 3 places.
+
+
+\section{The case $D=sP_{\infty}$}
+
+In this section, we fix $D=sP_{\infty}$, where $s=\deg(D)$. Note that in this case of a one-point Hermitian codes, the dual divisor $D^{\perp}$ has been explicitly described in \cite{sabi}, Theorem 3.2. In particular, if we set $s' := q_0^3+q_0^2-q_0-2-s$, then $D^{\perp} = s'P_{\infty}$. This fact is really important since in the end, we want to deal with \textrm{SSAG}-codes, and the one of interest in Theorem \ref{th1} is 
+\[\mathrm{SSAG}_{q}(\calH,\calP,D^{\perp}),\]
+ie. we will have a result on the dimension of the square of its dual. We will come back at it later, but for the moment we will focus on finding a conditions to have equality on the inclusion in Lemma \ref{lemma1}. 
+
+\noindent It is well-knonw from the study of the Hermitian curve that
+\begin{equation} \label{rr_p_inf}
+\calL(sP_{\infty}) = \langle x^iy^j : 0 \leq j \leq q_0-1 \ \mathrm{and} \ iq_0+j(q_0+1) \leq s \rangle_{\mathbb{F}_{q_0^2}}
+\end{equation}
+
+Recall that we want to find conditions on the integers $s$ and $i$ in order to have 
+\begin{equation} \label{equality}
+\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^i} = \calL((q^i+1)sP_{\infty})  
+\end{equation}
+
+\begin{rq1}
+Keep in mind the difference between $q$ and $q_0$. More precisly, $q_0$ is the degree of the Hermitian curve over the rational function field, which is in the definition of our Riemann-Roch spaces. On the other side, $q$ is the cardinality of the field where our subfield subcode is considered. We have $q^{\frac{m}{2}}=q_0$.
+\end{rq1}
+
+Since the inclusion "$\subseteq$" in \eqref{rr_p_inf} is true for any $i \geq 0$, it remains to find a sufficient condition to have the reverse inclusion. To do so, the idea is to work with valuation (at $P_{\infty}$) of functions in both sides. Before going further into details, let us recall some fact about Weierstrass gap theory in this context (see \cite{sti} for more details).
+Let $\calH(P_{\infty})$ be the Weierstrass semi-group at $P_{\infty}$, given by
+\[\calH(P_{\infty}) = \langle q_0,q_0+1 \rangle_{\mathbb{N}};\]
+and denote by  $\mathcal{G}(P_{\infty})$ the set of gap numbers such that
+\[\calH(P_{\infty}) = \mathbb{N} \backslash \mathcal{G}(P_{\infty})\]
+and 
+\[\mathcal{G}(P_{\infty}) = \{1,...,q_0-1,q_0+2,...,2q_0-1,...,2g-1=q_0(q_0-1)-1\}.\]
+It is well-known from this theory that $\mathcal{G}(P_{\infty})$ is a finite set of cardinality $g:=g(\calH) := \dfrac{q_0(q_0-1)}{2}$, the genus of $\calH$. For simplicity in the upcoming proofs, we will write 
+\[\mathcal{G}(P_{\infty}) = \{\mu_1,\cdots,\mu_g\}.\]
+Now we are ready to define the set of valuations we will work with: for any integer $i \geq 0$, define
+
+\[A^s_{i,q}:=\{-\nu_{P_{\infty}}(h) : h \in \calL((q^i+1)sP_{\infty}) \}\] 
+the set of all possible valuations at $P_{\infty}$ atteigned by any function in $\calL((q^i+1)sP_{\infty}$ (we put a "minus sign" to make it more readable, \emph{ie.} we work with positive integers instead of negative ones, since $P_{\infty}$ is a pole of all functions we work with). Replacing $s$ by $(q^i+1)s$ in \eqref{rr_p_inf} yields
+\[A^s_{i,q} = \calH(P_{\infty}) \cap \{1,\cdots,(q^i+1)s\} := \calH(P_{\infty})_{\leq s(q^i+1)}.\]
+ We also introduce the set 
+\[V^s = \{-\nu_{P_{\infty}}(f) : f \in \calL(sP_{\infty})\} := \calH(P_{\infty})_{\leq s},\]
+the equality coming from $\eqref{rr_p_inf}$ as well. \\
+A sufficient condition to have $\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^i} \supseteq \calL((q^i+1)sP_{\infty})$ is to prove that every integer in the set $A_i^s$ is attained as minus a valuation at $P_{\infty}$ of a function in the product space $\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^i}$, because this implies an equality of dimension between the two vector spaces (note that the corresponding dimension is the cardinality of the set $A_i^s$). Since 
+\[\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^i} := \mathrm{span}_{\mathbb{F}_q^m}\{f \cdot g^{q^i} : (f,g) \in \calL(sP_{\infty})\}\]
+exactly attains the valuations in the set $V^s+q^iV^s$,
+we are led to find a condition such that 
+\begin{equation} \label{equalitu_of_valuations}
+    V^s+q^iV^s = A^s_{i,q}
+\end{equation}
+holds. Again, the natural inclusion on the corresponding Riemann-Roch spaces implies that  $V^s+q^iV^s \subseteq A^s_i$ is always true, \emph{ie.} we only have to find a condtion to guaranty the reverse inclusion. \\
+In fact, we start to proof a characterization of this in the case where we take powers of $q_0$ instead of $q$. It will be used later to get back to the case of interest.
+
+\begin{prop1} \label{result_with_valuations}
+Let $i \geq 0$. We have 
+\[s \geq \mu_g + q_0^{i+1} \iff A^s_{i,q_0} := \calH(P_{\infty})_{\leq s(q_0^i+1)} = V^s+q_0^iV^s,\]
+ where $\mu_g := 2g-1$ is the largest gap of $P_{\infty}$. In this case, we have 
+ \[ \calC \star \calC^{q_0^i} = \calC^{q_0^i+1}.\]
+\end{prop1}
+
+\begin{proof} The case $i=0$ is given by Proposition \ref{prop1}, so let us suppose that $i \geq 1$. \\
+We start by proving $(\Leftarrow)$, supposing by contraposition that $s < \mu_g + q_0^{i+1}$. In this case, we show that the element $\mu_g + q_0^{i+1} \in A^s_{i,q_0} \backslash V^s+q_0^iV^s$: it is clear that $\mu_g + q_0^{i+1} \notin V^s$ since it is striclty bigger than $s$, and that $\mu_g = q_0(q_0-1)-1$ yields
+\[\mu_g + q_0^{i+1}=q_0^2-(q_0+1) + q_0^{i+1} < 2q_0^{i+1},\]
+since $i \geq 1$. There is only two ways to decompose $\mu_g + q_0^{i+1}$ in $V^s+q_0^iV^s$ , the first one being the trivial one, \emph{ie.}
+\[\mu_g + q_0q_0^{i} \notin V^s+q_0^iV^s,\]
+which doesn't work because $\mu_g \notin V^s$ since it is a gap. Remark that we can not decrease the $q_0^iV^s$ part without getting a gap, since $q_0 = \min{V^s}$. It means that we have to decrease it, by writting 
+\[\mu_g + q_0^{i+1} = (\mu_g - q_0^i) + \underbrace{q_0^i(q_0+1)}_{\in q^i_0V^s} .\]
+Here, we have $\mu_g - q_0^i = q_0^2-(q_0+1)-q_0^i <0 \notin V^s$, unless eventually $i=1$. But in the latter case, we easyly see that $\mu_g-q_0 = \mu_{g-1}$ is the $g-1$-th gap of $P_{\infty}$, and thus not in $V^s$. This proves that $\mu_g + q_0^{i+1} \notin V+q_0^iV$, and thus $(\Rightarrow)$. \\
+
+In order to prove $(\Rightarrow)$, suppose $s \geq \mu_g+q_0^{i+1}$ and we show that $A^s_{i,q_0} \subseteq V^s+q_0^iV^s$. For that, let $a \in A^s_{i,q_0}$. There are a few cases to consider:
+\begin{enumerate}
+    \item if $a \leq s$, then by definition $a \in V^s$ (note that $a$ can not be a gap since it is in $A^s_{i,q_0}$). In this case we have  $a=a+0 \in V^s+q^i_0V^s$;
+    \item else, $a > s \geq \mu_g+q_0^{i+1}$. In this case, there exist two integers $\alpha$ and $\beta$ such that 
+     \[ a= \alpha q_0^{i+1} + \beta \ , \ 0 \leq \beta < q_0^{i+1}.\] 
+     Now, there is a few cases to consider :
+\begin{itemize}
+    \item[(i)] \underline{$\beta > \mu_g$} : By definition, we have $a \leq s(q_0^i+1)$, meaning with the previous decomposition that $\alpha q_0 \leq s + \left\lfloor \frac{s-\beta}{q_0^i}\right\rfloor$. 
+    \begin{itemize}
+        \item[$\star$] If $\alpha q_0 \leq s$, then $a = (\alpha q_0)q_0^i + \beta$ is a valid decomposition of $a$ in $q_0^iV^s + V^s$, since $\mu_g < \beta < q_0^{i+1} < s$;
+        \item[$\star$] Else, we have $\alpha q_0 > s$. In this case, write
+        \begin{align*}
+            a &= (\alpha q_0 - (\alpha q_0 - s))q_0^i + \underbrace{(\beta + (\alpha q_0 -s)q_0^i)}_{:=\beta'} = sq_0^i + \beta'.
+        \end{align*}
+        Since $\beta > \mu_g$ and $a \leq s(q_0^i+1)$, we conclude $\mu_g < \beta' \leq s$, and thus we have a valid decomposition for $a$ in this case.
+    \end{itemize}
+    \item[(ii)] \underline{$\beta \leq \mu_g$} : In this case, we start by writting
+    \[ a = ((\alpha-1)q_0)q_0^i + (\beta+q_0^{i+1}) .\]
+    Since $i\geq 1$, we know that $q_0^{i+1} \geq q_0^2 > \mu_g$, so we have $\mu_g < \beta+q_0^{i+1} \leq s$. At this point, there is still two cases to consider :
+    \begin{itemize}
+        \item [$\star$] $(\alpha-1)q_0 \leq s$; in which case the above decomposition of $a$ works;
+        \item [$\star$] Else, $(\alpha-1)q_0 >s$. In this case, by setting $\beta'':= \beta + q_0^{i+1}+((\alpha-1)q_0-s)q_0^i$, we can write
+        \[ a = ((\alpha-1)q_0 - ((\alpha-1)q_0-s)q_0^i + \beta'' = sq_0^i + \beta''.\]
+        But clearly, $\beta'' > \beta + q_0^{i+1} > \mu_g$, and $a \leq s(q_0^i+1)$ implies $\beta'' \leq s$ also, which proves that the above decomposition works for $a$ in theses settings.
+    \end{itemize}
+From now on, the equality on codes follows immediatly.
+\end{itemize}
+    % In this case, there exist two integers $\alpha$ and $\beta$ such that 
+    % \[ a= \alpha q_0^{i+1} + \beta \ , \ 0 \leq \beta < q_0^{i+1}.\]
+    % To prove this decomposition is valid, it remains to prove that $\alpha q_0 \leq s$ and $\beta > \mu_g$ (since we already have $\beta \leq s$, and obviously $\alpha q_0 \in \calH(P_{\infty})$). 
+    % \begin{itemize}
+    %     \item [$\star$] By definition, $a \leq s(q_0^i+1)$, so we get
+    %     \begin{align*}
+    %         & (\alpha q_0)q_0^i + \beta \leq sq_0^i+s \\
+    %         & \Rightarrow (\alpha q_0)q_0^i \leq sq_0^i +s \\
+    %         & \Rightarrow \alpha q_0 \leq s\left(1+\frac{1}{q_0^i}\right),
+    %     \end{align*}
+    %     meaning that  $\alpha q_0 \leq s\left\lfloor1+\frac{1}{q_0^i}\right\rfloor =s$.
+    %     \item [$\star$] Here, if $\beta > \mu_g$, we are done. Let us then suppose that $\beta \leq \mu_g$, then write
+    %     \[ a = (\alpha-1)q_0^{i+1} + (\beta + q_0^{i+1}).\]
+    %     In the worst case scenario, the minimal value $\alpha=2$ is attaingned ($\alpha$ can not equals one since $a > \mu_g + q_0^{i+1}$ and $\beta < \mu_g$). But even in this case, we have
+    %     \[ 2q_0^{i+1} + \beta = a > s \geq \mu_g + q_0^{i+1},\]
+    %     so that $\mu_g < \beta + q_0^{i+1}$. Finally, note that $\beta + q_0^{i+1} \leq \mu_g + q_0^{i+1} \leq s$, so $\beta + q_0^{i+1} \in V^s$. Obviously, the previous point also implies $(\alpha-1)q_0 \in V^s$, which complete the proof since the equality of codes follows.
+    %\end{itemize}
+\end{enumerate}
+\end{proof}
+
+
+Note that we proved the result only for powers of $q_0$ and not on all powers of $q$, which is supposed to be the integers of interest in Theorem \ref{th1}. More especilly, the result above is only interesting in the case $i=1$ here, since the sum on the right hand-side of Theorem \ref{th1} runs from the power $q^0$ to $q^{\frac{m}{2} }:=q_0$. \\
+The next result deals with the power of $q$'s up to $\frac{m}{2}$. Before stating it, remark that 
+\[ A_{i,q_0}^s = A^s_{im/2,q},\]
+and that we already proved
+\[ s \geq q_0^2 \iff A^s_{m/2,q}=V^s+q^{m/2}V^s.\]
+
+\begin{prop1} \label{powers_of_q's_case}
+Let $0 < j < \frac{m}{2}$. We have
+\[ s \geq \mu_g+q^j \Rightarrow A^s_{j,q} = V^s+q^jV^s.\]
+In this case, we have 
+ \[ \calC \star \calC^{q^j} = \calC^{q^j+1}.\]
+\end{prop1}
+
+\begin{proof}
+The proof is similar to the one of Proposition \ref{result_with_valuations}, we just write a few words about the direct implicaion. Suppose $s \geq \mu_g + q^j$ and take $a \in A^s_{j,q}$. We want to show that $a \in V^s+q^jV^s$.
+\begin{enumerate}
+    \item if $a \leq s$, we write $a=a+0 \in V^s+q^jV^s$;
+    \item else, $a > s \geq \mu_g+q^j$. Set $s_a := \min\{s,\lfloor\frac{a-\mu_g}{q^j}\rfloor\}$ and $r_a:= a- s_aq^j$, such that 
+    \begin{equation} \label{decomposition2}\tag{$\star\star$}
+    a=s_aq^j+r_a.
+    \end{equation}
+     From the definition, we have $s_a \leq s$, so $s_aq^j \in q^jV^s$. It remains to show that $r_a \leq s$. 
+     \begin{enumerate}
+         \item if $s_a=s$, we have $a = sq^j+r_a \leq s(q^j+1)$ since $a \in A^s_{j,q}$, meaning that $r_a \leq s$;
+         \item else, we have $s_a = \lfloor\frac{a-\mu_g}{q^j}\rfloor$. Setting $a-\mu_g = s_aq^j+b$ ($0\leq b < q^j$) gives 
+         \begin{align*}
+             r_a &= a - \left\lfloor\frac{a-\mu_g}{q^j}\right\rfloor q^j \\
+                 &= a - s_aq^j \\
+                 &= a - (a-\mu_g-b) \\
+                 &= \mu_g+b \\
+                 &< \mu_g + q^j \leq s,
+         \end{align*}
+         which conclude the proof since \eqref{decomposition2} is a valid decomposition of $a$ in $V^s+q^jV^s$.
+     \end{enumerate}
+\end{enumerate}
+\end{proof}
+
+\begin{rq1}
+The difference between Propositions \ref{result_with_valuations} and \ref{powers_of_q's_case} is that in the second case, we are only able to give a sufficient condition. However, remark that the lower bound on $s$ is better in this case, especially because we are dealing with powers $q^j < q_0$, so that we have less restriction due to the Gap sequence. The condition is not necessary since we can show in some settings that taking $s \geq \mu_k + q^j$ can also work, where $\mu_k$ is another gap. As we are seeking for a lower bound on $s$, we have to consider the biggest gap, ie. $\mu_g$.
+\end{rq1} 
+
+From this 2 results, we deduce:
+
+\begin{coro1} \label{coro2}
+Let $\calC = C_{\calL}(\calH,\calP,sP_{\infty})$ be an AG-code on $\calH$ over $\mathbb{F}_{q^m}=\mathbb{F}_{q_0^2}$, assciated to a support $\calP$ of length $n$ and to the one-point divisor $sP_{\infty}$. Denote by $g:=g(\calH)=\frac{q_0(q_0-1)}{2}$ and $\mu_g := q_0(q_0-1)-1$ the biggest gap number of $P_{\infty}$. 
+\begin{itemize}
+    \item[(i)] If $s \geq \mu_g + q_0^2$, then we have 
+        \[\Tr(\calC \star \calC) \subseteq \Tr(\calC \star \calC^q) \subseteq \cdots \subseteq \Tr(\calC \star \calC^{q_0}),\]
+        and thus 
+        \[\Tr(\calC)^{\star 2} \subseteq \Tr(\calC \star \calC^{q_0}).\]
+    \item[(ii)] If $\mu_g < s < \mu_g +q_0^2$, denote by $f:= \max\{j \in \{0,\cdots,\frac{m}{2}-1\} : s \geq \mu_g + q^j\}$. In this case, we have 
+        \[\Tr(\calC \star \calC) \subseteq \Tr(\calC \star \calC^q) \subseteq \cdots \subseteq \Tr(\calC \star \calC^{q^f}),\]
+          and then
+        \[\Tr(\calC)^{\star 2} \subseteq \Tr(\calC \star \calC^{q^f}) + \sum\limits_{i=f+1}^{m/2} \Tr(\calC \star \calC^{q^i}).\]
+\end{itemize}
+\end{coro1}
+
+\begin{proof}
+$(i)$ is a consequence of Proposition \ref{result_with_valuations} in the case $i=1$ (note that the result also holds without the Trace operator), while $(ii)$ uses Proposition \ref{powers_of_q's_case} several times. In both cases, we conclude get a result on $\Tr(\calC)^{\star 2}$ by using Theorem \ref{th1}.
+\end{proof}
+
+Using the above Corollary and Lemma \ref{known_bounds}, we can prove the following theorem, that gives an upper bound on the dimension of the trace of the square of the dual of our one-point Hermitian SSAG-code which can be compared to the one given in Corollary \ref{1st bound square of trace}.
+
+\begin{thm} \label{sup_bounds_on_codes}
+We keep notations as in Corollary 2, and denote by $k$ the dimension of $\calC$ over $\fqm$.
+\begin{itemize}
+\item[(i)] If $s \geq \mu_g + q_0^2$, then 
+\[ \dim_{\fq}(\Tr(\calC))^{\star 2} \leq m \cdot (k+q_0 s).\]
+\item[(ii)] If $\mu_g < s < \mu_g +q_0^2$, recall that $f:= \max\{j \in \{0,\cdots,\frac{m}{2}-1\} : s \geq \mu_g + q^j\}$. Then 
+\[ \dim_{\fq}(\Tr(\calC))^{\star 2} \leq m \cdot \left(k+q^fs + k^2\left(\frac{m}{2}-f\right)\right).\]
+\end{itemize}
+\end{thm}
+
+\begin{proof}
+\begin{itemize}
+    \item[$(i)$] From Corollary 2 $(i)$, we have $\Tr(\calC)^{\star 2} \subseteq \Tr(\calC \star \calC^{q_0}).$ Moreover, we proved in Proposition \ref{result_with_valuations} that under the hypothesis on $s$, we had
+      \[ \calC \star \calC^{q_0} = \calC^{q_0+1} := C_{\calL}(\calH,\calP,(q_0+1)sP_{\infty}),\]
+      which is a dimension $(q_0+1)s + 1 - g(\calH)$ code, as follows from the Riemann-Roch theorem. As a result, we can estimate
+      \begin{align*}
+           \dim_{\fq}(\Tr(\calC))^{\star 2} &\leq \dim_{\fq}(\Tr(\calC^{q_0+1})) \\
+                                            &\leq m \cdot ((q_0+1)s + 1 - g(\calH)) \\
+                                            &\leq m \cdot (k+q_0 s)
+      \end{align*}
+      \item[$(i)$] Corollary 2 $(ii)$ together with Proposition \ref{powers_of_q's_case} gives 
+       \[\Tr(\calC)^{\star 2} \subseteq \Tr(\calC \star \calC^{q^f}) + \sum\limits_{i=f+1}^{m/2} \Tr(\calC \star \calC^{q^i})\]
+       and 
+        \[ \calC \star \calC^{q^f} = \calC^{q^f+1} := C_{\calL}(\calH,\calP,(q^f+1)sP_{\infty}).\]
+        Since the latter code has dimension $(q^f+1)s+1-g(\calH)=k+q^fs$, we have (using twice Lemma \ref{known_bounds})
+         \begin{align*}
+           \dim_{\fq}(\Tr(\calC))^{\star 2} &\leq \dim_{\fq}(\Tr(\calC^{q_f+1})) +  \sum\limits_{i=f+1}^{m/2} \dim_{\fq}(\Tr(\calC \star \calC^{q^i}))\\
+                                            &\leq m \cdot (k + q^fs) + m  \sum\limits_{i=f+1}^{m/2} \dim_{\fqm}(\calC \star \calC^{q^i}) \\
+                                            &\leq m \cdot \left((k+q^fs + k^2 \left(\frac{m}{2}-f\right)\right). 
+      \end{align*}
+\end{itemize}
+\end{proof}
+
+Note that, as explained at the beggining of this Section, Theorem \ref{sup_bounds_on_codes} above gives upper bounds on dimension of the square of the dual of the \textrm{SSAG}-code
+\[\mathrm{SSAG}_{q}(\calH,\calP,D^{\perp}),\]
+where $D^{\perp} = s' P_{\infty}$ and $s'= q_0^3+q_0^2-q_0-2-s$.
+We can use the relation between $s$ and $s'$ to estimate for which \textrm{SSAG} codes the previous bounds lead to a distinguisher, by comparing it with the one known for a random linear code over $\fqm$, given in Corollary \ref{1st bound square of trace}.
+
+
+\newpage
+\printbibliography{}
+\end{document}
