@@ -1,6 +1,11 @@
 \documentclass[a4paper]{article}
-\usepackage{biblatex} %Imports biblatex package
-\addbibresource{biblio.bib} %Import the bibliography file
+
+%%%%%%% BIBLIOGRAPHIE %%%%%%%%
+%\usepackage[backend=biber]{biblatex} %Imports biblatex package  //version biber et pas biblatex, ne marche pas direct sur texmaker.
+%\addbibresource{biblio.bib} %Import the bibliography file
+
+%%%%%%% PACKAGE %%%%%%%%%%%
+
 \usepackage[utf8]{inputenc}
 \usepackage{xcolor}
 \usepackage{amsmath}
@@ -11,12 +16,17 @@
 \usepackage{geometry}
 \geometry{hmargin=2cm,vmargin=1.5cm}
 
+%%%%%%% THEOREM %%%%%%%%%%%%%%%%
+
 \newtheorem{prop1}{Proposition}
 \newtheorem{coro1}{Corollary}
 \newtheorem{thm}{Theorem}
 \newtheorem{def1}{Definition}
 \newtheorem{lem1}{Lemma}
 \newtheorem{rq1}{Remark}
+
+%%%%%%%% NEW COMMANDS %%%%%%%%%
+
 
 \newcommand{\calP}{\mathcal{P}}
 \newcommand{\calH}{\mathcal{H}}
@@ -26,6 +36,7 @@
 \newcommand{\Tr}{\operatorname{Tr}}
 \newcommand{\fqm}{\mathbb{F}_{q^m}}
 \newcommand{\fq}{\mathbb{F}_{q}}
+
 
 
 \title{Hermitian-SSAG-code distinguisher}
@@ -57,7 +68,7 @@ Moreover, if $m$ is even (which is the case in our settings), we have
 Before specifying to AG-codes, we also recall the following estimations (which can also be found in \cite{rocco}):
 
 \begin{lem1} \label{known_bounds}
-Let $\calC$ and $\calD$ be to linear codes over $\fqm$ with same length $n$ and respective dimension $k_{\calC}$ and $k_{\calD}$. We have
+Let $\calC$ and $\calD$ be two linear codes over $\fqm$ with same length $n$ and respective dimension $k_{\calC}$ and $k_{\calD}$. We have
 \begin{itemize}
     \item[$(1)$] $\dim_{\mathbb{F}_q}(\Tr(\calC)) \leq \min\{mk_{\calC},n\}$;
     \item[$(2)$] $\dim_{\fqm}(\calC \star \calD) \leq \min\{k_{\calC}k_{\calD},n\}$;
@@ -74,31 +85,51 @@ It is well-known that (3) above does not hold if $\calC$ has too much structure,
 Let $F,G$ be two divisors in $\calH$ such that $\deg(G) \geq 2g(\calH)+1$ and $\deg(F) \geq 2g(\calH)$, where $g(\calH)$ is the genus of $\calH$. Then
 \[ \calL(F) \cdot \calL(G) = \calL(F+G),\]
 where $\calL(F) \cdot \calL(G) := \mathrm{span}_{\mathbb{F}_{q^m}}\{ f \cdot g : f,g \in \calL(F) \times \calL(G) \}$.\\ 
-As a consequence, if $deg(D) \geq 2g+1$, then 
+As a consequence, if $deg(D) \geq 2g(\calH)+1$, then 
 \[ (C_{\calL}(\calH,\mathcal{P},D))^{\star2} = C_{\calL}(\calH,\calP,2D).\]
 The Riemann-Roch theorem thus gives
-\[ \dim_{\mathbb{F}_{q^m}}(C_{\calL}(\calH,\mathcal{P},D)^{\star2}) = 2\deg(D)+1-g-\calH) = \deg(D) + \dim_{\fqm}(C_{\calL}(\calH,\mathcal{P},D)), \]
+\[ \dim_{\mathbb{F}_{q^m}}(C_{\calL}(\calH,\mathcal{P},D)^{\star2}) = 2\deg(D)+1-g(\calH)) = \deg(D) + \dim_{\fqm}(C_{\calL}(\calH,\mathcal{P},D)), \]
 which is much smaller than the expected dimension given in Lemma \ref{known_bounds}, and thus provides a distinguisher for AG-codes.
 \end{prop1}
 
-In what follow, we will be interseted in subfield subcodes of AG-code, meaning that we will rather need an estimation of the dimension of the square of a trace code (instead of the code itself). Theorem \ref{th1} can be used to get a first one, giving the following corollary.
+In what follow, we will be interseted in subfield subcodes of AG-code, meaning that we will rather need an estimation of the dimension of the square of a trace code (instead of the code itself). Theorem \ref{th1} can be used to get a first one, using the following Proposition from \cite{rocco}.
 
-\begin{coro1} \label{1st bound square of trace}
+\begin{prop1} [\cite{rocco} Corollary 16]\label{1st bound square of trace}
 Let $\calC$ be any $\fqm$-linear code. Then 
-\[\dim_{\fqm}(\Tr(\mathcal{C})^{\star2}) \leq m \cdot \dim_{\fqm}(\calC^{\star 2}) + \binom{m}{2} (\dim_{\fqm}(\calC))^2.\]
-Moreover, if $\calC$ is an AG-code with dimension $k=s + 1 - g(\calH)$ and $\deg(D) \geq 2g(\calH)+1$, where $s:=\deg(D)$, we have
-\[ \dim_{\fqm}(\Tr(\mathcal{C})^{\star2}) \leq m(k+\deg(D)) + \binom{m}{2}k^2. \]
+\begin{equation} \label{bbbound}
+    \dim_{\fq}(\Tr(\mathcal{C})^{\star2}) \leq m \cdot \dim_{\fqm}(\calC^{\star 2}) + \binom{m}{2} (\dim_{\fqm}(\calC))^2.
+\end{equation}
+Furthermore, if $\dim_{\fq} \Tr(\calC) = m \cdot \dim_{\fqm}(\calC)$, then 
+\[\dim_{\fq} (\Tr(\calC)^{\star 2}) - \binom{\dim_{\fq} \Tr(\calC)+1}{2} \leq m \cdot \dim_{\fqm} \calC^{\star 2} - \binom{\dim_{\fqm} (\calC)+1}{2}.\]
+\end{prop1}
+
+The above Proposition implies that if the dimension of a square code is smaller than we expect from a random code, namely
+\[ \dim_{\fqm} (\calC^{\star 2}) < \binom{\dim_{\fqm} (\calC)+1}{2},\]
+then this property survives for the trace code, \emph{ie.}
+\[\dim_{\fq} (\Tr(\calC)^{\star 2}) < \binom{\dim_{\fq} \Tr(\calC)+1}{2}.\]
+
+Proposition \ref{prop1} exactly says that under some condition on the degree of its divisor, the dimension of the square of an AG-code is smaller that expected. This is still the case for their trace codes, which are SSAG codes associated to the dual divisor.
+
+\begin{coro1} \label{square_ssag_bound}
+Let $\mathcal{C} := C_{\calL}(\calH,\mathcal{P},D)$ be a dimension $k$ AG-code on $\calH$ associated to a degree $s \geq 2g(\calH)+1$ divisor. We have 
+\[ \dim_{\fq}(\Tr(\mathcal{C})^{\star2}) := \dim_{\fq} ((\mathrm{SSAG}_{q}(\calH,\calP,D^{\perp})^{\perp})^{\star2})  \leq \binom{mk+1}{2} - \dfrac{m}{2} (k(k-1)-2s).\]
 \end{coro1}
 
 \begin{proof}
-See \cite{rocco}, (9) in Corollary 16 for the general case. Now, if $\calC$ is a AG-code satysfying $\deg(D) \geq 2g(\calH)+1$, a combination of Proposition \ref{prop1} and the Riemann-Roch theorem gives the estimation.
+From Proposition \label{Prop1}, we have $\dim_{\fqm}(\calC)^{\star2} = 2s+1-g = k+s$, since we have inequality in the Riemann-Roch theorem. Thus, \eqref{bbbound} from Proposition \ref{1st bound square of trace} leads to
+\begin{align*}
+    \dim_{\fq}(\Tr(\mathcal{C})^{\star2}) &\leq m(k+s) + \binom{m}{2}k^2 \\
+                                        &= (2k+2s+mk^2-k^2) \dfrac{m}{2} \\
+                                        &= (k(mk+1)-k^2+k+2s) \dfrac{m}{2} \\
+                                        &= \binom{mk+1}{2} - \dfrac{m}{2}(k(k-1)-2s) .
+\end{align*}
 \end{proof}
 
 In \cite{rocco}, the authors show that for a Goppa code $\calC = \mathbf{GRS}_r(x,y)$ defined over $\mathbb{F}_{q^m}$, where $y_i = 1/\Gamma(x_i)$ ($\Gamma$ being a degree $r$ polynomial), it holds
 \[\Tr(\calC\star\calC) \subseteq \Tr(\calC\star\calC^{q}) \subseteq \cdots \subseteq \Tr(\calC\star\calC^{q^u}),\]
 for any $0 \leq u \leq f$,
 where $f :=\lfloor\log_q(r)\rfloor $, or even without the Trace operator in the case of RS-codes. This allow them to use more efficiently Thereom \ref{th1} to get a better bound. \\
-Our plan is to show that the same kind of result still holds in the case of AG-codes over $\mathbb{F}_{q^m}$. In particular, some Magma experiments shows that for some integer $f$, and $0 \leq i \leq f \leq \lfloor m/2 \rfloor$, we have
+Our plan is to show that the same kind of result still holds in the case of AG-codes over $\mathbb{F}_{q^m}$, and use it to improve the bound in Corollary \ref{square_ssag_bound}. In particular, some Magma experiments shows that for $\mathcal{C} := C_{\calL}(\calH,\mathcal{P},D)$ , some integer $f$, and $0 \leq i \leq f \leq \lfloor m/2 \rfloor$, we have
 \begin{equation} \label{equality_of_codes}
  \calC \star \calC^{q^i} = \calC^{q^i+1},
 \end{equation}
@@ -242,29 +273,30 @@ In this case, we have
  \[ \calC \star \calC^{q^j} = \calC^{q^j+1}.\]
 \end{prop1}
 
+We start to prove the following Lemma.
+
+\begin{lem1} \label{technical_lemma}
+Let $s \geq \mu_g+q^j$ for some $0 < j < \frac{m}{2}$. Then 
+\[A^s_{j,q} = V^s+q^jV^s \rightarrow A^{s+1}_{j,q} = V^{s+1}+q^jV^{s+1}.\]
+\end{lem1}
+
 \begin{proof}
-The proof is similar to the one of Proposition \ref{result_with_valuations}, we just write a few words about the direct implicaion. Suppose $s \geq \mu_g + q^j$ and take $a \in A^s_{j,q}$. We want to show that $a \in V^s+q^jV^s$.
-\begin{enumerate}
-    \item if $a \leq s$, we write $a=a+0 \in V^s+q^jV^s$;
-    \item else, $a > s \geq \mu_g+q^j$. Set $s_a := \min\{s,\lfloor\frac{a-\mu_g}{q^j}\rfloor\}$ and $r_a:= a- s_aq^j$, such that 
-    \begin{equation} \label{decomposition2}\tag{$\star\star$}
-    a=s_aq^j+r_a.
+Suppose $A^s_{j,q} = V^s+q^jV^s$ for some $s \geq \mu_g+q^j$ and take $a \in A^{s+1}_{j,q}$ (\emph{ie}. $a \leq (s+1)(q^j+1)$) . There is a few cases to consider:
+\begin{itemize}
+    \item[$\star$] If $a \leq s+1$, then $a \in V^{s+1} \subseteq V^{s+1}+q^jV^{s+1}$;
+    \item[$\star$] If $s+1 < a \leq s(q^j+1)$, then $a \in V^s+q^jV^s$ by hypothesis. Since $V^{s+1} := V^s \cup \{s+1\}$, the result follows;
+    \item[$\star$] Finally, if $s(q^j+1) < a \leq (s+1)(q^j+1)$, then there exists $\alpha \in \{1,...,q^j+1\}$ such that $a=s(q^j+1)+\alpha$. We then can write 
+    \begin{equation} \label{deco}
+        a = (s+1)q^j + s',
     \end{equation}
-     From the definition, we have $s_a \leq s$, so $s_aq^j \in q^jV^s$. It remains to show that $r_a \leq s$. 
-     \begin{enumerate}
-         \item if $s_a=s$, we have $a = sq^j+r_a \leq s(q^j+1)$ since $a \in A^s_{j,q}$, meaning that $r_a \leq s$;
-         \item else, we have $s_a = \lfloor\frac{a-\mu_g}{q^j}\rfloor$. Setting $a-\mu_g = s_aq^j+b$ ($0\leq b < q^j$) gives 
-         \begin{align*}
-             r_a &= a - \left\lfloor\frac{a-\mu_g}{q^j}\right\rfloor q^j \\
-                 &= a - s_aq^j \\
-                 &= a - (a-\mu_g-b) \\
-                 &= \mu_g+b \\
-                 &< \mu_g + q^j \leq s,
-         \end{align*}
-         which conclude the proof since \eqref{decomposition2} is a valid decomposition of $a$ in $V^s+q^jV^s$.
-     \end{enumerate}
-\end{enumerate}
+    where $s':=s+\alpha-q^j$. Since $s \geq \mu_g+q^j$, we have $s' \geq \mu_g+\alpha > \mu_g$. On the other side, $s' \leq s+(q^j+1)-q^j~=s+1$. As a result, $s' \in V^{s+1}$, so \eqref{deco} is a valid decomposition for $a \in V^{s+1}+q^jV^{s+1}$.
+\end{itemize}
 \end{proof}
+
+\begin{proof}[Proof of Proposition \ref{powers_of_q's_case}.] Let $0<j< \frac{m}{2}$. Thanks to Lemma \ref{technical_lemma}, we only have to prove the result for the lowest value of $s$, \emph{ie.} $s:=\mu_g+q^j$.
+
+\end{proof}
+
 
 \begin{rq1}
 The difference between Propositions \ref{result_with_valuations} and \ref{powers_of_q's_case} is that in the second case, we are only able to give a sufficient condition. However, remark that the lower bound on $s$ is better in this case, especially because we are dealing with powers $q^j < q_0$, so that we have less restriction due to the Gap sequence. The condition is not necessary since we can show in some settings that taking $s \geq \mu_k + q^j$ can also work, where $\mu_k$ is another gap. As we are seeking for a lower bound on $s$, we have to consider the biggest gap, ie. $\mu_g$.
@@ -290,15 +322,15 @@ Let $\calC = C_{\calL}(\calH,\calP,sP_{\infty})$ be an AG-code on $\calH$ over $
 $(i)$ is a consequence of Proposition \ref{result_with_valuations} in the case $i=1$ (note that the result also holds without the Trace operator), while $(ii)$ uses Proposition \ref{powers_of_q's_case} several times. In both cases, we conclude get a result on $\Tr(\calC)^{\star 2}$ by using Theorem \ref{th1}.
 \end{proof}
 
-Using the above Corollary and Lemma \ref{known_bounds}, we can prove the following theorem, that gives an upper bound on the dimension of the trace of the square of the dual of our one-point Hermitian SSAG-code which can be compared to the one given in Corollary \ref{1st bound square of trace}.
+Using the above Corollary and Lemma \ref{known_bounds}, we can prove the following theorem, that gives an upper bound on the dimension of the trace of the square of the dual of our one-point Hermitian SSAG-code which can be compared to the one given in Corollary \ref{square_ssag_bound}.
 
 \begin{thm} \label{sup_bounds_on_codes}
 We keep notations as in Corollary 2, and denote by $k$ the dimension of $\calC$ over $\fqm$.
 \begin{itemize}
 \item[(i)] If $s \geq \mu_g + q_0^2$, then 
-\[ \dim_{\fq}(\Tr(\calC))^{\star 2} \leq m \cdot (k+q_0 s).\]
+\[ \dim_{\fq}(\Tr(\calC))^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2} (k(mk-1)-2q_0s).\]
 \item[(ii)] If $\mu_g < s < \mu_g +q_0^2$, recall that $f:= \max\{j \in \{0,\cdots,\frac{m}{2}-1\} : s \geq \mu_g + q^j\}$. Then 
-\[ \dim_{\fq}(\Tr(\calC))^{\star 2} \leq m \cdot \left(k+q^fs + k^2\left(\frac{m}{2}-f\right)\right).\]
+\[ \dim_{\fq}(\Tr(\calC))^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2}(k(2fk-1)-2q^fs).\]
 \end{itemize}
 \end{thm}
 
@@ -309,10 +341,12 @@ We keep notations as in Corollary 2, and denote by $k$ the dimension of $\calC$ 
       which is a dimension $(q_0+1)s + 1 - g(\calH)$ code, as follows from the Riemann-Roch theorem. As a result, we can estimate
       \begin{align*}
            \dim_{\fq}(\Tr(\calC))^{\star 2} &\leq \dim_{\fq}(\Tr(\calC^{q_0+1})) \\
-                                            &\leq m \cdot ((q_0+1)s + 1 - g(\calH)) \\
-                                            &\leq m \cdot (k+q_0 s)
+                                            & = m((q_0+1)s + 1 - g(\calH)) \\
+                                            & = m (k+q_0 s) \\
+                                            & = \binom{mk+1}{2} + \dfrac{m}{2}(2k+2q_0s-k(mk+1)) \\
+                                            &= \binom{mk+1}{2} - \dfrac{m}{2} (k(mk-1)-2q_0s).
       \end{align*}
-      \item[$(i)$] Corollary 2 $(ii)$ together with Proposition \ref{powers_of_q's_case} gives 
+      \item[$(ii)$] Corollary 2 $(ii)$ together with Proposition \ref{powers_of_q's_case} gives 
        \[\Tr(\calC)^{\star 2} \subseteq \Tr(\calC \star \calC^{q^f}) + \sum\limits_{i=f+1}^{m/2} \Tr(\calC \star \calC^{q^i})\]
        and 
         \[ \calC \star \calC^{q^f} = \calC^{q^f+1} := C_{\calL}(\calH,\calP,(q^f+1)sP_{\infty}).\]
@@ -320,7 +354,9 @@ We keep notations as in Corollary 2, and denote by $k$ the dimension of $\calC$ 
          \begin{align*}
            \dim_{\fq}(\Tr(\calC))^{\star 2} &\leq \dim_{\fq}(\Tr(\calC^{q_f+1})) +  \sum\limits_{i=f+1}^{m/2} \dim_{\fq}(\Tr(\calC \star \calC^{q^i}))\\
                                             &\leq m \cdot (k + q^fs) + m  \sum\limits_{i=f+1}^{m/2} \dim_{\fqm}(\calC \star \calC^{q^i}) \\
-                                            &\leq m \cdot \left((k+q^fs + k^2 \left(\frac{m}{2}-f\right)\right). 
+                                            &\leq m \cdot \left((k+q^fs + k^2 \left(\frac{m}{2}-f\right)\right). \\
+                                            &= \dfrac{m}{2}(2k+2q^fs+mk^2-2k^2f) \\
+                                         &=\binom{mk+1}{2}-\dfrac{m}{2}(k(2fk-1)-2q^fs).
       \end{align*}
 \end{itemize}
 \end{proof}
@@ -328,9 +364,13 @@ We keep notations as in Corollary 2, and denote by $k$ the dimension of $\calC$ 
 Note that, as explained at the beggining of this Section, Theorem \ref{sup_bounds_on_codes} above gives upper bounds on dimension of the square of the dual of the \textrm{SSAG}-code
 \[\mathrm{SSAG}_{q}(\calH,\calP,D^{\perp}),\]
 where $D^{\perp} = s' P_{\infty}$ and $s'= q_0^3+q_0^2-q_0-2-s$.
-We can use the relation between $s$ and $s'$ to estimate for which \textrm{SSAG} codes the previous bounds lead to a distinguisher, by comparing it with the one known for a random linear code over $\fqm$, given in Corollary \ref{1st bound square of trace}.
+
+% The following Corollary traduce them in terms of SSAG code and the integer $s'$.
+
+% \begin{coro1}
+% \end{coro1}
 
 
 \newpage
-\printbibliography{}
+%\printbibliography{}
 \end{document}
