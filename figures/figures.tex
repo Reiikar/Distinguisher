@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass{standalone}
 % main document, called main.tex
 \usepackage{amsmath,amssymb}
 \usepackage{tikz}
@@ -7,16 +7,13 @@
 \usetikzlibrary{calc}
 \usetikzlibrary{matrix,arrows,patterns.meta}
 \usepackage{graphicx}
-\usetikzlibrary{external}
-\tikzexternalize[shell escape=-enable-write18,prefix=figures/]
 % activate
 
 %\tikzset{external/system call={latex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"; dvips -o "\image".ps "\image".dvi}}
 
 
 \begin{document}
-	
-\tikzsetnextfilename{test}
+
 \begin{tikzpicture}[scale=0.5]
 	\def\qO{8};
 	\def\q{2};
