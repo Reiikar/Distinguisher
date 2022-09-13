@@ -258,3 +258,4 @@ TSWLatexianTemp*
 # standalone packages
 *.sta
 camera-ready/final-submission.vtc
+figures/figures.pdf
