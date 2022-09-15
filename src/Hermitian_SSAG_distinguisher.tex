@@ -466,7 +466,7 @@ draw=black] (0,0) -- (E) -- (G) -- (F) -- (D)-- cycle;
 	distance=3mm,
 	angle=45,
 	line width=0.3mm]},
-	draw=red] (0,0) -- (A) -- (B) -- (C) -- cycle;
+	draw=red] (0,0) -- (32,0) -- (24,8) -- (0,8) -- cycle;
 
 \filldraw [ pattern color=black!20,
 pattern={Lines[
@@ -548,7 +548,7 @@ At this stage of the proof, it remains to prove that every point in $A^k$ belong
 	distance=3mm,
 	angle=45,
 	line width=0.3mm]},
-	draw=red] (0,0) -- (A) -- (B) -- (C) -- cycle;
+	draw=red] (0,0) -- (32,0) -- (24,8) -- (0,8) -- cycle;
 
 % \filldraw [ pattern color=black!20,
 % pattern={Lines[
@@ -564,19 +564,19 @@ pattern={Lines[
 	line width=0.3mm]},
 draw=black] (0,0) -- (D) -- (E) -- (F) -- (G)-- cycle;
 
-\filldraw [ pattern color=black!20,
-pattern={Lines[
-	distance=3mm,
-	angle=45,
-	line width=0.3mm]},
-draw=blue]  (B) -- (H) -- cycle;
+% \filldraw [ pattern color=black!20,
+% pattern={Lines[
+% 	distance=3mm,
+% 	angle=45,
+% 	line width=0.3mm]},
+% draw=blue]  (B) -- (H) -- cycle;
 
-\filldraw [ pattern color=black!20,
-pattern={Lines[
-	distance=3mm,
+ \filldraw [ pattern color=black!20,
+ pattern={Lines[
+distance=3mm,
 	angle=45,
-	line width=0.3mm]},
-draw=blue]  (24,0) -- (24,7) -- cycle;
+ 	line width=0.3mm]},
+ draw=blue]  (23,0) -- (23,8) -- cycle;
 
 \filldraw [ pattern color=black!20,
 pattern={Lines[
@@ -594,9 +594,133 @@ draw=black] (15,3) -- (23,3) -- (21,5) -- (19,6) -- (15,10)-- cycle;
  
 \end{tikzpicture} 
 \end{center}
-\caption{Un beau titre}
+\caption{Example with $i_A \leq (q_0-1)q^k$}
 \end{figure}
 
+ \item[$\star$] Else, we have $q^k(q_0-1) < i_A \leq (q^k+1)(q_0-1)$, i.e $A$ is in the triangle delimited by the points $((q_0-1)q^k,0)$, $((q_0-1)(q^k+1),0)$ and $((q_0-1)q^k,q_0-1)$, which we denote $\Delta$ from now on. We claim the following:
+ \[ \forall \delta \in \{1,..,q^k\} \ , \ S^k_{(q_0-\delta,\delta-1)} \in B^k.\]
+ To prove this, it suffices to show that $(q_0-\delta,\delta-1) \in S^k$, which is true since
+ \[q_0(q_0-\delta) + \delta(q_0+1) = q_0(q_0-1)+\delta-1 \leq s.\]
+ Next, we aim to prove
+ \begin{equation} \label{counting}
+ \Delta \subseteq \bigcup_{\delta=1}^{q^k} S^k_{(q_0-\delta,\delta-1)}.
+ \end{equation}
+ To do that, we start by counting the points in $\Delta$ and $S^k_{((q_0-1)q^k,0)}$. A short computation gives
+ \[ \# \Delta = \dfrac{q_0(q_0+1)}{2} \quad \mathrm{and} \quad \# S^k_{((q_0-1)q^k,0)} := \dim \calL(sP_{\infty}) = s+1-g(\calH) = \dfrac{q_0(q_0-1)}{2} + q^k.\]
+ Since $\# (\Delta \backslash  S^k_{((q_0-1)q^k,0)}) = q_0-q^k$, there is only a few points left to care about.
+ They are included in the line joining $((q_0-1)(q^k+1),0)$ and $((q_0-1)q^k,q_0-1)$ since all points of cordinates $(i_{A^k}-\mu,\mu) (0 \leq \mu \leq q_0-1)$ can not be in $S^k_{((q_0-1)q^k,0)})$. For these $q_0$ points, we write 
+ \[ \mu = \mu_1q^k + \mu_2,\]
+ with $\mu_2 < q^k$ and $\mu_1 \leq \left\lfloor\frac{q_0-1}{q^k}\right\rfloor \leq q^{m/2-k}-1 \leq q^k-1$ (recall $k \geq m/4$). Finally, we claim:
+ \[(i_{A^k}-\mu,\mu) \in S^k_{q_0-\mu_1+1,\mu} \subseteq \bigcup_{\delta=1}^{q^k} S^k_{(q_0-\delta,\delta-1)}.\]
+ Remark that $i_{A^k}-\mu = (q_0-1-\mu_1)q^k+(q_0-1-\mu_2)$, we are led to prove $((q_0-1-\mu_2),\mu_2) \in S^k$, which again olds since $\mu_2 < q^k$. Note that $q^k$ of these points are in $S^k_{((q_0-1)q^k,0)})$ (case $\mu_1=0)$, meaning that the remaining $q_0-q^k$ are in $(\Delta \backslash  S^k_{((q_0-1)q^k,0)})$, which proves \eqref{counting} (see the figure below to compare $\Delta$ and $\bigcup_{\delta=1}^{q^k} S^k_{(q_0-\delta,\delta-1)}$ on a example).
+ 
+ \begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}[scale=0.4]
+	\def\qO{9};
+	\def\q{3};
+	\def\iAk{32};
+	\def\largeur{\iAk+4}
+	\def\hauteur{\qO+6}
+\clip (-7,-3) rectangle (\largeur,\hauteur); % Clips the picture...
+\draw[style=help lines,dashed,opacity=0.3] (-5,-3) grid[step=1cm] (\largeur,\hauteur); % Draws a grid in the new coordinates.
+
+%Sommets des polygones
+%A^k
+\coordinate (A) at (\iAk,0) {};
+\coordinate (B) at (\iAk-\qO,\qO-1) {};
+\coordinate (C) at (0,\qO-1) {};
+%S^k
+\coordinate (D) at (\qO-1,0) {};
+\coordinate (E) at (\qO-3,2) {} ;
+\coordinate (F) at (\q+1,\q) {};
+\coordinate (G) at (0,\qO-2) {};
+
+
+%finir le rectangle
+\coordinate (H) at (\iAk-\qO,0) {};
+
+
+%Marqueurs sur l'axe vertical
+\draw[thick] (5pt,\q) -- (-5pt,\q) node[anchor=east] {$q^k$} ;
+%\draw[thick] (5pt,\qO-4) -- (-5pt,\qO-4) node[anchor=east] {$q^{2k}$} ;
+\draw[thick] (5pt,\qO-2) -- (-5pt,\qO-2) node[anchor=east] {$j_{S^k}=q_0-2$} ;
+
+
+%Marqueurs sur l'axe horizontal
+\draw[thick,red] (\iAk-\qO+1,5pt) -- (\iAk-\qO+1,-5pt) node[anchor=north] {$i_{A^k}-(q_ 0-1)$} ;
+\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{A^k}$} ;
+\draw[thick] (\q,5pt) -- (\q,-5pt) node[anchor=north] {$q^k$} ;
+\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{S^k}=q_0-1$} ;
+
+
+
+%Axes
+\draw [thick,-latex] (0,0) -- (0,\qO) node [above left] {$j$};
+\draw [thick,-latex] (0,0) -- (\iAk+1,0) node [below right] {$i$};
+
+%Formes
+\filldraw [ pattern color=red!20,
+	pattern={Lines[
+	distance=3mm,
+	angle=45,
+	line width=0.3mm]},
+	draw=red] (0,0) -- (32,0) -- (24,8) -- (0,8) -- cycle;
+
+% \filldraw [ pattern color=black!20,
+% pattern={Lines[
+% 	distance=3mm,
+% 	angle=45,
+% 	line width=0.3mm]},
+% draw=black] (0,0) -- (D) -- (E) -- (F) -- (G)-- cycle;
+
+\filldraw [ pattern color=black!20,
+pattern={Lines[
+	distance=3mm,
+	angle=45,
+	line width=0.3mm]},
+draw=black] (0,0) -- (D) -- (E) -- (F) -- (G)-- cycle;
+
+% \filldraw [ pattern color=black!20,
+% pattern={Lines[
+% 	distance=3mm,
+% 	angle=45,
+% 	line width=0.3mm]},
+% draw=blue]  (B) -- (H) -- cycle;
+
+\filldraw [ pattern color=black!20,
+pattern={Lines[
+	distance=3mm,
+	angle=45,
+	line width=0.3mm]},
+draw=blue]  (24,0) -- (24,8) -- cycle;
+
+\filldraw [ pattern color=black!20,
+pattern={Lines[
+	distance=3mm,
+	angle=45,
+	line width=0.3mm]},
+draw=black] (24,0) -- (32,0) -- (30,2) -- (28,3) -- (24,7)-- cycle;
+
+\filldraw [ pattern color=black!20,
+pattern={Lines[
+	distance=3mm,
+	angle=45,
+	line width=0.3mm]},
+draw=black] (21,3) -- (29,3) -- (27,5) -- (25,6) -- (21,10)-- cycle;
+
+\filldraw [ pattern color=black!20,
+pattern={Lines[
+	distance=3mm,
+	angle=45,
+	line width=0.3mm]},
+draw=black] (18,6) -- (26,6) -- (24,8) -- (22,9) -- (18,13)-- cycle;
+ 
+\end{tikzpicture} 
+\end{center}
+\caption{Case $i_A > (q_0-1)q^k$}
+
+\end{figure}
 \end{itemize}
 
 \end{proof}
