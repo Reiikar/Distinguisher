@@ -1,8 +1,8 @@
 \documentclass[a4paper]{article}
 
 %%%%%%% BIBLIOGRAPHIE %%%%%%%%
-%\usepackage[backend=biber]{biblatex} %Imports biblatex package  //version biber et pas biblatex, ne marche pas direct sur texmaker.
-%\addbibresource{biblio.bib} %Import the bibliography file
+\usepackage[backend=biber]{biblatex} %Imports biblatex package  //version biber et pas biblatex, ne marche pas direct sur texmaker.
+\addbibresource{biblio.bib} %Import the bibliography file
 
 %%%%%%% PACKAGE %%%%%%%%%%%
 
@@ -15,6 +15,15 @@
 \usepackage{amsthm}
 \usepackage{geometry}
 \geometry{hmargin=2cm,vmargin=1.5cm}
+
+%%%%% Pour les dessins %%%%%
+
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usepackage{pgfplots}
+\usetikzlibrary{calc}
+\usetikzlibrary{matrix,arrows,patterns.meta}
+\usepackage{graphicx}
 
 %%%%%%% THEOREM %%%%%%%%%%%%%%%%
 
@@ -197,7 +206,7 @@ holds. Again, the natural inclusion on the corresponding Riemann-Roch spaces imp
 In fact, we start to proof a characterization of this in the case where we take powers of $q_0$ instead of $q$. It will be used later to get back to the case of interest.
 
 \begin{prop1} \label{result_with_valuations}
-Let $i \geq 0$. We have 
+Let $i > 0$. We have 
 \[s \geq \mu_g + q_0^{i+1} \iff A^s_{i,q_0} := \calH(P_{\infty})_{\leq s(q_0^i+1)} = V^s+q_0^iV^s,\]
  where $\mu_g := 2g-1$ is the largest gap of $P_{\infty}$. In this case, we have 
  \[ \calC \star \calC^{q_0^i} = \calC^{q_0^i+1}.\]
@@ -267,42 +276,371 @@ and that we already proved
 \[ s \geq q_0^2 \iff A^s_{m/2,q}=V^s+q^{m/2}V^s.\]
 
 \begin{prop1} \label{powers_of_q's_case}
-Let $0 < j < \frac{m}{2}$. We have
-\[ s \geq \mu_g+q^j \Rightarrow A^s_{j,q} = V^s+q^jV^s.\]
+Let $0 < k < \frac{m}{2}$. We have
+\[ s \geq \mu_g+q^k \Rightarrow A^s_{k,q} = V^s+q^kV^s.\]
 In this case, we have 
- \[ \calC \star \calC^{q^j} = \calC^{q^j+1}.\]
+ \[ \calC \star \calC^{q^k} = \calC^{q^k+1}.\]
 \end{prop1}
 
 We start to prove the following Lemma.
 
 \begin{lem1} \label{technical_lemma}
-Let $s \geq \mu_g+q^j$ for some $0 < j < \frac{m}{2}$. Then 
-\[A^s_{j,q} = V^s+q^jV^s \rightarrow A^{s+1}_{j,q} = V^{s+1}+q^jV^{s+1}.\]
+Let $s \geq \mu_g+q^k$ for some $0 < k < \frac{m}{2}$. Then 
+\[A^s_{k,q} = V^s+q^kV^s \rightarrow A^{s+1}_{k,q} = V^{s+1}+q^kV^{s+1}.\]
 \end{lem1}
 
 \begin{proof}
-Suppose $A^s_{j,q} = V^s+q^jV^s$ for some $s \geq \mu_g+q^j$ and take $a \in A^{s+1}_{j,q}$ (\emph{ie}. $a \leq (s+1)(q^j+1)$) . There is a few cases to consider:
+Suppose $A^s_{k,q} = V^s+q^kV^s$ for some $s \geq \mu_g+q^k$ and take $a \in A^{s+1}_{k,q}$ (\emph{ie}. $a \leq (s+1)(q^k+1)$) . There is a few cases to consider:
 \begin{itemize}
-    \item[$\star$] If $a \leq s+1$, then $a \in V^{s+1} \subseteq V^{s+1}+q^jV^{s+1}$;
-    \item[$\star$] If $s+1 < a \leq s(q^j+1)$, then $a \in V^s+q^jV^s$ by hypothesis. Since $V^{s+1} := V^s \cup \{s+1\}$, the result follows;
-    \item[$\star$] Finally, if $s(q^j+1) < a \leq (s+1)(q^j+1)$, then there exists $\alpha \in \{1,...,q^j+1\}$ such that $a=s(q^j+1)+\alpha$. We then can write 
+    \item[$\star$] If $a \leq s+1$, then $a \in V^{s+1} \subseteq V^{s+1}+q^kV^{s+1}$;
+    \item[$\star$] If $s+1 < a \leq s(q^k+1)$, then $a \in V^s+q^kV^s$ by hypothesis. Since $V^{s+1} := V^s \cup \{s+1\}$, the result follows;
+    \item[$\star$] Finally, if $s(q^k+1) < a \leq (s+1)(q^k+1)$, then there exists $\alpha \in \{1,...,q^k+1\}$ such that $a=s(q^k+1)+\alpha$. We then can write 
     \begin{equation} \label{deco}
-        a = (s+1)q^j + s',
+        a = (s+1)q^k + s',
     \end{equation}
-    where $s':=s+\alpha-q^j$. Since $s \geq \mu_g+q^j$, we have $s' \geq \mu_g+\alpha > \mu_g$. On the other side, $s' \leq s+(q^j+1)-q^j~=s+1$. As a result, $s' \in V^{s+1}$, so \eqref{deco} is a valid decomposition for $a \in V^{s+1}+q^jV^{s+1}$.
+    where $s':=s+\alpha-q^k$. Since $s \geq \mu_g+q^k$, we have $s' \geq \mu_g+\alpha > \mu_g$. On the other side, $s' \leq s+(q^k+1)-q^k~=s+1$. As a result, $s' \in V^{s+1}$, so \eqref{deco} is a valid decomposition for $a \in V^{s+1}+q^kV^{s+1}$.
 \end{itemize}
 \end{proof}
 
-\begin{proof}[Proof of Proposition \ref{powers_of_q's_case}.] Let $0<j< \frac{m}{2}$. Thanks to Lemma \ref{technical_lemma}, we only have to prove the result for the lowest value of $s$, \emph{ie.} $s:=\mu_g+q^j$.
+Now we only have to prove Proposition \ref{powers_of_q's_case} in the case $s=\mu_g+q^k$ for some $0 < k < \frac{m}{2}$. In this case, we can not prove it by finding a suitable decomposition as in the proof of Proposition \ref{result_with_valuations}. However, we can use another technique, that directly proves the equality of spaces 
+\[\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^k} =\calL((q^k+1)sP_{\infty}),\]
+which of course implies the equality of valuations.
+
+\begin{prop1} \label{prop_avec_dessins}
+Let $0 < k < \frac{m}{2}$ and $s=\mu_g+q^k$. Then 
+\[\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^k} =\calL((q^k+1)sP_{\infty}).\]
+\end{prop1}
+
+\begin{proof}
+As we have already seen, the inclusion "$\subseteq$" above is always true, meaning that we only have to prove 
+\[\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^k} \supseteq \calL((q^k+1)sP_{\infty}).\]
+Recall that for any $d \in \mathbb{N}^*$, we have (see \eqref{rr_p_inf})
+\[\calL(dP_{\infty}) = \langle x^iy^j : 0 \leq j \leq q_0-1 \ \mathrm{and} \ iq_0+j(q_0+1) \leq d \rangle, \]
+\emph{ie.} we know a basis of such a space. Let us consider the following sets:
+\[A^k := \{(i,j) \ | \ x^iy^j \in \calL((q^k+1)sP_{\infty})\},\]
+\[S^k := \{(i,j) \ | \ x^iy^j \in \calL(sP_{\infty})\}\]
+and
+\begin{align*}
+B^k &:= \{(i,j) \ | \ x^iy^j \in \calL((sP_{\infty}) \cdot \calL((sP_{\infty})^{q^k} \} \\
+&= \{(i_1+q^ki_2,j_1+q^kj_2) \ | \ (i_r,j_r) \in S^k \ for \ r=1,2\} \\
+&= \bigcup_{(i_2,j_2)\in S^k} S^k_{(i_2,j_2)},
+\end{align*}
+where 
+\[ S^k_{(i_2,j_2)} := \{(i_1+q^ki_2,j_1+q^kj_2) \ | \ (i_1,j_1) \in S^k\}.\]
+Note that $S^k_{(0,0)}=S^k$. The idea is to represent theses sets as sets of points of cordinates $(i,j)$ in the plan. Our goal is to prove that any $(i,j) \in A^k$ is in $B^k$; or more precisly, in some $S^k_{(i_2,j_2)}$. This will show that any element in the basis of $\calL((q^k+1)sP_{\infty})$ is also in the product $\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^k}$, finishing the proof. \\
+The first thing to do is to describe the shape of these spaces. For that, we define a few integers:
+\[i_{A^k} = max \{ i \ | \ (i,j) \in A^k\} \quad , \quad j_{A^k} = max \{ j \ | \ (i,j) \in A^k\}\]
+and
+\[i_{S^k} = max \{ i \ | \ (i,j) \in S^k\} \quad , \quad j_{S^k} = max \{ j \ | \ (i,j) \in S^k\}.\]
+Since $s=q_0(q_0-1)-1+q^k$, we can explicit theses integers: In fact, we have 
+\[ \left\lfloor \dfrac{s}{q_0} \right\rfloor = q_0-1 + \left\lfloor \dfrac{q^k-1}{q_0}\right\rfloor = q_0-1,\]
+so $i_{S^k} = \left\lfloor \dfrac{s}{q_0} \right\rfloor = q_0-1$ and $i_{A^k} = \left\lfloor \dfrac{s(q^k+1)}{q_0} \right\rfloor = (q_0-1)(q^k+1)$. On the other side, we have 
+\begin{align*}
+    j_{S^k} &= \min \left\{ q_0-1, \left\lfloor \dfrac{s}{q_0+1} \right\rfloor \right\} \\
+            &=  \left\lfloor \dfrac{s}{q_0+1} \right\rfloor \\
+            &= q_0-1 +  \left\lfloor \dfrac{q^k-q_0}{q_0+1} \right\rfloor \\
+            &= q_0-2
+\end{align*}
+Finally, we have $j_{S^k} = \min \left\{ q_0-1, \left\lfloor \dfrac{s(q^k+1)}{q_0+1} \right\rfloor \right\}$. Since $s \geq q_0^2 - q_0 -1$ and $q^k+1 \geq 2$, we have
+\begin{equation} \label{desc}
+s(q^k+1) \geq 2(q_0^2-q_0-1) = q_0^2 - 1 + (q_0^2-2q_0-1) \geq q_0^2-1,
+\end{equation}
+since $q_0 \geq 4$ (\emph{ie.} $q \geq 2$). As a result, $j_{A^k} = q_0-1$. 
+An easy computation shows that 
+\[s(q^k+1) = i_{A^k}q_0+(q^{2k}-1) \quad \mathrm{and} \quad s=i_{S^k}q_0 + (q^k-1).\]
+For the shape of the set $A^k$ in the plan, let us consider the points $a(i_{A^k},0)$ and $b(x,j_{A^k})$ in the plan (which are in $A^k$). By definition of $j_{A^k}$, all the points in $A^k$ are delimited by the two axis, the segment connecting $(0,j_{A^k})$ and $b$, and a path connecting $a$ and $b$ (which remains to be found). From \eqref{desc}, there are two cases to consider :  
+\begin{enumerate}
+    \item[$\star$] If $2k \geq \dfrac{m}{2}$, then the absciss of $b$ is given by $x=i_{A^k}-(q_0-1)$, ie. all the segment between $a$ and $b$ are in $A^k$;
+    \item[$\star$] If $2k < \dfrac{m}{2}$, then $x=i_{A^k}-q_0$. In this case, the is a gap in the sequence of decreasing absciss occuring exactly at the ordinate $q^{2k}$. In particular, both the points $(i_{A^k}-(q^{2m}-1),q^{2m-1})$ and $(i_{A^k}-(q^{2m}+1),q^{2m})$ are in $A^k$, but $(i_{A^k}-q^{2m},q^{2m})$ is not. (Note that this is the only gap)
+\end{enumerate}
+On the other side, the shape of $S^k$ is the following. It contains all points delimited by the two axes ans a path connecting the points $(q_0-1,0)$ and $(0,q_0-2)$. As a result, there is only one gap in the sequence of decreasing absiss, which occur at the ordinate $q^k$ (see \eqref{desc}). You can find the shape of theses sets in the pictures below.
+
+\vspace*{0.3cm}
+\begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}[scale=0.4]
+	\def\qO{8};
+	\def\q{2};
+	\def\iAk{21};
+	\def\largeur{\iAk+4}
+	\def\hauteur{\qO+2}
+\clip (-7,-3) rectangle (\largeur,\hauteur); % Clips the picture...
+\draw[style=help lines,dashed,opacity=0.3] (-5,-3) grid[step=1cm] (\largeur,\hauteur); % Draws a grid in the new coordinates.
+
+%Sommets des polygones
+\coordinate (A) at (\iAk,0) {};
+\coordinate (B) at (\iAk-\qO,\qO-1) {};
+\coordinate (C) at (0,\qO-1) {};
+\coordinate (D) at (0,\qO-2) {};
+\coordinate (E) at (\qO-1,0) {} ;
+\coordinate (F) at (2*\q,\q) {};
+\coordinate (G) at (\qO-2,1) {};
+\coordinate (H) at (18,3) {};
+\coordinate (I) at (16,4) {};
+
+
+%Marqueurs sur l'axe vertical
+\draw[thick] (5pt,\q) -- (-5pt,\q) node[anchor=east] {$q^k$} ;
+\draw[thick] (5pt,\qO-4) -- (-5pt,\qO-4) node[anchor=east] {$q^{2k}$} ;
+\draw[thick] (5pt,\qO-2) -- (-5pt,\qO-2) node[anchor=east] {$j_{S^k}=q_0-2$} ;
+
+
+%Marqueurs sur l'axe horizontal
+\draw[thick,red] (\iAk-\qO,5pt) -- (\iAk-\qO,-5pt) node[anchor=north] {$i_{A^k}-q_ 0$} ;
+\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{A^k}$} ;
+\draw[thick] (\q,5pt) -- (\q,-5pt) node[anchor=north] {$q^k$} ;
+\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{S^k}=q_0-1$} ;
+
+
+
+%Axes
+\draw [thick,-latex] (0,0) -- (0,\qO) node [above left] {$j$};
+\draw [thick,-latex] (0,0) -- (\iAk+1,0) node [below right] {$i$};
+
+%Formes
+\filldraw [ pattern color=red!20,
+	pattern={Lines[
+	distance=3mm,
+	angle=45,
+	line width=0.3mm]},
+	draw=red] (0,0) -- (A) -- (H) -- (I) -- (B) -- (C) -- cycle;
+
+\filldraw [ pattern color=black!20,
+pattern={Lines[
+	distance=3mm,
+	angle=45,
+	line width=0.3mm]},
+draw=black] (0,0) -- (E) -- (G) -- (F) -- (D)-- cycle;
+
+
+ 
+\end{tikzpicture} 
+\caption{Case $2k < \frac{m}{2}$}
+\end{center}
+\end{figure}
+\begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}[scale=0.4]
+	\def\qO{9};
+	\def\q{3};
+	\def\iAk{32};
+	\def\largeur{\iAk+4}
+	\def\hauteur{\qO+2}
+\clip (-7,-3) rectangle (\largeur,\hauteur); % Clips the picture...
+\draw[style=help lines,dashed,opacity=0.3] (-5,-3) grid[step=1cm] (\largeur,\hauteur); % Draws a grid in the new coordinates.
+
+%Sommets des polygones
+%A^k
+\coordinate (A) at (\iAk,0) {};
+\coordinate (B) at (\iAk-\qO+1,\qO-1) {};
+\coordinate (C) at (0,\qO-1) {};
+%S^k
+\coordinate (D) at (\qO-1,0) {};
+\coordinate (E) at (\qO-3,2) {} ;
+\coordinate (F) at (\q+1,\q) {};
+\coordinate (G) at (0,\qO-2) {};
+
+
+
+%Marqueurs sur l'axe vertical
+\draw[thick] (5pt,\q) -- (-5pt,\q) node[anchor=east] {$q^k$} ;
+\draw[thick] (5pt,\qO-4) -- (-5pt,\qO-4) node[anchor=east] {$q^{2k}$} ;
+\draw[thick] (5pt,\qO-2) -- (-5pt,\qO-2) node[anchor=east] {$j_{S^k}=q_0-2$} ;
+
+
+%Marqueurs sur l'axe horizontal
+\draw[thick,red] (\iAk-\qO+1,5pt) -- (\iAk-\qO+1,-5pt) node[anchor=north] {$i_{A^k}-(q_ 0-1)$} ;
+\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{A^k}$} ;
+\draw[thick] (\q,5pt) -- (\q,-5pt) node[anchor=north] {$q^k$} ;
+\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{S^k}=q_0-1$} ;
+
+
+
+%Axes
+\draw [thick,-latex] (0,0) -- (0,\qO) node [above left] {$j$};
+\draw [thick,-latex] (0,0) -- (\iAk+1,0) node [below right] {$i$};
+
+%Formes
+\filldraw [ pattern color=red!20,
+	pattern={Lines[
+	distance=3mm,
+	angle=45,
+	line width=0.3mm]},
+	draw=red] (0,0) -- (A) -- (B) -- (C) -- cycle;
+
+\filldraw [ pattern color=black!20,
+pattern={Lines[
+	distance=3mm,
+	angle=45,
+	line width=0.3mm]},
+draw=black] (0,0) -- (D) -- (E) -- (F) -- (G)-- cycle;
+
+
+ 
+\end{tikzpicture} 
+\caption{Case $2k \geq \frac{m}{2}$}
+\end{center}
+\end{figure}
+
+At this stage of the proof, it remains to prove that every point in $A^k$ belongs to some $S^k_{(i_2,j_2)}$, for $(i_2,j_2) \in S^k$. Note that in the plan, the set $S^k_{(i_2,j_2)}$ has the same shape as $S^k$, but its bottom left point has coordinates $(i_2,j_2)$ instead of the origin $(0,0)$. We will prove it in the case $2k \geq \frac{m}{2}$, similar arguments works for the other one. Taking a point $A(i_A,j_A)$ in $A^k$, we can distinguish two cases:
+
+\begin{itemize}
+    \item[$\star$] If $i_A < (q_0-1)q^k$, then $A$ is in the rectangle delimited by $(0,0), ((q_0-1)q^k-1,0), ((q_0-1)q^k,q_0-1)$ and $(0,q_0-1)$ (note that $(q_0-1)q^k=i_{A^k}-(q_0-1)$). Let us write
+    \[i_A = \alpha q^k+\gamma, \quad \mathrm{with} \quad \gamma_1,\gamma_2 < q^k.\]
+    We want to show that all points $(i_A,0),\cdots,(i_A,q_0-1) \in B^k$, to ensure that $A$ is also. In particular, if we denote by $j^*:=\max \{j \ | \ (\alpha,j) \in S^k\} = \left\lfloor \frac{s-\alpha q_0}{q_0+1}\right\rfloor$, we will show that all theses points are in 
+    \[\bigcup_{j=0}^{j^*} S^k_{(\alpha,j)}.\]
+    In fact, let $0 \leq j \leq j^*$. Then the set $ S^k_{(\alpha,j)}$ contains $(i_A,jq^k+r)$ for any $0 \leq r \leq q_0-2-\gamma$ (note that we have no problem with the gap appearing in $S^k$ since it occurs at $q^k$, in which case we rather consider the set  $ S^k_{(\alpha+1,j)}$ instead of  $ S^k_{(\alpha,j)}$) . Since $(j+1)q^k \leq jq^k + (q_0-2-\gamma)+1$ (the equality is attained with $q^k=q=2$ and $q_0=4$), we do not miss any integer from $S^k_{(\alpha,j)}$ to $S^k_{(\alpha,j+1)}$; it remains to show that $j^*$ is big enough to reach the maximal ordinate this way, which is $q_0-1$. Again, the worst case (minimal value of $j^*$) is attained when $\alpha = q_0-2$ is maximal. In this situation, we have 
+    \[j^* = \left\lfloor \dfrac{q_0+q^k-1}{q_0+1}\right\rfloor \geq 1,\]
+    and the biggest ordinate reached is $q^k+q_0-2-\gamma \geq q_0-1$, since $\gamma < q^k$. To sum up, we are able to reach all points in the rectangle. In the picture below, we can see that $A \in S^k_{((q_0-4)q^k,1)}$. 
+
+\begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}[scale=0.4]
+	\def\qO{9};
+	\def\q{3};
+	\def\iAk{32};
+	\def\largeur{\iAk+4}
+	\def\hauteur{\qO+2}
+\clip (-7,-3) rectangle (\largeur,\hauteur); % Clips the picture...
+\draw[style=help lines,dashed,opacity=0.3] (-5,-3) grid[step=1cm] (\largeur,\hauteur); % Draws a grid in the new coordinates.
+
+%Sommets des polygones
+%A^k
+\coordinate (A) at (\iAk,0) {};
+\coordinate (B) at (\iAk-\qO,\qO-1) {};
+\coordinate (C) at (0,\qO-1) {};
+%S^k
+\coordinate (D) at (\qO-1,0) {};
+\coordinate (E) at (\qO-3,2) {} ;
+\coordinate (F) at (\q+1,\q) {};
+\coordinate (G) at (0,\qO-2) {};
+
+
+%finir le rectangle
+\coordinate (H) at (\iAk-\qO,0) {};
+
+% un point A
+\node[draw,circle,inner sep=1pt,fill,black,label=$A$] at (17,5) {};
+
+
+
+%Marqueurs sur l'axe vertical
+\draw[thick] (5pt,\q) -- (-5pt,\q) node[anchor=east] {$q^k$} ;
+%\draw[thick] (5pt,\qO-4) -- (-5pt,\qO-4) node[anchor=east] {$q^{2k}$} ;
+\draw[thick] (5pt,\qO-2) -- (-5pt,\qO-2) node[anchor=east] {$j_{S^k}=q_0-2$} ;
+
+
+%Marqueurs sur l'axe horizontal
+\draw[thick,red] (\iAk-\qO+1,5pt) -- (\iAk-\qO+1,-5pt) node[anchor=north] {$i_{A^k}-(q_ 0-1)$} ;
+\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{A^k}$} ;
+\draw[thick] (\q,5pt) -- (\q,-5pt) node[anchor=north] {$q^k$} ;
+\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{S^k}=q_0-1$} ;
+\draw[thick] (5*\q,5pt) -- (5*\q,-5pt) node[anchor=north] {$(q_0-4)q^k$} ;
+
+
+%Axes
+\draw [thick,-latex] (0,0) -- (0,\qO) node [above left] {$j$};
+\draw [thick,-latex] (0,0) -- (\iAk+1,0) node [below right] {$i$};
+
+%Formes
+\filldraw [ pattern color=red!20,
+	pattern={Lines[
+	distance=3mm,
+	angle=45,
+	line width=0.3mm]},
+	draw=red] (0,0) -- (A) -- (B) -- (C) -- cycle;
+
+% \filldraw [ pattern color=black!20,
+% pattern={Lines[
+% 	distance=3mm,
+% 	angle=45,
+% 	line width=0.3mm]},
+% draw=black] (0,0) -- (D) -- (E) -- (F) -- (G)-- cycle;
+
+\filldraw [ pattern color=black!20,
+pattern={Lines[
+	distance=3mm,
+	angle=45,
+	line width=0.3mm]},
+draw=black] (0,0) -- (D) -- (E) -- (F) -- (G)-- cycle;
+
+\filldraw [ pattern color=black!20,
+pattern={Lines[
+	distance=3mm,
+	angle=45,
+	line width=0.3mm]},
+draw=blue]  (B) -- (H) -- cycle;
+
+\filldraw [ pattern color=black!20,
+pattern={Lines[
+	distance=3mm,
+	angle=45,
+	line width=0.3mm]},
+draw=blue]  (24,0) -- (24,7) -- cycle;
+
+\filldraw [ pattern color=black!20,
+pattern={Lines[
+	distance=3mm,
+	angle=45,
+	line width=0.3mm]},
+draw=black] (15,0) -- (23,0) -- (21,2) -- (19,3) -- (15,7)-- cycle;
+
+\filldraw [ pattern color=black!20,
+pattern={Lines[
+	distance=3mm,
+	angle=45,
+	line width=0.3mm]},
+draw=black] (15,3) -- (23,3) -- (21,5) -- (19,6) -- (15,10)-- cycle;
+ 
+\end{tikzpicture} 
+\end{center}
+\caption{Un beau titre}
+\end{figure}
+
+\end{itemize}
 
 \end{proof}
 
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \begin{rq1}
-The difference between Propositions \ref{result_with_valuations} and \ref{powers_of_q's_case} is that in the second case, we are only able to give a sufficient condition. However, remark that the lower bound on $s$ is better in this case, especially because we are dealing with powers $q^j < q_0$, so that we have less restriction due to the Gap sequence. The condition is not necessary since we can show in some settings that taking $s \geq \mu_k + q^j$ can also work, where $\mu_k$ is another gap. As we are seeking for a lower bound on $s$, we have to consider the biggest gap, ie. $\mu_g$.
+The difference between Propositions \ref{result_with_valuations} and \ref{powers_of_q's_case} is that in the second case, we are only able to give a sufficient condition.
 \end{rq1} 
 
-From this 2 results, we deduce:
+From this two results, we deduce:
 
 \begin{coro1} \label{coro2}
 Let $\calC = C_{\calL}(\calH,\calP,sP_{\infty})$ be an AG-code on $\calH$ over $\mathbb{F}_{q^m}=\mathbb{F}_{q_0^2}$, assciated to a support $\calP$ of length $n$ and to the one-point divisor $sP_{\infty}$. Denote by $g:=g(\calH)=\frac{q_0(q_0-1)}{2}$ and $\mu_g := q_0(q_0-1)-1$ the biggest gap number of $P_{\infty}$. 
@@ -311,7 +649,7 @@ Let $\calC = C_{\calL}(\calH,\calP,sP_{\infty})$ be an AG-code on $\calH$ over $
         \[\Tr(\calC \star \calC) \subseteq \Tr(\calC \star \calC^q) \subseteq \cdots \subseteq \Tr(\calC \star \calC^{q_0}),\]
         and thus 
         \[\Tr(\calC)^{\star 2} \subseteq \Tr(\calC \star \calC^{q_0}).\]
-    \item[(ii)] If $\mu_g < s < \mu_g +q_0^2$, denote by $f:= \max\{j \in \{0,\cdots,\frac{m}{2}-1\} : s \geq \mu_g + q^j\}$. In this case, we have 
+    \item[(ii)] If $\mu_g < s < \mu_g +q_0^2$, denote by $f:= \max\{k \in \{0,\cdots,\frac{m}{2}-1\} : s \geq \mu_g + q^k\}$. In this case, we have 
         \[\Tr(\calC \star \calC) \subseteq \Tr(\calC \star \calC^q) \subseteq \cdots \subseteq \Tr(\calC \star \calC^{q^f}),\]
           and then
         \[\Tr(\calC)^{\star 2} \subseteq \Tr(\calC \star \calC^{q^f}) + \sum\limits_{i=f+1}^{m/2} \Tr(\calC \star \calC^{q^i}).\]
@@ -329,7 +667,7 @@ We keep notations as in Corollary 2, and denote by $k$ the dimension of $\calC$ 
 \begin{itemize}
 \item[(i)] If $s \geq \mu_g + q_0^2$, then 
 \[ \dim_{\fq}(\Tr(\calC))^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2} (k(mk-1)-2q_0s).\]
-\item[(ii)] If $\mu_g < s < \mu_g +q_0^2$, recall that $f:= \max\{j \in \{0,\cdots,\frac{m}{2}-1\} : s \geq \mu_g + q^j\}$. Then 
+\item[(ii)] If $\mu_g < s < \mu_g +q_0^2$, recall that $f:= \max\{k \in \{0,\cdots,\frac{m}{2}-1\} : s \geq \mu_g + q^k\}$. Then 
 \[ \dim_{\fq}(\Tr(\calC))^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2}(k(2fk-1)-2q^fs).\]
 \end{itemize}
 \end{thm}
@@ -354,7 +692,7 @@ We keep notations as in Corollary 2, and denote by $k$ the dimension of $\calC$ 
          \begin{align*}
            \dim_{\fq}(\Tr(\calC))^{\star 2} &\leq \dim_{\fq}(\Tr(\calC^{q_f+1})) +  \sum\limits_{i=f+1}^{m/2} \dim_{\fq}(\Tr(\calC \star \calC^{q^i}))\\
                                             &\leq m \cdot (k + q^fs) + m  \sum\limits_{i=f+1}^{m/2} \dim_{\fqm}(\calC \star \calC^{q^i}) \\
-                                            &\leq m \cdot \left((k+q^fs + k^2 \left(\frac{m}{2}-f\right)\right). \\
+                                            &\leq m \cdot \left(k+q^fs + k^2 \left(\frac{m}{2}-f\right)\right). \\
                                             &= \dfrac{m}{2}(2k+2q^fs+mk^2-2k^2f) \\
                                          &=\binom{mk+1}{2}-\dfrac{m}{2}(k(2fk-1)-2q^fs).
       \end{align*}
@@ -372,5 +710,5 @@ where $D^{\perp} = s' P_{\infty}$ and $s'= q_0^3+q_0^2-q_0-2-s$.
 
 
 \newpage
-%\printbibliography{}
+\printbibliography{}
 \end{document}
