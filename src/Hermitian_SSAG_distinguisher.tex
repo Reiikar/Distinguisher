@@ -49,6 +49,10 @@
 \newcommand{\fqm}{\mathbb{F}_{q^m}}
 \newcommand{\fq}{\mathbb{F}_{q}}
 
+%%----Commentaires----%%%
+
+\newcommand\jade[1]{\textcolor{purple}{#1}}
+
 
 
 \title{Hermitian-SSAG-code distinguisher}
@@ -332,9 +336,9 @@ where
 \[ S^k_{(i_2,j_2)} := \{(i_1+q^ki_2,j_1+q^kj_2) \ | \ (i_1,j_1) \in S^k\}.\]
 Note that $S^k_{(0,0)}=S^k$. The idea is to represent theses sets as sets of points of cordinates $(i,j)$ in the plan. Our goal is to prove that any $(i,j) \in A^k$ is in $B^k$; or more precisly, in some $S^k_{(i_2,j_2)}$. This will show that any element in the basis of $\calL((q^k+1)sP_{\infty})$ is also in the product $\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^k}$, finishing the proof. \\
 The first thing to do is to describe the shape of these spaces. For that, we define a few integers:
-\[i_{A^k} = max \{ i \ | \ (i,j) \in A^k\} \quad , \quad j_{A^k} = max \{ j \ | \ (i,j) \in A^k\}\]
+\[i_{A^k} = \max \{ i \ | \ (i,j) \in A^k\} \quad , \quad j_{A^k} = \max \{ j \ | \ (i,j) \in A^k\}\]
 and
-\[i_{S^k} = max \{ i \ | \ (i,j) \in S^k\} \quad , \quad j_{S^k} = max \{ j \ | \ (i,j) \in S^k\}.\]
+\[i_{S^k} = \max \{ i \ | \ (i,j) \in S^k\} \quad , \quad j_{S^k} = \max \{ j \ | \ (i,j) \in S^k\}.\]
 Since $s=q_0(q_0-1)-1+q^k$, we can explicit theses integers: In fact, we have 
 \[ \left\lfloor \dfrac{s}{q_0} \right\rfloor = q_0-1 + \left\lfloor \dfrac{q^k-1}{q_0}\right\rfloor = q_0-1,\]
 so $i_{S^k} = \left\lfloor \dfrac{s}{q_0} \right\rfloor = q_0-1$ and $i_{A^k} = \left\lfloor \dfrac{s(q^k+1)}{q_0} \right\rfloor = (q_0-1)(q^k+1)$. On the other side, we have 
@@ -401,16 +405,19 @@ On the other side, the shape of $S^k$ is the following. It contains all points d
 \draw [thick,-latex] (0,0) -- (\iAk+1,0) node [below right] {$i$};
 
 %Formes
-\filldraw [ pattern color=red!20,
+\filldraw [ pattern color=red!10,
 	pattern={Lines[
-	distance=3mm,
+	distance=2mm,
 	angle=45,
 	line width=0.3mm]},
 	draw=red] (0,0) -- (A) -- (H) -- (I) -- (B) -- (C) -- cycle;
+	
+\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$A^k$};
 
 
 \filldraw [fill=black!30, fill opacity=0.5, draw=black] ([c]0,0) -- ([c]E) -- ([c]G) -- ([c]F) -- ([c]D)-- cycle;
 
+	\node[yshift=0.7em] at ($(0,0)!0.5!(F)$) {$S^k$};
 
  
 \end{tikzpicture} 
@@ -460,16 +467,20 @@ On the other side, the shape of $S^k$ is the following. It contains all points d
 \draw [thick,-latex] (0,0) -- (\iAk+1,0) node [below right] {$i$};
 
 %Formes
-\filldraw [ pattern color=red!20,
-	pattern={Lines[
-	distance=3mm,
+\filldraw [ pattern color=red!10,
+pattern={Lines[
+	distance=2mm,
 	angle=45,
 	line width=0.3mm]},
-	draw=red] (0,0) -- (32,0) -- (24,8) -- (0,8) -- cycle;
+	draw=red] (0,0) -- (A) -- (B) -- (C) -- cycle;
+	
+\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$A^k$};
+	
+	
 
 \filldraw [fill=black!30, fill opacity=0.5, draw=black] ([c]0,0) -- ([c]D) -- ([c]E) -- ([c]F) -- ([c]G)-- cycle;
 
-
+	\node[yshift=0.7em] at ($(0,0)!0.5!(F)$) {$S^k$};
  
 \end{tikzpicture} 
 \caption{Case $2k \geq \frac{m}{2}$}
@@ -486,6 +497,8 @@ At this stage of the proof, it remains to prove that every point in $A^k$ belong
     In fact, let $0 \leq j \leq j^*$. Then the set $ S^k_{(\alpha,j)}$ contains $(i_A,jq^k+r)$ for any $0 \leq r \leq q_0-2-\gamma$ (note that we have no problem with the gap appearing in $S^k$ since it occurs at $q^k$, in which case we rather consider the set  $ S^k_{(\alpha+1,j)}$ instead of  $ S^k_{(\alpha,j)}$) . Since $(j+1)q^k \leq jq^k + (q_0-2-\gamma)+1$ (the equality is attained with $q^k=q=2$ and $q_0=4$), we do not miss any integer from $S^k_{(\alpha,j)}$ to $S^k_{(\alpha,j+1)}$; it remains to show that $j^*$ is big enough to reach the maximal ordinate this way, which is $q_0-1$. Again, the worst case (minimal value of $j^*$) is attained when $\alpha = q_0-2$ is maximal. In this situation, we have 
     \[j^* = \left\lfloor \dfrac{q_0+q^k-1}{q_0+1}\right\rfloor \geq 1,\]
     and the biggest ordinate reached is $q^k+q_0-2-\gamma \geq q_0-1$, since $\gamma < q^k$. To sum up, we are able to reach all points in the rectangle. In the picture below, we can see that $A \in S^k_{((q_0-4)q^k,1)}$. 
+
+\jade{Pas sûre qu'appeler le point $A$ soit une bonne idée...}
 
 \begin{figure}[h]
 \begin{center}
@@ -533,12 +546,14 @@ At this stage of the proof, it remains to prove that every point in $A^k$ belong
 \draw [thick,-latex] (0,0) -- (\iAk+1,0) node [below right] {$i$};
 
 %Formes
-\filldraw [ pattern color=red!20,
-	pattern={Lines[
-	distance=3mm,
+\filldraw [ pattern color=red!10,
+pattern={Lines[
+	distance=2mm,
 	angle=45,
 	line width=0.3mm]},
-	draw=red] (0,0) -- (32,0) -- (24,8) -- (0,8) -- cycle;
+	draw=red] (0,0) -- (A) -- (B) -- (C) -- cycle;
+	
+	\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$A^k$};
 
 % \filldraw [ pattern color=black!20,
 % pattern={Lines[
@@ -552,6 +567,10 @@ At this stage of the proof, it remains to prove that every point in $A^k$ belong
 	\filldraw [fill=black!30, fill opacity=0.5, draw=black] ([c]0,0) -- ([c]D) -- ([c]E) -- ([c]F) -- ([c]G)-- cycle;
 \end{scope}
 }
+
+	\node[yshift=0.7em] at ($(0,0)!0.5!(E)$) {$S^k$};
+	\node[yshift=0.7em] at ($(0,0)!0.5!(E)+({\q*(\qO-4)},0)$) {$S^k_{((q_0-4)q^k,0)}$};
+	\node[yshift=0.5em] at ($(0,0)!0.5!(E)+({\q*(\qO-4)},\q)$) {$S^k_{((q_0-4)q^k,1)}$};
 
 % un point A
 \node[draw,circle,inner sep=1pt,fill,black,label=$A$] at (17,5) {};
@@ -593,7 +612,7 @@ At this stage of the proof, it remains to prove that every point in $A^k$ belong
 %Sommets des polygones
 %A^k
 \coordinate (A) at (\iAk,0) {};
-\coordinate (B) at (\iAk-\qO,\qO-1) {};
+\coordinate (B) at (\iAk-\qO+1,\qO-1) {};
 \coordinate (C) at (0,\qO-1) {};
 %S^k
 \coordinate (D) at (\qO-1,0) {};
@@ -625,18 +644,22 @@ At this stage of the proof, it remains to prove that every point in $A^k$ belong
 \draw [thick,-latex] (0,0) -- (\iAk+1,0) node [below right] {$i$};
 
 %Formes
-\filldraw [ pattern color=red!20,
-	pattern={Lines[
-	distance=3mm,
+\filldraw [ pattern color=red!10,
+pattern={Lines[
+	distance=2mm,
 	angle=45,
 	line width=0.3mm]},
-	draw=red] (0,0) -- (32,0) -- (24,8) -- (0,8) -- cycle;
+	draw=red]  (0,0) -- (A) -- (B) -- (C) -- cycle;
+	
+\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$A^k$};	
 
 \foreach \coord in{(0,0),(\iAk-\qO+1,0),(\iAk-\qO+1-\q,\q),(\iAk-\qO+1-2*\q,2*\q)} {
 	\begin{scope}[every coordinate/.style={shift={\coord}}]
 		\filldraw [fill=black!30, fill opacity=0.5, draw=black] ([c]0,0) -- ([c]D) -- ([c]E) -- ([c]F) -- ([c]G)-- cycle;
 	\end{scope}
 }
+
+	\node[yshift=0.7em] at ($(0,0)!0.5!(E)$) {$S^k$};
 
 
  
