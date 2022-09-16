@@ -15,7 +15,6 @@
 \usepackage{amsthm}
 \usepackage{geometry}
 \geometry{hmargin=2cm,vmargin=1.5cm}
-\usepackage{hyperref}
 
 %%%%% Pour les dessins %%%%%
 
@@ -49,7 +48,6 @@
 \newcommand{\Tr}{\operatorname{Tr}}
 \newcommand{\fqm}{\mathbb{F}_{q^m}}
 \newcommand{\fq}{\mathbb{F}_{q}}
-\newcommand{\Z}{\mathbb{Z}}
 
 %%----Commentaires----%%%
 
@@ -221,12 +219,7 @@ which is equivalent to the equality of Riemann-Roch spaces
 In fact, if \eqref{equality_of_codes} holds, thus since 
 $\calC^{q^i+1} \subseteq \calC^{q^{i+1}+1}$ is true for every integer $i$, the sequence of inclusions 
 \[\calC\star\calC \subseteq \calC\star\calC^{q} \subseteq \cdots \subseteq \calC\star\calC^{q^f}\]
-also holds (with traces as well), and can be used to refine the estimation of the dimension of $\Tr(\calC)^{\star2}$ by rewriting Theorem \ref{th1} as follows:
-
-\begin{equation}\label{eq:dim_tr_inclusion}
- \Tr(\mathcal{C})^{\star2}:=\Tr(\mathcal{C} \star \mathcal{C}^{q^f}) + \sum_{i= f+1}^{\frac{m}{2}} \Tr(\mathcal{C} \star \mathcal{C}^{q^i})
-\end{equation}
-
+also holds (with traces aswell), and can be used to estimate the dimension of $\Tr(\calC)^{\star2}$ using Theorem \ref{th1}.
 In what follows, we will study \eqref{equality_of_codes}, starting by noting: 
 
 \begin{lem1} \label{lemma1}
@@ -432,7 +425,7 @@ For the shape of the set $A^k$ in the plane, let us consider the points $a(i_{A^
     \item[$\star$] If $2k \geq \dfrac{m}{2}$, then the abscissa of $b$ is given by $x=i_{A^k}-(q_0-1)$, i.e. all the points lying on the segment between $a$ and $b$ belong to $A^k$;
     \item[$\star$] If $2k < \dfrac{m}{2}$, then $x=i_{A^k}-q_0$. In this case, \jade{Moi yen a pas comprendre: there is a gap in the sequence of decreasing $x$-values occuring exactly at the ordinate $q^{2k}$.} In particular, both the points $(i_{A^k}-(q^{2k}-1),q^{2k-1})$ and $(i_{A^k}-(q^{2k}+1),q^{2k})$ are in $A^k$, but $(i_{A^k}-q^{2k},q^{2k})$ is not. (Note that this is the only gap.)
 \end{enumerate}
-The set $S^k$ consists of all integral points delimited by the two axes and a path connecting the points $(q_0-1,0)$ and $(0,q_0-2)$ \jade{il faudrait spécifier ce chemin, non ?}. \jade{Pourquoi as a result ? $\rightarrow$} As a result, there is only one gap in the sequence of decreasing $x$-values, which occurs at the ordinate $q^k$ (see \eqref{desc}). You can find the shape of theses sets in the pictures below.
+On the other side, the shape of $S^k$ is the following. It contains all points delimited by the two axes ans a path connecting the points $(q_0-1,0)$ and $(0,q_0-2)$. As a result, there is only one gap in the sequence of decreasing absiss, which occur at the ordinate $q^k$ (see \eqref{desc}). You can find the shape of theses sets in the pictures below.
 
 \vspace*{0.3cm}
 \begin{figure}[h]
@@ -744,7 +737,7 @@ pattern={Lines[
  
 \end{tikzpicture} 
 \end{center}
-\caption{Example with $2k \geq \frac{m}{2}$ and $i_b > (q_0-1)q^k$}
+\caption{Example with $2k \geq \frac{m}{2}$ and $i_b \geq (q_0-1)q^k$}
 
 \end{figure}
 \end{itemize}
@@ -761,41 +754,37 @@ For such points, we write
 \[\mu = \mu q^k + \mu_2 \ , \ \mathrm{with} \ \mu_1,\mu_2 < q^k,\]
 and we claim that $(i_{A^k}-\mu,\mu) \in S^k_{((q_0-1)-\mu_1,\mu_1)} \in B^k$, which holds since both $\mu_1$ and $\mu_2$ are smaller than $q^k$. The picture bellow describes this case, and conclude the proof.
 
- \begin{figure}[h]
+\begin{figure}[h]
 \begin{center}
 \begin{tikzpicture}[scale=0.4]
 	\def\qO{8};
 	\def\q{2};
 	\def\iAk{21};
 	\def\largeur{\iAk+4}
-	\def\hauteur{\qO+6}
+	\def\hauteur{\qO+2}
 \clip (-7,-3) rectangle (\largeur,\hauteur); % Clips the picture...
 \draw[style=help lines,dashed,opacity=0.3] (-5,-3) grid[step=1cm] (\largeur,\hauteur); % Draws a grid in the new coordinates.
 
 %Sommets des polygones
-%A^k
 \coordinate (A) at (\iAk,0) {};
-\coordinate (B) at (\iAk-\qO+1,\qO-1) {};
+\coordinate (B) at (\iAk-\qO,\qO-1) {};
 \coordinate (C) at (0,\qO-1) {};
-%S^k
-\coordinate (D) at (\qO-1,0) {};
-\coordinate (E) at (\qO-3,2) {} ;
-\coordinate (F) at (\q+1,\q) {};
-\coordinate (G) at (0,\qO-2) {};
-
-
-%finir le rectangle
-\coordinate (H) at (\iAk-\qO,0) {};
+\coordinate (D) at (0,\qO-2) {};
+\coordinate (E) at (\qO-1,0) {} ;
+\coordinate (F) at (2*\q,\q) {};
+\coordinate (G) at (\qO-2,1) {};
+\coordinate (H) at (18,3) {};
+\coordinate (I) at (16,4) {};
 
 
 %Marqueurs sur l'axe vertical
 \draw[thick] (5pt,\q) -- (-5pt,\q) node[anchor=east] {$q^k$} ;
-%\draw[thick] (5pt,\qO-4) -- (-5pt,\qO-4) node[anchor=east] {$q^{2k}$} ;
+\draw[thick] (5pt,\qO-4) -- (-5pt,\qO-4) node[anchor=east] {$q^{2k}$} ;
 \draw[thick] (5pt,\qO-2) -- (-5pt,\qO-2) node[anchor=east] {$j_{S^k}=q_0-2$} ;
 
 
 %Marqueurs sur l'axe horizontal
-\draw[thick,red] (\iAk-\qO+1,5pt) -- (\iAk-\qO+1,-5pt) node[anchor=north] {$i_{A^k}-(q_ 0-1)$} ;
+\draw[thick,red] (\iAk-\qO,5pt) -- (\iAk-\qO,-5pt) node[anchor=north] {$i_{A^k}-q_ 0$} ;
 \draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{A^k}$} ;
 \draw[thick] (\q,5pt) -- (\q,-5pt) node[anchor=north] {$q^k$} ;
 \draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{S^k}=q_0-1$} ;
@@ -808,28 +797,34 @@ and we claim that $(i_{A^k}-\mu,\mu) \in S^k_{((q_0-1)-\mu_1,\mu_1)} \in B^k$, w
 
 %Formes
 \filldraw [ pattern color=red!10,
-pattern={Lines[
+	pattern={Lines[
 	distance=2mm,
 	angle=45,
 	line width=0.3mm]},
-	draw=red]  (0,0) -- (A) -- (B) -- (C) -- cycle;
+	draw=red] (0,0) -- (A) -- (H) -- (I) -- (B) -- (C) -- cycle;
 	
-\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$A^k$};	
+\filldraw [ pattern color=red!10,
+	pattern={Lines[
+	distance=2mm,
+	angle=45,
+	line width=0.3mm]},
+	draw=red] (14,0) -- (21,0) -- (18,3) -- (16,4) -- (14,6)  -- cycle;
+	
+\filldraw[fill=black!30, fill opacity=0.5, draw=black] (14,0) -- (21,0) -- (20,1) -- (18,2) -- (14,6)  -- cycle;
 
-\foreach \coord in{(0,0),(\iAk-\qO+1,0),(\iAk-\qO+1-\q,\q),(\iAk-\qO+1-2*\q,2*\q)} {
-	\begin{scope}[every coordinate/.style={shift={\coord}}]
-		\filldraw [fill=black!30, fill opacity=0.5, draw=black] ([c]0,0) -- ([c]D) -- ([c]E) -- ([c]F) -- ([c]G)-- cycle;
-	\end{scope}
-}
+\filldraw[fill=black!30, fill opacity=0.5, draw=black] (12,2) -- (19,2) -- (18,3) -- (16,4) -- (12,8)  -- cycle;
+	
+\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$A^k$};
 
-	\node[yshift=0.7em] at ($(0,0)!0.5!(E)$) {$S^k$};
 
+\filldraw [fill=black!30, fill opacity=0.5, draw=black] ([c]0,0) -- ([c]E) -- ([c]G) -- ([c]F) -- ([c]D)-- cycle;
+
+	\node[yshift=0.7em] at ($(0,0)!0.5!(F)$) {$S^k$};
 
  
 \end{tikzpicture} 
+\caption{Example with $2k < \frac{m}{2}$ and $i_b \geq q^k(q_0-1)$}
 \end{center}
-\caption{Example with $2k<\frac{m}{2}$ and $i_b > (q_0-1)q^k$}
-
 \end{figure}
 
 \end{proof}
