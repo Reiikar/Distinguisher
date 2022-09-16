@@ -186,7 +186,7 @@ Furthermore, if $\dim_{\fq} \Tr(\calC) = m \cdot \dim_{\fqm}(\calC)$, then
 
 The above Proposition implies that if the dimension of a square code is smaller than we expect from a random code, namely
 \[ \dim_{\fqm} (\calC^{\star 2}) < \binom{\dim_{\fqm} (\calC)+1}{2},\]
-then this property survives for the trace code, \emph{ie.}
+then this property survives for the trace code, \emph{\textit{i.e.}}
 \[\dim_{\fq} (\Tr(\calC)^{\star 2}) < \binom{\dim_{\fq} \Tr(\calC)+1}{2}.\]
 
 Proposition \ref{prop1} exactly says that under some condition on the degree of its divisor, the dimension of the square of an AG-code is smaller that expected. This is still the case for their trace codes, which are SSAG codes associated to the dual divisor.
@@ -234,7 +234,7 @@ It remains to show in which conditions (on the degree of $D$ and the integer $i$
 
 In this section, we fix $D=sP_{\infty}$, where $s=\deg(D)$. Note that in this case of a one-point Hermitian codes, the dual divisor $D^{\perp}$ has been explicitly described in \cite{sabi}, Theorem 3.2. In particular, if we set $s' := q_0^3+q_0^2-q_0-2-s$, then $D^{\perp} = s'P_{\infty}$. This fact is really important since in the end, we want to deal with \textrm{SSAG}-codes, and the one of interest in Theorem \ref{th1} is 
 \[\mathrm{SSAG}_{q}(\calH,\calP,D^{\perp}),\]
-ie. we will have a result on the dimension of the square of its dual. We will come back at it later, but for the moment we will focus on finding a conditions to have equality on the inclusion in Lemma \ref{lemma1}. 
+i.e. we will have a result on the dimension of the square of its dual. We will come back at it later, but for the moment we will focus on finding a conditions to have equality on the inclusion in Lemma \ref{lemma1}. 
 
 \noindent It is well-knonw from the study of the Hermitian curve that
 \begin{equation} \label{rr_p_inf}
@@ -262,7 +262,7 @@ It is well-known from this theory that $\mathcal{G}(P_{\infty})$ is a finite set
 Now we are ready to define the set of valuations we will work with: for any integer $i \geq 0$, define
 
 \[A^s_{i,q}:=\{-\nu_{P_{\infty}}(h) : h \in \calL((q^i+1)sP_{\infty}) \}\] 
-the set of all possible valuations at $P_{\infty}$ atteigned by any function in $\calL((q^i+1)sP_{\infty}$ (we put a "minus sign" to make it more readable, \emph{ie.} we work with positive integers instead of negative ones, since $P_{\infty}$ is a pole of all functions we work with). Replacing $s$ by $(q^i+1)s$ in \eqref{rr_p_inf} yields
+the set of all possible valuations at $P_{\infty}$ atteigned by any function in $\calL((q^i+1)sP_{\infty}$ (we put a "minus sign" to make it more readable, \emph{i.e.} we work with positive integers instead of negative ones, since $P_{\infty}$ is a pole of all functions we work with). Replacing $s$ by $(q^i+1)s$ in \eqref{rr_p_inf} yields
 \[A^s_{i,q} = \calH(P_{\infty}) \cap \{1,\cdots,(q^i+1)s\} := \calH(P_{\infty})_{\leq s(q^i+1)}.\]
  We also introduce the set 
 \[V^s = \{-\nu_{P_{\infty}}(f) : f \in \calL(sP_{\infty})\} := \calH(P_{\infty})_{\leq s},\]
@@ -274,7 +274,7 @@ we are led to find a condition such that
 \begin{equation} \label{equalitu_of_valuations}
     V^s+q^iV^s = A^s_{i,q}
 \end{equation}
-holds. Again, the natural inclusion on the corresponding Riemann-Roch spaces implies that  $V^s+q^iV^s \subseteq A^s_i$ is always true, \emph{ie.} we only have to find a condtion to guaranty the reverse inclusion. \\
+holds. Again, the natural inclusion on the corresponding Riemann-Roch spaces implies that  $V^s+q^iV^s \subseteq A^s_i$ is always true, \emph{i.e.} we only have to find a condtion to guaranty the reverse inclusion. \\
 In fact, we start to proof a characterization of this in the case where we take powers of $q_0$ instead of $q$. It will be used later to get back to the case of interest.
 
 \begin{prop1} \label{result_with_valuations}
@@ -287,7 +287,7 @@ Let $i > 0$. We have
 \begin{proof} The case $i=0$ is given by Proposition \ref{prop1}, so let us suppose that $i \geq 1$. \\
 We start by proving $(\Leftarrow)$, supposing by contraposition that $s < \mu_g + q_0^{i+1}$. In this case, we show that the element $\mu_g + q_0^{i+1} \in A^s_{i,q_0} \backslash V^s+q_0^iV^s$: it is clear that $\mu_g + q_0^{i+1} \notin V^s$ since it is striclty bigger than $s$, and that $\mu_g = q_0(q_0-1)-1$ yields
 \[\mu_g + q_0^{i+1}=q_0^2-(q_0+1) + q_0^{i+1} < 2q_0^{i+1},\]
-since $i \geq 1$. There is only two ways to decompose $\mu_g + q_0^{i+1}$ in $V^s+q_0^iV^s$ , the first one being the trivial one, \emph{ie.}
+since $i \geq 1$. There is only two ways to decompose $\mu_g + q_0^{i+1}$ in $V^s+q_0^iV^s$ , the first one being the trivial one, \emph{i.e.}
 \[\mu_g + q_0q_0^{i} \notin V^s+q_0^iV^s,\]
 which doesn't work because $\mu_g \notin V^s$ since it is a gap. Remark that we can not decrease the $q_0^iV^s$ part without getting a gap, since $q_0 = \min{V^s}$. It means that we have to decrease it, by writting 
 \[\mu_g + q_0^{i+1} = (\mu_g - q_0^i) + \underbrace{q_0^i(q_0+1)}_{\in q^i_0V^s} .\]
@@ -341,7 +341,7 @@ From now on, the equality on codes follows immediatly.
 \end{proof}
 
 
-Note that we proved the result only for powers of $q_0$ and not on all powers of $q$, which is supposed to be the integers of interest in Theorem \ref{th1}. More especilly, the result above is only interesting in the case $i=1$ here, since the sum on the right hand-side of Theorem \ref{th1} runs from the power $q^0$ to $q^{\frac{m}{2} }:=q_0$. \\
+Note that we proved the result only for powers of $q_0$ and not on all powers of $q$, which is supposed to be the integers of interest in Theorem \ref{th1}. More especially, the result above is only interesting in the case $i=1$ here, since the sum on the right hand-side of Theorem \ref{th1} runs from the power $q^0$ to $q^{\frac{m}{2} }:=q_0$. \\
 The next result deals with the power of $q$'s up to $\frac{m}{2}$. Before stating it, remark that 
 \[ A_{i,q_0}^s = A^s_{im/2,q},\]
 and that we already proved
@@ -358,11 +358,11 @@ We start to prove the following Lemma.
 
 \begin{lem1} \label{technical_lemma}
 Let $s \geq \mu_g+q^k$ for some $0 < k < \frac{m}{2}$. Then 
-\[A^s_{k,q} = V^s+q^kV^s \rightarrow A^{s+1}_{k,q} = V^{s+1}+q^kV^{s+1}.\]
+\[A^s_{k,q} = V^s+q^kV^s \Rightarrow A^{s+1}_{k,q} = V^{s+1}+q^kV^{s+1}.\]
 \end{lem1}
 
 \begin{proof}
-Suppose $A^s_{k,q} = V^s+q^kV^s$ for some $s \geq \mu_g+q^k$ and take $a \in A^{s+1}_{k,q}$ (\emph{ie}. $a \leq (s+1)(q^k+1)$) . There is a few cases to consider:
+Suppose $A^s_{k,q} = V^s+q^kV^s$ for some $s \geq \mu_g+q^k$ and take $a \in A^{s+1}_{k,q}$ (\emph{ie}. $a \leq (s+1)(q^k+1)$) . There are a few cases to consider:
 \begin{itemize}
     \item[$\star$] If $a \leq s+1$, then $a \in V^{s+1} \subseteq V^{s+1}+q^kV^{s+1}$;
     \item[$\star$] If $s+1 < a \leq s(q^k+1)$, then $a \in V^s+q^kV^s$ by hypothesis. Since $V^{s+1} := V^s \cup \{s+1\}$, the result follows;
@@ -374,10 +374,10 @@ Suppose $A^s_{k,q} = V^s+q^kV^s$ for some $s \geq \mu_g+q^k$ and take $a \in A^{
 \end{itemize}
 \end{proof}
 
-Now we only have to prove Proposition \ref{powers_of_q's_case} in the case $s=\mu_g+q^k$ for some $0 < k < \frac{m}{2}$. In this case, we can not prove it by finding a suitable decomposition as in the proof of Proposition \ref{result_with_valuations}. However, we can use another technique, that directly proves the equality of spaces 
+Now we only have to prove Proposition \ref{powers_of_q's_case} in the case $s=\mu_g+q^k$ for some $0 < k < \frac{m}{2}$. In this case, finding a valid decomposition of each element of $A^s_{i,q_0}$ is intricate. We use another technique, \textcolor{red}{that directly proves the equality of spaces 
 \[\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^k} =\calL((q^k+1)sP_{\infty}),\]
-which of course implies the equality of valuations.
-
+which of course implies the equality of valuations.}
+\jade{$\uparrow$ ça me plaît toujours pas.}
 \begin{prop1} \label{prop_avec_dessins}
 Let $0 < k < \frac{m}{2}$ and $s=\mu_g+q^k$. Then 
 \[\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^k} =\calL((q^k+1)sP_{\infty}).\]
@@ -388,7 +388,7 @@ As we have already seen, the inclusion "$\subseteq$" above is always true, meani
 \[\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^k} \supseteq \calL((q^k+1)sP_{\infty}).\]
 Recall that for any $d \in \mathbb{N}^*$, we have (see \eqref{rr_p_inf})
 \[\calL(dP_{\infty}) = \langle x^iy^j : 0 \leq j \leq q_0-1 \ \mathrm{and} \ iq_0+j(q_0+1) \leq d \rangle, \]
-\emph{ie.} we know a basis of such a space. Let us consider the following sets:
+\emph{i.e.} we know a basis of such a space. Let us consider the following sets:
 \[A^k := \{(i,j) \ | \ x^iy^j \in \calL((q^k+1)sP_{\infty})\},\]
 \[S^k := \{(i,j) \ | \ x^iy^j \in \calL(sP_{\infty})\}\]
 and
@@ -399,7 +399,7 @@ B^k &:= \{(i,j) \ | \ x^iy^j \in \calL((sP_{\infty}) \cdot \calL((sP_{\infty})^{
 \end{align*}
 where 
 \[ S^k_{(i_2,j_2)} := \{(i_1+q^ki_2,j_1+q^kj_2) \ | \ (i_1,j_1) \in S^k\}.\]
-Note that $S^k_{(0,0)}=S^k$. The idea is to represent theses sets as sets of points of cordinates $(i,j)$ in the plan. Our goal is to prove that any $(i,j) \in A^k$ is in $B^k$; or more precisly, in some $S^k_{(i_2,j_2)}$. This will show that any element in the basis of $\calL((q^k+1)sP_{\infty})$ is also in the product $\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^k}$, finishing the proof. \\
+Note that $S^k_{(0,0)}=S^k$. The idea is to represent theses sets as sets of points of cordinates $(i,j)$ in the plane. Our goal is to prove that any $(i,j) \in A^k$ is in $B^k$; or more precisly, in some $S^k_{(i_2,j_2)}$. This will show that any element in the basis of $\calL((q^k+1)sP_{\infty})$ is also in the product $\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^k}$, finishing the proof. \\
 The first thing to do is to describe the shape of these spaces. For that, we define a few integers:
 \[i_{A^k} = \max \{ i \ | \ (i,j) \in A^k\} \quad , \quad j_{A^k} = \max \{ j \ | \ (i,j) \in A^k\}\]
 and
@@ -413,16 +413,16 @@ so $i_{S^k} = \left\lfloor \dfrac{s}{q_0} \right\rfloor = q_0-1$ and $i_{A^k} = 
             &= q_0-1 +  \left\lfloor \dfrac{q^k-q_0}{q_0+1} \right\rfloor \\
             &= q_0-2
 \end{align*}
-Finally, we have $j_{S^k} = \min \left\{ q_0-1, \left\lfloor \dfrac{s(q^k+1)}{q_0+1} \right\rfloor \right\}$. Since $s \geq q_0^2 - q_0 -1$ and $q^k+1 \geq 2$, we have
+Finally, we have $j_{A^k} = \min \left\{ q_0-1, \left\lfloor \dfrac{s(q^k+1)}{q_0+1} \right\rfloor \right\}$. Since $s \geq q_0^2 - q_0 -1$ and $q^k+1 \geq 2$, we have
 \begin{equation} \label{desc}
 s(q^k+1) \geq 2(q_0^2-q_0-1) = q_0^2 - 1 + (q_0^2-2q_0-1) \geq q_0^2-1,
 \end{equation}
-since $q_0 \geq 4$ (\emph{ie.} $q \geq 2$). As a result, $j_{A^k} = q_0-1$. 
+since $q_0 \geq 4$ (\emph{i.e.} $q \geq 2$). As a result, we have $j_{A^k} = q_0-1$. 
 An easy computation shows that 
 \[s(q^k+1) = i_{A^k}q_0+(q^{2k}-1) \quad \mathrm{and} \quad s=i_{S^k}q_0 + (q^k-1).\]
-For the shape of the set $A^k$ in the plan, let us consider the points $a(i_{A^k},0)$ and $b(x,j_{A^k})$ in the plan (which are in $A^k$). By definition of $j_{A^k}$, all the points in $A^k$ are delimited by the two axis, the segment connecting $(0,j_{A^k})$ and $b$, and a path connecting $a$ and $b$ (which remains to be found). From \eqref{desc}, there are two cases to consider :  
+For the shape of the set $A^k$ in the plane, let us consider the points $a(i_{A^k},0)$ and $b(x,j_{A^k})$ in  (which are in $A^k$). By definition of $j_{A^k}$, all the points in $A^k$ are delimited by the two axis, the segment connecting $(0,j_{A^k})$ and $b$, and a path connecting $a$ and $b$ (which remains to be found). From \eqref{desc}, there are two cases to consider :  
 \begin{enumerate}
-    \item[$\star$] If $2k \geq \dfrac{m}{2}$, then the absciss of $b$ is given by $x=i_{A^k}-(q_0-1)$, ie. all the segment between $a$ and $b$ are in $A^k$;
+    \item[$\star$] If $2k \geq \dfrac{m}{2}$, then the absciss of $b$ is given by $x=i_{A^k}-(q_0-1)$, i.e. all the segment between $a$ and $b$ are in $A^k$;
     \item[$\star$] If $2k < \dfrac{m}{2}$, then $x=i_{A^k}-q_0$. In this case, the is a gap in the sequence of decreasing absciss occuring exactly at the ordinate $q^{2k}$. In particular, both the points $(i_{A^k}-(q^{2m}-1),q^{2m-1})$ and $(i_{A^k}-(q^{2m}+1),q^{2m})$ are in $A^k$, but $(i_{A^k}-q^{2m},q^{2m})$ is not. (Note that this is the only gap)
 \end{enumerate}
 On the other side, the shape of $S^k$ is the following. It contains all points delimited by the two axes ans a path connecting the points $(q_0-1,0)$ and $(0,q_0-2)$. As a result, there is only one gap in the sequence of decreasing absiss, which occur at the ordinate $q^k$ (see \eqref{desc}). You can find the shape of theses sets in the pictures below.
@@ -736,6 +736,84 @@ pattern={Lines[
 \end{itemize}
 
 \end{proof}
+
+
+\begin{rq1} 
+	In the picture below, you can find a counter-example in the case $B^k \ne A^k$ if $s$ does not reach the bound given in Proposition \ref{prop_avec_dessins}. \jade{Here, with $s=\mu_g+q^k-1$, we can see that some monomials $x^iy^j \in L((q+1)sP_\infty)$ cannot be written as a product $x^{i_1+qi_2}y^{j_1+qj_2}$ for $(i_r,j_r) \in S_k$.}
+	\begin{figure}[h]
+		\begin{center}
+			\begin{tikzpicture}[scale=0.4]
+				\def\qO{4};
+				\def\q{2};
+				\def\iAk{9};
+				\def\largeur{\iAk+3}
+				\def\hauteur{\qO+4}
+				\clip (-3,-3) rectangle (\largeur,\hauteur); % Clips the picture...
+				\draw[style=help lines,dashed,opacity=0.3] (-5,-3) grid[step=1cm] (\largeur,\hauteur); % Draws a grid in the new coordinates.
+				
+				%Sommets des polygones
+				%A^k
+				\coordinate (A) at (\iAk,0) {};
+				\coordinate (B) at (\iAk-\qO,\qO-1) {};
+				\coordinate (C) at (0,\qO-1) {};
+				%S^k
+				\coordinate (D) at (\qO-1,0) {};
+				\coordinate (E) at (\qO-3,2) {} ;
+				\coordinate (F) at (\q+1,\q) {};
+				\coordinate (G) at (0,\qO-2) {};
+				
+				
+				%finir le rectangle
+				\coordinate (H) at (\iAk-\qO,0) {};
+				
+				
+				%Marqueurs sur l'axe vertical
+				\draw[thick] (5pt,\q) -- (-5pt,\q) node[anchor=east] {$q^k$} ;
+				%\draw[thick] (5pt,\qO-4) -- (-5pt,\qO-4) node[anchor=east] {$q^{2k}$} ;
+				
+				
+				
+				%Marqueurs sur l'axe horizontal
+				%\draw[thick,red] (\iAk-\qO+1,5pt) -- (\iAk-\qO+1,-5pt) node[anchor=north] {$i_{A^k}-(q_ 0-1)$} ;
+				\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{A^k}$} ;
+				% \draw[thick] (\q,5pt) -- (\q,-5pt) node[anchor=north] {$q^k$} ;
+				\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$q_0-1$} ;
+				
+				
+				
+				%Axes
+				\draw [thick,-latex] (0,0) -- (0,\qO+2) node [above left] {$j$};
+				\draw [thick,-latex] (0,0) -- (\iAk+1,0) node [below right] {$i$};
+				
+				%Formes
+				\filldraw [ pattern color=red!20,
+				pattern={Lines[
+					distance=3mm,
+					angle=45,
+					line width=0.3mm]},
+				draw=red] (0,0) -- (9,0) -- (7,1) -- (5,3) -- (0,3)-- cycle;
+				
+				\foreach \i in {0,1,2,3}{
+					\filldraw [fill=black!30, fill opacity=0.5, draw=black] (2*\i,0) -- (3+2*\i,0) -- (1+2*\i,1) -- (2*\i,2)-- cycle;
+				}
+				
+				\foreach \i in {0,1}{
+					\filldraw [fill=black!30, fill opacity=0.5, draw=black] (2*\i,2) -- (3+2*\i,2) -- (1+2*\i,3) -- (2*\i,4)-- cycle;
+				}
+				
+				\filldraw [fill=black!30, fill opacity=0.5, draw=black] (0,4) -- (3,4) -- (1,5) -- (0,6)-- cycle;
+				
+				\node[draw,circle,inner sep=1pt,fill,black] at (4,3) {};
+				\node[draw,circle,inner sep=1pt,fill,black] at (5,3) {};
+				
+				
+				
+			\end{tikzpicture} 
+		\end{center}
+		\caption{Counter-example with $(q,q_0,s,k)= (2,4,1,\mu_g+q-1)$}
+		
+	\end{figure}
+\end{rq1}
 
 \newpage
 
