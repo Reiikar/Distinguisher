@@ -570,7 +570,7 @@ At this stage of the proof, it remains to prove that every point in $A^k$ belong
     \[\bigcup_{j=0}^{j^*} S^k_{(\alpha,j)}.\]
     In fact, let $0 \leq j \leq j^*$. Then the set $ S^k_{(\alpha,j)}$ contains $(i_b,jq^k+r)$ for any $0 \leq r \leq q_0-2-\gamma$ (note that we have no problem with the gap appearing in $S^k$ since it occurs at $q^k$, in which case we rather consider the set  $ S^k_{(\alpha+1,j)}$ instead of  $ S^k_{(\alpha,j)}$) . Since $(j+1)q^k \leq jq^k + (q_0-2-\gamma)+1$ (the equality is attained with $q^k=q=2$ and $q_0=4$), we do not miss any integer from $S^k_{(\alpha,j)}$ to $S^k_{(\alpha,j+1)}$; it remains to show that $j^*$ is big enough to reach the maximal ordinate this way, which is $q_0-1$. Again, the worst case (minimal value of $j^*$) is attained when $\alpha = q_0-2$ is maximal. In this situation, we have 
     \[j^* = \left\lfloor \dfrac{q_0+q^k-1}{q_0+1}\right\rfloor \geq 1,\]
-    and the biggest ordinate reached is $q^k+q_0-2-\gamma \geq q_0-1$, since $\gamma < q^k$. To sum up, we are able to reach all points in the rectangle. In the picture below, we can see that $A \in S^k_{((q_0-4),1)}$. 
+    and the biggest ordinate reached is $q^k+q_0-2-\gamma \geq q_0-1$, since $\gamma < q^k$. To sum up, we are able to reach all points in the rectangle. In the picture below, we can see that $A \in S^k_{(q_0-4,1)}$. 
 
 /%\jade{Pas sûre qu'appeler le point $A$ soit une bonne idée...}
 
@@ -650,8 +650,8 @@ pattern={Lines[
 }
 
 	\node[yshift=0.7em] at ($(0,0)!0.5!(E)$) {$S^k$};
-	\node[yshift=0.7em] at ($(0,0)!0.5!(E)+({\q*(\qO-4)},0)$) {$S^k_{((q_0-4),0)}$};
-	\node[yshift=0.5em] at ($(0,0)!0.5!(E)+({\q*(\qO-4)},\q)$) {$S^k_{((q_0-4),1)}$};
+	\node[yshift=0.7em] at ($(0,0)!0.5!(E)+({\q*(\qO-4)},0)$) {$S^k_{(q_0-4,0)}$};
+	\node[yshift=0.5em] at ($(0,0)!0.5!(E)+({\q*(\qO-4)},\q)$) {$S^k_{(q_0-4,1)}$};
 
 % un point A
 \node[draw,circle,inner sep=1pt,fill,black,label=$b$] at (17,5) {};
