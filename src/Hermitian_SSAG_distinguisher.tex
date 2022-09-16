@@ -1,8 +1,8 @@
 \documentclass[a4paper]{article}
 
 %%%%%%% BIBLIOGRAPHIE %%%%%%%%
-%\usepackage[backend=biber]{biblatex} %Imports biblatex package  //version biber et pas biblatex, ne marche pas direct sur texmaker.
-%\addbibresource{biblio.bib} %Import the bibliography file
+\usepackage[backend=biber]{biblatex} %Imports biblatex package  //version biber et pas biblatex, ne marche pas direct sur texmaker.
+\addbibresource{biblio.bib} %Import the bibliography file
 
 %%%%%%% PACKAGE %%%%%%%%%%%
 
@@ -515,7 +515,7 @@ On the other side, the shape of $S^k$ is the following. It contains all points d
 
 %Marqueurs sur l'axe vertical
 \draw[thick] (5pt,\q) -- (-5pt,\q) node[anchor=east] {$q^k$} ;
-\draw[thick] (5pt,\qO-4) -- (-5pt,\qO-4) node[anchor=east] {$q^{2k}$} ;
+
 \draw[thick] (5pt,\qO-2) -- (-5pt,\qO-2) node[anchor=east] {$j_{S^k}=q_0-2$} ;
 
 
@@ -552,18 +552,18 @@ pattern={Lines[
 \end{center}
 \end{figure}
 
-At this stage of the proof, it remains to prove that every point in $A^k$ belongs to some $S^k_{(i_2,j_2)}$, for $(i_2,j_2) \in S^k$. Note that in the plan, the set $S^k_{(i_2,j_2)}$ has the same shape as $S^k$, but its bottom left point has coordinates $(i_2,j_2)$ instead of the origin $(0,0)$. We will prove it in the case $2k \geq \frac{m}{2}$, similar arguments works for the other one. Taking a point $A(i_A,j_A)$ in $A^k$, we can distinguish two cases:
+At this stage of the proof, it remains to prove that every point in $A^k$ belongs to some $S^k_{(i_2,j_2)}$, for $(i_2,j_2) \in S^k$. Note that in the plan, the set $S^k_{(i_2,j_2)}$ has the same shape as $S^k$, but its bottom left point has coordinates $(i_2,j_2)$ instead of the origin $(0,0)$. We will prove first it the case $2k \geq \frac{m}{2}$, similar arguments works for the other one. Taking a point $b(i_b,j_b)$ in $A^k$, we can distinguish two cases:
 
 \begin{itemize}
-    \item[$\star$] If $i_A < (q_0-1)q^k$, then $A$ is in the rectangle delimited by $(0,0), ((q_0-1)q^k-1,0), ((q_0-1)q^k,q_0-1)$ and $(0,q_0-1)$ (note that $(q_0-1)q^k=i_{A^k}-(q_0-1)$). Let us write
-    \[i_A = \alpha q^k+\gamma, \quad \mathrm{with} \quad \gamma_1,\gamma_2 < q^k.\]
-    We want to show that all points $(i_A,0),\cdots,(i_A,q_0-1) \in B^k$, to ensure that $A$ is also. In particular, if we denote by $j^*:=\max \{j \ | \ (\alpha,j) \in S^k\} = \left\lfloor \frac{s-\alpha q_0}{q_0+1}\right\rfloor$, we will show that all theses points are in 
+    \item[$\star$] If $i_b < (q_0-1)q^k$, then $b$ is in the rectangle delimited by $(0,0), ((q_0-1)q^k-1,0), ((q_0-1)q^k,q_0-1)$ and $(0,q_0-1)$ (note that $(q_0-1)q^k=i_{A^k}-(q_0-1)$). Let us write
+    \[i_b = \alpha q^k+\gamma, \quad \mathrm{with} \quad \gamma < q^k.\]
+    We want to show that all points $(i_b,0),\cdots,(i_b,q_0-1) \in B^k$, to ensure that $b$ is also. In particular, if we denote by $j^*:=\max \{j \ | \ (\alpha,j) \in S^k\} = \left\lfloor \frac{s-\alpha q_0}{q_0+1}\right\rfloor$, we will show that all theses points are in 
     \[\bigcup_{j=0}^{j^*} S^k_{(\alpha,j)}.\]
-    In fact, let $0 \leq j \leq j^*$. Then the set $ S^k_{(\alpha,j)}$ contains $(i_A,jq^k+r)$ for any $0 \leq r \leq q_0-2-\gamma$ (note that we have no problem with the gap appearing in $S^k$ since it occurs at $q^k$, in which case we rather consider the set  $ S^k_{(\alpha+1,j)}$ instead of  $ S^k_{(\alpha,j)}$) . Since $(j+1)q^k \leq jq^k + (q_0-2-\gamma)+1$ (the equality is attained with $q^k=q=2$ and $q_0=4$), we do not miss any integer from $S^k_{(\alpha,j)}$ to $S^k_{(\alpha,j+1)}$; it remains to show that $j^*$ is big enough to reach the maximal ordinate this way, which is $q_0-1$. Again, the worst case (minimal value of $j^*$) is attained when $\alpha = q_0-2$ is maximal. In this situation, we have 
+    In fact, let $0 \leq j \leq j^*$. Then the set $ S^k_{(\alpha,j)}$ contains $(i_b,jq^k+r)$ for any $0 \leq r \leq q_0-2-\gamma$ (note that we have no problem with the gap appearing in $S^k$ since it occurs at $q^k$, in which case we rather consider the set  $ S^k_{(\alpha+1,j)}$ instead of  $ S^k_{(\alpha,j)}$) . Since $(j+1)q^k \leq jq^k + (q_0-2-\gamma)+1$ (the equality is attained with $q^k=q=2$ and $q_0=4$), we do not miss any integer from $S^k_{(\alpha,j)}$ to $S^k_{(\alpha,j+1)}$; it remains to show that $j^*$ is big enough to reach the maximal ordinate this way, which is $q_0-1$. Again, the worst case (minimal value of $j^*$) is attained when $\alpha = q_0-2$ is maximal. In this situation, we have 
     \[j^* = \left\lfloor \dfrac{q_0+q^k-1}{q_0+1}\right\rfloor \geq 1,\]
-    and the biggest ordinate reached is $q^k+q_0-2-\gamma \geq q_0-1$, since $\gamma < q^k$. To sum up, we are able to reach all points in the rectangle. In the picture below, we can see that $A \in S^k_{((q_0-4)q^k,1)}$. 
+    and the biggest ordinate reached is $q^k+q_0-2-\gamma \geq q_0-1$, since $\gamma < q^k$. To sum up, we are able to reach all points in the rectangle. In the picture below, we can see that $A \in S^k_{((q_0-4),1)}$. 
 
-\jade{Pas sûre qu'appeler le point $A$ soit une bonne idée...}
+/%\jade{Pas sûre qu'appeler le point $A$ soit une bonne idée...}
 
 \begin{figure}[h]
 \begin{center}
@@ -618,6 +618,13 @@ pattern={Lines[
 	line width=0.3mm]},
 	draw=red] (0,0) -- (A) -- (B) -- (C) -- cycle;
 	
+% \filldraw [ pattern color=red!10,
+% pattern={Lines[
+% 	distance=2mm,
+% 	angle=45,
+% 	line width=0.3mm]},
+% 	draw=blue] (23,0) -- (23,8) -- cycle;	
+	
 	\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$A^k$};
 
 % \filldraw [ pattern color=black!20,
@@ -634,19 +641,19 @@ pattern={Lines[
 }
 
 	\node[yshift=0.7em] at ($(0,0)!0.5!(E)$) {$S^k$};
-	\node[yshift=0.7em] at ($(0,0)!0.5!(E)+({\q*(\qO-4)},0)$) {$S^k_{((q_0-4)q^k,0)}$};
-	\node[yshift=0.5em] at ($(0,0)!0.5!(E)+({\q*(\qO-4)},\q)$) {$S^k_{((q_0-4)q^k,1)}$};
+	\node[yshift=0.7em] at ($(0,0)!0.5!(E)+({\q*(\qO-4)},0)$) {$S^k_{((q_0-4),0)}$};
+	\node[yshift=0.5em] at ($(0,0)!0.5!(E)+({\q*(\qO-4)},\q)$) {$S^k_{((q_0-4),1)}$};
 
 % un point A
-\node[draw,circle,inner sep=1pt,fill,black,label=$A$] at (17,5) {};
+\node[draw,circle,inner sep=1pt,fill,black,label=$b$] at (17,5) {};
 
 
 \end{tikzpicture} 
 \end{center}
-\caption{Example with $i_A \leq (q_0-1)q^k$}
+\caption{Example with $2k \geq \frac{m}{2}$ and $i_b \leq (q_0-1)q^k$}
 \end{figure}
 
- \item[$\star$] Else, we have $q^k(q_0-1) < i_A \leq (q^k+1)(q_0-1)$, i.e $A$ is in the triangle delimited by the points $((q_0-1)q^k,0)$, $((q_0-1)(q^k+1),0)$ and $((q_0-1)q^k,q_0-1)$, which we denote $\Delta$ from now on. We claim the following:
+ \item[$\star$] Else, we have $q^k(q_0-1) \leq i_b \leq (q^k+1)(q_0-1)$, i.e $b$ is in the triangle delimited by the points $((q_0-1)q^k,0)$, $((q_0-1)(q^k+1),0)$ and $((q_0-1)q^k,q_0-1)$, which we denote $\Delta$ from now on. We claim the following:
  \[ \forall \delta \in \{1,..,q^k\} \ , \ S^k_{(q_0-\delta,\delta-1)} \in B^k.\]
  To prove this, it suffices to show that $(q_0-\delta,\delta-1) \in S^k$, which is true since
  \[q_0(q_0-\delta) + \delta(q_0+1) = q_0(q_0-1)+\delta-1 \leq s.\]
@@ -654,14 +661,14 @@ pattern={Lines[
  \begin{equation} \label{counting}
  \Delta \subseteq \bigcup_{\delta=1}^{q^k} S^k_{(q_0-\delta,\delta-1)}.
  \end{equation}
- To do that, we start by counting the points in $\Delta$ and $S^k_{((q_0-1)q^k,0)}$. A short computation gives
+ To do that, we start by counting the points in $\Delta$ and $S^k_{(q_0-1,0)}$. A short computation gives
  \[ \# \Delta = \dfrac{q_0(q_0+1)}{2} \quad \mathrm{and} \quad \# S^k_{((q_0-1)q^k,0)} := \dim \calL(sP_{\infty}) = s+1-g(\calH) = \dfrac{q_0(q_0-1)}{2} + q^k.\]
- Since $\# (\Delta \backslash  S^k_{((q_0-1)q^k,0)}) = q_0-q^k$, there is only a few points left to care about.
- They are included in the line joining $((q_0-1)(q^k+1),0)$ and $((q_0-1)q^k,q_0-1)$ since all points of cordinates $(i_{A^k}-\mu,\mu) (0 \leq \mu \leq q_0-1)$ can not be in $S^k_{((q_0-1)q^k,0)})$. For these $q_0$ points, we write 
+By definition, $S^k_{(q_0-1,0)} \subseteq \Delta$, and since $\# (\Delta \backslash  S^k_{((q_0-1)q^k,0)}) = q_0-q^k$, there is only a few points left to care about.
+ They are included in the line joining $((q_0-1)(q^k+1),0)$ and $((q_0-1)q^k,q_0-1)$ since all points of cordinates $(i_{A^k}-\mu,\mu) (0 \leq \mu \leq q_0-1)$ can not be in $S^k_{((q_0-1),0)})$. For these $q_0$ points, we write 
  \[ \mu = \mu_1q^k + \mu_2,\]
- with $\mu_2 < q^k$ and $\mu_1 \leq \left\lfloor\frac{q_0-1}{q^k}\right\rfloor \leq q^{m/2-k}-1 \leq q^k-1$ (recall $k \geq m/4$). Finally, we claim:
- \[(i_{A^k}-\mu,\mu) \in S^k_{q_0-\mu_1+1,\mu} \subseteq \bigcup_{\delta=1}^{q^k} S^k_{(q_0-\delta,\delta-1)}.\]
- Remark that $i_{A^k}-\mu = (q_0-1-\mu_1)q^k+(q_0-1-\mu_2)$, we are led to prove $((q_0-1-\mu_2),\mu_2) \in S^k$, which again olds since $\mu_2 < q^k$. Note that $q^k$ of these points are in $S^k_{((q_0-1)q^k,0)})$ (case $\mu_1=0)$, meaning that the remaining $q_0-q^k$ are in $(\Delta \backslash  S^k_{((q_0-1)q^k,0)})$, which proves \eqref{counting} (see the figure below to compare $\Delta$ and $\bigcup_{\delta=1}^{q^k} S^k_{(q_0-\delta,\delta-1)}$ on a example).
+ with $\mu_2 < q^k$ and $\mu_1 \leq \left\lfloor\frac{q_0-1}{q^k}\right\rfloor \leq q^{m/2-k}-1 \leq q^k-1$ (recall $k \geq m/4$). Next, we claim:
+ \[(i_{A^k}-\mu,\mu) \in S^k_{q_0-1-\mu_1,\mu} \subseteq \bigcup_{\delta=1}^{q^k} S^k_{(q_0-\delta,\delta-1)}.\]
+ Remark that $i_{A^k}-\mu = (q_0-1-\mu_1)q^k+(q_0-1-\mu_2)$, so we are led to prove $((q_0-1-\mu_2),\mu_2) \in S^k$, which again olds since $\mu_2 < q^k$. Note that $q^k$ of these points are in $S^k_{((q_0-1),0)})$ (case $\mu_1=0)$, meaning that the remaining $q_0-q^k$ are in $(\Delta \backslash  S^k_{((q_0-1),0)})$, which proves \eqref{counting} (see the figure below to compare $\Delta$ and $\bigcup_{\delta=1}^{q^k} S^k_{(q_0-\delta,\delta-1)}$ on a example).
  
  \begin{figure}[h]
 \begin{center}
@@ -730,16 +737,114 @@ pattern={Lines[
  
 \end{tikzpicture} 
 \end{center}
-\caption{Case $i_A > (q_0-1)q^k$}
+\caption{Example with $2k \geq \frac{m}{2}$ and $i_b > (q_0-1)q^k$}
 
 \end{figure}
 \end{itemize}
 
+We still have to deal with the case $2k < \frac{m}{2}$. Suppose it, then take a point $p(i_p,j_p) \in A^k$. Actually, we can proceed the exact same way if $i_p < q^k(q_0-1)$. It implies that we are left with $q^k(q_0-1) \leq i_p \leq (q^k+1)(q_0-1)$, i.e $p$ is in the polygone $\Gamma$ delimited by the points $(q^k(q_0-1),0)$, ($i_{A^k}$,0), ($i_{A^k}-(q^{2k}-1),q^{2k}-1)$, ($i_{A^k}-(q^{2k}+1,q^{2k})$ and $(q^k(q_0-1),q_0-2)$. As above, we have:
+ \[ \forall \delta \in \{1,..,q^k\} \ , \ S^k_{(q_0-\delta,\delta-1)} \in B^k.\]
+ and 
+ \[S^k_{(q_0-1,0)} \subseteq \Delta.\]
+This time, the same comutation trick gives
+\[ \# \Gamma = \dfrac{q_0(q_0-1)}{2}+q^{2k} \quad \mathrm{and} \quad \# S^k_{(q_0-1,0)} = \dfrac{q_0(q_0-1)}{2}+q^{k}.\]
+It implies $\# (\Gamma \backslash  S^k_{(q_0-1,0)}) = q^{2k}-q^k$. Again, those points are in the path joining ($i_{A^k}$,0) and  $(q^k(q_0-1),q_0-2)$, which contains $q_0-2$ points in total. Amoung them, some are already in $S^k_{(q_0-1,0)}$, exepted for (this is due to the gap at $q^{2k}$) 
+\[ (i_{A^k}-\mu,\mu) \ , \ \mathrm{where} \ \mu \in \{q^k,\cdots,q^{2k}-1\}.\]
+For such points, we write
+\[\mu = \mu q^k + \mu_2 \ , \ \mathrm{with} \ \mu_1,\mu_2 < q^k,\]
+and we claim that $(i_{A^k}-\mu,\mu) \in S^k_{((q_0-1)-\mu_1,\mu_1)} \in B^k$, which holds since both $\mu_1$ and $\mu_2$ are smaller than $q^k$. The picture bellow describes this case, and conclude the proof.
+
+ \begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}[scale=0.4]
+	\def\qO{8};
+	\def\q{2};
+	\def\iAk{21};
+	\def\largeur{\iAk+4}
+	\def\hauteur{\qO+6}
+\clip (-7,-3) rectangle (\largeur,\hauteur); % Clips the picture...
+\draw[style=help lines,dashed,opacity=0.3] (-5,-3) grid[step=1cm] (\largeur,\hauteur); % Draws a grid in the new coordinates.
+
+%Sommets des polygones
+%A^k
+\coordinate (A) at (\iAk,0) {};
+\coordinate (B) at (\iAk-\qO+1,\qO-1) {};
+\coordinate (C) at (0,\qO-1) {};
+%S^k
+\coordinate (D) at (\qO-1,0) {};
+\coordinate (E) at (\qO-3,2) {} ;
+\coordinate (F) at (\q+1,\q) {};
+\coordinate (G) at (0,\qO-2) {};
+
+
+%finir le rectangle
+\coordinate (H) at (\iAk-\qO,0) {};
+
+
+%Marqueurs sur l'axe vertical
+\draw[thick] (5pt,\q) -- (-5pt,\q) node[anchor=east] {$q^k$} ;
+%\draw[thick] (5pt,\qO-4) -- (-5pt,\qO-4) node[anchor=east] {$q^{2k}$} ;
+\draw[thick] (5pt,\qO-2) -- (-5pt,\qO-2) node[anchor=east] {$j_{S^k}=q_0-2$} ;
+
+
+%Marqueurs sur l'axe horizontal
+\draw[thick,red] (\iAk-\qO+1,5pt) -- (\iAk-\qO+1,-5pt) node[anchor=north] {$i_{A^k}-(q_ 0-1)$} ;
+\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{A^k}$} ;
+\draw[thick] (\q,5pt) -- (\q,-5pt) node[anchor=north] {$q^k$} ;
+\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{S^k}=q_0-1$} ;
+
+
+
+%Axes
+\draw [thick,-latex] (0,0) -- (0,\qO) node [above left] {$j$};
+\draw [thick,-latex] (0,0) -- (\iAk+1,0) node [below right] {$i$};
+
+%Formes
+\filldraw [ pattern color=red!10,
+pattern={Lines[
+	distance=2mm,
+	angle=45,
+	line width=0.3mm]},
+	draw=red]  (0,0) -- (A) -- (B) -- (C) -- cycle;
+	
+\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$A^k$};	
+
+\foreach \coord in{(0,0),(\iAk-\qO+1,0),(\iAk-\qO+1-\q,\q),(\iAk-\qO+1-2*\q,2*\q)} {
+	\begin{scope}[every coordinate/.style={shift={\coord}}]
+		\filldraw [fill=black!30, fill opacity=0.5, draw=black] ([c]0,0) -- ([c]D) -- ([c]E) -- ([c]F) -- ([c]G)-- cycle;
+	\end{scope}
+}
+
+	\node[yshift=0.7em] at ($(0,0)!0.5!(E)$) {$S^k$};
+
+
+ 
+\end{tikzpicture} 
+\end{center}
+\caption{Example with $2k<\frac{m}{2}$ and $i_b > (q_0-1)q^k$}
+
+\end{figure}
+
 \end{proof}
+
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \begin{rq1} 
-	In the picture below, you can find a counter-example in the case $B^k \ne A^k$ if $s$ does not reach the bound given in Proposition \ref{prop_avec_dessins}. \jade{Here, with $s=\mu_g+q^k-1$, we can see that some monomials $x^iy^j \in L((q+1)sP_\infty)$ cannot be written as a product $x^{i_1+qi_2}y^{j_1+qj_2}$ for $(i_r,j_r) \in S_k$.}
+	In the picture below, you can find a counter-example in the case $B^k \ne A^k$ if $s$ does not reach the bound given in Proposition \ref{prop_avec_dessins}. \jade{Here, with $s=\mu_g+q^k-1$, we can see that some monomials $x^iy^j \in \calL((q+1)sP_\infty)$ cannot be written as a product $x^{i_1+qi_2}y^{j_1+qj_2}$ for $(i_r,j_r) \in S_k$.}
 	\begin{figure}[h]
 		\begin{center}
 			\begin{tikzpicture}[scale=0.4]
@@ -922,9 +1027,9 @@ where $D^{\perp} = s' P_{\infty}$ and $s'= q_0^3+q_0^2-q_0-2-s$.
 % \begin{coro1}
 % \end{coro1}
 
+\newpage
 
-\clearpage
-\bibliography{biblio}
-\bibliographystyle{alpha}
+\printbibliography{}
+
 
 \end{document}
