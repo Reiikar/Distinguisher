@@ -15,6 +15,7 @@
 \usepackage{amsthm}
 \usepackage{geometry}
 \geometry{hmargin=2cm,vmargin=1.5cm}
+\usepackage{hyperref}
 
 %%%%% Pour les dessins %%%%%
 
@@ -220,7 +221,11 @@ which is equivalent to the equality of Riemann-Roch spaces
 In fact, if \eqref{equality_of_codes} holds, thus since 
 $\calC^{q^i+1} \subseteq \calC^{q^{i+1}+1}$ is true for every integer $i$, the sequence of inclusions 
 \[\calC\star\calC \subseteq \calC\star\calC^{q} \subseteq \cdots \subseteq \calC\star\calC^{q^f}\]
-also holds (with traces aswell), and can be used to estimate the dimension of $\Tr(\calC)^{\star2}$ using Theorem \ref{th1}.
+also holds (with traces as well), and can be used to refine the estimation of the dimension of $\Tr(\calC)^{\star2}$ by rewriting Theorem \ref{th1} as follows:
+
+\begin{equation}\label{eq:dim_tr_inclusion}
+	\Tr(\mathcal{C})^{\star2}:=\Tr(\mathcal{C} \star \mathcal{C}^{q^f}) + \sum_{i= f+1}^{\frac{m}{2}} \Tr(\mathcal{C} \star \mathcal{C}^{q^i}).
+\end{equation}
 In what follows, we will study \eqref{equality_of_codes}, starting by noting: 
 
 \begin{lem1} \label{lemma1}
@@ -426,7 +431,8 @@ For the shape of the set $A^k$ in the plane, let us consider the points $a(i_{A^
     \item[$\star$] If $2k \geq \dfrac{m}{2}$, then the abscissa of $b$ is given by $x=i_{A^k}-(q_0-1)$, i.e. all the points lying on the segment between $a$ and $b$ belong to $A^k$;
     \item[$\star$] If $2k < \dfrac{m}{2}$, then $x=i_{A^k}-q_0$. In this case, \jade{Moi yen a pas comprendre: there is a gap in the sequence of decreasing $x$-values occuring exactly at the ordinate $q^{2k}$.} In particular, both the points $(i_{A^k}-(q^{2k}-1),q^{2k-1})$ and $(i_{A^k}-(q^{2k}+1),q^{2k})$ are in $A^k$, but $(i_{A^k}-q^{2k},q^{2k})$ is not. (Note that this is the only gap.)
 \end{enumerate}
-On the other side, the shape of $S^k$ is the following. It contains all points delimited by the two axes ans a path connecting the points $(q_0-1,0)$ and $(0,q_0-2)$. As a result, there is only one gap in the sequence of decreasing absiss, which occur at the ordinate $q^k$ (see \eqref{desc}). You can find the shape of theses sets in the pictures below.
+The set $S^k$ consists of all integral points delimited by the two axes and a path connecting the points $(q_0-1,0)$ and $(0,q_0-2)$ \jade{il faudrait spécifier ce chemin, non ?}. \jade{Pourquoi as a result ? $\rightarrow$} As a result, there is only one gap in the sequence of decreasing $x$-values, which occurs at the ordinate $q^k$ (see \eqref{desc}). You can find the shape of theses sets in the pictures below.
+
 
 \vspace*{0.3cm}
 \begin{figure}[h]
