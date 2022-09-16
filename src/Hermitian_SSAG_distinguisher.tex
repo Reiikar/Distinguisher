@@ -1,8 +1,8 @@
 \documentclass[a4paper]{article}
 
-%%%%%%% BIBLIOGRAPHIE %%%%%%%%
-\usepackage[backend=biber]{biblatex} %Imports biblatex package  //version biber et pas biblatex, ne marche pas direct sur texmaker.
-\addbibresource{biblio.bib} %Import the bibliography file
+%%%%%%%% BIBLIOGRAPHIE %%%%%%%%
+%\usepackage[backend=biber]{biblatex} %Imports biblatex package  //version biber et pas biblatex, ne marche pas direct sur texmaker.
+%\addbibresource{biblio.bib} %Import the bibliography file
 
 %%%%%%% PACKAGE %%%%%%%%%%%
 
@@ -1029,9 +1029,10 @@ where $D^{\perp} = s' P_{\infty}$ and $s'= q_0^3+q_0^2-q_0-2-s$.
 % \begin{coro1}
 % \end{coro1}
 
-\newpage
+\clearpage
+\bibliography{biblio}
+\bibliographystyle{alpha}
 
-\printbibliography{}
 
 
 \end{document}
