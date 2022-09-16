@@ -52,7 +52,7 @@
 %%----Commentaires----%%%
 
 \newcommand\jade[1]{\textcolor{purple}{#1}}
-
+\newcommand\TODO[1]{\textcolor{red}{TO DO: #1}}
 
 
 \title{Hermitian-SSAG-code distinguisher}
@@ -65,6 +65,7 @@
 
 \section{\textcolor{blue}{Introduction}}
 
+\TODO{Définition de $\star$, code dual, Trace, SS...}
 
 
 \textcolor{blue}{
@@ -92,7 +93,7 @@
 }
 
 \textcolor{blue}{\begin{thm} \label{th1}
-		With usual definitions of the trace and the $\star$-product of codes, we have 
+		\jade{Ce sera défini avant : With usual definitions of the trace and the $\star$-product of codes,} we have 
 		\[ \Tr(C)^{\star2} := ((C^{\perp}))^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr(C\star C^{q^i}),\]
 		where $C^{\perp}$ is the dual code of $C$. \\
 		Moreover, if $m$ is even (which is the case in our settings), we have 
@@ -125,7 +126,7 @@ In order to get a disinguisher, we start from the following result, which is a c
 		With usual definitions of the trace and the $\star$-product of codes, we have 
 		\[ \Tr(\mathcal{C})^{\star2} := (\mathrm{SSAG}_{q}(\calH,\calP,D')^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr(\mathcal{C}\star\mathcal{C}^{q^i}),\]
 		where $D'$ is the dual divisor of D, which can be explicitly described using $\calP$ and $D$ (see \cite{sti}, Proposition 2.2.10). \\
-		Moreover, if $m$ is even (which is the case in our settings), we have 
+		\jade{Pourquoi cette répétition ? $\rightarrow$}Moreover, if $m$ is even (which is the case in our settings), we have 
 		\[\dim_{\mathbb{F}_q}(\Tr(\calC \star \calC^{q^{m/2}})) \leq \frac{m}{2}\cdot (\dim_{\fqm}(\calC))^2.\]
 	\end{thm}
 }
@@ -138,6 +139,9 @@ where $D^{\perp}$ is the dual divisor of D, which can be explicitly described us
 Moreover, if $m$ is even (which is the case in our settings), we have 
 \[\dim_{\mathbb{F}_q}(\Tr(\calC \star \calC^{q^{m/2}})) \leq \frac{m}{2}\cdot (\dim_{\fqm}(\calC))^2.\]
 \end{thm}
+
+\jade{ça doit dégager $\downarrow$}
+{\color{red}
 
 Before specifying to AG-codes, we also recall the following estimations (which can also be found in \cite{rocco}):
 
@@ -152,10 +156,13 @@ Let $\calC$ and $\calD$ be two linear codes over $\fqm$ with same length $n$ and
      \[ \dim_{\mathbb{F}_{q^m}}(\calC^{\star2}) = \binom{k_{\calC}+1}{2}.\]
 \end{itemize}
 \end{lem1}
+}
 
-It is well-known that (3) above does not hold if $\calC$ has too much structure, which is the case for Reed-Solomon codes and more generally for AG-codes. In fact, we have (see \cite{mumford}, Theorem 6):
+\jade{Blablabla: On veut voir si le dual reiste au square distinguisher donc on est amené à regarder des carrés de codes AG....}
 
-\begin{prop1} \label{prop1}
+It is well-known that (3) above does not hold if $\calC$ has too much structure, which is the case for Reed-Solomon codes and more generally for AG-codes.
+
+\begin{prop1}[\cite{mumford}, Theorem 6] \label{prop1}
 Let $F,G$ be two divisors in $\calH$ such that $\deg(G) \geq 2g(\calH)+1$ and $\deg(F) \geq 2g(\calH)$, where $g(\calH)$ is the genus of $\calH$. Then
 \[ \calL(F) \cdot \calL(G) = \calL(F+G),\]
 where $\calL(F) \cdot \calL(G) := \mathrm{span}_{\mathbb{F}_{q^m}}\{ f \cdot g : f,g \in \calL(F) \times \calL(G) \}$.\\ 
@@ -166,7 +173,7 @@ The Riemann-Roch theorem thus gives
 which is much smaller than the expected dimension given in Lemma \ref{known_bounds}, and thus provides a distinguisher for AG-codes.
 \end{prop1}
 
-In what follow, we will be interseted in subfield subcodes of AG-code, meaning that we will rather need an estimation of the dimension of the square of a trace code (instead of the code itself). Theorem \ref{th1} can be used to get a first one, using the following Proposition from \cite{rocco}.
+In what follows, we will be interested in subfield subcodes of AG-code, meaning that we will rather need an estimation of the dimension of the square of a trace code (instead of the code itself). Theorem \ref{th1} can be used to get a first one, using the following Proposition from \cite{rocco}.
 
 \begin{prop1} [\cite{rocco} Corollary 16]\label{1st bound square of trace}
 Let $\calC$ be any $\fqm$-linear code. Then 
