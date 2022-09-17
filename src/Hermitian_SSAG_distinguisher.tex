@@ -56,6 +56,8 @@
 
 \newcommand\jade[1]{\textcolor{purple}{#1}}
 \newcommand\TODO[1]{\textcolor{red}{TO DO: #1}}
+\newcommand\Comment[1]{\textcolor{red}{Comment: #1}}
+
 
 
 \title{Hermitian-SSAG-code distinguisher}
@@ -65,14 +67,54 @@
 \begin{document}
 
 \maketitle
-
-\section{\textcolor{blue}{Introduction}}
-
+{\color{blue}
+\section{Introduction}
 \TODO{Définition de $\star$, code dual, Trace, SS...}
+\section{Preliminaries}
+\TODO{citations needed}
+
+
+In this section, we briefly introduce some notation and basic definitions for linear codes, subfield subcodes, and trace codes. Furthermore, we present significant results that employ component-wise product and trace map. Let $q$ be a prime power and $\mathbb{F}_q$ be a finite field with $q$ elements. $\mathbb{F}_q^m$ is a finite field extension of $\mathbb{F}_q$ where $m$ is a positive integer. Throughout this paper, we will focus on linear codes defined over $\mathbb{F}_q^m$. 
+
+\begin{def1}[Linear code]
+  A linear code $C$ is a subspace of $\mathbb{F}_{q^m}^n$, which is denoted by $\left[n,k,d \right] $ (or $\left[n,k \right] $), where $k$ is the dimension, $n$ is the length, and $d$ is the minimum distance.
+\end{def1}
+
+\begin{def1}[Dual code]
+	Let $C$ be a linear code $\left[n,k \right] $. The dual code $C^{\perp}$ of $C$ is \[
+	C^{\perp}=\left\lbrace x \in \mathbb{F}_{q^m}^n \mid c.x=0, \text{ for all } c \in C \right\rbrace.
+	\]  
+$C^{\perp}$ is an $[n,n-k]$ linear code.
+\end{def1}
+
+\TODO{some sentences needed...}
+
+\begin{def1}
+	Let $C$ be a $[n,k]$ linear code over $\mathbb{F}_{q^m}$. The subfield subcode $C\mid_{\mathbb{F}_{q^m}}$ of $C$ is by definition:
+	\[
+	C\mid_{\mathbb{F}_q}=C \cap \mathbb{F}_q^m,
+	\]
+	
+	the set of all codewords in $C$ with components in $\mathbb{F}_q$.
+\end{def1}
+
+
+\TODO{some sentences needed...}
+
+Let $Tr_{\mathbb{F}_{q^m} / \mathbb{F}_q}$ be the trace polynomial in the field $\mathbb{F}_{q^m}$ with respect to $\mathbb{F}_q$, that is 
+
+\[
+Tr_{\mathbb{F}_{q^m} / \mathbb{F}_q}(x) = x + x^q + ... + x^{q^{m-1}}.
+\]
+
+
+For a vector $c \in \mathbb{F}_{q^m}^n$, $Tr_{\mathbb{F}_{q^m} / \mathbb{F}_q}(c)= (Tr_{\mathbb{F}_{q^m} / \mathbb{F}_q}(c_1),\cdots,Tr_{\mathbb{F}_{q^m} / \mathbb{F}_q}(c_n))$. For a linear code $C$ of length $n$ and dimension $k$ over $\mathbb{F}_{q^m}$, $Tr_{\mathbb{F}_{q^m} / \mathbb{F}_q}(C)$ is a linear code with the same length of $C$ and dimension $\dim(Tr_{\mathbb{F}_{q^m} / \mathbb{F}_q}(C))? $ over $\mathbb{F}_q$. (A continuer)
 
 
 
-\textcolor{blue}{
+
+
+
 	\begin{lem1} \label{known_bounds}
 		Let $\calC$ and $\calD$ be two linear codes over $\fqm$ with same length $n$ and respective dimension $k_{\calC}$ and $k_{\calD}$. We have
 		\begin{itemize}
@@ -84,8 +126,7 @@
 			\[ \dim_{\mathbb{F}_{q^m}}(\calC^{\star2}) = \binom{k_{\calC}+1}{2}.\]
 		\end{itemize}
 	\end{lem1}
-}
-\textcolor{blue}{	
+
 	\begin{prop1} [\cite{rocco} Corollary 16]\label{1st bound square of trace}
 		Let $\calC$ be any $\fqm$-linear code. Then 
 		\begin{equation} \label{bbbound}
@@ -94,21 +135,22 @@
 		Furthermore, if $\dim_{\fq} \Tr(\calC) = m \cdot \dim_{\fqm}(\calC)$, then 
 		\[\dim_{\fq} (\Tr(\calC)^{\star 2}) - \binom{\dim_{\fq} \Tr(\calC)+1}{2} \leq m \cdot \dim_{\fqm} \calC^{\star 2} - \binom{\dim_{\fqm} (\calC)+1}{2}.\]
 	\end{prop1}
-}
 
-\textcolor{blue}{\begin{thm} \label{th1}
+
+\begin{thm} \label{Tr_BoundSchurSquare}
 		\jade{Ce sera défini avant : With usual definitions of the trace and the $\star$-product of codes,} we have 
-		\[ \Tr(C)^{\star2} := ((C^{\perp}))^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr(C\star C^{q^i}),\]
+		\[ \Tr(C)^{\star2} := ((C^{\perp}_{|_{{\mathbb{F}_q}}})^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr(C\star C^{q^i}),\]
 		where $C^{\perp}$ is the dual code of $C$. \\
 		Moreover, if $m$ is even (which is the case in our settings), we have 
 		\[\dim_{\mathbb{F}_q}(\Tr(C \star C^{q^{m/2}})) \leq \frac{m}{2}\cdot (\dim_{\fqm}(C))^2.\]
 	\end{thm}
-}
+
 
 %\section{\textcolor{blue}{Preliminaries}}
-\section{\textcolor{blue}{SSAG codes Distinguisher}}
-\textcolor{blue}{AG codes}
-\subsection{\textcolor{blue}{Hermitian codes and their subfield subcodes}}
+\section{SSAG codes Distinguisher}
+AG codes
+}
+\subsection{Hermitian codes and their subfield subcodes}
 
 The goal of this note is an adaptation of a distinguisher for alternant and Goppa codes (see \cite{rocco}) in the case of SSAG-Hermitian one-point code, whose divisor is either a multiple of $P_{\infty}$ or a multiple of a degree 3 place. \\
 We work on the finite field $\mathbb{F}_{q^m}=\mathbb{F}_{q_0^2}$, were $q$ is a prime power. We denote by $\calH = \mathbb{F}_{q_0^2}(x,y)$ the Hermitian function field, defined by 
@@ -144,23 +186,6 @@ Moreover, if $m$ is even (which is the case in our settings), we have
 \[\dim_{\mathbb{F}_q}(\Tr(\calC \star \calC^{q^{m/2}})) \leq \frac{m}{2}\cdot (\dim_{\fqm}(\calC))^2.\]
 \end{thm}
 
-\jade{ça doit dégager $\downarrow$}
-{\color{red}
-
-Before specifying to AG-codes, we also recall the following estimations (which can also be found in \cite{rocco}):
-
-\begin{lem1} \label{known_bounds}
-Let $\calC$ and $\calD$ be two linear codes over $\fqm$ with same length $n$ and respective dimension $k_{\calC}$ and $k_{\calD}$. We have
-\begin{itemize}
-    \item[$(1)$] $\dim_{\mathbb{F}_q}(\Tr(\calC)) \leq \min\{mk_{\calC},n\}$;
-    \item[$(2)$] $\dim_{\fqm}(\calC \star \calD) \leq \min\{k_{\calC}k_{\calD},n\}$;
-    \item[$(3)$] If $\calC$ is suffisciently random, we have
-     \[ \dim_{\mathbb{F}_{q^m}}(\calC^{\star2}) \leq \mathrm{min}\left(n,\binom{k_{\calC}+1}{2}\right) . \]
-     Espescially, if $\calC^{\star2}$ does not fill the full space, we expect to have 
-     \[ \dim_{\mathbb{F}_{q^m}}(\calC^{\star2}) = \binom{k_{\calC}+1}{2}.\]
-\end{itemize}
-\end{lem1}
-}
 
 \jade{Blablabla: On veut voir si le dual reiste au square distinguisher donc on est amené à regarder des carrés de codes AG....}
 
