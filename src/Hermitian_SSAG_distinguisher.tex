@@ -69,35 +69,47 @@
 \maketitle
 {\color{blue}
 \section{Introduction}
-\TODO{Définition de $\star$, code dual, Trace, SS...}
+
 \section{Preliminaries}
+
+
 \TODO{citations needed}
 
+In this section, we briefly introduce some notation and basic definitions for linear codes, subfield subcodes, and trace codes. Furthermore, we present significant results that employ component-wise product and trace map. Let $q$ be a prime power and $\mathbb{F}_q$ be a finite field with $q$ elements. Let $m$ is a positive integer. We denote by $\mathbb{F}_q^m$ a finite extension of $\mathbb{F}_q$ of degree $m$. \jade{C'est pas vraiment vrai $\rightarrow$}Throughout this paper, we will focus on linear codes defined over $\mathbb{F}_q^m$. 
 
-In this section, we briefly introduce some notation and basic definitions for linear codes, subfield subcodes, and trace codes. Furthermore, we present significant results that employ component-wise product and trace map. Let $q$ be a prime power and $\mathbb{F}_q$ be a finite field with $q$ elements. $\mathbb{F}_q^m$ is a finite field extension of $\mathbb{F}_q$ where $m$ is a positive integer. Throughout this paper, we will focus on linear codes defined over $\mathbb{F}_q^m$. 
+\subsection{\jade{si vous avez besoin de lire ça, changez de papier :D}}
 
 \begin{def1}[Linear code]
-  A linear code $C$ is a subspace of $\mathbb{F}_{q^m}^n$, which is denoted by $\left[n,k,d \right] $ (or $\left[n,k \right] $), where $k$ is the dimension, $n$ is the length, and $d$ is the minimum distance.
+  A linear code $C$ is a subspace of $\mathbb{F}_{q}^n$. \jade{The integer $n$ is called its length and we denote by $k$ its dimension, and $d$ its the minimum distance. We say that $C$ is a $[n,k,d]_q$ code or that it has parameters $[n,k,d]_q$.}
 \end{def1}
+\jade{Je propose qu'on spécifie en indice le corps, vu qu'on va passer par mal de temps à changer de corps ;)}
 
 \begin{def1}[Dual code]
-	Let $C$ be a linear code $\left[n,k \right] $. The dual code $C^{\perp}$ of $C$ is \[
-	C^{\perp}=\left\lbrace x \in \mathbb{F}_{q^m}^n \mid c.x=0, \text{ for all } c \in C \right\rbrace.
+	Let $C$ be a linear code of length $n$. The dual code $C^{\perp}$ of $C$ is \[
+	C^{\perp}=\left\lbrace x \in \mathbb{F}_{q}^n \mid c \cdot x=0, \text{ for all } c \in C \right\rbrace,
 	\]  
-$C^{\perp}$ is an $[n,n-k]$ linear code.
+	\jade{where $\cdot$ denotes the usual scalar product.}
 \end{def1}
+
+\jade{If the code $C$ has parameters $\left[n,k \right]$, then its dual $C^{\perp}$ is an $[n,n-k]$ linear code.}
 
 \TODO{some sentences needed...}
 
+\subsection{Schur product}
+\TODO{Définition de $\star$}
+
+\subsection{Subfield subcodes and trace codes}
+
 \begin{def1}
-	Let $C$ be a $[n,k]$ linear code over $\mathbb{F}_{q^m}$. The subfield subcode $C\mid_{\mathbb{F}_{q^m}}$ of $C$ is by definition:
+	Let $C$ be a $[n,k]$ linear code over $\mathbb{F}_{q^m}$. The subfield subcode $C_{\mid\mathbb{F}_{q}}$ of $C$ is defined by
 	\[
-	C\mid_{\mathbb{F}_q}=C \cap \mathbb{F}_q^m,
+	C_{\mid\mathbb{F}_q}=C \cap \mathbb{F}_q^m,
 	\]
 	
 	the set of all codewords in $C$ with components in $\mathbb{F}_q$.
 \end{def1}
 
+\TODO{(Jade) Changer la notation du SS.}
 
 \TODO{some sentences needed...}
 
@@ -107,18 +119,17 @@ Let $Tr_{\mathbb{F}_{q^m} / \mathbb{F}_q}$ be the trace polynomial in the field 
 Tr_{\mathbb{F}_{q^m} / \mathbb{F}_q}(x) = x + x^q + ... + x^{q^{m-1}}.
 \]
 
+\jade{Il faut qu'on se mette d'accord sur la notation Tr !}
 
 For a vector $c \in \mathbb{F}_{q^m}^n$, $Tr_{\mathbb{F}_{q^m} / \mathbb{F}_q}(c)= (Tr_{\mathbb{F}_{q^m} / \mathbb{F}_q}(c_1),\cdots,Tr_{\mathbb{F}_{q^m} / \mathbb{F}_q}(c_n))$. For a linear code $C$ of length $n$ and dimension $k$ over $\mathbb{F}_{q^m}$, $Tr_{\mathbb{F}_{q^m} / \mathbb{F}_q}(C)$ is a linear code with the same length of $C$ and dimension $\dim(Tr_{\mathbb{F}_{q^m} / \mathbb{F}_q}(C))? $ over $\mathbb{F}_q$. (A continuer)
 
-
-
-
+\TODO{Delsarte}
 
 
 	\begin{lem1} \label{known_bounds}
 		Let $\calC$ and $\calD$ be two linear codes over $\fqm$ with same length $n$ and respective dimension $k_{\calC}$ and $k_{\calD}$. We have
 		\begin{itemize}
-			\item[$(1)$] $\dim_{\mathbb{F}_q}(\Tr(\calC)) \leq \min\{mk_{\calC},n\}$;
+			\item[$(1)$] $\dim_{\mathbb{F}_q}(\Tr(\calC)) \leq \min\{mk_{\calC},n\}$; \TODO{Séparer les résultats Tr/SS et $\star$-product}
 			\item[$(2)$] $\dim_{\fqm}(\calC \star \calD) \leq \min\{k_{\calC}k_{\calD},n\}$;
 			\item[$(3)$] If $\calC$ is suffisciently random, we have
 			\[ \dim_{\mathbb{F}_{q^m}}(\calC^{\star2}) \leq \mathrm{min}\left(n,\binom{k_{\calC}+1}{2}\right) . \]
