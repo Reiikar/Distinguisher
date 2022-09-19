@@ -432,10 +432,9 @@ Suppose $A^s_{k,q} = V^s+q^kV^s$ for some $s \geq \mu_g+q^k$. First note that si
 \end{itemize}
 \end{proof}
 
-Now we only have to prove Proposition \ref{powers_of_q's_case} in the case $s=\mu_g+q^k$ for some $0 < k < \frac{m}{2}$. In this case, finding a valid decomposition of each element of $A^s_{i,q}$ is intricate. We use another technique, \textcolor{red}{that directly proves the equality of spaces 
-\[\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^k} =\calL((q^k+1)sP_{\infty}),\]
-which of course implies the equality of valuations.}
-\jade{$\uparrow$ ça me plaît toujours pas.}
+Now we only have to prove Proposition \ref{powers_of_q's_case} in the case $s=\mu_g+q^k$ for some $0 < k < \frac{m}{2}$. In this case, finding a valid decomposition of each element of $A^s_{i,q}$ in $V^s+q^kV^s$ is intricate. We shall directly proves the equality of spaces 
+\[\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^k} =\calL((q^k+1)sP_{\infty}).\]
+We will benefit from the explicit bases of these Riemann--Roch spaces to write any basis element of $\calL((q^k+1)sP_{\infty})$ as a product $fg^{q^k}$ with $f, \: g \in \calL(sP_{\infty})$.
 \begin{prop1} \label{prop_avec_dessins}
 Let $0 < k < \frac{m}{2}$ and $s=\mu_g+q^k$. Then 
 \[\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^k} =\calL((q^k+1)sP_{\infty}).\]
@@ -444,11 +443,11 @@ Let $0 < k < \frac{m}{2}$ and $s=\mu_g+q^k$. Then
 \begin{proof}
 As we have already seen, the inclusion "$\subseteq$" above is always true, meaning that we only have to prove 
 \[\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^k} \supseteq \calL((q^k+1)sP_{\infty}).\]
-Recall that for any $d \in \mathbb{N}^*$, we have (see \eqref{rr_p_inf})
-\[\calL(dP_{\infty}) = \langle x^iy^j : 0 \leq j \leq q_0-1 \ \mathrm{and} \ iq_0+j(q_0+1) \leq d \rangle, \]
-\emph{i.e.} we know a basis of such a space. Let us consider the following sets:
-\[A^k := \{(i,j) \ | \ x^iy^j \in \calL((q^k+1)sP_{\infty})\},\]
-\[S^k := \{(i,j) \ | \ x^iy^j \in \calL(sP_{\infty})\}\]
+By \eqref{rr_p_inf} we know a basis of such spaces: for any $d \in \mathbb{N}^*$,
+\[\calL(dP_{\infty}) = \langle x^iy^j : 0 \leq j \leq q_0-1 \ \mathrm{and} \ iq_0+j(q_0+1) \leq d \rangle \]
+Let us consider the following sets:
+\[A^k := \left\{(i,j) \ | \ x^iy^j \in \calL((q^k+1)sP_{\infty})\right\},\]
+\[S^k := \left\{(i,j) \ | \ x^iy^j \in \calL(sP_{\infty})\right\}\]
 and
 \begin{align*}
 B^k &:= \{(i,j) \ | \ x^iy^j \in \calL((sP_{\infty}) \cdot \calL((sP_{\infty})^{q^k} \} \\
@@ -456,28 +455,31 @@ B^k &:= \{(i,j) \ | \ x^iy^j \in \calL((sP_{\infty}) \cdot \calL((sP_{\infty})^{
 &= \bigcup_{(i_2,j_2)\in S^k} S^k_{(i_2,j_2)},
 \end{align*}
 where 
-\[ S^k_{(i_2,j_2)} := \{(i_1+q^ki_2,j_1+q^kj_2) \ | \ (i_1,j_1) \in S^k\}.\]
-Note that $S^k_{(0,0)}=S^k$. The idea is to represent theses sets as sets of points of cordinates $(i,j)$ in the plane. Our goal is to prove that any $(i,j) \in A^k$ is in $B^k$; or more precisly, in some $S^k_{(i_2,j_2)}$. This will show that any element in the basis of $\calL((q^k+1)sP_{\infty})$ is also in the product $\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^k}$, finishing the proof. \\
-The first thing to do is to describe the shape of these spaces. For that, we define a few integers:
+\[ S^k_{(i_2,j_2)} := \left\{(i_1+q^ki_2,j_1+q^kj_2) \ | \ (i_1,j_1) \in S^k\right\}=S^k+q^k(i_2,j_2)\]
+is the shift of the set $S^k$ by $(q^ki_2,q^kj_2)$. In particular, $S^k_{(0,0)}=S^k$.
+
+Our goal is to prove that any $(i,j) \in A^k$ is in $B^k$; or more precisely, in some $S^k_{(i_2,j_2)}$. This will show that any element in the basis of $\calL((q^k+1)sP_{\infty})$ is also in the product $\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^k}$, finishing the proof.
+
+To ease the reader's understanding, we represent theses sets in the upper right quadrant of the plane $\R^2$. For that, we define a few integers:
 \[i_{A^k} = \max \{ i \ | \ (i,j) \in A^k\} \quad , \quad j_{A^k} = \max \{ j \ | \ (i,j) \in A^k\}\]
 and
 \[i_{S^k} = \max \{ i \ | \ (i,j) \in S^k\} \quad , \quad j_{S^k} = \max \{ j \ | \ (i,j) \in S^k\}.\]
-Since $s=q_0(q_0-1)-1+q^k$, we can explicit theses integers: In fact, we have 
+Since $s=q_0(q_0-1)-1+q^k$, we can explicit theses integers. Noticing that
 \[ \left\lfloor \dfrac{s}{q_0} \right\rfloor = q_0-1 + \left\lfloor \dfrac{q^k-1}{q_0}\right\rfloor = q_0-1,\]
-so $i_{S^k} = \left\lfloor \dfrac{s}{q_0} \right\rfloor = q_0-1$ and $i_{A^k} = \left\lfloor \dfrac{s(q^k+1)}{q_0} \right\rfloor = (q_0-1)(q^k+1)$. On the other side, we have 
+we deduce that $i_{S^k} = \left\lfloor \dfrac{s}{q_0} \right\rfloor = q_0-1$ and $i_{A^k} = \left\lfloor \dfrac{s(q^k+1)}{q_0} \right\rfloor = (q_0-1)(q^k+1)$. To determine $j_{S^k}$ and $j_{A^k}$ we need to compare $\left\lfloor \dfrac{s}{q_0+1}\right\rfloor$ and $\left\lfloor \dfrac{s(q^k+1)}{q_0+1} \right\rfloor$ to $q_0-1$. We get
 \begin{align*}
     j_{S^k} &= \min \left\{ q_0-1, \left\lfloor \dfrac{s}{q_0+1} \right\rfloor \right\} \\
             &=  \left\lfloor \dfrac{s}{q_0+1} \right\rfloor \\
             &= q_0-1 +  \left\lfloor \dfrac{q^k-q_0}{q_0+1} \right\rfloor \\
-            &= q_0-2
+            &= q_0-2.
 \end{align*}
-Finally, we have $j_{A^k} = \min \left\{ q_0-1, \left\lfloor \dfrac{s(q^k+1)}{q_0+1} \right\rfloor \right\}$. Since $s \geq q_0^2 - q_0 -1$ and $q^k+1 \geq 2$, we have
+Since $s \geq q_0^2 - q_0 -1$ and $q^k+1 \geq 2$, we have
 \begin{equation} \label{desc}
-s(q^k+1) \geq 2(q_0^2-q_0-1) = q_0^2 - 1 + (q_0^2-2q_0-1) \geq q_0^2-1,
+	s(q^k+1) \geq 2(q_0^2-q_0-1) = q_0^2 - 1 + (q_0^2-2q_0-1) \geq q_0^2-1,
 \end{equation}
-since $q_0 \geq 4$ (\emph{i.e.} $q \geq 2$). As a result, we have $j_{A^k} = q_0-1$. 
-An easy computation shows that 
+the last inequality holding because $q_0 \geq 4$ (\emph{i.e.} $q \geq 2$). This gives $j_{A^k} = q_0-1$. Let us notice that
 \[s(q^k+1) = i_{A^k}q_0+(q^{2k}-1) \quad \mathrm{and} \quad s=i_{S^k}q_0 + (q^k-1).\]
+\jade{$\uparrow$ En a-t-on besoin ?}
 For the shape of the set $A^k$ in the plane, let us consider the points $a(i_{A^k},0)$ and $b(x,j_{A^k})$ in  (which are in $A^k$). By definition of $j_{A^k}$, all the points in $A^k$ are delimited by the two axis, the segment connecting $(0,j_{A^k})$ and $b$, and a path connecting $a$ and $b$ (which remains to be found). From \eqref{desc}, there are two cases to consider :  
 \begin{enumerate}
     \item[$\star$] If $2k \geq \dfrac{m}{2}$, then the abscissa of $b$ is given by $x=i_{A^k}-(q_0-1)$, i.e. all the points lying on the segment between $a$ and $b$ belong to $A^k$;
