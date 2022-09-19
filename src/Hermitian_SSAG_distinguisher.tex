@@ -61,6 +61,7 @@
 \newcommand\TODO[1]{\textcolor{red}{TO DO: #1}}
 \newcommand\Comment[1]{\textcolor{red}{Comment: #1}}
 \newcommand\mathieu[1]{\textcolor{brown}{#1}}
+\newcommand{\modifier}[1]{\textcolor{red}{\textbf{#1}}}
 
 
 
@@ -294,7 +295,7 @@ i.e. we will have a result on the dimension of the square of its dual. We will c
 
 \noindent It is well-knonw from the study of the Hermitian curve that
 \begin{equation} \label{rr_p_inf}
-\calL(sP_{\infty}) = \langle x^iy^j : 0 \leq j \leq q_0-1 \ \mathrm{and} \ iq_0+j(q_0+1) \leq s \rangle_{\mathbb{F}_{q_0^2}}
+\calL(sP_{\infty}) = \langle x^iy^j : 0 \leq j \leq i_{\calA^k} \ \mathrm{and} \ iq_0+j(q_0+1) \leq s \rangle_{\mathbb{F}_{q_0^2}}
 \end{equation}
 
 Recall that we want to find conditions on the integers $s$ and $i$ in order to have 
@@ -483,153 +484,75 @@ Since $s \geq q_0^2 - q_0 -1$ and $q^k+1 \geq 2$, we have
 	s(q^k+1) \geq 2(q_0^2-q_0-1) = q_0^2 - 1 + (q_0^2-2q_0-1) \geq q_0^2-1,
 \end{equation}
 the last inequality holding because $q_0 \geq 4$ (\emph{i.e.} $q \geq 2$). This gives $j_{\calA^k} = q_0-1$. Let us notice that
-\[s(q^k+1) = i_{\calA^k}q_0+(q^{2k}-1) \quad \mathrm{and} \quad s=i_{\calS^k}q_0 + (q^k-1).\]
-\jade{$\uparrow$ En a-t-on besoin ?} \mathieu{je trouvais ça utile pour voir on sont les sauts}
-For the shape of the set $\calA^k$ in the plane, let us consider the points \mathieu{$(i_{\calA^k},0)$ and $(x,j_{\calA^k})$ (where $x$ is the maximal abscissa for a point in $\calA^k$, given its ordinate). By definition of $j_{\calA^k}$, all the points in $\calA^k$ are delimited by the two axis, the segment connecting $(0,j_{\calA^k})$ and $(x,j_{\calA^k})$, and a path connecting $(i_{\calA^k},0)$ and $(x,j_{\calA^k})$ (which remains to be found).} From \eqref{desc}, there are two cases to consider :  
-\begin{enumerate}
-    \item[$\star$] If $2k \geq \dfrac{m}{2}$, then \mathieu{x} is given by $x=i_{\calA^k}-(q_0-1)$, i.e. all the points lying on the segment between $(i_{\calA^k},0)$ and $(x,j_{\calA^k})$ belong to $\calA^k$;
-    \item[$\star$] If $2k < \dfrac{m}{2}$, then $x=i_{\calA^k}-q_0$. In this case, \jade{Moi yen a pas comprendre: there is a gap in the sequence of decreasing $x$-values occuring exactly at the ordinate $q^{2k}$.} In particular, both the points $(i_{\calA^k}-(q^{2k}-1),q^{2k-1})$ and $(i_{\calA^k}-(q^{2k}+1),q^{2k})$ are in $\calA^k$, but $(i_{\calA^k}-q^{2k},q^{2k})$ is not. (Note that this is the only gap.)
-\end{enumerate}
-The set $\calS^k$ consists of all integral points delimited by the two axes and a path connecting the points $(q_0-1,0)$ and $(0,q_0-2)$.  \jade{il faudrait spécifier ce chemin, non ? Pourquoi as a result ? $\rightarrow$} \mathieu{Since $s=i_{\calS^k}q_0+(q^k-1)$ (see \eqref{desc}), there is only one gap in the sequence of decreasing $x$-values, which occurs at the ordinate $q^k$. Thus, $\calS^k$ is delimited by the points $(0,0)$, $(i_{\calS^k},0)$, $(i_{\calS^k}-(q^k-1),q^k-1)$, $(i_{\calS^k}-(q^k+1),q^k)$ and $(0,j_{\calS^k})$.}
-You can find the shape of theses sets in Figures \ref{fig_case_2k<m/2} and \ref{fig_case_2k>=m/2} below.
+\begin{equation}\label{eq:s_iAk_jAk}
+s(q^k+1) = i_{\calA^k}q_0+(q^{2k}-1) \quad \mathrm{and} \quad s=i_{\calS^k}q_0 + (q^k-1).
+\end{equation}
 
+The set $\calS^k$ consists of all integral points of the non--convex polygon of vertices $O$, $(i_{\calS^k},0)$, $(i_{\calS^k}-(q^k-1),q^k-1)$, $(i_{\calS^k}-(q^k+1),q^k)$ and $(0,j_{\calS^k})$.
+
+Regarding the shape of the set $\calA^k$ in the plane, two cases can be distinguished.
+\begin{itemize}
+	\item if $2k \geq \frac{m}{2}$, $\calA^k= \Gamma \sqcup \Delta$ where $\Gamma$ is the set of integral points in the rectangle of vertices $O$, $P(0,j_{\calA^k})$, $Q(i_{\calS^k}q^k-1,j_{\calA^k})$ and $R(i_{\calS^k}q^k-1,0)$ and $\Delta$ those in the triangle of vertices $T(i_{\calS^k}q^k,0)$, $U(i_{\calS^k}q^k,j_{\calA^k})$ and $V(i_{\calA^k},0)$. 
+	\item if $2k < \frac{m}{2}$, $\calA^k= \Gamma' \sqcup \Delta'$ where $\Gamma$ is the set of integral points in the rectangle of vertices $O$, $P$, $Q'(i_{\calS^k}q^k,j_{\calA^k})$ and $R'(i_{\calS^k}q^k,0)$ and $\Delta'$ those in the non--convex polygon of \modifier{vertices... $T(i_{\calA^k}q^k,0)$, $U(i_{\calA^k}q^k,j_{\calA^k})$ and $V(i_{\calA^k}(q^k+1),0)$}. 
+\end{itemize}
+
+You can find the shape of theses sets in \modifier{Figures \ref{fig_case_2k<m/2} and \ref{fig_case_2k>=m/2} }below.\textbf{}
+
+\TODO{Mettre ces points sur les figures dessous et dessiner le rectangle/triangle en pointillés}
 
 \vspace*{0.3cm}
 \begin{figure}[h] 
-\begin{center}
-\begin{tikzpicture}[scale=0.4]
-	\def\qO{8};
-	\def\q{2};
-	\def\iAk{21};
-	\def\largeur{\iAk+4}
-	\def\hauteur{\qO+2}
-\clip (-7,-3) rectangle (\largeur,\hauteur); % Clips the picture...
-\draw[style=help lines,dashed,opacity=0.3] (-5,-3) grid[step=1cm] (\largeur,\hauteur); % Draws a grid in the new coordinates.
-
-%Sommets des polygones
-\coordinate (A) at (\iAk,0) {};
-\coordinate (B) at (\iAk-\qO,\qO-1) {};
-\coordinate (C) at (0,\qO-1) {};
-\coordinate (D) at (0,\qO-2) {};
-\coordinate (E) at (\qO-1,0) {} ;
-\coordinate (F) at (2*\q,\q) {};
-\coordinate (G) at (\qO-2,1) {};
-\coordinate (H) at (18,3) {};
-\coordinate (I) at (16,4) {};
-
-
-%Marqueurs sur l'axe vertical
-\draw[thick] (5pt,\q) -- (-5pt,\q) node[anchor=east] {$q^k$} ;
-\draw[thick] (5pt,\qO-4) -- (-5pt,\qO-4) node[anchor=east] {$q^{2k}$} ;
-\draw[thick] (5pt,\qO-2) -- (-5pt,\qO-2) node[anchor=east] {$j_{\calS^k}=q_0-2$} ;
-
-
-%Marqueurs sur l'axe horizontal
-\draw[thick,red] (\iAk-\qO,5pt) -- (\iAk-\qO,-5pt) node[anchor=north] {$i_{\calA^k}-q_ 0$} ;
-\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{\calA^k}$} ;
-\draw[thick] (\q,5pt) -- (\q,-5pt) node[anchor=north] {$q^k$} ;
-\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{\calS^k}=q_0-1$} ;
-
-
-
-%Axes
-\draw [thick,-latex] (0,0) -- (0,\qO) node [above left] {$j$};
-\draw [thick,-latex] (0,0) -- (\iAk+1,0) node [below right] {$i$};
-
-%Formes
-\filldraw [ pattern color=red!10,
-	pattern={Lines[
-	distance=2mm,
-	angle=45,
-	line width=0.3mm]},
-	draw=red] (0,0) -- (A) -- (H) -- (I) -- (B) -- (C) -- cycle;
-	
-\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$\calA^k$};
-
-
-\filldraw [fill=black!30, fill opacity=0.5, draw=black] ([c]0,0) -- ([c]E) -- ([c]G) -- ([c]F) -- ([c]D)-- cycle;
-
-	\node[yshift=0.7em] at ($(0,0)!0.5!(F)$) {$\calS^k$};
-
- 
-\end{tikzpicture} 
-\caption{Case $2k < \frac{m}{2}$} \label{fig_case_2k<m/2}
-\end{center}
+	\centering
+	\input{fig_2k_sup_m_sur_ 2}
+	\caption{Case $2k \geq \frac{m}{2}$} \label{fig_case_2k>=m/2}
 \end{figure}
 \begin{figure}[h] 
-\begin{center}
-\begin{tikzpicture}[scale=0.4]
-	\def\qO{9};
-	\def\q{3};
-	\def\iAk{32};
-	\def\largeur{\iAk+4}
-	\def\hauteur{\qO+2}
-\clip (-7,-3) rectangle (\largeur,\hauteur); % Clips the picture...
-\draw[style=help lines,dashed,opacity=0.3] (-5,-3) grid[step=1cm] (\largeur,\hauteur); % Draws a grid in the new coordinates.
-
-%Sommets des polygones
-%A^k
-\coordinate (A) at (\iAk,0) {};
-\coordinate (B) at (\iAk-\qO+1,\qO-1) {};
-\coordinate (C) at (0,\qO-1) {};
-%S^k
-\coordinate (D) at (\qO-1,0) {};
-\coordinate (E) at (\qO-3,2) {} ;
-\coordinate (F) at (\q+1,\q) {};
-\coordinate (G) at (0,\qO-2) {};
-
-
-
-%Marqueurs sur l'axe vertical
-\draw[thick] (5pt,\q) -- (-5pt,\q) node[anchor=east] {$q^k$} ;
-
-\draw[thick] (5pt,\qO-2) -- (-5pt,\qO-2) node[anchor=east] {$j_{\calS^k}=q_0-2$} ;
-
-
-%Marqueurs sur l'axe horizontal
-\draw[thick,red] (\iAk-\qO+1,5pt) -- (\iAk-\qO+1,-5pt) node[anchor=north] {$i_{\calA^k}-(q_ 0-1)$} ;
-\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{\calA^k}$} ;
-\draw[thick] (\q,5pt) -- (\q,-5pt) node[anchor=north] {$q^k$} ;
-\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{\calS^k}=q_0-1$} ;
-
-
-
-%Axes
-\draw [thick,-latex] (0,0) -- (0,\qO) node [above left] {$j$};
-\draw [thick,-latex] (0,0) -- (\iAk+1,0) node [below right] {$i$};
-
-%Formes
-\filldraw [ pattern color=red!10,
-pattern={Lines[
-	distance=2mm,
-	angle=45,
-	line width=0.3mm]},
-	draw=red] (0,0) -- (A) -- (B) -- (C) -- cycle;
-	
-\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$\calA^k$};
-	
-	
-
-\filldraw [fill=black!30, fill opacity=0.5, draw=black] ([c]0,0) -- ([c]D) -- ([c]E) -- ([c]F) -- ([c]G)-- cycle;
-
-	\node[yshift=0.7em] at ($(0,0)!0.5!(F)$) {$\calS^k$};
- 
-\end{tikzpicture} 
-\caption{Case $2k \geq \frac{m}{2}$} \label{fig_case_2k>=m/2}
-\end{center}
+	\centering
+	\input{fig_2k_inf_m_sur_ 2}
+	\caption{Case $2k < \frac{m}{2}$} \label{fig_case_2k<m/2}
 \end{figure}
 
-At this stage, it remains to prove that every point in $\calA^k$ belongs to some $\calS^k_{(i_2,j_2)}$, for $(i_2,j_2) \in \calS^k$. Note that in the plan, the set $\calS^k_{(i_2,j_2)}$ has the same shape as $\calS^k$, but its bottom left point has coordinates $(i_2,j_2)$ instead of the origin $(0,0)$. We will prove first it the case $2k \geq \frac{m}{2}$, similar arguments works for the other one. Taking a point $b(i_b,j_b)$ in $\calA^k$, we can distinguish two cases:
+ To prove that $\calA^k$ is included in $\calB^k$, we will use its partition into $\Gamma$ and $\Delta$ (or $\Gamma'$ and $\Delta'$).
+
+% let us consider the points \mathieu{$(i_{\calA^k},0)$ and $(x,j_{\calA^k})$ (where $x$ is the maximal abscissa for a point in $\calA^k$, given its ordinate). By definition of $j_{\calA^k}$, all the points in $\calA^k$ are delimited by the two axes, the segment connecting $(0,j_{\calA^k})$ and $(x,j_{\calA^k})$, and a path connecting $(i_{\calA^k},0)$ and $(x,j_{\calA^k})$ (which remains to be found).} From \eqref{desc}, there are two cases to consider :  
+%\begin{enumerate}
+%    \item[$\star$] If $2k \geq \dfrac{m}{2}$, then \mathieu{x} is given by $x=i_{\calA^k}-(q_0-1)$, i.e. all the points lying on the segment between $(i_{\calA^k},0)$ and $(x,j_{\calA^k})$ belong to $\calA^k$;
+%    \item[$\star$] If $2k < \dfrac{m}{2}$, then $x=i_{\calA^k}-q_0$. In this case, \jade{Moi yen a pas comprendre: there is a gap in the sequence of decreasing $x$-values occuring exactly at the ordinate $q^{2k}$.} In particular, both the points $(i_{\calA^k}-(q^{2k}-1),q^{2k-1})$ and $(i_{\calA^k}-(q^{2k}+1),q^{2k})$ are in $\calA^k$, but $(i_{\calA^k}-q^{2k},q^{2k})$ is not. (Note that this is the only gap.)
+%\end{enumerate}
+
+
+%The set $\calS^k$ consists of all integral points delimited by the two axes and a path connecting the points $(q_0-1,0)$ and $(0,q_0-2)$.  \jade{il faudrait spécifier ce chemin, non ? Pourquoi as a result ? $\rightarrow$} \mathieu{Since $s=i_{\calS^k}q_0+(q^k-1)$ (see \eqref{eq:s_iAk_jAk}), there is only one gap in the sequence of decreasing $x$-values, which occurs at the ordinate $q^k$.}
+
+
+
+%At this stage, it remains to prove that every point in $\calA^k$ belongs to some $\calS^k_{(i_2,j_2)}$, for $(i_2,j_2) \in \calS^k$.
+
+%Note that in the plan, the set $\calS^k_{(i_2,j_2)}$ has the same shape as $\calS^k$, but its bottom left point has coordinates $(i_2,j_2)$ instead of the origin $(0,0)$.
+
+Let us first focus on the case $2k \geq \frac{m}{2}$.
+
+
+
+%We will prove first it the case $2k \geq \frac{m}{2}$, similar arguments works \modifier{for the other one}. Taking a point $b(i_b,j_b)$ in $\calA^k$, we can distinguish two cases:
 
 \begin{itemize}
-    \item[$\star$] If $i_b < (q_0-1)q^k$, then $b$ is in the rectangle delimited by \mathieu{the origin $O$, $P(0,q_0-1)$, $Q((q_0-1)q^k-1,q_0-1)$ and $R((q_0-1)q^k-1,0)$.}  %(note that $(q_0-1)q^k=i_{A^k}-(q_0-1)$).
-Let us write
-    \[i_b = \alpha q^k+\gamma, \quad \mathrm{with} \quad \gamma < q^k.\]
-    We want to show that all points $(i_b,0),\cdots,(i_b,q_0-1) \in \calB^k$, to ensure that $b$ is also. In particular, if we denote by $j^*:=\max \{j \ | \ (\alpha,j) \in \calS^k\} = \left\lfloor \frac{s-\alpha q_0}{q_0+1}\right\rfloor$, we will show that all theses points are in 
-    \[\bigcup_{j=0}^{j^*} \calS^k_{(\alpha,j)}.\]
-    In fact, let $0 \leq j \leq j^*$. Then the set $\calS^k_{(\alpha,j)}$ contains $(i_b,jq^k+r)$ for any $0 \leq r \leq q_0-2-\gamma$ (note that we have no problem with the gap appearing in $\calS^k$ since it occurs at $q^k$, in which case we rather consider the set  $\calS^k_{(\alpha+1,j)}$ instead of  $\calS^k_{(\alpha,j)}$). Since $(j+1)q^k \leq jq^k + (q_0-2-\gamma)+1$ (the equality is attained with $q^k=q=2$ and $q_0=4$), we do not miss any integer from $\calS^k_{(\alpha,j)}$ to $\calS^k_{(\alpha,j+1)}$. It remains to show that $j^*$ is big enough to reach the maximal ordinate this way, which is $q_0-1$. Again, the worst case (minimal value of $j^*$) is attained when $\alpha = q_0-2$ is maximal. In this situation, we have 
+\item To prove that $\Gamma \subset \calB^k$, we will fix an abscissa $i$ of a point in $\Gamma$ and we will show that all points $(i,0),\cdots,(i,q_0-1)$ belong to $\calB^k$. By definition of $\Gamma$, we have $i < i_{\calS^k}q^k=(q_0-1)q^k$. Let us write
+    \[i = \alpha q^k+\gamma \text{ with } \alpha <q_0 \text{ and } \gamma < q^k.\]
+   
+   	Set $j^*:=\max \{j \ | \ (\alpha,j) \in \calS^k\} = \left\lfloor \frac{s-\alpha q_0}{q_0+1}\right\rfloor$, we will show that  
+    \[\left\{ (i,0),\cdots,(i,q_0-1) \right\} \subset \bigcup_{j=0}^{j^*} \calS^k_{(\alpha,j)}.\]
+    Let $0 \leq j \leq j^*$. Then the point $(\alpha,j)$ belongs to $\calS^k$. Moreover for every $0 \leq r \leq q_0-2-\gamma$ the point $(i,jq^k+r)=q^k(\alpha,j)+(\gamma,r)$ lies in the set $\calS^k_{(\alpha,j)}$.
+     
+    Let us check that $\min \{y \mid (i,y) \in \calS^k_{(\alpha,j+1)} \} \leq \max \{y \mid (i,y) \in \calS^k_{(\alpha,j)}\}+1$, in which case we have
+    \[\left\{ (i,0),\cdots,(i,j^*q^k+q_0-2-\gamma) \right\} \subset \bigcup_{j=0}^{j^*} \calS^k_{(\alpha,j)}.\]    
+	One can easily check that    
+    \begin{align*}
+    	\min \{y \mid (i,y) \in \calS^k_{(\alpha,j+1)} \} & =     (j+1)q^k, \\
+    	\max \{y \mid (i,y) \in \calS^k_{(\alpha,j)}\} & = jq^k + (q_0-2-\gamma)
+    \end{align*}
+	and we have the desired inequality, reached for $q^k=q=2$ and $q_0=4$. Now, it remains to prove that $j^*q^k+q_0-2-\gamma \geq q_0-1$. The minimal value of $j^*$ is attained when $\alpha = q_0-2$ is maximal. In this situation, we have 
     \[j^* = \left\lfloor \dfrac{q_0+q^k-1}{q_0+1}\right\rfloor \geq 1,\]
-    and the biggest ordinate reached is $q^k+q_0-2-\gamma \geq q_0-1$, since $\gamma < q^k$. To sum up, we are able to reach all points in the rectangle. In Figure \ref{ex_in_rectangle}, we can see that $A \in \calS^k_{(q_0-4,1)}$. 
+    and $q^k+q_0-2-\gamma \geq q_0-1$, since $\gamma < q^k$. %To sum up, we are able to reach all points in the rectangle. In Figure \ref{ex_in_rectangle}, we can see that $A \in \calS^k_{(q_0-4,1)}$. 
 
 %\jade{Pas sûre qu'appeler le point $A$ soit une bonne idée...}
 
@@ -727,22 +650,33 @@ pattern={Lines[
 \caption{Example with $2k \geq \frac{m}{2}$ and $i_b \leq (q_0-1)q^k$} \label{ex_in_rectangle}
 \end{figure}
 
- \item[$\star$] Else, we have $q^k(q_0-1) \leq i_b \leq (q^k+1)(q_0-1)$, i.e $b$ is in the triangle delimited by the points \mathieu{$T((q_0-1)q^k,0)$, $U((q_0-1)q^k,q_0-1)$ and $V((q_0-1)(q^k+1),0)$, which we denote $\Delta$ from now on.} We claim the following:
- \[ \forall \delta \in \{1,..,q^k\} \ , \ \calS^k_{(q_0-\delta,\delta-1)} \in \calB^k.\]
- To prove this, it suffices to show that $(q_0-\delta,\delta-1) \in \calS^k$, which is true since
- \[q_0(q_0-\delta) + \delta(q_0+1) = q_0(q_0-1)+\delta-1 \leq s.\]
- Next, we aim to prove
- \begin{equation} \label{counting}
- \Delta \subseteq \bigcup_{\delta=1}^{q^k} \calS^k_{(q_0-\delta,\delta-1)}.
+ \item[$\star$] Now let us prove $\Delta \subset \calB^k$. First note that for every $\delta \in \{0,..,q^k-1\}$, we have $(i_{\calS^k}-\delta,\delta) \in \calS^k$, as 
+  \[q_0(i_{\calS^k}-\delta) + \delta(q_0+1) = q_0(q_0-1)+\delta-1 \leq s.\]
+ 
+ We aim to prove
+ \begin{equation} \label{eq:Delta_Bigcup}
+ \Delta \subseteq \bigcup_{\delta=0}^{q^k-1} \calS^k_{(i_{\calS^k}-\delta,\delta)}.
  \end{equation}
- To do that, we start by counting the points in $\Delta$ and $\calS^k_{(q_0-1,0)}$. A short computation gives
- \[ \# \Delta = \dfrac{q_0(q_0+1)}{2} \quad \mathrm{and} \quad \# \calS^k_{((q_0-1)q^k,0)} := \dim \calL(sP_{\infty}) = s+1-g(\calH) = \dfrac{q_0(q_0-1)}{2} + q^k.\]
-By definition, $\calS^k_{(q_0-1,0)} \subseteq \Delta$, and since $\# (\Delta \backslash  \calS^k_{((q_0-1)q^k,0)}) = q_0-q^k$, there is only a few points left to care about.
- They are included in the line joining $((q_0-1)(q^k+1),0)$ and $((q_0-1)q^k,q_0-1)$, since all points of cordinates $(i_{\calA^k}-\mu,\mu) (0 \leq \mu \leq q_0-1)$ can not be in $\calS^k_{((q_0-1),0)})$. For these $q_0$ points, we write 
+
+By definition $\Delta = \calA^k \cap \left\{(i,j)\in \Z^2 \mid i \geq i_{\calS^k}q^k\right\}$ and $\calS^k_{(i_{\calS^k},0)}=q^k(i_{\calS^k},0)+\calS^k$.
+Therefore, to prove that $\calS^k_{(i_{\calS^k},0)} \subset \Delta$, it is enough to check that $\calS^k_{(i_{\calS^k},0)} \subset \calA^k$. For any $(i_0,j_0) \in \calS^k$, we have
+\[(i_{\calS^k}q^k+i_0)q_0+j_0(q_0+1)\leq i_{\calS^k}q^kq_0+s \leq s(q^k+1).\]
+To prove \eqref{eq:Delta_Bigcup}, it remains to check that the each point
+$\Delta \setminus  \calS^k_{(i_{\calS^k},0)}$ lies in some $\calS^k_{(i_{\calS^k}-\delta,\delta)}$ for $\delta\geq 1$.
+
+ To determine $\Delta \setminus  \calS^k_{(i_{\calS^k},0)}$, we start by counting the points in both sets. A short computation gives
+ \[ \# \Delta = \dfrac{q_0(q_0+1)}{2} \quad \mathrm{and} \quad \# \calS^k_{(i_{\calS^k},0)} = \dim \calL(sP_{\infty}) = s+1-g(\calH) = \dfrac{q_0(q_0-1)}{2} + q^k.\]
+
+Then $\# \Delta \setminus  \calS^k_{(i_{\calS^k},0)}=q_0-q^k$. Besides one can easily check that the $q_0-q^k$ points of coordinates $(i_{\calA^k}-\mu,\mu)$ for $q^k \leq \mu \leq q_0-1$ cannot be in $\calS^k_{(i_{\calS^k},0)}$.
+
+Then $\Delta \setminus  \calS^k_{(i_{\calS^k},0)}$ consists precisely in these points. For these points, we write 
  \[ \mu = \mu_1q^k + \mu_2,\]
- with $\mu_2 < q^k$ and $\mu_1 \leq \left\lfloor\frac{q_0-1}{q^k}\right\rfloor \leq q^{m/2-k}-1 \leq q^k-1$ (recall $k \geq m/4$). Next, we claim:
- \[(i_{\calA^k}-\mu,\mu) \in \calS^k_{q_0-1-\mu_1,\mu} \subseteq \bigcup_{\delta=1}^{q^k} \calS^k_{(q_0-\delta,\delta-1)}.\]
-Remark that $i_{\calA^k}-\mu = (q_0-1-\mu_1)q^k+(q_0-1-\mu_2)$, so we are led to prove $((q_0-1-\mu_2),\mu_2) \in \calS^k$, which again olds since $\mu_2 < q^k$. Note that $q^k$ of these points are in $\calS^k_{((q_0-1),0)})$ (case $\mu_1=0)$, meaning that the remaining $q_0-q^k$ are in $(\Delta \backslash  \calS^k_{((q_0-1),0)})$, which proves \eqref{counting} (see the Figure \ref{ex_in_triangle} to compare $\Delta$ and $\bigcup_{\delta=1}^{q^k} \calS^k_{(q_0-\delta,\delta-1)}$ on a example).
+ with $\mu_2 < q^k$ and $1 \leq \mu_1 \leq \left\lfloor\frac{q_0-1}{q^k}\right\rfloor \leq q^{m/2-k}-1 \leq q^k-1$ (recall $k \geq m/4$). Finally we claim
+ \[(i_{\calA^k}-\mu,\mu)=q^k(i_{\calS^k}-\mu_1,\mu_1)+(i_{\calS^k}-\mu_2,\mu_2) \in \calS^k_{i_{\calS^k}-\mu_1,\mu_1},\]
+ which entails the inclusion \eqref{eq:Delta_Bigcup}.
+% Note that $q^k$ of these points are in $\calS^k_{((q_0-1),0)})$ (case $\mu_1=0)$, meaning that the remaining $q_0-q^k$ are in $(\Delta \backslash  \calS^k_{((q_0-1),0)})$, which proves \eqref{counting}
+
+\modifier{(see the Figure \ref{ex_in_triangle} to compare $\Delta$ and $\bigcup_{\delta=1}^{q^k} \calS^k_{(q_0-\delta,\delta-1)}$ on a example).}
  
 \begin{figure}[h]
 \begin{center}
@@ -822,13 +756,18 @@ pattern={Lines[
 \end{figure}
 \end{itemize}
 
-We still have to deal with the case $2k < \frac{m}{2}$. Suppose it, then take a point $b(i_b,j_b) \in \calA^k$. Actually, we can proceed the exact same way if $i_b < q^k(q_0-1)$. It implies that we are left with $q^k(q_0-1) \leq i_b \leq (q^k+1)(q_0-1)$, i.e $b$ is in the polygone $\Gamma$ delimited by the points \mathieu{$A(q^k(q_0-1),0)$, $B(q^k(q_0-1),q_0-2)$, $C(i_{A^k}-(q^{2k}+1),q^{2k})$, $D(i_{A^k}-(q^{2k}-1),q^{2k}-1)$ and $E(i_{A^k}$,0).} As above, we have:
- \[ \forall \delta \in \{1,..,q^k\} \ , \ \calS^k_{(q_0-\delta,\delta-1)} \in \calB^k.\]
- and 
- \[\calS^k_{(q_0-1,0)} \subseteq \Gamma.\]
-This time, the same comutation trick gives
-\[ \# \Gamma = \dfrac{q_0(q_0-1)}{2}+q^{2k} \quad \mathrm{and} \quad \# \calS^k_{(q_0-1,0)} = \dfrac{q_0(q_0-1)}{2}+q^{k}.\]
-It implies $\# (\Gamma \backslash  \calS^k_{(q_0-1,0)}) = q^{2k}-q^k$. Again, those points are in the path joining ($i_{\calA^k}$,0) and  $(q^k(q_0-1),q_0-2)$, which contains $q_0-2$ points in total. Amoung them, some are already in $\calS^k_{(q_0-1,0)}$, exepted for (this is due to the gap at $q^{2k}$) 
+Now let us deal with the case $2k < \frac{m}{2}$. The proof for the inclusion $\Gamma' \subset \calB^k$ is almost identical to the one for $\Gamma \subset \calB^k$ in the previous case.
+
+Let us prove that $\Delta' \subset \calB^k$. As before, for every $\delta \in \{0,..,q^k-1\}$, we have $(i_{\calS^k}-\delta,\delta) \in \calS^k$, and we aim to prove
+\begin{equation} \label{eq:Delta'_Bigcup}
+	\Delta' \subseteq \bigcup_{\delta=0}^{q^k-1} \calS^k_{(i_{\calS^k}-\delta,\delta)}.
+\end{equation}
+Similarly, we have $\calS^k_{(i_{\calS^k},0)} \subset \Delta'$. Thus, in order to prove \eqref{eq:Delta'_Bigcup}, it remains to check that the each point
+$\Delta \setminus  \calS^k_{(i_{\calS^k},0)}$ lies in some $\calS^k_{(i_{\calS^k}-\delta,\delta)}$ for $\delta\geq 1$.
+
+To determine $\Delta \setminus  \calS^k_{(i_{\calS^k},0)}$, we compute 
+\[ \# \Gamma = \dfrac{q_0(q_0-1)}{2}+q^{2k} \quad \mathrm{and} \quad \# \calS^k_{(q_0-1,0)} = \dfrac{q_0(q_0-1)}{2}+q^{k},\]
+which gives $\# (\Gamma \backslash  \calS^k_{(q_0-1,0)}) = q^{2k}-q^k$. Again, those points are in the path \modifier{joining ($i_{\calA^k}$,0) and  $(q^k(q_0-1),q_0-2)$}, which contains $q_0-2$ points in total. Amoung them, some are already in $\calS^k_{(q_0-1,0)}$, excepted for (this is due to the gap at $q^{2k}$) 
 \[ (i_{\calA^k}-\mu,\mu) \ , \ \mathrm{where} \ \mu \in \{q^k,\cdots,q^{2k}-1\}.\]
 For such points, we write
 \[\mu = \mu_1 q^k + \mu_2 \ , \ \mathrm{with} \ \mu_1,\mu_2 < q^k,\]
