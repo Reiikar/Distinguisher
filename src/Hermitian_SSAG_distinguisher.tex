@@ -415,19 +415,24 @@ Let $s \geq \mu_g+q^k$ for some $0 < k < \frac{m}{2}$. Then
 \end{lem1}
 
 \begin{proof}
-Suppose $A^s_{k,q} = V^s+q^kV^s$ for some $s \geq \mu_g+q^k$ and take $a \in A^{s+1}_{k,q}$ (\emph{ie}. $a \leq (s+1)(q^k+1)$) . There are a few cases to consider:
+Suppose $A^s_{k,q} = V^s+q^kV^s$ for some $s \geq \mu_g+q^k$. First note that since $s \geq \mu_g$, the Riemann--Roch theorem entails $V^{s+1} := V^s \cup \{s+1\}$. Take $a \in A^{s+1}_{k,q}$. There are a few cases to consider:
 \begin{itemize}
     \item[$\star$] If $a \leq s+1$, then $a \in V^{s+1} \subseteq V^{s+1}+q^kV^{s+1}$;
-    \item[$\star$] If $s+1 < a \leq s(q^k+1)$, then $a \in V^s+q^kV^s$ by hypothesis. Since $V^{s+1} := V^s \cup \{s+1\}$, the result follows;
-    \item[$\star$] Finally, if $s(q^k+1) < a \leq (s+1)(q^k+1)$, then there exists $\alpha \in \{1,...,q^k+1\}$ such that $a=s(q^k+1)+\alpha$. We then can write 
-    \begin{equation} \label{deco}
-        a = (s+1)q^k + s',
-    \end{equation}
-    where $s':=s+\alpha-q^k$. Since $s \geq \mu_g+q^k$, we have $s' \geq \mu_g+\alpha > \mu_g$. On the other side, $s' \leq s+(q^k+1)-q^k~=s+1$. As a result, $s' \in V^{s+1}$, so \eqref{deco} is a valid decomposition for $a \in V^{s+1}+q^kV^{s+1}$.
+    \item[$\star$] If $s+1 < a \leq s(q^k+1)$, then $a \in V^s+q^kV^s$. Since $V^s \subset V^{s+1}$, the result follows;
+    \item[$\star$] Finally, if $s(q^k+1) < a \leq (s+1)(q^k+1)$, then we can write $a = (s+1)q^k + \alpha$ with
+    $s-q^k < \alpha \leq s+1$. Then $\alpha \in V^{s+1}$, and we have a valid decomposition for $a \in V^{s+1}+q^kV^{s+1}$.
+    
+    \jade{$\uparrow$ j'ai raccourci}
+    
+%    then there exists $\alpha \in \{1,...,q^k+1\}$ such that $a=s(q^k+1)+\alpha$. We then can write 
+%    \begin{equation} \label{deco}
+%        a = (s+1)q^k + s',
+%    \end{equation}
+%    where $s':=s+\alpha-q^k$. Since $s \geq \mu_g+q^k$, we have $s' \geq \mu_g+\alpha > \mu_g$. On the other side, $s' \leq s+(q^k+1)-q^k~=s+1$. As a result, $s' \in V^{s+1}$, so \eqref{deco} is a valid decomposition for $a \in V^{s+1}+q^kV^{s+1}$.
 \end{itemize}
 \end{proof}
 
-Now we only have to prove Proposition \ref{powers_of_q's_case} in the case $s=\mu_g+q^k$ for some $0 < k < \frac{m}{2}$. In this case, finding a valid decomposition of each element of $A^s_{i,q_0}$ is intricate. We use another technique, \textcolor{red}{that directly proves the equality of spaces 
+Now we only have to prove Proposition \ref{powers_of_q's_case} in the case $s=\mu_g+q^k$ for some $0 < k < \frac{m}{2}$. In this case, finding a valid decomposition of each element of $A^s_{i,q}$ is intricate. We use another technique, \textcolor{red}{that directly proves the equality of spaces 
 \[\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^k} =\calL((q^k+1)sP_{\infty}),\]
 which of course implies the equality of valuations.}
 \jade{$\uparrow$ ça me plaît toujours pas.}
