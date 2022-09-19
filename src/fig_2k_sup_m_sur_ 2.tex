@@ -37,7 +37,19 @@
 	%Axes
 	\draw [thick,-latex] (0,0) -- (0,\qO) node [above left] {$j$};
 	\draw [thick,-latex] (0,0) -- (\iAk+1,0) node [below right] {$i$};
+
+	%Points
 	
+	\node[draw,circle,inner sep=1pt,fill,black,label=180:$O$] at (0,0) {};		 		\node[draw,circle,inner sep=1pt,fill,black,label=170:$P$] at (0,8) {};
+	\node[draw,circle,inner sep=1pt,fill,black,label=90:$Q$] at (23,8) {};
+	\node[draw,circle,inner sep=1pt,fill,black,label=170:$R$] at (23,0) {};
+	\node[draw,circle,inner sep=1pt,fill,black,label=30:$T$] at (24,0) {};
+	\node[draw,circle,inner sep=1pt,fill,black,label=$U$] at (24,8) {};
+	\node[draw,circle,inner sep=1pt,fill,black,label=$V$] at (32,0) {};
+		
+	\draw[densely dotted,-latex] (23,8) -- (23,0);	
+	\draw[densely dotted,-latex] (24,8) -- (24,0);	
+		
 	%Formes
 	\filldraw [ pattern color=red!10,
 	pattern={Lines[

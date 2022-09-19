@@ -493,7 +493,7 @@ The set $\calS^k$ consists of all integral points of the non--convex polygon of 
 Regarding the shape of the set $\calA^k$ in the plane, two cases can be distinguished.
 \begin{itemize}
 	\item if $2k \geq \frac{m}{2}$, $\calA^k= \Gamma \sqcup \Delta$ where $\Gamma$ is the set of integral points in the rectangle of vertices $O$, $P(0,j_{\calA^k})$, $Q(i_{\calS^k}q^k-1,j_{\calA^k})$ and $R(i_{\calS^k}q^k-1,0)$ and $\Delta$ those in the triangle of vertices $T(i_{\calS^k}q^k,0)$, $U(i_{\calS^k}q^k,j_{\calA^k})$ and $V(i_{\calA^k},0)$. 
-	\item if $2k < \frac{m}{2}$, $\calA^k= \Gamma' \sqcup \Delta'$ where $\Gamma$ is the set of integral points in the rectangle of vertices $O$, $P$, $Q'(i_{\calS^k}q^k,j_{\calA^k})$ and $R'(i_{\calS^k}q^k,0)$ and $\Delta'$ those in the non--convex polygon of \modifier{vertices... $T(i_{\calA^k}q^k,0)$, $U(i_{\calA^k}q^k,j_{\calA^k})$ and $V(i_{\calA^k}(q^k+1),0)$}. 
+	\item if $2k < \frac{m}{2}$, $\calA^k= \Gamma' \sqcup \Delta'$ where $\Gamma$ is the set of integral points in the rectangle of vertices $O$, $P$, $Q'(i_{\calS^k}q^k,j_{\calA^k})$ and $R'(i_{\calS^k}q^k,0)$ and $\Delta'$ those in the non--convex polygon of vertices  $T'(i_{\calS^k}q^k-1,0)$, $U'(i_{\calS^k}q^k,j_{\calA^k})$, $V'(i_{\calA^k},0)$, $W'(i_{\calA^k}-(q^{2k}+1),q^{2k}+1)$ and $X'(i_{\calA^k}-(q^{2k}-1),q^{2k}-1)$. 
 \end{itemize}
 
 You can find the shape of theses sets in \modifier{Figures \ref{fig_case_2k<m/2} and \ref{fig_case_2k>=m/2} }below.\textbf{}
@@ -552,9 +552,11 @@ Let us first focus on the case $2k \geq \frac{m}{2}$.
     \end{align*}
 	and we have the desired inequality, reached for $q^k=q=2$ and $q_0=4$. Now, it remains to prove that $j^*q^k+q_0-2-\gamma \geq q_0-1$. The minimal value of $j^*$ is attained when $\alpha = q_0-2$ is maximal. In this situation, we have 
     \[j^* = \left\lfloor \dfrac{q_0+q^k-1}{q_0+1}\right\rfloor \geq 1,\]
-    and $q^k+q_0-2-\gamma \geq q_0-1$, since $\gamma < q^k$. %To sum up, we are able to reach all points in the rectangle. In Figure \ref{ex_in_rectangle}, we can see that $A \in \calS^k_{(q_0-4,1)}$. 
+    and $q^k+q_0-2-\gamma \geq q_0-1$, since $\gamma < q^k$. 
+    
+    \mathieu{Est-ce qu'on garde la Figure 3? j'ai décalé les petits triangles au max du bords droit du triangle.}
 
-%\jade{Pas sûre qu'appeler le point $A$ soit une bonne idée...}
+
 
 \begin{figure}[h]
 \begin{center}
@@ -607,6 +609,8 @@ Let us first focus on the case $2k \geq \frac{m}{2}$.
 \node[draw,circle,inner sep=1pt,fill,black,label=90:$Q$] at (23,8) {};
 \node[draw,circle,inner sep=1pt,fill,black,label=270:$R$] at (23,0) {};
 
+\draw[densely dotted,-latex] (23,8) -- (23,0);	
+
 %Formes
 \filldraw [ pattern color=red!10,
 pattern={Lines[
@@ -631,23 +635,22 @@ pattern={Lines[
 % 	line width=0.3mm]},
 % draw=black] (0,0) -- (D) -- (E) -- (F) -- (G)-- cycle;
 
-\foreach \coord in{(0,0),({\q*(\qO-4)},0),({\q*(\qO-4)},\q)} {
+\foreach \coord in{(0,0),({\q*(\qO-2)},0),({\q*(\qO-2)},\q)} {
 \begin{scope}[every coordinate/.style={shift={\coord}}]
 	\filldraw [fill=black!30, fill opacity=0.5, draw=black] ([c]0,0) -- ([c]D) -- ([c]E) -- ([c]F) -- ([c]G)-- cycle;
 \end{scope}
 }
 
 	\node[yshift=0.7em] at ($(0,0)!0.5!(E)$) {$\calS^k$};
-	\node[yshift=0.7em] at ($(0,0)!0.5!(E)+({\q*(\qO-4)},0)$) {$\calS^k_{(q_0-4,0)}$};
-	\node[yshift=0.5em] at ($(0,0)!0.5!(E)+({\q*(\qO-4)},\q)$) {$\calS^k_{(q_0-4,1)}$};
+	\node[yshift=0.7em] at ($(0,0)!0.5!(E)+({\q*(\qO-2)},0)$) {$\calS^k_{(q_0-2,0)}$};
+	\node[yshift=0.5em] at ($(0,0)!0.5!(E)+({\q*(\qO-2)},\q)$) {$\calS^k_{(q_0-2,1)}$};
 
-% un point 
-\node[draw,circle,inner sep=1pt,fill,black,label=$b$] at (17,5) {};
+
 
 
 \end{tikzpicture} 
 \end{center}
-\caption{Example with $2k \geq \frac{m}{2}$ and $i_b \leq (q_0-1)q^k$} \label{ex_in_rectangle}
+\caption{Example with $2k \geq \frac{m}{2}$ and $i \leq (q_0-1)q^k$} \label{ex_in_rectangle}
 \end{figure}
 
  \item[$\star$] Now let us prove $\Delta \subset \calB^k$. First note that for every $\delta \in \{0,..,q^k-1\}$, we have $(i_{\calS^k}-\delta,\delta) \in \calS^k$, as 
@@ -676,7 +679,7 @@ Then $\Delta \setminus  \calS^k_{(i_{\calS^k},0)}$ consists precisely in these p
  which entails the inclusion \eqref{eq:Delta_Bigcup}.
 % Note that $q^k$ of these points are in $\calS^k_{((q_0-1),0)})$ (case $\mu_1=0)$, meaning that the remaining $q_0-q^k$ are in $(\Delta \backslash  \calS^k_{((q_0-1),0)})$, which proves \eqref{counting}
 
-\modifier{(see the Figure \ref{ex_in_triangle} to compare $\Delta$ and $\bigcup_{\delta=1}^{q^k} \calS^k_{(q_0-\delta,\delta-1)}$ on a example).}
+\modifier{(see the Figure \ref{ex_in_triangle} to compare $\Delta$ and $\bigcup_{\delta=0}^{q^k-1} \calS^k_{(i_{\calS^k}-\delta,\delta)}$ on a example).}
  
 \begin{figure}[h]
 \begin{center}
@@ -751,7 +754,7 @@ pattern={Lines[
  
 \end{tikzpicture} 
 \end{center}
-\caption{Example with $2k \geq \frac{m}{2}$ and $i_b \geq (q_0-1)q^k$} \label{ex_in_triangle}
+\caption{Example with $2k \geq \frac{m}{2}$ and $i \geq (q_0-1)q^k$} \label{ex_in_triangle}
 
 \end{figure}
 \end{itemize}
@@ -767,11 +770,14 @@ $\Delta \setminus  \calS^k_{(i_{\calS^k},0)}$ lies in some $\calS^k_{(i_{\calS^k
 
 To determine $\Delta \setminus  \calS^k_{(i_{\calS^k},0)}$, we compute 
 \[ \# \Gamma = \dfrac{q_0(q_0-1)}{2}+q^{2k} \quad \mathrm{and} \quad \# \calS^k_{(q_0-1,0)} = \dfrac{q_0(q_0-1)}{2}+q^{k},\]
-which gives $\# (\Gamma \backslash  \calS^k_{(q_0-1,0)}) = q^{2k}-q^k$. Again, those points are in the path \modifier{joining ($i_{\calA^k}$,0) and  $(q^k(q_0-1),q_0-2)$}, which contains $q_0-2$ points in total. Amoung them, some are already in $\calS^k_{(q_0-1,0)}$, excepted for (this is due to the gap at $q^{2k}$) 
-\[ (i_{\calA^k}-\mu,\mu) \ , \ \mathrm{where} \ \mu \in \{q^k,\cdots,q^{2k}-1\}.\]
-For such points, we write
+which gives $\# (\Gamma \backslash  \calS^k_{(q_0-1,0)}) = q^{2k}-q^k$. Again, those points are in the path joining $T'(i_{\calS^k}q^k-1,0)$, $U'(i_{\calS^k}q^k,j_{\calA^k})$, $V'(i_{\calA^k},0)$, $W'(i_{\calA^k}-(q^{2k}+1),q^{2k}+1)$ and $X'(i_{\calA^k}-(q^{2k}-1),q^{2k}-1)$. Amoung them, the ones of the form
+\[ (i_{\calA^k}-\mu,\mu) \ , \ \mathrm{where} \ \mu \in \{q^k,\cdots,q^{2k}-1\}\]
+cannot be in $\calS^k_{(i_{\calS^k},0)}$. Then $\Delta \setminus  \calS^k_{(i_{\calS^k},0)}$ consists precisely in these points.
+We write
 \[\mu = \mu_1 q^k + \mu_2 \ , \ \mathrm{with} \ \mu_1,\mu_2 < q^k,\]
-and we claim that $(i_{\calA^k}-\mu,\mu) \in \calS^k_{((q_0-1)-\mu_1,\mu_1)} \in \calB^k$, which holds since both $\mu_1$ and $\mu_2$ are smaller than $q^k$. \mathieu{Figure \ref{ex_polygone} below show an example in this case.}
+and we claim  \[(i_{\calA^k}-\mu,\mu)=q^k(i_{\calS^k}-\mu_1,\mu_1)+(i_{\calS^k}-\mu_2,\mu_2) \in \calS^k_{i_{\calS^k}-\mu_1,\mu_1},\]
+which proves \eqref{eq:Delta'_Bigcup} and conclude the proof.
+\mathieu{Figure \ref{ex_polygone} below show an example in this case.}
 
 \begin{figure}[h]
 \begin{center}
@@ -815,11 +821,11 @@ and we claim that $(i_{\calA^k}-\mu,\mu) \in \calS^k_{((q_0-1)-\mu_1,\mu_1)} \in
 \draw [thick,-latex] (0,0) -- (\iAk+1,0) node [below right] {$i$};
 
 %Points du polygone
-\node[draw,circle,inner sep=1pt,fill,black,label=270:$A$] at (14,0) {};
-\node[draw,circle,inner sep=1pt,fill,black,label=$B$] at (14,6) {};
-\node[draw,circle,inner sep=1pt,fill,black,label=$C$] at (16,4) {};
-\node[draw,circle,inner sep=1pt,fill,black,label=$D$] at (18,3) {};
-\node[draw,circle,inner sep=1pt,fill,black,label=$E$] at (21,0) {};
+\node[draw,circle,inner sep=1pt,fill,black,label=270:$T'$] at (14,0) {};
+\node[draw,circle,inner sep=1pt,fill,black,label=3:$U'$] at (14,6) {};
+\node[draw,circle,inner sep=1pt,fill,black,label=4:$W'$] at (16,4) {};
+\node[draw,circle,inner sep=1pt,fill,black,label=3:$X'$] at (18,3) {};
+\node[draw,circle,inner sep=1pt,fill,black,label=$V'$] at (21,0) {};
 
 
 
@@ -851,7 +857,7 @@ and we claim that $(i_{\calA^k}-\mu,\mu) \in \calS^k_{((q_0-1)-\mu_1,\mu_1)} \in
 
  
 \end{tikzpicture} 
-\caption{Example with $2k < \frac{m}{2}$ and $i_b \geq q^k(q_0-1)$} \label{ex_polygone}
+\caption{Example with $2k < \frac{m}{2}$ and $i \geq q^k(q_0-1)$} \label{ex_polygone}
 \end{center}
 \end{figure}
 
