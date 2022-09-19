@@ -40,7 +40,9 @@
 
 %%%%%%%% NEW COMMANDS %%%%%%%%%
 
-
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calS}{\mathcal{S}}
 \newcommand{\calP}{\mathcal{P}}
 \newcommand{\calH}{\mathcal{H}}
 \newcommand{\calL}{\mathcal{L}}
@@ -58,6 +60,7 @@
 \newcommand\jade[1]{\textcolor{purple}{#1}}
 \newcommand\TODO[1]{\textcolor{red}{TO DO: #1}}
 \newcommand\Comment[1]{\textcolor{red}{Comment: #1}}
+\newcommand\mathieu[1]{\textcolor{brown}{#1}}
 
 
 
@@ -419,7 +422,7 @@ Suppose $A^s_{k,q} = V^s+q^kV^s$ for some $s \geq \mu_g+q^k$. First note that si
 \begin{itemize}
     \item[$\star$] If $a \leq s+1$, then $a \in V^{s+1} \subseteq V^{s+1}+q^kV^{s+1}$;
     \item[$\star$] If $s+1 < a \leq s(q^k+1)$, then $a \in V^s+q^kV^s$. Since $V^s \subset V^{s+1}$, the result follows;
-    \item[$\star$] Finally, if $s(q^k+1) < a \leq (s+1)(q^k+1)$, then we can write $a = (s+1)q^k + \alpha$ with
+    \item[$\star$] Finally, if $s(q^k+1) < a \leq (s+1)(q^k+1)$, we can write $a = (s+1)q^k + \alpha$ with
     $s-q^k < \alpha \leq s+1$. Then $\alpha \in V^{s+1}$, and we have a valid decomposition for $a \in V^{s+1}+q^kV^{s+1}$.
     
     \jade{$\uparrow$ j'ai raccourci}
@@ -446,29 +449,31 @@ As we have already seen, the inclusion "$\subseteq$" above is always true, meani
 By \eqref{rr_p_inf} we know a basis of such spaces: for any $d \in \mathbb{N}^*$,
 \[\calL(dP_{\infty}) = \langle x^iy^j : 0 \leq j \leq q_0-1 \ \mathrm{and} \ iq_0+j(q_0+1) \leq d \rangle \]
 Let us consider the following sets:
-\[A^k := \left\{(i,j) \ | \ x^iy^j \in \calL((q^k+1)sP_{\infty})\right\},\]
-\[S^k := \left\{(i,j) \ | \ x^iy^j \in \calL(sP_{\infty})\right\}\]
+\[\calA^k := \left\{(i,j) \ | \ x^iy^j \in \calL((q^k+1)sP_{\infty})\right\},\]
+\[\calS^k := \left\{(i,j) \ | \ x^iy^j \in \calL(sP_{\infty})\right\}\]
 and
 \begin{align*}
-B^k &:= \{(i,j) \ | \ x^iy^j \in \calL((sP_{\infty}) \cdot \calL((sP_{\infty})^{q^k} \} \\
-&= \{(i_1+q^ki_2,j_1+q^kj_2) \ | \ (i_r,j_r) \in S^k \ for \ r=1,2\} \\
-&= \bigcup_{(i_2,j_2)\in S^k} S^k_{(i_2,j_2)},
+\calB^k &:= \{(i,j) \ | \ x^iy^j \in \calL((sP_{\infty}) \cdot \calL((sP_{\infty})^{q^k} \} \\
+&= \{(i_1+q^ki_2,j_1+q^kj_2) \ | \ (i_r,j_r) \in \calS^k \ for \ r=1,2\} \\
+&= \bigcup_{(i_2,j_2)\in S^k} \calS^k_{(i_2,j_2)},
 \end{align*}
 where 
-\[ S^k_{(i_2,j_2)} := \left\{(i_1+q^ki_2,j_1+q^kj_2) \ | \ (i_1,j_1) \in S^k\right\}=S^k+q^k(i_2,j_2)\]
-is the shift of the set $S^k$ by $(q^ki_2,q^kj_2)$. In particular, $S^k_{(0,0)}=S^k$.
+\[ \calS^k_{(i_2,j_2)} := \left\{(i_1+q^ki_2,j_1+q^kj_2) \ | \ (i_1,j_1) \in \calS^k\right\}=\calS^k+q^k(i_2,j_2)\]
+is the shift of the set $\calS^k$ by $(q^ki_2,q^kj_2)$. In particular, $\calS^k_{(0,0)}=\calS^k$.
+
 
 Our goal is to prove that any $(i,j) \in A^k$ is in $B^k$; or more precisely, in some $S^k_{(i_2,j_2)}$. This will show that any element in the basis of $\calL((q^k+1)sP_{\infty})$ is also in the product $\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^k}$.
 
+
 To ease the reader's understanding, we represent theses sets in the upper right quadrant of the plane $\R^2$. For that, we define a few integers:
-\[i_{A^k} = \max \{ i \ | \ (i,j) \in A^k\} \quad , \quad j_{A^k} = \max \{ j \ | \ (i,j) \in A^k\}\]
+\[i_{\calA^k} = \max \{ i \ | \ (i,j) \in \calA^k\} \quad , \quad j_{\calA^k} = \max \{ j \ | \ (i,j) \in \calA^k\}\]
 and
-\[i_{S^k} = \max \{ i \ | \ (i,j) \in S^k\} \quad , \quad j_{S^k} = \max \{ j \ | \ (i,j) \in S^k\}.\]
+\[i_{\calS^k} = \max \{ i \ | \ (i,j) \in \calS^k\} \quad , \quad j_{\calS^k} = \max \{ j \ | \ (i,j) \in \calS^k\}.\]
 Since $s=q_0(q_0-1)-1+q^k$, we can explicit theses integers. Noticing that
 \[ \left\lfloor \dfrac{s}{q_0} \right\rfloor = q_0-1 + \left\lfloor \dfrac{q^k-1}{q_0}\right\rfloor = q_0-1,\]
-we deduce that $i_{S^k} = \left\lfloor \dfrac{s}{q_0} \right\rfloor = q_0-1$ and $i_{A^k} = \left\lfloor \dfrac{s(q^k+1)}{q_0} \right\rfloor = (q_0-1)(q^k+1)$. To determine $j_{S^k}$ and $j_{A^k}$ we need to compare $\left\lfloor \dfrac{s}{q_0+1}\right\rfloor$ and $\left\lfloor \dfrac{s(q^k+1)}{q_0+1} \right\rfloor$ to $q_0-1$. We get
+we deduce that $i_{\calS^k} = \left\lfloor \dfrac{s}{q_0} \right\rfloor = q_0-1$ and $i_{\calA^k} = \left\lfloor \dfrac{s(q^k+1)}{q_0} \right\rfloor = (q_0-1)(q^k+1)$. To determine $j_{\calS^k}$ and $j_{\calA^k}$ we need to compare $\left\lfloor \dfrac{s}{q_0+1}\right\rfloor$ and $\left\lfloor \dfrac{s(q^k+1)}{q_0+1} \right\rfloor$ to $q_0-1$. We get
 \begin{align*}
-    j_{S^k} &= \min \left\{ q_0-1, \left\lfloor \dfrac{s}{q_0+1} \right\rfloor \right\} \\
+    j_{\calS^k} &= \min \left\{ q_0-1, \left\lfloor \dfrac{s}{q_0+1} \right\rfloor \right\} \\
             &=  \left\lfloor \dfrac{s}{q_0+1} \right\rfloor \\
             &= q_0-1 +  \left\lfloor \dfrac{q^k-q_0}{q_0+1} \right\rfloor \\
             &= q_0-2.
@@ -477,19 +482,20 @@ Since $s \geq q_0^2 - q_0 -1$ and $q^k+1 \geq 2$, we have
 \begin{equation} \label{desc}
 	s(q^k+1) \geq 2(q_0^2-q_0-1) = q_0^2 - 1 + (q_0^2-2q_0-1) \geq q_0^2-1,
 \end{equation}
-the last inequality holding because $q_0 \geq 4$ (\emph{i.e.} $q \geq 2$). This gives $j_{A^k} = q_0-1$. Let us notice that
-\[s(q^k+1) = i_{A^k}q_0+(q^{2k}-1) \quad \mathrm{and} \quad s=i_{S^k}q_0 + (q^k-1).\]
-\jade{$\uparrow$ En a-t-on besoin ?}
-For the shape of the set $A^k$ in the plane, let us consider the points $a(i_{A^k},0)$ and $b(x,j_{A^k})$ in  (which are in $A^k$). By definition of $j_{A^k}$, all the points in $A^k$ are delimited by the two axis, the segment connecting $(0,j_{A^k})$ and $b$, and a path connecting $a$ and $b$ (which remains to be found). From \eqref{desc}, there are two cases to consider :  
+the last inequality holding because $q_0 \geq 4$ (\emph{i.e.} $q \geq 2$). This gives $j_{\calA^k} = q_0-1$. Let us notice that
+\[s(q^k+1) = i_{\calA^k}q_0+(q^{2k}-1) \quad \mathrm{and} \quad s=i_{\calS^k}q_0 + (q^k-1).\]
+\jade{$\uparrow$ En a-t-on besoin ?} \mathieu{je trouvais ça utile pour voir on sont les sauts}
+For the shape of the set $\calA^k$ in the plane, let us consider the points \mathieu{$(i_{\calA^k},0)$ and $(x,j_{\calA^k})$ (where $x$ is the maximal abscissa for a point in $\calA^k$, given its ordinate). By definition of $j_{\calA^k}$, all the points in $\calA^k$ are delimited by the two axis, the segment connecting $(0,j_{\calA^k})$ and $(x,j_{\calA^k})$, and a path connecting $(i_{\calA^k},0)$ and $(x,j_{\calA^k})$ (which remains to be found).} From \eqref{desc}, there are two cases to consider :  
 \begin{enumerate}
-    \item[$\star$] If $2k \geq \dfrac{m}{2}$, then the abscissa of $b$ is given by $x=i_{A^k}-(q_0-1)$, i.e. all the points lying on the segment between $a$ and $b$ belong to $A^k$;
-    \item[$\star$] If $2k < \dfrac{m}{2}$, then $x=i_{A^k}-q_0$. In this case, \jade{Moi yen a pas comprendre: there is a gap in the sequence of decreasing $x$-values occuring exactly at the ordinate $q^{2k}$.} In particular, both the points $(i_{A^k}-(q^{2k}-1),q^{2k-1})$ and $(i_{A^k}-(q^{2k}+1),q^{2k})$ are in $A^k$, but $(i_{A^k}-q^{2k},q^{2k})$ is not. (Note that this is the only gap.)
+    \item[$\star$] If $2k \geq \dfrac{m}{2}$, then \mathieu{x} is given by $x=i_{\calA^k}-(q_0-1)$, i.e. all the points lying on the segment between $(i_{\calA^k},0)$ and $(x,j_{\calA^k})$ belong to $\calA^k$;
+    \item[$\star$] If $2k < \dfrac{m}{2}$, then $x=i_{\calA^k}-q_0$. In this case, \jade{Moi yen a pas comprendre: there is a gap in the sequence of decreasing $x$-values occuring exactly at the ordinate $q^{2k}$.} In particular, both the points $(i_{\calA^k}-(q^{2k}-1),q^{2k-1})$ and $(i_{\calA^k}-(q^{2k}+1),q^{2k})$ are in $\calA^k$, but $(i_{\calA^k}-q^{2k},q^{2k})$ is not. (Note that this is the only gap.)
 \end{enumerate}
-The set $S^k$ consists of all integral points delimited by the two axes and a path connecting the points $(q_0-1,0)$ and $(0,q_0-2)$ \jade{il faudrait spécifier ce chemin, non ?}. \jade{Pourquoi as a result ? $\rightarrow$} As a result, there is only one gap in the sequence of decreasing $x$-values, which occurs at the ordinate $q^k$ (see \eqref{desc}). You can find the shape of theses sets in the pictures below.
+The set $\calS^k$ consists of all integral points delimited by the two axes and a path connecting the points $(q_0-1,0)$ and $(0,q_0-2)$.  \jade{il faudrait spécifier ce chemin, non ? Pourquoi as a result ? $\rightarrow$} \mathieu{Since $s=i_{\calS^k}q_0+(q^k-1)$ (see \eqref{desc}), there is only one gap in the sequence of decreasing $x$-values, which occurs at the ordinate $q^k$. Thus, $\calS^k$ is delimited by the points $(0,0)$, $(i_{\calS^k},0)$, $(i_{\calS^k}-(q^k-1),q^k-1)$, $(i_{\calS^k}-(q^k+1),q^k)$ and $(0,j_{\calS^k})$.}
+You can find the shape of theses sets in Figures \ref{fig_case_2k<m/2} and \ref{fig_case_2k>=m/2} below.
 
 
 \vspace*{0.3cm}
-\begin{figure}[h]
+\begin{figure}[h] 
 \begin{center}
 \begin{tikzpicture}[scale=0.4]
 	\def\qO{8};
@@ -515,14 +521,14 @@ The set $S^k$ consists of all integral points delimited by the two axes and a pa
 %Marqueurs sur l'axe vertical
 \draw[thick] (5pt,\q) -- (-5pt,\q) node[anchor=east] {$q^k$} ;
 \draw[thick] (5pt,\qO-4) -- (-5pt,\qO-4) node[anchor=east] {$q^{2k}$} ;
-\draw[thick] (5pt,\qO-2) -- (-5pt,\qO-2) node[anchor=east] {$j_{S^k}=q_0-2$} ;
+\draw[thick] (5pt,\qO-2) -- (-5pt,\qO-2) node[anchor=east] {$j_{\calS^k}=q_0-2$} ;
 
 
 %Marqueurs sur l'axe horizontal
-\draw[thick,red] (\iAk-\qO,5pt) -- (\iAk-\qO,-5pt) node[anchor=north] {$i_{A^k}-q_ 0$} ;
-\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{A^k}$} ;
+\draw[thick,red] (\iAk-\qO,5pt) -- (\iAk-\qO,-5pt) node[anchor=north] {$i_{\calA^k}-q_ 0$} ;
+\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{\calA^k}$} ;
 \draw[thick] (\q,5pt) -- (\q,-5pt) node[anchor=north] {$q^k$} ;
-\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{S^k}=q_0-1$} ;
+\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{\calS^k}=q_0-1$} ;
 
 
 
@@ -538,19 +544,19 @@ The set $S^k$ consists of all integral points delimited by the two axes and a pa
 	line width=0.3mm]},
 	draw=red] (0,0) -- (A) -- (H) -- (I) -- (B) -- (C) -- cycle;
 	
-\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$A^k$};
+\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$\calA^k$};
 
 
 \filldraw [fill=black!30, fill opacity=0.5, draw=black] ([c]0,0) -- ([c]E) -- ([c]G) -- ([c]F) -- ([c]D)-- cycle;
 
-	\node[yshift=0.7em] at ($(0,0)!0.5!(F)$) {$S^k$};
+	\node[yshift=0.7em] at ($(0,0)!0.5!(F)$) {$\calS^k$};
 
  
 \end{tikzpicture} 
-\caption{Case $2k < \frac{m}{2}$}
+\caption{Case $2k < \frac{m}{2}$} \label{fig_case_2k<m/2}
 \end{center}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}[h] 
 \begin{center}
 \begin{tikzpicture}[scale=0.4]
 	\def\qO{9};
@@ -577,14 +583,14 @@ The set $S^k$ consists of all integral points delimited by the two axes and a pa
 %Marqueurs sur l'axe vertical
 \draw[thick] (5pt,\q) -- (-5pt,\q) node[anchor=east] {$q^k$} ;
 
-\draw[thick] (5pt,\qO-2) -- (-5pt,\qO-2) node[anchor=east] {$j_{S^k}=q_0-2$} ;
+\draw[thick] (5pt,\qO-2) -- (-5pt,\qO-2) node[anchor=east] {$j_{\calS^k}=q_0-2$} ;
 
 
 %Marqueurs sur l'axe horizontal
-\draw[thick,red] (\iAk-\qO+1,5pt) -- (\iAk-\qO+1,-5pt) node[anchor=north] {$i_{A^k}-(q_ 0-1)$} ;
-\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{A^k}$} ;
+\draw[thick,red] (\iAk-\qO+1,5pt) -- (\iAk-\qO+1,-5pt) node[anchor=north] {$i_{\calA^k}-(q_ 0-1)$} ;
+\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{\calA^k}$} ;
 \draw[thick] (\q,5pt) -- (\q,-5pt) node[anchor=north] {$q^k$} ;
-\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{S^k}=q_0-1$} ;
+\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{\calS^k}=q_0-1$} ;
 
 
 
@@ -600,31 +606,32 @@ pattern={Lines[
 	line width=0.3mm]},
 	draw=red] (0,0) -- (A) -- (B) -- (C) -- cycle;
 	
-\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$A^k$};
+\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$\calA^k$};
 	
 	
 
 \filldraw [fill=black!30, fill opacity=0.5, draw=black] ([c]0,0) -- ([c]D) -- ([c]E) -- ([c]F) -- ([c]G)-- cycle;
 
-	\node[yshift=0.7em] at ($(0,0)!0.5!(F)$) {$S^k$};
+	\node[yshift=0.7em] at ($(0,0)!0.5!(F)$) {$\calS^k$};
  
 \end{tikzpicture} 
-\caption{Case $2k \geq \frac{m}{2}$}
+\caption{Case $2k \geq \frac{m}{2}$} \label{fig_case_2k>=m/2}
 \end{center}
 \end{figure}
 
-At this stage of the proof, it remains to prove that every point in $A^k$ belongs to some $S^k_{(i_2,j_2)}$, for $(i_2,j_2) \in S^k$. Note that in the plan, the set $S^k_{(i_2,j_2)}$ has the same shape as $S^k$, but its bottom left point has coordinates $(i_2,j_2)$ instead of the origin $(0,0)$. We will prove first it the case $2k \geq \frac{m}{2}$, similar arguments works for the other one. Taking a point $b(i_b,j_b)$ in $A^k$, we can distinguish two cases:
+At this stage, it remains to prove that every point in $\calA^k$ belongs to some $\calS^k_{(i_2,j_2)}$, for $(i_2,j_2) \in \calS^k$. Note that in the plan, the set $\calS^k_{(i_2,j_2)}$ has the same shape as $\calS^k$, but its bottom left point has coordinates $(i_2,j_2)$ instead of the origin $(0,0)$. We will prove first it the case $2k \geq \frac{m}{2}$, similar arguments works for the other one. Taking a point $b(i_b,j_b)$ in $\calA^k$, we can distinguish two cases:
 
 \begin{itemize}
-    \item[$\star$] If $i_b < (q_0-1)q^k$, then $b$ is in the rectangle delimited by $(0,0), ((q_0-1)q^k-1,0), ((q_0-1)q^k,q_0-1)$ and $(0,q_0-1)$ (note that $(q_0-1)q^k=i_{A^k}-(q_0-1)$). Let us write
+    \item[$\star$] If $i_b < (q_0-1)q^k$, then $b$ is in the rectangle delimited by \mathieu{the origin $O$, $P(0,q_0-1)$, $Q((q_0-1)q^k-1,q_0-1)$ and $R((q_0-1)q^k-1,0)$.}  %(note that $(q_0-1)q^k=i_{A^k}-(q_0-1)$).
+Let us write
     \[i_b = \alpha q^k+\gamma, \quad \mathrm{with} \quad \gamma < q^k.\]
-    We want to show that all points $(i_b,0),\cdots,(i_b,q_0-1) \in B^k$, to ensure that $b$ is also. In particular, if we denote by $j^*:=\max \{j \ | \ (\alpha,j) \in S^k\} = \left\lfloor \frac{s-\alpha q_0}{q_0+1}\right\rfloor$, we will show that all theses points are in 
-    \[\bigcup_{j=0}^{j^*} S^k_{(\alpha,j)}.\]
-    In fact, let $0 \leq j \leq j^*$. Then the set $ S^k_{(\alpha,j)}$ contains $(i_b,jq^k+r)$ for any $0 \leq r \leq q_0-2-\gamma$ (note that we have no problem with the gap appearing in $S^k$ since it occurs at $q^k$, in which case we rather consider the set  $ S^k_{(\alpha+1,j)}$ instead of  $ S^k_{(\alpha,j)}$) . Since $(j+1)q^k \leq jq^k + (q_0-2-\gamma)+1$ (the equality is attained with $q^k=q=2$ and $q_0=4$), we do not miss any integer from $S^k_{(\alpha,j)}$ to $S^k_{(\alpha,j+1)}$; it remains to show that $j^*$ is big enough to reach the maximal ordinate this way, which is $q_0-1$. Again, the worst case (minimal value of $j^*$) is attained when $\alpha = q_0-2$ is maximal. In this situation, we have 
+    We want to show that all points $(i_b,0),\cdots,(i_b,q_0-1) \in \calB^k$, to ensure that $b$ is also. In particular, if we denote by $j^*:=\max \{j \ | \ (\alpha,j) \in \calS^k\} = \left\lfloor \frac{s-\alpha q_0}{q_0+1}\right\rfloor$, we will show that all theses points are in 
+    \[\bigcup_{j=0}^{j^*} \calS^k_{(\alpha,j)}.\]
+    In fact, let $0 \leq j \leq j^*$. Then the set $\calS^k_{(\alpha,j)}$ contains $(i_b,jq^k+r)$ for any $0 \leq r \leq q_0-2-\gamma$ (note that we have no problem with the gap appearing in $\calS^k$ since it occurs at $q^k$, in which case we rather consider the set  $\calS^k_{(\alpha+1,j)}$ instead of  $\calS^k_{(\alpha,j)}$). Since $(j+1)q^k \leq jq^k + (q_0-2-\gamma)+1$ (the equality is attained with $q^k=q=2$ and $q_0=4$), we do not miss any integer from $\calS^k_{(\alpha,j)}$ to $\calS^k_{(\alpha,j+1)}$. It remains to show that $j^*$ is big enough to reach the maximal ordinate this way, which is $q_0-1$. Again, the worst case (minimal value of $j^*$) is attained when $\alpha = q_0-2$ is maximal. In this situation, we have 
     \[j^* = \left\lfloor \dfrac{q_0+q^k-1}{q_0+1}\right\rfloor \geq 1,\]
-    and the biggest ordinate reached is $q^k+q_0-2-\gamma \geq q_0-1$, since $\gamma < q^k$. To sum up, we are able to reach all points in the rectangle. In the picture below, we can see that $A \in S^k_{(q_0-4,1)}$. 
+    and the biggest ordinate reached is $q^k+q_0-2-\gamma \geq q_0-1$, since $\gamma < q^k$. To sum up, we are able to reach all points in the rectangle. In Figure \ref{ex_in_rectangle}, we can see that $A \in \calS^k_{(q_0-4,1)}$. 
 
-/%\jade{Pas sûre qu'appeler le point $A$ soit une bonne idée...}
+%\jade{Pas sûre qu'appeler le point $A$ soit une bonne idée...}
 
 \begin{figure}[h]
 \begin{center}
@@ -656,20 +663,26 @@ At this stage of the proof, it remains to prove that every point in $A^k$ belong
 %Marqueurs sur l'axe vertical
 \draw[thick] (5pt,\q) -- (-5pt,\q) node[anchor=east] {$q^k$} ;
 %\draw[thick] (5pt,\qO-4) -- (-5pt,\qO-4) node[anchor=east] {$q^{2k}$} ;
-\draw[thick] (5pt,\qO-2) -- (-5pt,\qO-2) node[anchor=east] {$j_{S^k}=q_0-2$} ;
+\draw[thick] (5pt,\qO-2) -- (-5pt,\qO-2) node[anchor=east] {$j_{\calS^k}=q_0-2$} ;
 
 
 %Marqueurs sur l'axe horizontal
-\draw[thick,red] (\iAk-\qO+1,5pt) -- (\iAk-\qO+1,-5pt) node[anchor=north] {$i_{A^k}-(q_ 0-1)$} ;
-\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{A^k}$} ;
+%\draw[thick,red] (\iAk-\qO+1,5pt) -- (\iAk-\qO+1,-5pt) node[anchor=north] {$i_{\calA^k}-(q_ 0-1)$} ;
+\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{\calA^k}$} ;
 \draw[thick] (\q,5pt) -- (\q,-5pt) node[anchor=north] {$q^k$} ;
-\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{S^k}=q_0-1$} ;
+%\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{\calS^k}=q_0-1$} ;
 \draw[thick] (5*\q,5pt) -- (5*\q,-5pt) node[anchor=north] {$(q_0-4)q^k$} ;
 
 
 %Axes
 \draw [thick,-latex] (0,0) -- (0,\qO) node [above left] {$j$};
 \draw [thick,-latex] (0,0) -- (\iAk+1,0) node [below right] {$i$};
+
+%Points du rectangle
+\node[draw,circle,inner sep=1pt,fill,black,label=180:$O$] at (0,0) {};
+\node[draw,circle,inner sep=1pt,fill,black,label=170:$P$] at (0,8) {};
+\node[draw,circle,inner sep=1pt,fill,black,label=90:$Q$] at (23,8) {};
+\node[draw,circle,inner sep=1pt,fill,black,label=270:$R$] at (23,0) {};
 
 %Formes
 \filldraw [ pattern color=red!10,
@@ -686,7 +699,7 @@ pattern={Lines[
 % 	line width=0.3mm]},
 % 	draw=blue] (23,0) -- (23,8) -- cycle;	
 	
-	\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$A^k$};
+	\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$\calA^k$};
 
 % \filldraw [ pattern color=black!20,
 % pattern={Lines[
@@ -701,37 +714,37 @@ pattern={Lines[
 \end{scope}
 }
 
-	\node[yshift=0.7em] at ($(0,0)!0.5!(E)$) {$S^k$};
-	\node[yshift=0.7em] at ($(0,0)!0.5!(E)+({\q*(\qO-4)},0)$) {$S^k_{(q_0-4,0)}$};
-	\node[yshift=0.5em] at ($(0,0)!0.5!(E)+({\q*(\qO-4)},\q)$) {$S^k_{(q_0-4,1)}$};
+	\node[yshift=0.7em] at ($(0,0)!0.5!(E)$) {$\calS^k$};
+	\node[yshift=0.7em] at ($(0,0)!0.5!(E)+({\q*(\qO-4)},0)$) {$\calS^k_{(q_0-4,0)}$};
+	\node[yshift=0.5em] at ($(0,0)!0.5!(E)+({\q*(\qO-4)},\q)$) {$\calS^k_{(q_0-4,1)}$};
 
-% un point A
+% un point 
 \node[draw,circle,inner sep=1pt,fill,black,label=$b$] at (17,5) {};
 
 
 \end{tikzpicture} 
 \end{center}
-\caption{Example with $2k \geq \frac{m}{2}$ and $i_b \leq (q_0-1)q^k$}
+\caption{Example with $2k \geq \frac{m}{2}$ and $i_b \leq (q_0-1)q^k$} \label{ex_in_rectangle}
 \end{figure}
 
- \item[$\star$] Else, we have $q^k(q_0-1) \leq i_b \leq (q^k+1)(q_0-1)$, i.e $b$ is in the triangle delimited by the points $((q_0-1)q^k,0)$, $((q_0-1)(q^k+1),0)$ and $((q_0-1)q^k,q_0-1)$, which we denote $\Delta$ from now on. We claim the following:
- \[ \forall \delta \in \{1,..,q^k\} \ , \ S^k_{(q_0-\delta,\delta-1)} \in B^k.\]
- To prove this, it suffices to show that $(q_0-\delta,\delta-1) \in S^k$, which is true since
+ \item[$\star$] Else, we have $q^k(q_0-1) \leq i_b \leq (q^k+1)(q_0-1)$, i.e $b$ is in the triangle delimited by the points \mathieu{$T((q_0-1)q^k,0)$, $U((q_0-1)q^k,q_0-1)$ and $V((q_0-1)(q^k+1),0)$, which we denote $\Delta$ from now on.} We claim the following:
+ \[ \forall \delta \in \{1,..,q^k\} \ , \ \calS^k_{(q_0-\delta,\delta-1)} \in \calB^k.\]
+ To prove this, it suffices to show that $(q_0-\delta,\delta-1) \in \calS^k$, which is true since
  \[q_0(q_0-\delta) + \delta(q_0+1) = q_0(q_0-1)+\delta-1 \leq s.\]
  Next, we aim to prove
  \begin{equation} \label{counting}
- \Delta \subseteq \bigcup_{\delta=1}^{q^k} S^k_{(q_0-\delta,\delta-1)}.
+ \Delta \subseteq \bigcup_{\delta=1}^{q^k} \calS^k_{(q_0-\delta,\delta-1)}.
  \end{equation}
- To do that, we start by counting the points in $\Delta$ and $S^k_{(q_0-1,0)}$. A short computation gives
- \[ \# \Delta = \dfrac{q_0(q_0+1)}{2} \quad \mathrm{and} \quad \# S^k_{((q_0-1)q^k,0)} := \dim \calL(sP_{\infty}) = s+1-g(\calH) = \dfrac{q_0(q_0-1)}{2} + q^k.\]
-By definition, $S^k_{(q_0-1,0)} \subseteq \Delta$, and since $\# (\Delta \backslash  S^k_{((q_0-1)q^k,0)}) = q_0-q^k$, there is only a few points left to care about.
- They are included in the line joining $((q_0-1)(q^k+1),0)$ and $((q_0-1)q^k,q_0-1)$ since all points of cordinates $(i_{A^k}-\mu,\mu) (0 \leq \mu \leq q_0-1)$ can not be in $S^k_{((q_0-1),0)})$. For these $q_0$ points, we write 
+ To do that, we start by counting the points in $\Delta$ and $\calS^k_{(q_0-1,0)}$. A short computation gives
+ \[ \# \Delta = \dfrac{q_0(q_0+1)}{2} \quad \mathrm{and} \quad \# \calS^k_{((q_0-1)q^k,0)} := \dim \calL(sP_{\infty}) = s+1-g(\calH) = \dfrac{q_0(q_0-1)}{2} + q^k.\]
+By definition, $\calS^k_{(q_0-1,0)} \subseteq \Delta$, and since $\# (\Delta \backslash  \calS^k_{((q_0-1)q^k,0)}) = q_0-q^k$, there is only a few points left to care about.
+ They are included in the line joining $((q_0-1)(q^k+1),0)$ and $((q_0-1)q^k,q_0-1)$, since all points of cordinates $(i_{\calA^k}-\mu,\mu) (0 \leq \mu \leq q_0-1)$ can not be in $\calS^k_{((q_0-1),0)})$. For these $q_0$ points, we write 
  \[ \mu = \mu_1q^k + \mu_2,\]
  with $\mu_2 < q^k$ and $\mu_1 \leq \left\lfloor\frac{q_0-1}{q^k}\right\rfloor \leq q^{m/2-k}-1 \leq q^k-1$ (recall $k \geq m/4$). Next, we claim:
- \[(i_{A^k}-\mu,\mu) \in S^k_{q_0-1-\mu_1,\mu} \subseteq \bigcup_{\delta=1}^{q^k} S^k_{(q_0-\delta,\delta-1)}.\]
- Remark that $i_{A^k}-\mu = (q_0-1-\mu_1)q^k+(q_0-1-\mu_2)$, so we are led to prove $((q_0-1-\mu_2),\mu_2) \in S^k$, which again olds since $\mu_2 < q^k$. Note that $q^k$ of these points are in $S^k_{((q_0-1),0)})$ (case $\mu_1=0)$, meaning that the remaining $q_0-q^k$ are in $(\Delta \backslash  S^k_{((q_0-1),0)})$, which proves \eqref{counting} (see the figure below to compare $\Delta$ and $\bigcup_{\delta=1}^{q^k} S^k_{(q_0-\delta,\delta-1)}$ on a example).
+ \[(i_{\calA^k}-\mu,\mu) \in \calS^k_{q_0-1-\mu_1,\mu} \subseteq \bigcup_{\delta=1}^{q^k} \calS^k_{(q_0-\delta,\delta-1)}.\]
+Remark that $i_{\calA^k}-\mu = (q_0-1-\mu_1)q^k+(q_0-1-\mu_2)$, so we are led to prove $((q_0-1-\mu_2),\mu_2) \in \calS^k$, which again olds since $\mu_2 < q^k$. Note that $q^k$ of these points are in $\calS^k_{((q_0-1),0)})$ (case $\mu_1=0)$, meaning that the remaining $q_0-q^k$ are in $(\Delta \backslash  \calS^k_{((q_0-1),0)})$, which proves \eqref{counting} (see the Figure \ref{ex_in_triangle} to compare $\Delta$ and $\bigcup_{\delta=1}^{q^k} \calS^k_{(q_0-\delta,\delta-1)}$ on a example).
  
- \begin{figure}[h]
+\begin{figure}[h]
 \begin{center}
 \begin{tikzpicture}[scale=0.4]
 	\def\qO{9};
@@ -761,14 +774,20 @@ By definition, $S^k_{(q_0-1,0)} \subseteq \Delta$, and since $\# (\Delta \backsl
 %Marqueurs sur l'axe vertical
 \draw[thick] (5pt,\q) -- (-5pt,\q) node[anchor=east] {$q^k$} ;
 %\draw[thick] (5pt,\qO-4) -- (-5pt,\qO-4) node[anchor=east] {$q^{2k}$} ;
-\draw[thick] (5pt,\qO-2) -- (-5pt,\qO-2) node[anchor=east] {$j_{S^k}=q_0-2$} ;
+\draw[thick] (5pt,\qO-2) -- (-5pt,\qO-2) node[anchor=east] {$j_{\calS^k}=q_0-2$} ;
 
 
 %Marqueurs sur l'axe horizontal
-\draw[thick,red] (\iAk-\qO+1,5pt) -- (\iAk-\qO+1,-5pt) node[anchor=north] {$i_{A^k}-(q_ 0-1)$} ;
-\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{A^k}$} ;
+%\draw[thick,red] (\iAk-\qO+1,5pt) -- (\iAk-\qO+1,-5pt) node[anchor=north] {$i_{\calA^k}-(q_ 0-1)$} ;
+\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{\calA^k}$} ;
 \draw[thick] (\q,5pt) -- (\q,-5pt) node[anchor=north] {$q^k$} ;
-\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{S^k}=q_0-1$} ;
+%\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{\calS^k}=q_0-1$} ;
+
+%Points du triangle
+\node[draw,circle,inner sep=1pt,fill,black,label=270:$T$] at (24,0) {};
+\node[draw,circle,inner sep=1pt,fill,black,label=$U$] at (24,8) {};
+\node[draw,circle,inner sep=1pt,fill,black,label=$V$] at (32,0) {};
+
 
 
 
@@ -784,7 +803,7 @@ pattern={Lines[
 	line width=0.3mm]},
 	draw=red]  (0,0) -- (A) -- (B) -- (C) -- cycle;
 	
-\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$A^k$};	
+\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$\calA^k$};	
 
 \foreach \coord in{(0,0),(\iAk-\qO+1,0),(\iAk-\qO+1-\q,\q),(\iAk-\qO+1-2*\q,2*\q)} {
 	\begin{scope}[every coordinate/.style={shift={\coord}}]
@@ -792,28 +811,28 @@ pattern={Lines[
 	\end{scope}
 }
 
-	\node[yshift=0.7em] at ($(0,0)!0.5!(E)$) {$S^k$};
+	\node[yshift=0.7em] at ($(0,0)!0.5!(E)$) {$\calS^k$};
 
 
  
 \end{tikzpicture} 
 \end{center}
-\caption{Example with $2k \geq \frac{m}{2}$ and $i_b \geq (q_0-1)q^k$}
+\caption{Example with $2k \geq \frac{m}{2}$ and $i_b \geq (q_0-1)q^k$} \label{ex_in_triangle}
 
 \end{figure}
 \end{itemize}
 
-We still have to deal with the case $2k < \frac{m}{2}$. Suppose it, then take a point $p(i_p,j_p) \in A^k$. Actually, we can proceed the exact same way if $i_p < q^k(q_0-1)$. It implies that we are left with $q^k(q_0-1) \leq i_p \leq (q^k+1)(q_0-1)$, i.e $p$ is in the polygone $\Gamma$ delimited by the points $(q^k(q_0-1),0)$, ($i_{A^k}$,0), ($i_{A^k}-(q^{2k}-1),q^{2k}-1)$, ($i_{A^k}-(q^{2k}+1,q^{2k})$ and $(q^k(q_0-1),q_0-2)$. As above, we have:
- \[ \forall \delta \in \{1,..,q^k\} \ , \ S^k_{(q_0-\delta,\delta-1)} \in B^k.\]
+We still have to deal with the case $2k < \frac{m}{2}$. Suppose it, then take a point $b(i_b,j_b) \in \calA^k$. Actually, we can proceed the exact same way if $i_b < q^k(q_0-1)$. It implies that we are left with $q^k(q_0-1) \leq i_b \leq (q^k+1)(q_0-1)$, i.e $b$ is in the polygone $\Gamma$ delimited by the points \mathieu{$A(q^k(q_0-1),0)$, $B(q^k(q_0-1),q_0-2)$, $C(i_{A^k}-(q^{2k}+1),q^{2k})$, $D(i_{A^k}-(q^{2k}-1),q^{2k}-1)$ and $E(i_{A^k}$,0).} As above, we have:
+ \[ \forall \delta \in \{1,..,q^k\} \ , \ \calS^k_{(q_0-\delta,\delta-1)} \in \calB^k.\]
  and 
- \[S^k_{(q_0-1,0)} \subseteq \Delta.\]
+ \[\calS^k_{(q_0-1,0)} \subseteq \Gamma.\]
 This time, the same comutation trick gives
-\[ \# \Gamma = \dfrac{q_0(q_0-1)}{2}+q^{2k} \quad \mathrm{and} \quad \# S^k_{(q_0-1,0)} = \dfrac{q_0(q_0-1)}{2}+q^{k}.\]
-It implies $\# (\Gamma \backslash  S^k_{(q_0-1,0)}) = q^{2k}-q^k$. Again, those points are in the path joining ($i_{A^k}$,0) and  $(q^k(q_0-1),q_0-2)$, which contains $q_0-2$ points in total. Amoung them, some are already in $S^k_{(q_0-1,0)}$, exepted for (this is due to the gap at $q^{2k}$) 
-\[ (i_{A^k}-\mu,\mu) \ , \ \mathrm{where} \ \mu \in \{q^k,\cdots,q^{2k}-1\}.\]
+\[ \# \Gamma = \dfrac{q_0(q_0-1)}{2}+q^{2k} \quad \mathrm{and} \quad \# \calS^k_{(q_0-1,0)} = \dfrac{q_0(q_0-1)}{2}+q^{k}.\]
+It implies $\# (\Gamma \backslash  \calS^k_{(q_0-1,0)}) = q^{2k}-q^k$. Again, those points are in the path joining ($i_{\calA^k}$,0) and  $(q^k(q_0-1),q_0-2)$, which contains $q_0-2$ points in total. Amoung them, some are already in $\calS^k_{(q_0-1,0)}$, exepted for (this is due to the gap at $q^{2k}$) 
+\[ (i_{\calA^k}-\mu,\mu) \ , \ \mathrm{where} \ \mu \in \{q^k,\cdots,q^{2k}-1\}.\]
 For such points, we write
-\[\mu = \mu q^k + \mu_2 \ , \ \mathrm{with} \ \mu_1,\mu_2 < q^k,\]
-and we claim that $(i_{A^k}-\mu,\mu) \in S^k_{((q_0-1)-\mu_1,\mu_1)} \in B^k$, which holds since both $\mu_1$ and $\mu_2$ are smaller than $q^k$. The picture bellow describes this case, and conclude the proof.
+\[\mu = \mu_1 q^k + \mu_2 \ , \ \mathrm{with} \ \mu_1,\mu_2 < q^k,\]
+and we claim that $(i_{\calA^k}-\mu,\mu) \in \calS^k_{((q_0-1)-\mu_1,\mu_1)} \in \calB^k$, which holds since both $\mu_1$ and $\mu_2$ are smaller than $q^k$. \mathieu{Figure \ref{ex_polygone} below show an example in this case.}
 
 \begin{figure}[h]
 \begin{center}
@@ -845,16 +864,25 @@ and we claim that $(i_{A^k}-\mu,\mu) \in S^k_{((q_0-1)-\mu_1,\mu_1)} \in B^k$, w
 
 
 %Marqueurs sur l'axe horizontal
-\draw[thick,red] (\iAk-\qO,5pt) -- (\iAk-\qO,-5pt) node[anchor=north] {$i_{A^k}-q_ 0$} ;
+%\draw[thick,red] (\iAk-\qO,5pt) -- (\iAk-\qO,-5pt) node[anchor=north] {$i_{A^k}-q_ 0$} ;
 \draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{A^k}$} ;
 \draw[thick] (\q,5pt) -- (\q,-5pt) node[anchor=north] {$q^k$} ;
-\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{S^k}=q_0-1$} ;
+%\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{S^k}=q_0-1$} ;
 
 
 
 %Axes
 \draw [thick,-latex] (0,0) -- (0,\qO) node [above left] {$j$};
 \draw [thick,-latex] (0,0) -- (\iAk+1,0) node [below right] {$i$};
+
+%Points du polygone
+\node[draw,circle,inner sep=1pt,fill,black,label=270:$A$] at (14,0) {};
+\node[draw,circle,inner sep=1pt,fill,black,label=$B$] at (14,6) {};
+\node[draw,circle,inner sep=1pt,fill,black,label=$C$] at (16,4) {};
+\node[draw,circle,inner sep=1pt,fill,black,label=$D$] at (18,3) {};
+\node[draw,circle,inner sep=1pt,fill,black,label=$E$] at (21,0) {};
+
+
 
 %Formes
 \filldraw [ pattern color=red!10,
@@ -875,39 +903,24 @@ and we claim that $(i_{A^k}-\mu,\mu) \in S^k_{((q_0-1)-\mu_1,\mu_1)} \in B^k$, w
 
 \filldraw[fill=black!30, fill opacity=0.5, draw=black] (12,2) -- (19,2) -- (18,3) -- (16,4) -- (12,8)  -- cycle;
 	
-\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$A^k$};
+\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$\calA^k$};
 
 
 \filldraw [fill=black!30, fill opacity=0.5, draw=black] ([c]0,0) -- ([c]E) -- ([c]G) -- ([c]F) -- ([c]D)-- cycle;
 
-	\node[yshift=0.7em] at ($(0,0)!0.5!(F)$) {$S^k$};
+	\node[yshift=0.7em] at ($(0,0)!0.5!(F)$) {$\calS^k$};
 
  
 \end{tikzpicture} 
-\caption{Example with $2k < \frac{m}{2}$ and $i_b \geq q^k(q_0-1)$}
+\caption{Example with $2k < \frac{m}{2}$ and $i_b \geq q^k(q_0-1)$} \label{ex_polygone}
 \end{center}
 \end{figure}
 
 \end{proof}
 
-\newpage
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 \begin{rq1} 
-	In the picture below, you can find a counter-example in the case $B^k \ne A^k$ if $s$ does not reach the bound given in Proposition \ref{prop_avec_dessins}. \jade{Here, with $s=\mu_g+q^k-1$, we can see that some monomials $x^iy^j \in \calL((q+1)sP_\infty)$ cannot be written as a product $x^{i_1+qi_2}y^{j_1+qj_2}$ for $(i_r,j_r) \in S_k$.}
+	In the picture below, you can find a counter-example in the case $\calB^k \ne \calA^k$ if $s$ does not reach the bound given in Proposition \ref{prop_avec_dessins}. \jade{Here, with $s=\mu_g+q^k-1$, we can see that some monomials $x^iy^j \in \calL((q+1)sP_\infty)$ cannot be written as a product $x^{i_1+qi_2}y^{j_1+qj_2}$ for $(i_r,j_r) \in \calS_k$.}
 	\begin{figure}[h]
 		\begin{center}
 			\begin{tikzpicture}[scale=0.4]
@@ -942,8 +955,8 @@ and we claim that $(i_{A^k}-\mu,\mu) \in S^k_{((q_0-1)-\mu_1,\mu_1)} \in B^k$, w
 				
 				
 				%Marqueurs sur l'axe horizontal
-				%\draw[thick,red] (\iAk-\qO+1,5pt) -- (\iAk-\qO+1,-5pt) node[anchor=north] {$i_{A^k}-(q_ 0-1)$} ;
-				\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{A^k}$} ;
+				%\draw[thick,red] (\iAk-\qO+1,5pt) -- (\iAk-\qO+1,-5pt) node[anchor=north] {$i_{\calA^k}-(q_ 0-1)$} ;
+				\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{\calA^k}$} ;
 				% \draw[thick] (\q,5pt) -- (\q,-5pt) node[anchor=north] {$q^k$} ;
 				\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$q_0-1$} ;
 				
