@@ -1021,13 +1021,13 @@ From this two results, we deduce:
 Let $\calC = C_{\calL}(\calH,\calP,sP_{\infty})$ be an AG-code on $\calH$ over $\mathbb{F}_{q^m}=\mathbb{F}_{q_0^2}$, assciated to a support $\calP$ of length $n$ and to the one-point divisor $sP_{\infty}$. Denote by $g:=g(\calH)=\frac{q_0(q_0-1)}{2}$ and $\mu_g := q_0(q_0-1)-1$ the biggest gap number of $P_{\infty}$. 
 \begin{itemize}
     \item[(i)] If $s \geq \mu_g + q_0^2$, then we have 
-        \[\Tr(\calC \star \calC) \subseteq \Tr(\calC \star \calC^q) \subseteq \cdots \subseteq \Tr(\calC \star \calC^{q_0}),\]
+        \[\Tr{\calC \star \calC} \subseteq \Tr{\calC \star \calC^q} \subseteq \cdots \subseteq \Tr{\calC \star \calC^{q_0}},\]
         and thus 
-        \[\Tr(\calC)^{\star 2} \subseteq \Tr(\calC \star \calC^{q_0}).\]
+        \[\Tr{\calC}^{\star 2} \subseteq \Tr{\calC \star \calC^{q_0}}.\]
     \item[(ii)] If $\mu_g < s < \mu_g +q_0^2$, denote by $f:= \max\{k \in \{0,\cdots,\frac{m}{2}-1\} : s \geq \mu_g + q^k\}$. In this case, we have 
-        \[\Tr(\calC \star \calC) \subseteq \Tr(\calC \star \calC^q) \subseteq \cdots \subseteq \Tr(\calC \star \calC^{q^f}),\]
+        \[\Tr{\calC \star \calC} \subseteq \Tr{\calC \star \calC^q} \subseteq \cdots \subseteq \Tr{\calC \star \calC^{q^f}},\]
           and then
-        \[\Tr(\calC)^{\star 2} \subseteq \Tr(\calC \star \calC^{q^f}) + \sum\limits_{i=f+1}^{m/2} \Tr(\calC \star \calC^{q^i}).\]
+        \[\Tr{\calC}^{\star 2} \subseteq \Tr{\calC \star \calC^{q^f}} + \sum\limits_{i=f+1}^{m/2} \Tr{\calC \star \calC^{q^i}}.\]
 \end{itemize}
 \end{coro1}
 
@@ -1041,31 +1041,31 @@ Using the above Corollary and Lemma \ref{known_bounds}, we can prove the followi
 We keep notations as in Corollary 2, and denote by $k$ the dimension of $\calC$ over $\fqm$.
 \begin{itemize}
 \item[(i)] If $s \geq \mu_g + q_0^2$, then 
-\[ \dim_{\fq}(\Tr(\calC))^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2} (k(mk-1)-2q_0s).\]
+\[   \dim_{\fq} \Tr{\calC}^{\star 2}  \leq \binom{mk+1}{2} - \dfrac{m}{2} (k(mk-1)-2q_0s).\]
 \item[(ii)] If $\mu_g < s < \mu_g +q_0^2$, recall that $f:= \max\{k \in \{0,\cdots,\frac{m}{2}-1\} : s \geq \mu_g + q^k\}$. Then 
-\[ \dim_{\fq}(\Tr(\calC))^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2}(k(2fk-1)-2q^fs).\]
+\[   \dim_{\fq} \Tr{\calC}^{\star 2}  \leq \binom{mk+1}{2} - \dfrac{m}{2}(k(2fk-1)-2q^fs).\]
 \end{itemize}
 \end{thm}
 
 \begin{proof}
 \begin{itemize}
-    \item[$(i)$] From Corollary 2 $(i)$, we have $\Tr(\calC)^{\star 2} \subseteq \Tr(\calC \star \calC^{q_0}).$ Moreover, we proved in Proposition \ref{result_with_valuations} that under the hypothesis on $s$, we had
-      \[ \calC \star \calC^{q_0} = \calC^{q_0+1} := C_{\calL}(\calH,\calP,(q_0+1)sP_{\infty}),\]
+    \item[$(i)$] From Corollary 2 $(i)$, we have $\Tr{\calC}^{\star 2} \subseteq \Tr{\calC \star \calC^{q_0}}.$ Moreover, we proved in Proposition \ref{result_with_valuations} that under the hypothesis on $s$, we had
+      \[ \calC \star \calC^{q_0} = \calC^{\star (q_0+1)} := C_{\calL}(\calH,\calP,(q_0+1)sP_{\infty}),\]
       which is a dimension $(q_0+1)s + 1 - g(\calH)$ code, as follows from the Riemann-Roch theorem. As a result, we can estimate
       \begin{align*}
-           \dim_{\fq}(\Tr(\calC))^{\star 2} &\leq \dim_{\fq}(\Tr(\calC^{q_0+1})) \\
+           \dim_{\fq} \Tr{\calC}^{\star 2} &\leq \dim_{\fq} \Tr{\calC^{\star (q_0+1)}} \\
                                             & = m((q_0+1)s + 1 - g(\calH)) \\
                                             & = m (k+q_0 s) \\
                                             & = \binom{mk+1}{2} + \dfrac{m}{2}(2k+2q_0s-k(mk+1)) \\
                                             &= \binom{mk+1}{2} - \dfrac{m}{2} (k(mk-1)-2q_0s).
       \end{align*}
       \item[$(ii)$] Corollary 2 $(ii)$ together with Proposition \ref{powers_of_q's_case} gives 
-       \[\Tr(\calC)^{\star 2} \subseteq \Tr(\calC \star \calC^{q^f}) + \sum\limits_{i=f+1}^{m/2} \Tr(\calC \star \calC^{q^i})\]
+       \[\Tr{\calC}^{\star 2} \subseteq \Tr{\calC \star \calC^{q^f}} + \sum\limits_{i=f+1}^{m/2} \Tr{\calC \star \calC^{q^i}}\]
        and 
         \[ \calC \star \calC^{q^f} = \calC^{q^f+1} := C_{\calL}(\calH,\calP,(q^f+1)sP_{\infty}).\]
         Since the latter code has dimension $(q^f+1)s+1-g(\calH)=k+q^fs$, we have (using twice Lemma \ref{known_bounds})
          \begin{align*}
-           \dim_{\fq}(\Tr(\calC))^{\star 2} &\leq \dim_{\fq}(\Tr(\calC^{q_f+1})) +  \sum\limits_{i=f+1}^{m/2} \dim_{\fq}(\Tr(\calC \star \calC^{q^i}))\\
+           \dim_{\fq}\Tr{\calC}^{\star 2} &\leq \dim_{\fq}\Tr{\calC^{\star(q_f+1)}} +  \sum\limits_{i=f+1}^{m/2} \dim_{\fq} \Tr{\calC \star \calC^{q^i}}\\
                                             &\leq m \cdot (k + q^fs) + m  \sum\limits_{i=f+1}^{m/2} \dim_{\fqm}(\calC \star \calC^{q^i}) \\
                                             &\leq m \cdot \left(k+q^fs + k^2 \left(\frac{m}{2}-f\right)\right). \\
                                             &= \dfrac{m}{2}(2k+2q^fs+mk^2-2k^2f) \\
