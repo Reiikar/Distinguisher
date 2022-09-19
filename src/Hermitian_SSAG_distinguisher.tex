@@ -15,7 +15,7 @@
 \usepackage{amsthm}
 \usepackage{geometry}
 \geometry{hmargin=2cm,vmargin=1.5cm}
-\usepackage{hyperref}
+\usepackage{hyperref} %Références cliquables
 
 %%%%% Pour les dessins %%%%%
 
@@ -204,10 +204,10 @@ In order to get a disinguisher, we start from the following result, which is a c
 
 \begin{thm} \label{th1}
 With usual definitions of the trace and the $\star$-product of codes, we have 
-\[ \Tr(\mathcal{C})^{\star2} := (\mathrm{SSAG}_{q}(\calH,\calP,D^{\perp})^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr(\mathcal{C}\star\mathcal{C}^{q^i}),\]
+\[ \Tr{\mathcal{C}}^{\star2} := (\mathrm{SSAG}_{q}(\calH,\calP,D^{\perp})^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr{\mathcal{C}\star\mathcal{C}^{q^i}},\]
 where $D^{\perp}$ is the dual divisor of D, which can be explicitly described using $\calP$ and $D$ (see \cite{sti}, Proposition 2.2.10). \\
 Moreover, if $m$ is even (which is the case in our settings), we have 
-\[\dim_{\mathbb{F}_q}(\Tr(\calC \star \calC^{q^{m/2}})) \leq \frac{m}{2}\cdot (\dim_{\fqm}(\calC))^2.\]
+\[\dim_{\mathbb{F}_q}\Tr{\calC \star \calC^{q^{m/2}}} \leq \frac{m}{2}\cdot \left(\dim_{\fqm}\calC\right)^2.\]
 \end{thm}
 
 
