@@ -469,18 +469,19 @@ Our goal is to prove that any $(i,j) \in A^k$ is in $B^k$; or more precisely, in
 
 
 To ease the reader's understanding, we represent theses sets in the upper right quadrant of the plane $\R^2$. For that, we define a few integers:
-\[i_{\calA^k} = \max \{ i \ | \ (i,j) \in \calA^k\} \quad , \quad j_{\calA^k} = \max \{ j \ | \ (i,j) \in \calA^k\}\]
-and
-\[i_{\calS^k} = \max \{ i \ | \ (i,j) \in \calS^k\} \quad , \quad j_{\calS^k} = \max \{ j \ | \ (i,j) \in \calS^k\}.\]
-Since $s=q_0(q_0-1)-1+q^k$, we can explicit theses integers. Noticing that
-\[ \left\lfloor \dfrac{s}{q_0} \right\rfloor = q_0-1 + \left\lfloor \dfrac{q^k-1}{q_0}\right\rfloor = q_0-1,\]
-we deduce that $i_{\calS^k} = \left\lfloor \dfrac{s}{q_0} \right\rfloor = q_0-1$ and $i_{\calA^k} = \left\lfloor \dfrac{s(q^k+1)}{q_0} \right\rfloor = (q_0-1)(q^k+1)$. To determine $j_{\calS^k}$ and $j_{\calA^k}$ we need to compare $\left\lfloor \dfrac{s}{q_0+1}\right\rfloor$ and $\left\lfloor \dfrac{s(q^k+1)}{q_0+1} \right\rfloor$ to $q_0-1$. We get
 \begin{align*}
+	i_{\calS^k} = \max \set{ i \ | \ (i,j) \in \calS^k}, & & j_{\calS^k} = \max \set{ j \ | \ (i,j) \in \calS^k}, \\
+	i_{\calA^k} = \max \set{ i \ | \ (i,j) \in \calA^k}, & & j_{\calA^k} = \max \set{ j \ | \ (i,j) \in \calA^k}.
+\end{align*}
+Using the formula $s=q_0(q_0-1)+q^k-1$, we can explicit them. First,
+\[i_{\calS^k} = \Floor{\dfrac{s}{q_0}} = q_0-1 + \left\lfloor \dfrac{q^k-1}{q_0}\right\rfloor = q_0-1.\]
+Similarly, $i_{\calA^k} = \left\lfloor \dfrac{s(q^k+1)}{q_0} \right\rfloor = (q_0-1)(q^k+1)$. To determine $j_{\calS^k}$ and $j_{\calA^k}$ we need to compare $\left\lfloor \dfrac{s}{q_0+1}\right\rfloor$ and $\left\lfloor \dfrac{s(q^k+1)}{q_0+1} \right\rfloor$ to $q_0-1$. We get
+\[\begin{aligned}
     j_{\calS^k} &= \min \left\{ q_0-1, \left\lfloor \dfrac{s}{q_0+1} \right\rfloor \right\} \\
             &=  \left\lfloor \dfrac{s}{q_0+1} \right\rfloor \\
             &= q_0-1 +  \left\lfloor \dfrac{q^k-q_0}{q_0+1} \right\rfloor \\
             &= q_0-2.
-\end{align*}
+\end{aligned}\]
 Since $s \geq q_0^2 - q_0 -1$ and $q^k+1 \geq 2$, we have
 \begin{equation} \label{desc}
 	s(q^k+1) \geq 2(q_0^2-q_0-1) = q_0^2 - 1 + (q_0^2-2q_0-1) \geq q_0^2-1,
@@ -490,48 +491,44 @@ the last inequality holding because $q_0 \geq 4$ (\emph{i.e.} $q \geq 2$). This 
 s(q^k+1) = i_{\calA^k}q_0+(q^{2k}-1) \quad \mathrm{and} \quad s=i_{\calS^k}q_0 + (q^k-1).
 \end{equation}
 
-The set $\calS^k$ consists of all integral points of the non--convex polygon of vertices $O$, $(i_{\calS^k},0)$, $(i_{\calS^k}-(q^k-1),q^k-1)$, $(i_{\calS^k}-(q^k+1),q^k)$ and $(0,j_{\calS^k})$.
+Let us denote by $O$ the origin of the plane. The set $\calS^k$ consists of all integral points of the non--convex polygon of vertices $O$, $(i_{\calS^k},0)$, $(i_{\calS^k}-(q^k-1),q^k-1)$, $(i_{\calS^k}-(q^k+1),q^k)$ and $(0,j_{\calS^k})$.
 
 Regarding the shape of the set $\calA^k$ in the plane, two cases can be distinguished.
 \begin{itemize}
-	\item if $2k \geq \frac{m}{2}$, $\calA^k= \Gamma \sqcup \Delta$ where $\Gamma$ is the set of integral points in the rectangle of vertices $O$, $P(0,j_{\calA^k})$, $Q(i_{\calS^k}q^k-1,j_{\calA^k})$ and $R(i_{\calS^k}q^k-1,0)$ and $\Delta$ those in the triangle of vertices $T(i_{\calS^k}q^k,0)$, $U(i_{\calS^k}q^k,j_{\calA^k})$ and $V(i_{\calA^k},0)$. 
-	\item if $2k < \frac{m}{2}$, $\calA^k= \Gamma' \sqcup \Delta'$ where $\Gamma$ is the set of integral points in the rectangle of vertices $O$, $P$, $Q'(i_{\calS^k}q^k,j_{\calA^k})$ and $R'(i_{\calS^k}q^k,0)$ and $\Delta'$ those in the non--convex polygon of vertices  $T'(i_{\calS^k}q^k-1,0)$, $U'(i_{\calS^k}q^k,j_{\calA^k})$, $V'(i_{\calA^k},0)$, $W'(i_{\calA^k}-(q^{2k}+1),q^{2k}+1)$ and $X'(i_{\calA^k}-(q^{2k}-1),q^{2k}-1)$. 
+	\item If $2k \geq \frac{m}{2}$, $\calA^k= \Gamma \sqcup \Delta$ where $\Gamma$ is the set of integral points in the rectangle $(OPQR)$ where 
+	\begin{align*}
+			P(0,j_{\calA^k}),&& Q(i_{\calS^k}q^k-1,j_{\calA^k})&& \text{ and }&& R(i_{\calS^k}q^k-1,0)&
+	\end{align*}
+ and $\Delta$ those in the triangle of vertices $T(i_{\calS^k}q^k,0)$, $U(i_{\calS^k}q^k,j_{\calA^k})$ and $V(i_{\calA^k},0)$ (see Figure \ref{fig_case_2k>=m/2}). 
+	\item If $2k < \frac{m}{2}$, $\calA^k= \Gamma' \sqcup \Delta'$ where $\Gamma'$ is the set of points in the rectangle $(OPQ'R')$ with
+	\begin{align*}
+	Q'(i_{\calS^k}q^k,j_{\calA^k})&& \text{ and }&& R'(i_{\calS^k}q^k,0)&
+	\end{align*}
+and $\Delta'$ those in the non--convex polygon $(TU'W'X'V)$ (see Figure \ref{fig_case_2k<m/2}) where  
+	\begin{align*}
+	&T'(i_{\calS^k}q^k-1,0),&& U'(i_{\calS^k}q^k,j_{\calA^k}\jade{-1?}),&&W'(i_{\calA^k}-q^{2k}-1,q^{2k}+1)&& \text{ and } &&X'(i_{\calA^k}-q^{2k}+1,q^{2k}-1).
+\end{align*}
+
+ 
 \end{itemize}
 
-You can find the shape of theses sets in \modifier{Figures \ref{fig_case_2k<m/2} and \ref{fig_case_2k>=m/2} }below.\textbf{}
-
-\TODO{Mettre ces points sur les figures dessous et dessiner le rectangle/triangle en pointillés}
+%You can find the shape of theses sets in \modifier{Figures \ref{fig_case_2k<m/2} and \ref{fig_case_2k>=m/2} }below.\textbf{}
 
 \vspace*{0.3cm}
 \begin{figure}[h] 
 	\centering
-	\input{fig_2k_sup_m_sur_2}
+	\scalebox{0.9}{
+	\input{fig_2k_sup_m_sur_2}}
 	\caption{Case $2k \geq \frac{m}{2}$} \label{fig_case_2k>=m/2}
 \end{figure}
 \begin{figure}[h] 
 	\centering
-	\input{fig_2k_inf_m_sur_2}
+	\scalebox{0.9}{
+	\input{fig_2k_inf_m_sur_2}}
 	\caption{Case $2k < \frac{m}{2}$} \label{fig_case_2k<m/2}
 \end{figure}
 
- To prove that $\calA^k$ is included in $\calB^k$, we will use its partition into $\Gamma$ and $\Delta$ (or $\Gamma'$ and $\Delta'$).
-
-% let us consider the points \mathieu{$(i_{\calA^k},0)$ and $(x,j_{\calA^k})$ (where $x$ is the maximal abscissa for a point in $\calA^k$, given its ordinate). By definition of $j_{\calA^k}$, all the points in $\calA^k$ are delimited by the two axes, the segment connecting $(0,j_{\calA^k})$ and $(x,j_{\calA^k})$, and a path connecting $(i_{\calA^k},0)$ and $(x,j_{\calA^k})$ (which remains to be found).} From \eqref{desc}, there are two cases to consider :  
-%\begin{enumerate}
-%    \item[$\star$] If $2k \geq \dfrac{m}{2}$, then \mathieu{x} is given by $x=i_{\calA^k}-(q_0-1)$, i.e. all the points lying on the segment between $(i_{\calA^k},0)$ and $(x,j_{\calA^k})$ belong to $\calA^k$;
-%    \item[$\star$] If $2k < \dfrac{m}{2}$, then $x=i_{\calA^k}-q_0$. In this case, \jade{Moi yen a pas comprendre: there is a gap in the sequence of decreasing $x$-values occuring exactly at the ordinate $q^{2k}$.} In particular, both the points $(i_{\calA^k}-(q^{2k}-1),q^{2k-1})$ and $(i_{\calA^k}-(q^{2k}+1),q^{2k})$ are in $\calA^k$, but $(i_{\calA^k}-q^{2k},q^{2k})$ is not. (Note that this is the only gap.)
-%\end{enumerate}
-
-
-%The set $\calS^k$ consists of all integral points delimited by the two axes and a path connecting the points $(q_0-1,0)$ and $(0,q_0-2)$.  \jade{il faudrait spécifier ce chemin, non ? Pourquoi as a result ? $\rightarrow$} \mathieu{Since $s=i_{\calS^k}q_0+(q^k-1)$ (see \eqref{eq:s_iAk_jAk}), there is only one gap in the sequence of decreasing $x$-values, which occurs at the ordinate $q^k$.}
-
-
-
-%At this stage, it remains to prove that every point in $\calA^k$ belongs to some $\calS^k_{(i_2,j_2)}$, for $(i_2,j_2) \in \calS^k$.
-
-%Note that in the plan, the set $\calS^k_{(i_2,j_2)}$ has the same shape as $\calS^k$, but its bottom left point has coordinates $(i_2,j_2)$ instead of the origin $(0,0)$.
-
-Let us first focus on the case $2k \geq \frac{m}{2}$.
+ To prove that $\calA^k$ is included in $\calB^k$, we will use the partition above and prove that both parts are included in $\calB^k$. Let us first focus on the case where $2k \geq \frac{m}{2}$.
 
 
 
@@ -541,7 +538,7 @@ Let us first focus on the case $2k \geq \frac{m}{2}$.
 \item To prove that $\Gamma \subset \calB^k$, we will fix an abscissa $i$ of a point in $\Gamma$ and we will show that all points $(i,0),\cdots,(i,q_0-1)$ belong to $\calB^k$. By definition of $\Gamma$, we have $i < i_{\calS^k}q^k=(q_0-1)q^k$. Let us write
     \[i = \alpha q^k+\gamma \text{ with } \alpha <q_0-1 \text{ and } \gamma < q^k.\]
    
-   	Set $j^*:=\max \{j \ | \ (\alpha,j) \in \calS^k\} = \left\lfloor \frac{s-\alpha q_0}{q_0+1}\right\rfloor$. \jade{j'ai justifié l'existence du min et réduit la fin:}It exists because $\alpha \leq q_0 -2$ and it is at least equal to $1$. We will show that the integral points on the vertical line of abscissa $i$ belongs to $B^k$, and more precicely that
+   	Set $j^*:=\max \{j \ | \ (\alpha,j) \in \calS^k\} = \left\lfloor \frac{s-\alpha q_0}{q_0+1}\right\rfloor$. This is well--defined because $\alpha \leq q_0 -2$ and $j^*$ is at least equal to $1$. We will show that the integral points on the vertical line of abscissa $i$ belong to $B^k$, and more precisely that
     \[\left\{ (i,0),\cdots,(i,q_0-1) \right\} \subset \bigcup_{j=0}^{j^*} \calS^k_{(\alpha,j)}.\]
     Let $0 \leq j \leq j^*$. Then the point $(\alpha,j)$ belongs to $\calS^k$. Moreover for every $0 \leq r \leq q_0-2-\gamma$ the point $(i,jq^k+r)=q^k(\alpha,j)+(\gamma,r)$ lies in the set $\calS^k_{(\alpha,j)}$.
      
@@ -589,9 +586,9 @@ $\Delta \setminus  \calS^k_{(i_{\calS^k},0)}$ lies in some $\calS^k_{(i_{\calS^k
 Let us compute the cardinality of $\Delta \setminus  \calS^k_{(i_{\calS^k},0)}$. A short calculation gives
  \[ \# \Delta = \dfrac{q_0(q_0+1)}{2} \quad \mathrm{and} \quad \# \calS^k_{(i_{\calS^k},0)} = \dim \calL(sP_{\infty}) = s+1-g(\calH) = \dfrac{q_0(q_0-1)}{2} + q^k.\]
 
-Then $\# \Delta \setminus  \calS^k_{(i_{\calS^k},0)}=q_0-q^k$. Besides, one can easily check that the $q_0-q^k$ points of coordinates $(i_{\calA^k}-\mu,\mu)$ for $q^k \leq \mu \leq q_0-1$ cannot be in $\calS^k_{(i_{\calS^k},0)}$. Then $\Delta \setminus  \calS^k_{(i_{\calS^k},0)}$ contains exactly these points, and no ther. Writing
+Then $\# \Delta \setminus  \calS^k_{(i_{\calS^k},0)}=q_0-q^k$. Besides, one can easily check that the $q_0-q^k$ points of coordinates $(i_{\calA^k}-\mu,\mu)$ for $q^k \leq \mu \leq q_0-1$ cannot be in $\calS^k_{(i_{\calS^k},0)}$, as $(i_{\calS^k}-\mu,\mu) \notin \calS^k$. Then $\Delta \setminus  \calS^k_{(i_{\calS^k},0)}$ contains exactly these points, and no other. Writing
  \[ \mu = \mu_1q^k + \mu_2,\]
- with $\mu_2 < q^k$ and $1 \leq \mu_1 \leq \left\lfloor\frac{q_0-1}{q^k}\right\rfloor \leq q^{m/2-k}-1 \leq q^k-1$ (since $k \geq m/4$), one can easily deduce that
+ with $\mu_2 < q^k$ and $1 \leq \mu_1 \leq \left\lfloor\frac{q_0-1}{q^k}\right\rfloor \leq q^{m/2-k}-1 \leq q^k-1$ (since $k \geq m/4$). One can easily deduce that
  \[(i_{\calA^k}-\mu,\mu)=q^k(i_{\calS^k}-\mu_1,\mu_1)+(i_{\calS^k}-\mu_2,\mu_2) \in \calS^k_{i_{\calS^k}-\mu_1,\mu_1},\]
  which entails the inclusion \eqref{eq:Delta_Bigcup}.
 % Note that $q^k$ of these points are in $\calS^k_{((q_0-1),0)})$ (case $\mu_1=0)$, meaning that the remaining $q_0-q^k$ are in $(\Delta \backslash  \calS^k_{((q_0-1),0)})$, which proves \eqref{counting}
@@ -615,13 +612,11 @@ Let us prove that $\Delta' \subset \calB^k$. As before, for every $\delta \in \{
 Similarly, we have $\calS^k_{(i_{\calS^k},0)} \subset \Delta'$. Thus, in order to prove \eqref{eq:Delta'_Bigcup}, it remains to check that the each point
 $\Delta \setminus  \calS^k_{(i_{\calS^k},0)}$ lies in some $\calS^k_{(i_{\calS^k}-\delta,\delta)}$ for $\delta\geq 1$.
 
-In this case, $ \# \Gamma = \dfrac{q_0(q_0-1)}{2}+q^{2k}$, and thus $\# (\Gamma \backslash  \calS^k_{(q_0-1,0)}) = q^{2k}-q^k$. The points of the form
-\[ (i_{\calA^k}-\mu,\mu) \ , \ \mathrm{where} \ \mu \in \{q^k,\cdots,q^{2k}-1\}\]
-which lie on the path \jade{joining $U'$ and $V'$} cannot be in $\calS^k_{(i_{\calS^k},0)}$. Then $\Delta \setminus  \calS^k_{(i_{\calS^k},0)}$ is entirely determined.
-
-For every $\mu \in \{q^k,\cdots,q^{2k}-1\}$, we write
-\[\mu = \mu_1 q^k + \mu_2 \ , \ \mathrm{with} \ \mu_1,\mu_2 < q^k,\]
-and we claim  \[(i_{\calA^k}-\mu,\mu)=q^k(i_{\calS^k}-\mu_1,\mu_1)+(i_{\calS^k}-\mu_2,\mu_2) \in \calS^k_{i_{\calS^k}-\mu_1,\mu_1},\]
+In this case, $ \# \Gamma = \dfrac{q_0(q_0-1)}{2}+q^{2k}$, and thus $\# (\Gamma \backslash  \calS^k_{(q_0-1,0)}) = q^{2k}-q^k$. As in the previous case, we are able to determine these $q^{2k}-q^k$ points. These are the ones of the form
+\[ (i_{\calA^k}-\mu,\mu) \ , \ \mathrm{where} \ \mu \in \{q^k,\cdots,q^{2k}-1\},\]
+which lie on the path \jade{joining $U'$ and $V'$}. %
+%
+For every $\mu \in \{q^k,\cdots,q^{2k}-1\}$, we write $\mu = \mu_1 q^k + \mu_2 \ , \ \mathrm{with} \ \mu_1,\mu_2 < q^k$ and we claim  \[(i_{\calA^k}-\mu,\mu)=q^k(i_{\calS^k}-\mu_1,\mu_1)+(i_{\calS^k}-\mu_2,\mu_2) \in \calS^k_{i_{\calS^k}-\mu_1,\mu_1},\]
 which proves \eqref{eq:Delta'_Bigcup} and completes the proof.
 \mathieu{Figure \ref{ex_polygone} below show an example in this case.}
 
