@@ -56,6 +56,8 @@
 \newcommand{\Tr}[1]{\operatorname{Tr}_{\mathbb{F}_{q^m}/\fq}\left(#1\right)}
 \newcommand{\set}[1]{\left\{#1\right\}}
 \newcommand{\Floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\Span}[1]{\operatorname{Span}\left(#1\right)}
+
 
 %%----Commentaires----%%%
 
@@ -111,15 +113,22 @@ In this section, we briefly introduce some notation and basic definitions for li
 
 \TODO{some sentences needed...}
 
+\color{black}{
 \subsection{Schur product}
 
 %\TODO{Définition de $\star$}
-
+\mathieu{appelle-on ça Shur product, star-product, component-wise product ?}
 \begin{def1}
-
+The Shur product of two vectors $\mathbf{a}$,$\mathbf{b} \in \fqm^n$ is defined as 
+\[ \mathbf{a} \star \mathbf{b} := (a_1b_1,\cdots,a_nb_n). \]
 \end{def1}
 
-The following Lemma gives known bounds linked to the Shur product of codes.
+\begin{def1} The Shur product of two linear codes $\calC$ and $\calD$ over $\fqm$ with same length $n$ is defined as
+\[ \calC \star \calD := \Span{\mathbf{c} \star \mathbf{d} \mid \mathbf{c} \in \calC, \mathbf{d} \in \calD}.  \]
+If $\calC = \calD$, we call $\calC^{\star 2} := \calC \star \calC$ the square of $\calC$.
+\end{def1}
+
+The following Lemma gives known bounds on the dimension of Shur products of codes.
 
 	\begin{lem1} \label{lem:known_bounds}
 		Let $\calC$ and $\calD$ be two linear codes over $\fqm$ with same length $n$ and respective dimension $k_{\calC}$ and $k_{\calD}$. We have
@@ -132,7 +141,7 @@ The following Lemma gives known bounds linked to the Shur product of codes.
 			\[ \dim_{\mathbb{F}_{q^m}}(\calC^{\star2}) = \binom{k_{\calC}+1}{2}.\]
 		\end{itemize}
 	\end{lem1}
-
+}
 
 \subsection{Subfield subcodes and trace codes}
 
@@ -157,53 +166,48 @@ Let $\operatorname{Tr}_{\mathbb{F}_{q^m}/\fq}$ be the trace operator on the fiel
 for $x \in \fqm$.
 
 
-For a vector $c \in \fqm^n$, $\Tr{c}= (\Tr{c_1},\cdots,\Tr{c_n})$. For a linear code $\calC$ of length $n$ and dimension $k$ over $\mathbb{F}_{q^m}$, its image under the trace operator $\Tr{\calC}$ is a linear code of length $n$ over $\mathbb{F}_q$. Its dimension satisfies
+For a vector $\mathbf{c} \in \fqm^n$, $\Tr{\mathbf{c}}= (\Tr{c_1},\cdots,\Tr{c_n})$. For a linear code $\calC$ of length $n$ and dimension $k$ over $\mathbb{F}_{q^m}$, its image under the trace operator $\Tr{\calC}$ is a linear code of length $n$ over $\mathbb{F}_q$. Its dimension satisfies
 \begin{equation}\label{eq:dim_trace}
 \dim_{\mathbb{F}_q} \Tr{\calC} \leq \min\{m\dim_{\fqm} \calC,n\}.
 \end{equation}
 
 \begin{thm}[Delsarte] \label{th:delsarte} \TODO{ref}
-Let $\calC$ be a linear code. Then
+Let $\calC$ be a linear code over $\fqm$. Then
 \[\left(\calC \cap \fq^n\right) = \Tr{\calC^{\perp}}.\]
 \end{thm}
 	
+%\TODO{Delsarte}
+\mathieu{
+\subsection{First estimation of the square of the trace of a code}}
 
 
 
-\TODO{Delsarte}
-
-The following Lemma gives known bounds linked to the star product of codes.
-
-	\begin{lem1} \label{lem:known_bounds}
-		Let $\calC$ and $\calD$ be two linear codes over $\fqm$ with same length $n$ and respective dimension $k_{\calC}$ and $k_{\calD}$. We have
-		\begin{itemize}
-
-			\item[$(2)$] $\dim_{\fqm}(\calC \star \calD) \leq \min\{k_{\calC}k_{\calD},n\}$;
-			\item[$(3)$] If $\calC$ is suffisciently random, we have
-			\[ \dim_{\mathbb{F}_{q^m}}(\calC^{\star2}) \leq \mathrm{min}\left(n,\binom{k_{\calC}+1}{2}\right) . \]
-			Espescially, if $\calC^{\star2}$ does not fill the full space, we expect to have 
-			\[ \dim_{\mathbb{F}_{q^m}}(\calC^{\star2}) = \binom{k_{\calC}+1}{2}.\]
-		\end{itemize}
-	\end{lem1}
-
-	\begin{prop1} [\cite{rocco} Corollary 16]\label{1st bound square of trace}
-		Let $\calC$ be any $\fqm$-linear code. Then 
-		\begin{equation} \label{eq:bbbound}
-			\dim_{\fq}\Tr{\mathcal{C}}^{\star2} \leq m \cdot \dim_{\fqm}(\calC^{\star 2}) + \binom{m}{2} (\dim_{\fqm}(\calC))^2.
-		\end{equation}
-		Furthermore, if $\dim_{\fq} \Tr{\calC} = m \cdot \dim_{\fqm}(\calC)$, then 
-		\[\dim_{\fq} \Tr{\calC}^{\star 2} - \binom{\dim_{\fq} \Tr{\calC}+1}{2} \leq m \cdot \dim_{\fqm} \calC^{\star 2} - \binom{\dim_{\fqm} (\calC)+1}{2}.\]
-	\end{prop1}
-
-
-\begin{thm} \label{Tr_BoundSchurSquare}
-		\jade{Ce sera défini avant : With usual definitions of the trace and the $\star$-product of codes,}
-		 we have 
-		\[ \Tr{C}^{\star2} := ((C^{\perp}_{|_{{\mathbb{F}_q}}})^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr{C\star C^{q^i}},\]
+\begin{thm}[\cite{rocco} Proposition 15] \label{th:Tr_BoundSchurSquare}
+Let $\calC$ be a linear code over $\fqm$. Then we have 
+		\[ \Tr{\calC}^{\star2} := ((\calC^{\perp}_{|_{{\mathbb{F}_q}}})^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr{\calC\star \calC^{q^i}},\]
 		where $C^{\perp}$ is the dual code of $C$. \\
 		Moreover, if $m$ is even (which is the case in our settings), we have 
 		\[\dim_{\mathbb{F}_q}\Tr{ C \star C^{q^{m/2}}} \leq \frac{m}{2}\cdot \left(\dim_{\fqm}(C)\right)^2.\]
 	\end{thm}
+
+From this theorem, we can deduce a first bound of the dimension of the Shur product of the square of any linear code, also given in \cite{rocco}.
+
+\begin{coro1} [\cite{rocco} Corollary 16]\label{coro:first_bound_square_of_trace}
+Let $\calC$ be any $\fqm$-linear code. Then 
+\begin{equation} \label{bbbound}
+    \dim_{\fq}\Tr{\calC}^{\star2} \leq m \cdot \dim_{\fqm}(\calC^{\star 2}) + \binom{m}{2} (\dim_{\fqm}(\calC))^2.
+\end{equation}
+Furthermore, if $\dim_{\fq} \Tr(\calC) = m \cdot \dim_{\fqm}(\calC)$, then 
+\[\dim_{\fq} \Tr{\calC}^{\star2} - \binom{\dim_{\fq} \Tr{\calC}+1}{2} \leq m \cdot \dim_{\fqm} \calC^{\star 2} - \binom{\dim_{\fqm} (\calC)+1}{2}.\]
+\end{coro1}
+
+\mathieu{ A DEPLACER EN SECTION 3.1 ? :
+The above Corollary implies that if the dimension of a square code is smaller than we expect from a random code, namely
+\[ \dim_{\fqm} (\calC^{\star 2}) < \binom{\dim_{\fqm} (\calC)+1}{2},\]
+then this property survives for the trace code, \emph{\textit{i.e.}}
+\[\dim_{\fq} (\Tr{\calC}^{\star 2}) < \binom{\dim_{\fq} \Tr{\calC}+1}{2}.\]
+Latter on, we will see that it is the case for AG-codes.}
+
 
 
 %\section{\textcolor{blue}{Preliminaries}}
@@ -219,37 +223,18 @@ We work on the finite field $\mathbb{F}_{q^m}=\mathbb{F}_{q_0^2}$, were $q$ is a
 \textcolor{blue}{The goal of this work is to adapt the distinguisher given in \cite{rocco} of alternant and Goppa codes for the subfield subcodes of $1-$point Hermitian code, whose divisor is a multiple of $P_{\infty}$. (Hermitian code definition should be given in the previous subsection) To ensure consistency in our notation, we do the following conventions. Let $\mathbb{F}_{q^m}=\mathbb{F}_{q_0^2}$, where $q$ is a prime power. We denote by $\calH = \mathbb{F}_{q_0^2}(x,y)$ the Hermitian function field, defined by 
 	\[ y^{q_0}+y=x^{q_0+1}.\] }
 
-\textcolor{blue}{(Throughout this paper) Let $\mathcal{C} := C_{\calL}(\calH,\mathcal{P},D)$ be an AG-code defined over $\calH$, where $D=sP_{\infty}$. To establish a disinguisher, we set the following result, which is a consequence of Delsarte's Theorem and Rocco's estimate (see \cite{rocco}, Proposition 15)}.
+\mathieu{(Throughout this paper) Let $\mathcal{C} := C_{\calL}(\calH,\mathcal{P},D)$ be an AG-code defined over $\calH$, where $D=sP_{\infty}$. To establish a disinguisher, we start to addapt Corollary \ref{coro:first_bound_square_of_trace} in the case of our AG-code, leading to 
+\begin{equation} \label{eq:first_bound_ssag}
+    \dim_{\fq}\Tr{\calC}^{\star2} \leq m \cdot \dim_{\fqm}(\calC^{\star 2}) + \binom{m}{2} (\dim_{\fqm}(\calC))^2.
+\end{equation}
+where $D^{\perp}$ is the dual divisor of D, which can be explicitly described using $\calP$ and $D$ (see \cite{sti}, Proposition 2.2.10). }
 
-
-Throughout this paper, let
-\[\mathcal{C} := C_{\calL}(\calH,\mathcal{P},D) \]
-be an AG-code defined over $\calH$, where $D=sP_{\infty}$ or $D=sP$; $P$ being any degree 3 place on $\calH$. 
-In order to get a disinguisher, we start from the following result, which is a consequence of Delsarte's Theorem and Rocco's estimate (see \cite{rocco}, Proposition 15)
-
-%\textcolor{blue}{
-%	\begin{thm} \label{th1}
-%		With usual definitions of the trace and the $\star$-product of codes, we have 
-%		\[ \Tr{\calC}^{\star2} := (\mathrm{SSAG}_{q}(\calH,\calP,D')^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr{\mathcal{C}\star\mathcal{C}^{q^i}},\]
-%		where $D'$ is the dual divisor of D, which can be explicitly described using $\calP$ and $D$ (see \cite{sti}, Proposition 2.2.10).
-%		\jade{Pourquoi cette répétition ? $\rightarrow$}Moreover, if $m$ is even (which is the case in our settings), we have 
-%		\[\dim_{\mathbb{F}_q} \Tr{\calC \star \calC^{q^{m/2}}} \leq \frac{m}{2}\cdot (\dim_{\fqm}(\calC))^2.\]
-%	\end{thm}
-%}
-
-\textcolor{blue}{
-\begin{thm} \label{th:Trace_shur_square_AG}
-With usual definitions of the trace and the $\star$-product of codes, we have 
-\[ \Tr{\mathcal{C}}^{\star2} := (\mathrm{SSAG}_{q}(\calH,\calP,D^{\perp})^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr{\mathcal{C}\star\mathcal{C}^{q^i}},\]
-where $D^{\perp}$ is the dual divisor of D, which can be explicitly described using $\calP$ and $D$ (see \cite{sti}, Proposition 2.2.10). \\
-\end{thm}
-}
 
 \jade{Blablabla: On veut voir si le dual reiste au square distinguisher donc on est amené à regarder des carrés de codes AG....}
 
-It is well-known that (3) above does not hold if $\calC$ has too much structure, which is the case for Reed-Solomon codes and more generally for AG-codes.
+It is well-known that Lemma \ref{lem:known_bounds} above does not hold if $\calC$ has too much structure, which is the case for Reed-Solomon codes and more generally for AG-codes.
 
-\begin{prop1}[\cite{mumford}, Theorem 6] \label{prop1}
+\begin{prop1}[\cite{mumford}, Theorem 6] \label{prop:mumford_result}
 Let $F,G$ be two divisors in $\calH$ such that $\deg(G) \geq 2g(\calH)+1$ and $\deg(F) \geq 2g(\calH)$, where $g(\calH)$ is the genus of $\calH$. Then
 \[ \calL(F) \cdot \calL(G) = \calL(F+G),\]
 where $\calL(F) \cdot \calL(G) := \mathrm{span}_{\mathbb{F}_{q^m}}\{ f \cdot g : f,g \in \calL(F) \times \calL(G) \}$.\\ 
@@ -260,23 +245,9 @@ The Riemann-Roch theorem thus gives
 which is much smaller than the expected dimension given in Lemma \ref{lem:known_bounds}, and thus provides a distinguisher for AG-codes.
 \end{prop1}
 
-In what follows, we will be interested in subfield subcodes of AG-code, meaning that we will rather need an estimation of the dimension of the square of a trace code (instead of the code itself). Theorem \ref{th:trace_square_inclusion} can be used to get a first one, using the following Proposition from \cite{rocco}.
+In what follows, we will be interested in subfield subcodes of AG-code, meaning that we will rather need an estimation of the dimension of the square of a trace code (instead of the code itself). Theorem \ref{th:Tr_BoundSchurSquare} can be used to get a first one, using the following Proposition from \cite{rocco}.
 
-\begin{prop1} [\cite{rocco} Corollary 16]\label{1st bound square of trace}
-Let $\calC$ be any $\fqm$-linear code. Then 
-\begin{equation} \label{bbbound}
-    \dim_{\fq}\Tr{\calC}^{\star2} \leq m \cdot \dim_{\fqm}(\calC^{\star 2}) + \binom{m}{2} (\dim_{\fqm}(\calC))^2.
-\end{equation}
-Furthermore, if $\dim_{\fq} \Tr(\calC) = m \cdot \dim_{\fqm}(\calC)$, then 
-\[\dim_{\fq} \Tr{\calC}^{\star2} - \binom{\dim_{\fq} \Tr{\calC}+1}{2} \leq m \cdot \dim_{\fqm} \calC^{\star 2} - \binom{\dim_{\fqm} (\calC)+1}{2}.\]
-\end{prop1}
-
-The above Proposition implies that if the dimension of a square code is smaller than we expect from a random code, namely
-\[ \dim_{\fqm} (\calC^{\star 2}) < \binom{\dim_{\fqm} (\calC)+1}{2},\]
-then this property survives for the trace code, \emph{\textit{i.e.}}
-\[\dim_{\fq} (\Tr{\calC}^{\star 2}) < \binom{\dim_{\fq} \Tr{\calC}+1}{2}.\]
-
-Proposition \ref{prop1} exactly says that under some condition on the degree of its divisor, the dimension of the square of an AG-code is smaller that expected. This is still the case for their trace codes, which are SSAG codes associated to the dual divisor.
+Proposition \ref{prop:mumford_result} exactly says that under some condition on the degree of its divisor, the dimension of the square of an AG-code is smaller that expected. This is still the case for their trace codes, which are SSAG codes associated to the dual divisor.
 
 \begin{coro1} \label{square_ssag_bound}
 Let $\mathcal{C} := C_{\calL}(\calH,\mathcal{P},D)$ be a dimension $k$ AG-code on $\calH$ associated to a degree $s \geq 2g(\calH)+1$ divisor. We have 
@@ -284,7 +255,7 @@ Let $\mathcal{C} := C_{\calL}(\calH,\mathcal{P},D)$ be a dimension $k$ AG-code o
 \end{coro1}
 
 \begin{proof}
-From Proposition \label{Prop1}, we have $\dim_{\fqm}(\calC)^{\star2} = 2s+1-g = k+s$, since we have inequality in the Riemann-Roch theorem. Thus, \eqref{bbbound} from Proposition \ref{1st bound square of trace} leads to
+From Proposition \ref{prop:mumford_result}, we have $\dim_{\fqm}(\calC)^{\star2} = 2s+1-g = k+s$, since we have inequality in the Riemann-Roch theorem. Thus, \eqref{eq:first_bound_ssag} leads to
 \begin{align*}
     \dim_{\fq}(\Tr{\calC}^{\star2}) &\leq m(k+s) + \binom{m}{2}k^2 \\
                                         &= (2k+2s+mk^2-k^2) \dfrac{m}{2} \\
@@ -296,7 +267,7 @@ From Proposition \label{Prop1}, we have $\dim_{\fqm}(\calC)^{\star2} = 2s+1-g = 
 In \cite{rocco}, the authors show that for a Goppa code $\calC = \mathbf{GRS}_r(x,y)$ defined over $\mathbb{F}_{q^m}$, where $y_i = 1/\Gamma(x_i)$ ($\Gamma$ being a degree $r$ polynomial), it holds
 \[\Tr{\calC\star\calC} \subseteq \Tr{\calC\star\calC^{q}} \subseteq \cdots \subseteq \Tr{\calC\star\calC^{q^u}},\]
 for any $0 \leq u \leq f$,
-where $f :=\lfloor\log_q(r)\rfloor $, or even without the Trace operator in the case of RS-codes. This allow them to use more efficiently Thereom \ref to get a better bound. \\
+where $f :=\lfloor\log_q(r)\rfloor $, or even without the Trace operator in the case of RS-codes. This allows them to use more efficiently Thereom \ref{th:Tr_BoundSchurSquare} to get a better bound. \\
 Our plan is to show that the same kind of result still holds in the case of AG-codes over $\mathbb{F}_{q^m}$, and use it to improve the bound in Corollary \ref{square_ssag_bound}. In particular, some Magma experiments shows that for $\mathcal{C} := C_{\calL}(\calH,\mathcal{P},D)$ , some integer $f$, and $0 \leq i \leq f \leq \lfloor m/2 \rfloor$, we have
 \begin{equation} \label{equality_of_codes}
  \calC \star \calC^{q^i} = \calC^{q^i+1},
@@ -329,7 +300,7 @@ i.e. we will have a result on the dimension of the square of its dual. We will c
 
 \noindent It is well-knonw from the study of the Hermitian curve that
 \begin{equation} \label{rr_p_inf}
-\calL(sP_{\infty}) = \langle x^iy^j : 0 \leq j \leq i_{\calA^k} \ \mathrm{and} \ iq_0+j(q_0+1) \leq s \rangle_{\mathbb{F}_{q_0^2}}
+\calL(sP_{\infty}) = \Span{x^iy^j : 0 \leq j \leq i_{\calA^k} \ \mathrm{and} \ iq_0+j(q_0+1) \leq s}_{\mathbb{F}_{q_0^2}}
 \end{equation}
 
 Recall that we want to find conditions on the integers $s$ and $i$ in order to have 
@@ -375,7 +346,7 @@ Let $i > 0$. We have
  \[ \calC \star \calC^{q_0^i} = \calC^{q_0^i+1}.\]
 \end{prop1}
 
-\begin{proof} The case $i=0$ is given by Proposition \ref{prop1}, so let us suppose that $i \geq 1$. \\
+\begin{proof} The case $i=0$ is given by Proposition \ref{prop:mumford_result}, so let us suppose that $i \geq 1$. \\
 We start by proving $(\Leftarrow)$, supposing by contraposition that $s < \mu_g + q_0^{i+1}$. In this case, we show that the element $\mu_g + q_0^{i+1} \in A^s_{i,q_0} \backslash V^s+q_0^iV^s$: it is clear that $\mu_g + q_0^{i+1} \notin V^s$ since it is striclty bigger than $s$, and that $\mu_g = q_0(q_0-1)-1$ yields
 \[\mu_g + q_0^{i+1}=q_0^2-(q_0+1) + q_0^{i+1} < 2q_0^{i+1},\]
 since $i \geq 1$. There is only two ways to decompose $\mu_g + q_0^{i+1}$ in $V^s+q_0^iV^s$ , the first one being the trivial one, \emph{i.e.}
