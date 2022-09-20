@@ -112,12 +112,13 @@ In this section, we briefly introduce some notation and basic definitions for li
 \jade{If the code $\calC$ has parameters $\left[n,k \right]$, then its dual $\calC^{\perp}$ is an $[n,n-k]$ linear code.}
 
 \TODO{some sentences needed...}
+}
 
-\color{black}{
 \subsection{Schur product}
 
 %\TODO{Définition de $\star$}
 \mathieu{appelle-on ça Shur product, star-product, component-wise product ?}
+{\color{brown}
 \begin{def1}
 The Shur product of two vectors $\mathbf{a}$,$\mathbf{b} \in \fqm^n$ is defined as 
 \[ \mathbf{a} \star \mathbf{b} := (a_1b_1,\cdots,a_nb_n). \]
@@ -130,18 +131,18 @@ If $\calC = \calD$, we call $\calC^{\star 2} := \calC \star \calC$ the square of
 
 The following Lemma gives known bounds on the dimension of Shur products of codes.
 
-	\begin{lem1} \label{lem:known_bounds}
-		Let $\calC$ and $\calD$ be two linear codes over $\fqm$ with same length $n$ and respective dimension $k_{\calC}$ and $k_{\calD}$. We have
-		\begin{itemize}
-
-			\item[$(2)$] $\dim_{\fqm}(\calC \star \calD) \leq \min\{k_{\calC}k_{\calD},n\}$;
-			\item[$(3)$] If $\calC$ is suffisciently random, we have
-			\[ \dim_{\mathbb{F}_{q^m}}(\calC^{\star2}) \leq \mathrm{min}\left(n,\binom{k_{\calC}+1}{2}\right) . \]
-			Espescially, if $\calC^{\star2}$ does not fill the full space, we expect to have 
-			\[ \dim_{\mathbb{F}_{q^m}}(\calC^{\star2}) = \binom{k_{\calC}+1}{2}.\]
-		\end{itemize}
-	\end{lem1}
+\begin{lem1} \label{lem:known_bounds}
+Let $\calC$ and $\calD$ be two linear codes over $\fqm$ with same length $n$ and respective dimension $k_{\calC}$ and $k_{\calD}$. We have
+\begin{itemize}
+	\item[$(2)$] $\dim_{\fqm}(\calC \star \calD) \leq \min\{k_{\calC}k_{\calD},n\}$;
+	\item[$(3)$] If $\calC$ is suffisciently random, we have
+\[ \dim_{\mathbb{F}_{q^m}}(\calC^{\star2}) \leq \mathrm{min}\left(n,\binom{k_{\calC}+1}{2}\right) . \]
+Espescially, if $\calC^{\star2}$ does not fill the full space, we expect to have 
+	\[ \dim_{\mathbb{F}_{q^m}}(\calC^{\star2}) = \binom{k_{\calC}+1}{2}.\]
+	\end{itemize}
+\end{lem1}
 }
+
 
 \subsection{Subfield subcodes and trace codes}
 
@@ -171,7 +172,7 @@ For a vector $\mathbf{c} \in \fqm^n$, $\Tr{\mathbf{c}}= (\Tr{c_1},\cdots,\Tr{c_n
 \dim_{\mathbb{F}_q} \Tr{\calC} \leq \min\{m\dim_{\fqm} \calC,n\}.
 \end{equation}
 
-\begin{thm}[Delsarte] \label{th:delsarte} \TODO{ref}
+\begin{thm}[Delsarte's theorem \cite{Del75}] \label{th:delsarte}
 Let $\calC$ be a linear code over $\fqm$. Then
 \[\left(\calC \cap \fq^n\right) = \Tr{\calC^{\perp}}.\]
 \end{thm}
@@ -180,6 +181,8 @@ Let $\calC$ be a linear code over $\fqm$. Then
 \mathieu{
 \subsection{First estimation of the square of the trace of a code}}
 
+{\color{brown}
+The purpose of this paper is to show if an \textrm{SSAG} code, considered as the public key of a McEliece's cryptosystem, is vulnerable to the same kind of distinguisher found by \cite{rocco} in the case of alternant and Goppa codes. As starting point, we use the following theorem valid in general settings.
 
 
 \begin{thm}[\cite{rocco} Proposition 15] \label{th:Tr_BoundSchurSquare}
@@ -188,7 +191,7 @@ Let $\calC$ be a linear code over $\fqm$. Then we have
 		where $C^{\perp}$ is the dual code of $C$. \\
 		Moreover, if $m$ is even (which is the case in our settings), we have 
 		\[\dim_{\mathbb{F}_q}\Tr{ C \star C^{q^{m/2}}} \leq \frac{m}{2}\cdot \left(\dim_{\fqm}(C)\right)^2.\]
-	\end{thm}
+\end{thm}
 
 From this theorem, we can deduce a first bound of the dimension of the Shur product of the square of any linear code, also given in \cite{rocco}.
 
@@ -201,29 +204,30 @@ Furthermore, if $\dim_{\fq} \Tr(\calC) = m \cdot \dim_{\fqm}(\calC)$, then
 \[\dim_{\fq} \Tr{\calC}^{\star2} - \binom{\dim_{\fq} \Tr{\calC}+1}{2} \leq m \cdot \dim_{\fqm} \calC^{\star 2} - \binom{\dim_{\fqm} (\calC)+1}{2}.\]
 \end{coro1}
 
-\mathieu{ A DEPLACER EN SECTION 3.1 ? :
+ {\color{red}A DEPLACER EN SECTION 3.1 AVANT DE L'APPLIQUER A NOTRE CAS? } 
+ 
 The above Corollary implies that if the dimension of a square code is smaller than we expect from a random code, namely
 \[ \dim_{\fqm} (\calC^{\star 2}) < \binom{\dim_{\fqm} (\calC)+1}{2},\]
 then this property survives for the trace code, \emph{\textit{i.e.}}
 \[\dim_{\fq} (\Tr{\calC}^{\star 2}) < \binom{\dim_{\fq} \Tr{\calC}+1}{2}.\]
-Latter on, we will see that it is the case for AG-codes.}
+Latter on, we will see that it is the case for AG-codes.
+}
 
 
 
 %\section{\textcolor{blue}{Preliminaries}}
 \section{SSAG codes Distinguisher}
 AG codes
-}
+
 \subsection{Hermitian codes and their subfield subcodes}
 
-The goal of this note is an adaptation of a distinguisher for alternant and Goppa codes (see \cite{rocco}) in the case of SSAG-Hermitian one-point code, whose divisor is either a multiple of $P_{\infty}$ or a multiple of a degree 3 place. \\
-We work on the finite field $\mathbb{F}_{q^m}=\mathbb{F}_{q_0^2}$, were $q$ is a prime power. We denote by $\calH = \mathbb{F}_{q_0^2}(x,y)$ the Hermitian function field, defined by 
-\[ y^{q_0}+y=x^{q_0+1}.\]
+%The goal of this note is an adaptation of a distinguisher for alternant and Goppa codes (see \cite{rocco}) in the case of SSAG-Hermitian one-point code, whose divisor is either a multiple of $P_{\infty}$ or a multiple of a degree 3 place. \\
+%We work on the finite field $\mathbb{F}_{q^m}=\mathbb{F}_{q_0^2}$, were $q$ is a prime power. We denote by $\calH = \mathbb{F}_{q_0^2}(x,y)$ the Hermitian function field, defined by 
+%\[ y^{q_0}+y=x^{q_0+1}.\]
 
 \textcolor{blue}{The goal of this work is to adapt the distinguisher given in \cite{rocco} of alternant and Goppa codes for the subfield subcodes of $1-$point Hermitian code, whose divisor is a multiple of $P_{\infty}$. (Hermitian code definition should be given in the previous subsection) To ensure consistency in our notation, we do the following conventions. Let $\mathbb{F}_{q^m}=\mathbb{F}_{q_0^2}$, where $q$ is a prime power. We denote by $\calH = \mathbb{F}_{q_0^2}(x,y)$ the Hermitian function field, defined by 
-	\[ y^{q_0}+y=x^{q_0+1}.\] }
-
-\mathieu{(Throughout this paper) Let $\mathcal{C} := C_{\calL}(\calH,\mathcal{P},D)$ be an AG-code defined over $\calH$, where $D=sP_{\infty}$. To establish a disinguisher, we start to addapt Corollary \ref{coro:first_bound_square_of_trace} in the case of our AG-code, leading to 
+	\[ y^{q_0}+y=x^{q_0+1}.\] }-
+\mathieu{Let $\mathcal{C} := C_{\calL}(\calH,\mathcal{P},D)$ be an AG-code defined over $\calH$, where $D=sP_{\infty}$. To establish a disinguisher, we start to addapt Corollary \ref{coro:first_bound_square_of_trace} in the case of our AG-code, leading to 
 \begin{equation} \label{eq:first_bound_ssag}
     \dim_{\fq}\Tr{\calC}^{\star2} \leq m \cdot \dim_{\fqm}(\calC^{\star 2}) + \binom{m}{2} (\dim_{\fqm}(\calC))^2.
 \end{equation}
@@ -232,7 +236,7 @@ where $D^{\perp}$ is the dual divisor of D, which can be explicitly described us
 
 \jade{Blablabla: On veut voir si le dual reiste au square distinguisher donc on est amené à regarder des carrés de codes AG....}
 
-It is well-known that Lemma \ref{lem:known_bounds} above does not hold if $\calC$ has too much structure, which is the case for Reed-Solomon codes and more generally for AG-codes.
+It is well-known that Lemma \ref{lem:known_bounds} does not hold if $\calC$ has too much structure, which is the case for Reed-Solomon codes and more generally for AG-codes, has it is implied by the following proposition.
 
 \begin{prop1}[\cite{mumford}, Theorem 6] \label{prop:mumford_result}
 Let $F,G$ be two divisors in $\calH$ such that $\deg(G) \geq 2g(\calH)+1$ and $\deg(F) \geq 2g(\calH)$, where $g(\calH)$ is the genus of $\calH$. Then
@@ -277,14 +281,14 @@ which is equivalent to the equality of Riemann-Roch spaces
 In fact, if \eqref{equality_of_codes} holds, thus since 
 $\calC^{q^i+1} \subseteq \calC^{q^{i+1}+1}$ is true for every integer $i$, the sequence of inclusions 
 \[\calC\star\calC \subseteq \calC\star\calC^{q} \subseteq \cdots \subseteq \calC\star\calC^{q^f}\]
-also holds (with traces as well), and can be used to refine the estimation of the dimension of $\Tr(\calC)^{\star2}$ by rewriting Theorem \ref{th:Trace_shur_square_AG} as follows:
+also holds (with traces as well), and can be used to improve the estimation of the dimension of $\Tr{\calC^{\star2}}$ by rewriting Theorem \ref{th:Tr_BoundSchurSquare} as follows:
 
 \begin{equation}\label{eq:dim_tr_inclusion}
 	\Tr{\calC}^{\star2}:=\Tr{\mathcal{C} \star \mathcal{C}^{q^f}} + \sum_{i= f+1}^{\frac{m}{2}} \Tr{\mathcal{C} \star \mathcal{C}^{q^i}}.
 \end{equation}
-In what follows, we will study \eqref{equality_of_codes}, starting by noting: 
+In what follows, we will study \eqref{equality_of_codes}, starting by an obvious lemma: 
 
-\begin{lem1} \label{lemma1}
+\begin{lem1} \label{lem:ovious_inclusion_RR_spaces}
 For every integer $i \geq 0$, we have
 \[\calL(D) \cdot \calL(D)^{q^i} \subseteq \calL((q^i+1)D)\]
 \end{lem1}
@@ -292,11 +296,11 @@ For every integer $i \geq 0$, we have
 It remains to show in which conditions (on the degree of $D$ and the integer $i$), the reverse inclusion is also true. To study this, we specify the divisor $D$ as a multiple of the point at infinity or a degree 3 place, as these divisors give the most usable SSAG-codes. Section 2 is dedicated to the classical one-point Hermitian code whereas section 3 deals with degree 3 places.
 
 
-\section{The case $D=sP_{\infty}$}
+\section{The case $D=sP_{\infty}$ \mathieu{(le seul en fait !)}}
 
-In this section, we fix $D=sP_{\infty}$, where $s=\deg(D)$. Note that in this case of a one-point Hermitian codes, the dual divisor $D^{\perp}$ has been explicitly described in \cite{sabi}, Theorem 3.2. In particular, if we set $s' := q_0^3+q_0^2-q_0-2-s$, then $D^{\perp} = s'P_{\infty}$. This fact is really important since in the end, we want to deal with \textrm{SSAG}-codes, and the one of interest in Theorem \ref{th:Trace_shur_square_AG} is 
+In this section, we fix $D=sP_{\infty}$, where $s=\deg(D)$. Note that in this case of a one-point Hermitian codes, the dual divisor $D^{\perp}$ has been explicitly described in \cite{sabi}, Theorem 3.2. In particular, if we set $s' := q_0^3+q_0^2-q_0-2-s$, then $D^{\perp} = s'P_{\infty}$. This fact is really important since in the end, we want to deal with \textrm{SSAG}-codes, and the one of interest in Theorem \ref{th:Tr_BoundSchurSquare} is 
 \[\mathrm{SSAG}_{q}(\calH,\calP,D^{\perp}),\]
-i.e. we will have a result on the dimension of the square of its dual. We will come back at it later, but for the moment we will focus on finding a conditions to have equality on the inclusion in Lemma \ref{lemma1}. 
+i.e. we will have a result on the dimension of the square of its dual. We will come back at it later, but for the moment we will focus on finding a conditions to have equality on the inclusion in Lemma \ref{lem:ovious_inclusion_RR_spaces}. 
 
 \noindent It is well-knonw from the study of the Hermitian curve that
 \begin{equation} \label{rr_p_inf}
@@ -339,7 +343,7 @@ we are led to find a condition such that
 holds. Again, the natural inclusion on the corresponding Riemann-Roch spaces implies that  $V^s+q^iV^s \subseteq A^s_i$ is always true, \emph{i.e.} we only have to find a condtion to guaranty the reverse inclusion. \\
 In fact, we start to proof a characterization of this in the case where we take powers of $q_0$ instead of $q$. It will be used later to get back to the case of interest.
 
-\begin{prop1} \label{result_with_valuations}
+\begin{prop1} \label{prop:result_with_valuations_case_q0}
 Let $i > 0$. We have 
 \[s \geq \mu_g + q_0^{i+1} \iff A^s_{i,q_0} := \calH(P_{\infty})_{\leq s(q_0^i+1)} = V^s+q_0^iV^s,\]
  where $\mu_g := 2g-1$ is the largest gap of $P_{\infty}$. In this case, we have 
@@ -352,8 +356,8 @@ We start by proving $(\Leftarrow)$, supposing by contraposition that $s < \mu_g 
 since $i \geq 1$. There is only two ways to decompose $\mu_g + q_0^{i+1}$ in $V^s+q_0^iV^s$ , the first one being the trivial one, \emph{i.e.}
 \[\mu_g + q_0q_0^{i} \notin V^s+q_0^iV^s,\]
 which doesn't work because $\mu_g \notin V^s$ since it is a gap. Remark that we can not decrease the $q_0^iV^s$ part without getting a gap, since $q_0 = \min{V^s}$. It means that we have to decrease it, by writting 
-\[\mu_g + q_0^{i+1} = (\mu_g - q_0^i) + \underbrace{q_0^i(q_0+1)}_{\in q^i_0V^s} .\]
-Here, we have $\mu_g - q_0^i = q_0^2-(q_0+1)-q_0^i <0 \notin V^s$, unless eventually $i=1$. But in the latter case, we easyly see that $\mu_g-q_0 = \mu_{g-1}$ is the $g-1$-th gap of $P_{\infty}$, and thus not in $V^s$. This proves that $\mu_g + q_0^{i+1} \notin V+q_0^iV$, and thus $(\Rightarrow)$. \\
+\[\mu_g + q_0^{i+1} = (\mu_g - q_0^i) + \underbrace{q_0^i(q_0+1)}_{\in q^i_0V^s}.\]
+Here, we have $\mu_g - q_0^i = q_0^2-(q_0+1)-q_0^i <0 \notin V^s$, unless eventually $i=1$. But in the latter case, we easyly see that $\mu_g-q_0 = \mu_{g-1}$ is the $g-1$-th gap of $P_{\infty}$, and thus not in $V^s$. This proves that $\mu_g + q_0^{i+1} \notin V+q_0^iV$, and thus $(\Rightarrow)$. 
 
 In order to prove $(\Rightarrow)$, suppose $s \geq \mu_g+q_0^{i+1}$ and we show that $A^s_{i,q_0} \subseteq V^s+q_0^iV^s$. For that, let $a \in A^s_{i,q_0}$. There are a few cases to consider:
 \begin{enumerate}
@@ -403,13 +407,13 @@ From now on, the equality on codes follows immediatly.
 \end{proof}
 
 
-Note that we proved the result only for powers of $q_0$ and not on all powers of $q$, which is supposed to be the integers of interest in Theorem \ref{th:Trace_shur_square_AG}. More especially, the result above is only interesting in the case $i=1$ here, since the sum on the right hand-side of Theorem \ref{th:Trace_shur_square_AG} runs from the power $q^0$ to $q^{\frac{m}{2} }:=q_0$. \\
+Note that we proved the result only for powers of $q_0$ and not on all powers of $q$, which is supposed to be the integers of interest in Theorem \ref{th:Tr_BoundSchurSquare}. More especially, the result above is only interesting in the case $i=1$ here, since the sum on the right hand-side of Theorem \ref{th:Tr_BoundSchurSquare} runs from the power $q^0$ to $q^{\frac{m}{2} }:=q_0$. \\
 The next result deals with the power of $q$'s up to $\frac{m}{2}$. Before stating it, remark that 
 \[ A_{i,q_0}^s = A^s_{im/2,q},\]
 and that we already proved
 \[ s \geq q_0^2 \iff A^s_{m/2,q}=V^s+q^{m/2}V^s.\]
 
-\begin{prop1} \label{powers_of_q's_case}
+\begin{prop1} \label{prop:powers_of_q's_case}
 Let $0 < k < \frac{m}{2}$. We have
 \[ s \geq \mu_g+q^k \Rightarrow A^s_{k,q} = V^s+q^kV^s.\]
 In this case, we have 
@@ -431,7 +435,7 @@ Suppose $A^s_{k,q} = V^s+q^kV^s$ for some $s \geq \mu_g+q^k$. First note that si
     \item[$\star$] Finally, if $s(q^k+1) < a \leq (s+1)(q^k+1)$, we can write $a = (s+1)q^k + \alpha$ with
     $s-q^k < \alpha \leq s+1$. Then $\alpha \in V^{s+1}$, and we have a valid decomposition for $a \in V^{s+1}+q^kV^{s+1}$.
     
-    \jade{$\uparrow$ j'ai raccourci}
+    \jade{$\uparrow$ j'ai raccourci} \mathieu{OK !}
     
 %    then there exists $\alpha \in \{1,...,q^k+1\}$ such that $a=s(q^k+1)+\alpha$. We then can write 
 %    \begin{equation} \label{deco}
@@ -441,7 +445,7 @@ Suppose $A^s_{k,q} = V^s+q^kV^s$ for some $s \geq \mu_g+q^k$. First note that si
 \end{itemize}
 \end{proof}
 
-Now we only have to prove Proposition \ref{powers_of_q's_case} in the case $s=\mu_g+q^k$ for some $0 < k < \frac{m}{2}$. In this case, finding a valid decomposition of each element of $A^s_{i,q}$ in $V^s+q^kV^s$ is intricate. We shall directly proves the equality of spaces 
+Now we only have to prove Proposition \ref{prop:powers_of_q's_case} in the case $s=\mu_g+q^k$ for some $0 < k < \frac{m}{2}$. In this case, finding a valid decomposition of each element of $A^s_{i,q}$ in $V^s+q^kV^s$ is intricate. We shall directly proves the equality of spaces 
 \[\calL(sP_{\infty}) \cdot \calL(sP_{\infty})^{q^k} =\calL((q^k+1)sP_{\infty}).\]
 We will benefit from the explicit bases of these Riemann--Roch spaces to write any basis element of $\calL((q^k+1)sP_{\infty})$ as a product $fg^{q^k}$ with $f, \: g \in \calL(sP_{\infty})$.
 \begin{prop1} \label{prop_avec_dessins}
@@ -518,13 +522,13 @@ and $\Delta'$ those in the non--convex polygon $(TU'W'X'V)$ (see Figure \ref{fig
 %You can find the shape of theses sets in \modifier{Figures \ref{fig_case_2k<m/2} and \ref{fig_case_2k>=m/2} }below.\textbf{}
 
 \vspace*{0.3cm}
-\begin{figure}[h] 
+\begin{figure}[ht] 
 	\centering
 	\scalebox{0.9}{
 	\input{fig_2k_sup_m_sur_2}}
 	\caption{Case $2k \geq \frac{m}{2}$} \label{fig_case_2k>=m/2}
 \end{figure}
-\begin{figure}[h] 
+\begin{figure}[ht] 
 	\centering
 	\scalebox{0.9}{
 	\input{fig_2k_inf_m_sur_2}}
@@ -565,7 +569,7 @@ and $\Delta'$ those in the non--convex polygon $(TU'W'X'V)$ (see Figure \ref{fig
 
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \input{fig_2k_sup_m_sur_2_i_petit}
 \caption{Example with $2k \geq \frac{m}{2}$ and $i \leq (q_0-1)q^k$} \label{ex_in_rectangle}
@@ -579,6 +583,7 @@ and $\Delta'$ those in the non--convex polygon $(TU'W'X'V)$ (see Figure \ref{fig
  \Delta \subseteq \bigcup_{\delta=0}^{q^k-1} \calS^k_{(i_{\calS^k}-\delta,\delta)}.
  \end{equation}
 \modifier{See the Figure \ref{ex_in_triangle} to compare $\Delta$ and $\bigcup_{\delta=0}^{q^k-1} \calS^k_{(i_{\calS^k}-\delta,\delta)}$ on a example.}
+\mathieu{il reste des trucs à modifier sur la Figure 4?}
 
 By definition $\Delta = \calA^k \cap \left\{(i,j)\in \Z^2 \mid i \geq i_{\calS^k}q^k\right\}$ and $\calS^k_{(i_{\calS^k},0)}=q^k(i_{\calS^k},0)+\calS^k$.
 Therefore, to verify that $\calS^k_{(i_{\calS^k},0)} \subset \Delta$, it is enough to check that $\calS^k_{(i_{\calS^k},0)} \subset \calA^k$. This follows from the following inequality:
@@ -598,7 +603,7 @@ Then $\# \Delta \setminus  \calS^k_{(i_{\calS^k},0)}=q_0-q^k$. Besides, one can 
 
 
  
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 	\input{fig_2k_sup_m_sur_2_i_grand}
 \caption{Example with $2k \geq \frac{m}{2}$ and $i \geq (q_0-1)q^k$} \label{ex_in_triangle}
@@ -617,13 +622,12 @@ $\Delta \setminus  \calS^k_{(i_{\calS^k},0)}$ lies in some $\calS^k_{(i_{\calS^k
 
 In this case, $ \# \Gamma = \dfrac{q_0(q_0-1)}{2}+q^{2k}$, and thus $\# (\Gamma \backslash  \calS^k_{(q_0-1,0)}) = q^{2k}-q^k$. As in the previous case, we are able to determine these $q^{2k}-q^k$ points. These are the ones of the form
 \[ (i_{\calA^k}-\mu,\mu) \ , \ \mathrm{where} \ \mu \in \{q^k,\cdots,q^{2k}-1\},\]
-which lie on the path \jade{joining $U'$ and $V'$}. %
-%
+which lie on the path joining $U'$ and $V'$. 
 For every $\mu \in \{q^k,\cdots,q^{2k}-1\}$, we write $\mu = \mu_1 q^k + \mu_2 \ , \ \mathrm{with} \ \mu_1,\mu_2 < q^k$ and we claim  \[(i_{\calA^k}-\mu,\mu)=q^k(i_{\calS^k}-\mu_1,\mu_1)+(i_{\calS^k}-\mu_2,\mu_2) \in \calS^k_{i_{\calS^k}-\mu_1,\mu_1},\]
 which proves \eqref{eq:Delta'_Bigcup} and completes the proof.
 \mathieu{Figure \ref{ex_polygone} below show an example in this case.}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \begin{center}
 \begin{tikzpicture}[scale=0.4]
 	\def\qO{8};
@@ -709,8 +713,8 @@ which proves \eqref{eq:Delta'_Bigcup} and completes the proof.
 
 
 \begin{rq1} 
-	In the picture below, you can find a counter-example in the case $\calB^k \ne \calA^k$ if $s$ does not reach the bound given in Proposition \ref{prop_avec_dessins}. \jade{Here, with $s=\mu_g+q^k-1$, we can see that some monomials $x^iy^j \in \calL((q+1)sP_\infty)$ cannot be written as a product $x^{i_1+qi_2}y^{j_1+qj_2}$ for $(i_r,j_r) \in \calS_k$.}
-	\begin{figure}[h]
+In the picture below, you can find a counter-example in the case $\calB^k \ne \calA^k$ if $s$ does not reach the bound given in Proposition \ref{prop_avec_dessins}. \jade{Here, with $s=\mu_g+q^k-1$, we can see that some monomials $x^iy^j \in \calL((q+1)sP_\infty)$ cannot be written as a product $x^{i_1+qi_2}y^{j_1+qj_2}$ for $(i_r,j_r) \in \calS_k$.}
+	\begin{figure}[ht]
 		\begin{center}
 			\begin{tikzpicture}[scale=0.4]
 				\def\qO{4};
@@ -824,12 +828,12 @@ which proves \eqref{eq:Delta'_Bigcup} and completes the proof.
 
 
 \begin{rq1}
-The difference between Propositions \ref{result_with_valuations} and \ref{powers_of_q's_case} is that in the second case, we are only able to give a sufficient condition.
+The difference between Propositions \ref{prop:result_with_valuations_case_q0} and \ref{prop:powers_of_q's_case} is that in the second case, we are only able to give a sufficient condition.
 \end{rq1} 
 
 From this two results, we deduce:
 
-\begin{coro1} \label{coro2}
+\begin{coro1} \label{coro:_inclusion_code_SSAG_case}
 Let $\calC = C_{\calL}(\calH,\calP,sP_{\infty})$ be the AG-code on $\calH$ over $\mathbb{F}_{q^m}=\mathbb{F}_{q_0^2}$ associated to a support $\calP \subseteq\calH(\F_{q_0^2})\setminus \{P_{\infty}\}$ and to the one-point divisor $sP_{\infty}$. Denote by $g:=g(\calH)=\frac{q_0(q_0-1)}{2}$ and $\mu_g := q_0(q_0-1)-1$ the biggest gap number of $P_{\infty}$. 
 \begin{itemize}
     \item[(i)] If $s \geq \mu_g + q_0^2$, then we have 
@@ -844,13 +848,13 @@ Let $\calC = C_{\calL}(\calH,\calP,sP_{\infty})$ be the AG-code on $\calH$ over 
 \end{coro1}
 
 \begin{proof}
-$(i)$ is a consequence of Proposition \ref{result_with_valuations} in the case $i=1$ (note that the result also holds without the Trace operator), while $(ii)$ uses Proposition \ref{powers_of_q's_case} several times. In both cases, we get a result on $\Tr{\calC}^{\star 2}$ by using Theorem \ref{th:Trace_shur_square_AG}.
+$(i)$ is a consequence of Proposition \ref{prop:result_with_valuations_case_q0} in the case $i=1$ (note that the result also holds without the Trace operator), while $(ii)$ uses Proposition \ref{prop:powers_of_q's_case} several times. In both cases, we get a result on $\Tr{\calC}^{\star 2}$ by using Theorem \ref{th:Tr_BoundSchurSquare}.
 \end{proof}
 
 Using the above Corollary and Lemma \ref{lem:known_bounds}, we can prove the following theorem, that gives an upperbound on the dimension of the trace of the square of the dual of our one-point Hermitian SSAG-code which can be compared to the one given in Corollary \ref{square_ssag_bound}.
 
-\begin{thm} \label{sup_bounds_on_codes}
-We keep notations as in Corollary 2, and denote by $k$ the dimension of $\calC$ over $\fqm$.
+\begin{thm} \label{th:our_sup_bounds_on_codes}
+We keep notations as in Corollary \ref{coro:_inclusion_code_SSAG_case}, and denote by $k$ the dimension of $\calC$ over $\fqm$.
 \begin{itemize}
 \item[(i)] If $s \geq \mu_g + q_0^2$, then 
 \[   \dim_{\fq} \Tr{\calC}^{\star 2}  \leq \binom{mk+1}{2} - \dfrac{m}{2} (k(mk-1)-2q_0s).\]
@@ -861,7 +865,7 @@ We keep notations as in Corollary 2, and denote by $k$ the dimension of $\calC$ 
 
 \begin{proof}
 \begin{itemize}
-    \item[$(i)$] From Corollary 2 $(i)$, we have $\Tr{\calC}^{\star 2} \subseteq \Tr{\calC \star \calC^{q_0}}.$ Moreover, we proved in Proposition \ref{result_with_valuations} that under the hypothesis on $s$, we had
+    \item[$(i)$] From \ref{coro:_inclusion_code_SSAG_case} $(i)$, we have $\Tr{\calC}^{\star 2} \subseteq \Tr{\calC \star \calC^{q_0}}.$ Moreover, we proved in Proposition \ref{prop:result_with_valuations_case_q0} that under the hypothesis on $s$, we had
       \[ \calC \star \calC^{q_0} = \calC^{\star (q_0+1)} := C_{\calL}(\calH,\calP,(q_0+1)sP_{\infty}),\]
       which has dimension $(q_0+1)s + 1 - g(\calH)$ by the Riemann-Roch theorem. As a result, we can estimate
       \begin{align*}
@@ -871,7 +875,7 @@ We keep notations as in Corollary 2, and denote by $k$ the dimension of $\calC$ 
                                             & = \binom{mk+1}{2} + \dfrac{m}{2}(2k+2q_0s-k(mk+1)) \\
                                             &= \binom{mk+1}{2} - \dfrac{m}{2} (k(mk-1)-2q_0s).
       \end{align*}
-      \item[$(ii)$] Corollary 2 $(ii)$ together with Proposition \ref{powers_of_q's_case} gives 
+      \item[$(ii)$] \ref{coro:_inclusion_code_SSAG_case} $(ii)$ together with Proposition \ref{prop:powers_of_q's_case} gives 
        \[\Tr{\calC}^{\star 2} \subseteq \Tr{\calC \star \calC^{q^f}} + \sum\limits_{i=f+1}^{m/2} \Tr{\calC \star \calC^{q^i}}\]
        and 
         \[ \calC \star \calC^{q^f} = \calC^{q^f+1} := C_{\calL}(\calH,\calP,(q^f+1)sP_{\infty}).\]
@@ -886,7 +890,7 @@ We keep notations as in Corollary 2, and denote by $k$ the dimension of $\calC$ 
 \end{itemize}
 \end{proof}
 
-Note that, as explained at the beggining of this Section, Theorem \ref{sup_bounds_on_codes} above gives upperbounds on dimension of the square of the dual of the \textrm{SSAG}-code
+Note that, as explained at the beggining of this Section, Theorem \ref{th:our_sup_bounds_on_codes} above gives upperbounds on dimension of the square of the dual of the \textrm{SSAG}-code
 \[\mathrm{SSAG}_{q}(\calH,\calP,D^{\perp}),\]
 where $D^{\perp} = s' P_{\infty}$ and $s'= q_0^3+q_0^2-q_0-2-s$.
 
