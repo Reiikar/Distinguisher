@@ -74,12 +74,21 @@
 \begin{document}
 
 \maketitle
-{\color{blue}
+
 \section{Introduction}
+
+\TODO{reformuler/paraphraser ce qu'il y a là $\downarrow$}
+
+\jade{Ce que dit Alain à la fin de \cite{CMR17} :} 
+Assume Fq to be non prime and let F be a proper subfield of Fq and C := CL(X,P,E) inter Fn. The point is that C(2) and the 2-closure of C in general differs from CL(X,P,E). For this reason, subfield subcodes resist to this kind of attacks. Notice that even
+in genus zero: subfield subcodes of GRS codes still resist to filtration attacks unless for the cases presented in [5,10]. Moreover, similarly to the case of classical Goppa codes, some of these codes are known to have a good designed distance, see for instance [18,43,47] or [4] for another construction based on the Cartier operator. Therefore, these codes provide a good candidate for a secure generalisation of the original McEliece scheme based on classical Goppa codes.
+
+\jade{D'après Rocco \cite{rocco} :}However, the fact that the dual of a Goppa code is the trace of a generalized Reed-Solomon code rather than the subfield subcode of a generalized Reed-Solomon code seems to complicate significantly the attempts to turn this distinguisher into an attack. But again, having now a much better algebraic (and rigorous) explanation of why the distinguisher works, together with new
+algebraic results about products involved in the square of the dual of the Goppa code gives a much better understanding of the square code structure. This is clearly desirable and needed if we want to mount a key recovery attack based on these square code considerations. The hope is that this will ultimately lead to being able to attack McEliece schemes based on very high Goppa codes. As explained earlier, this will still not threaten the codes used in the aforementioned NIST competition, but this would break the 20 years old signature scheme [CFS01] that is based on very high rate Goppa codes.
 
 \section{Preliminaries}
 
-
+{\color{blue}
 \TODO{citations needed}
 
 In this section, we briefly introduce some notation and basic definitions for linear codes, subfield subcodes, and trace codes. Furthermore, we present significant results that employ component-wise product and trace map. Let $q$ be a prime power and $\mathbb{F}_q$ be a finite field with $q$ elements. Let $m$ is a positive integer. We denote by $\mathbb{F}_q^m$ a finite extension of $\mathbb{F}_q$ of degree $m$. \jade{C'est pas vraiment vrai $\rightarrow$}Throughout this paper, we will focus on linear codes defined over $\mathbb{F}_q^m$. 
@@ -130,7 +139,7 @@ The following Lemma gives known bounds linked to the Shur product of codes.
 \begin{def1}
 	Let $\calC$ be a $[n,k]$ linear code over $\mathbb{F}_{q^m}$. The subfield subcode $\calC_{\mid\mathbb{F}_{q}}$ of $\calC$ is defined by
 	\[
-	\calC_{\mid\mathbb{F}_q}=\calC \cap \mathbb{F}_q^m,
+	\calC_{\mid\mathbb{F}_q}=\calC \cap \mathbb{F}_q^n,
 	\]
 	
 	the set of all codewords in $\calC$ with components in $\mathbb{F}_q$.
