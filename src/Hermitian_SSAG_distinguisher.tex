@@ -503,12 +503,12 @@ You can find the shape of theses sets in \modifier{Figures \ref{fig_case_2k<m/2}
 \vspace*{0.3cm}
 \begin{figure}[h] 
 	\centering
-	\input{fig_2k_sup_m_sur_ 2}
+	\input{fig_2k_sup_m_sur_2}
 	\caption{Case $2k \geq \frac{m}{2}$} \label{fig_case_2k>=m/2}
 \end{figure}
 \begin{figure}[h] 
 	\centering
-	\input{fig_2k_inf_m_sur_ 2}
+	\input{fig_2k_inf_m_sur_2}
 	\caption{Case $2k < \frac{m}{2}$} \label{fig_case_2k<m/2}
 \end{figure}
 
@@ -537,119 +537,35 @@ Let us first focus on the case $2k \geq \frac{m}{2}$.
 
 \begin{itemize}
 \item To prove that $\Gamma \subset \calB^k$, we will fix an abscissa $i$ of a point in $\Gamma$ and we will show that all points $(i,0),\cdots,(i,q_0-1)$ belong to $\calB^k$. By definition of $\Gamma$, we have $i < i_{\calS^k}q^k=(q_0-1)q^k$. Let us write
-    \[i = \alpha q^k+\gamma \text{ with } \alpha <q_0 \text{ and } \gamma < q^k.\]
+    \[i = \alpha q^k+\gamma \text{ with } \alpha <q_0-1 \text{ and } \gamma < q^k.\]
    
-   	Set $j^*:=\max \{j \ | \ (\alpha,j) \in \calS^k\} = \left\lfloor \frac{s-\alpha q_0}{q_0+1}\right\rfloor$, we will show that  
+   	Set $j^*:=\max \{j \ | \ (\alpha,j) \in \calS^k\} = \left\lfloor \frac{s-\alpha q_0}{q_0+1}\right\rfloor$. \jade{j'ai justifié l'existence du min et réduit la fin:}It exists because $\alpha \leq q_0 -2$ and it is at least equal to $1$. We will show that the integral points on the vertical line of abscissa $i$ belongs to $B^k$, and more precicely that
     \[\left\{ (i,0),\cdots,(i,q_0-1) \right\} \subset \bigcup_{j=0}^{j^*} \calS^k_{(\alpha,j)}.\]
     Let $0 \leq j \leq j^*$. Then the point $(\alpha,j)$ belongs to $\calS^k$. Moreover for every $0 \leq r \leq q_0-2-\gamma$ the point $(i,jq^k+r)=q^k(\alpha,j)+(\gamma,r)$ lies in the set $\calS^k_{(\alpha,j)}$.
      
     Let us check that $\min \{y \mid (i,y) \in \calS^k_{(\alpha,j+1)} \} \leq \max \{y \mid (i,y) \in \calS^k_{(\alpha,j)}\}+1$, in which case we have
-    \[\left\{ (i,0),\cdots,(i,j^*q^k+q_0-2-\gamma) \right\} \subset \bigcup_{j=0}^{j^*} \calS^k_{(\alpha,j)}.\]    
+    
+    \begin{equation}\label{eq:ligne_verticale}\left\{ (i,0),\cdots,(i,j^*q^k+q_0-2-\gamma) \right\} \subset \bigcup_{j=0}^{j^*} \calS^k_{(\alpha,j)}.
+    \end{equation}
 	One can easily check that    
     \begin{align*}
     	\min \{y \mid (i,y) \in \calS^k_{(\alpha,j+1)} \} & =     (j+1)q^k, \\
     	\max \{y \mid (i,y) \in \calS^k_{(\alpha,j)}\} & = jq^k + (q_0-2-\gamma)
     \end{align*}
-	and we have the desired inequality, reached for $q^k=q=2$ and $q_0=4$. Now, it remains to prove that $j^*q^k+q_0-2-\gamma \geq q_0-1$. The minimal value of $j^*$ is attained when $\alpha = q_0-2$ is maximal. In this situation, we have 
-    \[j^* = \left\lfloor \dfrac{q_0+q^k-1}{q_0+1}\right\rfloor \geq 1,\]
-    and $q^k+q_0-2-\gamma \geq q_0-1$, since $\gamma < q^k$. 
+	and we have the desired inequality, reached for $q^k=q=2$ and $q_0=4$. As $j^* \geq 1$ and $\gamma < q^k$, the maximal ordinate $j^*q^k+q_0-2-\gamma$ in \eqref{eq:ligne_verticale} is larger than or equal to $q_0-1$, which concludes this part of the proof.
+	
+	
+	%Now, it remains to prove that $j^*q^k+q_0-2-\gamma \geq q_0-1$.    The minimal value of $j^*$ is attained when $\alpha = q_0-2$ is maximal. In this situation, we have 
+    %\[j^* = \left\lfloor \dfrac{q_0+q^k-1}{q_0+1}\right\rfloor \geq 1,\]
+    %and $q^k+q_0-2-\gamma \geq q_0-1$, since $\gamma < q^k$. 
     
-    \mathieu{Est-ce qu'on garde la Figure 3? j'ai décalé les petits triangles au max du bords droit du triangle.}
+    \mathieu{Est-ce qu'on garde la Figure 3? j'ai décalé les petits triangles au max du bords droit du triangle.} \jade{Oui, j'aime bien :)}
 
 
 
 \begin{figure}[h]
-\begin{center}
-\begin{tikzpicture}[scale=0.4]
-	\def\qO{9};
-	\def\q{3};
-	\def\iAk{32};
-	\def\largeur{\iAk+4}
-	\def\hauteur{\qO+2}
-\clip (-7,-3) rectangle (\largeur,\hauteur); % Clips the picture...
-\draw[style=help lines,dashed,opacity=0.3] (-5,-3) grid[step=1cm] (\largeur,\hauteur); % Draws a grid in the new coordinates.
-
-%Sommets des polygones
-%A^k
-\coordinate (A) at (\iAk,0) {};
-\coordinate (B) at (\iAk-\qO+1,\qO-1) {};
-\coordinate (C) at (0,\qO-1) {};
-%S^k
-\coordinate (D) at (\qO-1,0) {};
-\coordinate (E) at (\qO-3,2) {} ;
-\coordinate (F) at (\q+1,\q) {};
-\coordinate (G) at (0,\qO-2) {};
-
-
-%finir le rectangle
-\coordinate (H) at (\iAk-\qO,0) {};
-
-
-%Marqueurs sur l'axe vertical
-\draw[thick] (5pt,\q) -- (-5pt,\q) node[anchor=east] {$q^k$} ;
-%\draw[thick] (5pt,\qO-4) -- (-5pt,\qO-4) node[anchor=east] {$q^{2k}$} ;
-\draw[thick] (5pt,\qO-2) -- (-5pt,\qO-2) node[anchor=east] {$j_{\calS^k}=q_0-2$} ;
-
-
-%Marqueurs sur l'axe horizontal
-%\draw[thick,red] (\iAk-\qO+1,5pt) -- (\iAk-\qO+1,-5pt) node[anchor=north] {$i_{\calA^k}-(q_ 0-1)$} ;
-\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{\calA^k}$} ;
-\draw[thick] (\q,5pt) -- (\q,-5pt) node[anchor=north] {$q^k$} ;
-%\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{\calS^k}=q_0-1$} ;
-\draw[thick] (5*\q,5pt) -- (5*\q,-5pt) node[anchor=north] {$(q_0-4)q^k$} ;
-
-
-%Axes
-\draw [thick,-latex] (0,0) -- (0,\qO) node [above left] {$j$};
-\draw [thick,-latex] (0,0) -- (\iAk+1,0) node [below right] {$i$};
-
-%Points du rectangle
-\node[draw,circle,inner sep=1pt,fill,black,label=180:$O$] at (0,0) {};
-\node[draw,circle,inner sep=1pt,fill,black,label=170:$P$] at (0,8) {};
-\node[draw,circle,inner sep=1pt,fill,black,label=90:$Q$] at (23,8) {};
-\node[draw,circle,inner sep=1pt,fill,black,label=270:$R$] at (23,0) {};
-
-\draw[densely dotted,-latex] (23,8) -- (23,0);	
-
-%Formes
-\filldraw [ pattern color=red!10,
-pattern={Lines[
-	distance=2mm,
-	angle=45,
-	line width=0.3mm]},
-	draw=red] (0,0) -- (A) -- (B) -- (C) -- cycle;
-	
-% \filldraw [ pattern color=red!10,
-% pattern={Lines[
-% 	distance=2mm,
-% 	angle=45,
-% 	line width=0.3mm]},
-% 	draw=blue] (23,0) -- (23,8) -- cycle;	
-	
-	\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$\calA^k$};
-
-% \filldraw [ pattern color=black!20,
-% pattern={Lines[
-% 	distance=3mm,
-% 	angle=45,
-% 	line width=0.3mm]},
-% draw=black] (0,0) -- (D) -- (E) -- (F) -- (G)-- cycle;
-
-\foreach \coord in{(0,0),({\q*(\qO-2)},0),({\q*(\qO-2)},\q)} {
-\begin{scope}[every coordinate/.style={shift={\coord}}]
-	\filldraw [fill=black!30, fill opacity=0.5, draw=black] ([c]0,0) -- ([c]D) -- ([c]E) -- ([c]F) -- ([c]G)-- cycle;
-\end{scope}
-}
-
-	\node[yshift=0.7em] at ($(0,0)!0.5!(E)$) {$\calS^k$};
-	\node[yshift=0.7em] at ($(0,0)!0.5!(E)+({\q*(\qO-2)},0)$) {$\calS^k_{(q_0-2,0)}$};
-	\node[yshift=0.5em] at ($(0,0)!0.5!(E)+({\q*(\qO-2)},\q)$) {$\calS^k_{(q_0-2,1)}$};
-
-
-
-
-\end{tikzpicture} 
-\end{center}
+\centering
+\input{fig_2k_sup_m_sur_2_i_petit}
 \caption{Example with $2k \geq \frac{m}{2}$ and $i \leq (q_0-1)q^k$} \label{ex_in_rectangle}
 \end{figure}
 
@@ -682,78 +598,8 @@ Then $\Delta \setminus  \calS^k_{(i_{\calS^k},0)}$ consists precisely in these p
 \modifier{(see the Figure \ref{ex_in_triangle} to compare $\Delta$ and $\bigcup_{\delta=0}^{q^k-1} \calS^k_{(i_{\calS^k}-\delta,\delta)}$ on a example).}
  
 \begin{figure}[h]
-\begin{center}
-\begin{tikzpicture}[scale=0.4]
-	\def\qO{9};
-	\def\q{3};
-	\def\iAk{32};
-	\def\largeur{\iAk+4}
-	\def\hauteur{\qO+6}
-\clip (-7,-3) rectangle (\largeur,\hauteur); % Clips the picture...
-\draw[style=help lines,dashed,opacity=0.3] (-5,-3) grid[step=1cm] (\largeur,\hauteur); % Draws a grid in the new coordinates.
-
-%Sommets des polygones
-%A^k
-\coordinate (A) at (\iAk,0) {};
-\coordinate (B) at (\iAk-\qO+1,\qO-1) {};
-\coordinate (C) at (0,\qO-1) {};
-%S^k
-\coordinate (D) at (\qO-1,0) {};
-\coordinate (E) at (\qO-3,2) {} ;
-\coordinate (F) at (\q+1,\q) {};
-\coordinate (G) at (0,\qO-2) {};
-
-
-%finir le rectangle
-\coordinate (H) at (\iAk-\qO,0) {};
-
-
-%Marqueurs sur l'axe vertical
-\draw[thick] (5pt,\q) -- (-5pt,\q) node[anchor=east] {$q^k$} ;
-%\draw[thick] (5pt,\qO-4) -- (-5pt,\qO-4) node[anchor=east] {$q^{2k}$} ;
-\draw[thick] (5pt,\qO-2) -- (-5pt,\qO-2) node[anchor=east] {$j_{\calS^k}=q_0-2$} ;
-
-
-%Marqueurs sur l'axe horizontal
-%\draw[thick,red] (\iAk-\qO+1,5pt) -- (\iAk-\qO+1,-5pt) node[anchor=north] {$i_{\calA^k}-(q_ 0-1)$} ;
-\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{\calA^k}$} ;
-\draw[thick] (\q,5pt) -- (\q,-5pt) node[anchor=north] {$q^k$} ;
-%\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{\calS^k}=q_0-1$} ;
-
-%Points du triangle
-\node[draw,circle,inner sep=1pt,fill,black,label=270:$T$] at (24,0) {};
-\node[draw,circle,inner sep=1pt,fill,black,label=$U$] at (24,8) {};
-\node[draw,circle,inner sep=1pt,fill,black,label=$V$] at (32,0) {};
-
-
-
-
-%Axes
-\draw [thick,-latex] (0,0) -- (0,\qO) node [above left] {$j$};
-\draw [thick,-latex] (0,0) -- (\iAk+1,0) node [below right] {$i$};
-
-%Formes
-\filldraw [ pattern color=red!10,
-pattern={Lines[
-	distance=2mm,
-	angle=45,
-	line width=0.3mm]},
-	draw=red]  (0,0) -- (A) -- (B) -- (C) -- cycle;
-	
-\node[red,yshift=-1.5em] at ($(B)!0.5!(C)$) {$\calA^k$};	
-
-\foreach \coord in{(0,0),(\iAk-\qO+1,0),(\iAk-\qO+1-\q,\q),(\iAk-\qO+1-2*\q,2*\q)} {
-	\begin{scope}[every coordinate/.style={shift={\coord}}]
-		\filldraw [fill=black!30, fill opacity=0.5, draw=black] ([c]0,0) -- ([c]D) -- ([c]E) -- ([c]F) -- ([c]G)-- cycle;
-	\end{scope}
-}
-
-	\node[yshift=0.7em] at ($(0,0)!0.5!(E)$) {$\calS^k$};
-
-
- 
-\end{tikzpicture} 
-\end{center}
+\centering
+	\input{fig_2k_sup_m_sur_2_i_grand}
 \caption{Example with $2k \geq \frac{m}{2}$ and $i \geq (q_0-1)q^k$} \label{ex_in_triangle}
 
 \end{figure}
@@ -770,7 +616,7 @@ $\Delta \setminus  \calS^k_{(i_{\calS^k},0)}$ lies in some $\calS^k_{(i_{\calS^k
 
 To determine $\Delta \setminus  \calS^k_{(i_{\calS^k},0)}$, we compute 
 \[ \# \Gamma = \dfrac{q_0(q_0-1)}{2}+q^{2k} \quad \mathrm{and} \quad \# \calS^k_{(q_0-1,0)} = \dfrac{q_0(q_0-1)}{2}+q^{k},\]
-which gives $\# (\Gamma \backslash  \calS^k_{(q_0-1,0)}) = q^{2k}-q^k$. Again, those points are in the path joining $T'(i_{\calS^k}q^k-1,0)$, $U'(i_{\calS^k}q^k,j_{\calA^k})$, $V'(i_{\calA^k},0)$, $W'(i_{\calA^k}-(q^{2k}+1),q^{2k}+1)$ and $X'(i_{\calA^k}-(q^{2k}-1),q^{2k}-1)$. Amoung them, the ones of the form
+which gives $\# (\Gamma \backslash  \calS^k_{(q_0-1,0)}) = q^{2k}-q^k$. Again, those points are in the path joining $T'(i_{\calS^k}q^k-1,0)$, $U'(i_{\calS^k}q^k,j_{\calA^k})$, $V'(i_{\calA^k},0)$, $W'(i_{\calA^k}-(q^{2k}+1),q^{2k}+1)$ and $X'(i_{\calA^k}-(q^{2k}-1),q^{2k}-1)$. Among them, the ones of the form
 \[ (i_{\calA^k}-\mu,\mu) \ , \ \mathrm{where} \ \mu \in \{q^k,\cdots,q^{2k}-1\}\]
 cannot be in $\calS^k_{(i_{\calS^k},0)}$. Then $\Delta \setminus  \calS^k_{(i_{\calS^k},0)}$ consists precisely in these points.
 We write
@@ -940,6 +786,9 @@ which proves \eqref{eq:Delta'_Bigcup} and conclude the proof.
 		
 	\end{figure}
 \end{rq1}
+
+
+
 
 \newpage
 
