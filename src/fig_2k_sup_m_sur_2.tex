@@ -1,7 +1,7 @@
 \begin{tikzpicture}[scale=0.4]
 	\def\qO{9};
 	\def\q{3};
-	\def\iAk{32};
+	\pgfmathsetmacro\iAk{{(\qO-1)*(\q+1)}};
 	\def\largeur{\iAk+4}
 	\def\hauteur{\qO+2}
 	\clip (-7,-3) rectangle (\largeur,\hauteur); % Clips the picture...

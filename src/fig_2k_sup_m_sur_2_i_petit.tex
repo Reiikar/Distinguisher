@@ -46,8 +46,6 @@
 	
 	\filldraw [fill=black!30, fill opacity=0.5, draw=black] ([c]0,0) -- ([c]D) -- ([c]E) -- ([c]F) -- ([c]G)-- cycle;
 	
-	\node[yshift=0.7em] at ($(0,0)!0.5!(F)$) {$\calS^k$};
-	
 	%Marqueurs sur l'axe horizontal
 	%	\draw[thick,red] (\iAk-\qO+1,5pt) -- (\iAk-\qO+1,-5pt) node[anchor=north] {$i_{\calA^k}-(q_ 0-1)$} ;
 	\draw[thick,red] (\iAk,5pt) -- (\iAk,-5pt) node[anchor=north] {$i_{\calA^k}$} ;
@@ -78,7 +76,7 @@
 	
 	
 	\node[yshift=0.7em] at ($(0,0)!0.5!(E)$) {$\calS^k$};
-	\node[yshift=0.7em] at ($(0,0)!0.7!(E)+({\q*(\qO-2)},0)$) {$\calS^k_{(q_0-2,0)}$};
+	\node at ($(0,0)!0.7!(E)+({\q*(\qO-2)},0)$) {$\calS^k_{(q_0-2,0)}$};
 	\node[yshift=0.5em] at ($(0,0)!0.7!(E)+({\q*(\qO-2)},\q)$) {$\calS^k_{(q_0-2,1)}$};
 	
 	

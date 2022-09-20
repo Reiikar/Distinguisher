@@ -52,6 +52,11 @@
 	\draw[thick] (\q,5pt) -- (\q,-5pt) node[anchor=north] {$q^k$} ;
 	\draw[thick] (\qO-1,5pt) -- (\qO-1,-5pt) node[anchor=north] {$i_{\calS^k}=q_0-1$} ;
 	
+	\foreach \coord in{(0,0),(\iAk-\qO+1,0),(\iAk-\qO+1-\q,\q),(\iAk-\qO+1-2*\q,2*\q)} {
+	\begin{scope}[every coordinate/.style={shift={\coord}}]
+		\filldraw [fill=black!30, fill opacity=0.5, draw=black] ([c]0,0) -- ([c]D) -- ([c]E) -- ([c]F) -- ([c]G)-- cycle;
+	\end{scope}
+}
 	
 	
 	%Points
@@ -71,12 +76,7 @@
 
 
 	
-	\foreach \coord in{(0,0),(\iAk-\qO+1,0),(\iAk-\qO+1-\q,\q),(\iAk-\qO+1-2*\q,2*\q)} {
-		\begin{scope}[every coordinate/.style={shift={\coord}}]
-			\filldraw [fill=black!30, fill opacity=0.5, draw=black] ([c]0,0) -- ([c]D) -- ([c]E) -- ([c]F) -- ([c]G)-- cycle;
-		\end{scope}
-	}
-	
+
 
 \node[yshift=0.7em] at ($(0,0)!0.5!(E)$) {$\calS^k$};
 \node[yshift=0.5em] at ($(0,0)!0.6!(E)+({\q*(\qO-1)},0)$) {$\calS^k_{(i_{\calS^k},0)}$};
