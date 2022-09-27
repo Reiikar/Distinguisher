@@ -843,7 +843,7 @@ Let $\calC = C_{\calL}(\calH,\calP,sP_{\infty})$ be the AG-code on $\calH$ over 
         \[\Tr{\calC \star \calC} \subseteq \Tr{\calC \star \calC^q} \subseteq \cdots \subseteq \Tr{\calC \star \calC^{q_0}},\]
         and thus 
         \[\Tr{\calC}^{\star 2} \subseteq \Tr{\calC \star \calC^{q_0}}.\]
-    \item[(ii)] If $\mu_g < s < \mu_g +q_0^2$, denote by $f:= \max\set{k \in \{0,\cdots,\frac{m}{2}-1\} : s \geq \mu_g + q^k}$ \jade{$=\log_q\Floor{s-\mu_g}$ serait plus simple, non ?}. In this case, we have 
+    \item[(ii)] {\color{brown}If $\mu_g +q \leq s < \mu_g +q_0^2$, denote by $f:=\min\left\{\log_q\Floor{s-\mu_g},\frac{m}{2}-1\right\}$.} In this case, we have 
         \[\Tr{\calC \star \calC} \subseteq \Tr{\calC \star \calC^q} \subseteq \cdots \subseteq \Tr{\calC \star \calC^{q^f}},\]
           and then
         \[\Tr{\calC}^{\star 2} \subseteq \Tr{\calC \star \calC^{q^f}} + \sum\limits_{i=f+1}^{m/2} \Tr{\calC \star \calC^{q^i}}.\]
@@ -861,7 +861,7 @@ We keep notations as in Corollary \ref{coro:_inclusion_code_SSAG_case}, and deno
 \begin{itemize}
 \item[(i)] If $s \geq \mu_g + q_0^2$, then 
 \[   \dim_{\fq} \Tr{\calC}^{\star 2}  \leq \binom{mk+1}{2} - \dfrac{m}{2} (k(mk-1)-2q_0s).\]
-\item[(ii)] If $\mu_g < s < \mu_g +q_0^2$, recall that $f:= \max\{k \in \{0,\cdots,\frac{m}{2}-1\} : s \geq \mu_g + q^k\}$ \jade{idem}. Then 
+\item[(ii)] {\color{brown}If $\mu_g +q \leq s < \mu_g +q_0^2$, denote by $f:=\min\left\{\log_q\Floor{s-\mu_g},\frac{m}{2}-1\right\}$.} Then 
 \[   \dim_{\fq} \Tr{\calC}^{\star 2}  \leq \binom{mk+1}{2} - \dfrac{m}{2}(k(2fk-1)-2q^fs).\]
 \end{itemize}
 \end{thm}
@@ -869,11 +869,11 @@ We keep notations as in Corollary \ref{coro:_inclusion_code_SSAG_case}, and deno
 \begin{proof}
 \begin{itemize}
     \item[$(i)$] From \ref{coro:_inclusion_code_SSAG_case} $(i)$, we have $\Tr{\calC}^{\star 2} \subseteq \Tr{\calC \star \calC^{q_0}}.$ Moreover, we proved in Proposition \ref{prop:result_with_valuations_case_q0} that under the hypothesis on $s$, we had
-      \[ \calC \star \calC^{q_0} = \calC^{\star (q_0+1)} := C_{\calL}(\calH,\calP,(q_0+1)sP_{\infty}),\]
+      \[ \calC \star \calC^{q_0} = \calC^{(q_0+1)} := C_{\calL}(\calH,\calP,(q_0+1)sP_{\infty}),\]
       which has dimension $(q_0+1)s + 1 - g(\calH)$ by the Riemann-Roch theorem. As a result, we can estimate
       \begin{align*}
-           \dim_{\fq} \Tr{\calC}^{\star 2} &\leq \dim_{\fq} \Tr{\calC^{\star (q_0+1)}} \\
-                                            & = m((q_0+1)s + 1 - g(\calH)) \jade{\text{pk une égalité ici ?}}\\
+           \dim_{\fq} \Tr{\calC}^{\star 2} &\leq \dim_{\fq} \Tr{\calC^{(q_0+1)}} \\
+                                            & \leq m((q_0+1)s + 1 - g(\calH)) \\
                                             & = m (k+q_0 s) \\
                                             & = \binom{mk+1}{2} + \dfrac{m}{2}(2k+2q_0s-k(mk+1)) \\
                                             &= \binom{mk+1}{2} - \dfrac{m}{2} (k(mk-1)-2q_0s).
