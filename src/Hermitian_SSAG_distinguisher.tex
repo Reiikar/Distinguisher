@@ -57,6 +57,9 @@
 \newcommand{\set}[1]{\left\{#1\right\}}
 \newcommand{\Floor}[1]{\left\lfloor #1 \right\rfloor}
 \newcommand{\Span}[1]{\operatorname{Span}\left(#1\right)}
+\newcommand{\LT}[1]{\operatorname{LT}\left(#1\right)}
+\DeclareMathOperator{\Supp}{Supp}
+
 
 
 %%----Commentaires----%%%
@@ -898,6 +901,95 @@ where $D^{\perp} = s' P_{\infty}$ and $s'= q_0^3+q_0^2-q_0-2-s$.
 
 % \begin{coro1}
 % \end{coro1}
+
+\clearpage
+
+\jade{Je définis un Goppa-like SSAG.}
+
+Let $s$ be an integer such that $2g-1 \leq s$. Fix a function $g \in \calL((s+1)P_\infty) \setminus \calL(sP_\infty)$, \textit{i.e.} $v_{P_\infty}(g)=-s-1$. 
+Given a set of points  $\calP \subset \calH(\F_{q_0^2})$ such that $\calP \cap \Supp(g) = \varnothing$, we can consider the AG-code 
+\[C_{\calL}(\calH,\calP,sP_\infty+(g))=\set{\left(f(P)g(P)^{-1}\right)_{P \in \calP} \mid f \in \calL(sP_\infty)}.\]
+This code is monomially equivalent to $C_{\calL}(\calH,\calP,sP_\infty)$.
+
+
+Set $D=sP_\infty+(g)=(g)_0-P_\infty$. Since the divisor $D$ is not effective, the sequence of Riemann-Roch spaces $\left(\calL(nD)\right)_{n \geq 0}$ do not form an increasing sequence for the inclusion, contrary to the sequence $\left(\calL(nsP_\infty)\right)_{n\geq 0}$. More precisely, for $n<n'$ we have
+\[\calL(nD) \cap \calL(n'D) = \calL\left(n(g)_0-n'P_\infty\right).\]
+However, due to the canonical isomorphism between $L(D)$ and $L(sP_\infty)$, one can easily see that
+\[\calL(D)\cdot \calL(D)^{q^i} = \calL((q^i+1)D) \: \Leftrightarrow \: \calL(sP_\infty)\cdot \calL(sP_\infty)^{q^i} = \calL((q^i+1)sP_\infty).\]
+
+\jade{J'aimerais mimer le Lemma 24 \cite{rocco}. Pour ça, je vais avoir besoin de définir un ordre monomial pour définir une division bivariée.}
+
+Let us endow the ring $\F_{{q_0}^2}[x,y]$ with a monomial order as folllows: $x^iy^j \prec x^{i'}y^{j'}$ if
+
+\[ q_0i +(q_0+1)j < q_0i' +(q_0+1)j' \text{ or } \left(q_0i +(q_0+1)j = q_0i' +(q_0+1)j' \text{ and } i < i'\right),\]
+which can be rephrased as 
+
+\[ v_{P_\infty}\left(x^iy^j\right) > v_{P_\infty}\left(x^{i'}y^{j'}\right) \text{ or } \left(v_{P_\infty}\left(x^iy^j\right) = v_{P_\infty}\left(x^{i'}y^{j'}\right) \text{ and } i < i'\right).\]
+
+\TODO{Donner une raison rapide pour laquelle c'est un ordre monomial. Est-ce compatible avec le quotient par l'équation de la courbe ?}
+
+Performing the division by powers of $g$ regarding this monomial order, we can rewrite Lemma 24 \cite{rocco} in our framework.
+
+Note that in a normalized basis as in \eqref{rr_p_inf}, where every power of $y$ is less than $q_0$, all the basis elements have distinct valuations at $P_\infty$.
+
+
+Write $g$ in the basis as in \eqref{rr_p_inf}. Then writing the euclidean division of $s+1$ by $q_0$, we have $s+1=\alpha q_0 +\beta$ with $\beta \leq q_0-1$. Then $\LT{g}=x^{\alpha-\beta}y^\beta$.
+
+For $0\leq i \leq \frac{m}{2}$, we set
+\begin{align*}
+	\calL_0(s)&=\calL\left((2s+1)P_\infty\right),\\
+	\calL_i(s)&=\calL\left(((s+1)(q^i-q^{i-1}+1)-1)P_\infty\right) \text{ for } i > 0.
+\end{align*}
+
+
+
+Let $f \in \F_{q_0^2}(\calH)$. We want to perform the division of $f$ by $g^{q^i-q^{i-1}+1}$ with respect to the order $\prec$. Before doing so, we normalize $f$ and $g^{q^i-q^{i-1}+1}$ by enforcing every power of $y$ to be less than $q_0$.
+	
+Write $f$ as a bivariate polynomial in the functions $x$ and $y$, we can write
+	 \[f=f_1 g^{q^i-q^{i-1}+1} +f_2\]
+	 with $\LT{f_2} \prec \LT{g^{q^i-q^{i-1}+1}}$. Moreover, if $f_1 \neq 0$, then $\LT{f_1 g^{q^i-q^{i-1}+1}} \preceq \LT{f}$.
+	The condition on the remainder means that $f_2 \in \calL_i(s)$ or $v_{P_\infty}(f_2) = - (s+1)(q^i-q^{i-1}+1)$ and $\LT{f_2}\neq \LT{g^{q^i-q^{i-1}+1}}$, which can only be possible if the exponent $y$ in $\LT{f_2}$ is larger than $q_0-1$. By renormalizing $f_2$, we can find a remainder in $\calL_i(s)$. \jade{je vais sans doute un peu vite mais on y croit fort. :finger-crossed:} 
+	
+	The condition on the quotient $f_1$ means that if $f_1 \neq 0$, then 
+\[	-v_{P_\infty}(f_1) \leq - \left(v_{P_\infty}(f)- (s+1)(q^i-q^{i-1}+1)\right).\]
+Therefore
+\[\Tr{\frac{f}{g^{q^i+1}}}=\Tr{\frac{f_1 g^{q^i-q^{i-1}+1}}{g^{q^i+1}}} +\Tr{\frac{f_2}{g^{q^i+1}}}= \Tr{\frac{f_1^qg}{g^{q^i+1}}} +\Tr{\frac{f_2}{g^{q^i+1}}}. \]
+The second term belongs to $\Tr{g^{-(q^i+1)}\cdot \calL_i(s)}$.
+
+Moreover
+\[-v_{P_\infty}(f_1^qg) = -q\cdot v_{P_\infty}(f_1) - (s+1) \leq -q\cdot v_{P_\infty}(f) + (s+1)(q-1)(q^i+1) ,\]
+then 
+\[-v_{P_\infty}(f) < (s+1)(q^i+1) \: \Rightarrow \: -v_{P_\infty}(f_1^qg) < -v_{P_\infty}(f).\]
+
+
+As $(q^i+1)s \geq (s+1)(q^i-q^{i-1}+1)-1$, we have $\calL_i(s) \subset \calL((q^i+1)qP_\infty)$ hence
+\[ 
+\Tr{g^{-(q^i+1)}\cdot \calL_i(s)} \subseteq \calL((q^i+1)D). 
+\]
+
+Conversely, using the result above as in \cite{rocco}, we can deduce that 
+
+\[
+\Tr{\calL((q^i+1)D)} \subseteq \Tr{g^{-(q^i+1)}\cdot \calL_i(s)},
+\]
+which proves that $\Tr{\calL((q^i+1)D)} \subseteq \Tr{g^{-(q^i+1)}\cdot \calL_i(s)}$ \jade{ce qui donne une meilleure borne sur la dimension de ce machin.}.
+Moreover
+\[
+\Tr{g^{-(q^i+1)}\cdot \calL_i(s)} \subset \Tr{g^{-(q^{i+1}+1)}\cdot \calL_{i+1}(s)}.
+\]
+
+\jade{D'accord, mais ça donne quoi ?}
+With $\calC=C_{\calL}(\calH,\calP,sP_\infty+(g))$,
+\begin{align*}
+	\Tr{\calC}^{\star 2}&= \Tr{\calC \star \calC^{q^f}} + \sum\limits_{i=f+1}^{m/2} \Tr{\calC \star \calC^{q^i}} \\
+						&=	\Tr{g^{-(q^f+1)}\cdot \calL_i(s)} + \sum\limits_{i=f+1}^{m/2} \Tr{\calC \star \calC^{q^i}} 
+\end{align*}
+\jade{... et alors ? }
+
+
+
+
+
 
 \clearpage
 \bibliography{biblio}
