@@ -48,6 +48,7 @@
 \newcommand{\calL}{\mathcal{L}}
 \newcommand{\calC}{\mathcal{C}}
 \newcommand{\calD}{\mathcal{D}}
+\newcommand{\calT}{\mathcal{T}}
 \newcommand{\fqm}{\mathbb{F}_{q^m}}
 \newcommand{\fq}{\mathbb{F}_{q}}
 \newcommand{\F}{\mathbb{F}}
@@ -512,11 +513,11 @@ Regarding the shape of the set $\calA^k$ in the plane, two cases can be distingu
  and $\Delta$ those in the triangle of vertices $T(i_{\calS^k}q^k,0)$, $U(i_{\calS^k}q^k,j_{\calA^k})$ and $V(i_{\calA^k},0)$ (see Figure \ref{fig_case_2k>=m/2}). 
 	\item If $2k < \frac{m}{2}$, $\calA^k= \Gamma' \sqcup \Delta'$ where $\Gamma'$ is the set of points in the rectangle $(OPQ'R')$ with
 	\begin{align*}
-	Q'(i_{\calS^k}q^k,j_{\calA^k})&& \text{ and }&& R'(i_{\calS^k}q^k,0)&
+	Q'(i_{\calS^k}q^k-1,j_{\calA^k})&& \text{ and }&& R'(i_{\calS^k}q^k-1,0)&
 	\end{align*}
 and $\Delta'$ those in the non--convex polygon $(TU'W'X'V)$ (see Figure \ref{fig_case_2k<m/2}) where  
 	\begin{align*}
-	&T'(i_{\calS^k}q^k-1,0),&& U'(i_{\calS^k}q^k,j_{\calA^k}\jade{-1?}),&&W'(i_{\calA^k}-q^{2k}-1,q^{2k}+1)&& \text{ and } &&X'(i_{\calA^k}-q^{2k}+1,q^{2k}-1).
+	&T'(i_{\calS^k}q^k,0),&& U'(i_{\calS^k}q^k,j_{\calA^k}-1),&&W'(i_{\calA^k}-q^{2k}-1,q^{2k}+1)&& \text{ and } &&X'(i_{\calA^k}-q^{2k}+1,q^{2k}-1).
 \end{align*}
 
  
@@ -940,7 +941,7 @@ For $0\leq i \leq \frac{m}{2}$, we set
 	\calL_0(s)&=\calL\left((2s+1)P_\infty\right),\\
 	\calL_i(s)&=\calL\left(((s+1)(q^i-q^{i-1}+1)-1)P_\infty\right) \text{ for } i > 0.
 \end{align*}
-
+For $0 \leq i \leq \frac{m}{2}$, we define $\calT_i= \Tr{g^{-(q^i+1)}\cdot \calL_i(s)}$.
 
 
 Let $f \in \bigcup_{\ell \geq 0} \calL(\ell P_\infty)$ \jade{que l'on voit dans $\F_{q_0^2}[x,y]$}. We want to perform the division of $f$ by $g^{q^i-q^{i-1}+1}$ with respect to the order $\prec$. Before doing so, we normalize $f$ and $g^{q^i-q^{i-1}+1}$ by enforcing every power of $y$ to be less than $q_0$.
@@ -954,7 +955,8 @@ Write $f$ as a bivariate polynomial in the functions $x$ and $y$, we can write
 \[	-v_{P_\infty}(f_1) \leq - \left(v_{P_\infty}(f)- (s+1)(q^i-q^{i-1}+1)\right).\]
 Therefore
 \[\Tr{\frac{f}{g^{q^i+1}}}=\Tr{\frac{f_1 g^{q^i-q^{i-1}+1}}{g^{q^i+1}}} +\Tr{\frac{f_2}{g^{q^i+1}}}= \Tr{\frac{f_1^qg}{g^{q^i+1}}} +\Tr{\frac{f_2}{g^{q^i+1}}}. \]
-The second term belongs to $\Tr{g^{-(q^i+1)}\cdot \calL_i(s)}$.
+
+The second term belongs to $\calT_i$.
 
 Moreover
 \[-v_{P_\infty}(f_1^qg) = -q\cdot v_{P_\infty}(f_1) - (s+1) \leq -q\cdot v_{P_\infty}(f) + (s+1)(q-1)(q^i+1) ,\]
@@ -964,25 +966,22 @@ then
 
 As $(q^i+1)s \geq (s+1)(q^i-q^{i-1}+1)-1$, we have $\calL_i(s) \subseteq \calL((q^i+1)sP_\infty)$ hence
 \[ 
-\Tr{g^{-(q^i+1)}\cdot \calL_i(s)} \subseteq \calL((q^i+1)D). 
+\calT_i \subseteq \Tr{\calL((q^i+1)D)}. 
 \]
 
 Conversely, using the result above as in \cite{rocco}, we can deduce that 
 
 \[
-\Tr{\calL((q^i+1)D)} \subseteq \Tr{g^{-(q^i+1)}\cdot \calL_i(s)},
+\Tr{\calL((q^i+1)D)} \subseteq \calT_i,
 \]
-which proves that $\Tr{\calL((q^i+1)D)} = \Tr{g^{-(q^i+1)}\cdot \calL_i(s)}$ \jade{ce qui donne une meilleure borne sur la dimension de ce machin.}.
-Moreover
-\[
-\Tr{g^{-(q^i+1)}\cdot \calL_i(s)} \subset \Tr{g^{-(q^{i+1}+1)}\cdot \calL_{i+1}(s)}.
-\]
+which proves that $\Tr{\calL((q^i+1)D)} = \calT_i$ \jade{(ce qui donne une meilleure borne sur la dimension de ce machin.)}.
+Moreover the spaces $(\calT_i)$ form an increasing sequence, i.e. $\calT_i \subseteq \calT_{i+1}$.
 
 \jade{D'accord, mais ça donne quoi ?}
 With $\calC=C_{\calL}(\calH,\calP,sP_\infty+(g))$,
 \begin{align*}
 	\Tr{\calC}^{\star 2}&= \Tr{\calC \star \calC^{q^f}} + \sum\limits_{i=f+1}^{m/2} \Tr{\calC \star \calC^{q^i}} \\
-						&=	\Tr{g^{-(q^f+1)}\cdot \calL_i(s)} + \sum\limits_{i=f+1}^{m/2} \Tr{\calC \star \calC^{q^i}} 
+						&=	\calT_f + \sum\limits_{i=f+1}^{m/2} \Tr{\calC \star \calC^{q^i}} 
 \end{align*}
 \jade{... et alors ? }
 
