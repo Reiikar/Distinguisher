@@ -943,12 +943,12 @@ For $0\leq i \leq \frac{m}{2}$, we set
 
 
 
-Let $f \in \F_{q_0^2}(\calH)$. We want to perform the division of $f$ by $g^{q^i-q^{i-1}+1}$ with respect to the order $\prec$. Before doing so, we normalize $f$ and $g^{q^i-q^{i-1}+1}$ by enforcing every power of $y$ to be less than $q_0$.
+Let $f \in \bigcup_{\ell \geq 0} \calL(\ell P_\infty)$ \jade{que l'on voit dans $\F_{q_0^2}[x,y]$}. We want to perform the division of $f$ by $g^{q^i-q^{i-1}+1}$ with respect to the order $\prec$. Before doing so, we normalize $f$ and $g^{q^i-q^{i-1}+1}$ by enforcing every power of $y$ to be less than $q_0$.
 	
 Write $f$ as a bivariate polynomial in the functions $x$ and $y$, we can write
 	 \[f=f_1 g^{q^i-q^{i-1}+1} +f_2\]
-	 with $\LT{f_2} \prec \LT{g^{q^i-q^{i-1}+1}}$. Moreover, if $f_1 \neq 0$, then $\LT{f_1 g^{q^i-q^{i-1}+1}} \preceq \LT{f}$.
-	The condition on the remainder means that $f_2 \in \calL_i(s)$ or $v_{P_\infty}(f_2) = - (s+1)(q^i-q^{i-1}+1)$ and $\LT{f_2}\neq \LT{g^{q^i-q^{i-1}+1}}$, which can only be possible if the exponent $y$ in $\LT{f_2}$ is larger than $q_0-1$. By renormalizing $f_2$, we can find a remainder in $\calL_i(s)$. \jade{je vais sans doute un peu vite mais on y croit fort. :finger-crossed:} 
+	 where $\LT{g^{q^i-q^{i-1}+1}}$ does not divide any term of $f_2$. Moreover, if $f_1 \neq 0$, then $\LT{f_1 g^{q^i-q^{i-1}+1}} \preceq \LT{f}$. \jade{définir la notation!}
+	The condition on the remainder \TODO{(à prouver !)} means that $f_2 \in \calL_i(s)$ or $v_{P_\infty}(f_2) = - (s+1)(q^i-q^{i-1}+1)$ and $\LT{f_2}\neq \LT{g^{q^i-q^{i-1}+1}}$, which can only be possible if the exponent $y$ in $\LT{f_2}$ is larger than $q_0-1$. By renormalizing $f_2$, we can find a remainder in $\calL_i(s)$. \TODO{je vais sans doute un peu vite mais on y croit fort. :finger-crossed:} 
 	
 	The condition on the quotient $f_1$ means that if $f_1 \neq 0$, then 
 \[	-v_{P_\infty}(f_1) \leq - \left(v_{P_\infty}(f)- (s+1)(q^i-q^{i-1}+1)\right).\]
@@ -962,7 +962,7 @@ then
 \[-v_{P_\infty}(f) < (s+1)(q^i+1) \: \Rightarrow \: -v_{P_\infty}(f_1^qg) < -v_{P_\infty}(f).\]
 
 
-As $(q^i+1)s \geq (s+1)(q^i-q^{i-1}+1)-1$, we have $\calL_i(s) \subset \calL((q^i+1)qP_\infty)$ hence
+As $(q^i+1)s \geq (s+1)(q^i-q^{i-1}+1)-1$, we have $\calL_i(s) \subseteq \calL((q^i+1)sP_\infty)$ hence
 \[ 
 \Tr{g^{-(q^i+1)}\cdot \calL_i(s)} \subseteq \calL((q^i+1)D). 
 \]
@@ -972,7 +972,7 @@ Conversely, using the result above as in \cite{rocco}, we can deduce that
 \[
 \Tr{\calL((q^i+1)D)} \subseteq \Tr{g^{-(q^i+1)}\cdot \calL_i(s)},
 \]
-which proves that $\Tr{\calL((q^i+1)D)} \subseteq \Tr{g^{-(q^i+1)}\cdot \calL_i(s)}$ \jade{ce qui donne une meilleure borne sur la dimension de ce machin.}.
+which proves that $\Tr{\calL((q^i+1)D)} = \Tr{g^{-(q^i+1)}\cdot \calL_i(s)}$ \jade{ce qui donne une meilleure borne sur la dimension de ce machin.}.
 Moreover
 \[
 \Tr{g^{-(q^i+1)}\cdot \calL_i(s)} \subset \Tr{g^{-(q^{i+1}+1)}\cdot \calL_{i+1}(s)}.
