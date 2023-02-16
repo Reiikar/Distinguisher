@@ -436,24 +436,39 @@ $$ s'<s\left(\frac{q}{q-1}\right) \ \mathrm{and} \ f \leq \left\lfloor \frac{m}{
 
 \begin{center}\color{red} -----------Vers une dimension exacte de $T_i$ via minimum----------------\color{black}\end{center}
 
-\color{blue}Je pose la des notations et mes résultats, sans les détails.\color{black}
 
-Fix $i \in \set{1,\dots,\lfloor m/2 \rfloor}$ and let $2g_{a,b}-1 < s <s'$, and suppose $\mathrm{LT}(g)=x^{\beta}y^{\alpha}$, with $\alpha \leq a-1$ and $\degab{g}=a\beta +b\alpha=s'$. For any $v \in \set{0,\dots,a-1}$, we define
-$$\ell^i_v := \max \set{u \geq 0 \mid x^uy^v \in \calL(s(q^i+1)P_\infty)} = \left\lfloor \dfrac{s(q^i+1)-bv}{a}\right\rfloor.$$
-Thus, we have
-\begin{equation*}
-\calL(s(q^i+1)P_\infty) = \mathrm{Span}_{\fqm}    \left\{ \begin{array}{cc}
-         1,x,\dots,x^{\ell^i_0}   \\
-         y,yx,\dots,yx^{\ell^i_0} \\
-         \cdots \\
-         y^{a-1},y^{a-1}x,\dots,y^{a-1}x^{\ell^i_0}
-    \end{array}
-    \right\}
-\end{equation*}
-By assumption, we have $\mathrm{LT}(g^{q^i-q^{i-1}+1})=x^{\beta q^i-q^{i-1}+1}y^{\alpha q^i-q^{i-1}+1}$, thus in order to force the $y$-valuation to be $\leq a-1$, we perform the following euclidean division:
+\begin{proposition} \label{prop:dim_M_i's}
+Fix $i \in \set{1,\dots,\lfloor m/2 \rfloor}$ and
+    let $\alpha' \in \set{0,\dots,a-1}$ be the rest of the Euclidean division of $\alpha (q^i-q^{-1}+1)$ by $a$. Then we can compute the exact dimension of $M_i := R(g^{q^{i}-q^{i-1}+1}) \cap \calL(s(q^i+1)P_\infty)$ depending on $s'$:
+    \begin{enumerate}
+        \item $\dim_{\fqm}(M_i) = s(q^i+1)+1-g_{a,b}$ if $s' > \left\lfloor \dfrac{s(q^i+1)+a}{q^i+q^{i-1}-1}\right\rfloor$;
+        
+        \item $\dim_{\fqm}(M_i) = s'(q^i-q^{i-1}+1)$ if $s' \leq \left\lfloor \dfrac{s(q^i+1)+1-2g_{a,b}}{q^i+q^{i-1}-1}\right\rfloor$;
+        
+        \item There exists $v^* \in \set{1,\dots,\alpha'-1}$ such that
+        $$ \left\lfloor \dfrac{s(q^i+1)+a-b(a+v^*-\alpha')}{q^i+q^{i-1}-1}\right\rfloor < s' \leq  \left\lfloor \dfrac{s(q^i+1)+a-b(a+v^*-1-\alpha')}{q^i+q^{i-1}-1}\right\rfloor$$ or $v^* = \alpha'$ and 
+        $$\left\lfloor \dfrac{s(q^i+1)+a-ab+v^*b}{q^i+q^{i-1}-1}\right\rfloor < s' \leq  \left\lfloor \dfrac{s(q^i+1)+a-ab+(v^*+1)b)}{q^i+q^{i-1}-1}\right\rfloor,$$
+        in which case 
+          $$\dim_{\fqm}(M_i) = \sum\limits_{v=v^*}^{a-1} \left\lfloor \dfrac{s(q^i+1)-bv}{a} \right\rfloor + v^*(\beta'+b) + a-v^*.$$
+        
+        \item There exists $v^* \in \set{\alpha'+1,\dots,a-1}$ such that
+        $$ \left\lfloor \dfrac{s(q^i+1)+a-b(v^*-\alpha')}{q^i+q^{i-1}-1}\right\rfloor < s' \leq  \left\lfloor \dfrac{s(q^i+1)+a-b(v^*-1-\alpha')}{q^i+q^{i-1}-1}\right\rfloor,$$
+        in which case 
+        $$\dim_{\fqm}(M_i) = \sum\limits_{v=v^*}^{a-1} \left\lfloor \dfrac{s(q^i+1)-bv}{a} \right\rfloor + v^*\beta' + \alpha'b +a-v^*.$$
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+
+By assumption, we have $\mathrm{LT}(g)=x^{\beta}y^{\alpha}$, with $\alpha \leq a-1$ and $\degab{g}=a\beta +b\alpha=s'$. 
+Thus, $\mathrm{LT}(g^{q^i-q^{i-1}+1})=x^{\beta q^i-q^{i-1}+1}y^{\alpha q^i-q^{i-1}+1}$. Since $\alpha q^i-q^{i-1}+1$ might be bigger that $a-1$, we perform the following euclidean division:
 $$\alpha q^i-q^{i-1}+1 = \delta a + \alpha', \ 0 \leq \alpha' \leq a-1.$$
-Using the equation of the curve, we can suppose  $\mathrm{LT}(g^{q^i-q^{i-1}+1})=x^{\beta'}y^{\alpha '}$, with 
+Using the equation of the curve, we can then suppose that $\mathrm{LT}(g^{q^i-q^{i-1}+1})=x^{\beta'}y^{\alpha '}$, with 
 $$\beta' = \beta q^i-q^{i-1}+1 + \left\lfloor \frac{\alpha (q^i-q^{i-1}+1)-\alpha'}{a} \right\rfloor \ \mathrm{and} \ \alpha' \in \set{0,\dots,a-1}.$$
+Since $\degab{g^{q^i-q^{i-1}+1}} = s'(q^i-q^{i-1}+1),$ we also have 
+\begin{equation} \label{eq:value_beta_prime}
+\beta' = \dfrac{s'(q^i-q^{i-1}+1)-b\alpha'}{a}.
+\end{equation}
 From this, we deduce
 \begin{align*}
 \calR\left(g^{q^i-q^{i-1}+1}\right) &:= \mathrm{Span}_{\fqm} \left\{x^uy^v \mid u \leq \beta'+b-1 , v \leq a-1 \ \mathrm{not \ both} \ u \geq \beta' \ \mathrm{and} \ v \geq \alpha'\right\} \\
@@ -467,45 +482,73 @@ From this, we deduce
     \end{array}
     \right\}
 \end{align*}
+Next, we define for any $v \in \set{0,\dots,a-1}$:
+$$\ell^i_v := \max \set{u \geq 0 \mid x^uy^v \in \calL(s(q^i+1)P_\infty)} = \left\lfloor \dfrac{s(q^i+1)-bv}{a}\right\rfloor,$$
+implying
+\begin{equation*}
+\calL(s(q^i+1)P_\infty) = \mathrm{Span}_{\fqm}    \left\{ \begin{array}{cc}
+         1,x,\dots,x^{\ell^i_0}   \\
+         y,yx,\dots,yx^{\ell^i_0} \\
+         \cdots \\
+         y^{a-1},y^{a-1}x,\dots,y^{a-1}x^{\ell^i_0}
+    \end{array}
+    \right\}
+\end{equation*}
+With these notations, we have a description of a basis of both spaces $R(g^{q^i-q^{i-1}+1}$ and $\calL(s(q^i+1)P_\infty)$, leading to an exact formula for the dimension of their intersection $M_i$ for any value of $i$:
+\begin{equation} \label{eq:exact_dimension_M_i}
+\dim_{\fqm} M_i = \sum\limits_{v=0}^{\alpha'-1} \min(\beta'+b,l_v^i+1) + \sum\limits_{v=\alpha'}^{a-1} \min(\beta',l_v^i+1).
+\end{equation}
+It remains to compute the corresponding minima with respect to $v$:
+\begin{itemize}
+    \item[(i)] If $0 \leq v \leq \alpha'-1$, we have using \eqref{eq:value_beta_prime}:
+    \begin{align*}
+        \beta'+b \leq \ell_v^i \iff s' \leq F(v) := \left\lfloor \dfrac{s(q^i+1)+a-b(a+v-\alpha')}{q^i-q^{i-1}+1}\right\rfloor.
+    \end{align*}
+    \item[(ii)] Else, $\alpha' \leq v \leq a-1$ and:
+    \begin{align*}
+        \beta' \leq \ell_v^i \iff s' \leq G(v) := \left\lfloor \dfrac{s(q^i+1)+a-b(v-\alpha')}{q^i-q^{i-1}+1}\right\rfloor .
+    \end{align*}
+\end{itemize}
+Note that both $F$ and $G$ are decreasing with $v$, and we easily check that $F(0) \leq G(a-1)$. Thus, we can a sequence of integers
+$$F(\alpha'-1) \leq \dots \leq F(0) \leq G(a-1) \leq \dots \leq G(\alpha').$$
+Depending on the value of $s'$, there is a few case to consider:
+\begin{itemize}
+    \item $s' >G(\alpha')$, in which case $M_i = \calL(s(q^i+1)P_\infty)$;
+    \item $s' \leq F(\alpha'-1)$, and $M_i = \calR(g^{q^i-q^{i-1}+1})$;
+    \item There exists a maximal $v^* \in \set{1,...,\alpha'-1}$ such that $F(v^*) < s' \leq F(v^*-1)$;
+    \item There exists a maximal $v^* \in \set{\alpha',...,a-1}$ such that $G(v^*) < s' \leq G(v^*-1)$;
+    \item $F(0) < s' \leq G(a-1)$.
+\end{itemize}
+The formulas for the dimension of $M_i$ follows from the above computations and \eqref{eq:exact_dimension_M_i}.
+\end{proof}
 
-Depending on the value of $\alpha'$ and how $\beta'$ compares to the $\ell^i_v$'s, we can get the exact dimension of the intersection. Let
-$$M_i := \calR\left(g^{q^i-q^{i-1}+1}\right) \cap \calL(s(q^i+1)P_\infty).$$
+Note that case $1)$ is not really interesting since it correspond to the case where $\calT_i = \Tr{\calL(s(q^i+1)P_\infty)}, $ meaning that considering the $T_i's$ will produce the same bound for $\Tr{\calC}^{\star 2}$ as the one given in \ref{prop:bound_dim_using_inclusions}.
+In what follows, we will focus on case $2)$, since under the corresponding conditions we can prove that $(\calT_i)_i$ forms an increasing sequence for the inclusion. We start with an easy lemma:
 
-We can prove
-
-\begin{proposition}
-    Let $\alpha' \in \set{0,\dots,a-1}$. We have, depending on the value of $s'$:
-    \begin{enumerate}
-        \item $\dim_{\fqm}(M_i) = s(q^i+1)+1-g_{a,b}$ if $s' > \left\lfloor \dfrac{s(q^i+1)+a}{q^i+q^{i-1}-1}\right\rfloor$ \color{red} (correspond à la borne qu'on a déjà) \color{black};
-        \item $\dim_{\fqm}(M_i) = s'(q^i-q^{i-1}+1) - \dfrac{(a-1)b\alpha'}{2}$ if $s' \leq \left\lfloor \dfrac{s(q^i+1)+1-2g_{a,b}}{q^i+q^{i-1}-1}\right\rfloor$;
-        \item There exists $v^* \in \set{1,\dots,\alpha'-1}$ such that
-        $$ \left\lfloor \dfrac{s(q^i+1)+a-b(a+v^*-1-\alpha')}{q^i+q^{i-1}-1}\right\rfloor < s' \leq  \left\lfloor \dfrac{s(q^i+1)+a-b(a+v^*-\alpha')}{q^i+q^{i-1}-1}\right\rfloor,$$
-        in which case 
-        $$\dim_{\fqm}(M_i) = \sum\limits_{v=0}^{v^*-1} \left\lfloor \dfrac{s(q^i+1)-bv}{a} \right\rfloor + v^* + \beta'(a-v^*)-b(\alpha'-v^*).$$
-        \item There exists $v^* \in \set{\alpha'+1,\dots,a-1}$ such that
-        $$ \left\lfloor \dfrac{s(q^i+1)+a-b(v^*-1-\alpha')}{q^i+q^{i-1}-1}\right\rfloor < s' \leq  \left\lfloor \dfrac{s(q^i+1)+a-b(v^*-\alpha')}{q^i+q^{i-1}-1}\right\rfloor,$$
-        in which case 
-        $$\dim_{\fqm}(M_i) = \sum\limits_{v=0}^{v^*-1} \left\lfloor \dfrac{s(q^i+1)-bv}{a} \right\rfloor + v^* + \beta'(a-v^*).$$
-    \end{enumerate}
-    There is no other possibilities.
-\end{proposition}
-
-\begin{center}\color{red} ------------------------------------------\color{black}\end{center}
-
-
-
-\TODO{to change, true only under other condition ?}
-
-\color{blue}
-
-\begin{lemma} \label{lem:inclusion_T_i's}
-    The set $(\calT_i)_i$ form an increasing sequence for the inclusion, \emph{i.e.}
-    $$\calT_0 \subseteq \calT_1 \subseteq \dots \subseteq \calT_{\lfloor \frac{m}{2}\rfloor}.$$
+\begin{lemma} \label{lem:cond_inclusion_T_i's}
+    If $s \geq (s'-s)q+2g_{a,b}-1$, then for every $i \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$,
+    $$\calT_i := \Tr{\calR(g^{q^i-q^{i-1}+1})}.$$
 \end{lemma}
 
 \begin{proof}
-Let us fix $i \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$, and note that 
-$\calT_i := \set{\Tr{\frac{f}{g^{q^i+1}}} \mid f \in \calR(g^{q^i-q^{i-1}+1})\cap \calL(s(q^i+1)P_\infty)}.$
+    From Proposition \ref{prop:dim_M_i's}, we know that for any fixed $i \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$, we have 
+    $$M_i = \calR(g^{q^i-q^{i-1}+1}) \iff  s' \leq \left\lfloor \dfrac{s(q^i+1)+1-2g_{a,b}}{q^i+q^{i-1}-1}\right\rfloor.$$
+    Thus, $M_i = \calR(g^{q^i-q^{i-1}+1})$ for all $i$ if and only if the right hand-side is satisfied for all $i$ as well. Since $q^i+1 > q^i-q^{i-1}+1$, this is equivalent to have it satisfied for $i=1$, \emph{i.e.}
+    $$s' \leq \left\lfloor \dfrac{s(q+1)+1-2g_{a,b}}{q}\right\rfloor;$$
+    which gives $s \geq (s'-s)q+2g_{a,b}-1$. The result follows.
+\end{proof}
+
+\begin{proposition} \label{prop:inclusion_T_i's} Suppose $s \geq (s'-s)q+2g_{a,b}-1$. Then
+    $$\calT_0 \subseteq \calT_1 \subseteq \dots \subseteq \calT_{\lfloor \frac{m}{2}\rfloor}.$$
+\end{proposition}
+
+\begin{proof}
+From Lemma \ref{lem:cond_inclusion_T_i's}, we have
+\begin{equation} \label{eq:equality_intersection}
+  \calR(g^{q^{i}-q^{i-1}+1})\cap \calL(s(q^{i}+1)P_\infty) = \calR(g^{q^{i}-q^{i-1}+1}) 
+\end{equation}
+Let $i \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$, and note that 
+$\calT_i := \set{\Tr{\frac{f}{g^{q^i+1}}} \mid f \in \calR(g^{q^i-q^{i-1}+1})\cap \calL(s(q^i+1)P_\infty)}.$ \\
 Given $\Tr{\frac{f}{g^{q^i+1}}}$ in $\calT_i$, we want to show that it belongs to $\calT_{i+1}$. Applying Proposition \ref{prop:div_grob} with be replacing $f$ with $fg^{q^{i+1}-q^i}$ and $g$ by $g^{q^{i+1}-q^i+1}$, we obtain
 \begin{equation} \label{eq:division_i}
 fg^{q^{i+1}-q^i} = f_1g^{q^{i+1}-q^i+1} + f_2,
@@ -516,14 +559,8 @@ with $f_2 \in \calR(g^{q^{i+1}-q^i+1})$ and $\degab{f_2} \leq \degab{fg^{q^{i+1}
                              &= \Tr{\frac{f_1g^{q^{i+1}-q^i+1}}{g^{q^{i+1}+1}}} + \Tr{\frac{f_2}{g^{q^{i+1}+1}}} \\
                              &= \Tr{\frac{f_1^qg}{g^{q^{i+1}+1}}} + \Tr{\frac{f_2}{g^{q^{i+1}+1}}}.
 \end{align*}
-Since $f \in \calL(s(q^i+1)P_\infty)$, we have
-\begin{align*}
-\degab{f_2} &\leq \degab{fg^{q^{i+1}-q^i}} \\
-            & \leq \degab{f} + s'(q^{i+1}-q^i) \\
-            & \leq s(q^i+1) + s'(q^{i+1}-q^i) \\
-            & \leq s(q^{i+1}+1) + (s'-s)(q^{i+1}-q^i) < s(q^{i+1}+1),\\
-\end{align*}
-because $s' >s$. We deduce $f_2 \in \calR(g^{q^{i+1}-q^{i}+1})\cap \calL(s(q^{i+1}+1)P_\infty)$, and thus  $\Tr{\frac{f_2}{g^{q^{i+1}+1}}} \in \calT_{i+1}.$
+By assumption, we immediately have that $\Tr{\frac{f_2}{g^{q^{i+1}+1}}} \in \calT_{i+1}.$
+
 If $f_1=0$, we are done. Otherwise, we have from \eqref{eq:division_i}:
 $$\degab{f_1} = \degab{fg^{q^{i+1}-q^i}} - \degab{g^{q^{i+1}-q^i+1}} = \degab{f}-s'.$$
 Thus
@@ -532,12 +569,11 @@ Thus
                                                & \iff (q-1)\degab{f} < (q-1)s' + s'(q^{i+1}-q^i) \\
                                                & \iff \degab{f} < s'(q^{i}+1),
 \end{align*}
-which is true since $f \in \calL(s(q^i+1)P_\infty)$ and $s<s'$. We can repeat the division process until eventually we obtain a quotient $f_1$ equal to zero. This shows that $\calT_i \subseteq \calT_{i+1}$.
+which is true since in particular $f \in \calL(s(q^i+1)P_\infty)$ and $s<s'$. We can thus repeat the division process until eventually we obtain a quotient $f_1$ equal to zero. This shows that $\calT_i \subseteq \calT_{i+1}$.
 
-The case $i=0$ needs to be treated separately since $\calT_0$ is defined differently from the over $\calT_i$. Let $\Tr{\frac{f}{g^2}} \in \calT_0$ for some $f \in \calL(2sP_\infty)$. Using Proposition \ref{prop:div_grob}, this time replacing $f$ with $fg^{q-1}$ and $g$ with $g^{q+1}$, we have
-$$fg^{a-1} = f_1g^q + f_2,$$ with $f_2 \in \calR(g^q)$ and 
-$$\degab{f_2} \leq \degab{fg^{q-1}} = 2s + s'(q-1) = s(q+1) + (s'-s)(q-1) < s(q+1).$$
-As before, we have 
+\noindent It remains to treat the case $i=0$. Let $\Tr{\frac{f}{g^2}} \in \calT_0$ for some $f \in \calL(2sP_\infty)$. Using Proposition \ref{prop:div_grob}, this time replacing $f$ with $fg^{q-1}$ and $g$ with $g^{q+1}$, we have
+$$fg^{a-1} = f_1g^q + f_2,$$ with $f_2 \in \calR(g^q) = \calR(g^q) \cap \calL(s(q+1)P_\infty)$ (using \eqref{eq:equality_intersection} with $i=1$).
+Thus, we can write
     $$ \Tr{\frac{f}{g^2}} = \Tr{\frac{f_1^qg}{g^{q+1}}}  + \Tr{\frac{f_2}{g^{q+1}}}, $$
 with $\Tr{\frac{f_2}{g^{q+1}}} \in \calT_1$. Since $\degab{f_1} = \degab{fg^{q-1}} - \degab{g^q} = \degab{f}-s'$, we have 
 \begin{align*}
@@ -545,9 +581,14 @@ with $\Tr{\frac{f_2}{g^{q+1}}} \in \calT_1$. Since $\degab{f_1} = \degab{fg^{q-1
                                                & \iff (q-1)\degab{f} < 2s'(q-1)\\
                                                & \iff \degab{f} < 2s',
 \end{align*}
-Again, we can repeat the division process until we found a quotient equal to zero, which shows that $\calT_0 \subseteq \calT_1$ and conclude the proof.
+which holds since $s<s'$ and $f \in \calL(2sP_\infty)$. Repeating the division process until we found a quotient equal to zero shows that $\calT_0 \subseteq \calT_1$.
 \end{proof}
-\color{black}
+
+
+
+\begin{coro} \label{coro:bound_with_T_i's_inclusion}
+
+\end{coro}
 
 
 
