@@ -298,7 +298,7 @@ Obvious from the definition of Riemann-Roch spaces. \TODO{plus de détails ?}
 We can now give a first improvement of the bound given in Corollary \ref{coro:1st_bound_mumford}.
 
 \begin{proposition} \label{prop:bound_dim_using_inclusions}
-    Let $\calC := \calC_{\calL}(\calX_{a,b},\calP,sP_{\infty})$ be a one-point AG code on $\calX_{a,b}$ such that $s \geq 2g_{a-b}-1$. Set $k := \dim_{\fqm}\calC = s+1-g_{a,b}$ and \color{red} (Un petit doute sur la valeur de e :) $e := \left\lfloor \log_q(s-g_{a,b})\right\rfloor.$ \color{black} Then
+    Let $\calC := \calC_{\calL}(\calX_{a,b},\calP,sP_{\infty})$ be a one-point AG code on $\calX_{a,b}$ such that $s \geq 2g_{a-b}-1$. Set $k := \dim_{\fqm}\calC = s+1-g_{a,b}$ and  $e := \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor$. Then
     $$\dim_{\fq} \Tr{\calC}^{\star2} \leq \binom{mk+1}{2} - \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).$$
 \end{proposition}
 
@@ -307,24 +307,22 @@ We can now give a first improvement of the bound given in Corollary \ref{coro:1s
     \begin{align*}
         \dim_{\fq} \Tr{\calC}^{\star2} 
         & \leq \sum\limits_{i=0}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star \calC^{q^i}} \\
-        & \leq \sum\limits_{i=0}^{e} \dim_{\fq} \calC^{q^i+1} + \sum\limits_{i=e+1}^{\lfloor m/2 \rfloor} \Tr{\calC \star \calC^{q^i}} \\
+        & \leq \sum\limits_{i=0}^{e} m\dim_{\fq} \calC^{q^i+1} + \sum\limits_{i=e+1}^{\lfloor m/2 \rfloor} \Tr{\calC \star \calC^{q^i}} \\
         & \leq \sum\limits_{i=0}^{e} m(sq^i+k) + \left( \frac{m-1}{2} -e \right)mk^2 \\
         & \leq \frac{m}{2}\left(2k(e+1)+2s\left(\dfrac{q^{e+1}-1}{q-1}\right)+k^2(m-1)-2ek^2  \right) \\
         & \leq \binom{mk+1}{2} -  \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).
     \end{align*}
-Here, the inequality holds for any $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$. To get the best bound, we maximize the expression $$ \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right)$$ with respect to $e$. \color{red} Removing the constant parts, this is equivalent to find the maximum of the function
-$$T(e) = ek-\dfrac{q^{e+1}-1}{q-1}$$
-over $\set{0,\dots,\lfloor \frac{m}{2} \rfloor}$ in the discrete domain of non-negative integers. \color{black} 
+Here, the inequality holds for any $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$. To get the best bound, we maximize the expression $$ \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right)$$ with respect to $e$. Removing the constant parts, this is equivalent to find the maximum of the function
+$$T(e) = ek^2-\dfrac{q^{e+1}}{q-1}$$
+over $\set{0,\dots,\lfloor \frac{m}{2} \rfloor}$ in the discrete domain of non-negative integers.  
 We compute the discrete derivative:
 \begin{align*}
-    \Delta T(e) = T(e+1)-T(e) &= (e+1)k-\dfrac{q^{e+2}-1}{q-1} - \left(ek-\dfrac{q^{e+1}-1}{q-1}\right) \\
-                              &= k - q^{e+1}.
+    \Delta T(e) = T(e+1)-T(e) &= (e+1)k^2-\dfrac{q^{e+2}}{q-1} - \left(ek^2-\dfrac{q^{e+1}}{q-1}\right) \\
+                              &= k^2 - sq^{e+1}.
 \end{align*}
-This function is decreasing with $e$, and the smallest value for which $\Delta T(e) \leq 0$ corresponds to its maximum. It is the smallest value of $e$ such that $k \leq q^{e+1}$, \emph{i.e.}
-$$e =  \left\lfloor \log_q(k-1)\right\rfloor = \left\lfloor \log_q(s-g_{a,b})\right\rfloor.$$
+This function is decreasing with $e$, and the smallest value for which $\Delta T(e) \leq 0$ corresponds to its maximum. It is the smallest value of $e$ such that $k^2 \leq sq^{e+1}$, \emph{i.e.}
+$$e =  \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor.$$
 \end{proof}
-
-\TODO{Equality case of Lemma 4.1}
 
 \section{Goppa-like codes case}
 
@@ -332,15 +330,17 @@ In this section, we focus on Goppa-like AG codes as defined in \ref{section:AG_c
 
 \noindent Let $s' > s$ be two non negative integers, and consider the Goppa-like code 
 $$\calC := \calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$$
-on $\calX_{a,b}$, where $g \in \calL_{s'P_\infty}$ is such that $\degab{g} = s'$ and $\calP$ is a set of length $n$such that $\calP \cap \Supp(g) = \varnothing$. 
+on $\calX_{a,b}$, where $g \in \calL_{s'P_\infty}$ is such that $\degab{g} = s'$ and $\calP$ is a set of length $n$ such that $\calP \cap \Supp(g) = \varnothing$. 
 
 \noindent Set $D=sP_\infty+(g)=(g)_0-(s'-s)P_\infty$.  
 Since $D$ and $sP_\infty$ are equivalent divisors, this code is monomially equivalent to the one-point code $C_{\calL}(\calX_{a,b},\calP,sP_\infty)$. 
 More precisely, we have
 $$\calL(D) = g^{-1} \cdot \calL(sP_{\infty}).$$
 As a consequence, one can easily see that
-\[\dim_{\fqm} \left(\calL(D)\cdot \calL(D)^{q^i}\right) = \dim_{\fqm} \left(\calL(sP_\infty)\cdot \calL(sP_\infty)^{q^i}\right),\]
+\[\dim_{\fqm} \calL(D)\cdot \calL(D)^{q^i} = \dim_{\fqm} \calL(sP_\infty)\cdot \calL(sP_\infty)^{q^i},\]
 meaning that the upper bound on the dimension given in Proposition \ref{prop:bound_dim_using_inclusions} also holds for Goppa-like codes. However, we will see below that this bound can be improved.
+
+\subsection{Weighted euclidean division}
 
 \noindent The following proposition generalizes the classical euclidean division of polynomial in the case of function in the Riemann-Roch space $\calL(mP_\infty)$ with respect to the weighted degree $\deg_{a,b}$.
 
@@ -348,13 +348,13 @@ meaning that the upper bound on the dimension given in Proposition \ref{prop:bou
 Let $m$ be a positive integer and let $g \in \calL(m P_\infty)$. Write $g=x^\beta y^\alpha +g'(x,y)$ with $\alpha < a$ and $g' \in \calL(m P_\infty)$ such that $\degab{x^\beta y^\alpha}>\degab{g'}$.
 For any function $f$ on $\calX_{a,b}$ whose only pole is $P_\infty$, one can write $f=f_1g+f_2$ with 
 \[f_2 \in \calR(g):= \Span{x^u y^v \mid u \leq \beta + b-1 \text{ and } v\leq a-1 \text{ not both }  u \geq \beta \text{ and } v \geq \alpha}.\]
-Moreover, we have $\degab{f_2} \leq \degab{f}$ and $\dim_{\fqm} \calR(g) = \degab{g}=s'$. 
+Moreover, we have $\degab{f_2} \leq \degab{f}$ and $\dim_{\fqm} \calR(g) = \degab{g}=s'.$ 
 \end{proposition}
 
 \begin{proof}
 		Since the only possible pole of the function $f$ is $P_\infty$, one can see $f$ as a bivariate polynomial of $x$ and $y$. In the polynomial ring $\F_{q^m}[x,y]$, we perform the division of $f$ by a Grobner basis of the ideal generated by the equation $\phi_{a,b}$ of the curve and $g$ with respect to the monomial order $\prec$ defined as follows : $x^uy^v \prec x^{u'}y^{v'}$ if
 	\[ \degab{x^uy^v} < \degab{x^{u'}y^{v'}} \text{ or } \left(\degab{x^uy^v} = \degab{x^{u'}y^{v'}}  \text{ and } u < u'\right).\]
-	The fact that $f_2$ lies in $\calR(g)$ and the result on the dimension of $\calR(g)$ follow from \cite[Proposition 4]{GH00}.
+	The fact that $f_2$ lies in $\calR(g)$ and the result on the dimension of $\calR(g)$ both follow from \cite[Proposition 4]{GH00}.
 	
 	Finally, if we had $\degab{f} < \degab{f_2}$ with $f=f_1 g +f_2$, this would mean that $\LT{f_2}=-\LT{f_1 g}=\lambda x^uy^v$ for some $\lambda \in \F_{q^m}^*$ with both $u \geq \beta$ and $v \geq \alpha$, which is not possible by definition of $\calR\left(g\right)$.
 \end{proof}
@@ -387,55 +387,24 @@ For any $1 \leq i \leq \lfloor\frac{m}{2}\rfloor$, we define
 $$\calT_i= \Tr{g^{-(q^i+1)}\cdot \left( \calR\left(g^{q^i-q^{i-1}+1}\right)  \cap \calL(s(q^i+1)P_\infty)\right)}$$
 and we set $$\calT_0 := \Tr{g^{-2} \cdot \calL(2sP_\infty}).$$
 \end{definition}
-	
-\TODO{include dimension $R(g^{q^i-q^{i-1}+1})$?}	
-	
+
+\TODO{include dimension $R(g^{q^i
+-q^{i-1}+1})$?}	
 	
 \noindent Let $i \geq 0$ and $f \in \calL(sP_\infty) \cdot \calL(sP_\infty)^{q^i} \subseteq \calL(s(q^i+1)P_\infty)$. Then 
 Lemma \ref{lem:weighted_division} entails that 
-$$\Tr{\dfrac{f}{q^{i+1}}} \in T_i.$$
+$$\Tr{\dfrac{f}{q^{i+1}}} \in \calT_i.$$
 Thus, for all $i \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$, we have \begin{equation} \label{eq:Tr(C*C^q^i)_dans_T_i}
 \Tr{\calC \star \calC^{q^i}} \subseteq \calT_i.
 \end{equation}
 
-\noindent The above inclusion can be used to improve the bound given in Proposition \ref{prop:bound_dim_using_inclusions}.
+\noindent The above inclusion can be used to improve the bound given in Proposition \ref{prop:bound_dim_using_inclusions}, provided that we can compute efficiently the dimension of $\calT_i's$, which is the purpose of the upcoming section.
 
-%--------Lasy changes----------%
-\begin{center}\color{red} -----------Borne sur $\dim T_i$ via minimum----------------
-\color{black}\end{center}
+%--------Last changes----------%
 
+\subsection{Upper bound in Goppa like case}
 
-A first upper bound on this dimension is given by the following lemma.
-
-\begin{lemma} \label{lem:estimation_dim_T_i} Suppose $s \geq 2g_{a,b}-1$. Set $k := \dim_{\fqm}\calC = s+1-g_{a,b}$ and define $f := 1 + \left\lceil \log_q \left( \dfrac{s'-s+g_{a,b}-1}{s'-(s'-s)q}\right)\right\rceil$ whenever $s' < s(\frac{q}{q-1})$.
-We have $$\dim_{\fq} \calT_0 \leq m(2s+1-g_{a,b}),$$ and for every $i \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$:
-\begin{equation*}
-\dim_{\fq} \calT_i \leq \left\{ \begin{array}{ll}
-     m(s(q^i+1)+1-g_{a,b}) \ , \ \mathrm{if} \ s' \geq s(\frac{q}{q-1}) \ \mathrm{or} \ (s' < s(\frac{q}{q-1}) \ \mathrm{and} \ i<f)  \\
-     ms'(q^i-q^{i-1}+1) \ , \ \mathrm{if} \ s' < s(\frac{q}{q-1}) \ \mathrm{and} \ i \geq f. 
-\end{array}
-\right.
-\end{equation*}
-\end{lemma}
-
-\begin{proof}
-   Since $\dim_{\fq} \calT_0 = \dim_{\fq} \Tr{\calL(2sP_\infty)}$, the bound follows directly. For any  $i \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$, we have by definition of $\calT_i$:
-   \[ \dim_{\fq} \calT_i \leq \min \left\{m(s(q^i+1)+1-g_{a,b}),ms'(q^i-q^{i-1}+1) \right\}.\]
-   Then it is sufficient to compute which is the minimum depending on $s,s'$ and $q$. We have
-   \begin{align*}
-     s'(q^i-q^{i-1}+1) \leq s(q^i+1)+1-g_{a,b} & \iff (s'-s)(q^i+1)+g_{a,b}-1 \leq s'q^{i-1}  \\
-     & \iff \dfrac{s'-s+g_{a,b}-1}{q^{i-1}} \leq s'-(s'-s)q   , 
-   \end{align*}
-   the last equality being possible if and only if $s'<s(\frac{q}{q-1})$. If we suppose so, we finally have
-   $$ s'(q^i-q^{i-1}+1) \leq s(q^i+1)+1-g_{a,b} \iff i \geq  1 + \left\lceil \log_q \left( \dfrac{s'-s+g_{a,b}-1}{s'-(s'-s)q}\right)\right\rceil,$$
-   which finishes the proof.
-\end{proof}
-
-At this point, notice that when $s' \geq s(\frac{q}{q-1})$, using the above bound on the dimension of $\calT_i's$ will give the same bound for $\Tr{C}^{*2}$ as the one in Proposition \ref{prop:bound_dim_using_inclusions}. Let us then suppose $s'<s(\frac{q}{q-1})$, which can be really restrictive if $q$ is big. Again, if $f > \lfloor \frac{m}{2} \rfloor$, we have no improvement in our bound, meaning that we are only interested by the case
-$$ s'<s\left(\frac{q}{q-1}\right) \ \mathrm{and} \ f \leq \left\lfloor \frac{m}{2} \right\rfloor.$$
-
-\begin{center}\color{red} -----------Vers une dimension exacte de $T_i$ via minimum----------------\color{black}\end{center}
-
+In the proposition below, we compute the exact dimension of $\calT_i$'s.
 
 \begin{proposition} \label{prop:dim_M_i's}
 Fix $i \in \set{1,\dots,\lfloor m/2 \rfloor}$ and
@@ -587,10 +556,53 @@ which holds since $s<s'$ and $f \in \calL(2sP_\infty)$. Repeating the division p
 
 
 \begin{coro} \label{coro:bound_with_T_i's_inclusion}
-
+Suppose $s \geq (s'-s)q+2g_{a,b}-1$ and let $e^* := \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1$. Then
+$$\dim_{\fq} \Tr{\calC}^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2}(k^2(2e^*+1)+k-2s'(q^{e^*}-q^{e^*-1}+1)). $$
 \end{coro}
 
+\begin{proof}
+    From \eqref{eq:key_equation} and under the assumption on $s$ and $s'$, we have
+        \begin{align*}
+        \dim_{\fq} \Tr{\calC}^{\star2} 
+        & \leq \sum\limits_{i=0}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star \calC^{q^i}} \\
+        & \leq \dim_{\fq} (\calT_e) + \sum\limits_{i=e+1}^{\lfloor m/2 \rfloor} \Tr{\calC \star \calC^{q^i}} \\
+        & \leq ms'(q^e-q^{e-1}+1) + \left( \frac{m-1}{2} -e \right)mk^2 \\
+        & \leq \frac{m}{2}\left(2s'(q^e-q^{e-1}+1)+k^2(m-1)-2k^2e  \right) \\
+        & \leq \binom{mk+1}{2} -  \dfrac{m}{2}\left(k^2(2e+1)+k-2s'(q^e-q^{e-1}+1)\right).
+    \end{align*}
+for any $e \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$ (here, we used Lemma \ref{lem:cond_inclusion_T_i's} to bound the dimension on $\calT_e$).
+To get the best bound, we need to maximize the function
+$$T(e) = ek^2-s'(q^e-q^{e-1}+1)$$
+over $\set{1,\dots,\lfloor \frac{m}{2} \rfloor}$.
+We compute the discrete derivative:
+\begin{align*}
+    \Delta T(e) = T(e+1)-T(e) &= (e+1)k^2- s'(q^{e+1}-q^e+1) - ek^2 + s'(q^e-q^{e-1}+1) \\
+                              &= k^2 - s'q^{e-1}(q-1)^2.
+\end{align*}
+This function is decreasing with $e$, and the smallest value for which $\Delta T(e) \leq 0$ corresponds to its maximum. It is the smallest value of $e$ such that $k^2 \leq s'q^{e-1}(q-1)^2$, \emph{i.e.}
+$$e =  \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1.$$
+\end{proof}
 
+\noindent Several computational experiments showed then when the Goppa like code $\calC$ is sufficiently random (\emph{i.e} the rational function $g$ is randomly chosen in $\calL(s'P_\infty)$), then the upper bound on the dimension of $\Tr{\calC}^{\star 2}$ given in Corollary \ref{coro:bound_with_T_i's_inclusion} is actually sharp, leading to  distinguisher if the parameters of $\calC$ are not well-chosen. 
+
+In the next section, we will discuss how to construct a Goppa like code on $\calX_{a,b}$ that resist this distinguisher.
+
+\section{Secured parameters against the distinguisher}
+
+\noindent Given a Goppa like code $\calC := C_\calL(\calX_{a,b},\calP,D)$, where $D = sP_\infty +(g)$ and $\degab{g} = s'>s\geq 2g_{a,b}-1$, we proved above that whenever $$s \geq (s'-s)q+2g_{a,b}-1,$$ we have 
+
+\begin{equation} \label{eq:best_upper_bound}
+\dim_{\fq} \Tr{\calC}^{\star2} \leq \frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right),
+\end{equation}
+where $e^* := \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1$.
+From the definition of $\calC$, we can estimate its length $n$. In fact, since $\calP \cap \Supp(g) = \varnothing,$ the maximal possible length of $\calC$ is reached when $\calP = \calX_{a,b}(\fqm) \backslash \Supp(g)$ and $g$ has only one zero, that is
+$$n = \# \calP = |\calX_{a,b}(\fqm)| \leq q^m-1+2g_{a,b}\sqrt{q^m},$$
+using the Hasse-Weil bound. We can now give the choices of $s$ and $s'$, depending on the fixed parameters $a,b,q$ and $m$, for which
+$$\frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right)\geq q^m-1+2g_{a,b}\sqrt{q^m},$$
+in which cases the corresponding Goppa like code resist the distinguisher.
+
+
+\TODO{Je galère un peu à établir des conditions "claires" sur $s$ et $s'$ en fonction de $a,b,q$ et $m$... Je propose pour le moment de faire des tests avec des codes qui me semblent pertinent (elliptique, hermitien,...); en donnant les conditions en question avec Magma. À voir ce qu'on en fait après.}
 
 
 %
