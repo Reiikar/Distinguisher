@@ -117,7 +117,7 @@ Mora and Tillich \cite{MT21} benefited from the trace structure of the dual code
 
 As Goppa--like AG codes naturally generalizes Goppa codes, it is natural to wonder if one can derive a structural attack on these codes from Mora and Tillich's attack. The genus of the curve plays a significant role in the parameters of AG codes. The greater the genus, the more $\F_q$--points the curve $\calX$ may have and so the longer the code can be. But the parameters $[n,k,d]$ of an AG code satisfies $n-g+1 \leq k+d \leq n+1$, which means that an AG code is $g$--far form optimality. Also, the correction capacity naturally suffers from a big genus: the naive correction algorithm can correct up to $\frac{d-1-g}{2}$ errors. Only refined techniques, based on error locating pairs \jade{citer Alain}, manage to remove this drawback. Caution should be exercised when it comes to the impact of the genus on the properties of AG codes. In the present work, we interest in the behaviour of Goppa--like one--point AG codes from $\calC_{a,b}$ curves with respect to a similar structural attack. \jade{pour pouvoir si le genre améliore ou détériore le distingueur.}
 
-AG codes have a very similar behaviour as GRS codes with respect to Schur product. Moreover, some well-chosen AG codes are defined by the evaluation of \textit{multivariate} polynomials. In this case, we prove that performing division algorithm via Gr\¨obner bases enable us to estimate the dimension of the square of the dual of Goppa--like AG codes.
+AG codes have a very similar behaviour as GRS codes with respect to Schur product. Moreover, some well-chosen AG codes are defined by the evaluation of \textit{multivariate} polynomials. In this case, we prove that performing division algorithm via Gröbner bases enable us to estimate the dimension of the square of the dual of Goppa--like AG codes.
 
 \jade{D'après Rocco \cite{MT21} :However, the fact that the dual of a Goppa code is the trace of a generalized Reed-Solomon code rather than the subfield subcode of a generalized Reed-Solomon code seems to complicate significantly the attempts to turn this distinguisher into an attack. But again, having now a much better algebraic (and rigorous) explanation of why the distinguisher works, together with new
 algebraic results about products involved in the square of the dual of the Goppa code gives a much better understanding of the square code structure. This is clearly desirable and needed if we want to mount a key recovery attack based on these square code considerations. The hope is that this will ultimately lead to being able to attack McEliece schemes based on very high Goppa codes. As explained earlier, this will still not threaten the codes used in the aforementioned NIST competition, but this would break the 20 years old signature scheme [CFS01] that is based on very high rate Goppa codes.}
@@ -176,18 +176,19 @@ Let $\calC$ be a linear code over $\fqm$. Then
 \[\left(\calC \cap \fq^n\right) = \Tr{\calC^{\perp}}.\]
 \end{thm}
 
+
 \subsection{AG codes on $C_{ab}$ curves} \label{section:AG_codes}
 
 Throughout this paper, we will be dealing with algebraic geometry codes defined over a $C_{a,b}$ curve. For further details about this family of curves, we refer to \TODO{ref}. 
 
-\noindent Let $a,b$ be coprime integers. A $C_{a,b}$ curve over $\fqm$ is a curve $\calX_{a,b}$ having an irreducible, affine and non singular plane model with equation
+\paragraph{Codes from $C_{a,b}$ curves.} Let $a,b$ be coprime integers. A $C_{a,b}$ curve over $\fqm$ is a curve $\calX_{a,b}$ having an irreducible, affine and non singular plane model with equation
 \begin{equation} \label{eq:equation_C_ab}
 f_{a,b}(x,y) = \alpha_{0a}z^a + \alpha_{b0}x^b + \sum \alpha_{ij}x^iz^j = 0,
 \end{equation}
 where $f_{a,b} \in \fqm[X,Y]$ and the sum is taken over all couples $(i,j) \in \set{0,\cdots,b} \times \set{0,\cdots,a}$ such that $ai+bj < ab$. 
 
 \noindent These curves are well-studied, and we know that any curve $\calX_{a,b}$ defined by an equation as in \eqref{eq:equation_C_ab} as a unique point at infinity, denoted by $P_{\infty}$. Moreover, its genus is also known:
- $$g\mathfrak{g}(\calX_{a,b}) := \mathfrak{g}_{a,b} = \dfrac{(a-1)(b-1)}{2}.$$
+ $$\mathfrak{g}(\calX_{a,b}) := \mathfrak{g}_{a,b} = \dfrac{(a-1)(b-1)}{2}.$$
 
 Let $\calP \subseteq \fqm(\calX_{a,b})$ be a set of $n$ distinct rational points and a divisor $D \in \Div(\calX_{a,b})$ such that $\Supp(D) \cap \calP = \varnothing$.
 We can consider the AG code 
@@ -203,11 +204,11 @@ with $D^{\perp} = D_{\calP}-D+W$, where $D_{\calP} = \sum\limits_{P \in \calP} P
 \noindent In the special case of AG codes, we have a notation for the subfield subcode, namely
 $$\ssag{\calX_{a,b},\calP,D} := \calC|_{\fq}.$$
 
-Later, we will be interested in AG codes with a specific choice of divisor, which are defined below.
+\noindent Later, we will be interested in AG codes with a specific choice of divisor, which are defined below.
 
-\paragraph{One-point codes.} We will consider codes obtained by evaluating functions on $\calX_{a,b}$ which are regular everywhere, except maybe at the unique point at infinity $P_\infty$ on $\calX_{a,b}$. These functions then belong to the ring 
+\paragraph{The point at infinity.} We will consider codes obtained by evaluating functions on $\calX_{a,b}$ which are regular everywhere, except maybe at the unique point at infinity $P_\infty$ on $\calX_{a,b}$. These functions then belong to the ring 
 
-\[\calO_{P_\infty}=\bigcup_{s \geq 0} \calL(s P_\infty)\]
+\[\mathcal{O}_{P_\infty}=\bigcup_{s \geq 0} \calL(s P_\infty)\]
 
 where each Riemann--Roch space $\calL(s P_\infty)$ has an explicit basis as follows:
 
@@ -230,16 +231,12 @@ polynomials. We will notably perform division, using Gr\"obner bases, and, as ex
 \textit{generally} smaller than the dividend's one.
 
 
-\TODO{Garde-t-on ceci ? Let $\calP \subseteq \fqm(\calX_{a,b}) \backslash \set{P_{\infty}}$ be a set of length $n$ and $s > 0$. We define the one-point AG code associated to the support $\calP$ and the integer $s$ by
-$$\calC_{\calL}(\calX_{a,b},\calP,sP_{\infty}).$$}
-
-\jade{Pour moi, le Goppa--like AG code devrait être le SSAG de ça. Le truc dessous serait plutôt un generalized AG code, pour lequel le diviseur n'est pas effectif...}
-
-\paragraph{Goppa-like codes.} Let $s<s'$ be integers such that there exists a function $g \in \calL(s'P_\infty)$ with $\degab{g}=s'$. Given a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$, we define the Goppa-like AG-code 
-\[\calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))=\set{\left(f(P)g(P)^{-1}\right)_{P \in \calP} \mid f \in \calL(sP_\infty)}.\]
-
-\noindent The terminology Goppa-like is motivated by the fact that $\calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$ is an evaluation code where the function $g$ plays the role of the Goppa polynomial.
-
+\paragraph{Goppa-like codes.} Let $2\mathfrak{g}_{a,b}-1 \leq s<s'$ be integers such that there exists a function $g \in \calL(s'P_\infty)$ with $\degab{g}=s'$. Given a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$, we consider the AG code 
+\[\calC := \calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))=\set{\left(f(P)g(P)^{-1}\right)_{P \in \calP} \mid f \in \calL(sP_\infty)}.\]
+The corresponding Goppa-like code is defined as the dual of the subfield subcode of $\calC$, \emph{i.e.}
+$$ \Gamma(\calP,g) := \calC|_{\fq}^{\perp}.$$
+\TODO{que pensez vous de la notation Goppa-like ? L'idée étant de calquer le fait que notre Goppa like soit le dual du subfield subcode comme dans le cas des codes de Goppa.}\\
+\noindent The terminology Goppa-like is motivated by the fact here, the function $g$ plays the role of the Goppa polynomial, adding randomness to the code.
 
 \section{First estimation of the dimension of the square of the trace of a code}
 
@@ -300,52 +297,60 @@ From Proposition \ref{prop:mumford_result}, we have $\dim_{\fqm}(\calC)^{\star2}
                                        &= \binom{mk+1}{2} - \dfrac{m}{2}(k(k-1)-2s) .
 \end{align*}
 \end{proof}
-However, the bound given in Corollary \ref{coro:1st_bound_mumford} is generally not sufficient to establish a distinguisher. In the upcoming sections, we will discuss how to improve this bound by studying the right hand side of \ref{eq:key_equation}.
 
-\section{One-point codes case}
 
-In \cite{MT21}, the authors show that given a Generalized Reed-Solomon code $GRS_r(x,y)$, then all the \\ $\Tr{\calC\star \calC^{q^i}}$ occurring in \eqref{eq:key_equation} are included in duals of alternants codes, with equality for small values of $i$. This property is revisited in this section in the case of one-point code over $C_{a,b}$ curves. \\
+\section{On the dimension of the square of the dual of a Goppa-like code}
 
-\noindent Let $s \geq 2\mathfrak{g}_{a,b} -1$ and $\calP \in \calX_{a,b}(\fqm) \backslash \set{P_\infty}$ be a set of length $n$. We consider the one-point code
-$$\calC := \calC_{\calL}(\calX_{a,b},\calP,sP_{\infty}).$$
-The following lemma is key to improve our bound on the dimension, since it shows that the $\Tr{\calC\star \calC^{q^i}}$ are in our context included in the trace of some one-point codes.
+In this section, we aim to generalize the properties found by the authors of \cite{MT21} in Section 6. 
 
-\begin{lemma} \label{lem:inclusion_espaces_RR}
- For any $i \geq 0$,
-  $$\calL(sP_\infty) \cdot \calL(sP_\infty)^{q^i} \subseteq \calL(s(q^i+1)P_\infty).$$
+\noindent Let $s' > s \geq 2\mathfrak{g}_{a,b}-1$ be two non negative integers, and consider the AG code 
+$$\calC := \calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$$
+on $\calX_{a,b}$, where $g \in \calL_(s'P_\infty)$ is such that $\degab{g} = s'$ and $\calP$ is a set of length $n$ such that $\calP \cap \Supp(g) = \varnothing$. 
+\noindent Set $D=sP_\infty+(g)=(g)_0-(s'-s)P_\infty$, and notice that applying \eqref{eq:key_equation} yields   
+$$ \Tr{\calC}^{\star 2} = (\Gamma(\calP,g)^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr{\calC\star \calC^{q^i}}.$$ 
+Below, we discuss how to improve the upper bound given in Corollary \ref{coro:1st_bound_mumford}, which is valid for all subfield subcodes of AG codes. The idea is to use the specific algebraic structure of our code.
+
+\subsection{Using the struture of $\calL(sP_\infty)$}
+
+\TODO{Une autre idée de titre...}
+
+With above notations, notice that $D$ and $sP_\infty$ are equivalent divisors, implying that $\calC$ is monomially equivalent to the one-point code $C_{\calL}(\calX_{a,b},\calP,sP_\infty)$. 
+More precisely, we have $$\calL(D) = g^{-1} \cdot \calL(sP_{\infty}).$$
+Thus, we can easily see that
+\begin{equation} \label{eq:equiv_divisors}
+\dim_{\fqm} \calL(D)\cdot \calL(D)^{q^i} = \dim_{\fqm} \calL(sP_\infty)\cdot \calL(sP_\infty)^{q^i},
+\end{equation}
+where $\calL(D)\cdot \calL(D)^{q^i}$ corresponds to the evaluation space of the product code $\calC \star \calC^{q^i}$.
+
+
+\begin{lemma} \label{lem:bound_dim_Tr(C*C^q^i)}
+   For all $i \geq 0$, 
+   $$\dim_{\fq} \Tr{\calC\star \calC^{q^i}} \leq m\left(s\left(q^i+1\right)+1-\mathfrak{g}_{a,b}\right).$$
 \end{lemma}
 
 \begin{proof}
-Obvious from the definition of Riemann-Roch spaces. \TODO{plus de détails ?}
+From \eqref{eq:basis_L(sP_inf)} that for any $i \geq 0$, we easily check that
+$$ \calL(sP_\infty)\cdot \calL(sP_\infty)^{q^i} \subseteq \calL(s(q^i+1)P_\infty).$$
+Since $C_{\calL}(\calX_{a,b},\calP,s(q^i+1)P_{\infty}) = \set{\mathrm{Ev}_{\calP}(f) : f \in \calL(s(q^i+1)P_\infty)}$, we deduce 
+$$ \dim_{\fqm} \calL(sP_\infty) \cdot \calL(sP_\infty)^{q^i} \leq \dim_{\fqm}\left(C_{\calL}(\calX_{a,b},\calP,s(q^i+1)P_{\infty})\right) = s(q^i+1)+1-{\mathfrak{g}_{a,b}},$$
+the last equality coming from the Riemann-Roch theorem. The result follows from \eqref{eq:equiv_divisors} and the usual upper bound on the dimension of the trace of a code. 
 \end{proof}
 
-\begin{coro} \label{coro:bound_dim_Tr(C*C^q^i)}
-    For all $i \geq 0$, 
-    $$\dim_{\fq} \Tr{\calC\star \calC^{q^i}} \leq m\left(s\left(q^i+1\right)+1-\mathfrak{g}_{a,b}\right).$$
-\end{coro}
+\noindent This simple Lemma yields an upper bound on the dimension of the square of the dual of Goppa-like codes.
 
-\begin{proof}
-    From Lemma \ref{lem:inclusion_espaces_RR} and the definition of AG codes as evaluation codes, we deduce 
-    $$\Tr{\calC\star \calC^{q^i}} \subseteq \Tr{\calC^{q^i+1}},$$
-    where $\calC^{q^i+1} = \calC_{\calL}(\calX_{a,b},\calP,s(q^i+1)P_\infty).$ Since $s\geq 2\mathfrak{g}_{a,b}-1$, the Riemann-Roch theorem gives 
-    $$\dim_{\fqm} \calC^{q^i+1} = s(q^i+1)+1-\mathfrak{g}_{a,b}.$$
-    Finally, \eqref{eq:dim_trace} gives 
-    $$\dim_{\fq} \Tr{\calC^{q^i+1}} \leq m(s(q^i+1)+1-\mathfrak{g}_{a,b}).$$
-\end{proof}
 
-We can now give a first improvement of the bound given in Corollary \ref{coro:1st_bound_mumford}.
 
 \begin{proposition} \label{prop:bound_dim_using_inclusions}
-    Let $\calC := \calC_{\calL}(\calX_{a,b},\calP,sP_{\infty})$ be a one-point AG code on $\calX_{a,b}$ such that $s \geq 2g_{a-b}-1$. Set $k := \dim_{\fqm}\calC = s+1-\mathfrak{g}_{a,b}$ and  $e := \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor$. Then
-    $$\dim_{\fq} \Tr{\calC}^{\star2} \leq \binom{mk+1}{2} - \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).$$
+    Let $\calC := \calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$ be as above, and suppose $s \geq 2g_{a-b}-1$. Set $k := \dim_{\fqm}\calC = s+1-\mathfrak{g}_{a,b}$ and  $e := \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor$. Then
+    $$\dim_{\fq} (\Gamma(\calP,g)^{\perp})^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).$$
 \end{proposition}
 
 \begin{proof}
-    From Proposition \ref{prop:Tr_BoundSchurSquare}, we have 
+    From Proposition \ref{prop:Tr_BoundSchurSquare} and Lemma \ref{lem:bound_dim_Tr(C*C^q^i)}, we have 
     \begin{align*}
-        \dim_{\fq} \Tr{\calC}^{\star2} 
+        \dim_{\fq}(\Gamma(\calP,g)^{\perp})^{\star 2}
         & \leq \sum\limits_{i=0}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star \calC^{q^i}} \\
-        & \leq \sum\limits_{i=0}^{e} m\dim_{\fq} \calC^{q^i+1} + \sum\limits_{i=e+1}^{\lfloor m/2 \rfloor} \Tr{\calC \star \calC^{q^i}} \\
+        & \leq \sum\limits_{i=0}^{e} m(s(q^i+1)+1-\mathfrak{g}_{a,b})  + \sum\limits_{i=e+1}^{\lfloor m/2 \rfloor} \Tr{\calC \star \calC^{q^i}} \\
         & \leq \sum\limits_{i=0}^{e} m(sq^i+k) + \left( \frac{m-1}{2} -e \right)mk^2 \\
         & \leq \frac{m}{2}\left(2k(e+1)+2s\left(\dfrac{q^{e+1}-1}{q-1}\right)+k^2(m-1)-2ek^2  \right) \\
         & \leq \binom{mk+1}{2} -  \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).
@@ -362,21 +367,7 @@ This function is decreasing with $e$, and the smallest value for which $\Delta T
 $$e =  \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor.$$
 \end{proof}
 
-\section{Goppa-like codes case}
-
-In this section, we focus on Goppa-like AG codes as defined in \ref{section:AG_codes}. We aim to generalize properties found by the authors of \cite{MT21} in Section 6. 
-
-\noindent Let $s' > s$ be two non negative integers, and consider the Goppa-like code 
-$$\calC := \calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$$
-on $\calX_{a,b}$, where $g \in \calL_{s'P_\infty}$ is such that $\degab{g} = s'$ and $\calP$ is a set of length $n$ such that $\calP \cap \Supp(g) = \varnothing$. 
-
-\noindent Set $D=sP_\infty+(g)=(g)_0-(s'-s)P_\infty$.  
-Since $D$ and $sP_\infty$ are equivalent divisors, this code is monomially equivalent to the one-point code $C_{\calL}(\calX_{a,b},\calP,sP_\infty)$. 
-More precisely, we have
-$$\calL(D) = g^{-1} \cdot \calL(sP_{\infty}).$$
-As a consequence, one can easily see that
-\[\dim_{\fqm} \calL(D)\cdot \calL(D)^{q^i} = \dim_{\fqm} \calL(sP_\infty)\cdot \calL(sP_\infty)^{q^i},\]
-meaning that the upper bound on the dimension given in Proposition \ref{prop:bound_dim_using_inclusions} also holds for Goppa-like codes. However, we will see below that this bound can be improved.
+Dispite the fact that this bound is already an improvement, it only uses the equivalence of divisors between $D$ and $sP_{\infty}$, \emph{i.e.} we relly on one-point codes and do not deal with the specific structure of Goppa-like codes. In the upcoming section, we show that we can say a bit more under some other conditions on $s$ and $s'$.
 
 \subsection{Weighted euclidean division}
 
@@ -426,8 +417,6 @@ $$\calT_i= \Tr{g^{-(q^i+1)}\cdot \left( \calR\left(g^{q^i-q^{i-1}+1}\right)  \ca
 and we set $$\calT_0 := \Tr{g^{-2} \cdot \calL(2sP_\infty}).$$
 \end{definition}
 
-\TODO{include dimension $R(g^{q^i
--q^{i-1}+1})$?}	
 	
 \noindent Let $i \geq 0$ and $f \in \calL(sP_\infty) \cdot \calL(sP_\infty)^{q^i} \subseteq \calL(s(q^i+1)P_\infty)$. Then 
 Lemma \ref{lem:weighted_division} entails that 
@@ -440,13 +429,13 @@ Thus, for all $i \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$, we have \begin{
 
 %--------Last changes----------%
 
-\subsection{Upper bound in Goppa like case}
+\subsection{Upper bound in Goppa-like case}
 
-In the proposition below, we compute the exact dimension of $\calT_i$'s.
+In the proposition below, we study the intersection $R(g^{q^{i}-q^{i-1}+1}) \cap \calL(s(q^i+1)P_\infty)$ in order to understand the sets $\calT_i$'s introduce before.
 
 \begin{proposition} \label{prop:dim_M_i's}
-Fix $i \in \set{1,\dots,\lfloor m/2 \rfloor}$ and
-    let $\alpha' \in \set{0,\dots,a-1}$ be the rest of the Euclidean division of $\alpha (q^i-q^{-1}+1)$ by $a$. Then we can compute the exact dimension of $M_i := R(g^{q^{i}-q^{i-1}+1}) \cap \calL(s(q^i+1)P_\infty)$ depending on $s'$:
+Let $i \in \set{1,\dots,\lfloor m/2 \rfloor}$ and
+     $\alpha' \in \set{0,\dots,a-1}$ be the rest of the Euclidean division of $\alpha (q^i-q^{-1}+1)$ by $a$. Then we can compute the exact dimension of $M_i := R(g^{q^{i}-q^{i-1}+1}) \cap \calL(s(q^i+1)P_\infty)$ depending on $s'$:
     \begin{enumerate}
         \item $\dim_{\fqm}(M_i) = s(q^i+1)+1-\mathfrak{g}_{a,b}$ if $s' > \left\lfloor \dfrac{s(q^i+1)+a}{q^i+q^{i-1}-1}\right\rfloor$;
         
@@ -529,8 +518,8 @@ Depending on the value of $s'$, there is a few case to consider:
 The formulas for the dimension of $M_i$ follows from the above computations and \eqref{eq:exact_dimension_M_i}.
 \end{proof}
 
-Note that case $1)$ is not really interesting since it correspond to the case where $\calT_i = \Tr{\calL(s(q^i+1)P_\infty)}, $ meaning that considering the $T_i's$ will produce the same bound for $\Tr{\calC}^{\star 2}$ as the one given in \ref{prop:bound_dim_using_inclusions}.
-In what follows, we will focus on case $2)$, since under the corresponding conditions we can prove that $(\calT_i)_i$ forms an increasing sequence for the inclusion. We start with an easy lemma:
+Remark that case $1)$ corresponds to the case where $\calT_i = \Tr{\calL(s(q^i+1)P_\infty)}, $ which will produce the same bound as the one given in Proposition \ref{prop:bound_dim_using_inclusions}.
+Instead, we will focus on case $2)$, since in this case, the sequence $(\calT_i)_i$ is increasing for the inclusion. 
 
 \begin{lemma} \label{lem:cond_inclusion_T_i's}
     If $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$, then for every $i \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$,
@@ -595,13 +584,13 @@ which holds since $s<s'$ and $f \in \calL(2sP_\infty)$. Repeating the division p
 
 \begin{coro} \label{coro:bound_with_T_i's_inclusion}
 Suppose $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$ and let $e^* := \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1$. Then
-$$\dim_{\fq} \Tr{\calC}^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2}(k^2(2e^*+1)+k-2s'(q^{e^*}-q^{e^*-1}+1)). $$
+$$\dim_{\fq} (\Gamma(\calP,g)^{\perp})^{\star 2}\leq \binom{mk+1}{2} - \dfrac{m}{2}(k^2(2e^*+1)+k-2s'(q^{e^*}-q^{e^*-1}+1)). $$
 \end{coro}
 
 \begin{proof}
     From \eqref{eq:key_equation} and under the assumption on $s$ and $s'$, we have
         \begin{align*}
-        \dim_{\fq} \Tr{\calC}^{\star2} 
+        \dim_{\fq} (\Gamma(\calP,g)^{\perp})^{\star 2}
         & \leq \sum\limits_{i=0}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star \calC^{q^i}} \\
         & \leq \dim_{\fq} (\calT_e) + \sum\limits_{i=e+1}^{\lfloor m/2 \rfloor} \Tr{\calC \star \calC^{q^i}} \\
         & \leq ms'(q^e-q^{e-1}+1) + \left( \frac{m-1}{2} -e \right)mk^2 \\
@@ -627,10 +616,10 @@ In the next section, we will discuss how to construct a Goppa like code on $\cal
 
 \section{Secured parameters against the distinguisher}
 
-\noindent Given a Goppa like code $\calC := C_\calL(\calX_{a,b},\calP,D)$, where $D = sP_\infty +(g)$ and $\degab{g} = s'>s\geq 2\mathfrak{g}_{a,b}-1$, we proved above that whenever $$s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1,$$ we have 
+\noindent Given an AG code $\calC := C_\calL(\calX_{a,b},\calP,D)$, where $D = sP_\infty +(g)$ and $\degab{g} = s'>s\geq 2\mathfrak{g}_{a,b}-1$, we proved above that whenever $$s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1,$$ we have 
 
 \begin{equation} \label{eq:best_upper_bound}
-\dim_{\fq} \Tr{\calC}^{\star2} \leq \frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right),
+\dim_{\fq} (\Gamma(\calP,g)^{\perp})^{\star 2} \leq \frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right),
 \end{equation}
 where $e^* := \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1$.
 From the definition of $\calC$, we can estimate its length $n$. In fact, since $\calP \cap \Supp(g) = \varnothing,$ the maximal possible length of $\calC$ is reached when $\calP = \calX_{a,b}(\fqm) \backslash \Supp(g)$ and $g$ has only one zero, that is
