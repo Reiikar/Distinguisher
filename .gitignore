@@ -33,7 +33,7 @@ figures/*.pdf
 *-blx.aux
 *-blx.bib
 *.run.xml
-slides/build/*
+src/build/*
 
 ## Build tool auxiliary files:
 *.fdb_latexmk
