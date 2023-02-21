@@ -53,6 +53,7 @@
 \newcommand{\calL}{\mathcal{L}}
 \newcommand{\calC}{\mathcal{C}}
 \newcommand{\calD}{\mathcal{D}}
+\newcommand{\calO}{\mathcal{O}}
 \newcommand{\calR}{\mathcal{R}}
 \newcommand{\calT}{\mathcal{T}}
 \newcommand{\calX}{\mathcal{X}}
@@ -184,12 +185,18 @@ $$\ssag{\calX_{a,b},\calP,D} := \calC|_{\fq}.$$
 
 Later, we will be interested in AG codes with a specific choice of divisor, which are defined below.
 
-\paragraph{One-point codes.} Let $\calP \subseteq \fqm(\calX_{a,b}) \backslash \set{P_{\infty}}$ be a set of length $n$ and $s > 0$. We define the one-point AG code associated to the support $\calP$ and the integer $s$ by
-$$\calC_{\calL}(\calX_{a,b},\calP,sP_{\infty}).$$
-These codes are interesting because we know an explicit basis of the Riemann-Roch space $\calL(P_{\infty})$, \emph{i.e.}
+\paragraph{One-point codes.} We will consider codes obtained by evaluating functions on $\calX_{a,b}$ which are regular everywhere, except maybe at the unique point at infinity $P_\infty$ on $\calX_{a,b}$. These functions then belong to the ring 
+
+\[\calO_{P_\infty}=\bigcup_{s \geq 0} \calL(s P_\infty)\]
+
+where each Riemann--Roch space $\calL(s P_\infty)$ has an explicit basis as follows:
+
 \begin{equation} \label{eq:basis_L(sP_inf)}
     \calL(sP_{\infty}) = \Span{x^iy^j \mid 0 \leq i, 0\leq j\leq a-1 \ \mathrm{and} \ ai+bj \leq s}.
 \end{equation}
+
+In summary, any function regular on all $\calX_{a,b}$ except maybe at $P_\infty$ is a polynomial in the functions $x$ and $y$. 
+
 Given a monomial of the form $x^iy^j \in \calL(sP_{\infty})$, we define its weighted degree by
 \[ \degab{x^iy^j} := ai+bj.\]
 Any function $f \in \calL(sP_{\infty})$ can be written of the form $$f = x^{\beta}y^{\alpha} + f'(x,y),$$
@@ -197,10 +204,21 @@ with $\alpha \leq a-1$ and $f' \in \calL(sP_{\infty})$ such that any monomial $x
 $$\degab{f} := \degab{\mathrm{LT}(f)}.$$
 This way, any function in $\calL(sP_\infty)$ can be seen as a polynomial in $x$ and $y$ such that $\degab{f}\leq s$. 
 
+It is worth noting that $\calO_{P_\infty}$ is a valuation ring, with valuation $v_{P_\infty}$. Then for every $f \in \calO_{P_\infty}$, we have $
+\degab{f}=-v_{P_\infty}(f)$. We prefer handling the weighted degree rather than the valuation due to its similarities with the degree of univariate 
+polynomials. We will notably perform division, using Gr\"obner bases, and, as expected in the univariate case, the degree of the remainder is 
+\textit{generally} smaller than the dividend's one.
+
+
+\TODO{Garde-t-on ceci ? Let $\calP \subseteq \fqm(\calX_{a,b}) \backslash \set{P_{\infty}}$ be a set of length $n$ and $s > 0$. We define the one-point AG code associated to the support $\calP$ and the integer $s$ by
+$$\calC_{\calL}(\calX_{a,b},\calP,sP_{\infty}).$$}
+
+\jade{Pour moi, le Goppa--like AG code devrait être le SSAG de ça. Le truc dessous serait plutôt un generalized AG code, pour lequel le diviseur n'est pas effectif...}
+
 \paragraph{Goppa-like codes.} Let $s<s'$ be integers such that there exists a function $g \in \calL(s'P_\infty)$ with $\degab{g}=s'$. Given a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$, we define the Goppa-like AG-code 
 \[\calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))=\set{\left(f(P)g(P)^{-1}\right)_{P \in \calP} \mid f \in \calL(sP_\infty)}.\]
 
-\noindent The terminology Goppa-like is explained by the fact that $\calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$ is an evaluation code where the function $g$ plays the role of the Goppa polynomial.
+\noindent The terminology Goppa-like is motivated by the fact that $\calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$ is an evaluation code where the function $g$ plays the role of the Goppa polynomial.
 
 
 \section{First estimation of the dimension of the square of the trace of a code}
