@@ -166,7 +166,7 @@ f_{a,b}(x,y) = \alpha_{0a}z^a + \alpha_{b0}x^b + \sum \alpha_{ij}x^iz^j = 0,
 where $f_{a,b} \in \fqm[X,Y]$ and the sum is taken over all couples $(i,j) \in \set{0,\cdots,b} \times \set{0,\cdots,a}$ such that $ai+bj < ab$. 
 
 \noindent These curves are well-studied, and we know that any curve $\calX_{a,b}$ defined by an equation as in \eqref{eq:equation_C_ab} as a unique point at infinity, denoted by $P_{\infty}$. Moreover, its genus is also known:
- $$g(\calX_{a,b}) := g_{a,b} = \dfrac{(a-1)(b-1)}{2}.$$
+ $$g\mathfrak{g}(\calX_{a,b}) := \mathfrak{g}_{a,b} = \dfrac{(a-1)(b-1)}{2}.$$
 
 Let $\calP \subseteq \fqm(\calX_{a,b})$ be a set of $n$ distinct rational points and a divisor $D \in \Div(\calX_{a,b})$ such that $\Supp(D) \cap \calP = \varnothing$.
 We can consider the AG code 
@@ -240,10 +240,10 @@ Let $F,G$ be two divisors in $\calH$ such that $\deg(G) \geq 2g(\calH)+1$ and $\
 where $\calL(F) \cdot \calL(G) := \Span{ f \cdot g : f,g \in \calL(F) \times \calL(G)}$.
 \end{proposition}
 
-\noindent As a consequence, for an AG code  $C_{\calL}(\calX_{a,b},\mathcal{P},D)$ with $\deg(D) \geq 2g_{a,b}+1$, then 
+\noindent As a consequence, for an AG code  $C_{\calL}(\calX_{a,b},\mathcal{P},D)$ with $\deg(D) \geq 2\mathfrak{g}_{a,b}+1$, then 
 \[ C_{\calL}(\calX_{a,b},\mathcal{P},D)^{\star2} = C_{\calL}(\calX_{a,b},\calP,2D).\]
 The Riemann-Roch theorem thus gives
-\[ \dim_{\fqm}(C_{\calL}(\calX_{a,b},\mathcal{P},D)^{\star2}) = 2\deg(D)+1-g_{a,b} = \deg(D) + \dim_{\fqm}(C_{\calL}(\calX_{a,b},\mathcal{P},D)), \]
+\[ \dim_{\fqm}(C_{\calL}(\calX_{a,b},\mathcal{P},D)^{\star2}) = 2\deg(D)+1-\mathfrak{g}_{a,b} = \deg(D) + \dim_{\fqm}(C_{\calL}(\calX_{a,b},\mathcal{P},D)), \]
 which is much smaller than the expected dimension given in Lemma \ref{lem:known_bounds} 2. (thus providing a distinguisher for AG-codes). Combined with \eqref{eq:key_equation}, we get a first upper bound on the dimension of the square of the trace code of an AG code.
 
 
@@ -268,7 +268,7 @@ However, the bound given in Corollary \ref{coro:1st_bound_mumford} is generally 
 
 In \cite{MT21}, the authors show that given a Generalized Reed-Solomon code $GRS_r(x,y)$, then all the \\ $\Tr{\calC\star \calC^{q^i}}$ occurring in \eqref{eq:key_equation} are included in duals of alternants codes, with equality for small values of $i$. This property is revisited in this section in the case of one-point code over $C_{a,b}$ curves. \\
 
-\noindent Let $s \geq 2g_{a,b} -1$ and $\calP \in \calX_{a,b}(\fqm) \backslash \set{P_\infty}$ be a set of length $n$. We consider the one-point code
+\noindent Let $s \geq 2\mathfrak{g}_{a,b} -1$ and $\calP \in \calX_{a,b}(\fqm) \backslash \set{P_\infty}$ be a set of length $n$. We consider the one-point code
 $$\calC := \calC_{\calL}(\calX_{a,b},\calP,sP_{\infty}).$$
 The following lemma is key to improve our bound on the dimension, since it shows that the $\Tr{\calC\star \calC^{q^i}}$ are in our context included in the trace of some one-point codes.
 
@@ -283,22 +283,22 @@ Obvious from the definition of Riemann-Roch spaces. \TODO{plus de détails ?}
 
 \begin{coro} \label{coro:bound_dim_Tr(C*C^q^i)}
     For all $i \geq 0$, 
-    $$\dim_{\fq} \Tr{\calC\star \calC^{q^i}} \leq m\left(s\left(q^i+1\right)+1-g_{a,b}\right).$$
+    $$\dim_{\fq} \Tr{\calC\star \calC^{q^i}} \leq m\left(s\left(q^i+1\right)+1-\mathfrak{g}_{a,b}\right).$$
 \end{coro}
 
 \begin{proof}
     From Lemma \ref{lem:inclusion_espaces_RR} and the definition of AG codes as evaluation codes, we deduce 
     $$\Tr{\calC\star \calC^{q^i}} \subseteq \Tr{\calC^{q^i+1}},$$
-    where $\calC^{q^i+1} = \calC_{\calL}(\calX_{a,b},\calP,s(q^i+1)P_\infty).$ Since $s\geq 2g_{a,b}-1$, the Riemann-Roch theorem gives 
-    $$\dim_{\fqm} \calC^{q^i+1} = s(q^i+1)+1-g_{a,b}.$$
+    where $\calC^{q^i+1} = \calC_{\calL}(\calX_{a,b},\calP,s(q^i+1)P_\infty).$ Since $s\geq 2\mathfrak{g}_{a,b}-1$, the Riemann-Roch theorem gives 
+    $$\dim_{\fqm} \calC^{q^i+1} = s(q^i+1)+1-\mathfrak{g}_{a,b}.$$
     Finally, \eqref{eq:dim_trace} gives 
-    $$\dim_{\fq} \Tr{\calC^{q^i+1}} \leq m(s(q^i+1)+1-g_{a,b}).$$
+    $$\dim_{\fq} \Tr{\calC^{q^i+1}} \leq m(s(q^i+1)+1-\mathfrak{g}_{a,b}).$$
 \end{proof}
 
 We can now give a first improvement of the bound given in Corollary \ref{coro:1st_bound_mumford}.
 
 \begin{proposition} \label{prop:bound_dim_using_inclusions}
-    Let $\calC := \calC_{\calL}(\calX_{a,b},\calP,sP_{\infty})$ be a one-point AG code on $\calX_{a,b}$ such that $s \geq 2g_{a-b}-1$. Set $k := \dim_{\fqm}\calC = s+1-g_{a,b}$ and  $e := \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor$. Then
+    Let $\calC := \calC_{\calL}(\calX_{a,b},\calP,sP_{\infty})$ be a one-point AG code on $\calX_{a,b}$ such that $s \geq 2g_{a-b}-1$. Set $k := \dim_{\fqm}\calC = s+1-\mathfrak{g}_{a,b}$ and  $e := \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor$. Then
     $$\dim_{\fq} \Tr{\calC}^{\star2} \leq \binom{mk+1}{2} - \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).$$
 \end{proposition}
 
@@ -410,9 +410,9 @@ In the proposition below, we compute the exact dimension of $\calT_i$'s.
 Fix $i \in \set{1,\dots,\lfloor m/2 \rfloor}$ and
     let $\alpha' \in \set{0,\dots,a-1}$ be the rest of the Euclidean division of $\alpha (q^i-q^{-1}+1)$ by $a$. Then we can compute the exact dimension of $M_i := R(g^{q^{i}-q^{i-1}+1}) \cap \calL(s(q^i+1)P_\infty)$ depending on $s'$:
     \begin{enumerate}
-        \item $\dim_{\fqm}(M_i) = s(q^i+1)+1-g_{a,b}$ if $s' > \left\lfloor \dfrac{s(q^i+1)+a}{q^i+q^{i-1}-1}\right\rfloor$;
+        \item $\dim_{\fqm}(M_i) = s(q^i+1)+1-\mathfrak{g}_{a,b}$ if $s' > \left\lfloor \dfrac{s(q^i+1)+a}{q^i+q^{i-1}-1}\right\rfloor$;
         
-        \item $\dim_{\fqm}(M_i) = s'(q^i-q^{i-1}+1)$ if $s' \leq \left\lfloor \dfrac{s(q^i+1)+1-2g_{a,b}}{q^i+q^{i-1}-1}\right\rfloor$;
+        \item $\dim_{\fqm}(M_i) = s'(q^i-q^{i-1}+1)$ if $s' \leq \left\lfloor \dfrac{s(q^i+1)+1-2\mathfrak{g}_{a,b}}{q^i+q^{i-1}-1}\right\rfloor$;
         
         \item There exists $v^* \in \set{1,\dots,\alpha'-1}$ such that
         $$ \left\lfloor \dfrac{s(q^i+1)+a-b(a+v^*-\alpha')}{q^i+q^{i-1}-1}\right\rfloor < s' \leq  \left\lfloor \dfrac{s(q^i+1)+a-b(a+v^*-1-\alpha')}{q^i+q^{i-1}-1}\right\rfloor$$ or $v^* = \alpha'$ and 
@@ -495,19 +495,19 @@ Note that case $1)$ is not really interesting since it correspond to the case wh
 In what follows, we will focus on case $2)$, since under the corresponding conditions we can prove that $(\calT_i)_i$ forms an increasing sequence for the inclusion. We start with an easy lemma:
 
 \begin{lemma} \label{lem:cond_inclusion_T_i's}
-    If $s \geq (s'-s)q+2g_{a,b}-1$, then for every $i \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$,
+    If $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$, then for every $i \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$,
     $$\calT_i := \Tr{\calR(g^{q^i-q^{i-1}+1})}.$$
 \end{lemma}
 
 \begin{proof}
     From Proposition \ref{prop:dim_M_i's}, we know that for any fixed $i \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$, we have 
-    $$M_i = \calR(g^{q^i-q^{i-1}+1}) \iff  s' \leq \left\lfloor \dfrac{s(q^i+1)+1-2g_{a,b}}{q^i+q^{i-1}-1}\right\rfloor.$$
+    $$M_i = \calR(g^{q^i-q^{i-1}+1}) \iff  s' \leq \left\lfloor \dfrac{s(q^i+1)+1-2\mathfrak{g}_{a,b}}{q^i+q^{i-1}-1}\right\rfloor.$$
     Thus, $M_i = \calR(g^{q^i-q^{i-1}+1})$ for all $i$ if and only if the right hand-side is satisfied for all $i$ as well. Since $q^i+1 > q^i-q^{i-1}+1$, this is equivalent to have it satisfied for $i=1$, \emph{i.e.}
-    $$s' \leq \left\lfloor \dfrac{s(q+1)+1-2g_{a,b}}{q}\right\rfloor;$$
-    which gives $s \geq (s'-s)q+2g_{a,b}-1$. The result follows.
+    $$s' \leq \left\lfloor \dfrac{s(q+1)+1-2\mathfrak{g}_{a,b}}{q}\right\rfloor;$$
+    which gives $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$. The result follows.
 \end{proof}
 
-\begin{proposition} \label{prop:inclusion_T_i's} Suppose $s \geq (s'-s)q+2g_{a,b}-1$. Then
+\begin{proposition} \label{prop:inclusion_T_i's} Suppose $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$. Then
     $$\calT_0 \subseteq \calT_1 \subseteq \dots \subseteq \calT_{\lfloor \frac{m}{2}\rfloor}.$$
 \end{proposition}
 
@@ -556,7 +556,7 @@ which holds since $s<s'$ and $f \in \calL(2sP_\infty)$. Repeating the division p
 
 
 \begin{coro} \label{coro:bound_with_T_i's_inclusion}
-Suppose $s \geq (s'-s)q+2g_{a,b}-1$ and let $e^* := \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1$. Then
+Suppose $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$ and let $e^* := \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1$. Then
 $$\dim_{\fq} \Tr{\calC}^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2}(k^2(2e^*+1)+k-2s'(q^{e^*}-q^{e^*-1}+1)). $$
 \end{coro}
 
@@ -589,16 +589,16 @@ In the next section, we will discuss how to construct a Goppa like code on $\cal
 
 \section{Secured parameters against the distinguisher}
 
-\noindent Given a Goppa like code $\calC := C_\calL(\calX_{a,b},\calP,D)$, where $D = sP_\infty +(g)$ and $\degab{g} = s'>s\geq 2g_{a,b}-1$, we proved above that whenever $$s \geq (s'-s)q+2g_{a,b}-1,$$ we have 
+\noindent Given a Goppa like code $\calC := C_\calL(\calX_{a,b},\calP,D)$, where $D = sP_\infty +(g)$ and $\degab{g} = s'>s\geq 2\mathfrak{g}_{a,b}-1$, we proved above that whenever $$s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1,$$ we have 
 
 \begin{equation} \label{eq:best_upper_bound}
 \dim_{\fq} \Tr{\calC}^{\star2} \leq \frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right),
 \end{equation}
 where $e^* := \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1$.
 From the definition of $\calC$, we can estimate its length $n$. In fact, since $\calP \cap \Supp(g) = \varnothing,$ the maximal possible length of $\calC$ is reached when $\calP = \calX_{a,b}(\fqm) \backslash \Supp(g)$ and $g$ has only one zero, that is
-$$n = \# \calP = |\calX_{a,b}(\fqm)| \leq q^m-1+2g_{a,b}\sqrt{q^m},$$
+$$n = \# \calP = |\calX_{a,b}(\fqm)| \leq q^m-1+2\mathfrak{g}_{a,b}\sqrt{q^m},$$
 using the Hasse-Weil bound. We can now give the choices of $s$ and $s'$, depending on the fixed parameters $a,b,q$ and $m$, for which
-$$\frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right)\geq q^m-1+2g_{a,b}\sqrt{q^m},$$
+$$\frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right)\geq q^m-1+2\mathfrak{g}_{a,b}\sqrt{q^m},$$
 in which cases the corresponding Goppa like code resist the distinguisher.
 
 
