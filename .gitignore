@@ -33,7 +33,7 @@ figures/*.pdf
 *-blx.aux
 *-blx.bib
 *.run.xml
-slides/build/
+slides/build/*
 
 ## Build tool auxiliary files:
 *.fdb_latexmk
@@ -262,3 +262,4 @@ TSWLatexianTemp*
 *.sta
 camera-ready/final-submission.vtc
 figures/figures.pdf
+
