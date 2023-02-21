@@ -99,12 +99,34 @@
 
 \TODO{reformuler/paraphraser ce qu'il y a là $\downarrow$}
 
-\jade{Ce que dit Alain à la fin de \cite{CMR17} :} 
-Assume Fq to be non prime and let F be a proper subfield of Fq and C := CL(X,P,E) inter Fn. The point is that C(2) and the 2-closure of C in general differs from CL(X,P,E). For this reason, subfield subcodes resist to this kind of attacks. Notice that even
-in genus zero: subfield subcodes of GRS codes still resist to filtration attacks unless for the cases presented in [5,10]. Moreover, similarly to the case of classical Goppa codes, some of these codes are known to have a good designed distance, see for instance [18,43,47] or [4] for another construction based on the Cartier operator. Therefore, these codes provide a good candidate for a secure generalisation of the original McEliece scheme based on classical Goppa codes.
+\jade{C'est le bordel, mais j'ai jeté quelques idées}
 
-\jade{D'après Rocco \cite{MT21} :}However, the fact that the dual of a Goppa code is the trace of a generalized Reed-Solomon code rather than the subfield subcode of a generalized Reed-Solomon code seems to complicate significantly the attempts to turn this distinguisher into an attack. But again, having now a much better algebraic (and rigorous) explanation of why the distinguisher works, together with new
-algebraic results about products involved in the square of the dual of the Goppa code gives a much better understanding of the square code structure. This is clearly desirable and needed if we want to mount a key recovery attack based on these square code considerations. The hope is that this will ultimately lead to being able to attack McEliece schemes based on very high Goppa codes. As explained earlier, this will still not threaten the codes used in the aforementioned NIST competition, but this would break the 20 years old signature scheme [CFS01] that is based on very high rate Goppa codes.
+
+MCEliece cryptosystem is the only code-based candidate for standartisation of post--quantum cryptrographic to the NIST competition since the $3^rd$ round. This motivates the study of structural attacks and of the possibilities of parameters improvements. 
+
+Over the past forty years, there were many attempts in replacing the family of binary Goppa codes by other structured families of codes to reduce the key size.
+
+\TODO{Citer quelques tentatives}
+
+\jade{Ce que dit Alain à la fin de \cite{CMR17} :
+Assume Fq to be non prime and let F be a proper subfield of Fq and C := CL(X,P,E) inter Fn. The point is that C(2) and the 2-closure of C in general differs from CL(X,P,E). For this reason, subfield subcodes resist to this kind of attacks. Notice that even
+in genus zero: subfield subcodes of GRS codes still resist to filtration attacks unless for the cases presented in [5,10]. Moreover, similarly to the case of classical Goppa codes, some of these codes are known to have a good designed distance, see for instance [18,43,47] or [4] for another construction based on the Cartier operator. Therefore, these codes provide a good candidate for a secure generalisation of the original McEliece scheme based on classical Goppa codes.}
+
+\TODO{Parler des Goppa--like AG codes}
+
+
+Mora and Tillich \cite{MT21} benefited from the trace structure of the dual code of a subfield subcode to display a distinguisher for high rate Goppa codes. Their techniques relied on two features of GRS codes. First, their behaviour with respect to the Schur product is well-known. From this, the authors gave a sharp upper bound for the dimension of the square of the dual codes of alternant codes. In the particular case of Goppa codes, where the multiplicator has the form $\vec{y}=(g(x_1)^{-1},g(x_2)^{-1},\dots,g(x_n)^{-1})$ for some polynomial $g$ of degree $r$, they managed to get an even sharper upper bound by performing euclidean division by powers of $g$.
+
+As Goppa--like AG codes naturally generalizes Goppa codes, it is natural to wonder if one can derive a structural attack on these codes from Mora and Tillich's attack. The genus of the curve plays a significant role in the parameters of AG codes. The greater the genus, the more $\Fq$--points the curve \calX$ may have and so the longer the code can be. But the parameters $[n,k,d]$ of an AG code satisfies $n-g+1 \leq k+d \leq n+1$, which means that an AG code is $g$--far form optimality. Also, the correction capacity naturally suffers from a big genus: the naive correction algorithm can correct up to $\frac{d-1-g}{2}$ errors. Only refined techniques, based on error locating pairs, manage to remove this drawback. Caution should be exercised when it comes to the impact of the genus on the properties of AG codes. In the present work, we interest in the behaviour of Goppa--like one--point AG codes from $\calC_{a,b}$ curves with respect to a similar structural attack.
+
+AG codes have a very similar behaviour as GRS codes with respect to Schur product. Moreover, some well-chosen AG codes are defined by the evaluation of \textit{multivariate} polynomials. In this case, we prove that performing division algorithm via Gr\¨obner bases enable us to estimate the dimension of the square of the dual of Goppa--like AG codes.
+
+\jade{D'après Rocco \cite{MT21} :However, the fact that the dual of a Goppa code is the trace of a generalized Reed-Solomon code rather than the subfield subcode of a generalized Reed-Solomon code seems to complicate significantly the attempts to turn this distinguisher into an attack. But again, having now a much better algebraic (and rigorous) explanation of why the distinguisher works, together with new
+algebraic results about products involved in the square of the dual of the Goppa code gives a much better understanding of the square code structure. This is clearly desirable and needed if we want to mount a key recovery attack based on these square code considerations. The hope is that this will ultimately lead to being able to attack McEliece schemes based on very high Goppa codes. As explained earlier, this will still not threaten the codes used in the aforementioned NIST competition, but this would break the 20 years old signature scheme [CFS01] that is based on very high rate Goppa codes.}
+
+
+
+
 
 \section{Preliminaries}
 
