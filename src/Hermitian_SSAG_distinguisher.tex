@@ -69,7 +69,7 @@
 \newcommand{\LT}[1]{\operatorname{LT}\left(#1\right)}
 \newcommand{\Supp}{\operatorname{Supp}}
 \newcommand{\Div}{\operatorname{Div}}
-\newcommand{\ssag}[1]{\operatorname{SSAG_{q}}\left(#1\right)}
+\newcommand{\ssag}[1]{\operatorname{SSAG}_{q}\left(#1\right)}
 
 \newcommand{\gen}{\mathfrak{g}}
 \newcommand{\degab}[1]{\deg_{a,b}\left(#1\right)}
@@ -137,7 +137,7 @@ In this section, we briefly introduce some notation and basic definitions for li
 \noindent Let $\fq$ be the finite field with $q$ elements, $m > 0$ and denote  by $\fqm$ the finite extension of $\fq$ of degree $m$. A linear code $\calC$ over $\fqm$ is a subspace of $\fqm^n$. The integer $n$ is called its length and we denote by $k$ its dimension, and $d$ its minimum distance. We say that $\calC$ is a $[n,k,d]_{q^m}$ code or that it has parameters $[n,k,d]_{q^m}$. Given a linear code of length $n$, its dual code $\calC^{\perp}$ is defined by 
 \[\calC^{\perp}=\left\lbrace x \in \fqm^n \mid c \cdot x=0, \text{ for all } c \in \calC \right\rbrace,\]  
 where $\cdot$ denotes the usual scalar product. It is easily verified that is $\calC$ is a $[n,k]_{q^m}$ code, then $\calC^{\perp}$ is a $[n,n-k]_{q^m}$ code.
-%\TODO{some sentences needed...}
+Given any linear code with lenght $n$ and dimension $k$, its rate is defined by the ration $R := \frac{k}{n}$.
 
 \noindent The Schur product of two vectors $\mathbf{a}$,$\mathbf{b} \in \fqm^n$ is defined as 
 \[ \mathbf{a} \star \mathbf{b} := (a_1b_1,\cdots,a_nb_n). \]
@@ -188,7 +188,7 @@ f_{a,b}(x,y) = \alpha_{0a}z^a + \alpha_{b0}x^b + \sum \alpha_{ij}x^iz^j = 0,
 where $f_{a,b} \in \fqm[X,Y]$ and the sum is taken over all couples $(i,j) \in \set{0,\cdots,b} \times \set{0,\cdots,a}$ such that $ai+bj < ab$. 
 
 \noindent These curves are well-studied, and we know that any curve $\calX_{a,b}$ defined by an equation as in \eqref{eq:equation_C_ab} as a unique point at infinity, denoted by $P_{\infty}$. Moreover, its genus is also known:
- $$\mathfrak{g}(\calX_{a,b}) := \mathfrak{g}_{a,b} = \dfrac{(a-1)(b-1)}{2}.$$
+ $$g(\calX_{a,b}) := \mathfrak{g}_{a,b} = \dfrac{(a-1)(b-1)}{2}.$$
 
 Let $\calP \subseteq \fqm(\calX_{a,b})$ be a set of $n$ distinct rational points and a divisor $D \in \Div(\calX_{a,b})$ such that $\Supp(D) \cap \calP = \varnothing$.
 We can consider the AG code 
@@ -234,9 +234,11 @@ polynomials. We will notably perform division, using Gr\"obner bases, and, as ex
 \paragraph{Goppa-like codes.} Let $2\mathfrak{g}_{a,b}-1 \leq s<s'$ be integers such that there exists a function $g \in \calL(s'P_\infty)$ with $\degab{g}=s'$. Given a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$, we consider the AG code 
 \[\calC := \calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))=\set{\left(f(P)g(P)^{-1}\right)_{P \in \calP} \mid f \in \calL(sP_\infty)}.\]
 The corresponding Goppa-like code is defined as the dual of the subfield subcode of $\calC$, \emph{i.e.}
-$$ \Gamma(\calP,g) := \calC|_{\fq}^{\perp}.$$
+$$ \Gamma(\calP,g) := \calC^{\perp}|_{\fq}.$$
 \TODO{que pensez vous de la notation Goppa-like ? L'idée étant de calquer le fait que notre Goppa like soit le dual du subfield subcode comme dans le cas des codes de Goppa.}\\
-\noindent The terminology Goppa-like is motivated by the fact here, the function $g$ plays the role of the Goppa polynomial, adding randomness to the code.
+\noindent The terminology Goppa-like is motivated by the fact here, the function $g$ plays the role of the Goppa polynomial, adding randomness to the code. From Proposition \ref{prop:dual_AG_codes}, a Goppa-like code turns out to be the subfield subcode of an AG code, as it is the case for classical Goppa codes with respect to GRS codes. More precisly, we have 
+$$ \Gamma(\calP,g) = \calC_{\calL}(\calX_{a,b},\calP,D^{\perp})|_{\fq} := \ssag{\calX_{a,b},\calP,D^{\perp}},$$
+where $D := sP_{\infty}+(g)$. 
 
 \section{First estimation of the dimension of the square of the trace of a code}
 
@@ -614,22 +616,58 @@ $$e =  \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1.$$
 
 In the next section, we will discuss how to construct a Goppa like code on $\calX_{a,b}$ that resist this distinguisher.
 
-\section{Secured parameters against the distinguisher}
+\section{Analysis of the distinguisher}
 
-\noindent Given an AG code $\calC := C_\calL(\calX_{a,b},\calP,D)$, where $D = sP_\infty +(g)$ and $\degab{g} = s'>s\geq 2\mathfrak{g}_{a,b}-1$, we proved above that whenever $$s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1,$$ we have 
+\noindent In the previous section, we provided an (experimentally) sharp upper bound on the dimension of the square of the dual of a Goppa-like code, which could leads to a distinguisher for the corresponding code. 
 
+More precisely, let $\calC := C_\calL(\calX_{a,b},\calP,D)$ be an AG code as above, \emph{i.e.} with $D = sP_\infty +(g)$ and $\degab{g} = s'>s\geq 2\mathfrak{g}_{a,b}-1$. We showed that if $s$ and $s'$ are such that $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$, then
 \begin{equation} \label{eq:best_upper_bound}
-\dim_{\fq} (\Gamma(\calP,g)^{\perp})^{\star 2} \leq \frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right),
+\dim_{\fq} (\Gamma(\calP,g)^{\perp})^{\star 2} \leq \min \left(\frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right),n\right),
 \end{equation}
-where $e^* := \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1$.
-From the definition of $\calC$, we can estimate its length $n$. In fact, since $\calP \cap \Supp(g) = \varnothing,$ the maximal possible length of $\calC$ is reached when $\calP = \calX_{a,b}(\fqm) \backslash \Supp(g)$ and $g$ has only one zero, that is
+where $e^* := \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1$. Thus, the code is distinguishable from a random one if the bound above is less than the lenght $n$ of the code. We can easily check when this case occurs, by starting to bound from above the maximal length possible: since $\calP \cap \Supp(g) = \varnothing,$ this maximum is reached when $\calP = \calX_{a,b}(\fqm) \backslash \Supp(g)$ and $g$ has only one zero, that is
 $$n = \# \calP = |\calX_{a,b}(\fqm)| \leq q^m-1+2\mathfrak{g}_{a,b}\sqrt{q^m},$$
-using the Hasse-Weil bound. We can now give the choices of $s$ and $s'$, depending on the fixed parameters $a,b,q$ and $m$, for which
-$$\frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right)\geq q^m-1+2\mathfrak{g}_{a,b}\sqrt{q^m},$$
-in which cases the corresponding Goppa like code resist the distinguisher.
+using the Hasse-Weil bound. In order to secure the corresponding Goppa-like code against our attack, the parameters have to be chosen such that 
+$$\frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right)\geq q^m-1+2\mathfrak{g}_{a,b}\sqrt{q^m}.$$
+
+\noindent In what follow, we will focus on two specific classes of $C_{a,b}$-curves: First, we will compute the maximal (with respect to the dimension) codes we can distinguish in the case where $\calX_{a,b}$ is an elliptic curve. This case is relevant since it is the closest to the case of classical Goppa codes, and we will see that our results are very similar to the one given in \cite{MT21}. Next up, we will focus on the particular case of the Hermitian curve, which also turns out to be a $\calX_{a,b}$ curve. It is well-known to be a good candidate to construct efficient codes as it is a maximal curve. Moreover, we will show that due to the high genus of the curve, any Goppa-like code defined on it can not be distinguished with our attack, since our upper bound is always bigger than the maximal possible lenght.
 
 
-\TODO{Je galère un peu à établir des conditions "claires" sur $s$ et $s'$ en fonction de $a,b,q$ et $m$... Je propose pour le moment de faire des tests avec des codes qui me semblent pertinent (elliptique, hermitien,...); en donnant les conditions en question avec Magma. À voir ce qu'on en fait après.}
+\subsection{High rate distinguishable codes in the case of Elliptic curves}
+
+In this section, we focus on the case where $\calX_{a,b}$ is an elliptic curve, meaning that $a=2$ and $b=3$. For some set of parameters which produces codes of cryptographic size, we then compute the maximal distinguishable value of $s$. In order to get close to the case of classical Goppa codes, we also fix $s'=s+1$.
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|c|c|c||c|c|c|c|c|c|}
+    \hline
+    $q$ & $m$ & $n$ & Largest distinguishable $s$ & Corresponding rate\\
+    \hline
+     $3$ & $8$ & $6396$ & $24$ & $0,972$ \\
+    \hline \hline
+     $5$ & $5$ & $3043$ & $27$ & $0,961$  \\
+    \hline
+     $5$ & $6$ & $4500$ & $22$ & $0,971$ \\
+    \hline
+     $5$  & $6$ & $6688$ & $30$ & $0,976$ \\
+    \hline \hline
+     $7$ & $4$ & $2395$ & $27$ & $0,957$ \\
+    \hline
+      $7$ & $5$ & $4650$ & $26$ & $0,971$ \\
+    \hline
+      $7$ & $5$ & $8192$ & $37$ & $0,979$ \\
+    \hline \hline
+      $17$ & $3$ & $4820$ & $92$ & $0,943$ \\
+    \hline
+\end{tabular}
+\caption{Largest distinguishable Goppa-like code in Elliptic case}
+\end{center}
+\end{table}
+
+We can see that the rate of the distinguishable codes are roughly the same as the one given in \cite{MT21} in the case of classical Goppa codes, \emph{i.e} we are only able to distinguish high rate Goppa-like codes.
+
+\subsection{Codes on the Hermitian curve}
+
+
 
 
 %
