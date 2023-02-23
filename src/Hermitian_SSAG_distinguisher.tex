@@ -367,7 +367,7 @@ the last equality coming from the Riemann-Roch theorem. The result follows from 
 
 
 \begin{proposition} \label{prop:bound_dim_using_inclusions}
-    Let $\calC := \calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$ be as above, and suppose $s \geq 2g_{a-b}-1$. Set $k := \dim_{\fqm}\calC = s+1-\mathfrak{g}_{a,b}$ and  $e := \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor$. Then
+    Let $\calC := \calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$ be as above, and suppose $s \geq 2g_{a-b}-1$. Set $k := \dim_{\fqm}\calC = s+1-\mathfrak{g}_{a,b}$ and  $e := \min\left(\left\lfloor \frac{m}{2} \right\rfloor,\left\lfloor \log_q\left(\frac{k^2}{s}\right)\right\rfloor\right)$. Then
     $$\dim_{\fq} (\Gamma_s(\calP,g)^{\perp})^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).$$
 \end{proposition}
 
@@ -606,10 +606,8 @@ with $\Tr{\frac{f_2}{g^{q+1}}} \in \calT_1$. Since $\degab{f_1} = \degab{fg^{q-1
 which holds since $s<s'$ and $f \in \calL(2sP_\infty)$. Repeating the division process until we found a quotient equal to zero shows that $\calT_0 \subseteq \calT_1$.
 \end{proof}
 
-
-
 \begin{coro} \label{coro:bound_with_T_i's_inclusion}
-Suppose $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$ and let $e^* := \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1$. Then
+Suppose $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$ and let $e^* := \min\left(\left\lfloor \frac{m}{2} \right\rfloor, \left\lceil \log_q\left(\frac{k^2}{s'(q-1)^2}\right)\right\rceil+1\right)$. Then
 $$\dim_{\fq} (\Gamma_s(\calP,g)^{\perp})^{\star 2}\leq \binom{mk+1}{2} - \dfrac{m}{2}(k^2(2e^*+1)+k-2s'(q^{e^*}-q^{e^*-1}+1)). $$
 \end{coro}
 
