@@ -252,10 +252,10 @@ polynomials. We will notably perform division, using Gr\"obner bases, and, as ex
 \paragraph{Goppa-like codes.} Let $2\mathfrak{g}_{a,b}-1 \leq s<s'$ be integers such that there exists a function $g \in \calL(s'P_\infty)$ with $\degab{g}=s'$. Given a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$, we consider the AG code 
 \[\calC := \calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))=\set{\left(f(P)g(P)^{-1}\right)_{P \in \calP} \mid f \in \calL(sP_\infty)}.\]
 The corresponding Goppa-like code is defined as the dual of the subfield subcode of $\calC$, \emph{i.e.}
-$$ \Gamma(\calP,g) := \calC^{\perp}|_{\fq}.$$
+$$ \Gamma_s(\calP,g) := \calC^{\perp}|_{\fq}.$$
 \TODO{que pensez vous de la notation Goppa-like ? L'idée étant de calquer le fait que notre Goppa like soit le dual du subfield subcode comme dans le cas des codes de Goppa.}\\
 \noindent The terminology Goppa-like is motivated by the fact here, the function $g$ plays the role of the Goppa polynomial, adding randomness to the code. From Proposition \ref{prop:dual_AG_codes}, a Goppa-like code turns out to be the subfield subcode of an AG code, as it is the case for classical Goppa codes with respect to GRS codes. More precisly, we have 
-$$ \Gamma(\calP,g) = \calC_{\calL}(\calX_{a,b},\calP,D^{\perp})|_{\fq} := \ssag{\calX_{a,b},\calP,D^{\perp}},$$
+$$ \Gamma_s(\calP,g) = \calC_{\calL}(\calX_{a,b},\calP,D^{\perp})|_{\fq} := \ssag{\calX_{a,b},\calP,D^{\perp}},$$
 where $D := sP_{\infty}+(g)$. 
 
 
@@ -333,7 +333,7 @@ In this section, we aim to generalize the properties found by the authors of \ci
 $$\calC := \calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$$
 on $\calX_{a,b}$, where $g \in \calL_(s'P_\infty)$ is such that $\degab{g} = s'$ and $\calP$ is a set of length $n$ such that $\calP \cap \Supp(g) = \varnothing$. 
 \noindent Set $D=sP_\infty+(g)=(g)_0-(s'-s)P_\infty$, and notice that applying \eqref{eq:key_equation} yields   
-$$ \Tr{\calC}^{\star 2} = (\Gamma(\calP,g)^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr{\calC\star \calC^{q^i}}.$$ 
+$$ \Tr{\calC}^{\star 2} = (\Gamma_s(\calP,g)^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr{\calC\star \calC^{q^i}}.$$ 
 Below, we discuss how to improve the upper bound given in Corollary \ref{coro:1st_bound_mumford}, which is valid for all subfield subcodes of AG codes. The idea is to use the specific algebraic structure of our code.
 
 \subsection{Using the struture of $\calL(sP_\infty)$}
@@ -368,13 +368,13 @@ the last equality coming from the Riemann-Roch theorem. The result follows from 
 
 \begin{proposition} \label{prop:bound_dim_using_inclusions}
     Let $\calC := \calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$ be as above, and suppose $s \geq 2g_{a-b}-1$. Set $k := \dim_{\fqm}\calC = s+1-\mathfrak{g}_{a,b}$ and  $e := \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor$. Then
-    $$\dim_{\fq} (\Gamma(\calP,g)^{\perp})^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).$$
+    $$\dim_{\fq} (\Gamma_s(\calP,g)^{\perp})^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).$$
 \end{proposition}
 
 \begin{proof}
     From Proposition \ref{prop:Tr_BoundSchurSquare} and Lemma \ref{lem:bound_dim_Tr(C*C^q^i)}, we have 
     \begin{align*}
-        \dim_{\fq}(\Gamma(\calP,g)^{\perp})^{\star 2}
+        \dim_{\fq}(\Gamma_s(\calP,g)^{\perp})^{\star 2}
         & \leq \sum\limits_{i=0}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star \calC^{q^i}} \\
         & \leq \sum\limits_{i=0}^{e} m(s(q^i+1)+1-\mathfrak{g}_{a,b})  + \sum\limits_{i=e+1}^{\lfloor m/2 \rfloor} \Tr{\calC \star \calC^{q^i}} \\
         & \leq \sum\limits_{i=0}^{e} m(sq^i+k) + \left( \frac{m-1}{2} -e \right)mk^2 \\
@@ -382,11 +382,11 @@ the last equality coming from the Riemann-Roch theorem. The result follows from 
         & \leq \binom{mk+1}{2} -  \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).
     \end{align*}
 Here, the inequality holds for any $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$. To get the best bound, we maximize the expression $$ \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right)$$ with respect to $e$. Removing the constant parts, this is equivalent to find the maximum of the function
-$$T(e) = ek^2-\dfrac{q^{e+1}}{q-1}$$
+$$T(e) = ek^2-s\dfrac{q^{e+1}}{q-1}$$
 over $\set{0,\dots,\lfloor \frac{m}{2} \rfloor}$ in the discrete domain of non-negative integers.  
 We compute the discrete derivative:
 \begin{align*}
-    \Delta T(e) = T(e+1)-T(e) &= (e+1)k^2-\dfrac{q^{e+2}}{q-1} - \left(ek^2-\dfrac{q^{e+1}}{q-1}\right) \\
+    \Delta T(e) = T(e+1)-T(e) &= (e+1)k^2-s\dfrac{q^{e+2}}{q-1} - \left(ek^2-s\dfrac{q^{e+1}}{q-1}\right) \\
                               &= k^2 - sq^{e+1}.
 \end{align*}
 This function is decreasing with $e$, and the smallest value for which $\Delta T(e) \leq 0$ corresponds to its maximum. It is the smallest value of $e$ such that $k^2 \leq sq^{e+1}$, \emph{i.e.}
@@ -416,7 +416,7 @@ Moreover, we have $\degab{f_2} \leq \degab{f}$ and $\dim_{\fqm} \calR(g) = \dega
 
 
 \begin{lemma} \label{lem:weighted_division}
-	Let $i \geq 1$ and $s \geq 0$. Let $f \in \calL\left(\left(s'(q^i+1)-1\right)P_\infty\right)$. Then there exists $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that $\Tr{\frac{f}{g^{q^i+1}}} = \Tr{\frac{f'}{g^{q^i+1}}} $.
+	Let $i \geq 1$ and $s'>s \geq 0$. Let $f \in \calL\left(\left(s'(q^i+1)-1\right)P_\infty\right)$. Then there exists $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that $\Tr{\frac{f}{g^{q^i+1}}} = \Tr{\frac{f'}{g^{q^i+1}}} $.
 \end{lemma}
 
 \begin{proof}
@@ -610,13 +610,13 @@ which holds since $s<s'$ and $f \in \calL(2sP_\infty)$. Repeating the division p
 
 \begin{coro} \label{coro:bound_with_T_i's_inclusion}
 Suppose $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$ and let $e^* := \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1$. Then
-$$\dim_{\fq} (\Gamma(\calP,g)^{\perp})^{\star 2}\leq \binom{mk+1}{2} - \dfrac{m}{2}(k^2(2e^*+1)+k-2s'(q^{e^*}-q^{e^*-1}+1)). $$
+$$\dim_{\fq} (\Gamma_s(\calP,g)^{\perp})^{\star 2}\leq \binom{mk+1}{2} - \dfrac{m}{2}(k^2(2e^*+1)+k-2s'(q^{e^*}-q^{e^*-1}+1)). $$
 \end{coro}
 
 \begin{proof}
     From \eqref{eq:key_equation} and under the assumption on $s$ and $s'$, we have
         \begin{align*}
-        \dim_{\fq} (\Gamma(\calP,g)^{\perp})^{\star 2}
+        \dim_{\fq} (\Gamma_s(\calP,g)^{\perp})^{\star 2}
         & \leq \sum\limits_{i=0}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star \calC^{q^i}} \\
         & \leq \dim_{\fq} (\calT_e) + \sum\limits_{i=e+1}^{\lfloor m/2 \rfloor} \Tr{\calC \star \calC^{q^i}} \\
         & \leq ms'(q^e-q^{e-1}+1) + \left( \frac{m-1}{2} -e \right)mk^2 \\
@@ -646,7 +646,7 @@ In the next section, we will discuss how to construct a Goppa like code on $\cal
 
 More precisely, let $\calC := C_\calL(\calX_{a,b},\calP,D)$ be an AG code as above, \emph{i.e.} with $D = sP_\infty +(g)$ and $\degab{g} = s'>s\geq 2\mathfrak{g}_{a,b}-1$. We showed that if $s$ and $s'$ are such that $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$, then
 \begin{equation} \label{eq:best_upper_bound}
-\dim_{\fq} (\Gamma(\calP,g)^{\perp})^{\star 2} \leq \min \left(\frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right),n\right),
+\dim_{\fq} (\Gamma_s(\calP,g)^{\perp})^{\star 2} \leq \min \left(\frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right),n\right),
 \end{equation}
 where $e^* := \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1$. Thus, the code is distinguishable from a random one if the bound above is less than the lenght $n$ of the code. We can easily check when this case occurs, by starting to bound from above the maximal length possible: since $\calP \cap \Supp(g) = \varnothing,$ this maximum is reached when $\calP = \calX_{a,b}(\fqm) \backslash \Supp(g)$ and $g$ has only one zero, that is
 $$n = \# \calP = |\calX_{a,b}(\fqm)| \leq q^m-1+2\mathfrak{g}_{a,b}\sqrt{q^m},$$
