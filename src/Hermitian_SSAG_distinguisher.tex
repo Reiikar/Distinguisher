@@ -186,6 +186,9 @@ Let $\calC$ be a linear code over $\fqm$. Then
 
 \jade{Quelles hypothèses sur $\calX$ ?}
 
+Let $\calX$ be a \TODO{hyp} curve defined over $\fqm$ of genus $\mathfrak{g}$. 
+
+
 \TODO{definition d'un espace de RR}
 
 
@@ -273,12 +276,12 @@ The purpose of this paper is to show that one-point and Goppa-like SSAG codes   
 Let $\calC$ be a linear code over $\fqm$. Then we have 
 \begin{equation} \label{eq:key_equation} \Tr{\calC}^{\star2} := ((\calC|^{\perp}_{_{{\mathbb{F}_q}}})^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr{\calC\star \calC^{q^i}},
 \end{equation}
-where $C^{\perp}$ is the dual code of $C$. \\
-Moreover, if $m$ is even (which is the case in our settings), we have 
-\[\dim_{\mathbb{F}_q}\Tr{ C \star C^{q^{m/2}}} \leq \frac{m}{2}\cdot \left(\dim_{\fqm}(C)\right)^2.\]
+where $C^{\perp}$ is the dual code of $C$. %
+Moreover, if $m$ is even, we have 
+\[\dim_{\mathbb{F}_q}\Tr{ \calC \star \calC^{q^{m/2}}} \leq \frac{m}{2}\cdot \left(\dim_{\fqm}\calC\right)^2.\]
 \end{proposition}
 
-From this result, we can deduce an upper bound on the dimension of the square of the dual of any linear code.
+From this result, we can deduce an upper bound for the dimension of the square of the dual of any linear code.
 
 \begin{coro} [\cite{MT21},Corollary 16]\label{coro:first_bound_square_of_trace}
 Let $\calC$ be any $\fqm$-linear code. Then 
@@ -289,29 +292,31 @@ Furthermore, if $\dim_{\fq} \Tr{\calC} = m \cdot \dim_{\fqm}(\calC)$, then
 \[\dim_{\fq} \Tr{\calC}^{\star2} - \binom{\dim_{\fq} \Tr{\calC}+1}{2} \leq m \cdot \dim_{\fqm} \calC^{\star 2} - \binom{\dim_{\fqm} (\calC)+1}{2}.\]
 \end{coro}
 
-The above Corollary implies that if the dimension of a square code is smaller than we expect from a random code, namely
+The above corollary implies that if the dimension of a square code is smaller than we expect from a random code, namely
 \[ \dim_{\fqm} (\calC^{\star 2}) < \binom{\dim_{\fqm} (\calC)+1}{2},\]
 then this property survives for the trace code, \emph{i.e.}
 \[\dim_{\fq} \Tr{\calC}^{\star 2} < \binom{\dim_{\fq} \Tr{\calC}+1}{2}.\]
 
 In particular, this is the case for Reed-Solomon codes (see \cite{MT21}, Proposition 11) and more generally for AG codes under some condition on the degree of its divisor.
 
+\TODO{bouger dans la section AG codes ?}
+
 \begin{proposition}[\cite{Mum70}, Theorem 6] \label{prop:mumford_result}
-Let $F,G$ be two divisors in $\calH$ such that $\deg(G) \geq 2g(\calH)+1$ and $\deg(F) \geq 2g(\calH)$, where $g(\calH)$ is the genus of $\calH$. Then
+Let $F,G$ be two divisors of $\calX$ such that $\deg(G) \geq 2\mathfrak{g}+1$ and $\deg(F) \geq 2\mathfrak{g}$. Then
 \[ \calL(F) \cdot \calL(G) = \calL(F+G),\]
 where $\calL(F) \cdot \calL(G) := \Span{ f \cdot g : f,g \in \calL(F) \times \calL(G)}$.
 \end{proposition}
 
-\noindent As a consequence, for an AG code  $C_{\calL}(\calX_{a,b},\mathcal{P},D)$ with $\deg(D) \geq 2\mathfrak{g}_{a,b}+1$, then 
-\[ C_{\calL}(\calX_{a,b},\mathcal{P},D)^{\star2} = C_{\calL}(\calX_{a,b},\calP,2D).\]
+\noindent As a consequence, for an AG code  $C_{\calL}(\calX,\mathcal{P},D)$ with $\deg(D) \geq 2\mathfrak{g}+1$, then 
+\[ C_{\calL}(\calX,\mathcal{P},D)^{\star2} = C_{\calL}(\calX,\calP,2D).\]
 The Riemann-Roch theorem thus gives
-\[ \dim_{\fqm}(C_{\calL}(\calX_{a,b},\mathcal{P},D)^{\star2}) = 2\deg(D)+1-\mathfrak{g}_{a,b} = \deg(D) + \dim_{\fqm}(C_{\calL}(\calX_{a,b},\mathcal{P},D)), \]
+\[ \dim_{\fqm}(C_{\calL}(\calX,\mathcal{P},D)^{\star2}) = 2\deg(D)+1-\mathfrak{g}= \deg(D) + \dim_{\fqm}(C_{\calL}(\calX,\mathcal{P},D)), \]
 which is much smaller than the expected dimension given in Lemma \ref{lem:known_bounds} 2. (thus providing a distinguisher for AG-codes). Combined with \eqref{eq:key_equation}, we get a first upper bound on the dimension of the square of the trace code of an AG code.
 
 
 \begin{coro} \label{coro:1st_bound_mumford}
-Let $\mathcal{C} := C_{\calL}(\calX_{a,b},\mathcal{P},D)$ be a dimension $k$ AG-code on $\calX_{a,b}$ associated to a degree $s \geq 2g(\calX_{a,b})+1$ divisor. Then
-\[ \dim_{\fq}\Tr{\calC}^{\star2} := \dim_{\fq} (\ssag{\calX_{a,b},\calP,D^{\perp}}^{\perp})^{\star2}  \leq \binom{mk+1}{2} - \dfrac{m}{2} (k(k-1)-2s).\]
+Let $\mathcal{C} := C_{\calL}(\calX,\mathcal{P},D)$ be a $k$--dimensional AG-code on $\calX$ associated to a degree $s \geq 2g(\calX)+1$ divisor. Then
+\[ \dim_{\fq}\Tr{\calC}^{\star2} := \dim_{\fq} (\ssag{\calX,\calP,D^{\perp}}^{\perp})^{\star2}  \leq \binom{mk+1}{2} - \dfrac{m}{2} (k(k-1)-2s).\]
 \end{coro}
 
 
@@ -341,7 +346,9 @@ Below, we discuss how to improve the upper bound given in Corollary \ref{coro:1s
 
 \TODO{Une autre idée de titre...}
 
-With above notations, notice that $D$ and $sP_\infty$ are equivalent divisors, implying that $\calC$ is monomially equivalent to the one-point code $C_{\calL}(\calX_{a,b},\calP,sP_\infty)$. 
+\jade{Ici, on n'utilise pas la structure de la courbe $C_{a,b}$ ni du one--point, si ?}
+
+With above notations, notice that $D$ and $sP_\infty$ are equivalent divisors, implying that $\calC$ is monomially equivalent to the one-point code $C_{\calL}(\calX,\calP,sP_\infty)$. 
 More precisely, we have $$\calL(D) = g^{-1} \cdot \calL(sP_{\infty}).$$
 Thus, we can easily see that
 \begin{equation} \label{eq:equiv_divisors}
@@ -352,14 +359,14 @@ where $\calL(D)\cdot \calL(D)^{q^i}$ corresponds to the evaluation space of the 
 
 \begin{lemma} \label{lem:bound_dim_Tr(C*C^q^i)}
    For all $i \geq 0$, 
-   $$\dim_{\fq} \Tr{\calC\star \calC^{q^i}} \leq m\left(s\left(q^i+1\right)+1-\mathfrak{g}_{a,b}\right).$$
+   $$\dim_{\fq} \Tr{\calC\star \calC^{q^i}} \leq m\left(s\left(q^i+1\right)+1-\mathfrak{g}\right).$$
 \end{lemma}
 
 \begin{proof}
 From \eqref{eq:basis_L(sP_inf)} that for any $i \geq 0$, we easily check that
 $$ \calL(sP_\infty)\cdot \calL(sP_\infty)^{q^i} \subseteq \calL(s(q^i+1)P_\infty).$$
 Since $C_{\calL}(\calX_{a,b},\calP,s(q^i+1)P_{\infty}) = \set{\mathrm{Ev}_{\calP}(f) : f \in \calL(s(q^i+1)P_\infty)}$, we deduce 
-$$ \dim_{\fqm} \calL(sP_\infty) \cdot \calL(sP_\infty)^{q^i} \leq \dim_{\fqm}\left(C_{\calL}(\calX_{a,b},\calP,s(q^i+1)P_{\infty})\right) = s(q^i+1)+1-{\mathfrak{g}_{a,b}},$$
+$$ \dim_{\fqm} \calL(sP_\infty) \cdot \calL(sP_\infty)^{q^i} \leq \dim_{\fqm}\left(C_{\calL}(\calX_{a,b},\calP,s(q^i+1)P_{\infty})\right) = s(q^i+1)+1-\mathfrak{g},$$
 the last equality coming from the Riemann-Roch theorem. The result follows from \eqref{eq:equiv_divisors} and the usual upper bound on the dimension of the trace of a code. 
 \end{proof}
 
@@ -368,7 +375,7 @@ the last equality coming from the Riemann-Roch theorem. The result follows from 
 
 
 \begin{proposition} \label{prop:bound_dim_using_inclusions}
-    Let $\calC := \calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$ be as above, and suppose $s \geq 2g_{a-b}-1$. Set $k := \dim_{\fqm}\calC = s+1-\mathfrak{g}_{a,b}$ and  $e := \min\left(\left\lfloor \frac{m}{2} \right\rfloor,\left\lfloor \log_q\left(\frac{k^2}{s}\right)\right\rfloor\right)$. Then
+    Let $\calC := \calC_{\calL}(\calX,\calP,sP_\infty+(g))$ be as above, and suppose $s \geq 2\mathfrak{g}-1$. Set $k := \dim_{\fqm}\calC = s+1-\mathfrak{g}$ and  $e := \min\left(\left\lfloor \frac{m}{2} \right\rfloor,\left\lfloor \log_q\left(\frac{k^2}{s}\right)\right\rfloor\right)$. Then
     $$\dim_{\fq} (\Gamma_s(\calP,g)^{\perp})^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).$$
 \end{proposition}
 
@@ -394,7 +401,7 @@ This function is decreasing with $e$, and the smallest value for which $\Delta T
 $$e =  \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor.$$
 \end{proof}
 
-Dispite the fact that this bound is already an improvement, it only uses the equivalence of divisors between $D$ and $sP_{\infty}$, \emph{i.e.} we relly on one-point codes and do not deal with the specific structure of Goppa-like codes. In the upcoming section, we show that we can say a bit more under some other conditions on $s$ and $s'$.
+Despite the fact that this bound is already an improvement, it only uses the equivalence of divisors between $D$ and $sP_{\infty}$, \emph{i.e.} we rely on one-point codes and do not benefit from the specific structure of Goppa-like codes. In the upcoming section, we show that we can improve this bound under some other conditions on $s$ and $s'$.
 
 \subsection{Weighted euclidean division}
 
@@ -654,7 +661,7 @@ using the Hasse-Weil bound. In order to secure the corresponding Goppa-like code
 \frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right)\geq q^m-1+2\mathfrak{g}_{a,b}\sqrt{q^m}.
 \end{equation}
 
-\noindent In what follow, we will focus on two specific classes of $C_{a,b}$-curves: First, we will compute the maximal (with respect to the dimension) codes we can distinguish in the case where $\calX_{a,b}$ is an elliptic curve. This case is relevant since it is the closest to the case of classical Goppa codes, and we will see that our results are very similar to the one given in \cite{MT21}. Next up, we will focus on the particular case of the Hermitian curve, which also turns out to be a $\calX_{a,b}$ curve. It is well-known to be a good candidate to construct efficient codes as it is a maximal curve. Moreover, we will show that due to the high genus of the curve, any Goppa-like code defined on it can not be distinguished with our attack, since our upper bound is always bigger than the maximal possible lenght.
+\noindent In what follows, we will focus on two specific classes of $C_{a,b}$--curves: First, we will compute the maximal (with respect to the dimension) codes we can distinguish in the case where $\calX_{a,b}$ is an elliptic curve. This case is relevant since it is the closest to the case of classical Goppa codes, and we will see that our results are very similar to the one given in \cite{MT21}. Next up, we will focus on the particular case of the Hermitian curve, which also turns out to be a $\calX_{a,b}$ curve. It is well-known to be a good candidate to construct efficient codes as it is a maximal curve. Moreover, we will show that due to the high genus of the curve, any Goppa-like code defined on it can not be distinguished with our attack, since our upper bound is always bigger than the maximal possible lenght.
 
 
 \subsection{High rate distinguishable codes in the case of Elliptic curves}
@@ -708,7 +715,7 @@ Its genus is given by $\mathfrak{g}_{\calH} = \frac{q_0(q_0-1)}{2}$ and it is a 
 \TODO{Je suis pas super satisfait de la preuve, il y a surement plus simple...}
 
 \begin{proof}
-    As discussed at the beginning of the section, the code can not be distinguished if the upper bound on the dimension of the square of its dual given in Corollary \ref{coro:bound_with_T_i's_inclusion} is bigger than the length of the code. In the Hermitian case, we know exactly the number of rational points, and thus the length $n$ of the Goppa-like code is at most $q_0^3-1$. Since $m$ is even, we are left to prove that 
+    As discussed at the beginning of the section, the code cannot be distinguished if the upper bound for the dimension of the square of its dual given in Corollary \ref{coro:bound_with_T_i's_inclusion} is larger than the length of the code. In the Hermitian case, we know exactly the number of rational points, and thus the length $n$ of the Goppa-like code is at most $q_0^3-1$. Since $m$ is even, we are left to prove that 
     \begin{equation} \label{eq:dont_distinguish_Hermitian_case}
     \mathfrak{B}(e^*) := ms'(q^{e^*}-q^{e^*-1}+1) + \left( \frac{m}{2}-e^*\right)mk^2 \geq q_0^3-1,
     \end{equation}
