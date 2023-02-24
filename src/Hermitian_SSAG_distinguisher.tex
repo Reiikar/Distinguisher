@@ -200,7 +200,7 @@ which is a linear code over $\fqm$, and where $\calL(D)$ stands for the Riemann-
 
 \begin{proposition} [\cite{Sti09}, Proposition 2.2.10] \label{prop:dual_AG_codes}
 Let $C_{\calL}(\calX,\calP,D)$ be an AG-code defined on a curve $\calX$. Then 
-\[C_{\calL}(\calX,\calP,D)^{\perp} = C_{\calL}(\calX_{a,b},\calP,D^{\perp}),\]
+\[C_{\calL}(\calX,\calP,D)^{\perp} = C_{\calL}(\calX,\calP,D^{\perp}),\]
 with $D^{\perp} = D_{\calP}-D+W$, where $D_{\calP} = \sum\limits_{P \in \calP} P$ and $W=(\omega)$ is a canonical divisor such that for all $P \in \calP$, $\nu_P(\omega)=-1$ and $\mathrm{Res}_{\omega}(P)=1$. 
 \end{proposition}
 
@@ -214,6 +214,8 @@ $$\ssag{\calX,\calP,D} := C_{\calL}(\calX,\calP,D)|_{\fq}.$$
 \subsection{AG codes on $C_{ab}$ curves} \label{section:AG_codes}
 
 Throughout this paper, we will be dealing with algebraic geometry codes defined over a $C_{a,b}$ curve. For further details about this family of curves, we refer to \TODO{ref}. 
+
+\jade{Pourquoi ne pas mettre la définition d'une courbe $C_{a,b}$ dans un environnement definition ?}
 
 \paragraph{$C_{a,b}$ curves.} Let $a,b$ be coprime integers. A $C_{a,b}$ curve over $\fqm$ is a curve $\calX_{a,b}$ having an irreducible, affine and non singular plane model with equation
 \begin{equation} \label{eq:equation_C_ab}
@@ -230,7 +232,9 @@ where $f_{a,b} \in \fqm[X,Y]$ and the sum is taken over all couples $(i,j) \in \
 
 \paragraph{The point at infinity.} We will consider codes obtained by evaluating functions on $\calX_{a,b}$ which are regular everywhere, except maybe at the unique point at infinity $P_\infty$ on $\calX_{a,b}$. These functions then belong to the ring 
 
-\[\mathcal{O}_{P_\infty}=\bigcup_{s \geq 0} \calL(s P_\infty)\]
+\begin{equation}\label{eq:O_Pinf}
+\mathcal{O}_{P_\infty}=\bigcup_{s \geq 0} \calL(s P_\infty)
+\end{equation}
 
 where each Riemann--Roch space $\calL(s P_\infty)$ has an explicit basis as follows:
 
@@ -240,17 +244,25 @@ where each Riemann--Roch space $\calL(s P_\infty)$ has an explicit basis as foll
 
 In summary, any function regular on all $\calX_{a,b}$ except maybe at $P_\infty$ is a polynomial in the functions $x$ and $y$. 
 
-Given a monomial of the form $x^iy^j \in \calL(sP_{\infty})$, we define its weighted degree by
+\begin{definition}[Weighted degree]
+Given a monomial of the form $x^iy^j \in \calO_{P_\infty}$, , we define its weighted degree by
 \[ \degab{x^iy^j} := ai+bj.\]
-Any function $f \in \calL(sP_{\infty})$ can be written of the form $$f = x^{\beta}y^{\alpha} + f'(x,y),$$
+
+Any function $f \in \calO_{P_\infty}$ can be written of the form $$f = x^{\beta}y^{\alpha} + f'(x,y),$$
 with $\alpha \leq a-1$ and $f' \in \calL(sP_{\infty})$ such that any monomial $x^iy^j$ of $f'$ satisfies $ai+bj < \degab{x^{\beta}y^{\alpha}}$ and $j \leq a-1$. We can then define the leading term of $f$ as $\mathrm{LT}(f) := x^{\beta}y^{\alpha},$ and extend the definition of weighted degree to any such function by setting 
-$$\degab{f} := \degab{\mathrm{LT}(f)}.$$
+\[\degab{f} := \degab{\mathrm{LT}(f)}.\]
+\end{definition}
+
+It is easy to check that for any function $f \in \calO_{P_\infty}$, its weighted degree $\degab{f}$ is equal to the smallest integer $s$ such that $f$ belongs to the Riemann--Roch space $\calL(sP_{\infty})$.
+%
 This way, any function in $\calL(sP_\infty)$ can be seen as a polynomial in $x$ and $y$ such that $\degab{f}\leq s$. 
 
+\begin{remark}
 It is worth noting that $\calO_{P_\infty}$ is a valuation ring, with valuation $v_{P_\infty}$. Then for every $f \in \calO_{P_\infty}$, we have $
 \degab{f}=-v_{P_\infty}(f)$. We prefer handling the weighted degree rather than the valuation due to its similarities with the degree of univariate 
 polynomials. We will notably perform division, using Gr\"obner bases, and, as expected in the univariate case, the degree of the remainder is 
 \textit{generally} smaller than the dividend's one.
+\end{remark}
 
 
 \paragraph{Goppa-like codes.} Let $2\mathfrak{g}_{a,b}-1 \leq s<s'$ be integers such that there exists a function $g \in \calL(s'P_\infty)$ with $\degab{g}=s'$. Given a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$, we consider the AG code 
