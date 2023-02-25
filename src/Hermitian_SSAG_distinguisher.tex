@@ -100,31 +100,29 @@
 
 \section{Introduction}
 
-\jade{C'est le bordel, mais j'ai jeté quelques idées}
+\jade{C'est le bordel, mais j'ai jeté quelques idées} \\
+\mathieu{MATHIEU : je met mes modif/question en marron. Les ajouts sont en noir.}
 
 
-MCEliece cryptosystem is the only code-based candidate for standartisation of post--quantum cryptrographic to the NIST competition since the third round. This motivates the study of structural attacks and of the possibilities of parameters improvements. 
 
-Over the past forty years, there were many attempts in replacing the family of binary Goppa codes by other structured families of codes to reduce the key size.
+McEliece cryptosystem is the only code-based candidate for standartisation of post--quantum cryptrographic to the NIST competition since the third round. This motivates the study of structural attacks and of the possibilities of parameters improvements. 
 
-\TODO{Citer quelques tentatives puis enchaîner avec l'idée du dessous, à reformuler}
+Over the past forty years, there were many attempts in replacing the family of binary Goppa codes by other structured families of codes to reduce the key size. \mathieu{je commence l'histoire sur les codes AG, je sais pas si ça vaut le coup de parler des autres tests ?}
+In 1996, Janwa and Moreno \cite{JM96} proposed to use AG codes, concatenation or subfield subcode of these codes. As for concatened ones, they were broken by Sendrier \cite{Sen94}. For AG codes, Faure and Minder proposed an attack in \cite{FM08,Min07,Fau09} for codes on genus $\geq 2$ curves. The scheme based on AG codes have been completely broken by Couvreur, Marquez-Corbella and Pellikaan \cite{CMR17} who proposed a filtration based attack on AG codes for any genus. This leads to consider the ladt proposition, that is Subfield Subcode of AG codes (SSAG in short). In fact, as noticed in \cite{CMR17}, the square and the 2-closure of an SSAG code usually differ from the corresponding AG code, meaning that they resist the attack by filtration. Moreover, some of theses codes have a good designed minimum distance: see for example \cite{Cou14} for the construction of Cartier codes. 
 
-\jade{Ce que dit Alain à la fin de \cite{CMR17} :
-Assume Fq to be non prime and let F be a proper subfield of Fq and C := CL(X,P,E) inter Fn. The point is that C(2) and the 2-closure of C in general differs from CL(X,P,E). For this reason, subfield subcodes resist to this kind of attacks. Notice that even
-in genus zero: subfield subcodes of GRS codes still resist to filtration attacks unless for the cases presented in [5,10]. Moreover, similarly to the case of classical Goppa codes, some of these codes are known to have a good designed distance, see for instance [18,43,47] or [4] for another construction based on the Cartier operator. Therefore, these codes provide a good candidate for a secure generalisation of the original McEliece scheme based on classical Goppa codes.}
+Let $\fqm$ be a finite extension of the finite field $\fq$. Given an AG code $\calC :=C_{\calL}(\calX,\calP,G) \subseteq \fqm^n$, its subfield subcode over $\fq$ is defined by 
+$$\ssag{\calX,\calP,G} := \calC \cap \fq^n.$$  
+In this paper, we introduce a specific king of SSAG code, namely Goppa--like AG codes. The idea of this construction is to immitate the role of the Goppa polynomial in the case of classical Goppa codes by a well-chosen rational function on the curve, meaning that we will consider divisors of the form $A+(g)$, where $A\in \Div(\calX)$ and $g \in \fqm(\calX)$. A Goppa--like AG code is then defined as the subfield subcode over $\fq$ of $C_{\calL}(\calX,P,A+(g))^{\perp}$. This construction coincides with classical Goppa codes in the genus 0 case, since the latter codes are defined as the subfield subcode of the dual of some GRS code. Provided that the curve $\calX$ allows to implement these codes fast enough, this generalization might be of interest. This motivates this work of studying strucural attacks on Goppa--like AG codes. 
 
-\TODO{Parler des Goppa--like AG codes, définir la notation SSAG codes}
+Our starting point is the paper of Mora and Tilich \cite{MT21} benefited from the trace structure of the dual code of a subfield subcode to display a distinguisher for high rate Goppa codes. Their techniques relied on two features of GRS codes. First, their behaviour with respect to the Schur product is well-known. From this, the authors gave a sharp upper bound for the dimension of the square of the dual codes of alternant codes. In the particular case of Goppa codes, where the multiplicator has the form $\vec{y}=(g(x_1)^{-1},g(x_2)^{-1},\dots,g(x_n)^{-1})$ for some polynomial $g$ of degree $r$, they managed to get an even sharper upper bound by performing euclidean division by powers of $g$.
+
+As Goppa--like AG codes naturally generalizes Goppa codes, it is natural to wonder if one can derive a structural attack on these codes from Mora and Tillich's attack. The genus of the curve plays a significant role in the parameters of AG codes. The greater the genus, the more $\F_q$--points the curve $\calX$ may have and so the longer the code can be. But the parameters $[n,k,d]$ of an AG code satisfies $n-g+1 \leq k+d \leq n+1$, which means that an AG code is $g$--far form optimality. Also, the correction capacity naturally suffers from a big genus: the naive correction algorithm can correct up to $\frac{d-1-g}{2}$ errors. Only refined techniques, based on error locating pairs \mathieu{(je pense que c'est la bonne ref)}\cite{CP20}, manage to remove the term related to the genus. Therefore, caution should be exercised when it comes to the impact of the genus on the properties of AG codes.
+Even if Mora and Tillich's attack does not threaten the Goppa codes used in the NIST competition, proposition based on SSAG codes may be concerned by a similar structural attack. It is also natural to wonder how the genus affect the distinguisher. In the present work, we interest in the case of Goppa--like one--point AG codes from $\calC_{a,b}$ curves, a class that has been introduced in \cite{Miu93}. Since then, theses curves have been extensively studied and are especially interesting since we know a nice basis of any multiple of its unique point at infinity, which enables to encode one-point codes efficiently. Furthermore, they remains quite general: for examples, Elliptic, Kummer or Artin-Schreier curves are $C_{a,b}$ curves, thus this is not that much of a restriction. 
+
+AG codes, as generalization of GRS codes, have exactly the same behaviour with respect to the Schur product. Moreover, some well-chosen AG codes are defined by the evaluation of \textit{multivariate} polynomials. In this case, we prove that performing division algorithm via Gröbner bases enable us to estimate the dimension of the square of the dual of Goppa--like AG codes. Even better, computations tend to show that the bound we optain on the dimension is sharp whenever the Goppa--like code lokks random (\emph{i.e} the function $g$ is sufficiently random). The counterpart is; as it was the case in \cite{MT21} for classical Goppa codes; that we are only able to distinguish high rate codes. More precisly, for a low genus $C_{a,b}$ curve (typically an Elliptic curve), our result are roughtly the same as in \cite{MT21}. However, considering high genus case (say the well-known Hermitian curve), the distinguisher becomes irrelevant: in particular, we show that Goppa--like AG codes constructed from the Hermitian curve resist our distinguisher, which is encouraging if we want to base a McEliece's like cryptosystem on it.
 
 
-Mora and Tillich \cite{MT21} benefited from the trace structure of the dual code of a subfield subcode to display a distinguisher for high rate Goppa codes. Their techniques relied on two features of GRS codes. First, their behaviour with respect to the Schur product is well-known. From this, the authors gave a sharp upper bound for the dimension of the square of the dual codes of alternant codes. In the particular case of Goppa codes, where the multiplicator has the form $\vec{y}=(g(x_1)^{-1},g(x_2)^{-1},\dots,g(x_n)^{-1})$ for some polynomial $g$ of degree $r$, they managed to get an even sharper upper bound by performing euclidean division by powers of $g$.
-
-As Goppa--like AG codes naturally generalizes Goppa codes, it is natural to wonder if one can derive a structural attack on these codes from Mora and Tillich's attack. The genus of the curve plays a significant role in the parameters of AG codes. The greater the genus, the more $\F_q$--points the curve $\calX$ may have and so the longer the code can be. But the parameters $[n,k,d]$ of an AG code satisfies $n-g+1 \leq k+d \leq n+1$, which means that an AG code is $g$--far form optimality. Also, the correction capacity naturally suffers from a big genus: the naive correction algorithm can correct up to $\frac{d-1-g}{2}$ errors. Only refined techniques, based on error locating pairs \jade{citer Alain}, manage to remove the term related to the genus. Therefore, caution should be exercised when it comes to the impact of the genus on the properties of AG codes.
-Even if Mora and Tillich's attack does not threaten the Goppa codes used in the NIST competition, proposition based on SSAG codes may be concerned by a similar structural attack. It is also natural to wonder how the genus affect the distinguisher. In the present work, we interest in the case of Goppa--like one--point AG codes from $\calC_{a,b}$ curves.
-
-\jade{Pourquoi ces courbes ?}
-
-AG codes, as generalization of GRS codes, have exactly the same behaviour with respect to the Schur product. Moreover, some well-chosen AG codes are defined by the evaluation of \textit{multivariate} polynomials. In this case, we prove that performing division algorithm via Gröbner bases enable us to estimate the dimension of the square of the dual of Goppa--like AG codes.
-
+\mathieu{Pour le reste je sais pas trop quoi en faire ...}
 \jade{D'après Rocco \cite{MT21}: However, the fact that the dual of a Goppa code is the trace of a generalized Reed-Solomon code rather than the subfield subcode of a generalized Reed-Solomon code seems to complicate significantly the attempts to turn this distinguisher into an attack. But again, having now a much better algebraic (and rigorous) explanation of why the distinguisher works, together with new
 algebraic results about products involved in the square of the dual of the Goppa code gives a much better understanding of the square code structure. This is clearly desirable and needed if we want to mount a key recovery attack based on these square code considerations.}
 
@@ -184,7 +182,7 @@ Let $\calC$ be a linear code over $\fqm$. Then
 
 \subsection{AG and SSAG codes}
 
-\jade{Quelles hypothèses sur $\calX$ ?}
+\jade{Quelles hypothèses sur $\calX$ ?} \mathieu{je dirais smooth, irreducible and projective} 
 
 Let $\calX$ be a \TODO{hyp} curve defined over $\fqm$ of genus $\mathfrak{g}$. 
 
@@ -213,17 +211,18 @@ $$\ssag{\calX,\calP,D} := C_{\calL}(\calX,\calP,D)|_{\fq}.$$
 
 \subsection{AG codes on $C_{ab}$ curves} \label{section:AG_codes}
 
-Throughout this paper, we will be dealing with algebraic geometry codes defined over a $C_{a,b}$ curve. For further details about this family of curves, we refer to \TODO{ref}. 
+Throughout this paper, we will be dealing with algebraic geometry codes defined over a $C_{a,b}$ curve. For further details about this family of curves, we refer to \cite{Miu93}. 
 
-\jade{Pourquoi ne pas mettre la définition d'une courbe $C_{a,b}$ dans un environnement definition ?}
 
-\paragraph{$C_{a,b}$ curves.} Let $a,b$ be coprime integers. A $C_{a,b}$ curve over $\fqm$ is a curve $\calX_{a,b}$ having an irreducible, affine and non singular plane model with equation
 
-\sabira{j'ai remplacé le z par y :P}
+\begin{definition} \label{def:C_ab_curves} 
+Let $a,b$ be coprime integers. A $C_{a,b}$ curve over $\fqm$ is a curve $\calX_{a,b}$ having an irreducible, affine and non singular plane model with equation
+
 \begin{equation} \label{eq:equation_C_ab}
 f_{a,b}(x,y) = \alpha_{0a}y^a + \alpha_{b0}x^b + \sum \alpha_{ij}x^iy^j = 0,
 \end{equation}
-where $f_{a,b} \in \fqm[X,Y]$ and the sum is taken over all couples $(i,j) \in \set{0,\cdots,b} \times \set{0,\cdots,a}$ such that $ai+bj < ab$. 
+where $f_{a,b} \in \fqm[X,Y]$ and the sum is taken over all couples $(i,j) \in \set{0,\cdots,b} \times \set{0,\cdots,a}$ such that $ai+bj < ab$.
+\end{definition}
 
 \noindent These curves are well-studied, and we know that any curve $\calX_{a,b}$ defined by an equation as in \eqref{eq:equation_C_ab} has a unique point at infinity, denoted by $P_{\infty}$. Moreover, its genus is also known:
 \[\mathfrak{g}_{a,b}:=g(\calX_{a,b}) = \dfrac{(a-1)(b-1)}{2}.\]
@@ -279,7 +278,7 @@ where $D := sP_{\infty}+(g)$.
 
 \TODO{Lemma : On connait le diviseur canonique d'une courbe $C_{a,b}$ et donc on connait le $W$ pour notre SSAG.}
 
-\jade{Question avant que j'oublie : Est-ce que ça peut être intéressant de prendre $s'=\dim L(sP_\infty)$ comme dans le cas Goppa ?}
+\jade{Question avant que j'oublie : Est-ce que ça peut être intéressant de prendre $s'=\dim L(sP_\infty)$ comme dans le cas Goppa ?} \mathieu{ça ne nous donnera pas $s'>s$ si on est en genre $> 0$.}
 
 
 \section{First estimation of the dimension of the square of the trace of a code}
@@ -722,7 +721,7 @@ We can see that the rate of the distinguishable codes are roughly the same as th
 
 In this section, we investigate Hermitian Goppa-like codes, since the Hermitian curve is a particular case of $C_{a,b}$ curve. This case is interesting since Hermitian codes are good candidates to reach the best length for a fixed base field. The good news is that we can prove that Hermitian Goppa-like codes resist our distinguisher, since we can show that \eqref{eq:cond_not_to_distinguish} always holds in the Hermitian settings, essentially because  the genus of the curve is too high. 
 
-\noindent Let us first recall some known results about the Hermitian curve \TODO{ref}. Let $m \geq 1$  be an even integer and denote by $q_0 := q^{m/2}$, so that $\fqm = \fqo$. The Hermitian curve $\calH$ over $\fqo$ is defined by the equation
+\noindent Let us first recall some known results about the Hermitian curve (see for example \cite{Sti09}). Let $m \geq 1$  be an even integer and denote by $q_0 := q^{m/2}$, so that $\fqm = \fqo$. The Hermitian curve $\calH$ over $\fqo$ is defined by the equation
 $$\calH : y^{q_0}+y = x^{q_0+1}.$$
 Its genus is given by $\mathfrak{g}_{\calH} = \frac{q_0(q_0-1)}{2}$ and it is a maximal curve, \emph{i.e.} $\#\calH(\fqo) = q_0^3+1$.
 
@@ -731,7 +730,7 @@ Its genus is given by $\mathfrak{g}_{\calH} = \frac{q_0(q_0-1)}{2}$ and it is a 
     Suppose $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$. Then for any choice of $g$ and $\calP$, the Goppa-like code $\Gamma_s(\calP,g)$ resists to the distinguisher given above.
 \end{proposition}
 
-\TODO{Je suis pas super satisfait de la preuve, il y a surement plus simple...}
+\mathieu{Je suis pas super satisfait de la preuve, il y a surement plus simple...}
 
 \begin{proof}
     As discussed at the beginning of the section, the code cannot be distinguished if the upper bound for the dimension of the square of its dual given in Corollary \ref{coro:bound_with_T_i's_inclusion} is larger than the length of the code. In the Hermitian case, we know exactly the number of rational points, and thus the length $n$ of the Goppa-like code is at most $q_0^3-1$. Since $m$ is even, we are left to prove that 
