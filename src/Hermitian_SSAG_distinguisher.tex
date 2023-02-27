@@ -180,10 +180,11 @@ Let $\calC$ be a linear code over $\fqm$. Then
 
 \subsection{AG and SSAG codes}
 
+\TODO{def diviseur effectif + notation $D \geq 0}
 
 Let $\calX$ be a smooth and irreducible projective curve over $\fqm$ of genus.
 Let $D \in \Div(\calX)$ be a divisor on $\calX$, whose Riemann-Roch space is defined as the $\fqm$ vector space
-$$ \calL(D) := \set{f \in \fqm(\calX) \mid (f) \geq -D} \cup \set{0},$$
+$$ \calL(D) := \set{f \in \fqm(\calX) \mid (f) + D \geq 0} \cup \set{0},$$
 of dimension $\ell(D)$.
 Let also $\calP \subseteq \fqm(\calX)$ be a set of $n$ distinct rational points such that $\Supp(D) \cap \calP = \varnothing$.
 We can consider the AG code 
@@ -496,18 +497,18 @@ In the proposition below, we study the intersection $R(g^{q^{i}-q^{i-1}+1}) \cap
 Let $i \in \set{1,\dots,\lfloor m/2 \rfloor}$ and
      $\alpha' \in \set{0,\dots,a-1}$ be the rest of the Euclidean division of $\alpha (q^i-q^{i-1}+1)$ by $a$. Then we can compute the exact dimension of $M_i := R(g^{q^{i}-q^{i-1}+1}) \cap \calL(s(q^i+1)P_\infty)$ depending on $s'$:
     \begin{enumerate}
-        \item $\dim_{\fqm}(M_i) = s(q^i+1)+1-\mathfrak{g}_{a,b}$ if $s' > \left\lfloor \dfrac{s(q^i+1)+a}{q^i+q^{i-1}-1}\right\rfloor$;
+        \item $\dim_{\fqm}(M_i) = s(q^i+1)+1-\mathfrak{g}_{a,b}$ if $s' > \left\lfloor \dfrac{s(q^i+1)+a}{q^i-q^{i-1}+1}\right\rfloor$;
         
-        \item $\dim_{\fqm}(M_i) = s'(q^i-q^{i-1}+1)$ if $s' \leq \left\lfloor \dfrac{s(q^i+1)+1-2\mathfrak{g}_{a,b}}{q^i+q^{i-1}-1}\right\rfloor$;
+        \item $\dim_{\fqm}(M_i) = s'(q^i-q^{i-1}+1)$ if $s' \leq \left\lfloor \dfrac{s(q^i+1)+1-2\mathfrak{g}_{a,b}}{q^i-q^{i-1}+1}\right\rfloor$;
         
         \item There exists $v^* \in \set{1,\dots,\alpha'-1}$ such that
-        $$ \left\lfloor \dfrac{s(q^i+1)+a-b(a+v^*-\alpha')}{q^i+q^{i-1}-1}\right\rfloor < s' \leq  \left\lfloor \dfrac{s(q^i+1)+a-b(a+v^*-1-\alpha')}{q^i+q^{i-1}-1}\right\rfloor$$ or $v^* = \alpha'$ and 
-        $$\left\lfloor \dfrac{s(q^i+1)+a-ab+v^*b}{q^i+q^{i-1}-1}\right\rfloor < s' \leq  \left\lfloor \dfrac{s(q^i+1)+a-ab+(v^*+1)b)}{q^i+q^{i-1}-1}\right\rfloor,$$
+        $$ \left\lfloor \dfrac{s(q^i+1)+a-b(a+v^*-\alpha')}{q^i-q^{i-1}+1}\right\rfloor < s' \leq  \left\lfloor \dfrac{s(q^i+1)+a-b(a+v^*-1-\alpha')}{q^i-q^{i-1}+1}\right\rfloor$$ or $v^* = \alpha'$ and 
+        $$\left\lfloor \dfrac{s(q^i+1)+a-ab+v^*b}{q^i-q^{i-1}+1}\right\rfloor < s' \leq  \left\lfloor \dfrac{s(q^i+1)+a-ab+(v^*+1)b)}{q^i-q^{i-1}+1}\right\rfloor,$$
         in which case 
           $$\dim_{\fqm}(M_i) = \sum\limits_{v=v^*}^{a-1} \left\lfloor \dfrac{s(q^i+1)-bv}{a} \right\rfloor + v^*(\beta'+b) + a-v^*.$$
         
         \item There exists $v^* \in \set{\alpha'+1,\dots,a-1}$ such that
-        $$ \left\lfloor \dfrac{s(q^i+1)+a-b(v^*-\alpha')}{q^i+q^{i-1}-1}\right\rfloor < s' \leq  \left\lfloor \dfrac{s(q^i+1)+a-b(v^*-1-\alpha')}{q^i+q^{i-1}-1}\right\rfloor,$$
+        $$ \left\lfloor \dfrac{s(q^i+1)+a-b(v^*-\alpha')}{q^i-q^{i-1}+1}\right\rfloor < s' \leq  \left\lfloor \dfrac{s(q^i+1)+a-b(v^*-1-\alpha')}{q^i-q^{i-1}+1}\right\rfloor,$$
         in which case 
         $$\dim_{\fqm}(M_i) = \sum\limits_{v=v^*}^{a-1} \left\lfloor \dfrac{s(q^i+1)-bv}{a} \right\rfloor + v^*\beta' + \alpha'b +a-v^*.$$
     \end{enumerate}
@@ -528,11 +529,11 @@ Since $\degab{g^{q^i-q^{i-1}+1}} = s'(q^i-q^{i-1}+1),$ we also have
 From this, we deduce
 \begin{align*}
 \calR\left(g^{q^i-q^{i-1}+1}\right) &:= \mathrm{Span}_{\fqm} \left\{x^uy^v \mid u \leq \beta'+b-1 , v \leq a-1 \ \mathrm{not \ both} \ u \geq \beta' \ \mathrm{and} \ v \geq \alpha'\right\} \\
-&= \mathrm{Span}_{\fqm}    \left\{ \begin{array}{cc}
-         1,x,\dots,x^{\beta' +b-1}   \\
+&= \mathrm{Span}_{\fqm}    \left\{ \begin{array}{c}
+         1,x,\dots,x^{\beta' +b-1},   \\
          \cdots \\
-         y^{\alpha' -1},y^{\alpha' -1}x,\dots,y^{\alpha' -1}x^{\beta' +b-1} \\
-          y^{\alpha'},y^{\alpha'}x,\dots,y^{\alpha'}x^{\beta'-1} \\
+         y^{\alpha' -1},y^{\alpha' -1}x,\dots,y^{\alpha' -1}x^{\beta' +b-1}, \\
+          y^{\alpha'},y^{\alpha'}x,\dots,y^{\alpha'}x^{\beta'-1}, \\
          \cdots \\
          y^{a-1},y^{a-1}x,\dots,y^{a-1}x^{\beta'-1}
     \end{array}
@@ -542,11 +543,11 @@ Next, we define for any $v \in \set{0,\dots,a-1}$:
 $$\ell^i_v := \max \set{u \geq 0 \mid x^uy^v \in \calL(s(q^i+1)P_\infty)} = \left\lfloor \dfrac{s(q^i+1)-bv}{a}\right\rfloor,$$
 implying
 \begin{equation*}
-\calL(s(q^i+1)P_\infty) = \mathrm{Span}_{\fqm}    \left\{ \begin{array}{cc}
-         1,x,\dots,x^{\ell^i_0}   \\
-         y,yx,\dots,yx^{\ell^i_0} \\
+\calL(s(q^i+1)P_\infty) = \mathrm{Span}_{\fqm}    \left\{ \begin{array}{c}
+         1,x,\dots,x^{\ell^i_0},   \\
+         y,yx,\dots,yx^{\ell^i_1}, \\
          \cdots \\
-         y^{a-1},y^{a-1}x,\dots,y^{a-1}x^{\ell^i_0}
+         y^{a-1},y^{a-1}x,\dots,y^{a-1}x^{\ell^i_{a-1}}
     \end{array}
     \right\}
 \end{equation*}
@@ -560,16 +561,16 @@ It remains to compute the corresponding minima with respect to $v$:
 \begin{itemize}
     \item[(i)] If $0 \leq v \leq \alpha'-1$, we have using \eqref{eq:value_beta_prime}:
     \begin{align*}
-        \beta'+b \leq \ell_v^i \iff s' \leq F(v) := \left\lfloor \dfrac{s(q^i+1)+a-b(a+v-\alpha')}{q^i-q^{i-1}+1}\right\rfloor.
+        \beta'+b -1 \leq \ell_v^i \iff s' \leq F(v) := \left\lfloor \dfrac{s(q^i+1)+a-b(a+v-\alpha')}{q^i-q^{i-1}+1}\right\rfloor.
     \end{align*}
     \item[(ii)] Else, $\alpha' \leq v \leq a-1$ and:
     \begin{align*}
-        \beta' \leq \ell_v^i \iff s' \leq G(v) := \left\lfloor \dfrac{s(q^i+1)+a-b(v-\alpha')}{q^i-q^{i-1}+1}\right\rfloor .
+        \beta' -1\leq \ell_v^i \iff s' \leq G(v) := \left\lfloor \dfrac{s(q^i+1)+a-b(v-\alpha')}{q^i-q^{i-1}+1}\right\rfloor .
     \end{align*}
 \end{itemize}
 Note that both $F$ and $G$ are decreasing with $v$, and we easily check that $F(0) \leq G(a-1)$. Thus, we can a sequence of integers
 $$F(\alpha'-1) \leq \dots \leq F(0) \leq G(a-1) \leq \dots \leq G(\alpha').$$
-Depending on the value of $s'$, there is a few case to consider:
+Depending on the value of $s'$, there is a few cases  to consider:
 \begin{itemize}
     \item $s' >G(\alpha')$, in which case $M_i = \calL(s(q^i+1)P_\infty)$;
     \item $s' \leq F(\alpha'-1)$, and $M_i = \calR(g^{q^i-q^{i-1}+1})$;
@@ -590,7 +591,7 @@ Instead, we will focus on case $2)$, since in this case, the sequence $(\calT_i)
 
 \begin{proof}
     From Proposition \ref{prop:dim_M_i's}, we know that for any fixed $i \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$, we have 
-    $$M_i = \calR(g^{q^i-q^{i-1}+1}) \iff  s' \leq \left\lfloor \dfrac{s(q^i+1)+1-2\mathfrak{g}_{a,b}}{q^i+q^{i-1}-1}\right\rfloor.$$
+    $$M_i = \calR(g^{q^i-q^{i-1}+1}) \iff  s' \leq \left\lfloor \dfrac{s(q^i+1)+1-2\mathfrak{g}_{a,b}}{q^i-q^{i-1}+1}\right\rfloor.$$
     Thus, $M_i = \calR(g^{q^i-q^{i-1}+1})$ for all $i$ if and only if the right hand-side is satisfied for all $i$ as well. Since $q^i+1 > q^i-q^{i-1}+1$, this is equivalent to have it satisfied for $i=1$, \emph{i.e.}
     $$s' \leq \left\lfloor \dfrac{s(q+1)+1-2\mathfrak{g}_{a,b}}{q}\right\rfloor;$$
     which gives $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$. The result follows.
