@@ -180,19 +180,17 @@ Let $\calC$ be a linear code over $\fqm$. Then
 
 \subsection{AG and SSAG codes}
 
-\jade{Quelles hypothèses sur $\calX$ ?} \mathieu{je dirais smooth, irreducible and projective} 
 
-Let $\calX$ be a \TODO{hyp} curve defined over $\fqm$ of genus $\mathfrak{g}$. 
-
-
-\TODO{definition d'un espace de RR}
-
-
-Let $\calP \subseteq \fqm(\calX)$ be a set of $n$ distinct rational points and a divisor $D \in \Div(\calX)$ such that $\Supp(D) \cap \calP = \varnothing$.
+Let $\calX$ be a smooth and irreducible projective curve over $\fqm$ of genus.
+Let $D \in \Div(\calX)$ be a divisor on $\calX$, whose Riemann-Roch space is defined as the $\fqm$ vector space
+$$ \calL(D) := \set{f \in \fqm(\calX) \mid (f) \geq -D} \cup \set{0},$$
+of dimension $\ell(D)$.
+Let also $\calP \subseteq \fqm(\calX)$ be a set of $n$ distinct rational points such that $\Supp(D) \cap \calP = \varnothing$.
 We can consider the AG code 
 $$\calC := \calC_{\calL}(\calX,\calP,D) := \set{\left(f(P)\right)_{P \in \calP} \mid f \in \calL(D)},$$
-which is a linear code over $\fqm$, and where $\calL(D)$ stands for the Riemann-Roch space of $D$. 
-
+which is a length $n$ linear code over $\fqm$, with dimension $k := \ell(D)$. From the Riemann-Roch thereom, we have
+$$ \ell(D) \geq \deg(D) +1 - \mathfrak{g},$$ 
+with equality if $\deg(D) \geq 2\mathfrak{g}-1$. It turns out that the dual of an AG code is also an AG code, as stated in the following proposition.
 
 \begin{proposition} [\cite{Sti09}, Proposition 2.2.10] \label{prop:dual_AG_codes}
 Let $C_{\calL}(\calX,\calP,D)$ be an AG-code defined on a curve $\calX$. Then 
