@@ -295,15 +295,13 @@ These codes are easy to encode as we know a nice basis for their evaluation spac
 
 \section{First estimation of the dimension of the square of the trace of a code}
 
-The purpose of this paper is to show that one-point and Goppa-like SSAG codes   can be distinguished from random codes by using the square of their dual. This fact is possible thanks to a result from \cite{MT21}, recalled below.
+In this paper, we aim to show that  Goppa--like AG codes can be distinguished from random codes by using the square of their dual. From Delsarte's theorem, this is equivalent to study the square of the trace of some structured AG code. 
+This fact is possible thanks to a result from \cite{MT21}, valid for any linear code:
 
 \begin{proposition}[\cite{MT21}, Proposition 15] \label{prop:Tr_BoundSchurSquare}
 Let $\calC$ be a linear code over $\fqm$. Then we have 
 \begin{equation} \label{eq:key_equation} \Tr{\calC}^{\star2} := ((\calC|^{\perp}_{_{{\mathbb{F}_q}}})^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr{\calC\star \calC^{q^i}},
 \end{equation}
-where $C^{\perp}$ is the dual code of $C$. %
-Moreover, if $m$ is even, we have 
-\[\dim_{\mathbb{F}_q}\Tr{ \calC \star \calC^{q^{m/2}}} \leq \frac{m}{2}\cdot \left(\dim_{\fqm}\calC\right)^2.\]
 \end{proposition}
 
 From this result, we can deduce an upper bound for the dimension of the square of the dual of any linear code.
@@ -322,11 +320,11 @@ The above corollary implies that if the dimension of a square code is smaller th
 then this property survives for the trace code, \emph{i.e.}
 \[\dim_{\fq} \Tr{\calC}^{\star 2} < \binom{\dim_{\fq} \Tr{\calC}+1}{2}.\]
 
-In particular, this is the case for Reed-Solomon codes (see \cite{MT21}, Proposition 11) and more generally for AG codes under some condition on the degree of its divisor.
+In particular, this is the case for Reed-Solomon codes (see \cite{MT21}, Proposition 11) and more generally for AG codes under some lower bound condition on the degree of its divisor.
 
 \TODO{bouger dans la section AG codes ?}
 
-\begin{proposition}[\cite{Mum70}, Theorem 6] \label{prop:mumford_result}
+\begin{proposition}[\emph{cf.} \cite{Mum70},Theorem 6] \label{prop:mumford_result}
 Let $F,G$ be two divisors of $\calX$ such that $\deg(G) \geq 2\mathfrak{g}+1$ and $\deg(F) \geq 2\mathfrak{g}$. Then
 \[ \calL(F) \cdot \calL(G) = \calL(F+G),\]
 where $\calL(F) \cdot \calL(G) := \Span{ f \cdot g : f,g \in \calL(F) \times \calL(G)}$.
@@ -336,7 +334,7 @@ where $\calL(F) \cdot \calL(G) := \Span{ f \cdot g : f,g \in \calL(F) \times \ca
 \[ C_{\calL}(\calX,\mathcal{P},D)^{\star2} = C_{\calL}(\calX,\calP,2D).\]
 The Riemann-Roch theorem thus gives
 \[ \dim_{\fqm}(C_{\calL}(\calX,\mathcal{P},D)^{\star2}) = 2\deg(D)+1-\mathfrak{g}= \deg(D) + \dim_{\fqm}(C_{\calL}(\calX,\mathcal{P},D)), \]
-which is much smaller than the expected dimension given in Lemma \ref{lem:known_bounds} 2. (thus providing a distinguisher for AG-codes). Combined with \eqref{eq:key_equation}, we get a first upper bound on the dimension of the square of the trace code of an AG code.
+which is much smaller than the expected dimension given in Lemma \ref{lem:known_bounds} 2. (thus providing a distinguisher for AG-codes). Combined with \eqref{eq:key_equation}, we get a first upper bound on the dimension of the square of the trace of an AG code.
 
 
 \begin{coro} \label{coro:1st_bound_mumford}
