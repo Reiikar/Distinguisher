@@ -133,8 +133,8 @@ Recently, Zhao and Chen \cite{ZC22} analysed the parameters and the decoding per
 
 Let $\fqm$ be a finite extension of the finite field $\fq$. Given an AG code $\calC :=C_{\calL}(\calX,\calP,G) \subseteq \fqm^n$, its subfield subcode over $\fq$ is defined by 
 $$\ssag{\calX,\calP,G} := \calC \cap \fq^n.$$  
-In this paper, we introduce a specific kind of SSAG codes, namely Goppa--like AG codes. The idea of this construction is to introduce  some randomness in the family of SSAG codes drawn as private key by mimicking the role of the Goppa polynomial in the case of classical Goppa codes. Given an effective divisor $A\in \Div(\calX)$ on the curves, we will consider SSAG codes associated to  divisors of the form $A+(g)$, for a large family of functions $g \in \fqm(\calX)$ on the curve.
-A Goppa--like AG code is then defined as the subfield subcode over $\fq$ of $C_{\calL}(\calX,P,A+(g))^{\perp}$. This construction coincides with classical Goppa codes in the genus 0 case, since the latter codes are defined as the subfield subcode of the dual of some GRS code. Provided that the curve $\calX$ and the divisor $A$ allow to encode and decode these codes fast enough, \TODO{changer $\rightarrow$} this generalization might be of interest. This motivates this work of studying strucural attacks on Goppa--like AG codes. 
+In this paper, we introduce a specific kind of SSAG codes, namely Goppa--like AG codes. The idea of this construction is to introduce  some randomness in the family of SSAG codes drawn as private key by mimicking the role of the Goppa polynomial in the case of classical Goppa codes. Given an effective divisor $D\in \Div(\calX)$ on the curves, we will consider SSAG codes associated to  divisors of the form $D+(g)$, for a large family of functions $g \in \fqm(\calX)$ on the curve.
+A Goppa--like AG code is then defined as the subfield subcode over $\fq$ of $C_{\calL}(\calX,P,D+(g))^{\perp}$. This construction coincides with classical Goppa codes in the genus 0 case, since the latter codes are defined as the subfield subcode of the dual of some GRS code. Provided that the curve $\calX$ and the divisor $A$ allow to encode and decode these codes fast enough, \TODO{changer $\rightarrow$} this generalization might be of interest. This motivates this work of studying strucural attacks on Goppa--like AG codes. 
 
 Our starting point is the paper of Mora and Tilich \cite{MT21} benefited from the trace structure of the dual code of a subfield subcode to display a distinguisher for high rate Goppa codes. Their techniques relied on two features of GRS codes. First, their behaviour with respect to the Schur product is well-known. From this, the authors gave a sharp upper bound for the dimension of the square of the dual codes of alternant codes. In the particular case of Goppa codes, where the multiplicator has the form $\mathbf{y}=(g(x_1)^{-1},g(x_2)^{-1},\dots,g(x_n)^{-1})$ for some polynomial $g$ of degree $r$, they managed to get an even sharper upper bound by performing euclidean division by powers of $g$.
 
@@ -487,7 +487,7 @@ $$\calT_i= \Tr{g^{-(q^i+1)}\cdot \left( \calR\left(g^{q^i-q^{i-1}+1}\right)  \ca
 and we set $$\calT_0 := \Tr{g^{-2} \cdot \calL(2sP_\infty}).$$
 \end{definition}
 
-\jade{Est-ce qu'on ajoute la dépendance de $\calT_i$ à $s$ et $g$ dans la notation ?}
+\TODO{Ajouter la dépendance de $\calT_i$ à $s$ et $g$ dans la notation}
 	
 \noindent Let $i \geq 0$ and $f \in \calL(sP_\infty) \cdot \calL(sP_\infty)^{q^i} \subseteq \calL(s(q^i+1)P_\infty)$. Then 
 Lemma \ref{lem:weighted_division} entails that 
