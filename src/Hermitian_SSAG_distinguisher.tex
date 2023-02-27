@@ -190,7 +190,10 @@ We can consider the AG code
 $$\calC := \calC_{\calL}(\calX,\calP,D) := \set{\left(f(P)\right)_{P \in \calP} \mid f \in \calL(D)},$$
 which is a length $n$ linear code over $\fqm$, with dimension $k := \ell(D)$. From the Riemann-Roch thereom, we have
 $$ \ell(D) \geq \deg(D) +1 - \mathfrak{g},$$ 
-with equality if $\deg(D) \geq 2\mathfrak{g}-1$. It turns out that the dual of an AG code is also an AG code, as stated in the following proposition.
+with equality if $\deg(D) \geq 2\mathfrak{g}-1$. 
+The dual of an AG-code can be described as a residue code (see \cite{Sti09} for mor details), \emph{i.e.}
+$$ C_{\calL}(\calX,\calP,D)^{\perp} = C_{\omega}(\calX,\calP,D).$$ 
+Since we prefer to use evaluation codes, we also recall the following result.
 
 \begin{proposition} [\cite{Sti09}, Proposition 2.2.10] \label{prop:dual_AG_codes}
 Let $C_{\calL}(\calX,\calP,D)$ be an AG-code defined on a curve $\calX$. Then 
@@ -201,23 +204,26 @@ with $D^{\perp} = D_{\calP}-D+W$, where $D_{\calP} = \sum\limits_{P \in \calP} P
 \noindent In the special case of AG codes, we have a notation for the subfield subcode, namely
 $$\ssag{\calX,\calP,D} := C_{\calL}(\calX,\calP,D)|_{\fq}.$$
 
-\TODO{Changer $sP_\infty$ en un diviseur $D$ effectif.}
+\paragraph{Goppa-like codes.} Let $\calD$ be an effective divisor on $\calX$ of positive degree $s$. Take a rational function $g \in \fqm(\calX)$ such that $g \notin \calL(D)$. Given a set of points $\calP \in \calX(\fqm)$ such that $\calP \cap \Supp(g) = \varnothing$ and $\calP \cap \Supp(D) = \varnothing$, we consider the AG code
+\[\calC := \calC_{\calL}(\calX,\calP,D+(g))=\set{\left(f(P)g(P)^{-1}\right)_{P \in \calP} \mid f \in \calL(D)}.\]
 
-\paragraph{Goppa-like codes.} Let $2\mathfrak{g}_{a,b}-1 \leq s<s'$ be integers such that there exists a function $g \in \calL(s'P_\infty)$ with $\degab{g}=s'$. Given a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$, we consider the AG code 
-\[\calC := \calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))=\set{\left(f(P)g(P)^{-1}\right)_{P \in \calP} \mid f \in \calL(sP_\infty)}.\]
 The corresponding Goppa-like code is defined as the dual of the subfield subcode of $\calC$, \emph{i.e.}
-$$ \Gamma_s(\calP,g) := \calC^{\perp}|_{\fq}.$$
+$$ \Gamma(\calP,D,g) := \calC^{\perp}|_{\fq}.$$
+
+\begin{remark} \label{rq:g_notin_L(D)}
+Imposing the function $g$ not to be in the Riemann-Roch space of $D$ is justified since overwise, the unit vector $(1,\dots,1)$ lies in the AG-code, which is not desirable as we are interested in random looking codes. 
+\end{remark}
+
 
 \noindent The terminology Goppa-like is motivated by the fact here, the function $g$ plays the role of the Goppa polynomial, adding randomness to the code. From Proposition \ref{prop:dual_AG_codes}, a Goppa-like code turns out to be the subfield subcode of an AG code, as it is the case for classical Goppa codes with respect to GRS codes. More precisely, we have 
-$$ \Gamma_s(\calP,g) = \calC_{\calL}(\calX_{a,b},\calP,D^{\perp})|_{\fq} := \ssag{\calX_{a,b},\calP,D^{\perp}},$$
-where $D := sP_{\infty}+(g)$. 
+$$ \Gamma(\calP,D,g) = \ssag{\calX,\calP,(D+(g))^{\perp}},$$
+where the dual divisor is given by Proposition \ref{prop:dual_AG_codes}. 
+
+\noindent Cartier codes \cite{Cou14} are also defined as a geometric generalisation of Goppa codes, since well-knwon properties on Goppa codes naturally extend to them.
+The link with Goppa--like AG codes is the following: by definition, a cartier code is a subcode of the subfield subcode of a residue code (see \cite{Cou14}, Proposition 4.3), which actually means that for the good choice of divisor, a Cartier code is a subfield subcode of the Goppa--like AG code. Moreover, Theorem 5.1 of \cite{Cou14} can be used to determine when both construction are equal.
 
 
-\TODO{Lemma : On connait le diviseur canonique d'une courbe $C_{a,b}$ et donc on connait le $W$ pour notre SSAG.}
 
-\TODO{Mathieu : remarque sur les codes de Cartier}
-
-\TODO{Remarque sur $g \notin L(D)$}
 
 
 
@@ -277,7 +283,14 @@ polynomials. We will notably perform division, using Gr\"obner bases, and, as ex
 \textit{generally} smaller than the dividend's one.
 \end{remark}
 
-\TODO{Définir nos one-point Goppa--like AG codes sur les $C_{a,b}$}
+\paragraph{One--point Goppa--like AG code on $C_{a,b}$-curves.}
+
+Here, we define a specific class of Goppa-like AG codes on a $C_{a,b}$ curve, associated to a divisor which is equivalent to the one--point divisor $sP_\infty$.
+Let $s'>s'$ be two integers such that there exists a function $g \in \calL(s'P_\infty)$ with $\degab{g}=s'$. Given a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$, we define the one--point Goppa--like code as 
+\[\Gamma(\calP,sP_\infty,g) := \calC_{\calL}(\calX_{a,b},\calP,(sP_\infty+(g))^{\perp})|_{\fq}.\]
+
+These codes are easy to encode as we know a nice basis for their evaluation space. Moreover, this property will be key in the upcoming sections as the specific structure of the space $\calL(sP_\infty)$ allows a better understanding of the square of the dual of one--point Goppa--like codes, under some condition on $s$ and $s'$.
+
 
 \section{First estimation of the dimension of the square of the trace of a code}
 
