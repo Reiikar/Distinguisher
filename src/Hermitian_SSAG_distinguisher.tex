@@ -180,7 +180,7 @@ Let $\calC$ be a linear code over $\fqm$. Then
 
 \subsection{AG and SSAG codes}
 
-\TODO{def diviseur effectif + notation $D \geq 0}
+\TODO{def diviseur effectif + notation $D \geq 0$}
 
 Let $\calX$ be a smooth and irreducible projective curve over $\fqm$ of genus.
 Let $D \in \Div(\calX)$ be a divisor on $\calX$, whose Riemann-Roch space is defined as the $\fqm$ vector space
@@ -536,7 +536,7 @@ implying
          \cdots \\
          y^{a-1},y^{a-1}x,\dots,y^{a-1}x^{\ell^i_{a-1}}
     \end{array}
-    \right\}
+    \right\}.
 \end{equation*}
 With these notations, we have a description of a basis of both spaces $R(g^{q^i-q^{i-1}+1})$ and $\calL(s(q^i+1)P_\infty)$, leading to an exact formula for the dimension of their intersection $M_i$ for any value of $i$:
 
@@ -546,24 +546,24 @@ With these notations, we have a description of a basis of both spaces $R(g^{q^i-
 \end{equation}
 It remains to compute the corresponding minima with respect to $v$:
 \begin{itemize}
-    \item[(i)] If $0 \leq v \leq \alpha'-1$, we have using \eqref{eq:value_beta_prime}:
+    \item[(i)] If $0 \leq v \leq \alpha'-1$, by using \eqref{eq:value_beta_prime}, we get
     \begin{align*}
         \beta'+b -1 \leq \ell_v^i \iff s' \leq F(v) := \left\lfloor \dfrac{s(q^i+1)+a-b(a+v-\alpha')}{q^i-q^{i-1}+1}\right\rfloor.
     \end{align*}
-    \item[(ii)] Else, $\alpha' \leq v \leq a-1$ and:
+    \item[(ii)] Otherwise, $\alpha' \leq v \leq a-1$ and
     \begin{align*}
         \beta' -1\leq \ell_v^i \iff s' \leq G(v) := \left\lfloor \dfrac{s(q^i+1)+a-b(v-\alpha')}{q^i-q^{i-1}+1}\right\rfloor .
     \end{align*}
 \end{itemize}
-Note that both $F$ and $G$ are decreasing with $v$, and we easily check that $F(0) \leq G(a-1)$. Thus, we can a sequence of integers
-$$F(\alpha'-1) \leq \dots \leq F(0) \leq G(a-1) \leq \dots \leq G(\alpha').$$
+Note that both $F$ and $G$ are decreasing with $v$, and we easily check that $F(0) = G(a)$. Thus, we have the following sequence of integers
+$$F(\alpha'-1) \leq \dots \leq F(0) = G(a) \leq G(a-1) \leq \dots \leq G(\alpha').$$
 Depending on the value of $s'$, there is a few cases  to consider:
 \begin{itemize}
     \item $s' >G(\alpha')$, in which case $M_i = \calL(s(q^i+1)P_\infty)$;
     \item $s' \leq F(\alpha'-1)$, and $M_i = \calR(g^{q^i-q^{i-1}+1})$;
-    \item There exists a maximal $v^* \in \set{1,...,\alpha'-1}$ such that $F(v^*) < s' \leq F(v^*-1)$;
-    \item There exists a maximal $v^* \in \set{\alpha',...,a-1}$ such that $G(v^*) < s' \leq G(v^*-1)$;
-    \item $F(0) < s' \leq G(a-1)$.
+    \item There exists $v^* \in \set{1,...,\alpha'-1}$ such that $F(v^*) < s' \leq F(v^*-1)$;
+    \item There exists $v^* \in \set{\alpha',...,a}$ such that $G(v^*) < s' \leq G(v^*-1)$.
+%    \item $F(0) < s' \leq G(a-1)$.
 \end{itemize}
 The formulas for the dimension of $M_i$ follows from the above computations and \eqref{eq:exact_dimension_M_i}.
 \end{proof}
