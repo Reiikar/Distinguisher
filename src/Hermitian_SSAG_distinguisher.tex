@@ -540,11 +540,11 @@ Since $\degab{g^{q^i-q^{i-1}+1}} = s'(q^i-q^{i-1}+1),$ we also have
 From this, we deduce
 \begin{align*}
 \calR\left(g^{q^i-q^{i-1}+1}\right) &:= \mathrm{Span}_{\fqm} \left\{x^uy^v \mid u \leq \beta'+b-1 , v \leq a-1 \ \mathrm{not \ both} \ u \geq \beta' \ \mathrm{and} \ v \geq \alpha'\right\} \\
-&= \mathrm{Span}_{\fqm}    \left\{ \begin{array}{cc}
-         1,x,\dots,x^{\beta' +b-1}   \\
+&= \mathrm{Span}_{\fqm}    \left\{ \begin{array}{c}
+         1,x,\dots,x^{\beta' +b-1},   \\
          \cdots \\
-         y^{\alpha' -1},y^{\alpha' -1}x,\dots,y^{\alpha' -1}x^{\beta' +b-1} \\
-          y^{\alpha'},y^{\alpha'}x,\dots,y^{\alpha'}x^{\beta'-1} \\
+         y^{\alpha' -1},y^{\alpha' -1}x,\dots,y^{\alpha' -1}x^{\beta' +b-1}, \\
+          y^{\alpha'},y^{\alpha'}x,\dots,y^{\alpha'}x^{\beta'-1}, \\
          \cdots \\
          y^{a-1},y^{a-1}x,\dots,y^{a-1}x^{\beta'-1}
     \end{array}
@@ -554,11 +554,11 @@ Next, we define for any $v \in \set{0,\dots,a-1}$:
 $$\ell^i_v := \max \set{u \geq 0 \mid x^uy^v \in \calL(s(q^i+1)P_\infty)} = \left\lfloor \dfrac{s(q^i+1)-bv}{a}\right\rfloor,$$
 implying
 \begin{equation*}
-\calL(s(q^i+1)P_\infty) = \mathrm{Span}_{\fqm}    \left\{ \begin{array}{cc}
-         1,x,\dots,x^{\ell^i_0}   \\
-         y,yx,\dots,yx^{\ell^i_0} \\
+\calL(s(q^i+1)P_\infty) = \mathrm{Span}_{\fqm}    \left\{ \begin{array}{c}
+         1,x,\dots,x^{\ell^i_0},   \\
+         y,yx,\dots,yx^{\ell^i_1}, \\
          \cdots \\
-         y^{a-1},y^{a-1}x,\dots,y^{a-1}x^{\ell^i_0}
+         y^{a-1},y^{a-1}x,\dots,y^{a-1}x^{\ell^i_{a-1}}
     \end{array}
     \right\}
 \end{equation*}
