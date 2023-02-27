@@ -85,7 +85,8 @@
 \newcommand\mathieu[1]{\textcolor{brown}{#1}}
 \newcommand{\modifier}[1]{\textcolor{red}{\textbf{#1}}}
 \newcommand\sabira[1]{\textcolor{blue}{#1}}
-
+%%%%%-------- Keywords--------------
+\providecommand{\keywords}[1]{\textbf{Keywords---} #1}
 
 %-----Début---------%
 
@@ -99,7 +100,15 @@
 
 \maketitle
 
-\TODO{SABIRA: Abstract + mots clés + classification MSC}
+\TODO{SABIRA: classification MSC}
+\begin{abstract}
+	In this paper, we present a distinguisher attack on the McEliece cryptosystem based on SSAG codes, specifically Goppa-like AG codes, which are a generalization of Goppa codes constracted from a curve of genus $g \geq 1$ (\sabira{j'ai de doute la dessus}). Based on a distinguisher for alternant and Goppa codes, we provide an upper bound for the dimension of the square of the dual of Goppa-like AG codes by means of products of trace codes. In addition, we conducted numerical experiments that correspond to this bound.
+	\vskip 0.5cm
+	
+	In this paper, we present a distinguisher of SSAG codes, specifically Goppa-like AG codes, where the associated divisor has the form $A+(g)$ and the function $g$ on the curve has the role of a Goppa polynomial. Based on a distinguisher for alternant and Goppa codes, we provide an upper bound for the dimension of the square of the dual of Goppa-like AG codes by means of products of trace codes. In addition, we conducted numerical experiments that correspond to this bound.
+\end{abstract}
+
+\keywords{AG codes, Goppa-like AG codes, Trace codes, Schur product.}
 
 \section{Introduction}
 
