@@ -628,8 +628,8 @@ If $f_1=0$, we are done. Otherwise, we have from \eqref{eq:division_i}:
 $$\degab{f_1} = \degab{fg^{q^{i+1}-q^i}} - \degab{g^{q^{i+1}-q^i+1}} = \degab{f}-s'.$$
 Thus
 \begin{align*}
-     \degab{f_1^qg} < \degab{fg^{q^{i+1}-q^i}} & \iff q\degab{f} +(1-q)s' < \degab{fg^{q^{i+1}-q^i}} \\
-                                               & \iff (q-1)\degab{f} < (q-1)s' + s'(q^{i+1}-q^i) \\
+     \degab{f_1^qg} < \degab{fg^{q^{i+1}-q^i}} & \iff q\degab{f} +(1-q)s' < \degab{f} +s'(q^{i+1}-q^i) \\
+%                                               & \iff (q-1)\degab{f} < s'(q^{i+1}-q^i+q-1) \\
                                                & \iff \degab{f} < s'(q^{i}+1),
 \end{align*}
 which is true since in particular $f \in \calL(s(q^i+1)P_\infty)$ and $s<s'$. We can thus repeat the division process until eventually we obtain a quotient $f_1$ equal to zero. This shows that $\calT_i(s,g) \subseteq \calT_{i+1}(s,g)$.
