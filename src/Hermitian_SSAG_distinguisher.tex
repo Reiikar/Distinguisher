@@ -516,11 +516,12 @@ Thus, for all $i \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$, we have \begin{
 
 In the proposition below, we study the intersection $R(g^{q^{i}-q^{i-1}+1}) \cap \calL(s(q^i+1)P_\infty)$ in order to understand the sets $\calT_i(s,g)$'s introduced before.
 
+\jade{N'aurait-on pas envie d'appeler $\alpha'$ et $\beta'$ $\alpha_i$ et $\beta_i$ plutôt ?}
 \begin{proposition} \label{prop:dim_M_i's}
 Let $i \in \set{1,\dots,\lfloor m/2 \rfloor}$ and
-     $\alpha' \in \set{0,\dots,a-1}$ be the rest of the Euclidean division of $\alpha (q^i-q^{i-1}+1)$ by $a$. Then we can compute the exact dimension of $M_i(s,g) := R(g^{q^{i}-q^{i-1}+1}) \cap \calL(s(q^i+1)P_\infty)$ depending on $s'$:
+     $\alpha' \in \set{0,\dots,a-1}$ be the remainder of the Euclidean division of $\alpha (q^i-q^{i-1}+1)$ by $a$. Then we can compute the exact dimension of $M_i(s,g) := R(g^{q^{i}-q^{i-1}+1}) \cap \calL(s(q^i+1)P_\infty)$ depending on $s'$:
     \begin{enumerate}
-        \item $\dim_{\fqm}(M_i(s,g)) = s(q^i+1)+1-\mathfrak{g}_{a,b}$ if $s' > \left\lfloor \dfrac{s(q^i+1)+a}{q^i-q^{i-1}+1}\right\rfloor$;
+        \item $\dim_{\fqm}(M_i(s,g)) = s(q^i+1)+1-\mathfrak{g}_{a,b}$ if $s' > \left\lfloor \dfrac{s(q^i+1)+a}{q^i-q^{i-1}+1}\right\rfloor$; \jade{N'est-ce pas la dimension de $\calL(s(q^i+1)P_\infty)$ ? Si $s$ n'est pas assez grand, ceci nest qu'une minoration. }
         
         \item $\dim_{\fqm}(M_i(s,g)) = s'(q^i-q^{i-1}+1)$ if $s' \leq \left\lfloor \dfrac{s(q^i+1)+1-2\mathfrak{g}_{a,b}}{q^i-q^{i-1}+1}\right\rfloor$;
         
@@ -771,7 +772,7 @@ Its genus is given by $\mathfrak{g}_{\calH} = \frac{q_0(q_0-1)}{2}$ and it is a 
     \begin{equation} \label{eq:dont_distinguish_Hermitian_case}
     \mathfrak{B}(e^*) := ms'(q^{e^*}-q^{e^*-1}+1) + \left( \frac{m}{2}-e^*\right)mk^2 \geq q_0^3-1,
     \end{equation}
-    where $k := s+1-\mathfrak{g}_{\calH}$ stand for the dimension of the corresponding AG-code.
+    where $k := s+1-\mathfrak{g}_{\calH}$ stands for the dimension of the corresponding AG-code.
     \begin{itemize}
         \item [-] If $e^* < \frac{m}{2}$, then $\mathfrak{B}(e^*) > mk^2$. With the condition on $s$, we know that $s \geq 2\mathfrak{g}_{\calH}+q-1$. This give $k \geq \mathfrak{g}_{\calH}+q$ and thus
         \begin{align*}
