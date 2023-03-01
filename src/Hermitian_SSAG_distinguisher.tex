@@ -139,7 +139,7 @@ Even if Mora and Tillich's attack does not threaten the Goppa codes used in the 
 
 In the present work, we interest in the case of Goppa--like one--point AG codes from $\calC_{a,b}$ curves, a class of curves introduced in \cite{Miu93}. Since then, theses curves have been extensively studied. They are especially interesting as we know an explicit monomial basis of the AG code associated to any multiple of its unique point at infinity, which enables to encode one-point codes efficiently \cite{BRS21}. Furthermore, they remains quite general: for examples, elliptic curves, Kummer or Artin-Schreier curves are $C_{a,b}$ curves. It is also natural to wonder how the genus affect the distinguisher: in particular, we give a sufficient condition of the minimal degree our divisor has to satisfy in order to mount the distinguisher. This bound is increasing with the genus of the curve, and coincides with the one given in \cite{MT21} in the case of classical Goppa codes. Consequently, when the genus gets higher, we are not able to distinguish codes associated to low degree divisor. In the worst cases, we might no be able to distinguish anything.
 
-AG codes, as generalization of GRS codes, have exactly the same behaviour with respect to the Schur product. Moreover, some well-chosen AG codes are defined by the evaluation of \textit{multivariate} polynomials. In this case, we prove that performing division algorithm via Gröbner bases enable us to estimate the dimension of the square of the dual of Goppa--like AG codes. Even better, computations tend to show that the bound we obtain on the dimension is sharp whenever the Goppa--like code seems random (\emph{i.e} the function $g$ is sufficiently random). The counterpart is, as it was the case in \cite{MT21} for classical Goppa codes, that we are only able to distinguish high rate codes (more precisely, our maxima distinguishable rate are roughly the same). A comparison between their result and ours is realized in the case on Goppa--like codes on an Elliptic curve. However, as discussed above, the distinguisher may become irrelevant if the genus gets too high: in particular, we show that Goppa--like AG codes constructed from the Hermitian curve resist our distinguisher, which is encouraging if we want to base a McEliece's like cryptosystem on it.
+AG codes, as generalization of GRS codes, have exactly the same behaviour with respect to the Schur product. Moreover, some well-chosen AG codes are defined by the evaluation of \textit{multivariate} polynomials. In this case, we prove that performing division algorithm via Gröbner bases enable us to estimate the dimension of the square of the dual of Goppa--like AG codes. Even better, computations tend to show that the bound we obtain on the dimension is sharp whenever the Goppa--like code seems random (\emph{i.e} the function $g$ is sufficiently random). The counterpart is, as it was the case in \cite{MT21} for classical Goppa codes, that we are only able to distinguish high rate codes (more precisely, our maxima distinguishable rate are roughly the same). A comparison between their result and ours is realized in the case on Goppa--like codes on an elliptic curve. However, as discussed above, the distinguisher may become irrelevant if the genus gets too high: in particular, we show that Goppa--like AG codes constructed from the Hermitian curve resist our distinguisher, which is encouraging if we want to base a McEliece's like cryptosystem on it.
 
 \jade{C'est pas un copier--coller de Rocco ?} However, the specific structure of the dual of a Goppa--like AG code as the trace of some AG code seems to complicate the attempt to turn the distinguisher into an efficient structural attack. But, having an algebraic explanation of why the distinguisher works is still desirable if we want to perform an attack using the square code consideration. It also provides an rigorous way to choose initial parameters to secure our cryptosystem.
 We hope that this work will lead to several proposal/improvements on SSAG code based McElice cryptosystem in the future.
@@ -167,7 +167,7 @@ This definition can be extended to codes the following way: If $\calC$ and $\cal
 \[ \calC \star \calD := \Span{\mathbf{c} \star \mathbf{d} \mid \mathbf{c} \in \calC, \mathbf{d} \in \calD}. \]
 Moreover, if $\calC = \calD$, we call $\calC^{\star 2} := \calC \star \calC$ the square of $\calC$. The following lemma gives a first estimation of the dimension of Schur product of codes.
 
-\begin{lemma}[\cite{MT21}, Proposition 10 ] \label{lem:known_bounds}
+\begin{lemma}[\cite{MT21}[Proposition 10]] \label{lem:known_bounds}
 Let $\calC$ and $\calD$ be two linear codes over $\fqm$ with same length $n$ and respective dimension $k_{\calC}$ and $k_{\calD}$. We have
 \begin{enumerate}
 	\item $\dim_{\fqm}(\calC \star \calD) \leq \min\{k_{\calC}k_{\calD},n\}$;
@@ -361,6 +361,7 @@ Let $\calD$ be an effective divisor on $\calX$ of positive degree $s$. Take a ra
 The corresponding Goppa--like code is defined as the dual of the subfield subcode of $\calC$, \emph{i.e.}
 $$ \Gamma(\calP,D,g) := \calC^{\perp}|_{\fq}.$$
 
+\TODO{Bouger cette remarque pour dire qqch de plus intelligent.}
 \begin{remark} \label{rq:g_notin_L(D)}
 	Imposing the function $g$ not to be in the Riemann-Roch space of $D$ is justified since overwise, the unit vector $(1,\dots,1)$ lies in the AG-code, which is not desirable as we are interested in random looking codes. 
 \end{remark}
@@ -733,6 +734,8 @@ using the Hasse-Weil bound. In order to secure the corresponding Goppa--like cod
 
 \subsection{High rate distinguishable codes in the case of elliptic curves}
 
+\TODO{$q=2$ ?}
+
 In this section, we focus on the case where $\calX_{a,b}$ is an elliptic curve, meaning that $a=2$ and $b=3$. For some set of parameters which produces codes of cryptographic size, we then compute the maximal distinguishable value of $s$. In order to get close to the case of classical Goppa codes, we also fix $s'=s+1$.
 
 \begin{table}[h]
@@ -758,7 +761,7 @@ In this section, we focus on the case where $\calX_{a,b}$ is an elliptic curve, 
       $17$ & $3$ & $4820$ & $92$ & $0,943$ \\
     \hline
 \end{tabular}
-\caption{Largest distinguishable Goppa--like code in Elliptic case}
+\caption{Largest distinguishable Goppa--like code in elliptic case}
 \end{center}
 \end{table}
 
