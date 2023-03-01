@@ -200,7 +200,7 @@ Let $\calC$ be a linear code over $\fqm$. Then
 
 \subsection{AG and SSAG codes} \label{section:AG_codes}
 
-Let $\calX$ be a smooth and irreducible projective curve over $\fqm$ of genus $\mathfrak{g}$. A \emph{divisor} on $\calX$ over $\fqm$ is a formal sum of places over $\fqm$ $D=\sum \nu_P(D) P$ where $\nu_P(D)$ are integers which are all zero except for a finite number of places $P$. We denote by $\Div(\calX)$ the set of $\fqm$--divisors on $\calX$ (we omit the dependence on $\fqm$).
+\paragraph{Definitions.} Let $\calX$ be a smooth and irreducible projective curve over $\fqm$ of genus $\mathfrak{g}$. A \emph{divisor} on $\calX$ over $\fqm$ is a formal sum of places over $\fqm$ $D=\sum \nu_P(D) P$ where $\nu_P(D)$ are integers which are all zero except for a finite number of places $P$. We denote by $\Div(\calX)$ the set of $\fqm$--divisors on $\calX$ (we omit the dependence on $\fqm$).
 
 For a divisor $D \in \Div(\calX)$, we define its \emph{support} $\Supp(D)$ as the finite set of places $P$ such that $\nu_P(D)$ is non--zero and its \emph{degree} $\deg D$ as $\deg D=\sum \nu_P(D) \deg(P)$. We say that a divisor $D \in \Div(\calX)$ is \emph{effective} if for all $P \in \Supp(D)$, we have $\nu_P(D) \geq 0$, in which case we write $D \geq 0$.
 A non--zero function $f \in \fqm(\calX)$ defines a divisor, called \emph{principal}, denoted by $(f)=\sum \nu_P(f) P$. The \emph{Riemann-Roch space} of $D$ is defined as the $\fqm$ vector space
@@ -227,7 +227,7 @@ with $D^{\perp} = D_{\calP}-D+W$, where $D_{\calP} = \sum\limits_{P \in \calP} P
 \end{proposition}
 
 
-\paragraph{First estimation of the dimension of the square of the trace of an AG code}
+\paragraph{First estimation of the dimension of the square of the trace of an AG code.}
 
 In this paper, we aim to bound the dimension of the square of the dual of a SSAG codes. From Delsarte's theorem, this is equivalent to study the square of the trace of some structured AG code. 
 This fact is possible thanks to a result from \cite{MT21}, valid for any linear code:
@@ -257,7 +257,7 @@ then this property survives for the trace code, \emph{i.e.}
 In particular, this is the case for Reed-Solomon codes (see \cite{MT21}, Proposition 11) and more generally for AG codes under some lower bound condition on the degree of its divisor.
 
 
-\begin{proposition}[\emph{cf.} \cite{Mum70},Theorem 6] \label{prop:mumford_result}
+\begin{proposition} [\cite{Mum70},Theorem 6] \label{prop:mumford_result}
 	Let $F,G$ be two divisors of $\calX$ such that $\deg(G) \geq 2\mathfrak{g}+1$ and $\deg(F) \geq 2\mathfrak{g}$. Then
 	\[ \calL(F) \cdot \calL(G) = \calL(F+G),\]
 	where $\calL(F) \cdot \calL(G) := \Span{ f \cdot g : f,g \in \calL(F) \times \calL(G)}$.
@@ -280,22 +280,21 @@ which is much smaller than the expected dimension given in Lemma \ref{lem:known_
 	From Proposition \ref{prop:mumford_result}, we have $\dim_{\fqm}(\calC)^{\star2} = 2s+1-g = k+s$, since we have inequality in the Riemann-Roch theorem. Thus, \eqref{eq:mumford_bound} leads to
 	\begin{align*}
 		\dim_{\fq}\Tr{\calC}^{\star2} &\leq m(k+s) + \binom{m}{2}k^2 \\
-		&= (2k+2s+mk^2-k^2) \dfrac{m}{2} \\
-		&= (k(mk+1)-k^2+k+2s) \dfrac{m}{2} \\
-		&= \binom{mk+1}{2} - \dfrac{m}{2}(k(k-1)-2s) .
+		&\leq (2k+2s+mk^2-k^2) \dfrac{m}{2} \\
+		&\leq (k(mk+1)-k^2+k+2s) \dfrac{m}{2} \\
+		&\leq \binom{mk+1}{2} - \dfrac{m}{2}(k(k-1)-2s) .
 	\end{align*}
 \end{proof}
 
+The above corollary says that due to the algebraic structure of AG codes, the dimension of the square of the dual of a SSAG code is smaller than the expected value for random codes, which is $\binom{mk+1}{2}$. However, this bound is far from being optimal, and our aim for the rest of the paper is to improve it in some specific cases. 
 
 
 
 
 
+\subsection{$C_{a,b}$ curves} \label{section:C_a,b_codes}
 
-\subsection{AG codes on $C_{a,b}$ curves} \label{section:C_a,b_codes}
-
-Throughout this paper, we will be dealing with algebraic geometry codes defined over a $C_{a,b}$ curve. For further details about this family of curves, we refer to \cite{Miu93}. 
-
+Throughout this paper, we will be dealing with algebraic geometry codes defined over a $C_{a,b}$ curve, this section is dedicated to some properties on this class of curves. For further details, we refer to \cite{Miu93}. 
 
 
 \begin{definition} \label{def:C_ab_curves} 
@@ -524,26 +523,25 @@ Thus, for all $i \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$, we have \begin{
 
 In the proposition below, we study the intersection $R(g^{q^{i}-q^{i-1}+1}) \cap \calL(s(q^i+1)P_\infty)$ in order to understand the sets $\calT_i(s,g)$'s introduced before.
 
-\jade{N'aurait-on pas envie d'appeler $\alpha'$ et $\beta'$ $\alpha_i$ et $\beta_i$ plutôt ?}
+
 \begin{proposition} \label{prop:dim_M_i's}
-Let $i \in \set{1,\dots,\lfloor m/2 \rfloor}$ and
-     $\alpha' \in \set{0,\dots,a-1}$ be the remainder of the Euclidean division of $\alpha (q^i-q^{i-1}+1)$ by $a$. Then we can compute the exact dimension of $M_i(s,g) := R(g^{q^{i}-q^{i-1}+1}) \cap \calL(s(q^i+1)P_\infty)$ depending on $s'$:
-     \jade{Dans les 2 premiers cas, dire que $M_i=...$ plutôt que $\dim M_i=...$ et donner la dimension exacte dans les cas 3 et 4.}
+Let $i \in \set{1,\dots,\lfloor m/2 \rfloor}$,
+     $\alpha_i \in \set{0,\dots,a-1}$ be the remainder of the Euclidean division of $\alpha (q^i-q^{i-1}+1)$ by $a$ and set $\beta_i = \dfrac{s'(q^i-q^{i-1}+1)-b\alpha_i}{a}$. Depending on $s'$, we can compute the exact dimension of $M_i(s,g) := R(g^{q^{i}-q^{i-1}+1}) \cap \calL(s(q^i+1)P_\infty)$:
+    
     \begin{enumerate}
-        \item $\dim_{\fqm}(M_i(s,g)) = s(q^i+1)+1-\mathfrak{g}_{a,b}$ if $s' > \left\lfloor \dfrac{s(q^i+1)+a}{q^i-q^{i-1}+1}\right\rfloor$; \jade{N'est-ce pas la dimension de $\calL(s(q^i+1)P_\infty)$ ? Si $s$ n'est pas assez grand, ceci nest qu'une minoration. }
+        \item If $s'(q^i-q^{i-1}+1) > s(q^i+1)+a$, then $M_i(s,g) = \calL(s(q^i+1)P_\infty)$ ;
         
-        \item $\dim_{\fqm}(M_i(s,g)) = s'(q^i-q^{i-1}+1)$ if $s' \leq \left\lfloor \dfrac{s(q^i+1)+1-2\mathfrak{g}_{a,b}}{q^i-q^{i-1}+1}\right\rfloor$;
+        \item If $s'(q^i-q^{i-1}+1) \leq s(q^i+1)+1-2\mathfrak{g}_{a,b}$, then $M_i(s,g) = R(g^{q^{i}-q^{i-1}+1})$;
         
-        \item There exists $v^* \in \set{1,\dots,\alpha'-1}$ such that
-        $$ \left\lfloor \dfrac{s(q^i+1)+a-b(a+v^*-\alpha')}{q^i-q^{i-1}+1}\right\rfloor < s' \leq  \left\lfloor \dfrac{s(q^i+1)+a-b(a+v^*-1-\alpha')}{q^i-q^{i-1}+1}\right\rfloor$$ or $v^* = \alpha'$ and 
-        $$\left\lfloor \dfrac{s(q^i+1)+a-ab+v^*b}{q^i-q^{i-1}+1}\right\rfloor < s' \leq  \left\lfloor \dfrac{s(q^i+1)+a-ab+(v^*+1)b)}{q^i-q^{i-1}+1}\right\rfloor,$$
+        \item If there exists $v^* \in \set{1,\dots,\alpha_i-1}$ such that
+        $$ s(q^i+1)+a-b(a+v^*-\alpha_i) < s'(q^i-q^{i-1}+1) \leq  s(q^i+1)+a-b(a+v^*-1-\alpha_i),$$
+        we have 
+          $$\dim_{\fqm}(M_i(s,g)) = \sum\limits_{v=v^*}^{a-1} \left\lfloor \dfrac{s(q^i+1)-bv}{a} \right\rfloor + v^*(\beta_i+b) + a-v^*.$$
+        
+        \item Else, there exists $v^* \in \set{\alpha_i+1,\dots,a}$ \mathieu{(le cas qui nous gênait avant est ici pour $v^*=a$, et vient du fait que $F(0)=G(a)$ comme tu avais dit)} such that
+        $$ s(q^i+1)+a-b(v^*-\alpha_i) < s'(q^i-q^{i-1}+1) \leq  s(q^i+1)+a-b(v^*-1-\alpha_i),$$
         in which case 
-          $$\dim_{\fqm}(M_i(s,g)) = \sum\limits_{v=v^*}^{a-1} \left\lfloor \dfrac{s(q^i+1)-bv}{a} \right\rfloor + v^*(\beta'+b) + a-v^*.$$
-        
-        \item There exists $v^* \in \set{\alpha'+1,\dots,a-1}$ such that
-        $$ \left\lfloor \dfrac{s(q^i+1)+a-b(v^*-\alpha')}{q^i-q^{i-1}+1}\right\rfloor < s' \leq  \left\lfloor \dfrac{s(q^i+1)+a-b(v^*-1-\alpha')}{q^i-q^{i-1}+1}\right\rfloor,$$
-        in which case 
-        $$\dim_{\fqm}(M_i(s,g)) = \sum\limits_{v=v^*}^{a-1} \left\lfloor \dfrac{s(q^i+1)-bv}{a} \right\rfloor + v^*\beta' + \alpha'b +a-v^*.$$
+        $$\dim_{\fqm}(M_i(s,g)) = \sum\limits_{v=v^*}^{a-1} \left\lfloor \dfrac{s(q^i+1)-bv}{a} \right\rfloor + v^*\beta_i + \alpha_ib +a-v^*.$$
     \end{enumerate}
 \end{proposition}
 
@@ -552,23 +550,23 @@ Let $i \in \set{1,\dots,\lfloor m/2 \rfloor}$ and
 
 By assumption, we have $\mathrm{LT}(g)=x^{\beta}y^{\alpha}$, with $\alpha \leq a-1$ and $\degab{g}=a\beta +b\alpha=s'$. 
 Thus, $\mathrm{LT}(g^{q^i-q^{i-1}+1})=x^{\beta (q^i-q^{i-1}+1)}y^{\alpha (q^i-q^{i-1}+1)}$. Since $\alpha (q^i-q^{i-1}+1)$ might be bigger that $a-1$, we perform the following euclidean division:
-$$\alpha (q^i-q^{i-1}+1) = \delta a + \alpha', \ 0 \leq \alpha' \leq a-1.$$
-Using the equation of the curve, we can then suppose that $\mathrm{LT}(g^{q^i-q^{i-1}+1})=x^{\beta'}y^{\alpha '}$, with 
-$$\beta' = \beta (q^i-q^{i-1}+1) + \left\lfloor \frac{\alpha (q^i-q^{i-1}+1)-\alpha'}{a} \right\rfloor \ \mathrm{and} \ \alpha' \in \set{0,\dots,a-1}.$$
+$$\alpha (q^i-q^{i-1}+1) = \delta a + \alpha_i, \ 0 \leq \alpha_i \leq a-1.$$
+Using the equation of the curve, we can then suppose that $\mathrm{LT}(g^{q^i-q^{i-1}+1})=x^{\beta_i}y^{\alpha '}$, with 
+$$\beta_i := \beta (q^i-q^{i-1}+1) + \left\lfloor \frac{\alpha (q^i-q^{i-1}+1)-\alpha_i}{a} \right\rfloor \ \mathrm{and} \ \alpha_i \in \set{0,\dots,a-1}.$$
 Since $\degab{g^{q^i-q^{i-1}+1}} = s'(q^i-q^{i-1}+1),$ we also have 
 \begin{equation} \label{eq:value_beta_prime}
-\beta' = \dfrac{s'(q^i-q^{i-1}+1)-b\alpha'}{a}.
+\beta_i = \dfrac{s'(q^i-q^{i-1}+1)-b\alpha_i}{a}.
 \end{equation}
 From this, we deduce
 \begin{align*}
-\calR\left(g^{q^i-q^{i-1}+1}\right) &:= \mathrm{Span}_{\fqm} \left\{x^uy^v \mid u \leq \beta'+b-1 , v \leq a-1 \ \mathrm{not \ both} \ u \geq \beta' \ \mathrm{and} \ v \geq \alpha'\right\} \\
+\calR\left(g^{q^i-q^{i-1}+1}\right) &:= \mathrm{Span}_{\fqm} \left\{x^uy^v \mid u \leq \beta_i+b-1 , v \leq a-1 \ \mathrm{not \ both} \ u \geq \beta_i \ \mathrm{and} \ v \geq \alpha_i\right\} \\
 &= \mathrm{Span}_{\fqm}    \left\{ \begin{array}{c}
-         1,x,\dots,x^{\beta' +b-1},   \\
+         1,x,\dots,x^{\beta_i +b-1},   \\
          \cdots \\
-         y^{\alpha' -1},y^{\alpha' -1}x,\dots,y^{\alpha' -1}x^{\beta' +b-1}, \\
-          y^{\alpha'},y^{\alpha'}x,\dots,y^{\alpha'}x^{\beta'-1}, \\
+         y^{\alpha_i -1},y^{\alpha_i -1}x,\dots,y^{\alpha_i -1}x^{\beta_i +b-1}, \\
+          y^{\alpha_i},y^{\alpha_i}x,\dots,y^{\alpha_i}x^{\beta_i-1}, \\
          \cdots \\
-         y^{a-1},y^{a-1}x,\dots,y^{a-1}x^{\beta'-1}
+         y^{a-1},y^{a-1}x,\dots,y^{a-1}x^{\beta_i-1}
     \end{array}
     \right\}
 \end{align*}
@@ -586,70 +584,61 @@ implying
 \end{equation*}
 With these notations, we have a description of a basis of both spaces $R(g^{q^i-q^{i-1}+1})$ and $\calL(s(q^i+1)P_\infty)$, leading to an exact formula for the dimension of their intersection $M_i(s,g)$ for any value of $i$:
 
-
 \begin{equation} \label{eq:exact_dimension_M_i}
-\dim_{\fqm} M_i(s,g) = \sum\limits_{v=0}^{\alpha'-1} \min(\beta'+b,\ell_v^i+1) + \sum\limits_{v=\alpha'}^{a-1} \min(\beta',\ell_v^i+1).
+\dim_{\fqm} M_i(s,g) = \sum\limits_{v=0}^{\alpha_i-1} \min(\beta_i+b,\ell_v^i+1) + \sum\limits_{v=\alpha_i}^{a-1} \min(\beta_i,\ell_v^i+1).
 \end{equation}
+
 It remains to compute the corresponding minima with respect to $v$:
 \begin{itemize}
-    \item[(i)] If $0 \leq v \leq \alpha'-1$, by using \eqref{eq:value_beta_prime}, we get
+    \item[(i)] If $0 \leq v \leq \alpha_i-1$, by using \eqref{eq:value_beta_prime}, we get
     \begin{align*}
-        \beta'+b -1 \leq \ell_v^i \iff s' \leq F(v) := \left\lfloor \dfrac{s(q^i+1)+a-b(a+v-\alpha')}{q^i-q^{i-1}+1}\right\rfloor.
+        \beta_i+b \leq \ell_v^i +1 \iff s'(q^i-q^{i-1}+1) \leq F(v) := s(q^i+1)+a-b(a+v-\alpha_i).
     \end{align*}
-    \item[(ii)] Otherwise, $\alpha' \leq v \leq a-1$ and
+    \item[(ii)] Otherwise, $\alpha_i \leq v \leq a-1$ and
     \begin{align*}
-        \beta' -1\leq \ell_v^i \iff s' \leq G(v) := \left\lfloor \dfrac{s(q^i+1)+a-b(v-\alpha')}{q^i-q^{i-1}+1}\right\rfloor .
+        \beta_i \leq \ell_v^i +1 \iff s'(q^i-q^{i-1}+1) \leq G(v) := s(q^i+1)+a-b(v-\alpha_i).
     \end{align*}
 \end{itemize}
 Note that both $F$ and $G$ are decreasing with $v$, and we easily check that $F(0) = G(a)$. Thus, we have the following sequence of integers
-$$F(\alpha'-1) \leq \dots \leq F(0) = G(a) \leq G(a-1) \leq \dots \leq G(\alpha').$$
+$$F(\alpha_i-1) \leq \dots \leq F(0) = G(a) \leq G(a-1) \leq \dots \leq G(\alpha_i).$$
 Depending on the value of $s'$, there is a few cases  to consider:
 \begin{itemize}
-    \item $s' >G(\alpha')$, in which case $M_i(s,g) = \calL(s(q^i+1)P_\infty)$;
-    \item $s' \leq F(\alpha'-1)$, and $M_i(s,g) = \calR(g^{q^i-q^{i-1}+1})$;
-    \item There exists $v^* \in \set{1,...,\alpha'-1}$ such that $F(v^*) < s' \leq F(v^*-1)$;
-    \item There exists $v^* \in \set{\alpha',...,a}$ such that $G(v^*) < s' \leq G(v^*-1)$.
-%    \item $F(0) < s' \leq G(a-1)$.
+    \item $s'(q^i-q^{i-1}+1) >G(\alpha_i)$, in which case $M_i(s,g) = \calL(s(q^i+1)P_\infty)$;
+    \item $s'(q^i-q^{i-1}+1) \leq F(\alpha_i-1)$, and $M_i(s,g) = \calR(g^{q^i-q^{i-1}+1})$;
+    \item There exists $v^* \in \set{1,...,\alpha_i-1}$ such that $F(v^*) < s'(q^i-q^{i-1}+1) \leq F(v^*-1)$;
+    \item There exists $v^* \in \set{\alpha_i,...,a}$ such that $G(v^*) < s'(q^i-q^{i-1}+1) \leq G(v^*-1)$.
+
 \end{itemize}
 The formulas for the dimension of $M_i(s,g)$ follows from the above computations and \eqref{eq:exact_dimension_M_i}.
 \end{proof}
 
-Remark that case $1)$ corresponds to the case where $\calT_i(s,g) = \Tr{\calL(s(q^i+1)P_\infty)}, $ which will produce the same bound as the one given in Proposition \ref{prop:bound_dim_using_inclusions}.
-Instead, we will focus on case $2)$, since in this case, the sequence $(\calT_i(s,g))_i$ is increasing for the inclusion. 
+Remark that case $\textit{1)}$ corresponds to the case where $\calT_i(s,g) = \Tr{\calL(s(q^i+1)P_\infty)}, $ which will produce the same bound as the one given in Proposition \ref{prop:bound_dim_using_inclusions}.
+Instead, we will focus on case $2)$, since in this case, we can show that thesequence $(\calT_i(s,g))_i$ is increasing for the inclusion.
 
-\TODO{Bye bye le lemme.}
 
-\begin{lemma} \label{lem:cond_inclusion_T_i's}
-    If $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$, then for every $i \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$,
-    $$\calT_i(s,g) := \Tr{\calR(g^{q^i-q^{i-1}+1})}.$$
-\end{lemma}
 
-\begin{proof}
-    From Proposition \ref{prop:dim_M_i's}, we know that for any fixed $i \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$, we have 
-    $$M_i(s,g) = \calR(g^{q^i-q^{i-1}+1}) \iff  s' \leq \left\lfloor \dfrac{s(q^i+1)+1-2\mathfrak{g}_{a,b}}{q^i-q^{i-1}+1}\right\rfloor.$$
-    Thus, $M_i(s,g) = \calR(g^{q^i-q^{i-1}+1})$ for all $i$ if and only if the right hand-side is satisfied for all $i$ as well. Since $q^i+1 > q^i-q^{i-1}+1$, this is equivalent to have it satisfied for $i=1$, \emph{i.e.}
-    $$s' \leq \left\lfloor \dfrac{s(q+1)+1-2\mathfrak{g}_{a,b}}{q}\right\rfloor;$$
-    which gives $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$. The result follows.
-\end{proof}
 
-\jade{Réccrire avec la condition sur $i$ au lieu de la supposer vraie dès $i=0$.}
 
-\begin{proposition} \label{prop:inclusion_T_i's} Suppose $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$. Then
-    $$\calT_0(s,g) \subseteq \calT_1(s,g) \subseteq \dots \subseteq \calT_{\lfloor \frac{m}{2}\rfloor}(s,g).$$
+\begin{proposition} \label{prop:inclusion_T_i's} Let $i^* \in \set{1,\dots,\lfloor\frac{m}{2}\rfloor}$ be the largest integer such that 
+$$sq^{i^*-1} \geq (s'-s)(q^{i^*}-q^{i^{*}-1}+1)+2\mathfrak{g}_{a,b}-1.$$ 
+Then
+$$\calT_{i^*-1}(s,g) \subseteq \calT_{i^*}(s,g) \subseteq \dots \subseteq \calT_{\lfloor \frac{m}{2}\rfloor}(s,g).$$
 \end{proposition}
 
 \begin{proof}
-From Lemma \ref{lem:cond_inclusion_T_i's}, we have
-\begin{equation} \label{eq:equality_intersection}
-  \calR(g^{q^{i}-q^{i-1}+1})\cap \calL(s(q^{i}+1)P_\infty) = \calR(g^{q^{i}-q^{i-1}+1}) 
-\end{equation}
-Let $i \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$, and note that 
-$\calT_i(s,g) := \set{\Tr{\frac{f}{g^{q^i+1}}} \mid f \in \calR(g^{q^i-q^{i-1}+1})\cap \calL(s(q^i+1)P_\infty)}.$ \\
-Given $\Tr{\frac{f}{g^{q^i+1}}}$ in $\calT_i(s,g)$, we want to show that it belongs to $\calT_{i+1}(s,g)$. Applying Proposition \ref{prop:div_grob} with be replacing $f$ with $fg^{q^{i+1}-q^i}$ and $g$ by $g^{q^{i+1}-q^i+1}$, we obtain
+From Proposition \ref{prop:dim_M_i's}, \textit{2)}, we know that the condition on $s$ and $s'$ implies that $M_{i^*}(s,g) = R(g^{q^{i^*}-q^{i^*-1}+1})$. Since the function $$i \mapsto \dfrac{s(q^i+1)+1-2\mathfrak{g}_{a,b}}{q^i-q^{i-1}+1}$$ 
+is increasing with $i$, we also have
+\begin{equation} \label{eq:structure_M_i}
+M_{i}(s,g) = R(g^{q^{i}-q^{i-1}+1}), \ \forall \ i \in \set{i^*,\dots,\left\lfloor \frac{m}{2}\right\rfloor}.
+\end{equation} 
+
+We now prove the inclusions of the $\calT_i's$, supposing first that $i^* \neq 1$ (since the definition of $\calT_0$ is a bit different). Let $i \in \set{i^*-1,\dots,\lfloor \frac{m}{2} \rfloor}$, and note that 
+$$\calT_i(s,g) := \set{\Tr{\frac{f}{g^{q^i+1}}} \mid f \in \calR(g^{q^i-q^{i-1}+1})\cap \calL(s(q^i+1)P_\infty)}.$$
+Given $\Tr{\frac{f}{g^{q^i+1}}}$ in $\calT_i(s,g)$, we want to show that it belongs to $\calT_{i+1}(s,g)$. Applying Proposition \ref{prop:div_grob} by replacing $f$ with $fg^{q^{i+1}-q^i}$ and $g$ by $g^{q^{i+1}-q^i+1}$, we obtain
 \begin{equation} \label{eq:division_i}
 fg^{q^{i+1}-q^i} = f_1g^{q^{i+1}-q^i+1} + f_2,
 \end{equation}
-with $f_2 \in \calR(g^{q^{i+1}-q^i+1})$ and $\degab{f_2} \leq \degab{fg^{q^{i+1}-q^i}}$. Next, we write
+with $f_2 \in \calR(g^{q^{i+1}-q^i+1}) = M_i(s,g)$ (using \eqref{eq:structure_M_i}) and $\degab{f_2} \leq \degab{fg^{q^{i+1}-q^i}}$. Next, we write
 \begin{align*}
     \Tr{\frac{f}{g^{q^i+1}}} &= \Tr{\frac{fg^{q^{i+1}-q^i}}{g^{q^{i+1}+1}}} \\
                              &= \Tr{\frac{f_1g^{q^{i+1}-q^i+1}}{g^{q^{i+1}+1}}} + \Tr{\frac{f_2}{g^{q^{i+1}+1}}} \\
@@ -667,8 +656,8 @@ Thus
 \end{align*}
 which is true since in particular $f \in \calL(s(q^i+1)P_\infty)$ and $s<s'$. We can thus repeat the division process until eventually we obtain a quotient $f_1$ equal to zero. This shows that $\calT_i(s,g) \subseteq \calT_{i+1}(s,g)$.
 
-\noindent It remains to treat the case $i=0$. Let $\Tr{\frac{f}{g^2}} \in \calT_0(s,g)$ for some $f \in \calL(2sP_\infty)$. Using Proposition \ref{prop:div_grob}, this time replacing $f$ with $fg^{q-1}$ and $g$ with $g^{q+1}$, we have
-$$fg^{a-1} = f_1g^q + f_2,$$ with $f_2 \in \calR(g^q) = \calR(g^q) \cap \calL(s(q+1)P_\infty)$ (using \eqref{eq:equality_intersection} with $i=1$).
+In the case $i^*=1$, we can repeat the same process exepted that we also have to prove that $\calT_0(s,g) \subseteq \calT_1(s,g)$, which differs from the others cases due to the definition of $\calT_0$. We treat this case separatly: let $\Tr{\frac{f}{g^2}} \in \calT_0(s,g)$, for some $f \in \calL(2sP_\infty)$. Using Proposition \ref{prop:div_grob}, this time replacing $f$ with $fg^{q-1}$ and $g$ with $g^{q+1}$, we have
+$$fg^{a-1} = f_1g^q + f_2,$$ with $f_2 \in \calR(g^q) = M_1(s,g)$ (using \eqref{eq:structure_M_i}).
 Thus, we can write
     $$ \Tr{\frac{f}{g^2}} = \Tr{\frac{f_1^qg}{g^{q+1}}}  + \Tr{\frac{f_2}{g^{q+1}}}, $$
 with $\Tr{\frac{f_2}{g^{q+1}}} \in \calT_1(s,g)$. Since $\degab{f_1} = \degab{fg^{q-1}} - \degab{g^q} = \degab{f}-s'$, we have 
@@ -677,15 +666,14 @@ with $\Tr{\frac{f_2}{g^{q+1}}} \in \calT_1(s,g)$. Since $\degab{f_1} = \degab{fg
                                                & \iff (q-1)\degab{f} < 2s'(q-1)\\
                                                & \iff \degab{f} < 2s',
 \end{align*}
-which holds since $s<s'$ and $f \in \calL(2sP_\infty)$. Repeating the division process until we found a quotient equal to zero shows that $\calT_0(s,g) \subseteq \calT_1(s,g)$.
+which holds since $s<s'$ and $f \in \calL(2sP_\infty)$. Repeating the division process until we found a quotient equal to zero shows that $\calT_0(s,g) \subseteq \calT_1(s,g)$. The others cases work as the case $i^* > 1$.
 \end{proof}
 
-\TODO{Renommer en théorème.}
 
-\begin{coro} \label{coro:bound_with_T_i's_inclusion}
+\begin{thm} \label{thm:bound_with_T_i's_inclusion}
 Suppose $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$ and let $e^* := \min\left(\left\lfloor \frac{m}{2} \right\rfloor, \left\lceil \log_q\left(\frac{k^2}{s'(q-1)^2}\right)\right\rceil+1\right)$. Then
 $$\dim_{\fq} (\Gamma_s(\calP,g)^{\perp})^{\star 2}\leq \binom{mk+1}{2} - \dfrac{m}{2}(k^2(2e^*+1)+k-2s'(q^{e^*}-q^{e^*-1}+1)). $$
-\end{coro}
+\end{thm}
 
 \begin{proof}
     From \eqref{eq:key_equation} and under the assumption on $s$ and $s'$, we have
@@ -697,7 +685,7 @@ $$\dim_{\fq} (\Gamma_s(\calP,g)^{\perp})^{\star 2}\leq \binom{mk+1}{2} - \dfrac{
         & \leq \frac{m}{2}\left(2s'(q^e-q^{e-1}+1)+k^2(m-1)-2k^2e  \right) \\
         & \leq \binom{mk+1}{2} -  \dfrac{m}{2}\left(k^2(2e+1)+k-2s'(q^e-q^{e-1}+1)\right).
     \end{align*}
-for any $e \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$ (here, we used Lemma \ref{lem:cond_inclusion_T_i's} to bound the dimension on $\calT_e(s,g)$).
+for any $e \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$ (here, we used Lemma \TODO{cond inc $T_i$} to bound the dimension on $\calT_e(s,g)$).
 To get the best bound, we need to maximize the function
 $$T(e) = ek^2-s'(q^e-q^{e-1}+1)$$
 over $\set{1,\dots,\lfloor \frac{m}{2} \rfloor}$.
@@ -710,7 +698,7 @@ This function is decreasing with $e$, and the smallest value for which $\Delta T
 $$e =  \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1.$$
 \end{proof}
 
-\noindent Several computational experiments showed then when the Goppa like code $\calC$ is sufficiently random (\emph{i.e} the rational function $g$ is randomly chosen in $\calL(s'P_\infty)$), then the upper bound on the dimension of $\Tr{\calC}^{\star 2}$ given in Corollary \ref{coro:bound_with_T_i's_inclusion} is actually sharp, leading to  distinguisher if the parameters of $\calC$ are not well-chosen. 
+\noindent Several computational experiments showed then when the Goppa like code $\calC$ is sufficiently random (\emph{i.e} the rational function $g$ is randomly chosen in $\calL(s'P_\infty)$), then the upper bound on the dimension of $\Tr{\calC}^{\star 2}$ given in Theorem \ref{thm:bound_with_T_i's_inclusion} is actually sharp, leading to  distinguisher if the parameters of $\calC$ are not well-chosen. 
 
 In the next section, we will discuss how to construct a Goppa like code on $\calX_{a,b}$ that resist this distinguisher.
 
@@ -785,7 +773,7 @@ Its genus is given by $\mathfrak{g}_{\calH} = \frac{q_0(q_0-1)}{2}$ and it is a 
 \mathieu{Je suis pas super satisfait de la preuve, il y a surement plus simple...}
 
 \begin{proof}
-    As discussed at the beginning of the section, the code cannot be distinguished if the upper bound for the dimension of the square of its dual given in Corollary \ref{coro:bound_with_T_i's_inclusion} is larger than the length of the code. In the Hermitian case, we know exactly the number of rational points, and thus the length $n$ of the Goppa--like code is at most $q_0^3-1$. Since $m$ is even, we are left to prove that 
+    As discussed at the beginning of the section, the code cannot be distinguished if the upper bound for the dimension of the square of its dual given in Theorem \ref{thm:bound_with_T_i's_inclusion} is larger than the length of the code. In the Hermitian case, we know exactly the number of rational points, and thus the length $n$ of the Goppa--like code is at most $q_0^3-1$. Since $m$ is even, we are left to prove that 
     \begin{equation} \label{eq:dont_distinguish_Hermitian_case}
     \mathfrak{B}(e^*) := ms'(q^{e^*}-q^{e^*-1}+1) + \left( \frac{m}{2}-e^*\right)mk^2 \geq q_0^3-1,
     \end{equation}
