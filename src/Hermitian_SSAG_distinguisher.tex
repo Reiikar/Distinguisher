@@ -102,13 +102,19 @@
 
 \TODO{SABIRA: classification MSC}
 \begin{abstract}
-	In this paper, we present a distinguisher attack on the McEliece cryptosystem based on SSAG codes, specifically Goppa-like AG codes, which are a generalization of Goppa codes constracted from a curve of genus $g \geq 1$ (\sabira{j'ai de doute la dessus}). Based on a distinguisher for alternant and Goppa codes, we provide an upper bound for the dimension of the square of the dual of Goppa-like AG codes by means of products of trace codes. In addition, we conducted numerical experiments that correspond to this bound.
+	\jade{(Jade) Je propose autre chose :}
+	
+	In this paper, we introduce a family of codes than can be used in the McEliece cryptosystem based, called \emph{Goppa--like AG codes}. These are a generalization of Goppa codes constructed from any curve of genus $\mathfrak{g} \geq 0$. Focusing on codes from $C_{a,b}$ curves, we study the behaviour of the dimension of the square of their dual to determine their resistance to distinguisher attacks similar to the one for alternant and Goppa codes developed by Mora and Tillich \cite{MT21}. We propose numerical experiments to measure how sharp is our bound.
+	
+	\bigskip
+	
+	In this paper, we present a distinguisher attack on the McEliece cryptosystem based on SSAG codes, specifically Goppa--like AG codes, which are a generalization of Goppa codes constracted from a curve of genus $g \geq 1$ (\sabira{j'ai de doute la dessus}). Based on a distinguisher for alternant and Goppa codes, we provide an upper bound for the dimension of the square of the dual of Goppa--like AG codes by means of products of trace codes. In addition, we conducted numerical experiments that correspond to this bound.
 	\vskip 0.5cm
 	
-	In this paper, we present a distinguisher of SSAG codes, specifically Goppa-like AG codes, where the associated divisor has the form $A+(g)$ and the function $g$ on the curve has the role of a Goppa polynomial. Based on a distinguisher for alternant and Goppa codes, we provide an upper bound for the dimension of the square of the dual of Goppa-like AG codes by means of products of trace codes. In addition, we conducted numerical experiments that correspond to this bound.
+	In this paper, we present a distinguisher of SSAG codes, specifically Goppa--like AG codes, where the associated divisor has the form $A+(g)$ and the function $g$ on the curve has the role of a Goppa polynomial. Based on a distinguisher for alternant and Goppa codes, we provide an upper bound for the dimension of the square of the dual of Goppa--like AG codes by means of products of trace codes. In addition, we conducted numerical experiments that correspond to this bound.
 \end{abstract}
 
-\keywords{AG codes, Goppa-like AG codes, Trace codes, Schur product.}
+\keywords{AG codes, $C_{a,b}$ curves, Goppa--like AG codes, Trace codes, Schur product.}
 
 \section{Introduction}
 
@@ -211,10 +217,10 @@ with $D^{\perp} = D_{\calP}-D+W$, where $D_{\calP} = \sum\limits_{P \in \calP} P
 \noindent In the special case of AG codes, we have a notation for the subfield subcode, namely
 $$\ssag{\calX,\calP,D} := C_{\calL}(\calX,\calP,D)|_{\fq}.$$
 
-\paragraph{Goppa-like codes.} Let $\calD$ be an effective divisor on $\calX$ of positive degree $s$. Take a rational function $g \in \fqm(\calX)$ such that $g \notin \calL(D)$. Given a set of points $\calP \in \calX(\fqm)$ such that $\calP \cap \Supp(g) = \varnothing$ and $\calP \cap \Supp(D) = \varnothing$, we consider the AG code
+\paragraph{Goppa--like codes.} Let $\calD$ be an effective divisor on $\calX$ of positive degree $s$. Take a rational function $g \in \fqm(\calX)$ such that $g \notin \calL(D)$. Given a set of points $\calP \in \calX(\fqm)$ such that $\calP \cap \Supp(g) = \varnothing$ and $\calP \cap \Supp(D) = \varnothing$, we consider the AG code
 \[\calC := \calC_{\calL}(\calX,\calP,D+(g))=\set{\left(f(P)g(P)^{-1}\right)_{P \in \calP} \mid f \in \calL(D)}.\]
 
-The corresponding Goppa-like code is defined as the dual of the subfield subcode of $\calC$, \emph{i.e.}
+The corresponding Goppa--like code is defined as the dual of the subfield subcode of $\calC$, \emph{i.e.}
 $$ \Gamma(\calP,D,g) := \calC^{\perp}|_{\fq}.$$
 
 \begin{remark} \label{rq:g_notin_L(D)}
@@ -222,7 +228,7 @@ Imposing the function $g$ not to be in the Riemann-Roch space of $D$ is justifie
 \end{remark}
 
 
-\noindent The terminology Goppa-like is motivated by the fact here, the function $g$ plays the role of the Goppa polynomial, adding randomness to the code. From Proposition \ref{prop:dual_AG_codes}, a Goppa-like code turns out to be the subfield subcode of an AG code, as it is the case for classical Goppa codes with respect to GRS codes. More precisely, we have 
+\noindent The terminology Goppa--like is motivated by the fact here, the function $g$ plays the role of the Goppa polynomial, adding randomness to the code. From Proposition \ref{prop:dual_AG_codes}, a Goppa--like code turns out to be the subfield subcode of an AG code, as it is the case for classical Goppa codes with respect to GRS codes. More precisely, we have 
 $$ \Gamma(\calP,D,g) = \ssag{\calX,\calP,(D+(g))^{\perp}},$$
 where the dual divisor is given by Proposition \ref{prop:dual_AG_codes}. 
 
@@ -292,7 +298,7 @@ polynomials. We will notably perform division, using Gr\"obner bases, and, as ex
 
 \paragraph{One--point Goppa--like AG code on $C_{a,b}$-curves.}
 
-Here, we define a specific class of Goppa-like AG codes on a $C_{a,b}$ curve, associated to a divisor which is equivalent to the one--point divisor $sP_\infty$.
+Here, we define a specific class of Goppa--like AG codes on a $C_{a,b}$ curve, associated to a divisor which is equivalent to the one--point divisor $sP_\infty$.
 Let $s'>s'$ be two integers such that there exists a function $g \in \calL(s'P_\infty)$ with $\degab{g}=s'$. Given a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$, we define the one--point Goppa--like code as 
 \[\Gamma(\calP,sP_\infty,g) := \calC_{\calL}(\calX_{a,b},\calP,(sP_\infty+(g))^{\perp})|_{\fq}.\]
 
@@ -493,7 +499,7 @@ Thus, for all $i \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$, we have \begin{
 
 %--------Last changes----------%
 
-\subsection{Upper bound in Goppa-like case}
+\subsection{Upper bound in Goppa--like case}
 
 In the proposition below, we study the intersection $R(g^{q^{i}-q^{i-1}+1}) \cap \calL(s(q^i+1)P_\infty)$ in order to understand the sets $\calT_i(s,g)$'s introduced before.
 
@@ -681,7 +687,7 @@ In the next section, we will discuss how to construct a Goppa like code on $\cal
 
 \section{Analysis of the distinguisher}
 
-\noindent In the previous section, we provided an (experimentally) sharp upper bound on the dimension of the square of the dual of a Goppa-like code, which could leads to a distinguisher for the corresponding code. 
+\noindent In the previous section, we provided an (experimentally) sharp upper bound on the dimension of the square of the dual of a Goppa--like code, which could leads to a distinguisher for the corresponding code. 
 
 More precisely, let $\calC := C_\calL(\calX_{a,b},\calP,D)$ be an AG code as above, \emph{i.e.} with $D = sP_\infty +(g)$ and $\degab{g} = s'>s\geq 2\mathfrak{g}_{a,b}-1$. We showed that if $s$ and $s'$ are such that $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$, then
 \begin{equation} \label{eq:best_upper_bound}
@@ -689,12 +695,12 @@ More precisely, let $\calC := C_\calL(\calX_{a,b},\calP,D)$ be an AG code as abo
 \end{equation}
 where $e^* := \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1$. Thus, the code is distinguishable from a random one if the bound above is less than the lenght $n$ of the code. We can easily check when this case occurs, by starting to bound from above the maximal length possible: since $\calP \cap \Supp(g) = \varnothing,$ this maximum is reached when $\calP = \calX_{a,b}(\fqm) \backslash \Supp(g)$ and $g$ has only one zero, that is
 $$n = \# \calP = |\calX_{a,b}(\fqm)| \leq q^m-1+2\mathfrak{g}_{a,b}\sqrt{q^m},$$
-using the Hasse-Weil bound. In order to secure the corresponding Goppa-like code against our attack, the parameters have to be chosen such that 
+using the Hasse-Weil bound. In order to secure the corresponding Goppa--like code against our attack, the parameters have to be chosen such that 
 \begin{equation} \label{eq:cond_not_to_distinguish}
 \frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right)\geq q^m-1+2\mathfrak{g}_{a,b}\sqrt{q^m}.
 \end{equation}
 
-\noindent In what follows, we will focus on two specific classes of $C_{a,b}$--curves: First, we will compute the maximal (with respect to the dimension) codes we can distinguish in the case where $\calX_{a,b}$ is an elliptic curve. This case is relevant since it is the closest to the case of classical Goppa codes, and we will see that our results are very similar to the one given in \cite{MT21}. Next up, we will focus on the particular case of the Hermitian curve, which also turns out to be a $\calX_{a,b}$ curve. It is well-known to be a good candidate to construct efficient codes as it is a maximal curve. Moreover, we will show that due to the high genus of the curve, any Goppa-like code defined on it can not be distinguished with our attack, since our upper bound is always bigger than the maximal possible lenght.
+\noindent In what follows, we will focus on two specific classes of $C_{a,b}$--curves: First, we will compute the maximal (with respect to the dimension) codes we can distinguish in the case where $\calX_{a,b}$ is an elliptic curve. This case is relevant since it is the closest to the case of classical Goppa codes, and we will see that our results are very similar to the one given in \cite{MT21}. Next up, we will focus on the particular case of the Hermitian curve, which also turns out to be a $\calX_{a,b}$ curve. It is well-known to be a good candidate to construct efficient codes as it is a maximal curve. Moreover, we will show that due to the high genus of the curve, any Goppa--like code defined on it can not be distinguished with our attack, since our upper bound is always bigger than the maximal possible lenght.
 
 
 \subsection{High rate distinguishable codes in the case of Elliptic curves}
@@ -724,17 +730,17 @@ In this section, we focus on the case where $\calX_{a,b}$ is an elliptic curve, 
       $17$ & $3$ & $4820$ & $92$ & $0,943$ \\
     \hline
 \end{tabular}
-\caption{Largest distinguishable Goppa-like code in Elliptic case}
+\caption{Largest distinguishable Goppa--like code in Elliptic case}
 \end{center}
 \end{table}
 
-We can see that the rate of the distinguishable codes are roughly the same as the one given in \cite{MT21} in the case of classical Goppa codes, \emph{i.e} we are only able to distinguish high rate Goppa-like codes.
+We can see that the rate of the distinguishable codes are roughly the same as the one given in \cite{MT21} in the case of classical Goppa codes, \emph{i.e} we are only able to distinguish high rate Goppa--like codes.
 
 
 
 \subsection{Codes on the Hermitian curve}
 
-In this section, we investigate Hermitian Goppa-like codes, since the Hermitian curve is a particular case of $C_{a,b}$ curve. This case is interesting since Hermitian codes are good candidates to reach the best length for a fixed base field. The good news is that we can prove that Hermitian Goppa-like codes resist our distinguisher, since we can show that \eqref{eq:cond_not_to_distinguish} always holds in the Hermitian settings, essentially because  the genus of the curve is too high. 
+In this section, we investigate Hermitian Goppa--like codes, since the Hermitian curve is a particular case of $C_{a,b}$ curve. This case is interesting since Hermitian codes are good candidates to reach the best length for a fixed base field. The good news is that we can prove that Hermitian Goppa--like codes resist our distinguisher, since we can show that \eqref{eq:cond_not_to_distinguish} always holds in the Hermitian settings, essentially because  the genus of the curve is too high. 
 
 \noindent Let us first recall some known results about the Hermitian curve (see for example \cite{Sti09}). Let $m \geq 1$  be an even integer and denote by $q_0 := q^{m/2}$, so that $\fqm = \fqo$. The Hermitian curve $\calH$ over $\fqo$ is defined by the equation
 $$\calH : y^{q_0}+y = x^{q_0+1}.$$
@@ -742,13 +748,13 @@ Its genus is given by $\mathfrak{g}_{\calH} = \frac{q_0(q_0-1)}{2}$ and it is a 
 
 
 \begin{proposition} \label{prop:Hermitian_Goppa_like_are_secured}
-    Suppose $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$. Then for any choice of $g$ and $\calP$, the Goppa-like code $\Gamma_s(\calP,g)$ resists to the distinguisher given above.
+    Suppose $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$. Then for any choice of $g$ and $\calP$, the Goppa--like code $\Gamma_s(\calP,g)$ resists to the distinguisher given above.
 \end{proposition}
 
 \mathieu{Je suis pas super satisfait de la preuve, il y a surement plus simple...}
 
 \begin{proof}
-    As discussed at the beginning of the section, the code cannot be distinguished if the upper bound for the dimension of the square of its dual given in Corollary \ref{coro:bound_with_T_i's_inclusion} is larger than the length of the code. In the Hermitian case, we know exactly the number of rational points, and thus the length $n$ of the Goppa-like code is at most $q_0^3-1$. Since $m$ is even, we are left to prove that 
+    As discussed at the beginning of the section, the code cannot be distinguished if the upper bound for the dimension of the square of its dual given in Corollary \ref{coro:bound_with_T_i's_inclusion} is larger than the length of the code. In the Hermitian case, we know exactly the number of rational points, and thus the length $n$ of the Goppa--like code is at most $q_0^3-1$. Since $m$ is even, we are left to prove that 
     \begin{equation} \label{eq:dont_distinguish_Hermitian_case}
     \mathfrak{B}(e^*) := ms'(q^{e^*}-q^{e^*-1}+1) + \left( \frac{m}{2}-e^*\right)mk^2 \geq q_0^3-1,
     \end{equation}
@@ -1584,7 +1590,7 @@ Consequently, it is still reasonable to consider the Hermitian curve to build ef
 %
 %\clearpage
 %
-%\jade{Je définis un Goppa-like SSAG.}
+%\jade{Je définis un Goppa--like SSAG.}
 %
 %Let $s<s'$ be integers such that there exists a function $g \in \calL(s'P_\infty)$ with $\degab{g}=s'$. 
 %Given a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$, we can consider the AG-code 
