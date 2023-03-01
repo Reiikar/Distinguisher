@@ -227,24 +227,65 @@ with $D^{\perp} = D_{\calP}-D+W$, where $D_{\calP} = \sum\limits_{P \in \calP} P
 \end{proposition}
 
 
-\jade{Suggestion : créer une section Goppa-like AG codes dans laquelle on fout l'actuelle section 3.}
-\paragraph{Goppa--like codes.} Let $\calD$ be an effective divisor on $\calX$ of positive degree $s$. Take a rational function $g \in \fqm(\calX)$ such that $g \notin \calL(D)$. Given a set of points $\calP \in \calX(\fqm)$ such that $\calP \cap \Supp(g) = \varnothing$ and $\calP \cap \Supp(D) = \varnothing$, we consider the AG code
-\[\calC := \calC_{\calL}(\calX,\calP,D+(g))=\set{\left(f(P)g(P)^{-1}\right)_{P \in \calP} \mid f \in \calL(D)}.\]
+\paragraph{First estimation of the dimension of the square of the trace of an AG code}
 
-The corresponding Goppa--like code is defined as the dual of the subfield subcode of $\calC$, \emph{i.e.}
-$$ \Gamma(\calP,D,g) := \calC^{\perp}|_{\fq}.$$
+In this paper, we aim to bound the dimension of the square of the dual of a SSAG codes. From Delsarte's theorem, this is equivalent to study the square of the trace of some structured AG code. 
+This fact is possible thanks to a result from \cite{MT21}, valid for any linear code:
 
-\begin{remark} \label{rq:g_notin_L(D)}
-Imposing the function $g$ not to be in the Riemann-Roch space of $D$ is justified since overwise, the unit vector $(1,\dots,1)$ lies in the AG-code, which is not desirable as we are interested in random looking codes. 
-\end{remark}
+\begin{proposition}[\cite{MT21}, Proposition 15] \label{prop:Tr_BoundSchurSquare}
+	Let $\calC$ be a linear code over $\fqm$. Then we have 
+	\begin{equation} \label{eq:key_equation} \Tr{\calC}^{\star2} := ((\calC|^{\perp}_{_{{\mathbb{F}_q}}})^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr{\calC\star \calC^{q^i}},
+	\end{equation}
+\end{proposition}
+
+From this result, we can deduce an upper bound for the dimension of the square of the dual of any linear code.
+
+\begin{coro} [\cite{MT21},Corollary 16]\label{coro:first_bound_square_of_trace}
+	Let $\calC$ be any $\fqm$-linear code. Then 
+	\begin{equation} \label{eq:mumford_bound}
+		\dim_{\fq}\Tr{\calC}^{\star2} \leq m \cdot \dim_{\fqm}(\calC^{\star 2}) + \binom{m}{2} (\dim_{\fqm}(\calC))^2.
+	\end{equation}
+	Furthermore, if $\dim_{\fq} \Tr{\calC} = m \cdot \dim_{\fqm}(\calC)$, then 
+	\[\dim_{\fq} \Tr{\calC}^{\star2} - \binom{\dim_{\fq} \Tr{\calC}+1}{2} \leq m \cdot \dim_{\fqm} \calC^{\star 2} - \binom{\dim_{\fqm} (\calC)+1}{2}.\]
+\end{coro}
+
+The above corollary implies that if the dimension of a square code is smaller than we expect from a random code, namely
+\[ \dim_{\fqm} (\calC^{\star 2}) < \binom{\dim_{\fqm} (\calC)+1}{2},\]
+then this property survives for the trace code, \emph{i.e.}
+\[\dim_{\fq} \Tr{\calC}^{\star 2} < \binom{\dim_{\fq} \Tr{\calC}+1}{2}.\]
+
+In particular, this is the case for Reed-Solomon codes (see \cite{MT21}, Proposition 11) and more generally for AG codes under some lower bound condition on the degree of its divisor.
 
 
-The terminology Goppa--like is motivated by the fact here, the function $g$ plays the role of the Goppa polynomial, adding randomness to the code. From Proposition \ref{prop:dual_AG_codes}, a Goppa--like code turns out to be the subfield subcode of an AG code, as it is the case for classical Goppa codes with respect to GRS codes. More precisely, we have 
-$$ \Gamma(\calP,D,g) = \ssag{\calX,\calP,(D+(g))^{\perp}},$$
-where the dual divisor is given by Proposition \ref{prop:dual_AG_codes}. 
+\begin{proposition}[\emph{cf.} \cite{Mum70},Theorem 6] \label{prop:mumford_result}
+	Let $F,G$ be two divisors of $\calX$ such that $\deg(G) \geq 2\mathfrak{g}+1$ and $\deg(F) \geq 2\mathfrak{g}$. Then
+	\[ \calL(F) \cdot \calL(G) = \calL(F+G),\]
+	where $\calL(F) \cdot \calL(G) := \Span{ f \cdot g : f,g \in \calL(F) \times \calL(G)}$.
+\end{proposition}
 
-Cartier codes \cite{Cou14} are also defined as a geometric generalisation of Goppa codes, since well-knwon properties on Goppa codes naturally extend to them.
-The link with Goppa--like AG codes is the following: by definition, a Cartier code is a subcode of the subfield subcode of a residue code (see \cite{Cou14}, Proposition 4.3), which actually means that for the good choice of divisor, a Cartier code is a subfield subcode of the Goppa--like AG code. Moreover, Theorem 5.1 of \cite{Cou14} provides a necessary condition for both constructions to be equal.
+\noindent As a consequence, for an AG code  $C_{\calL}(\calX,\mathcal{P},D)$ with $\deg(D) \geq 2\mathfrak{g}+1$, then 
+\[ C_{\calL}(\calX,\mathcal{P},D)^{\star2} = C_{\calL}(\calX,\calP,2D).\]
+The Riemann-Roch theorem thus gives
+\[ \dim_{\fqm}(C_{\calL}(\calX,\mathcal{P},D)^{\star2}) = 2\deg(D)+1-\mathfrak{g}= \deg(D) + \dim_{\fqm}(C_{\calL}(\calX,\mathcal{P},D)), \]
+which is much smaller than the expected dimension given in Lemma \ref{lem:known_bounds} 2. (thus providing a distinguisher for AG-codes). Combined with \eqref{eq:key_equation}, we get a first upper bound on the dimension of the square of the trace of an AG code.
+
+
+\begin{coro} \label{coro:1st_bound_mumford}
+	Let $\mathcal{C} := C_{\calL}(\calX,\mathcal{P},D)$ be a $k$--dimensional AG-code on $\calX$ associated to a degree $s \geq 2g(\calX)+1$ divisor. Then
+	\[ \dim_{\fq}\Tr{\calC}^{\star2} := \dim_{\fq} (\ssag{\calX,\calP,D^{\perp}}^{\perp})^{\star2}  \leq \binom{mk+1}{2} - \dfrac{m}{2} (k(k-1)-2s).\]
+\end{coro}
+
+
+\begin{proof}
+	From Proposition \ref{prop:mumford_result}, we have $\dim_{\fqm}(\calC)^{\star2} = 2s+1-g = k+s$, since we have inequality in the Riemann-Roch theorem. Thus, \eqref{eq:mumford_bound} leads to
+	\begin{align*}
+		\dim_{\fq}\Tr{\calC}^{\star2} &\leq m(k+s) + \binom{m}{2}k^2 \\
+		&= (2k+2s+mk^2-k^2) \dfrac{m}{2} \\
+		&= (k(mk+1)-k^2+k+2s) \dfrac{m}{2} \\
+		&= \binom{mk+1}{2} - \dfrac{m}{2}(k(k-1)-2s) .
+	\end{align*}
+\end{proof}
+
 
 
 
@@ -307,79 +348,34 @@ polynomials. We will notably perform division, using Gr\"obner bases, and, as ex
 \textit{generally} smaller than the dividend's one.
 \end{remark}
 
-\paragraph{One--point Goppa--like AG code on $C_{a,b}$-curves.}
-
-Here, we define a specific class of Goppa--like AG codes on a $C_{a,b}$ curve, associated to a divisor which is equivalent to the one--point divisor $sP_\infty$.
-Let $s'>s'$ be two integers such that there exists a function $g \in \calL(s'P_\infty)$ with $\degab{g}=s'$. Given a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$, we define the one--point Goppa--like code as 
-\[\Gamma(\calP,sP_\infty,g) := \calC_{\calL}(\calX_{a,b},\calP,(sP_\infty+(g))^{\perp})|_{\fq}.\]
-
-These codes are easy to encode as we know a nice basis for their evaluation space. Moreover, this property will be key in the upcoming sections as the specific structure of the space $\calL(sP_\infty)$ allows a better understanding of the square of the dual of one--point Goppa--like codes, under some condition on $s$ and $s'$.
 
 
-
-\section{First estimation of the dimension of the square of the trace of a code}
-\jade{Suggestion : Faire de cette section une sous-section des préliminaires ou la mettre juste après les préliminaires}
-
-In this paper, we aim to bound the dimension of the square of the dual of a SSAG codes. From Delsarte's theorem, this is equivalent to study the square of the trace of some structured AG code. 
-This fact is possible thanks to a result from \cite{MT21}, valid for any linear code:
-
-\begin{proposition}[\cite{MT21}, Proposition 15] \label{prop:Tr_BoundSchurSquare}
-Let $\calC$ be a linear code over $\fqm$. Then we have 
-\begin{equation} \label{eq:key_equation} \Tr{\calC}^{\star2} := ((\calC|^{\perp}_{_{{\mathbb{F}_q}}})^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr{\calC\star \calC^{q^i}},
-\end{equation}
-\end{proposition}
-
-From this result, we can deduce an upper bound for the dimension of the square of the dual of any linear code.
-
-\begin{coro} [\cite{MT21},Corollary 16]\label{coro:first_bound_square_of_trace}
-Let $\calC$ be any $\fqm$-linear code. Then 
-\begin{equation} \label{eq:mumford_bound}
-    \dim_{\fq}\Tr{\calC}^{\star2} \leq m \cdot \dim_{\fqm}(\calC^{\star 2}) + \binom{m}{2} (\dim_{\fqm}(\calC))^2.
-\end{equation}
-Furthermore, if $\dim_{\fq} \Tr{\calC} = m \cdot \dim_{\fqm}(\calC)$, then 
-\[\dim_{\fq} \Tr{\calC}^{\star2} - \binom{\dim_{\fq} \Tr{\calC}+1}{2} \leq m \cdot \dim_{\fqm} \calC^{\star 2} - \binom{\dim_{\fqm} (\calC)+1}{2}.\]
-\end{coro}
-
-The above corollary implies that if the dimension of a square code is smaller than we expect from a random code, namely
-\[ \dim_{\fqm} (\calC^{\star 2}) < \binom{\dim_{\fqm} (\calC)+1}{2},\]
-then this property survives for the trace code, \emph{i.e.}
-\[\dim_{\fq} \Tr{\calC}^{\star 2} < \binom{\dim_{\fq} \Tr{\calC}+1}{2}.\]
-
-In particular, this is the case for Reed-Solomon codes (see \cite{MT21}, Proposition 11) and more generally for AG codes under some lower bound condition on the degree of its divisor.
-
-\TODO{bouger dans la section AG codes ?} \mathieu{finalement je trouve que ça va pas trop mal ici}
-
-\begin{proposition}[\emph{cf.} \cite{Mum70},Theorem 6] \label{prop:mumford_result}
-Let $F,G$ be two divisors of $\calX$ such that $\deg(G) \geq 2\mathfrak{g}+1$ and $\deg(F) \geq 2\mathfrak{g}$. Then
-\[ \calL(F) \cdot \calL(G) = \calL(F+G),\]
-where $\calL(F) \cdot \calL(G) := \Span{ f \cdot g : f,g \in \calL(F) \times \calL(G)}$.
-\end{proposition}
-
-\noindent As a consequence, for an AG code  $C_{\calL}(\calX,\mathcal{P},D)$ with $\deg(D) \geq 2\mathfrak{g}+1$, then 
-\[ C_{\calL}(\calX,\mathcal{P},D)^{\star2} = C_{\calL}(\calX,\calP,2D).\]
-The Riemann-Roch theorem thus gives
-\[ \dim_{\fqm}(C_{\calL}(\calX,\mathcal{P},D)^{\star2}) = 2\deg(D)+1-\mathfrak{g}= \deg(D) + \dim_{\fqm}(C_{\calL}(\calX,\mathcal{P},D)), \]
-which is much smaller than the expected dimension given in Lemma \ref{lem:known_bounds} 2. (thus providing a distinguisher for AG-codes). Combined with \eqref{eq:key_equation}, we get a first upper bound on the dimension of the square of the trace of an AG code.
+\section{Goppa--like AG codes}
 
 
-\begin{coro} \label{coro:1st_bound_mumford}
-Let $\mathcal{C} := C_{\calL}(\calX,\mathcal{P},D)$ be a $k$--dimensional AG-code on $\calX$ associated to a degree $s \geq 2g(\calX)+1$ divisor. Then
-\[ \dim_{\fq}\Tr{\calC}^{\star2} := \dim_{\fq} (\ssag{\calX,\calP,D^{\perp}}^{\perp})^{\star2}  \leq \binom{mk+1}{2} - \dfrac{m}{2} (k(k-1)-2s).\]
-\end{coro}
+\subsection{Goppa--like AG codes}
+
+Let $\calD$ be an effective divisor on $\calX$ of positive degree $s$. Take a rational function $g \in \fqm(\calX)$ such that $g \notin \calL(D)$. Given a set of points $\calP \in \calX(\fqm)$ such that $\calP \cap \Supp(g) = \varnothing$ and $\calP \cap \Supp(D) = \varnothing$, we consider the AG code
+\[\calC := \calC_{\calL}(\calX,\calP,D+(g))=\set{\left(f(P)g(P)^{-1}\right)_{P \in \calP} \mid f \in \calL(D)}.\]
+
+The corresponding Goppa--like code is defined as the dual of the subfield subcode of $\calC$, \emph{i.e.}
+$$ \Gamma(\calP,D,g) := \calC^{\perp}|_{\fq}.$$
+
+\begin{remark} \label{rq:g_notin_L(D)}
+	Imposing the function $g$ not to be in the Riemann-Roch space of $D$ is justified since overwise, the unit vector $(1,\dots,1)$ lies in the AG-code, which is not desirable as we are interested in random looking codes. 
+\end{remark}
 
 
-\begin{proof}
-From Proposition \ref{prop:mumford_result}, we have $\dim_{\fqm}(\calC)^{\star2} = 2s+1-g = k+s$, since we have inequality in the Riemann-Roch theorem. Thus, \eqref{eq:mumford_bound} leads to
-\begin{align*}
-   \dim_{\fq}\Tr{\calC}^{\star2} &\leq m(k+s) + \binom{m}{2}k^2 \\
-                                       &= (2k+2s+mk^2-k^2) \dfrac{m}{2} \\
-                                       &= (k(mk+1)-k^2+k+2s) \dfrac{m}{2} \\
-                                       &= \binom{mk+1}{2} - \dfrac{m}{2}(k(k-1)-2s) .
-\end{align*}
-\end{proof}
+The terminology Goppa--like is motivated by the fact here, the function $g$ plays the role of the Goppa polynomial, adding randomness to the code. From Proposition \ref{prop:dual_AG_codes}, a Goppa--like code turns out to be the subfield subcode of an AG code, as it is the case for classical Goppa codes with respect to GRS codes. More precisely, we have 
+$$ \Gamma(\calP,D,g) = \ssag{\calX,\calP,(D+(g))^{\perp}},$$
+where the dual divisor is given by Proposition \ref{prop:dual_AG_codes}. 
+
+Cartier codes \cite{Cou14} are also defined as a geometric generalisation of Goppa codes, since well-knwon properties on Goppa codes naturally extend to them.
+The link with Goppa--like AG codes is the following: by definition, a Cartier code is a subcode of the subfield subcode of a residue code (see \cite{Cou14}, Proposition 4.3), which actually means that for the good choice of divisor, a Cartier code is a subfield subcode of the Goppa--like AG code. Moreover, Theorem 5.1 of \cite{Cou14} provides a necessary condition for both constructions to be equal.
 
 
-\section{On the dimension of the square of the dual of a Goppa--like code}
+
+\subsection{On the dimension of the square of the dual of a Goppa--like code}
 
 In this section, we aim to generalize the properties found by the authors of \cite{MT21} in Section 6, in the context of Goppa--like AG code. Let us consider the AG code 
 $$\calC := \calC_{\calL}(\calX,\calP,D+(g))$$
@@ -444,7 +440,18 @@ $$e =  \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor.$$
 
 Despite the fact that this bound is already an improvement, we can do better in the case of one--point Goppa--like AG codes constructed on a $C_{a,b}$ curve, which is the point of the rest of the paper.
 
-\section{The case of one--point Goppa--like codes on $C_{a,b}$ curves}
+\section{One--point Goppa--like AG code on $C_{a,b}$-curves}
+
+\subsection{Definition}
+
+\jade{Bougé violemment}
+Here, we define a specific class of Goppa--like AG codes on a $C_{a,b}$ curve, associated to a divisor which is equivalent to the one--point divisor $sP_\infty$.
+Let $s'>s'$ be two integers such that there exists a function $g \in \calL(s'P_\infty)$ with $\degab{g}=s'$. Given a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$, we define the one--point Goppa--like code as 
+\[\Gamma(\calP,sP_\infty,g) := \calC_{\calL}(\calX_{a,b},\calP,(sP_\infty+(g))^{\perp})|_{\fq}.\]
+
+These codes are easy to encode as we know a nice basis for their evaluation space. Moreover, this property will be key in the upcoming sections as the specific structure of the space $\calL(sP_\infty)$ allows a better understanding of the square of the dual of one--point Goppa--like codes, under some condition on $s$ and $s'$.
+
+
 
 Here, we specify the case where $\calX$ is a $C_{a,b}$ curve, denoted $\calX_{a,b}$ from now on. As defined in Section \ref{section:C_a,b_codes}, we consider a one--point Goppa--like AG code
 \[\Gamma(\calP,sP_\infty,g) := \calC_{\calL}(\calX_{a,b},\calP,(sP_\infty+(g))^{\perp})|_{\fq}.\]
@@ -520,6 +527,7 @@ In the proposition below, we study the intersection $R(g^{q^{i}-q^{i-1}+1}) \cap
 \begin{proposition} \label{prop:dim_M_i's}
 Let $i \in \set{1,\dots,\lfloor m/2 \rfloor}$ and
      $\alpha' \in \set{0,\dots,a-1}$ be the remainder of the Euclidean division of $\alpha (q^i-q^{i-1}+1)$ by $a$. Then we can compute the exact dimension of $M_i(s,g) := R(g^{q^{i}-q^{i-1}+1}) \cap \calL(s(q^i+1)P_\infty)$ depending on $s'$:
+     \jade{Dans les 2 premiers cas, dire que $M_i=...$ plutôt que $\dim M_i=...$ et donner la dimension exacte dans les cas 3 et 4.}
     \begin{enumerate}
         \item $\dim_{\fqm}(M_i(s,g)) = s(q^i+1)+1-\mathfrak{g}_{a,b}$ if $s' > \left\lfloor \dfrac{s(q^i+1)+a}{q^i-q^{i-1}+1}\right\rfloor$; \jade{N'est-ce pas la dimension de $\calL(s(q^i+1)P_\infty)$ ? Si $s$ n'est pas assez grand, ceci nest qu'une minoration. }
         
@@ -608,6 +616,8 @@ The formulas for the dimension of $M_i(s,g)$ follows from the above computations
 Remark that case $1)$ corresponds to the case where $\calT_i(s,g) = \Tr{\calL(s(q^i+1)P_\infty)}, $ which will produce the same bound as the one given in Proposition \ref{prop:bound_dim_using_inclusions}.
 Instead, we will focus on case $2)$, since in this case, the sequence $(\calT_i(s,g))_i$ is increasing for the inclusion. 
 
+\TODO{Bye bye le lemme.}
+
 \begin{lemma} \label{lem:cond_inclusion_T_i's}
     If $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$, then for every $i \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$,
     $$\calT_i(s,g) := \Tr{\calR(g^{q^i-q^{i-1}+1})}.$$
@@ -620,6 +630,8 @@ Instead, we will focus on case $2)$, since in this case, the sequence $(\calT_i(
     $$s' \leq \left\lfloor \dfrac{s(q+1)+1-2\mathfrak{g}_{a,b}}{q}\right\rfloor;$$
     which gives $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$. The result follows.
 \end{proof}
+
+\jade{Réccrire avec la condition sur $i$ au lieu de la supposer vraie dès $i=0$.}
 
 \begin{proposition} \label{prop:inclusion_T_i's} Suppose $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$. Then
     $$\calT_0(s,g) \subseteq \calT_1(s,g) \subseteq \dots \subseteq \calT_{\lfloor \frac{m}{2}\rfloor}(s,g).$$
@@ -666,6 +678,8 @@ with $\Tr{\frac{f_2}{g^{q+1}}} \in \calT_1(s,g)$. Since $\degab{f_1} = \degab{fg
 \end{align*}
 which holds since $s<s'$ and $f \in \calL(2sP_\infty)$. Repeating the division process until we found a quotient equal to zero shows that $\calT_0(s,g) \subseteq \calT_1(s,g)$.
 \end{proof}
+
+\TODO{Renommer en théorème.}
 
 \begin{coro} \label{coro:bound_with_T_i's_inclusion}
 Suppose $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$ and let $e^* := \min\left(\left\lfloor \frac{m}{2} \right\rfloor, \left\lceil \log_q\left(\frac{k^2}{s'(q-1)^2}\right)\right\rceil+1\right)$. Then
@@ -717,7 +731,7 @@ using the Hasse-Weil bound. In order to secure the corresponding Goppa--like cod
 \noindent In what follows, we will focus on two specific classes of $C_{a,b}$--curves: First, we will compute the maximal (with respect to the dimension) codes we can distinguish in the case where $\calX_{a,b}$ is an elliptic curve. This case is relevant since it is the closest to the case of classical Goppa codes, and we will see that our results are very similar to the one given in \cite{MT21}. Next up, we will focus on the particular case of the Hermitian curve, which also turns out to be a $\calX_{a,b}$ curve. It is well-known to be a good candidate to construct efficient codes as it is a maximal curve. Moreover, we will show that due to the high genus of the curve, any Goppa--like code defined on it can not be distinguished with our attack, since our upper bound is always bigger than the maximal possible lenght.
 
 
-\subsection{High rate distinguishable codes in the case of Elliptic curves}
+\subsection{High rate distinguishable codes in the case of elliptic curves}
 
 In this section, we focus on the case where $\calX_{a,b}$ is an elliptic curve, meaning that $a=2$ and $b=3$. For some set of parameters which produces codes of cryptographic size, we then compute the maximal distinguishable value of $s$. In order to get close to the case of classical Goppa codes, we also fix $s'=s+1$.
 
@@ -772,7 +786,7 @@ Its genus is given by $\mathfrak{g}_{\calH} = \frac{q_0(q_0-1)}{2}$ and it is a 
     \begin{equation} \label{eq:dont_distinguish_Hermitian_case}
     \mathfrak{B}(e^*) := ms'(q^{e^*}-q^{e^*-1}+1) + \left( \frac{m}{2}-e^*\right)mk^2 \geq q_0^3-1,
     \end{equation}
-    where $k := s+1-\mathfrak{g}_{\calH}$ stands for the dimension of the corresponding AG-code.
+    where $k := s+1-\mathfrak{g}_{\calH}$ stands  for the dimension of the corresponding AG-code.
     \begin{itemize}
         \item [-] If $e^* < \frac{m}{2}$, then $\mathfrak{B}(e^*) > mk^2$. With the condition on $s$, we know that $s \geq 2\mathfrak{g}_{\calH}+q-1$. This give $k \geq \mathfrak{g}_{\calH}+q$ and thus
         \begin{align*}
