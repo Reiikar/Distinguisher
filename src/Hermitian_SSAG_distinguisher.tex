@@ -103,19 +103,11 @@
 \maketitle
 
 \TODO{SABIRA: classification MSC}
-\begin{abstract}
-	\jade{(Jade) Je propose autre chose :}
-	
-	In this paper, we introduce a family of codes than can be used in the McEliece cryptosystem based, called \emph{Goppa--like AG codes}. These are a generalization of Goppa codes constructed from any curve of genus $\mathfrak{g} \geq 0$. Focusing on codes from $C_{a,b}$ curves, we study the behaviour of the dimension of the square of their dual to determine their resistance to distinguisher attacks similar to the one for alternant and Goppa codes developed by Mora and Tillich \cite{MT21}. We propose numerical experiments to measure how sharp is our bound.
-	
-	\bigskip
-	
-	In this paper, we present a distinguisher attack on the McEliece cryptosystem based on SSAG codes, specifically Goppa--like AG codes, which are a generalization of Goppa codes constructed from a curve of genus $g \geq 1$ (\sabira{j'ai de doute la dessus}). Based on a distinguisher for alternant and Goppa codes, we provide an upper bound for the dimension of the square of the dual of Goppa--like AG codes by means of products of trace codes. In addition, we conducted numerical experiments that correspond to this bound.
-	\vskip 0.5cm
-	
-	In this paper, we present a distinguisher of SSAG codes, specifically Goppa--like AG codes, where the associated divisor has the form $A+(g)$ and the function $g$ on the curve has the role of a Goppa polynomial. Based on a distinguisher for alternant and Goppa codes, we provide an upper bound for the dimension of the square of the dual of Goppa--like AG codes by means of products of trace codes. In addition, we conducted numerical experiments that correspond to this bound.
-\end{abstract}
 
+\begin{abstract}
+In this paper, we introduce a family of codes than can be used in the McEliece cryptosystem based, called \emph{Goppa--like AG codes}. These are a generalization of Goppa codes constructed from any curve of genus $\mathfrak{g} \geq 0$. Focusing on codes from $C_{a,b}$ curves, we study the behaviour of the dimension of the square of their dual to determine their resistance to distinguisher attacks similar to the one for alternant and Goppa codes developed by Mora and Tillich \cite{MT21}. We propose numerical experiments to measure how sharp is our bound.
+\end{abstract}
+	
 \keywords{AG codes, $C_{a,b}$ curves, Goppa--like AG codes, Trace codes, Schur product.}
 
 \section*{Introduction}
@@ -373,7 +365,7 @@ where $\mathbf{y}=(g(x_1)^{-1},g(x_2)^{-1},\dots,g(x_n)^{-1})$.
 Represent the $\fqm$--points of $\PP^1$ by the couples $\PP^1(\fqm)=\{[1:x] \mid x \in \fqm\} \cup \{P_\infty\}$ for $P_\infty=[0:1]$. Take $\calP=\{[1:x_1],[1:x_2],\dots,[1:x_n]\}$ and $D=(r-1)P_\infty$. Finally, the polynomial $g$ can be seen as a function on $\PP^1$ which lies in $L(rP_\infty)$ but not in $L((r-1)P_\infty)$. Then both constructions match: $\Gamma_r(\mathbf{x},g)=\Gamma(\calP,D,g)$.
 
 
-\jade{On s'en fout, non ? $\rightarrow$ }From Proposition \ref{prop:dual_AG_codes}, a Goppa--like AG code turns out to be also the subfield subcode of an AG code, as it is the case of classical Goppa codes with respect to GRS codes. More precisely, we have 
+\jade{On s'en fout, non ?} \mathieu{c'était pour justifier le fait que les codes de cartier sont des sous--codes de ça} From Proposition \ref{prop:dual_AG_codes}, a Goppa--like AG code turns out to be also the subfield subcode of an AG code, as it is the case of classical Goppa codes with respect to GRS codes. More precisely, we have 
 $$ \Gamma(\calP,D,g) = \ssag{\calX,\calP,(D+(g))^{\perp}},$$
 where the dual divisor is given by Proposition \ref{prop:dual_AG_codes}. 
 
@@ -384,7 +376,7 @@ The link with Goppa--like AG codes is the following: by definition, a Cartier co
 \TODO{cdt égalité}
 
 
-\subsection{On the dimension of the square of the dual of a Goppa--like code}
+\subsection{On the dimension of the square of the dual of a Goppa--like code} \label{section:1st_improvement}
 
 In this section, we aim to generalize the properties found by the authors of \cite{MT21} in Section 6, in the context of Goppa--like AG code. Let us consider the AG code 
 $$\calC := \calC_{\calL}(\calX,\calP,D+(g))$$
@@ -456,12 +448,9 @@ First, forcing $g \notin \calL(D)$ ensures that the unit vector $(1,\dots,1)$ do
 
 More precisely, if the function $g$ lied in $\calL(D)$, then the divisor $D+(g)$ would be effective and for every $i \geq 0$, we would have the inclusion $\calL((q^i+1)D) \subset \calL((q^{i+1}+1)D)$. Therefore, in the proof of Proposition \ref{prop:bound_dim_using_inclusions}, when bounding from above the dimension of the sum by the sum of the dimensions of the trace codes, we would have no chance to get a sharp bound.
 
-
-
-
-\jade{Je sais pas quoi faire de cette phrase ! }Despite the fact that this bound is already an improvement, we can do better in the case of one--point Goppa--like AG codes constructed on a $C_{a,b}$ curve, which is the point of the rest of the paper.
-
 \section{One--point Goppa--like AG code on $C_{a,b}$-curves}
+
+The bound given in section \ref{section:1st_improvement} can be impreoved by considering more structured codes, \emph{i.e.} one--point Goppa--like AG codes on $C_{a,b}$ curves.
 
 \subsection{Definition}
 
@@ -650,21 +639,21 @@ Instead, we will focus on case $2)$, since in this case, we can show that theseq
 
 
 
-\begin{proposition} \label{prop:inclusion_T_i's} Let $i^* \in \set{1,\dots,\lfloor\frac{m}{2}\rfloor}$ be the largest integer such that 
-$$sq^{i^*-1} \geq (s'-s)(q^{i^*}-q^{i^{*}-1}+1)+2\mathfrak{g}_{a,b}-1.$$ 
+\begin{proposition} \label{prop:inclusion_T_i's} Let $i^* \in \set{0,\dots,\lfloor\frac{m}{2}\rfloor-1}$ be the smallest integer such that 
+$$sq^{i^*} \geq (s'-s)(q^{i^*+1}-q^{i^{*}}+1)+2\mathfrak{g}_{a,b}-1.$$ 
 Then
-$$\calT_{i^*-1}(s,g) \subseteq \calT_{i^*}(s,g) \subseteq \dots \subseteq \calT_{\lfloor \frac{m}{2}\rfloor}(s,g).$$
+$$\calT_{i^*}(s,g) \subseteq \calT_{i^*+1}(s,g) \subseteq \dots \subseteq \calT_{\lfloor \frac{m}{2}\rfloor}(s,g).$$
 \end{proposition}
 
 \begin{proof}
-From Proposition \ref{prop:dim_M_i's}, \textit{2)}, we know that the condition on $s$ and $s'$ implies $$M_{i^*}(s,g) = R(g^{q^{i^*}-q^{i^*-1}+1}).$$ 
+From Proposition \ref{prop:dim_M_i's}, \textit{2)}, we know that the condition on $s$ and $s'$ implies $$M_{i^*+1}(s,g) = R(g^{q^{i^*+1}-q^{i^*+1-1}+1}).$$ 
 Since the function $$i \mapsto \dfrac{s(q^i+1)+1-2\mathfrak{g}_{a,b}}{q^i-q^{i-1}+1}$$ 
 is increasing with $i$, we also have
 \begin{equation} \label{eq:structure_M_i}
-M_{i}(s,g) = R(g^{q^{i}-q^{i-1}+1}), \ \forall \ i \in \set{i^*,\dots,\left\lfloor \frac{m}{2}\right\rfloor}.
+M_{i}(s,g) = R(g^{q^{i}-q^{i-1}+1}), \ \forall \ i \in \set{i^*,\dots,\left\lfloor \frac{m}{2}\right\rfloor+1}.
 \end{equation} 
 
-We now prove the inclusions of the $\calT_i's$, supposing first that $i^* \neq 1$ (since the definition of $\calT_0$ is a bit different). Let $i \in \set{i^*-1,\dots,\lfloor \frac{m}{2} \rfloor}$, and note that 
+We now prove the inclusions of the $\calT_i's$, supposing first that $i^* \neq 0$ (since the definition of $\calT_0$ is a bit different). Let $i \in \set{i^*,\dots,\lfloor \frac{m}{2} \rfloor}$, and note that 
 $$\calT_i(s,g) := \set{\Tr{\frac{f}{g^{q^i+1}}} \mid f \in \calR(g^{q^i-q^{i-1}+1})\cap \calL(s(q^i+1)P_\infty)}.$$
 Given $\Tr{\frac{f}{g^{q^i+1}}}$ in $\calT_i(s,g)$, we want to show that it belongs to $\calT_{i+1}(s,g)$. Applying Proposition \ref{prop:div_grob} by replacing $f$ with $fg^{q^{i+1}-q^i}$ and $g$ by $g^{q^{i+1}-q^i+1}$, we obtain
 \begin{equation} \label{eq:division_i}
@@ -688,7 +677,7 @@ Thus
 \end{align*}
 which is true since in particular $f \in \calL(s(q^i+1)P_\infty)$ and $s<s'$. We can thus repeat the division process until eventually we obtain a quotient $f_1$ equal to zero. This shows that $\calT_i(s,g) \subseteq \calT_{i+1}(s,g)$.
 
-In the case $i^*=1$, we can repeat the same process exepted that we also have to prove that $\calT_0(s,g) \subseteq \calT_1(s,g)$, which differs from the others cases due to the definition of $\calT_0$. We treat this case separately: let $\Tr{\frac{f}{g^2}} \in \calT_0(s,g)$, for some $f \in \calL(2sP_\infty)$. Using Proposition \ref{prop:div_grob}, this time replacing $f$ with $fg^{q-1}$ and $g$ with $g^{q+1}$, we have
+In the case $i^*=0$, we can repeat the same process exepted that we also have to prove that $\calT_0(s,g) \subseteq \calT_1(s,g)$, which differs from the others cases due to the definition of $\calT_0$. We treat this case separately: let $\Tr{\frac{f}{g^2}} \in \calT_0(s,g)$, for some $f \in \calL(2sP_\infty)$. Using Proposition \ref{prop:div_grob}, this time replacing $f$ with $fg^{q-1}$ and $g$ with $g^{q+1}$, we have
 $$fg^{q-1} = f_1g^q + f_2,$$ with $f_2 \in \calR(g^q) = M_1(s,g)$ (using \eqref{eq:structure_M_i}).
 Thus, we can write
     $$ \Tr{\frac{f}{g^2}} = \Tr{\frac{f_1^qg}{g^{q+1}}}  + \Tr{\frac{f_2}{g^{q+1}}}, $$
@@ -698,28 +687,55 @@ with $\Tr{\frac{f_2}{g^{q+1}}} \in \calT_1(s,g)$. Since $\degab{f_1} = \degab{fg
                                                & \iff (q-1)\degab{f} < 2s'(q-1)\\
                                                & \iff \degab{f} < 2s',
 \end{align*}
-which holds since $s<s'$ and $f \in \calL(2sP_\infty)$. Repeating the division process until we found a quotient equal to zero shows that $\calT_0(s,g) \subseteq \calT_1(s,g)$. The others cases work as the case $i^* > 1$.
+which holds since $s<s'$ and $f \in \calL(2sP_\infty)$. Repeating the division process until we found a quotient equal to zero shows that $\calT_0(s,g) \subseteq \calT_1(s,g)$. The others cases work as the case $i^* \geq 1$.
 \end{proof}
 
-Combining \ref{eq:Tr(C*C^q^i)_dans_T_i} with both the above propositions lead to an improvement on the upper bound for one--point Goppa--like AG codes. 
+Combining \eqref{eq:Tr(C*C^q^i)_dans_T_i} with both the above propositions lead to a better understanding of the dimension of the square of the dual of one--point Goppa--like AG codes. 
 
-\mathieu{
+\begin{coro} \label{coro:folklore_upper_bound} \mathieu{bon je suis pas fan de ce à quoi ça ressemble :(} \\
+With notation as in Proposition \ref{prop:inclusion_T_i's} and $k:=\dim_{\fqm}C_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$, the dimension of $\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2}$ is bounded from above by
+\begin{align*}
+\min  \left\{ \begin{array}{ll}
+\left(\frac{m-1}{2}-e\right)mk^2+\dim_{\fq}\left(\sum\limits_{i=0}^e \calT_i(s,g) \right), \ \mathrm{if} \ e \geq i^* \\
+\left(\frac{m-1}{2}-e\right)mk^2 + ms'(q^e-q^{e-1}+1) + \dim_{\fq}\left(\sum\limits_{i=0}^{i^*-1} \calT_i(s,g) - \dim_{\fq} \calT_e(s,g) \cap   \sum\limits_{i=0}^{i^*-1} \calT_i(s,g)\right)\  \mathrm{overwise},
+\end{array} 
+\right.
+\end{align*}
+where the minimum is taken over all $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$.
+\end{coro}
+
+\begin{proof}
+From \eqref{eq:key_equation} and under the assumption on $s$ and $s'$, we have
+        \begin{align*}
+        \dim_{\fq} (\Gamma_s(\calP,g)^{\perp})^{\star 2}
+        & \leq \sum\limits_{i=0}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star                   		\calC^{q^i}} \\
+        & \leq \dim_{\fq} \sum\limits_{i=0}^{e}\calT_i(s,g) + \sum\limits_{i=e+1}^{\lfloor m/2 \rfloor} \Tr{\calC \star \calC^{q^i}} \\
+                & \leq \dim_{\fq} \sum\limits_{i=0}^{e}\calT_i(s,g) + \left( \frac{m-1}{2} -e \right)mk^2,
+        \end{align*}
+ for all $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$. We then distinguish two cases depending on the relative position of $i^*$ with respect to $e$ and the fact that 
+ $$ \sum\limits_{i=i^*}^e \calT_i(s,g) = \calT_e(s,g),$$
+ using Proposition \ref{prop:inclusion_T_i's}. The final bound is optained by taking the smallest value with respect to $e$.  
+\end{proof}
+
+Despite the fact that the upper bound given in Corollary \ref{coro:folklore_upper_bound} can be explicitely computed with the knowledge of $s$ and $s'$, it is hard to give an explicit formula for any parameters, since the dimension of the sum of $\calT_i(s,g)$'s is had to manipulate. Howerver, if we suppose that $i^*=0$, we can precise the above result. \TODO{explain why this case is the most intersting ?}
+
 \begin{thm} \label{thm:bound_with_T_i's_inclusion}
 Suppose $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$ and let $e^* := \min\left(\left\lfloor \frac{m}{2} \right\rfloor, \left\lceil \log_q\left(\frac{k^2}{s'(q-1)^2}\right)\right\rceil+1\right)$. Then
 $$\dim_{\fq} (\Gamma_s(\calP,g)^{\perp})^{\star 2}\leq \binom{mk+1}{2} - \dfrac{m}{2}(k^2(2e^*+1)+k-2s'(q^{e^*}-q^{e^*-1}+1)). $$
-\end{thm}}
-\mathieu{
+\end{thm}
+
 \begin{proof}
-    From \eqref{eq:key_equation} and under the assumption on $s$ and $s'$, we have
-        \begin{align*}
+The condition $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$ exactly implies that $i^*=0$ and $$\calT_0(s,g) \subseteq \calT_1(s,g) \subseteq \dots \subseteq \calT_{\lfloor \frac{m}{2}\rfloor}(s,g),$$ 
+see Proposition \ref{prop:inclusion_T_i's}. Thus, using Corollary \ref{coro:folklore_upper_bound}, we get
+
+\begin{align*}
         \dim_{\fq} (\Gamma_s(\calP,g)^{\perp})^{\star 2}
-        & \leq \sum\limits_{i=0}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star \calC^{q^i}} \\
-        & \leq \dim_{\fq} (\calT_e(s,g)) + \sum\limits_{i=e+1}^{\lfloor m/2 \rfloor} \Tr{\calC \star \calC^{q^i}} \\
-        & \leq ms'(q^e-q^{e-1}+1) + \left( \frac{m-1}{2} -e \right)mk^2 \\
-        & \leq \frac{m}{2}\left(2s'(q^e-q^{e-1}+1)+k^2(m-1)-2k^2e  \right) \\
-        & \leq \binom{mk+1}{2} -  \dfrac{m}{2}\left(k^2(2e+1)+k-2s'(q^e-q^{e-1}+1)\right).
-    \end{align*}
-for any $e \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$ (here, we used Lemma (cond inc $T_i$) to bound the dimension on $\calT_e(s,g)$).
+        & \leq \min \left(ms'(q^e-q^{e-1}+1) + \left( \frac{m-1}{2} -e \right)mk^2 \right)\\
+        & \leq \min \left(\frac{m}{2}\left(2s'(q^e-q^{e-1}+1)+k^2(m-1)-2k^2e  \right)\right) \\
+        & \leq \min\left(\binom{mk+1}{2} - \dfrac{m}{2}\left(k^2(2e+1)+k-2s'(q^e-q^{e-1}+1)\right)\right).
+\end{align*}
+
+the minimum being taking over $e \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$. We also used $\dim_{\fq}\calT_e(s,g) \leq m \dim_{\fqm} R(g^{q^e-q^{e-1}+1})$.
 To get the best bound, we need to maximize the function
 $$T(e) = ek^2-s'(q^e-q^{e-1}+1)$$
 over $\set{1,\dots,\lfloor \frac{m}{2} \rfloor}$.
@@ -730,7 +746,7 @@ We compute the discrete derivative:
 \end{align*}
 This function is decreasing with $e$, and the smallest value for which $\Delta T(e) \leq 0$ corresponds to its maximum. It is the smallest value of $e$ such that $k^2 \leq s'q^{e-1}(q-1)^2$, \emph{i.e.}
 $$e =  \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1.$$
-\end{proof}}
+\end{proof}
 
 \noindent Several computational experiments showed then when the code $\calC:=\calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$ is sufficiently random (\emph{i.e} the rational function $g$ the square of the dual of the corresponding one--point Goppa--like AG code given in Theorem \ref{thm:bound_with_T_i's_inclusion} is actually sharp, leading to  distinguisher if the parameters of $\calC$ are not well-chosen. \\
 
@@ -740,7 +756,7 @@ In the last section, we will discuss how to chose efficiently the parameters of 
 
 \noindent In the previous section, we provided an (experimentally) sharp upper bound on the dimension of the square of the dual of a Goppa--like code, which could leads to a distinguisher for the corresponding code. 
 
-More precisely, let $\calC := C_\calL(\calX_{a,b},\calP,D)$ be an AG code as above, \emph{i.e.} with $D = sP_\infty +(g)$ and $\degab{g} = s'>s\geq 2\mathfrak{g}_{a,b}-1$. We showed that if $s$ and $s'$ are such that $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$, then
+\noindent More precisely, let $\calC := C_\calL(\calX_{a,b},\calP,D)$ be an AG code as above, \emph{i.e.} with $D = sP_\infty +(g)$ and $\degab{g} = s'>s\geq 2\mathfrak{g}_{a,b}-1$. We showed that if $s$ and $s'$ are such that $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$, then
 \begin{equation} \label{eq:best_upper_bound}
 \dim_{\fq} (\Gamma_s(\calP,g)^{\perp})^{\star 2} \leq \min \left(\frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right),n\right),
 \end{equation}
