@@ -13,7 +13,6 @@
 \usepackage{amsfonts}
 \usepackage{verbatim}
 \usepackage{amsthm}
-\usepackage{cite}
 \usepackage{geometry}
 \geometry{hmargin=2cm,vmargin=1.5cm}
 \usepackage{hyperref} %Références cliquables
@@ -41,7 +40,7 @@
 \newtheorem{example}{Example}
 
 \theoremstyle{remark}
-\newtheorem{remark}{Remark}
+\newtheorem{remark}[thm]{Remark}
 
 
 %------------Commands-----------%
@@ -63,6 +62,7 @@
 \newcommand{\fqo}{\mathbb{F}_{q_0^2}}
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\PP}{\mathbb{P}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Tr}[1]{\operatorname{Tr}_{\mathbb{F}_{q^m}/\fq}\left(#1\right)}
 \newcommand{\set}[1]{\left\{#1\right\}}
@@ -71,7 +71,9 @@
 \newcommand{\LT}[1]{\operatorname{LT}\left(#1\right)}
 \newcommand{\Supp}{\operatorname{Supp}}
 \newcommand{\Div}{\operatorname{Div}}
-\newcommand{\ssag}[1]{\operatorname{SSAG}_{q}\left(#1\right)}
+\newcommand{\ssag}[1]{\operatorname{\mathsf{SSAG}}_{q}\left(#1\right)}
+
+\newcommand{\GRS}{\operatorname{\mathsf{GRS}}}
 
 \newcommand{\gen}{\mathfrak{g}}
 \newcommand{\degab}[1]{\deg_{a,b}\left(#1\right)}
@@ -296,11 +298,11 @@ The above corollary says that due to the algebraic structure of AG codes, the di
 
 \subsection{$C_{a,b}$ curves} \label{section:C_a,b_codes}
 
-Throughout this paper, we will be dealing with algebraic geometry codes defined over a $C_{a,b}$ curve, this section is dedicated to some properties on this class of curves. For further details, we refer to \cite{Miu93}. 
+Throughout this paper, we will be dealing with algebraic geometry codes defined over a $C_{a,b}$ curve. This section is dedicated to some properties on this well--studied class of curves. For further details, we refer to \cite{Miu93}. 
 
 
 \begin{definition} \label{def:C_ab_curves} 
-Let $a,b$ be coprime integers. A $C_{a,b}$ curve over $\fqm$ is a curve $\calX_{a,b}$ having an irreducible, affine and non singular plane model with equation
+Let $a,b$ be coprime positive integers. A $C_{a,b}$ curve over $\fqm$ is a curve $\calX_{a,b}$ having an irreducible, affine and non singular plane model with equation
 
 \begin{equation} \label{eq:equation_C_ab}
 f_{a,b}(x,y) = \alpha_{0a}y^a + \alpha_{b0}x^b + \sum \alpha_{ij}x^iy^j = 0,
@@ -308,31 +310,29 @@ f_{a,b}(x,y) = \alpha_{0a}y^a + \alpha_{b0}x^b + \sum \alpha_{ij}x^iy^j = 0,
 where $f_{a,b} \in \fqm[X,Y]$ and the sum is taken over all couples $(i,j) \in \set{0,\cdots,b} \times \set{0,\cdots,a}$ such that $ai+bj < ab$.
 \end{definition}
 
-\noindent These curves are well-studied, and we know that any curve $\calX_{a,b}$ defined by an equation as in \eqref{eq:equation_C_ab} has a unique point at infinity, denoted by $P_{\infty}$. Moreover, its genus is also known:
-\[\mathfrak{g}_{a,b}:=g(\calX_{a,b}) = \dfrac{(a-1)(b-1)}{2}.\]
+Any curve $\calX_{a,b}$ defined by an equation as in \eqref{eq:equation_C_ab} has a unique point at infinity, denoted by $P_{\infty}$. Moreover, as a plane curve, its genus is given by
+\[\mathfrak{g}_{a,b}:=\dfrac{(a-1)(b-1)}{2}.\]
 
 
 
 %\noindent Later, we will be interested in AG codes with a specific choice of divisor, which are defined below.
 
 \paragraph{The point at infinity.} We will consider codes obtained by evaluating functions on $\calX_{a,b}$ which are regular everywhere, except maybe at the unique point at infinity $P_\infty$ on $\calX_{a,b}$. These functions then belong to the ring 
-
 \begin{equation}\label{eq:O_Pinf}
 \mathcal{O}_{P_\infty}=\bigcup_{s \geq 0} \calL(s P_\infty)
-\end{equation}
-
+\end{equation} %
 where each Riemann--Roch space $\calL(s P_\infty)$ has an explicit basis as follows:
 
 \begin{equation} \label{eq:basis_L(sP_inf)}
     \calL(sP_{\infty}) = \Span{x^iy^j \mid 0 \leq i, 0\leq j\leq a-1 \ \mathrm{and} \ ai+bj \leq s}.
 \end{equation}
-
-In summary, any function regular on all $\calX_{a,b}$ except maybe at $P_\infty$ is a polynomial in the functions $x$ and $y$. 
+%
+In summary, any function that is regular on all $\calX_{a,b}$ except maybe at $P_\infty$ is a polynomial in the functions $x$ and $y$. 
 
 \begin{definition}[Weighted degree]
 Given a monomial of the form $x^iy^j \in \calO_{P_\infty}$, , we define its weighted degree by
 \[ \degab{x^iy^j} := ai+bj.\]
-
+%
 Any function $f \in \calO_{P_\infty}$ can be written of the form $$f = x^{\beta}y^{\alpha} + f'(x,y),$$
 with $\alpha \leq a-1$ and $f' \in \calL(sP_{\infty})$ such that any monomial $x^iy^j$ of $f'$ satisfies $ai+bj < \degab{x^{\beta}y^{\alpha}}$ and $j \leq a-1$. We can then define the leading term of $f$ as $\mathrm{LT}(f) := x^{\beta}y^{\alpha},$ and extend the definition of weighted degree to any such function by setting 
 \[\degab{f} := \degab{\mathrm{LT}(f)}.\]
@@ -343,8 +343,7 @@ It is easy to check that for any function $f \in \calO_{P_\infty}$, its weighted
 This way, any function in $\calL(sP_\infty)$ can be seen as a polynomial in $x$ and $y$ such that $\degab{f}\leq s$. 
 
 \begin{remark}
-It is worth noting that $\calO_{P_\infty}$ is a valuation ring, with valuation $v_{P_\infty}$. Then for every $f \in \calO_{P_\infty}$, we have $
-\degab{f}=-v_{P_\infty}(f)$. We prefer handling the weighted degree rather than the valuation due to its similarities with the degree of univariate 
+It is worth noting that $\calO_{P_\infty}$ is a valuation ring, with valuation $v_{P_\infty}$. Then for every $f \in \calO_{P_\infty}$, we have $\degab{f}=-v_{P_\infty}(f)$. We prefer handling the weighted degree rather than the valuation due to its similarities with the degree of univariate 
 polynomials. We will notably perform division, using Gr\"obner bases, and, as expected in the univariate case, the degree of the remainder is 
 \textit{generally} smaller than the dividend's one.
 \end{remark}
@@ -361,11 +360,25 @@ The Goppa--like AG code associated to $\calC$ is defined as the dual of its subf
 $$ \Gamma(\calP,D,g) := \calC^{\perp}|_{\fq}.$$
 \end{definition}
 
-The terminology Goppa--like is motivated by the fact that here, the rational function $g$ plays the role of the Goppa polynomial, adding randomness to the code. From Proposition \ref{prop:dual_AG_codes}, a Goppa--like AG code turns out to be also the subfield subcode of an AG code, as it is the case of classical Goppa codes with respect to GRS codes. More precisely, we have 
+\paragraph{Why the terminology \textit{Goppa--like}?} The terminology Goppa--like is motivated by the fact that here, the rational function $g$ plays the role of the Goppa polynomial. Goppa codes are nothing but Goppa--like AG codes from the projective line $\calX=\PP^1$.
+
+Let $r$ be an integer. The Generalized Reed--Solomon (GRS) code of degree $r$, of support $\mathbf{x} \in \fqm^n$ and multiplier $\mathbf{y} \in (\fqm^*)^n$ is defined as
+
+\[\GRS_r(\mathbf{x},\mathbf{y})=\{(y_1f(x_1),y_2f(x_2),\dots,y_nf(x_n)), f \in \fqm[X] \text{ such that } \deg f < r \}.\]
+
+Take a univariate polynomial $g$ of degree $r$ such that $g(x_i) \neq 0$ for every  $i \in \{1,\dots,n\}$. The the Goppa code of order $r$ and support $\mathbf{x} \in \fqm^n$ is defined as
+\[\Gamma_r(\mathbf{x},g)= \GRS_r(\mathbf{x},\mathbf{y})^\perp|_{\fq}\]
+where $\mathbf{y}=(g(x_1)^{-1},g(x_2)^{-1},\dots,g(x_n)^{-1})$.
+
+Represent the $\fqm$--points of $\PP^1$ by the couples $\PP^1(\fqm)=\{[1:x] \mid x \in \fqm\} \cup \{P_\infty\}$ for $P_\infty=[0:1]$. Take $\calP=\{[1:x_1],[1:x_2],\dots,[1:x_n]\}$ and $D=(r-1)P_\infty$. Finally, the polynomial $g$ can be seen as a function on $\PP^1$ which lies in $L(rP_\infty)$ but not in $L((r-1)P_\infty)$. Then both constructions match: $\Gamma_r(\mathbf{x},g)=\Gamma(\calP,D,g)$.
+
+
+\jade{On s'en fout, non ? $\rightarrow$ }From Proposition \ref{prop:dual_AG_codes}, a Goppa--like AG code turns out to be also the subfield subcode of an AG code, as it is the case of classical Goppa codes with respect to GRS codes. More precisely, we have 
 $$ \Gamma(\calP,D,g) = \ssag{\calX,\calP,(D+(g))^{\perp}},$$
 where the dual divisor is given by Proposition \ref{prop:dual_AG_codes}. 
 
-Cartier codes \cite{Cou14} are also defined as a geometric generalisation of Goppa codes, since well-knwon properties on Goppa codes naturally extend to them.
+\paragraph{Relation with Cartier codes.}
+Cartier codes \cite{Cou14} are also defined as a geometric generalisation of Goppa codes, since well-known properties on Goppa codes naturally extend to them.
 The link with Goppa--like AG codes is the following: by definition, a Cartier code is a subcode of the subfield subcode of a residue code (see \cite{Cou14}, Proposition 4.3), which actually means that for the good choice of divisor, a Cartier code is a subcode of the corresponding Goppa--like AG code. Moreover, Theorem 5.1 of \cite{Cou14} provides a necessary condition for both constructions to be equal.
 
 
@@ -378,11 +391,6 @@ as defined in Section \ref{def:Goppa--like_AG_code}. Applying \eqref{eq:key_equa
 \Tr{\calC}^{\star 2} = (\Gamma(\calP,D,g)^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr{\calC\star \calC^{q^i}}.
 \end{equation}
 
-\mathieu{
-\begin{remark} \label{rq:g_notin_L(D)}
-Imposing $g \notin \calL(D)$ in the definition of Goppa--like AG code ensure that the unit vector $(1,\dots,1)$ do no lie in the AG code $\calC$. Otherwise, the right hand-side of \eqref{eq:key_equation_Goppa--like} would contains several copies of $\calC$. \\
-\TODO{et donc...} 
-\end{remark}}
 
 
 Below, we discuss how to improve the upper bound given in Corollary \ref{coro:1st_bound_mumford}, which is valid for all subfield subcodes of AG codes. The idea is to use the specific algebraic structure of our code inherited from the choice of its divisor.
@@ -440,7 +448,16 @@ This function is decreasing with $e$, and the smallest value for which $\Delta T
 $$e =  \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor.$$
 \end{proof}
 
-Despite the fact that this bound is already an improvement, we can do better in the case of one--point Goppa--like AG codes constructed on a $C_{a,b}$ curve, which is the point of the rest of the paper.
+\paragraph{Why imposing $g \notin \calL(D)$?} In the definition of Goppa--like AG code, we ask for the function $g$ to lie outside the Riemann--space $\calL(D)$. By doing so, we cannot see all alternant codes as Goppa--like AG codes on $\calX=\PP^1$. However, to make these codes resistant to a distinguished based on the square of their dual, it is crucial to make sure that the dimension of $\Tr{\calC}^{\star 2}$ is not abnormally small compared to the typical value given in Corollary \ref{coro:first_bound_square_of_trace}. 
+
+First, forcing $g \notin \calL(D)$ ensures that the unit vector $(1,\dots,1)$ do no lie in the AG code $\calC$. Otherwise, $(1,\dots,1)$ belongs to $\calC^{q^i}$ for every $i \in \{0,\dots, \lfloor{m/2} \rfloor\}$ and each term in the sum on the right hand-side would contain a copy $\Tr{\calC}$.
+
+More precisely, if $g$ lied in $\calL(D)$, then the divisor $D+(g)$ would be effective and for every $i \geq 0$, we would have the inclusion $\calL((q^i+1)D) \subset \calL((q^{i+1}+1)D)$. Therefore, in the proof od Proposition \ref{prop:bound_dim_using_inclusions}, when bounding from above the dimension of the sum by the sum of the dimensions of the trace codes, we would have no chance to get a sharp bound.
+
+
+
+
+\jade{Je sais pas quoi faire de cette phrase ! }Despite the fact that this bound is already an improvement, we can do better in the case of one--point Goppa--like AG codes constructed on a $C_{a,b}$ curve, which is the point of the rest of the paper.
 
 \section{One--point Goppa--like AG code on $C_{a,b}$-curves}
 
