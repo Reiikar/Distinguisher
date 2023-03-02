@@ -381,6 +381,8 @@ where the dual divisor is given by Proposition \ref{prop:dual_AG_codes}.
 Cartier codes \cite{Cou14} are also defined as a geometric generalisation of Goppa codes, since well-known properties on Goppa codes naturally extend to them.
 The link with Goppa--like AG codes is the following: by definition, a Cartier code is a subcode of the subfield subcode of a residue code (see \cite{Cou14}, Proposition 4.3), which actually means that for the good choice of divisor, a Cartier code is a subcode of the corresponding Goppa--like AG code. Moreover, Theorem 5.1 of \cite{Cou14} provides a necessary condition for both constructions to be equal.
 
+\TODO{cdt égalité}
+
 
 \subsection{On the dimension of the square of the dual of a Goppa--like code}
 
@@ -469,7 +471,7 @@ Below, we define a specific class of Goppa--like AG codes on a $C_{a,b}$ curve, 
 \noindent Throughout the rest of the paper, we fix a $C_{a,b}$ curve $\calX_{a,b}$ as defined in Definition \ref{def:C_ab_curves}.
 
 \begin{definition} \label{def:one--point_Goppa--like_AG_codes_on_C_a,b_curves}
-Let $s'>s'$ be two integers such that there exists a function $g \in \calL(s'P_\infty)$ with $\degab{g}=s'$. Given a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$, we define the one--point Goppa--like AG code associated to $\calP,s$ and $g$ as 
+Let $s'>s$ be two integers such that there exists a function $g \in \calL(s'P_\infty)$ with $\degab{g}=s'$. Given a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$, we define the one--point Goppa--like AG code associated to $\calP,s$ and $g$ as 
 \[\Gamma(\calP,sP_\infty,g) := \calC_{\calL}(\calX_{a,b},\calP,(sP_\infty+(g))^{\perp})|_{\fq}.\]
 \end{definition}
 
@@ -686,8 +688,8 @@ Thus
 \end{align*}
 which is true since in particular $f \in \calL(s(q^i+1)P_\infty)$ and $s<s'$. We can thus repeat the division process until eventually we obtain a quotient $f_1$ equal to zero. This shows that $\calT_i(s,g) \subseteq \calT_{i+1}(s,g)$.
 
-In the case $i^*=1$, we can repeat the same process exepted that we also have to prove that $\calT_0(s,g) \subseteq \calT_1(s,g)$, which differs from the others cases due to the definition of $\calT_0$. We treat this case separatly: let $\Tr{\frac{f}{g^2}} \in \calT_0(s,g)$, for some $f \in \calL(2sP_\infty)$. Using Proposition \ref{prop:div_grob}, this time replacing $f$ with $fg^{q-1}$ and $g$ with $g^{q+1}$, we have
-$$fg^{a-1} = f_1g^q + f_2,$$ with $f_2 \in \calR(g^q) = M_1(s,g)$ (using \eqref{eq:structure_M_i}).
+In the case $i^*=1$, we can repeat the same process exepted that we also have to prove that $\calT_0(s,g) \subseteq \calT_1(s,g)$, which differs from the others cases due to the definition of $\calT_0$. We treat this case separately: let $\Tr{\frac{f}{g^2}} \in \calT_0(s,g)$, for some $f \in \calL(2sP_\infty)$. Using Proposition \ref{prop:div_grob}, this time replacing $f$ with $fg^{q-1}$ and $g$ with $g^{q+1}$, we have
+$$fg^{q-1} = f_1g^q + f_2,$$ with $f_2 \in \calR(g^q) = M_1(s,g)$ (using \eqref{eq:structure_M_i}).
 Thus, we can write
     $$ \Tr{\frac{f}{g^2}} = \Tr{\frac{f_1^qg}{g^{q+1}}}  + \Tr{\frac{f_2}{g^{q+1}}}, $$
 with $\Tr{\frac{f_2}{g^{q+1}}} \in \calT_1(s,g)$. Since $\degab{f_1} = \degab{fg^{q-1}} - \degab{g^q} = \degab{f}-s'$, we have 
@@ -808,6 +810,8 @@ Its genus is given by $\mathfrak{g}_{\calH} = \frac{q_0(q_0-1)}{2}$ and it is a 
 \end{proposition}
 
 \mathieu{Je suis pas super satisfait de la preuve, il y a surement plus simple...}
+
+\TODO{Raccourcir ces calculs + test sur des $s$ plus petits}
 
 \begin{proof}
     As discussed at the beginning of the section, the code cannot be distinguished if the upper bound for the dimension of the square of its dual given in Theorem \ref{thm:bound_with_T_i's_inclusion} is larger than the length of the code. In the Hermitian case, we know exactly the number of rational points, and thus the length $n$ of the Goppa--like code is at most $q_0^3-1$. Since $m$ is even, we are left to prove that 
