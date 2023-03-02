@@ -538,12 +538,23 @@ Thus, for all $i \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$, we have \begin{
 
 \subsection{Upper bound in Goppa--like case}
 
-In the proposition below, we study the intersection $R\left(g^{q^{i}-q^{i-1}+1}\right) \cap \calL(s(q^i+1)P_\infty)$ in order to better grasp the trace codes $\calT_i(s,g)$'s introduced in Definition \ref{def:T_i's}.
+In the proposition below, we study the intersection 
+\begin{equation}\label{eq:def_Mi}
+M_i(s,g):=R\left(g^{q^{i}-q^{i-1}+1}\right) \cap \calL(s(q^i+1)P_\infty)
+\end{equation}
+for every $i \in \set{1,\dots,\lfloor m/2 \rfloor}$ in order to better grasp the trace codes $\calT_i(s,g)$'s introduced in Definition \ref{def:T_i's}.
 
+First let us set some notation. Fix $i \in \set{1,\dots,\lfloor m/2 \rfloor}$. Write $\LT{g}=x^\beta y^\alpha$ with $a\beta + b\alpha=s'$. By reducing modulo the equation $\phi_{a,b}$ of the curve $\calX_{a,b}$, we can write $g^{q^i-q^{i-1}+1}$ such that its leading term with respect to the monomial order $\prec$ is
+\begin{equation}\label{eq:gi}
+	\LT{g^{q^i-q^{i-1}+1}}=x^{\beta_i} y^{\alpha_i}
+\end{equation}
+ where $\alpha_i \in \set{0,\dots,a-1}$ is the remainder of the Euclidean division of $\alpha (q^i-q^{i-1}+1)$ by $a$ and 
+\[\beta_i=\beta(q^i-q^{i-1}+1) + b \, \frac{\alpha(q^i-q^{i-1}+1)-\alpha_i}{a}= \frac{s'(q^i-q^{i-1}+1)-b\alpha_i}{a}.\]
+%
+Depending on the weighted degree $s'$ of $g$, we can compute the exact dimension of $M_i(s,g)$ defined in Equation \eqref{eq:def_Mi}.
 
 \begin{proposition} \label{prop:dim_M_i's}
-Let $i \in \set{1,\dots,\lfloor m/2 \rfloor}$. Set $\alpha_i \in \set{0,\dots,a-1}$ to be the remainder of the Euclidean division of $\alpha (q^i-q^{i-1}+1)$ by $a$ and set $\beta_i = \dfrac{s'(q^i-q^{i-1}+1)-b\alpha_i}{a}$. Depending on $s'$, we can compute the exact dimension of $M_i(s,g) := R(g^{q^{i}-q^{i-1}+1}) \cap \calL(s(q^i+1)P_\infty)$:
-    
+%Let $i \in \set{1,\dots,\lfloor m/2 \rfloor}$. Set $\alpha_i \in \set{0,\dots,a-1}$ to be the remainder of the Euclidean division of $\alpha (q^i-q^{i-1}+1)$ by $a$ and set $\beta_i = \dfrac{s'(q^i-q^{i-1}+1)-b\alpha_i}{a}$.   
     \begin{enumerate}
         \item If $s'(q^i-q^{i-1}+1) > s(q^i+1)+a$, then $M_i(s,g) = \calL(s(q^i+1)P_\infty)$ ;
         
@@ -554,7 +565,7 @@ Let $i \in \set{1,\dots,\lfloor m/2 \rfloor}$. Set $\alpha_i \in \set{0,\dots,a-
         we have 
           $$\dim_{\fqm}(M_i(s,g)) = \sum\limits_{v=v^*}^{a-1} \left\lfloor \dfrac{s(q^i+1)-bv}{a} \right\rfloor + v^*(\beta_i+b) + a-v^*.$$
         
-        \item Else, there exists $v^* \in \set{\alpha_i+1,\dots,a}$ \mathieu{(le cas qui nous gênait avant est ici pour $v^*=a$, et vient du fait que $F(0)=G(a)$ comme tu avais dit)} such that
+        \item Else, there exists $v^* \in \set{\alpha_i+1,\dots,a}$ such that
         $$ s(q^i+1)+a-b(v^*-\alpha_i) < s'(q^i-q^{i-1}+1) \leq  s(q^i+1)+a-b(v^*-1-\alpha_i),$$
         in which case 
         $$\dim_{\fqm}(M_i(s,g)) = \sum\limits_{v=v^*}^{a-1} \left\lfloor \dfrac{s(q^i+1)-bv}{a} \right\rfloor + v^*\beta_i + \alpha_ib +a-v^*.$$
@@ -564,16 +575,16 @@ Let $i \in \set{1,\dots,\lfloor m/2 \rfloor}$. Set $\alpha_i \in \set{0,\dots,a-
 \begin{proof}
 
 
-By assumption, we have $\mathrm{LT}(g)=x^{\beta}y^{\alpha}$, with $\alpha \leq a-1$ and $\degab{g}=a\beta +b\alpha=s'$. 
-Thus, $\mathrm{LT}(g^{q^i-q^{i-1}+1})=x^{\beta (q^i-q^{i-1}+1)}y^{\alpha (q^i-q^{i-1}+1)}$. Since $\alpha (q^i-q^{i-1}+1)$ might be bigger that $a-1$, we perform the following euclidean division:
-$$\alpha (q^i-q^{i-1}+1) = \delta a + \alpha_i, \ 0 \leq \alpha_i \leq a-1.$$
-Using the equation of the curve, we can then suppose that $\mathrm{LT}(g^{q^i-q^{i-1}+1})=x^{\beta_i}y^{\alpha '}$, with 
-$$\beta_i := \beta (q^i-q^{i-1}+1) + \left\lfloor \frac{\alpha (q^i-q^{i-1}+1)-\alpha_i}{a} \right\rfloor \ \mathrm{and} \ \alpha_i \in \set{0,\dots,a-1}.$$
-Since $\degab{g^{q^i-q^{i-1}+1}} = s'(q^i-q^{i-1}+1),$ we also have 
-\begin{equation} \label{eq:value_beta_prime}
-\beta_i = \dfrac{s'(q^i-q^{i-1}+1)-b\alpha_i}{a}.
-\end{equation}
-From this, we deduce
+%By assumption, we have $\mathrm{LT}(g)=x^{\beta}y^{\alpha}$, with $\alpha \leq a-1$ and $\degab{g}=a\beta +b\alpha=s'$. 
+%Thus, $\mathrm{LT}(g^{q^i-q^{i-1}+1})=x^{\beta (q^i-q^{i-1}+1)}y^{\alpha (q^i-q^{i-1}+1)}$. Since $\alpha (q^i-q^{i-1}+1)$ might be bigger that $a-1$, we perform the following euclidean division:
+%$$\alpha (q^i-q^{i-1}+1) = \delta a + \alpha_i, \ 0 \leq \alpha_i \leq a-1.$$
+%Using the equation of the curve, we can then suppose that $\mathrm{LT}(g^{q^i-q^{i-1}+1})=x^{\beta_i}y^{\alpha '}$, with 
+%$$\beta_i := \beta (q^i-q^{i-1}+1) + \left\lfloor \frac{\alpha (q^i-q^{i-1}+1)-\alpha_i}{a} \right\rfloor \ \mathrm{and} \ \alpha_i \in \set{0,\dots,a-1}.$$
+%Since $\degab{g^{q^i-q^{i-1}+1}} = s'(q^i-q^{i-1}+1),$ we also have 
+%\begin{equation} \label{eq:value_beta_prime}
+%\beta_i = \dfrac{s'(q^i-q^{i-1}+1)-b\alpha_i}{a}.
+%\end{equation}
+Using the notation above, we can write
 \begin{align*}
 \calR\left(g^{q^i-q^{i-1}+1}\right) &:= \mathrm{Span}_{\fqm} \left\{x^uy^v \mid u \leq \beta_i+b-1 , v \leq a-1 \ \mathrm{not \ both} \ u \geq \beta_i \ \mathrm{and} \ v \geq \alpha_i\right\} \\
 &= \mathrm{Span}_{\fqm}    \left\{ \begin{array}{c}
