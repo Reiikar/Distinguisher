@@ -452,7 +452,7 @@ $$e =  \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor.$$
 
 First, forcing $g \notin \calL(D)$ ensures that the unit vector $(1,\dots,1)$ do no lie in the AG code $\calC$. Otherwise, $(1,\dots,1)$ belongs to $\calC^{q^i}$ for every $i \in \{0,\dots, \lfloor{m/2} \rfloor\}$ and each term in the sum on the right hand-side would contain a copy $\Tr{\calC}$.
 
-More precisely, if $g$ lied in $\calL(D)$, then the divisor $D+(g)$ would be effective and for every $i \geq 0$, we would have the inclusion $\calL((q^i+1)D) \subset \calL((q^{i+1}+1)D)$. Therefore, in the proof od Proposition \ref{prop:bound_dim_using_inclusions}, when bounding from above the dimension of the sum by the sum of the dimensions of the trace codes, we would have no chance to get a sharp bound.
+More precisely, if the function $g$ lied in $\calL(D)$, then the divisor $D+(g)$ would be effective and for every $i \geq 0$, we would have the inclusion $\calL((q^i+1)D) \subset \calL((q^{i+1}+1)D)$. Therefore, in the proof of Proposition \ref{prop:bound_dim_using_inclusions}, when bounding from above the dimension of the sum by the sum of the dimensions of the trace codes, we would have no chance to get a sharp bound.
 
 
 
@@ -466,25 +466,26 @@ More precisely, if $g$ lied in $\calL(D)$, then the divisor $D+(g)$ would be eff
 
 Below, we define a specific class of Goppa--like AG codes on a $C_{a,b}$ curve, associated to a divisor which is equivalent to the one--point divisor $sP_\infty$. 
 
-\noindent Throughout the rest of the paper, we fix a $C_{a,b}$ curve $\calX_{a,b}$ a defined in Definition \ref{def:C_ab_curves}.
+\noindent Throughout the rest of the paper, we fix a $C_{a,b}$ curve $\calX_{a,b}$ as defined in Definition \ref{def:C_ab_curves}.
 
 \begin{definition} \label{def:one--point_Goppa--like_AG_codes_on_C_a,b_curves}
 Let $s'>s'$ be two integers such that there exists a function $g \in \calL(s'P_\infty)$ with $\degab{g}=s'$. Given a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$, we define the one--point Goppa--like AG code associated to $\calP,s$ and $g$ as 
 \[\Gamma(\calP,sP_\infty,g) := \calC_{\calL}(\calX_{a,b},\calP,(sP_\infty+(g))^{\perp})|_{\fq}.\]
 \end{definition}
 
-This definition might be restrictive, but it is reasonable as these codes can be encode fast thanks to the nice base of $\calL(sP_\infty)$ (see \eqref{eq:basis_L(sP_inf)}), which is desirable if we aim to build a McEliece cryptosystem based on this family of codes. Moreover, this property will be key in the upcoming sections as it allows a better understanding of the square of the dual of any one--point Goppa--like AG code, under some condition on $s$ and $s'$. \\
+This definition might be restrictive, but it is reasonable as these codes can be encoded quickly thanks to the nice basis of $\calL(sP_\infty)$ (see \eqref{eq:basis_L(sP_inf)}), which is desirable if we aim to build a McEliece cryptosystem based on this family of codes. Moreover, this property will be key in the upcoming sections as it allows a better understanding of the square of the dual of any one--point Goppa--like AG code, under some condition on $s$ and $s'$. \\
 
 
-\noindent In the next sections, we generalize the result given in \cite{MT21} in the case of classical Goppa codes, by defining a weighted euclidean on $\calL(mP\infty)$, whose elements are seen as bivariate polynomials. 
+\noindent In the next sections, we generalize the result given in \cite{MT21} in the case of classical Goppa codes, by defining a weighted euclidean division on the ring $\calO_{_P\infty}$ (see Eq \eqref{eq:O_Pinf}), whose elements are seen as bivariate polynomials. 
 
 \subsection{Weighted euclidean division}
 
-\noindent The following proposition generalizes the classical euclidean division of polynomial in the case of function in the Riemann-Roch space $\calL(mP_\infty)$ with respect to the weighted degree $\deg_{a,b}$.
+\noindent The following proposition generalizes the classical euclidean division of polynomial in the case of function in the ring $\calO_{_P\infty}$ (see Eq \eqref{eq:O_Pinf}) with respect to the weighted degree $\deg_{a,b}$.
+
 
 \begin{proposition}\label{prop:div_grob}
-Let $m$ be a positive integer and let $g \in \calL(m P_\infty)$. Write $g=x^\beta y^\alpha +g'(x,y)$ with $\alpha < a$ and $g' \in \calL(m P_\infty)$ such that $\degab{x^\beta y^\alpha}>\degab{g'}$.
-For any function $f$ on $\calX_{a,b}$ such that $f \in \calO_{P_\infty}$, one can write $f=f_1g+f_2$ with 
+Let $m$ be a positive integer and let $g \in \calO_{_P\infty}$. Write $g=x^\beta y^\alpha +g'(x,y)$ with $\alpha < a$ and $g' \in \calO_{_P\infty}$ such that $\degab{x^\beta y^\alpha}>\degab{g'}$.
+For any function $f \in \calO_{P_\infty}$, one can write $f=f_1g+f_2$ with 
 \[f_2 \in \calR(g):= \Span{x^u y^v \mid u \leq \beta + b-1 \text{ and } v\leq a-1 \text{ not both }  u \geq \beta \text{ and } v \geq \alpha}.\]
 Moreover, we had $\degab{f_2} \leq \degab{f}$ and $\dim_{\fqm} \calR(g) = \degab{g}=s'.$ 
 \end{proposition}
@@ -492,14 +493,14 @@ Moreover, we had $\degab{f_2} \leq \degab{f}$ and $\dim_{\fqm} \calR(g) = \degab
 \begin{proof}
 		Since $f \in \calO_{P_\infty}$, one can see $f$ as a bivariate polynomial of $x$ and $y$ (see Equation \ref{eq:O_Pinf}). In the polynomial ring $\F_{q^m}[x,y]$, we perform the division of $f$ by a Grobner basis of the ideal generated by the equation $\phi_{a,b}$ of the curve $\calX_{a,b}$ and the polynomial $g$ with respect to the monomial order $\prec$ defined as follows : $x^uy^v \prec x^{u'}y^{v'}$ if
 	\[ \degab{x^uy^v} < \degab{x^{u'}y^{v'}} \text{ or } \left(\degab{x^uy^v} = \degab{x^{u'}y^{v'}}  \text{ and } u < u'\right).\]
-	The fact that $f_2$ lies in $\calR(g)$ and the result on the dimension of $\calR(g)$ both follow from \cite[Proposition 4]{GH00}.
+	With respect to this order, the leading term og $g$ is $\LT{g}=x^\beta y^\alpha$. The fact that $f_2$ lies in $\calR(g)$ and the result on the dimension of $\calR(g)$ both follow from \cite[Proposition 4]{GH00}.
 	
-	Finally, if we have $\degab{f} < \degab{f_2}$ with $f=f_1 g +f_2$, this would mean that $\LT{f_2}=-\LT{f_1 g}=\lambda x^uy^v$ for some $\lambda \in \F_{q^m}^*$ with both $u \geq \beta$ and $v \geq \alpha$, which is not possible by definition of $\calR\left(g\right)$.
+	Finally, if we had $\degab{f} < \degab{f_2}$ with $f=f_1 g +f_2$, this would mean that $\LT{f_2}=-\LT{f_1 g}=\lambda x^uy^v$ for some $\lambda \in \F_{q^m}^*$ with both $u \geq \beta$ and $v \geq \alpha$, which is not possible by definition of $\calR\left(g\right)$.
 \end{proof}
 
 
 \begin{lemma} \label{lem:weighted_division}
-	Let $i \geq 1$ and $s'>s \geq 0$. Let $f \in \calL\left(\left(s'(q^i+1)-1\right)P_\infty\right)$. Then there exists $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that $\Tr{\frac{f}{g^{q^i+1}}} = \Tr{\frac{f'}{g^{q^i+1}}} $.
+	Let $i \geq 1$ and $s'>s \geq 0$. Let $g \in \calL\left(s'P_\infty\right)$ and $f \in \calL\left(\left(s'(q^i+1)-1\right)P_\infty\right)$. Then there exists $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that $\Tr{\frac{f}{g^{q^i+1}}} = \Tr{\frac{f'}{g^{q^i+1}}} $.
 \end{lemma}
 
 \begin{proof}
@@ -514,10 +515,7 @@ $\degab{f_1} =\degab{f} - s'(q^i-q^{i-1}+1)$, and
 	\degab{f_1^qg} 	&= q \degab{f_1} + s'\\
 					&= q\degab{f} - s'(q-1)(q^i+1).
 	\end{align*} 
-Then  $\degab{f_1^qg} < \degab{f}$ if and only if $\degab{f} < s'(q^i+1)$, which holds by definition of $f$.
-
-By repeating the division process on $f_1^qg$, as the weighted degree decreases, we can find a function $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that $\Tr{\frac{f}{g^{q^i+1}}} = \Tr{\frac{f'}{g^{q^i+1}}} $.
-
+Then  $\degab{f_1^qg} < \degab{f}$ if and only if $\degab{f} < s'(q^i+1)$, which holds by definition of $f$. Repeating the division process on $f_1^qg$, as the weighted degree decreases, we can find a function $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that $\Tr{\frac{f}{g^{q^i+1}}} = \Tr{\frac{f'}{g^{q^i+1}}} $.
 \end{proof}
 
 \begin{definition} \label{def:T_i's}
@@ -540,12 +538,11 @@ Thus, for all $i \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$, we have \begin{
 
 \subsection{Upper bound in Goppa--like case}
 
-In the proposition below, we study the intersection $R(g^{q^{i}-q^{i-1}+1}) \cap \calL(s(q^i+1)P_\infty)$ in order to understand the sets $\calT_i(s,g)$'s introduced before.
+In the proposition below, we study the intersection $R\left(g^{q^{i}-q^{i-1}+1}\right) \cap \calL(s(q^i+1)P_\infty)$ in order to better grasp the trace codes $\calT_i(s,g)$'s introduced in Definition \ref{def:T_i's}.
 
 
 \begin{proposition} \label{prop:dim_M_i's}
-Let $i \in \set{1,\dots,\lfloor m/2 \rfloor}$,
-     $\alpha_i \in \set{0,\dots,a-1}$ be the remainder of the Euclidean division of $\alpha (q^i-q^{i-1}+1)$ by $a$ and set $\beta_i = \dfrac{s'(q^i-q^{i-1}+1)-b\alpha_i}{a}$. Depending on $s'$, we can compute the exact dimension of $M_i(s,g) := R(g^{q^{i}-q^{i-1}+1}) \cap \calL(s(q^i+1)P_\infty)$:
+Let $i \in \set{1,\dots,\lfloor m/2 \rfloor}$. Set $\alpha_i \in \set{0,\dots,a-1}$ to be the remainder of the Euclidean division of $\alpha (q^i-q^{i-1}+1)$ by $a$ and set $\beta_i = \dfrac{s'(q^i-q^{i-1}+1)-b\alpha_i}{a}$. Depending on $s'$, we can compute the exact dimension of $M_i(s,g) := R(g^{q^{i}-q^{i-1}+1}) \cap \calL(s(q^i+1)P_\infty)$:
     
     \begin{enumerate}
         \item If $s'(q^i-q^{i-1}+1) > s(q^i+1)+a$, then $M_i(s,g) = \calL(s(q^i+1)P_\infty)$ ;
