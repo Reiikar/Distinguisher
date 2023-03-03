@@ -163,7 +163,7 @@ This definition can be extended to codes in the following way: If $\calC$ and $\
 \[ \calC \star \calD := \Span{\mathbf{c} \star \mathbf{d} \mid \mathbf{c} \in \calC, \mathbf{d} \in \calD}. \]
 Moreover, if $\calC = \calD$, we call $\calC^{\star 2} := \calC \star \calC$ the square of $\calC$. The following lemma gives a first estimation of the dimension of Schur product of codes.
 
-\begin{lemma}[{\cite[Proposition~10]{MT21}}] \label{lem:known_bounds}
+
 Let $\calC$ and $\calD$ be two linear codes over $\fqm$ with same length $n$ and respective dimension $k_{\calC}$ and $k_{\calD}$. We have
 \begin{enumerate}
 	\item $\dim_{\fqm}(\calC \star \calD) \leq \min\{k_{\calC}k_{\calD},n\}$;
@@ -216,7 +216,9 @@ The dual of an AG code can be described as a residue code (see \cite{Sti09} for 
 $$ C_{\calL}(\calX,\calP,D)^{\perp} = C_{\omega}(\calX,\calP,D).$$ 
 Residue and evaluation codes are connected by the following result.
 
-\begin{proposition}[{\cite[Proposition~2.2.10]{Sti09}}] \label{prop:dual_AG_codes}
+
+\begin{proposition} [{\cite[Proposition 2.2.10]{Sti09}}] \label{prop:dual_AG_codes}
+
 Let $C_{\calL}(\calX,\calP,D)$ be an AG-code defined on a curve $\calX$. Then 
 \[C_{\calL}(\calX,\calP,D)^{\perp} = C_{\calL}(\calX,\calP,D^{\perp}),\]
 with $D^{\perp} = D_{\calP}-D+W$, where $D_{\calP} = \sum\limits_{P \in \calP} P$ and $W=(\omega)$ is a canonical divisor such that for all $P \in \calP$, $\nu_P(\omega)=-1$ and $\mathrm{Res}_{\omega}(P)=1$. 
@@ -228,7 +230,9 @@ with $D^{\perp} = D_{\calP}-D+W$, where $D_{\calP} = \sum\limits_{P \in \calP} P
 In this paper, we aim to bound the dimension of the square of the dual of a SSAG codes. From Delsarte's theorem, this is equivalent to study the square of the trace of some structured AG code. 
 This fact is possible thanks to a result from \cite{MT21}, valid for any linear code:
 
-\begin{proposition}[{\cite[Proposition~15]{MT21}}] \label{prop:Tr_BoundSchurSquare}
+
+\begin{proposition}[{\cite[Proposition 15]{MT21}}] \label{prop:Tr_BoundSchurSquare}
+
 	Let $\calC$ be a linear code over $\fqm$. Then we have 
 	\begin{equation} \label{eq:key_equation} \Tr{\calC}^{\star2} := ((\calC^{\perp}|_{_{{\mathbb{F}_q}}})^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr{\calC\star \calC^{q^i}},
 	\end{equation}
@@ -236,7 +240,9 @@ This fact is possible thanks to a result from \cite{MT21}, valid for any linear 
 
 From this result, we can deduce an upper bound for the dimension of the square of the dual of any linear code.
 
-\begin{coro}[{\cite[Corollary~16]{MT21}}]\label{coro:first_bound_square_of_trace}
+
+\begin{coro} [{\cite[Corollary 16]{MT21}}]\label{coro:first_bound_square_of_trace}
+
 	Let $\calC$ be any $\fqm$-linear code. Then 
 	\begin{equation} \label{eq:mumford_bound}
 		\dim_{\fq}\Tr{\calC}^{\star2} \leq m \cdot \dim_{\fqm}(\calC^{\star 2}) + \binom{m}{2} (\dim_{\fqm}(\calC))^2.
@@ -253,7 +259,10 @@ then this property is retained for the trace code, \emph{i.e.}
 This is especially true for Reed-Solomon codes (see \cite{MT21}, Proposition 11) and more generally for AG codes with some lower bound condition on the degree of its divisor.
 
 
-\begin{proposition}[{\cite[Theorem~6]{Mum70}}] \label{prop:mumford_result}
+
+
+\begin{proposition} [{\cite[Theorem 6]{Mum70}}] \label{prop:mumford_result}
+
 	Let $F,G$ be two divisors of $\calX$ such that $\deg(G) \geq 2\mathfrak{g}+1$ and $\deg(F) \geq 2\mathfrak{g}$. Then
 	\[ \calL(F) \cdot \calL(G) = \calL(F+G),\]
 	where $\calL(F) \cdot \calL(G) := \Span{ f \cdot g : (f,g) \in \calL(F) \times \calL(G)}$.
@@ -363,15 +372,19 @@ where $\mathbf{y}=(g(x_1)^{-1},g(x_2)^{-1},\dots,g(x_n)^{-1})$.
 Represent the $\fqm$--points of $\PP^1$ by the couples $\PP^1(\fqm)=\{[1:x] \mid x \in \fqm\} \cup \{P_\infty\}$ for $P_\infty=[0:1]$. Take $\calP=\{[1:x_1],[1:x_2],\dots,[1:x_n]\}$ and $D=(r-1)P_\infty$. Finally, the polynomial $g$ can be seen as a function on $\PP^1$ which lies in $L(rP_\infty)$ but not in $L((r-1)P_\infty)$. Then both constructions match: $\Gamma_r(\mathbf{x},g)=\Gamma(\calP,D,g)$.
 
 
-\jade{On s'en fout, non ?} \mathieu{c'était pour justifier le fait que les codes de cartier sont des sous--codes de ça} From Proposition \ref{prop:dual_AG_codes}, a Goppa--like AG code turns out to be also the subfield subcode of an AG code, as it is the case of classical Goppa codes with respect to GRS codes. More precisely, we have 
-$$ \Gamma(\calP,D,g) = \ssag{\calX,\calP,(D+(g))^{\perp}},$$
-where the dual divisor is given by Proposition \ref{prop:dual_AG_codes}. 
+\paragraph{Relation with Cartier codes.} Cartier codes \cite{Cou14} are also defined as a geometric generalisation of Goppa codes, since well-known properties on Goppa codes naturally extend to them.
 
-\paragraph{Relation with Cartier codes.}
-Cartier codes \cite{Cou14} are also defined as a geometric generalisation of Goppa codes, since well-known properties on Goppa codes naturally extend to them.
-The link with Goppa--like AG codes is the following: by definition, a Cartier code is a subcode of the subfield subcode of a residue code (see \cite{Cou14}, Proposition 4.3), which actually means that for the good choice of divisor, a Cartier code is a subcode of the corresponding Goppa--like AG code. Moreover, Theorem 5.1 of \cite{Cou14} provides a necessary condition for both constructions to be equal.
+The link with Goppa--like AG codes is the following: by definition, a Cartier code is a subcode of the subfield subcode of a residue code (see \cite[Proposition 4.3]{Cou14}), which actually means that for the good choice of divisor, a Cartier code is a subcode of the corresponding Goppa--like AG code. Moreover, \cite[Theorem 5.1]{Cou14} provides a sufficient condition for both constructions to be equal. More precisely, let us consider a Goppa--like AG code $\Gamma(\calP,D,g)$  and set $G := D+(g)$. Then the cartier code $\mathrm{Car}_q(\calP,G)$ (see \cite[Definition 4.2]{Cou14}) satisfies $\mathrm{Car}_q(\calP,G) \subseteq \Gamma(\calP,D,g)$, and 
 
-\TODO{cdt égalité}
+$$ \dim_{\fq} \left( \Gamma(\calP,D,g)/ \mathrm{Car}_q(\calP,G)\right) \leq m \cdot i(G_1),$$
+where $G_1$ is any divisor such that 
+\begin{equation} \label{eq:divisor_G_1}
+G \geq qG_1 \ \mathrm{and} \ G \geq G_1.
+\end{equation}
+ Above, $i(G_1)$ stands for the index of speciality of $G_1$ (see \cite[Definition 1.6.10]{Sti09}), and we have $\deg(G_1) > 2\mathfrak{g}-2 \Rightarrow i(G_1) =0.$ The biggest divisor (with respect to the degree) satisfying \eqref{eq:divisor_G_1} is given by 
+ $$\left\lfloor \frac{G}{q} \right\rfloor := \sum\limits_{P \in \Supp(G^+)} \left\lfloor\frac{\nu_P(G^+)}{q}\right\rfloor ¨P + \sum\limits_{P \in \Supp(G^-)}\nu_P(G^-)P,$$
+ where $G^+ = D+(g)_0$ and $G^-=(g)_\infty$ are such that $G=G^+-G^-$.
+Thus, whenever $\deg\left\lfloor \dfrac{G}{q} \right\rfloor > 2\mathfrak{g}-2$, the corresponding Cartier code coincides with the Goppa--like AG code. 
 
 
 \subsection{On the dimension of the square of the dual of a Goppa--like code} \label{section:1st_improvement}
