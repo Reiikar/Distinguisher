@@ -164,6 +164,8 @@ This definition can be extended to codes in the following way: If $\calC$ and $\
 Moreover, if $\calC = \calD$, we call $\calC^{\star 2} := \calC \star \calC$ the square of $\calC$. The following lemma gives a first estimation of the dimension of Schur product of codes.
 
 
+\begin{lemma}[{\cite[Proposition~10]{MT21}}] \label{lem:known_bounds}
+
 Let $\calC$ and $\calD$ be two linear codes over $\fqm$ with same length $n$ and respective dimension $k_{\calC}$ and $k_{\calD}$. We have
 \begin{enumerate}
 	\item $\dim_{\fqm}(\calC \star \calD) \leq \min\{k_{\calC}k_{\calD},n\}$;
@@ -217,7 +219,7 @@ $$ C_{\calL}(\calX,\calP,D)^{\perp} = C_{\omega}(\calX,\calP,D).$$
 Residue and evaluation codes are connected by the following result.
 
 
-\begin{proposition} [{\cite[Proposition 2.2.10]{Sti09}}] \label{prop:dual_AG_codes}
+\begin{proposition} [{\cite[Proposition~2.2.10]{Sti09}}] \label{prop:dual_AG_codes}
 
 Let $C_{\calL}(\calX,\calP,D)$ be an AG-code defined on a curve $\calX$. Then 
 \[C_{\calL}(\calX,\calP,D)^{\perp} = C_{\calL}(\calX,\calP,D^{\perp}),\]
@@ -231,7 +233,7 @@ In this paper, we aim to bound the dimension of the square of the dual of a SSAG
 This fact is possible thanks to a result from \cite{MT21}, valid for any linear code:
 
 
-\begin{proposition}[{\cite[Proposition 15]{MT21}}] \label{prop:Tr_BoundSchurSquare}
+\begin{proposition}[{\cite[Proposition~15]{MT21}}] \label{prop:Tr_BoundSchurSquare}
 
 	Let $\calC$ be a linear code over $\fqm$. Then we have 
 	\begin{equation} \label{eq:key_equation} \Tr{\calC}^{\star2} := ((\calC^{\perp}|_{_{{\mathbb{F}_q}}})^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr{\calC\star \calC^{q^i}},
@@ -241,7 +243,7 @@ This fact is possible thanks to a result from \cite{MT21}, valid for any linear 
 From this result, we can deduce an upper bound for the dimension of the square of the dual of any linear code.
 
 
-\begin{coro} [{\cite[Corollary 16]{MT21}}]\label{coro:first_bound_square_of_trace}
+\begin{coro} [{\cite[Corollary~16]{MT21}}]\label{coro:first_bound_square_of_trace}
 
 	Let $\calC$ be any $\fqm$-linear code. Then 
 	\begin{equation} \label{eq:mumford_bound}
@@ -261,7 +263,7 @@ This is especially true for Reed-Solomon codes (see \cite{MT21}, Proposition 11)
 
 
 
-\begin{proposition} [{\cite[Theorem 6]{Mum70}}] \label{prop:mumford_result}
+\begin{proposition} [{\cite[Theorem~6]{Mum70}}] \label{prop:mumford_result}
 
 	Let $F,G$ be two divisors of $\calX$ such that $\deg(G) \geq 2\mathfrak{g}+1$ and $\deg(F) \geq 2\mathfrak{g}$. Then
 	\[ \calL(F) \cdot \calL(G) = \calL(F+G),\]
