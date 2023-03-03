@@ -373,8 +373,9 @@ where $G_1$ is any divisor such that
 G \geq qG_1 \ \mathrm{and} \ G \geq G_1.
 \end{equation}
  Above, $i(G_1)$ stands for the index of speciality of $G_1$ (a definition can be found in \cite{Sti09}, 1.6.10), and we have $\deg(G_1) > 2\mathfrak{g}-2 \Rightarrow i(G_1) =0.$ The biggest divisor (with respect to the degree) satisfying \eqref{eq:divisor_G_1} is given by 
- $$\left\lfloor \frac{G}{q} \right\rfloor := \sum\limits_{\nu_P(G) > 0} \left\lfloor \frac{\nu_P(G)}{q} \right\rfloor P+ \sum\limits_{\nu_P(G)< 0}\nu_P(G)P.  $$
-Thus, whenever $\deg\left\lfloor \frac{G}{q} \right\rfloor > 2\mathfrak{g}-2$, the corresponding Cartier code coincides with the Goppa--like AG code. \mathieu{Doit-on préciser la condition plus tard pour les one--point ? En disant que cela impose des conditions sur $(g)_0$}.
+ $$\left\lfloor \frac{G}{q} \right\rfloor := \sum\limits_{P \in \Supp(G^+)} \left\lfloor\frac{\nu_P(G^+)}{q}\right\rfloor ¨P + \sum\limits_{P \in \Supp(G^-)}\nu_P(G^-)P,$$
+ where $G^+ = D+(g)_0$ and $G^-=(g)_\infty$ are such that $G=G^+-G^-$.
+Thus, whenever $\deg\left\lfloor \dfrac{G}{q} \right\rfloor > 2\mathfrak{g}-2$, the corresponding Cartier code coincides with the Goppa--like AG code. 
 
 
 \subsection{On the dimension of the square of the dual of a Goppa--like code} \label{section:1st_improvement}
