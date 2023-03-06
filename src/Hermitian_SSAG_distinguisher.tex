@@ -704,17 +704,32 @@ which holds since $s<s'$ and $f \in \calL(2sP_\infty)$. Repeating the division p
 
 Combining \eqref{eq:Tr(C*C^q^i)_dans_T_i} with both the above propositions lead to a better understanding of the dimension of the square of the dual of one--point Goppa--like AG codes. 
 
-\begin{coro} \label{coro:folklore_upper_bound} \mathieu{bon je suis pas fan de ce à quoi ça ressemble :(} \\
-With notation as in Proposition \ref{prop:inclusion_T_i's} and $k:=\dim_{\fqm}C_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$, the dimension of $\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2}$ is bounded from above by
-\begin{align*}
-\min  \left\{ \begin{array}{ll}
-\left(\frac{m-1}{2}-e\right)mk^2+\dim_{\fq}\left(\sum\limits_{i=0}^e \calT_i(s,g) \right), \ \mathrm{if} \ e \geq i^* \\
-\left(\frac{m-1}{2}-e\right)mk^2 + ms'(q^e-q^{e-1}+1) + \dim_{\fq}\left(\sum\limits_{i=0}^{i^*-1} \calT_i(s,g) - \dim_{\fq} \calT_e(s,g) \cap   \sum\limits_{i=0}^{i^*-1} \calT_i(s,g)\right)\  \mathrm{overwise},
-\end{array} 
-\right.
-\end{align*}
-where the minimum is taken over all $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$.
+\begin{coro} \label{coro:folklore_upper_bound}
+	With the same notation as in Proposition \ref{prop:inclusion_T_i's}, set $k:=\dim_{\fqm}C_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$.
+	Then, for all $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$, the dimension of $\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2}$ is bounded from above by
+	
+\[\dim_{\fq}	\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2} \leq  	\left(\frac{m-1}{2}-e\right)mk^2+\dim_{\fq}\left(\sum\limits_{i=0}^e \calT_i(s,g) \right). \]
+	Moreover, if $i^* \leq e \leq \lfloor \frac{m}{2} \rfloor$, we have 
+	\begin{align*}
+		\dim_{\fq}	\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2} \leq   &	\left(\frac{m-1}{2}-e\right)mk^2 + ms'(q^e-q^{e-1}+1) \\
+		& + \dim_{\fq}\left(\sum\limits_{i=0}^{i^*-1} \calT_i(s,g)\right) - \dim_{\fq} \left( \calT_e(s,g) \cap   \sum\limits_{i=0}^{i^*-1} \calT_i(s,g)\right).
+	\end{align*}
+
+
 \end{coro}
+
+%
+%\begin{coro} \label{coro:folklore_upper_bound} \mathieu{bon je suis pas fan de ce à quoi ça ressemble :(} \\
+%With notation as in Proposition \ref{prop:inclusion_T_i's} and $k:=\dim_{\fqm}C_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$, the dimension of $\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2}$ is bounded from above by
+%\begin{align*}
+%\min  \left\{ \begin{array}{ll}
+%\left(\frac{m-1}{2}-e\right)mk^2+\dim_{\fq}\left(\sum\limits_{i=0}^e \calT_i(s,g) \right), \ \mathrm{if} \ e \geq i^* \\
+%\left(\frac{m-1}{2}-e\right)mk^2 + ms'(q^e-q^{e-1}+1) + \dim_{\fq}\left(\sum\limits_{i=0}^{i^*-1} \calT_i(s,g) - \dim_{\fq} \calT_e(s,g) \cap   \sum\limits_{i=0}^{i^*-1} \calT_i(s,g)\right)\  \mathrm{overwise},
+%\end{array} 
+%\right.
+%\end{align*}
+%where the minimum is taken over all $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$.
+%\end{coro}
 
 \begin{proof}
 From \eqref{eq:key_equation} and under the assumption on $s$ and $s'$, we have
@@ -724,9 +739,9 @@ From \eqref{eq:key_equation} and under the assumption on $s$ and $s'$, we have
         & \leq \dim_{\fq} \sum\limits_{i=0}^{e}\calT_i(s,g) + \sum\limits_{i=e+1}^{\lfloor m/2 \rfloor} \Tr{\calC \star \calC^{q^i}} \\
                 & \leq \dim_{\fq} \sum\limits_{i=0}^{e}\calT_i(s,g) + \left( \frac{m-1}{2} -e \right)mk^2,
         \end{align*}
- for all $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$. We then distinguish two cases depending on the relative position of $i^*$ with respect to $e$ and the fact that 
- $$ \sum\limits_{i=i^*}^e \calT_i(s,g) = \calT_e(s,g),$$
- using Proposition \ref{prop:inclusion_T_i's}. The final bound is optained by taking the smallest value with respect to $e$.  
+ for all $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$. If $i^* \leq e \leq \lfloor \frac{m}{2} \rfloor$,  Proposition \ref{prop:inclusion_T_i's} gives
+\[\sum\limits_{i=i^*}^e \calT_i(s,g) = \calT_e(s,g),\]
+which implies the last upper bound.
 \end{proof}
 
 Despite the fact that the upper bound given in Corollary \ref{coro:folklore_upper_bound} can be explicitely computed with the knowledge of $s$ and $s'$, it is hard to give an explicit formula for any parameters, since the dimension of the sum of $\calT_i(s,g)$'s is had to manipulate. Howerver, if we suppose that $i^*=0$, we can precise the above result. \TODO{explain why this case is the most intersting ?}
