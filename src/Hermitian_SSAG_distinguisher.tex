@@ -140,8 +140,7 @@ However, as it is already the case for the distinguisher of classical Goppa code
 
 We hope that this work will lead to several proposal/improvements on SSAG code based McElice cryptosystem in the future.
 
-\TODO{Organisation}
-The paper is organized as follows. In Section \ref{sec:preli}, we recall basic definitions about linear codes, AG codes and $C_{a,b}$ curves.
+The paper is organized as follows. Section \ref{sec:preli} is dedicated to basic definitions about linear codes, AG codes and $C_{a,b}$ curves. In Section \ref{sec:Goppa}, we introduce the notion of Goppa--like AG codes and we give a first bound for the dimension of the square of the dual of Goppa--like AG codes. In Section \ref{sec:AG-C_a,b}, we refine the bound for Goppa--like AG codes from $C_{a,b}$ curves, associated to one--point divisors. Section \ref{sec:analysis} concludes this paper by a discussion about this bound on elliptic curves and on the Hermitian curve, and how it behaves for Cartier codes.
 
 
 \section{Preliminaries}\label{sec:preli}
@@ -349,7 +348,7 @@ polynomials. We will notably perform division, using Gr\"obner bases, and, as ex
 \textit{generally} smaller than the dividend's one.
 \end{remark}
 
-\section{Goppa--like AG codes}
+\section{Goppa--like AG codes}\label{sec:Goppa}
 
 \subsection{The codes}
 
@@ -389,7 +388,7 @@ G \geq qG_1 \ \mathrm{and} \ G \geq G_1.
 Thus, whenever $\deg\left\lfloor \dfrac{G}{q} \right\rfloor > 2\mathfrak{g}-2$, the corresponding Cartier code coincides with the Goppa--like AG code. 
 
 
-\subsection{On the dimension of the square of the dual of a Goppa--like code} \label{section:1st_improvement}
+\subsection{On the dimension of the square of the dual of a Goppa--like AG code} \label{section:1st_improvement}
 
 In this section, we aim to generalize the properties found by the authors of \cite{MT21} in Section 6, in the context of Goppa--like AG code. Let us consider the AG code 
 $$\calC := \calC_{\calL}(\calX,\calP,D+(g))$$
@@ -461,7 +460,7 @@ First, forcing $g \notin \calL(D)$ ensures that the unit vector $(1,\dots,1)$ do
 
 More precisely, if the function $g$ lied in $\calL(D)$, then the divisor $D+(g)$ would be effective and for every $i \geq 0$, we would have the inclusion $\calL((q^i+1)D) \subset \calL((q^{i+1}+1)D)$. Therefore, in the proof of Proposition \ref{prop:bound_dim_using_inclusions}, when bounding from above the dimension of the sum by the sum of the dimensions of the trace codes, we would have no chance to get a sharp bound.
 
-\section{One--point Goppa--like AG code on $C_{a,b}$-curves}
+\section{One--point Goppa--like AG code on $C_{a,b}$-curves}\label{sec:AG-C_a,b}
 
 The bound given in section \ref{section:1st_improvement} can be impreoved by considering more structured codes, \emph{i.e.} one--point Goppa--like AG codes on $C_{a,b}$ curves.
 
@@ -765,7 +764,7 @@ $$e =  \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1.$$
 
 In the last section, we will discuss how to chose efficiently the parameters of a one--point Goppa--like AG code in order to resist this distinguisher.
 
-\section{Analysis of the distinguisher}
+\section{Analysis of the distinguisher}\label{sec:analysis}
 
 \noindent In the previous section, we provided an (experimentally) sharp upper bound on the dimension of the square of the dual of a Goppa--like code, which could leads to a distinguisher for the corresponding code. 
 
