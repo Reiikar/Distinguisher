@@ -350,7 +350,7 @@ polynomials. We will notably perform division, using Gr\"obner bases, and, as ex
 
 \section{Goppa--like AG codes}\label{sec:Goppa}
 
-\subsection{The codes}
+\subsection{Definition and context in the literature}\label{subsec:def-Goppa}
 
 Let $D$ be an effective divisor of positive degree $s$ on a smooth and irreducible projective curve $\calX$ over $\fqm$. Take a rational function $g \in \fqm(\calX)$ such that $g \notin \calL(D)$. Given a set of points $\calP \in \calX(\fqm)$ such that $\calP \cap \Supp(g) = \varnothing$ and $\calP \cap \Supp(D) = \varnothing$, we consider the AG code
 \[\calC := \calC_{\calL}(\calX,\calP,D+(g))=\set{\left(f(P)g(P)^{-1}\right)_{P \in \calP} \mid f \in \calL(D)}.\]
@@ -373,17 +373,19 @@ where $\mathbf{y}=(g(x_1)^{-1},g(x_2)^{-1},\dots,g(x_n)^{-1})$.
 Represent the $\fqm$--points of $\PP^1$ by the couples $\PP^1(\fqm)=\{[1:x] \mid x \in \fqm\} \cup \{P_\infty\}$ for $P_\infty=[0:1]$. Take $\calP=\{[1:x_1],[1:x_2],\dots,[1:x_n]\}$ and $D=(r-1)P_\infty$. Finally, the polynomial $g$ can be seen as a function on $\PP^1$ which lies in $L(rP_\infty)$ but not in $L((r-1)P_\infty)$. Then both constructions match: $\Gamma_r(\mathbf{x},g)=\Gamma(\calP,D,g)$.
 
 
-\paragraph{Relation with Cartier codes.} Cartier codes \cite{Cou14} are also defined as a geometric generalisation of Goppa codes, since well-known properties on Goppa codes naturally extend to them.
+\paragraph{Relation with Cartier codes.} Cartier codes \cite{Cou14} are also defined as a geometric realisation of Goppa codes, since well-known properties on Goppa codes naturally extend to them.
 
-The link with Goppa--like AG codes is the following: by definition, a Cartier code is a subcode of the subfield subcode of a residue code (see \cite[Proposition 4.3]{Cou14}), which actually means that for the good choice of divisor, a Cartier code is a subcode of the corresponding Goppa--like AG code. Moreover, \cite[Theorem 5.1]{Cou14} provides a sufficient condition for both constructions to be equal. More precisely, let us consider a Goppa--like AG code $\Gamma(\calP,D,g)$  and set $G := D+(g)$. Then the cartier code $\mathrm{Car}_q(\calP,G)$ (see \cite[Definition 4.2]{Cou14}) satisfies $\mathrm{Car}_q(\calP,G) \subseteq \Gamma(\calP,D,g)$, and 
+The link with Goppa--like AG codes is the following: by definition, a Cartier code is a subcode of the subfield subcode of a residue code (see \cite[Proposition 4.3]{Cou14}), which actually means that for the good choice of divisor, a Cartier code is a subcode of the corresponding Goppa--like AG code. Moreover, \cite[Theorem 5.1]{Cou14} provides a sufficient condition for both constructions to be equal. More precisely, let us consider a Goppa--like AG code $\Gamma(\calP,D,g)$  and set $G := D+(g)$. Then the Cartier code $\mathrm{Car}_q(\calP,G)$ (see \cite[Definition 4.2]{Cou14}) satisfies $\mathrm{Car}_q(\calP,G) \subseteq \Gamma(\calP,D,g)$, and 
 
 $$ \dim_{\fq} \left( \Gamma(\calP,D,g)/ \mathrm{Car}_q(\calP,G)\right) \leq m \cdot i(G_1),$$
 where $G_1$ is any divisor such that 
 \begin{equation} \label{eq:divisor_G_1}
 G \geq qG_1 \ \mathrm{and} \ G \geq G_1.
 \end{equation}
- Above, $i(G_1)$ stands for the index of speciality of $G_1$ (see \cite[Definition 1.6.10]{Sti09}), and we have $\deg(G_1) > 2\mathfrak{g}-2 \Rightarrow i(G_1) =0.$ The biggest divisor (with respect to the degree) satisfying \eqref{eq:divisor_G_1} is given by 
- $$\left\lfloor \frac{G}{q} \right\rfloor := \sum\limits_{P \in \Supp(G^+)} \left\lfloor\frac{\nu_P(G^+)}{q}\right\rfloor ¨P + \sum\limits_{P \in \Supp(G^-)}\nu_P(G^-)P,$$
+ Above, $i(G_1)$ stands for the index of speciality of $G_1$ (see \cite[Definition 1.6.10]{Sti09}). By the Riemann--Roch theorem, if $\deg(G_1) > 2\mathfrak{g}-2$, then $i(G_1) =0.$ The biggest divisor (with respect to the degree) satisfying \eqref{eq:divisor_G_1} is given by 
+\begin{equation}\label{eq:G/q}
+\left\lfloor \frac{G}{q} \right\rfloor := \sum\limits_{P \in \Supp(G^+)} \left\lfloor\frac{\nu_P(G^+)}{q}\right\rfloor ¨P + \sum\limits_{P \in \Supp(G^-)}\nu_P(G^-)P,
+\end{equation}
  where $G^+ = D+(g)_0$ and $G^-=(g)_\infty$ are such that $G=G^+-G^-$.
 Thus, whenever $\deg\left\lfloor \dfrac{G}{q} \right\rfloor > 2\mathfrak{g}-2$, the corresponding Cartier code coincides with the Goppa--like AG code. 
 
@@ -456,9 +458,9 @@ $$e =  \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor.$$
 
 \paragraph{Why imposing $g \notin \calL(D)$?} In the definition of Goppa--like AG code, we ask for the function $g$ to lie outside the Riemann--space $\calL(D)$. By doing so, we cannot see all alternant codes as Goppa--like AG codes on $\calX=\PP^1$. However, to make these codes resistant to a distinguished based on the square of their dual, it is crucial to make sure that the dimension of $\Tr{\calC}^{\star 2}$ is not abnormally small compared to the typical value given in Corollary \ref{coro:first_bound_square_of_trace}. 
 
-First, forcing $g \notin \calL(D)$ ensures that the unit vector $(1,\dots,1)$ do no lie in the AG code $\calC$. Otherwise, $(1,\dots,1)$ belongs to $\calC^{q^i}$ for every $i \in \{0,\dots, \lfloor{m/2} \rfloor\}$ and each term in the sum on the right hand-side would contain a copy $\Tr{\calC}$.
+First, if the function $g$ lied in $\calL(D)$, then the code $\calC$ would contain the evaluation of the constant function $1=\frac{g}{g}$, which is the unit vector $(1,\dots,1)$. In this case, the vector $(1,\dots,1)$ would belong to $\calC^{q^i}$ for every $i \in \{0,\dots, \lfloor{m/2} \rfloor\}$ and each term in the sum on the right hand--side would contain a copy $\Tr{\calC}$. This non--trivial intersection between the codes $\Tr{\calC\star \calC^{q^i}}$ would contribute with a negative term in the above bound.
 
-More precisely, if the function $g$ lied in $\calL(D)$, then the divisor $D+(g)$ would be effective and for every $i \geq 0$, we would have the inclusion $\calL((q^i+1)D) \subset \calL((q^{i+1}+1)D)$. Therefore, in the proof of Proposition \ref{prop:bound_dim_using_inclusions}, when bounding from above the dimension of the sum by the sum of the dimensions of the trace codes, we would have no chance to get a sharp bound.
+Secondly, if the function $g$ belonged to $\calL(D)$, then the divisor $D+(g)$ would be effective and for every $i \geq 0$. This would imply the inclusion $\calL((q^i+1)D) \subset \calL((q^{i+1}+1)D)$. Therefore, in the proof of Proposition \ref{prop:bound_dim_using_inclusions}, when bounding from above the dimension of the sum by the sum of the dimensions of the trace codes, we would have no chance to get a sharp bound.
 
 \section{One--point Goppa--like AG code on $C_{a,b}$-curves}\label{sec:AG-C_a,b}
 
@@ -744,7 +746,7 @@ From \eqref{eq:key_equation} and under the assumption on $s$ and $s'$, we have
 which implies the last upper bound.
 \end{proof}
 
-Despite the fact that the upper bound given in Corollary \ref{coro:folklore_upper_bound} can be explicitly computed with the knowledge of $s$ and $s'$, it is hard to give a close formula for any parameters, since the intersections of the trace codes $\calT_i(s,g)$'s are hard to manipulate. However, if we suppose that $i^*=0$, we can sharpen the above result.
+Despite the fact that the upper bound given in Corollary \ref{coro:folklore_upper_bound} can be numerically computed with the knowledge of the degree $s$ and the function $g$, it is hard to give a close formula for any parameters, since the intersections of the trace codes $\calT_i(s,g)$'s are hard to manipulate. However, if we suppose that $i^*=0$, we can sharpen the above result.
 
 \begin{thm} \label{thm:bound_with_T_i's_inclusion}
 Suppose $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$ and let $e^* := \min\left(\left\lfloor \frac{m}{2} \right\rfloor, \left\lceil \log_q\left(\frac{k^2}{s'(q-1)^2}\right)\right\rceil+1\right)$. Then
@@ -866,10 +868,10 @@ Its genus is given by $\mathfrak{g}_{\calH} = \frac{q_0(q_0-1)}{2}$ and it is a 
         \item [-] If $e^* < \frac{m}{2}$, then $\mathfrak{B}(e^*) > mk^2$. With the condition on $s$, we know that $s \geq 2\mathfrak{g}_{\calH}+q-1$. This give $k \geq \mathfrak{g}_{\calH}+q$ and thus
         \begin{align*}
 \mathfrak{B}(e^*) - (q_0^3-1) 
-&> m(\mathfrak{g}_{\calH}^2+2\mathfrak{g}_{\calH}q+q^2)-(q_0^3-1)\\
-& > \frac{m}{4}(q_0^4-2q_0^3+q_0^2) + mq(q_0^2-q_0+q) -q_0^3+1 \\
-& \geq \frac{1}{2}(q_0^4-2q_0^3+q_0^2)+4(q_0^2-q_0+2)-q_0^3+1 \quad (\mathrm{since} \ m\geq 2 \ \mathrm{and} \ q\geq 2)\\
-& > \frac{q_0}{2} (q_0^3-4q_0^2+9q_0-8) > 0,
+&> m(\mathfrak{g}_{\calH}^2+2\mathfrak{g}_{\calH}q+q^2)-(q_0^3-1)&\\
+& > \frac{m}{4}(q_0^4-2q_0^3+q_0^2) + mq(q_0^2-q_0+q) -q_0^3+1 &\\
+& \geq \frac{1}{2}(q_0^4-2q_0^3+q_0^2)+4(q_0^2-q_0+2)-q_0^3+1 \quad &(\text{since } m\geq 2 \ \mathrm{and} \ q\geq 2)&\\
+& > \frac{q_0}{2} (q_0^3-4q_0^2+9q_0-8) > 0,&
         \end{align*}
         since $q_0 \geq 2$. Inequality \eqref{eq:dont_distinguish_Hermitian_case} holds in this case.
         \item[-] If $e^* = \frac{m}{2},$ then since $q_0=q^{m/2}$, we have $\mathfrak{B}\left(\frac{m}{2}\right) = ms'(q_0-q_0q^{-1}+1)$. Moreover, $s'>s$ implies $s' \geq 2\mathfrak{g}_{\calH}+q$. This gives
@@ -886,6 +888,15 @@ Its genus is given by $\mathfrak{g}_{\calH} = \frac{q_0(q_0-1)}{2}$ and it is a 
 \end{proof}
 
 Consequently, it is still reasonable to consider the Hermitian curve to build efficient SSAG code-based cryptosystem.
+
+\subsection{Cartier codes}
+\TODO{Bouger ça avant même de parler de codes sur les courbes $C_{a,b}$}
+
+As recalled in Section \ref{subsec:def-Goppa}, Goppa--like AG codes coincide with Cartier code as soon as $\deg \lfloor \frac{G}{q} \rfloor > 2 \mathfrak{g}-2$ (see Equation \eqref{eq:G/q} for the definition of the divisor $\lfloor \frac{G}{q} \rfloor$).
+
+Set $\calC_1=C_{\calL}(\calX,\mathcal{P},\lfloor \frac{G}{q} \rfloor) $. By Riemann--Roch theorem, $\ell(\lfloor \frac{G}{q} \rfloor)\geq 1$.  Then every non--zero codeword $\mathbf{c} \in  \calC_1 \subset \calC$ satisfies $\mathbf{c} \in \calC \cap \calC^q$, hence $\mathbf{c}^{q^i} \in \calC^{q^i} \cap \calC^{q^{i+1}}$ for every $i \in \set{0,\dots,\lfloor \frac{m}{2}\rfloor -1}$. This implies that the code $\calC \star \calC_1^{q^i}$ lies in the intersection of $\calC \star \calC^{q^i}$ and $\calC \star \calC^{q^{i+1}}$.
+
+
 
 
 \clearpage
