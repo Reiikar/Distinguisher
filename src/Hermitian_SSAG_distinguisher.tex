@@ -12,7 +12,11 @@
 \usepackage{amsthm}
 \usepackage{geometry}
 \geometry{hmargin=2cm,vmargin=1.5cm}
-\usepackage{hyperref} %RÃ©fÃ©rences cliquables
+\usepackage{hyperref} %Références cliquables
+
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{naturalnames}{hyperref}
+
 %%%%%---Pour les dessins---%%%%%
 \usepackage{tikz}
 \usetikzlibrary{shapes,positioning}
@@ -178,7 +182,7 @@ This fact is possible thanks to a result from \cite{MT21}, valid for any linear 
  \begin{equation} \label{eq:key_equation} \Tr{\calC}^{\star2} := ((\calC^{\perp}|_{_{{\mathbb{F}_q}}})^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr{\calC\star \calC^{q^i}},
  \end{equation}
 Moreover, if $m$ is even, 
- \begin{equation} \label{eq:dim_m/2} \dim_{\fq} \Tr{\calC\star \calC^{q^{\lfloor{m/2} \rfloor}}} \leq \frac{m}{2} (\dim_{\fqm}\calC)^2.
+ \begin{equation} \label{eq:dim_m/2} \dim_{\fq} \Tr{\calC\star \calC^{q^{\frac{m}{2}}}} \leq \frac{m}{2} (\dim_{\fqm}\calC)^2.
 \end{equation}
 \end{proposition}
 From this result, we can deduce an upper bound for the dimension of the square of the dual of any linear code.
@@ -331,7 +335,7 @@ the last equality coming from the Riemann-Roch theorem (since $s \geq 2\mathfrak
 \end{proof}
 \noindent This simple Lemma yields an upper bound on the dimension of the square of the dual of Goppa--like codes.
 \begin{proposition} \label{prop:bound_dim_using_inclusions}
-    Let $\calC := \calC_{\calL}(\calX,\calP,D+(g))$ be as above, and suppose $s \geq 2\mathfrak{g}-1$. Set $k := \dim_{\fqm}\calC = s+1-\mathfrak{g}$ and  $e := \min\left(\left\lfloor \frac{m}{2} \right\rfloor,\left\lfloor \log_q\left(\frac{k^2}{s}\right)\right\rfloor\right)$. Then
+    Let $\calC := \calC_{\calL}(\calX,\calP,D+(g))$ be an AG code as above, and suppose $s \geq 2\mathfrak{g}-1$. Set $k := \dim_{\fqm}\calC = s+1-\mathfrak{g}$ and  $e := \min\left(\left\lfloor \frac{m}{2} \right\rfloor,\left\lfloor \log_q\left(\frac{k^2}{s}\right)\right\rfloor\right)$. Then
     $$\dim_{\fq} (\Gamma(\calP,D,g)^{\perp})^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).$$
 \end{proposition}
 \begin{proof}
@@ -355,14 +359,33 @@ We compute the discrete derivative:
 This function is decreasing with $e$, and the smallest value for which $\Delta T(e) \leq 0$ corresponds to its maximum. It is the smallest value of $e$ such that $k^2 \leq sq^{e+1}$, \emph{i.e.}
 $$e =  \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor.$$
 \end{proof}
-\subsubsection{Why impose $g \notin \calL(D)$?}
-In the definition of Goppa--like AG code, we ask for the function $g$ to lie outside the Riemann--space $\calL(D)$. By doing so, we cannot see all alternant codes as Goppa--like AG codes on $\calX=\PP^1$. However, to make these codes resistant to a distinguished based on the square of their dual, it is crucial to make sure that the dimension of $\Tr{\calC}^{\star 2}$ is not abnormally small compared to the typical value given in Corollary \ref{coro:first_bound_square_of_trace}. 
-First, if the function $g$ lied in $\calL(D)$, then the code $\calC$ would contain the evaluation of the constant function $1=\frac{g}{g}$, which is the unit vector $(1,\dots,1)$. In this case, the vector $(1,\dots,1)$ would belong to $\calC^{q^i}$ for every $i \in \{0,\dots, \lfloor{m/2} \rfloor\}$ and each term in the sum on the right hand--side would contain a copy $\Tr{\calC}$. This non--trivial intersection between the codes $\Tr{\calC\star \calC^{q^i}}$ would contribute with a negative term in the above bound.
-Secondly, if the function $g$ belonged to $\calL(D)$, then the divisor $D+(g)$ would be effective and for every $i \geq 0$. This would imply the inclusion $\calL((q^i+1)D) \subset \calL((q^{i+1}+1)D)$. Therefore, in the proof of Proposition \ref{prop:bound_dim_using_inclusions}, when bounding from above the dimension of the sum by the sum of the dimensions of the trace codes, we would have no chance to get a sharp bound.
+
 \subsubsection{Sharpness of the bound}
-\TODO{Réécrire sous forme de lemme + Exemple}
-As recalled in Section \ref{subsec:def-Goppa}, Goppa--like AG codes coincide with Cartier code as soon as $\deg \lfloor \frac{G}{q} \rfloor > 2 \mathfrak{g}-2$ (see Equation \eqref{eq:G/q} for the definition of the divisor $\lfloor \frac{G}{q} \rfloor$).
-Set $\calC_1=C_{\calL}(\calX,\mathcal{P},\lfloor \frac{G}{q} \rfloor) $. By Riemann--Roch theorem, $\ell(\lfloor \frac{G}{q} \rfloor)\geq 1$, which entails that $\dim \calC_1 \geq 1$.  Then every non--zero codeword $\mathbf{c} \in  \calC_1 \subset \calC$ satisfies $\mathbf{c} \in \calC \cap \calC^q$, hence $\mathbf{c}^{q^i} \in \calC^{q^i} \cap \calC^{q^{i+1}}$ for every $i \in \set{0,\dots,\lfloor \frac{m}{2}\rfloor -1}$. This implies that the code $\calC \star \calC_1^{q^i}$ lies in the intersection of $\calC \star \calC^{q^i}$ and $\calC \star \calC^{q^{i+1}}$.
+
+Definition \ref{def:Goppa--like_AG_code} of a Goppa--like AG code $\Gamma(\calP,D,g) := \calC^{\perp}|_{\fq}$ requires very few hypotheses. Besides the conditions on the supports of $D$ and $(g)$, which that code is well-defined, we ask for the function $g$ not to belong to the Riemann--Roch space $\calL(D)$. By doing so, we cannot see all alternant codes as Goppa--like AG codes on $\calX=\PP^1$. However, to make these codes resistant to a distinguisher based on the square of their dual, it is crucial to make sure that the dimension of $\Tr{\calC}^{\star 2}$ is not abnormally small compared to the typical value given in Corollary \ref{coro:first_bound_square_of_trace}.
+
+First, if the function $g$ lied in $\calL(D)$, then the code $\calC= \calC_{\calL}(\calX,\calP,D+(g))$ would contain the evaluation of the constant function $1=\frac{g}{g}$, which is the unit vector $(1,\dots,1)$. In this case, the vector $(1,\dots,1)$ would belong to $\calC^{q^i}$ for every $i \in \{0,\dots, \lfloor{m/2} \rfloor\}$ and each term in the sum on the right hand--side would contain a copy of $\Tr{\calC}$. This non--trivial intersection between the codes $\Tr{\calC\star \calC^{q^i}}$ would contribute with a negative term in the above bound.
+Secondly, if the function $g$ belonged to $\calL(D)$, then the divisor $D+(g)$ would be effective. This would imply the inclusion $\calL((q^i+1)D) \subset \calL((q^{i+1}+1)D)$ for every $i \geq 0$. Therefore, in the proof of Proposition \ref{prop:bound_dim_using_inclusions}, when bounding from above the dimension of the sum by the sum of the dimensions of the trace codes, we would have no chance to get a sharp bound.
+
+Unfortunately, the condition $g \notin \calL(D)$ does not guarantee that the bound given in Proposition \ref{prop:bound_dim_using_inclusions} is reached. In the following proposition, we detail one situation in which we cannot hope for equality.
+
+\begin{proposition}\label{prop:non-eq}
+	Using the same notations as above, set $\calC_1=C_{\calL}(\calX,\mathcal{P},\left\lfloor \frac{D+(g)}{q} \right\rfloor)$ (see Equation \eqref{eq:G/q} for the definition of $\lfloor \frac{G}{q} \rfloor$ for a divisor $G$). If $\dim \calC_1 \geq 1$, then the bound given in Proposition \ref{prop:bound_dim_using_inclusions} is not reached.
+\end{proposition}
+
+\begin{proof}
+Any every non--zero codeword $\mathbf{c} \in  \calC_1 \subset \calC$ satisfies $\mathbf{c}^q \in \calC$. As $\mathbf{c}$ lies in $\fqm^n$, we have $\mathbf{c}^{q^m}=\mathbf{c} \in \calC^{q^{m-1}}$. Therefore,  we have $\calC_1 \subseteq \calC^{q^i} \cap \calC^{q^{m-1}}$, and for every $i \in \set{1,\dots,\lfloor \frac{m}{2}\rfloor}$, we have $\calC_1^{q^i} \subseteq \calC^{q^i} \cap \calC^{q^{i-1}}$. Then
+\[\Tr{\calC\star\calC_1^{q^i}} \subseteq \Tr{\calC\star\calC^{q^i}} \cap \Tr{\calC\star\calC^{q^{i-1}}}.\]
+As a result, each pair of consecutive terms in the sum $\sum\limits_{i=0}^{\lfloor m/2 \rfloor} \Tr{\calC \star \calC^{q^i}}$ has non--trivial intersection. However, using \cite[Theorem~2]{T19}, equality with the upper bound only occurs if
+\[\bigcap_{0\leq j \leq \lfloor m/2\rfloor} \left( \sum_{\substack{0\leq i \leq \lfloor m/2 \rfloor\\ i\neq j}} \Tr{\calC \star \calC^{q^i}} \right)= \varnothing.\]
+\end{proof}
+
+As recalled in Section \ref{subsec:def-Goppa}, Goppa--like AG codes coincide with Cartier code as soon as $\deg \left\lfloor \frac{D+(g)}{q} \right\rfloor > 2 \mathfrak{g}-2$. In this case, the code $\calC_1$ has dimension at least $\mathfrak{g}$. This means that when $\calC$ is a Cartier code, the dimension of the square of its dual is very unlikely to meet the bound given in Proposition \ref{prop:bound_dim_using_inclusions}.
+
+\begin{remark}
+	When considering Goppa codes for the McEliece cryptosystem, it is common to ask for the polynomial $g$ to have only simple roots. In this case, we have that $ \left\lfloor \frac{(r-1)P_\infty+(g)}{q} \right\rfloor = -P_\infty$ and the code $\calC_1$ defined in Proposition \ref{prop:non-eq} is always zero. The situation above thus never occurs.
+\end{remark}
+
 \section{One--point Goppa--like AG code on $C_{a,b}$-curves}\label{sec:AG-C_a,b}
 The bound given in section \ref{section:1st_improvement} can be improved by considering more structured codes, \emph{i.e.} one--point Goppa--like AG codes on $C_{a,b}$ curves.
 \subsection{Definition}
