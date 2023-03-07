@@ -136,7 +136,7 @@ In the present work, we are interested in the case of Goppa--like one--point AG 
 
 AG codes, as generalization of GRS codes, have exactly the same behaviour with respect to the Schur product. Moreover, some well-chosen AG codes are defined by the evaluation of \textit{multivariate} polynomials. In this case, we prove that performing division algorithm via Gröbner bases enable us to estimate the dimension of the square of the dual of Goppa--like AG codes. Even better, computations tend to show that the bound we obtain on the dimension is sharp whenever the Goppa--like code seems random (\emph{i.e} the function $g$ is sufficiently random). The counterpart is, as it was the case in \cite{MT21} for classical Goppa codes, that we can only distinguish high rate codes (more precisely, our maxima distinguishable rate are roughly the same). A comparison of their and our result is carried out in the case of Goppa--like codes on an elliptic curve. However, as previously discussed, if the genus becomes too large, the distinguisher may become ineffective: in particular, we show that Goppa--like AG codes constructed from the Hermitian curve resist our distinguisher, which is encouraging if we intend to base a McEliece's like cryptosystem on such class of codes.
 
-However, as it is already the case for the distinguisher of classical Goppa codes \cite{MT21}, it seems complicated to turn this distinguisher into an efficiant structural attack. But, having an algebraic explanation of the structure of the square of the dual of one--point Goppa--like codes is still desirable if we want to perform an attack using square code considerations. It also provides an rigorous method for selecting initial parameters that ensure the security of our cryptosystem.
+However, as it is already the case for the distinguisher of classical Goppa codes \cite{MT21}, it seems complicated to turn this distinguisher into an efficient structural attack. But, having an algebraic explanation of the structure of the square of the dual of one--point Goppa--like codes is still desirable if we want to perform an attack using square code considerations. It also provides an rigorous method for selecting initial parameters that ensure the security of our cryptosystem.
 
 We hope that this work will lead to several proposal/improvements on SSAG code based McElice cryptosystem in the future.
 
@@ -237,6 +237,9 @@ This fact is possible thanks to a result from \cite{MT21}, valid for any linear 
 	Let $\calC$ be a linear code over $\fqm$. Then we have 
 	\begin{equation} \label{eq:key_equation} \Tr{\calC}^{\star2} := ((\calC^{\perp}|_{_{{\mathbb{F}_q}}})^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr{\calC\star \calC^{q^i}},
 	\end{equation}
+Moreover, if $m$ is even, 
+	\begin{equation} \label{eq:dim_m/2} \dim_{\fq} \Tr{\calC\star \calC^{q^{\lfloor{m/2} \rfloor}}} \leq \frac{m}{2} (\dim_{\fqm}\calC)^2.
+\end{equation}
 \end{proposition}
 
 From this result, we can deduce an upper bound for the dimension of the square of the dual of any linear code.
@@ -250,6 +253,8 @@ From this result, we can deduce an upper bound for the dimension of the square o
 	\end{equation}
 	Furthermore, if $\dim_{\fq} \Tr{\calC} = m \cdot \dim_{\fqm}(\calC)$, then 
 	\[\dim_{\fq} \Tr{\calC}^{\star2} - \binom{\dim_{\fq} \Tr{\calC}+1}{2} \leq m \cdot \dim_{\fqm} \calC^{\star 2} - \binom{\dim_{\fqm} (\calC)+1}{2}.\]
+	
+	
 \end{coro}
 
 The above corollary implies that if the dimension of a square code is smaller than that of a random code, namely
@@ -360,7 +365,9 @@ The Goppa--like AG code associated to $\calC$ is defined as the dual of its subf
 $$ \Gamma(\calP,D,g) := \calC^{\perp}|_{\fq}.$$
 \end{definition}
 
-\paragraph{Why the terminology \textit{Goppa--like}?} The terminology Goppa--like is motivated by the fact that here, the rational function $g$ plays the role of the Goppa polynomial. Goppa codes are nothing but Goppa--like AG codes from the projective line $\calX=\PP^1$.
+\subsubsection{Why the terminology \textit{Goppa--like}?}
+
+The terminology Goppa--like is motivated by the fact that here, the rational function $g$ plays the role of the Goppa polynomial. Goppa codes are nothing but Goppa--like AG codes from the projective line $\calX=\PP^1$.
 
 Let $r$ be an integer. The Generalized Reed--Solomon (GRS) code of degree $r$, of support $\mathbf{x} \in \fqm^n$ and multiplier $\mathbf{y} \in (\fqm^*)^n$ is defined as
 
@@ -373,7 +380,7 @@ where $\mathbf{y}=(g(x_1)^{-1},g(x_2)^{-1},\dots,g(x_n)^{-1})$.
 Represent the $\fqm$--points of $\PP^1$ by the couples $\PP^1(\fqm)=\{[1:x] \mid x \in \fqm\} \cup \{P_\infty\}$ for $P_\infty=[0:1]$. Take $\calP=\{[1:x_1],[1:x_2],\dots,[1:x_n]\}$ and $D=(r-1)P_\infty$. Finally, the polynomial $g$ can be seen as a function on $\PP^1$ which lies in $L(rP_\infty)$ but not in $L((r-1)P_\infty)$. Then both constructions match: $\Gamma_r(\mathbf{x},g)=\Gamma(\calP,D,g)$.
 
 
-\paragraph{Relation with Cartier codes.} Cartier codes \cite{Cou14} are also defined as a geometric realisation of Goppa codes, since well-known properties on Goppa codes naturally extend to them.
+\subsubsection{Relation with Cartier codes.} Cartier codes \cite{Cou14} are also defined as a geometric realisation of Goppa codes, since well-known properties on Goppa codes naturally extend to them.
 
 The link with Goppa--like AG codes is the following: by definition, a Cartier code is a subcode of the subfield subcode of a residue code (see \cite[Proposition 4.3]{Cou14}), which actually means that for the good choice of divisor, a Cartier code is a subcode of the corresponding Goppa--like AG code. Moreover, \cite[Theorem 5.1]{Cou14} provides a sufficient condition for both constructions to be equal. More precisely, let us consider a Goppa--like AG code $\Gamma(\calP,D,g)$  and set $G := D+(g)$. Then the Cartier code $\mathrm{Car}_q(\calP,G)$ (see \cite[Definition 4.2]{Cou14}) satisfies $\mathrm{Car}_q(\calP,G) \subseteq \Gamma(\calP,D,g)$, and 
 
@@ -456,11 +463,21 @@ This function is decreasing with $e$, and the smallest value for which $\Delta T
 $$e =  \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor.$$
 \end{proof}
 
-\paragraph{Why imposing $g \notin \calL(D)$?} In the definition of Goppa--like AG code, we ask for the function $g$ to lie outside the Riemann--space $\calL(D)$. By doing so, we cannot see all alternant codes as Goppa--like AG codes on $\calX=\PP^1$. However, to make these codes resistant to a distinguished based on the square of their dual, it is crucial to make sure that the dimension of $\Tr{\calC}^{\star 2}$ is not abnormally small compared to the typical value given in Corollary \ref{coro:first_bound_square_of_trace}. 
+\subsubsection{Why imposing $g \notin \calL(D)$?}
+
+In the definition of Goppa--like AG code, we ask for the function $g$ to lie outside the Riemann--space $\calL(D)$. By doing so, we cannot see all alternant codes as Goppa--like AG codes on $\calX=\PP^1$. However, to make these codes resistant to a distinguished based on the square of their dual, it is crucial to make sure that the dimension of $\Tr{\calC}^{\star 2}$ is not abnormally small compared to the typical value given in Corollary \ref{coro:first_bound_square_of_trace}. 
 
 First, if the function $g$ lied in $\calL(D)$, then the code $\calC$ would contain the evaluation of the constant function $1=\frac{g}{g}$, which is the unit vector $(1,\dots,1)$. In this case, the vector $(1,\dots,1)$ would belong to $\calC^{q^i}$ for every $i \in \{0,\dots, \lfloor{m/2} \rfloor\}$ and each term in the sum on the right hand--side would contain a copy $\Tr{\calC}$. This non--trivial intersection between the codes $\Tr{\calC\star \calC^{q^i}}$ would contribute with a negative term in the above bound.
 
 Secondly, if the function $g$ belonged to $\calL(D)$, then the divisor $D+(g)$ would be effective and for every $i \geq 0$. This would imply the inclusion $\calL((q^i+1)D) \subset \calL((q^{i+1}+1)D)$. Therefore, in the proof of Proposition \ref{prop:bound_dim_using_inclusions}, when bounding from above the dimension of the sum by the sum of the dimensions of the trace codes, we would have no chance to get a sharp bound.
+
+\subsubsection{Sharpness of the bound}
+
+\TODO{Réécrire sous forme de lemme + Exemple}
+
+As recalled in Section \ref{subsec:def-Goppa}, Goppa--like AG codes coincide with Cartier code as soon as $\deg \lfloor \frac{G}{q} \rfloor > 2 \mathfrak{g}-2$ (see Equation \eqref{eq:G/q} for the definition of the divisor $\lfloor \frac{G}{q} \rfloor$).
+
+Set $\calC_1=C_{\calL}(\calX,\mathcal{P},\lfloor \frac{G}{q} \rfloor) $. By Riemann--Roch theorem, $\ell(\lfloor \frac{G}{q} \rfloor)\geq 1$, which entails that $\dim \calC_1 \geq 1$.  Then every non--zero codeword $\mathbf{c} \in  \calC_1 \subset \calC$ satisfies $\mathbf{c} \in \calC \cap \calC^q$, hence $\mathbf{c}^{q^i} \in \calC^{q^i} \cap \calC^{q^{i+1}}$ for every $i \in \set{0,\dots,\lfloor \frac{m}{2}\rfloor -1}$. This implies that the code $\calC \star \calC_1^{q^i}$ lies in the intersection of $\calC \star \calC^{q^i}$ and $\calC \star \calC^{q^{i+1}}$.
 
 \section{One--point Goppa--like AG code on $C_{a,b}$-curves}\label{sec:AG-C_a,b}
 
@@ -889,12 +906,6 @@ Its genus is given by $\mathfrak{g}_{\calH} = \frac{q_0(q_0-1)}{2}$ and it is a 
 
 Consequently, it is still reasonable to consider the Hermitian curve to build efficient SSAG code-based cryptosystem.
 
-\subsection{Cartier codes}
-\TODO{Bouger ça avant même de parler de codes sur les courbes $C_{a,b}$}
-
-As recalled in Section \ref{subsec:def-Goppa}, Goppa--like AG codes coincide with Cartier code as soon as $\deg \lfloor \frac{G}{q} \rfloor > 2 \mathfrak{g}-2$ (see Equation \eqref{eq:G/q} for the definition of the divisor $\lfloor \frac{G}{q} \rfloor$).
-
-Set $\calC_1=C_{\calL}(\calX,\mathcal{P},\lfloor \frac{G}{q} \rfloor) $. By Riemann--Roch theorem, $\ell(\lfloor \frac{G}{q} \rfloor)\geq 1$.  Then every non--zero codeword $\mathbf{c} \in  \calC_1 \subset \calC$ satisfies $\mathbf{c} \in \calC \cap \calC^q$, hence $\mathbf{c}^{q^i} \in \calC^{q^i} \cap \calC^{q^{i+1}}$ for every $i \in \set{0,\dots,\lfloor \frac{m}{2}\rfloor -1}$. This implies that the code $\calC \star \calC_1^{q^i}$ lies in the intersection of $\calC \star \calC^{q^i}$ and $\calC \star \calC^{q^{i+1}}$.
 
 
 
