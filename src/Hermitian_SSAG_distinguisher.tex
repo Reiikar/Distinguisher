@@ -179,7 +179,9 @@ Let $\calC$ be a linear code of lenght $n$ over $\fqm$. Then
 
 \subsection{AG and SSAG codes} \label{section:AG_codes}
 
-\paragraph{Definitions.} Let $\calX$ be a smooth and irreducible projective curve over $\fqm$ of genus $\mathfrak{g}$. A \emph{divisor} on $\calX$ over $\fqm$ is a formal sum of places over $\fqm$, \emph{i.e.} of the form $D=\sum \nu_P(D) P$, where $\nu_P(D)$ are integers which are all zero except for a finite number of places $P$. We denote by $\Div(\calX)$ the set of $\fqm$--divisors on $\calX$ (we omit the dependence on $\fqm$).
+\subsubsection{Definitions}
+
+Let $\calX$ be a smooth and irreducible projective curve over $\fqm$ of genus $\mathfrak{g}$. A \emph{divisor} on $\calX$ over $\fqm$ is a formal sum of places over $\fqm$, \emph{i.e.} of the form $D=\sum \nu_P(D) P$, where $\nu_P(D)$ are integers which are all zero except for a finite number of places $P$. We denote by $\Div(\calX)$ the set of $\fqm$--divisors on $\calX$ (we omit the dependence on $\fqm$).
 Given $D \in \Div(\calX)$, we define its \emph{support} $\Supp(D)$ as the finite set of places $P$ such that $\nu_P(D)$ is non--zero and its \emph{degree} $\deg D$ as $\deg D=\sum \nu_P(D) \deg(P)$. We say that a divisor $D \in \Div(\calX)$ is \emph{effective} if for all $P \in \Supp(D)$, we have $\nu_P(D) \geq 0$, in which case we write $D \geq 0$.
 A non--zero function $f \in \fqm(\calX)$ defines a divisor, called \emph{principal}, denoted by $(f)=\sum \nu_P(f) P$. The \emph{Riemann-Roch space} of $D$ is defined as the $\fqm$ vector space
 $$ \calL(D) := \set{f \in \fqm(\calX) \mid (f) + D \geq 0} \cup \set{0},$$
@@ -216,7 +218,8 @@ In general, it is hard to find the true dimension $k_q$ of an $\ssag{\calX,\calP
 Furthermore, in some particular cases, the minimum distance of subfield subcode of a linear code can be much greater. Any $C_{\calL}(\calX,\calP,D)$ its minimum distance is at least the \textit{designed minimum distance} $d \geq n-\deg D$, then  the minimum distance $d_q$ of an $\ssag{\calX,\calP,D}$ satisfies $d_q \geq d \geq n- \deg D$, and we have:
 
 
-\paragraph{First estimation of the dimension of the square of the trace of an AG code.}
+\subsubsection{First estimation of the dimension of the square of the trace of an AG code}
+
 In this paper, we aim to bound the dimension of the square of the dual of a SSAG code. From Delsarte's theorem, this is equivalent to study the square of the trace of the corresponding AG code. 
 This fact is possible thanks to a result from \cite{MT21}, valid for any linear code:
 
