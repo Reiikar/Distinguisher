@@ -33,11 +33,13 @@
 \newtheorem{proposition}[thm]{Proposition}
 \newtheorem{coro}[thm]{Corollary}
 \newtheorem{lemma}[thm]{Lemma}
+\newtheorem{expl}[thm]{Example}
 \theoremstyle{definition}
 \newtheorem{definition}[thm]{Definition}
 \newtheorem{example}{Example}
 \theoremstyle{remark}
 \newtheorem{remark}[thm]{Remark}
+
 
 %------------Commands-----------%
 \newcommand{\calA}{\mathcal{A}}
@@ -200,7 +202,7 @@ $$ \ell(D) \geq \deg(D) +1 - \mathfrak{g},$$
 with equality if $\deg(D) \geq 2\mathfrak{g}-1$.\\
 
 The dual of an AG code can be described as a residue code (see \cite{Sti09} for more details), \emph{i.e.}
-$$ C_{\calL}(\calX,\calP,D)^{\perp} = C_{\omega}(\calX,\calP,D).$$ 
+$$ C_{\calL}(\calX,\calP,D)^{\perp} = C_{\Omega}(\calX,\calP,D).$$ 
 Residue and evaluation codes are connected by the following result.
 
 \begin{proposition} [{\cite[Proposition~2.2.10]{Sti09}}] \label{prop:dual_AG_codes}
@@ -334,7 +336,7 @@ The Goppa--like AG code associated to $\calC$ is defined as the dual of its subf
 %
 Such a code has length $n = \# \calP$. By \cite[Theorem~1]{JM96}, its dimension satisfies 
 \[\dim_{\fq} \Gamma(\calP,D,g) \geq n-m \dim_{\fqm} \calC_{\calL}(\calX,\calP,D+(g)) =n-m(\deg D - \mathfrak{g} +1 )\]
-if $2\mathfrak{g} - 2 < \deg D < n$. Its minimum distance is bounded from below by $\deg D - 2 \frak{g} + 2$.
+if $2\mathfrak{g} - 2 < \deg D < n$. Its minimum distance is bounded from below by $\deg D - 2 \mathfrak{g} + 2$.
 
 
 
@@ -431,7 +433,7 @@ This function is decreasing with $e$, and the smallest value for which $\Delta T
 $$e =  \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor.$$
 \end{proof}
 
-\subsubsection{Sharpness of the bound}
+\subsubsection{Sharpness of the bound} \label{section:sharpness}
 
 Definition \ref{def:Goppa--like_AG_code} of a Goppa--like AG code $\Gamma(\calP,D,g) := \calC^{\perp}|_{\fq}$ requires very few hypotheses. Besides the conditions on the supports of $D$ and $(g)$, which guarantee that code is well-defined, we only ask for the function $g$ not to belong to the Riemann--Roch space $\calL(D)$. By doing so, we cannot see all alternant codes as Goppa--like AG codes on $\calX=\PP^1$. However, to make these codes resistant to a distinguisher based on the square of their dual, it is crucial to make sure that the dimension of $\Tr{\calC}^{\star 2}$ is not abnormally small compared to the expected value given in Corollary \ref{coro:first_bound_square_of_trace}.
 
@@ -441,7 +443,7 @@ Secondly, if the function $g$ belonged to $\calL(D)$, then the divisor $D+(g)$ w
 Unfortunately, the condition $g \notin \calL(D)$ does not guarantee that the bound given in Proposition \ref{prop:bound_dim_using_inclusions} is reached. In the following proposition, we detail one situation in which we cannot hope for equality.
 
 \begin{proposition}\label{prop:non-eq}
-	Using the same notation as above, set $\calC_1=C_{\calL}(\calX,\mathcal{P},\left\lfloor \frac{D+(g)}{q} \right\rfloor)$ (see Equation \eqref{eq:G/q} for the definition of $\lfloor \frac{G}{q} \rfloor$, given $G$). If $\dim \calC_1 \geq 1$, then the bound given in Proposition \ref{prop:bound_dim_using_inclusions} is not reached.
+	Using the same notation as above, set $\calC_1=C_{\calL}\left(\calX,\mathcal{P},\left\lfloor \frac{D+(g)}{q} \right\rfloor\right)$ (see Equation \eqref{eq:G/q} for the definition of $\lfloor \frac{G}{q} \rfloor$, given $G$). If $\dim \calC_1 \geq 1$, then the bound given in Proposition \ref{prop:bound_dim_using_inclusions} is not reached.
 \end{proposition}
 
 \begin{proof}
@@ -737,7 +739,39 @@ This function is decreasing with $e$, and the smallest value for which $\Delta T
 $$e =  \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1.$$
 \end{proof}
 
-Several computational experiments showed then when the code $\calC:=\calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$ is sufficiently random the bound given in Theorem \ref{thm:bound_with_T_i's_inclusion} is sharp, leading to a distinguisher if the parameters of $\calC$ are not well--chosen. \\
+Several computational experiments showed then when the code $\calC:=\calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$ is sufficiently random the bound given in Theorem \ref{thm:bound_with_T_i's_inclusion} is sharp, leading to a distinguisher if the parameters of $\calC$ are not well--chosen. We give a concrete example showing the sharpness of our bound.
+
+\begin{expl}
+Set $q=3$ and $m = 3$. We consider the curve $\calX$ over $\fqm = \F_{729}$ defined by $$ y^2+y = x^3+x+2.$$
+$\calX$ is a particular case of $C_{2,3}$ curve with genus $\mathfrak{g}=1$. Set $s'=s+1$ for $s \geq 0$, and $g \in \fqm(\calX)$ such that $g=x^{\beta}y^{\alpha} + g'$, where $a\beta+b\alpha=s+1$ and $g'$ is sampled at random in $\calL(sP_\infty)$. For each such $g$, consider $\calP_g := \calX(\fqm) \backslash \Supp(g)$. Using Magma, we then compare the true dimension of $\Gamma(\calP_g,sP_\infty,g)$ with the upper bound given in Theorem \ref{thm:bound_with_T_i's_inclusion} for $s \in \set{4,\dots,10}$. Note that the lenght of our codes approximatly equals $n=780$, depending on $g$. Results can be found in \emph{Table \ref{table:expl_sharpness}}.
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+    \hline
+    $s$ & $\dim_{\fq}\left(\Gamma(\calP_g,sP_\infty,g)\right)$ & Upper bound \\
+    \hline \hline
+     $4$ & $234$ & $234$ \\
+    \hline 
+     $5$ & $327$ & $327$   \\
+    \hline \hline
+     $6$ & $402$ & $402$  \\
+    \hline
+     $7$ & $483$ & $483$  \\
+    \hline \hline
+     $8$ & $570$ & $570$   \\
+    \hline
+     $9$ & $663$ & $663$ \\
+    \hline
+     $10$  & $762$ & $762$ \\
+    \hline
+\end{tabular}
+\caption{Sharpness of the bound} \label{table:expl_sharpness}
+\end{center}
+\end{table}
+
+In our computing experiments, we can check that $g$ always has simple zeros. Thus $\left\lfloor \frac{sP_\infty+(g)}{3} \right\rfloor =-P_\infty$, meaning that we are outside the result of Proposition \ref{prop:non-eq}. As you can see, the bound is always sharp.
+\end{expl}
+
 In the last section, we will discuss how to chose efficiently the parameters of a one--point Goppa--like AG code in order to resist this distinguisher.
 
 \section{Analysis of the distinguisher}\label{sec:analysis}
