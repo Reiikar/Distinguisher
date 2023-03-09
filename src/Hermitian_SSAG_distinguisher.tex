@@ -1,4 +1,5 @@
 \documentclass[a4paper]{article}
+
 %%%%%%%% BIBLIOGRAPHIE %%%%%%%%
 %\usepackage[backend=biber]{biblatex} %Imports biblatex package  //version biber et pas biblatex, ne marche pas direct sur texmaker.
 %\addbibresource{biblio.bib} %Import the bibliography file
@@ -189,7 +190,7 @@ of dimension $\ell(D)$.
 Let $\calP \subseteq \fqm(\calX)$ be a set of $n$ distinct rational points such that $\Supp(D) \cap \calP = \varnothing$.
 We can consider the AG code 
 $$\calC := \calC_{\calL}(\calX,\calP,D) := \set{\left(f(P)\right)_{P \in \calP} \mid f \in \calL(D)},$$
-which is a linear code of length $n$ and dimension $k \leq \ell(D)$ over $\fqm$. If $n \geq \deg D$, then its dimension is exactly equal to $\ell(D)$ and its minimum distance is bounded from below by $n-\deg D$.\\
+which is a linear code of length $n$ and dimension $k \leq \ell(D)$ over $\fqm$. If $n \geq \deg D$, then its dimension is exactly equal to $\ell(D)$ and its minimum distance is bounded from below by the \emph{designed distance} $d^*=n-\deg D$.\\
 From Riemann-Roch theorem, we have
 $$ \ell(D) \geq \deg(D) +1 - \mathfrak{g},$$ 
 with equality if $\deg(D) \geq 2\mathfrak{g}-1$.\\
@@ -207,15 +208,12 @@ with $D^{\perp} = D_{\calP}-D+W$, where $D_{\calP} = \sum\limits_{P \in \calP} P
 In the case of AG codes, we have a special notation for the subfield subcode, namely
 \[\ssag{\calX,\calP,D} := C_{\calL}(\calX,\calP,D)|_{\fq}.\]
 
-In general, it is hard to find the true dimension $k_q$ of an $\ssag{\calX,\calP,D}$, but a trivial estimate derived from Delsarte's theorem \ref{th:delsarte}:
+In general, it is hard to find the true dimension of $\ssag{\calX,\calP,D}$, but a trivial estimate can be derived from Delsarte's theorem (Theorem~\ref{th:delsarte}).
+\begin{equation}\label{eq:dim_ssag}
+	\dim_{\fq} \ssag{\calX,\calP,D} \geq n - m(\dim_{\fqm} C_{\calL}(\calX,\calP,D^{\perp})).
+\end{equation}
 
-\begin{align*}
-	k_q &\geq n - m(\dim C_{\calL}(\calX,\calP,D^{\perp}))\\
-		&\geq n - m(n-\deg D+ \mathfrak{g}-1) \text{ if } \deg D \geq 2\mathfrak{g} -1
-\end{align*}
-
-
-Furthermore, in some particular cases, the minimum distance of subfield subcode of a linear code can be much greater. Any $C_{\calL}(\calX,\calP,D)$ its minimum distance is at least the \textit{designed minimum distance} $d \geq n-\deg D$, then  the minimum distance $d_q$ of an $\ssag{\calX,\calP,D}$ satisfies $d_q \geq d \geq n- \deg D$, and we have:
+The minimum distance of $\ssag{\calX,\calP,D}$ is at least the one of the AG code $C_{\calL}(\calX,\calP,D)$ above. It is thus bounded from below by the designed distance $d^*=n-\deg D$.% Furthermore, in some particular cases, the minimum distance of subfield subcode of a linear code can be much greater. 
 
 
 \subsubsection{First estimation of the dimension of the square of the trace of an AG code}
@@ -324,8 +322,15 @@ Let $D$ be an effective divisor of positive degree $s$ on a smooth and irreducib
 \[\calC := \calC_{\calL}(\calX,\calP,D+(g))=\set{\left(f(P)g(P)^{-1}\right)_{P \in \calP} \mid f \in \calL(D)}.\]
 \begin{definition} \label{def:Goppa--like_AG_code}
 The Goppa--like AG code associated to $\calC$ is defined as the dual of its subfield subcode, \emph{i.e.}
-$$ \Gamma(\calP,D,g) := \calC^{\perp}|_{\fq}.$$
-\end{definition}
+\[ \Gamma(\calP,D,g) := \calC^{\perp}|_{\fq}.\]
+\end{definition}%
+%
+Such a code has length $n = \# \calP$. By \eqref{eq:dim_ssag}, its dimension satisfies 
+\[\dim_{\fq} \Gamma(\calP,D,g) \geq n-m \dim_{\fqm} \calC_{\calL}(\calX,\calP,D+(g)) =n-m(\deg D - \mathfrak{g} +1 )\]
+if $2\mathfrak{g} - 2 < \deg D < n$. Its minimum distance is bounded from below by $\deg D - 2 \frak{g} + 2$.
+
+
+
 \subsubsection{Why the terminology \textit{Goppa--like}?}
 The terminology Goppa--like is motivated by the fact that here, the rational function $g$ plays the role of the Goppa polynomial. Goppa codes are nothing but Goppa--like AG codes from the projective line $\calX=\PP^1$. In fact, given $r \geq 0$, the Generalized Reed--Solomon (GRS) code of degree $r$, support $\mathbf{x} \in \fqm^n$ and multiplier $\mathbf{y} \in (\fqm^*)^n$ is defined as
 \[\GRS_r(\mathbf{x},\mathbf{y})=\{(y_1f(x_1),y_2f(x_2),\dots,y_nf(x_n)) \mid f \in \fqm[X] \text{ such that } \deg f < r \}.\]
