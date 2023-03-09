@@ -14,6 +14,8 @@
 \usepackage{geometry}
 \geometry{hmargin=2cm,vmargin=1.5cm}
 \usepackage{hyperref} %Références cliquables
+\usepackage{csquotes}
+
 
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{naturalnames}{hyperref}
@@ -129,6 +131,8 @@ Even if Mora and Tillich's attack does not threaten the Goppa codes used in the 
 In the present work, we are interested in the case of Goppa--like one--point AG codes from $\calC_{a,b}$ curves, a class of curves introduced in \cite{Miu93}. Since then, these curves have been extensively studied. They are especially interesting since we know an explicit monomial basis of the AG code associated to any multiple of its unique point at infinity, allowing us to efficiently encode one-point codes \cite{BRS21}. Furthermore, they remain quite general: for examples, elliptic curves, Kummer or Artin-Schreier curves are $C_{a,b}$ curves. It is also natural to wonder how the genus affects the distinguisher: in particular, we give a sufficient condition of the minimal degree our divisor has to satisfy in order to mount the distinguisher. This bound is increasing with the genus of the curve, and coincides with the one given in \cite{MT21} in the case of classical Goppa codes. Consequently, when the genus gets higher, we are not able to distinguish codes associated to low degree divisors. In the worst cases, we might not be able to distinguish anything.
 AG codes, as generalizations of GRS codes, have exactly the same behaviour with respect to the Schur product. Moreover, some well-chosen AG codes are defined by the evaluation of \textit{multivariate} polynomials. In this case, we prove that performing division algorithm via Gr\"obner bases enable us to estimate the dimension of the square of the dual of Goppa--like AG codes. Even better, computations tend to show that the bound we obtain on the dimension is sharp whenever the one--point Goppa--like code seems random (\emph{i.e} the function $g$ is sufficiently random). The counterpart is, as it was the case in \cite{MT21} for classical Goppa codes, that we can only distinguish high rate codes (more precisely, our maximum distinguishable rate are roughly the same). A comparison of their results and ours is carried out in the case of Goppa--like codes defined over an elliptic curve. However, as previously discussed, if the genus becomes too large, the distinguisher may become ineffective: in particular, we show that Goppa--like AG codes constructed from the Hermitian curve resist our distinguisher, which is encouraging if we intend to base a McEliece's like cryptosystem on such class of codes.
 However, as it is already the case for the distinguisher of classical Goppa codes \cite{MT21}, it seems complicated to turn this distinguisher into an efficient structural attack. But, having an algebraic explanation of the structure of the square of the dual of one--point Goppa--like codes is still desirable if we want to perform an attack using square code considerations. It also provides a rigorous method for selecting initial parameters that ensure the security of our cryptosystem.
+\TODO{ Citer Elise \cite{B18}.}
+
 We hope that this work will lead to several proposal/improvements on SSAG code based McElice cryptosystem in the future.
 
 \medskip
@@ -316,8 +320,11 @@ It is worth noting that $\calO_{P_\infty}$ is a valuation ring, with valuation $
 polynomials. We will notably perform division, using Gr\"obner bases, and, as expected in the univariate case, the degree of the remainder is 
 \textit{generally} smaller than the dividend's.
 \end{remark}
+
+
+
 \section{Goppa--like AG codes}\label{sec:Goppa}
-\subsection{Definition and context in the literature}\label{subsec:def-Goppa}
+\subsection{Definition, parameters and context in the literature}\label{subsec:def-Goppa}
 Let $D$ be an effective divisor of positive degree $s$ on a smooth and irreducible projective curve $\calX$ over $\fqm$. Take a rational function $g \in \fqm(\calX)$ such that $g \notin \calL(D)$. Given a set of points $\calP \in \calX(\fqm)$ such that $\calP \cap \Supp(g) = \varnothing$ and $\calP \cap \Supp(D) = \varnothing$, we consider the AG code
 \[\calC := \calC_{\calL}(\calX,\calP,D+(g))=\set{\left(f(P)g(P)^{-1}\right)_{P \in \calP} \mid f \in \calL(D)}.\]
 \begin{definition} \label{def:Goppa--like_AG_code}
@@ -325,14 +332,24 @@ The Goppa--like AG code associated to $\calC$ is defined as the dual of its subf
 \[ \Gamma(\calP,D,g) := \calC^{\perp}|_{\fq}.\]
 \end{definition}%
 %
-Such a code has length $n = \# \calP$. By \eqref{eq:dim_ssag}, its dimension satisfies 
+Such a code has length $n = \# \calP$. By \cite[Theorem~1]{JM96}, its dimension satisfies 
 \[\dim_{\fq} \Gamma(\calP,D,g) \geq n-m \dim_{\fqm} \calC_{\calL}(\calX,\calP,D+(g)) =n-m(\deg D - \mathfrak{g} +1 )\]
 if $2\mathfrak{g} - 2 < \deg D < n$. Its minimum distance is bounded from below by $\deg D - 2 \frak{g} + 2$.
 
 
 
+
 \subsubsection{Why the terminology \textit{Goppa--like}?}
-The terminology Goppa--like is motivated by the fact that here, the rational function $g$ plays the role of the Goppa polynomial. Goppa codes are nothing but Goppa--like AG codes from the projective line $\calX=\PP^1$. In fact, given $r \geq 0$, the Generalized Reed--Solomon (GRS) code of degree $r$, support $\mathbf{x} \in \fqm^n$ and multiplier $\mathbf{y} \in (\fqm^*)^n$ is defined as
+
+In \cite{JM96}, Janwa and Moreno define \emph{Goppa codes} on smooth and irreducible projective curves. Compared to their definition, Definition~\ref{def:Goppa--like_AG_code} introduces a function $g$ which defines a multiplicator for the AG code over $\fqm$ that is algebraically related to the support $\calP$.
+
+Introducing this function $g$ eases the use of SSAG as public keys for McEliece cryptosystem. Given an correcting error capability $t$, one can fix a divisor $D$ of degree $\deg D \geq 2t + 2\mathfrak{g}+1$. Then the family of codes in which the public key is picked can be defined by running a family of functions $g$ outside $\calL(D)$.
+
+\medskip
+
+We prefer the terminology \emph{Goppa--like AG codes} instead of simply Goppa codes for two reasons. First, AG codes were historically called geometric Goppa codes. Our terminology involving both the words \textquote{Goppa} and \textquote{AG} removes this possible ambiguity. Second, we want to emphasise the use of a different curve than the projective line $\PP^1$, like we differentiate AG codes from Reed--Solomon codes.
+
+This denomination is obviously motivated by the fact that here, the rational function $g$ plays the role of the Goppa polynomial. As described in \cite[Example~9.1.8]{Sti09}, Goppa codes are nothing but Goppa--like AG codes from the projective line $\calX=\PP^1$. In fact, given $r \geq 0$, the Generalized Reed--Solomon (GRS) code of degree $r$, support $\mathbf{x} \in \fqm^n$ and multiplier $\mathbf{y} \in (\fqm^*)^n$ is defined as
 \[\GRS_r(\mathbf{x},\mathbf{y})=\{(y_1f(x_1),y_2f(x_2),\dots,y_nf(x_n)) \mid f \in \fqm[X] \text{ such that } \deg f < r \}.\]
 Take a univariate polynomial $g$ of degree $r$ such that $g(x_i) \neq 0$ for every  $i \in \{1,\dots,n\}$. Then the Goppa code of order $r$ and support $\mathbf{x} \in \fqm^n$ is defined as
 \[\Gamma_r(\mathbf{x},g)= \GRS_r(\mathbf{x},\mathbf{y})^\perp|_{\fq}\]
@@ -352,6 +369,10 @@ G \geq qG_1 \ \mathrm{and} \ G \geq G_1.
 \end{equation}
  where $G^+ = D+(g)_0$ and $G^-=(g)_\infty$ are such that $G=G^+-G^-$.
 Thus, whenever $\deg\left\lfloor \dfrac{G}{q} \right\rfloor > 2\mathfrak{g}-2$, the corresponding Cartier code coincides with the Goppa--like AG code. 
+
+\subsection{Parameters of Goppa--like AG codes} 
+
+\TODO{Ajouter {\cite[Theorem~9.1.6]{Sti09}} }
 
 \subsection{On the dimension of the square of the dual of a Goppa--like AG code} \label{section:1st_improvement}
 In this section, we aim to generalize the properties found by the authors of \cite{MT21} in Section 6, in the context of Goppa--like AG code. Let us consider the AG code 
