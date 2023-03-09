@@ -76,20 +76,39 @@
 \newcommand{\modifier}[1]{\textcolor{red}{\textbf{#1}}}
 \newcommand\sabira[1]{\textcolor{blue}{#1}}
 %%%%%-------- Keywords--------------
-\providecommand{\keywords}[1]{\textbf{Keywords---} #1}
-%-----DÃ©but---------%
+
+\makeatletter
+\newcommand{\subjclass}[2][2020]{%
+	\let\@oldtitle\@title%
+	\gdef\@title{\@oldtitle\footnotetext{#1 \emph{Mathematics subject classification.} #2.}}%
+}
+\newcommand{\keywords}[1]{%
+	\let\@@oldtitle\@title%
+	\gdef\@title{\@@oldtitle\footnotetext{\emph{Keywords.} #1.}}%
+}
+\makeatother
+
+
+%\providecommand{\keywords}[1]{\textbf{Keywords---} #1}
+%-----Début---------%
 \title{Goppa--like SSAG code from $C_{a,b}$ curves and their behaviour by squaring their dual}
 \author{Mathieu Lhotel, Sabira El Khalfaoui, Jade Nardi}
-\date{}
+\date{\today}
+\keywords{AG codes, Subfield subcodes, $C_{a,b}$ curves, Goppa--like AG codes, Trace codes, Schur product}
+\subjclass{11T71, 14G50, 14H05, 11G20}
+
+
 \begin{document}
 %\parindent=0pt % Aucune indentation.
 \maketitle
-\TODO{SABIRA: classification MSC}
+
 \begin{abstract}
 In this paper, we introduce a family of codes that can be used a McEliece cryptosystem like, called \emph{Goppa--like AG codes}. These are a generalization of classical Goppa codes constructed from any curve of genus $\mathfrak{g} \geq 0$. Focusing on codes from $C_{a,b}$ curves, we study the behaviour of the dimension of the square of their dual to determine their resistance to distinguisher attacks similar to the one for alternant and Goppa codes developed by Mora and Tillich \cite{MT21}. We also propose numerical experiments to measure how sharp is our bound.
 \end{abstract}
  
 \keywords{AG codes, $C_{a,b}$ curves, Goppa--like AG codes, Trace codes, Schur product.}
+
+
 \section*{Introduction}
 McEliece cryptosystem is one of the last code-based candidates for standardization of post--quantum cryptrographic to the NIST competition since the third round. It guarantees the smallest ciphertexts among all the candidates, but it suffers from the largest public keys. Over the past forty years, there were many attempts in replacing the family of binary Goppa codes by other structured families of codes to reduce the key size.
 The security of McEliece cryptosystem is based on two assumptions: $(i)$ in average, it is hard to decode $t$ errors for codes having the same parameters as the codes used as key and $(ii)$ codes used as key must be hardly distinguishable from arbitrary ones. When proposing another family of codes, we must ensure that both of these assumptions are still valid.
