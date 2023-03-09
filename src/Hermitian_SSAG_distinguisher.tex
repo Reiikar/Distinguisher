@@ -172,8 +172,7 @@ which is a linear code of length $n$ and dimension $k \leq \ell(D)$ over $\fqm$.
 From Riemann-Roch theorem, we have
 $$ \ell(D) \geq \deg(D) +1 - \mathfrak{g},$$ 
 with equality if $\deg(D) \geq 2\mathfrak{g}-1$.\\
-In the case of AG codes, we have a special notation for the subfield subcode, namely
-\[\ssag{\calX,\calP,D} := C_{\calL}(\calX,\calP,D)|_{\fq}.\]
+
 The dual of an AG code can be described as a residue code (see \cite{Sti09} for more details), \emph{i.e.}
 $$ C_{\calL}(\calX,\calP,D)^{\perp} = C_{\omega}(\calX,\calP,D).$$ 
 Residue and evaluation codes are connected by the following result.
@@ -183,6 +182,20 @@ Let $C_{\calL}(\calX,\calP,D)$ be an AG-code defined on a curve $\calX$. Then
 \[C_{\calL}(\calX,\calP,D)^{\perp} = C_{\calL}(\calX,\calP,D^{\perp}),\]
 with $D^{\perp} = D_{\calP}-D+W$, where $D_{\calP} = \sum\limits_{P \in \calP} P$ and $W=(\omega)$ is a canonical divisor such that for all $P \in \calP$, $\nu_P(\omega)=-1$ and $\mathrm{Res}_{\omega}(P)=1$. 
 \end{proposition}
+
+In the case of AG codes, we have a special notation for the subfield subcode, namely
+\[\ssag{\calX,\calP,D} := C_{\calL}(\calX,\calP,D)|_{\fq}.\]
+
+In general, it is hard to find the true dimension $k_q$ of an $\ssag{\calX,\calP,D}$, but a trivial estimate derived from Delsarte's theorem \ref{th:delsarte}:
+
+\begin{align*}
+	k_q &\geq n - m(\dim C_{\calL}(\calX,\calP,D^{\perp}))\\
+		&\geq n - m(n-\deg D+g-1)
+\end{align*}
+
+
+Furthermore, in some particular cases, the minimum distance of subfield subcode of a linear code can be much greater. Any $C_{\calL}(\calX,\calP,D)$ its minimum distance is at least the \textit{designed minimum distance} $d \geq n-\deg D$, then  the minimum distance $d_q$ of an $\ssag{\calX,\calP,D}$ satisfies $d_q \geq d \geq n- \deg D$, and we have:
+
 
 \paragraph{First estimation of the dimension of the square of the trace of an AG code.}
 In this paper, we aim to bound the dimension of the square of the dual of a SSAG code. From Delsarte's theorem, this is equivalent to study the square of the trace of the corresponding AG code. 
