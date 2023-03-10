@@ -334,10 +334,27 @@ The Goppa--like AG code associated to $\calC$ is defined as the dual of its subf
 \[ \Gamma(\calP,D,g) := \calC^{\perp}|_{\fq}.\]
 \end{definition}%
 %
-Such a code has length $n = \# \calP$. By \cite[Theorem~1]{JM96}, its dimension satisfies 
+Such a code has length $n = \# \calP$. As stated in \cite[Theorem~1]{JM96}, its dimension satisfies 
 \[\dim_{\fq} \Gamma(\calP,D,g) \geq n-m \dim_{\fqm} \calC_{\calL}(\calX,\calP,D+(g)) =n-m(\deg D - \mathfrak{g} +1 )\]
 if $2\mathfrak{g} - 2 < \deg D < n$. Its minimum distance is bounded from below by $\deg D - 2 \mathfrak{g} + 2$.
 
+The structure of the AG code $\calC$ may provide sharper bounds on the dimension and the minimum distance of the associated Goppa--like AG code.
+
+
+\begin{theo}
+With the notation as above, set $G=D+(g)$. Let $G_1$ be any divisor such that 
+\begin{equation} \label{eq:divisor_G_1}
+G \geq qG_1 \ \mathrm{and} \ G \geq G_1.
+\end{equation}
+Moreover, set $U:=\{P \in \Supp(G) \mid \nu_P(G) \geq 0 \text{ and } \nu_P(G) = q-1 \mod q\}$ and $G_U=\sum{P \in U} P$. Then
+
+\[\dim_{\fq} \Gamma(\calP,D,g)  \geq n-m(\ell(D) - \ell(G1)).\]
+
+\end{theo}
+
+\begin{proof}
+{\cite[Theorem~9.1.6]{Sti09}}
+\end{proof}
 
 
 
@@ -362,7 +379,7 @@ Represent the $\fqm$--points of $\PP^1$ by the couples $\PP^1(\fqm)=\{[1:x] \mid
 The link with Goppa--like AG codes is the following: by definition, a Cartier code is a subcode of the subfield subcode of a residue code (see \cite[Proposition 4.3]{Cou14}), which actually means that for the good choice of divisor, a Cartier code is a subcode of the corresponding Goppa--like AG code. Moreover, \cite[Theorem 5.1]{Cou14} provides a sufficient condition for both constructions to be equal. More precisely, let us consider a Goppa--like AG code $\Gamma(\calP,D,g)$  and set $G := D+(g)$. Then the Cartier code $\mathrm{Car}_q(\calP,G)$ (see \cite[Definition 4.2]{Cou14}) satisfies $\mathrm{Car}_q(\calP,G) \subseteq \Gamma(\calP,D,g)$, and 
 $$ \dim_{\fq} \left( \Gamma(\calP,D,g)/ \mathrm{Car}_q(\calP,G)\right) \leq m \cdot i(G_1),$$
 where $G_1$ is any divisor such that 
-\begin{equation} \label{eq:divisor_G_1}
+\begin{equation} \label{\ref{eq:divisor_G_1}}
 G \geq qG_1 \ \mathrm{and} \ G \geq G_1.
 \end{equation}
  Above, $i(G_1)$ stands for the index of a speciality of $G_1$ (see \cite[Definition~1.6.10]{Sti09}). By the Riemann--Roch theorem, if $\deg(G_1) > 2\mathfrak{g}-2$, then $i(G_1) =0.$ The biggest divisor (with respect to the degree) satisfying \eqref{eq:divisor_G_1} is given by 
@@ -371,10 +388,6 @@ G \geq qG_1 \ \mathrm{and} \ G \geq G_1.
 \end{equation}
  where $G^+ = D+(g)_0$ and $G^-=(g)_\infty$ are such that $G=G^+-G^-$.
 Thus, whenever $\deg\left\lfloor \dfrac{G}{q} \right\rfloor > 2\mathfrak{g}-2$, the corresponding Cartier code coincides with the Goppa--like AG code. 
-
-\subsection{Parameters of Goppa--like AG codes} 
-
-\TODO{Ajouter {\cite[Theorem~9.1.6]{Sti09}} }
 
 \subsection{On the dimension of the square of the dual of a Goppa--like AG code} \label{section:1st_improvement}
 In this section, we aim to generalize the properties found by the authors of \cite{MT21} in Section 6, in the context of Goppa--like AG code. Let us consider the AG code 
