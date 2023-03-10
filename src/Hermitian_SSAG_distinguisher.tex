@@ -14,6 +14,7 @@
 \usepackage{geometry}
 \geometry{hmargin=2cm,vmargin=1.5cm}
 \usepackage{hyperref} %Références cliquables
+\usepackage{cleveref}
 \usepackage{csquotes}
 
 
@@ -338,25 +339,38 @@ Such a code has length $n = \# \calP$. As stated in \cite[Theorem~1]{JM96}, its 
 \[\dim_{\fq} \Gamma(\calP,D,g) \geq n-m \dim_{\fqm} \calC_{\calL}(\calX,\calP,D+(g)) =n-m(\deg D - \mathfrak{g} +1 )\]
 if $2\mathfrak{g} - 2 < \deg D < n$. Its minimum distance is bounded from below by $\deg D - 2 \mathfrak{g} + 2$.
 
-The structure of the AG code $\calC$ may provide sharper bounds on the dimension and the minimum distance of the associated Goppa--like AG code.
+The structure of the AG code $\calC$ may provide sharper bounds on the dimension depending on the divisor $G$.
 
-
-\begin{theo}
+\begin{thm}[{\cite[Theorem~9.1.6]{Sti09}}]
 With the notation as above, set $G=D+(g)$. Let $G_1$ be any divisor such that 
 \begin{equation} \label{eq:divisor_G_1}
 G \geq qG_1 \ \mathrm{and} \ G \geq G_1.
 \end{equation}
-Moreover, set $U:=\{P \in \Supp(G) \mid \nu_P(G) \geq 0 \text{ and } \nu_P(G) = q-1 \mod q\}$ and $G_U=\sum{P \in U} P$. Then
+Then $\dim_{\fq} \Gamma(\calP,D,g)  \geq n-m\left(\ell(D) - \ell(G_1)\right)$.
 
-\[\dim_{\fq} \Gamma(\calP,D,g)  \geq n-m(\ell(D) - \ell(G1)).\]
-
-\end{theo}
+\end{thm}
 
 \begin{proof}
-{\cite[Theorem~9.1.6]{Sti09}}
+Since $g \notin \calL(D)$, the divisor $G$ is not effective. Hence, any divisor $G_1$ satisfying the conditions of Equation \ref{eq:divisor_G_1} is also non effective. The result follows from {\cite[Theorem~9.1.6]{Sti09}} when $G_1\not\geq 0$.
 \end{proof}
 
+\begin{remark}\label{rk:G/q}
+The biggest divisor (with respect to the degree) satisfying \eqref{eq:divisor_G_1} is given by 
+\begin{equation}\label{eq:G/q}
+\left[ \frac{G}{q} \right]:= \sum\limits_{P \in \Supp(G^+)} \left\lfloor\frac{\nu_P(G^+)}{q}\right\rfloor P + \sum\limits_{P \in \Supp(G^-)}\nu_P(G^-)P,
+\end{equation}
+ where $G^+ = D+(g)_0$ and $G^-=(g)_\infty$ are such that $G=G^+-G^-$.
+\end{remark}
 
+\TODO{Je me tâte à bouger tout ça dans les SSAG et à le spécifier ici dans le cas Goppa-like.}
+
+With additional hypotheses on $G$ and $\displaystyle \left[ \frac{G}{q} \right]$, {\cite[Theorem~1]{Le16}} gives an exact formula for such a code.
+
+%\begin{thm}
+%	Set $U:=\{P \in \Supp(G) \mid \nu_P(G) \geq 0 \text{ and } \nu_P(G) = q-1 \mod q\}$ and $G_U=\sum_{P \in U} P$. Then
+%	
+%	
+%\end{thm}
 
 \subsubsection{Why the terminology \textit{Goppa--like}?}
 
@@ -379,15 +393,11 @@ Represent the $\fqm$--points of $\PP^1$ by the couples $\PP^1(\fqm)=\{[1:x] \mid
 The link with Goppa--like AG codes is the following: by definition, a Cartier code is a subcode of the subfield subcode of a residue code (see \cite[Proposition 4.3]{Cou14}), which actually means that for the good choice of divisor, a Cartier code is a subcode of the corresponding Goppa--like AG code. Moreover, \cite[Theorem 5.1]{Cou14} provides a sufficient condition for both constructions to be equal. More precisely, let us consider a Goppa--like AG code $\Gamma(\calP,D,g)$  and set $G := D+(g)$. Then the Cartier code $\mathrm{Car}_q(\calP,G)$ (see \cite[Definition 4.2]{Cou14}) satisfies $\mathrm{Car}_q(\calP,G) \subseteq \Gamma(\calP,D,g)$, and 
 $$ \dim_{\fq} \left( \Gamma(\calP,D,g)/ \mathrm{Car}_q(\calP,G)\right) \leq m \cdot i(G_1),$$
 where $G_1$ is any divisor such that 
-\begin{equation} \label{\ref{eq:divisor_G_1}}
+\begin{equation} \tag{\ref{eq:divisor_G_1}}
 G \geq qG_1 \ \mathrm{and} \ G \geq G_1.
 \end{equation}
- Above, $i(G_1)$ stands for the index of a speciality of $G_1$ (see \cite[Definition~1.6.10]{Sti09}). By the Riemann--Roch theorem, if $\deg(G_1) > 2\mathfrak{g}-2$, then $i(G_1) =0.$ The biggest divisor (with respect to the degree) satisfying \eqref{eq:divisor_G_1} is given by 
-\begin{equation}\label{eq:G/q}
-\left\lfloor \frac{G}{q} \right\rfloor := \sum\limits_{P \in \Supp(G^+)} \left\lfloor\frac{\nu_P(G^+)}{q}\right\rfloor P + \sum\limits_{P \in \Supp(G^-)}\nu_P(G^-)P,
-\end{equation}
- where $G^+ = D+(g)_0$ and $G^-=(g)_\infty$ are such that $G=G^+-G^-$.
-Thus, whenever $\deg\left\lfloor \dfrac{G}{q} \right\rfloor > 2\mathfrak{g}-2$, the corresponding Cartier code coincides with the Goppa--like AG code. 
+ Above, $i(G_1)$ stands for the index of speciality of $G_1$ (see \cite[Definition~1.6.10]{Sti09}). By the Riemann--Roch theorem, if $\deg(G_1) > 2\mathfrak{g}-2$, then $i(G_1) =0.$ 
+Thus, using Remark \ref{rk:G/q}, the Cartier code $\mathrm{Car}_q(\calP,G)$ coincides with the Goppa--like AG code $\Gamma(\calP,D,g)$ whenever $\deg\left[\dfrac{G}{q} \right] > 2\mathfrak{g}-2$. 
 
 \subsection{On the dimension of the square of the dual of a Goppa--like AG code} \label{section:1st_improvement}
 In this section, we aim to generalize the properties found by the authors of \cite{MT21} in Section 6, in the context of Goppa--like AG code. Let us consider the AG code 
@@ -456,7 +466,7 @@ Secondly, if the function $g$ belonged to $\calL(D)$, then the divisor $D+(g)$ w
 Unfortunately, the condition $g \notin \calL(D)$ does not guarantee that the bound given in Proposition \ref{prop:bound_dim_using_inclusions} is reached. In the following proposition, we detail one situation in which we cannot hope for equality.
 
 \begin{proposition}\label{prop:non-eq}
-	Using the same notation as above, set $\calC_1=C_{\calL}\left(\calX,\mathcal{P},\left\lfloor \frac{D+(g)}{q} \right\rfloor\right)$ (see Equation \eqref{eq:G/q} for the definition of $\lfloor \frac{G}{q} \rfloor$, given $G$). If $\dim \calC_1 \geq 1$, then the bound given in Proposition \ref{prop:bound_dim_using_inclusions} is not reached.
+	Using the same notation as above, set $\calC_1=C_{\calL}\left(\calX,\mathcal{P},\left[ \frac{D+(g)}{q} \right]\right)$ (see Equation \eqref{eq:G/q} for the definition of $\left[ \frac{G}{q} \right]$, given $G$). If $\dim \calC_1 \geq 1$, then the bound given in Proposition \ref{prop:bound_dim_using_inclusions} is not reached.
 \end{proposition}
 
 \begin{proof}
