@@ -743,26 +743,27 @@ Several computational experiments showed then when the code $\calC:=\calC_{\calL
 
 \begin{expl}
 Set $q=3$ and $m = 3$. We consider the curve $\calX$ over $\fqm = \F_{729}$ defined by $$ y^2+y = x^3+x+2.$$
-$\calX$ is a particular case of $C_{2,3}$ curve with genus $\mathfrak{g}=1$. Set $s'=s+1$ for $s \geq 0$, and $g \in \fqm(\calX)$ such that $g=x^{\beta}y^{\alpha} + g'$, where $a\beta+b\alpha=s+1$ and $g'$ is sampled at random in $\calL(sP_\infty)$. For each such $g$, consider $\calP_g := \calX(\fqm) \backslash \Supp(g)$. Using Magma, we then compare the true dimension of $\Gamma(\calP_g,sP_\infty,g)$ with the upper bound given in Theorem \ref{thm:bound_with_T_i's_inclusion} for $s \in \set{4,\dots,10}$. Note that the lenght of our codes approximatly equals $n=780$, depending on $g$. Results can be found in \emph{Table \ref{table:expl_sharpness}}.
+$\calX$ is a particular case of $C_{2,3}$ curve with genus $\mathfrak{g}=1$. Set $s'=s+1$ for $s \geq 0$, and $g \in \fqm(\calX)$ such that $g=x^{\beta}y^{\alpha} + g'$, where $a\beta+b\alpha=s+1$ and $g'$ is sampled at random in $\calL(sP_\infty)$. For each such $g$, consider $\calP_g := \calX(\fqm) \backslash \Supp(g)$. Using Magma, we then compare the true dimension of the square of the dual of $\calC_g := \Gamma(\calP_g,sP_\infty,g)$ with the upper bound given in Theorem \ref{thm:bound_with_T_i's_inclusion} for $s \in \set{4,\dots,10}$. Results can be found in \emph{Table \ref{table:expl_sharpness}}.
+
 \begin{table}[h]
 \begin{center}
-\begin{tabular}{|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|c|}
     \hline
-    $s$ & $\dim_{\fq}\left(\Gamma(\calP_g,sP_\infty,g)\right)$ & Upper bound \\
+   n &$s$&$\dim_{\fq}\calC_g$ & $\dim_{\fq}(\calC_g)^{\star 2}$&$\dim_{\fq}(\calC_g^{\perp})^{\star2}$ & Upper bound in Theorem \ref{thm:bound_with_T_i's_inclusion}\\
     \hline \hline
-     $4$ & $234$ & $234$ \\
+    $781$ &$4$& $757$& $781$&$234$ & $234$ \\
     \hline 
-     $5$ & $327$ & $327$   \\
+    $783$ &$5$& $753$& $783$ &$327$ & $327$   \\
     \hline \hline
-     $6$ & $402$ & $402$  \\
+    $782$ &$6$& $746$&$782$ &$402$ & $402$  \\
     \hline
-     $7$ & $483$ & $483$  \\
+    $783$ &$7$& $741$& $783$&$483$ & $483$  \\
     \hline \hline
-     $8$ & $570$ & $570$   \\
+    $782$ &$8$& $734$& $782$&$570$ & $570$   \\
     \hline
-     $9$ & $663$ & $663$ \\
+    $782$ &$9$& $728$& $782$&$663$ & $663$ \\
     \hline
-     $10$  & $762$ & $762$ \\
+    $781$ &$10$& $721$ & $781$&$762$ & $762$ \\
     \hline
 \end{tabular}
 \caption{Sharpness of the bound} \label{table:expl_sharpness}
