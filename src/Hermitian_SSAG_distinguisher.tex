@@ -896,6 +896,28 @@ Its genus is given by $\mathfrak{g}_{\calH} = \frac{q_0(q_0-1)}{2}$ and it is a 
 \end{proof}
 Consequently, it is still reasonable to consider the Hermitian curve to build efficient SSAG code--based cryptosystem.
 
+\section{Application of Goppa-like AG codes to McEliece cryptosystem}
+The McEliece cryptosystem's security is based on the fact that the published code behaves randomly. An attacker is confronted with the classic decoding problem: Find the closest codeword to a given vector in the ambient space of a linear code $C$, assuming that a unique closest codeword exists.\textit{Information-set decoding} (ISD) algorithm which was introduced by Prange \cite{} in 1962 is the best known algorithm for decoding a random-looking code without any obvious structure. However, for the McEliece Cryptosystem, a family of codes must be chosen based on the efficiency of the decoding algorithm and the indistinguishability from random codes.
+This choice should not be limited to the binary case. A subfield subcode of a linear code over $\mathbb{F}_{q^m}$ of length $n$ is a subspace of $\mathbb{F}_{q}^n$ with codewords of coordinates in $\mathbb{F}_q$. The binary Goppa codes were proposed in McEliece's original variant, but they suffer from the drawback of having large key sizes. In \cite{}, Peters showed that for $q > 2$, a subfield subcode of a linear can improve the key size while maintaining the same level of security againt a decoding attack (ISD). Recently, there have been many attempts to reduce the key sizes of the McEliece
+cryptosystem based on codes over larger fields. We investigated Goppa-like AG codes over finite fields with different characteristics by analysing the computational cost of the ISD algorithm for parameters relevent to post-quantum cryptography. In the table below, we provided parameters that resist the Goppa-like AG code distinguisher and improve key sizes when compared to the subfield subcodes of 1-point Hermitian codes parameters reported in \cite{}.
+
+
+\begin{table}[h]
+	\begin{center}
+		\begin{tabular}{l*{8}{c}r}
+			$\Gamma(\calP,sP_\infty,g)_q$&  $s$ & $n$ & $k$ & $t$ & Prange complexity & Key-Size(bit)\\			\hline
+			$\Gamma(\calP,265*P_\infty,g)_{11}$	&265&1320& 898& 77& 153& 1\,136\,868 \\
+			$\Gamma(\calP,312*P_\infty,g)_{13}$&312&2188& 1718& 77& 198& 2\,422\,380  \\
+			$\Gamma(\calP,354*P_\infty,g)_{16}$&354& 4078& 3608& 56& 199& 6\,783\,040   \\
+			$\Gamma(\calP,490*P_\infty,g)_{13}$& 490& 2189& 1363& 166& 270& 3\,377\,514 \\
+			$\Gamma(\calP,460*P_\infty,g)_{16}$& 460 &4080& 3398& 109& 313& 9\,269\,744
+		\end{tabular}
+		\caption{Goppa-Like Hermitian codes parameters } 
+	\end{center}
+\end{table}
+\TODO{References, unify the table format}
+\TODO{McEliece cryptosystem, ISD and its computational cost, CFS signature scheme (why this distinguisher attack can break CFS easily?)}
+
 
 \clearpage
 \bibliography{biblio}
