@@ -99,7 +99,7 @@
 
 
 %-----METADONNES---------%
-\title{Goppa--like SSAG code from $C_{a,b}$ curves and their behaviour by squaring their dual}
+\title{Goppa--like AG codes from $C_{a,b}$ curves and their behaviour under squaring their dual}
 
 
 \author{Mathieu Lhotel}
@@ -130,22 +130,25 @@
 \maketitle
 
 \begin{abstract}
-In this paper, we introduce a family of codes that can be used a McEliece cryptosystem like, called \emph{Goppa--like AG codes}. These are a generalization of classical Goppa codes constructed from any curve of genus $\mathfrak{g} \geq 0$. Focusing on codes from $C_{a,b}$ curves, we study the behaviour of the dimension of the square of their dual to determine their resistance to distinguisher attacks similar to the one for alternant and Goppa codes developed by Mora and Tillich \cite{MT21}. We also propose numerical experiments to measure how sharp is our bound.
+In this paper, we introduce a family of codes that can be used in a McEliece cryptosystem like, called \emph{Goppa--like AG codes}. These are a generalization of classical Goppa codes constructed from any curve of genus $\mathfrak{g} \geq 0$. Focusing on codes from $C_{a,b}$ curves, we study the behaviour of the dimension of the square of their dual to determine their resistance to distinguisher attacks similar to the one for alternant and Goppa codes developed by Mora and Tillich \cite{MT21}. We also propose numerical experiments to measure how sharp is our bound.
 \end{abstract}
  
 
 \section*{Introduction}
+
+\TODO{Sectionner l'intro en sous-sections}
 McEliece cryptosystem is one of the last code-based candidates for standardization of post--quantum cryptrographic to the NIST competition since the third round. It guarantees the smallest ciphertexts among all the candidates, but it suffers from the largest public keys. Over the past forty years, there were many attempts in replacing the family of binary Goppa codes by other structured families of codes to reduce the key size.
-The security of McEliece cryptosystem is based on two assumptions: $(i)$ in average, it is hard to decode $t$ errors for codes having the same parameters as the codes used as key and $(ii)$ codes used as key must be hardly distinguishable from arbitrary ones. When proposing another family of codes, we must ensure that both of these assumptions are still valid.
+
+The security of McEliece cryptosystem is based on two assumptions: $(i)$ in average, it is hard to decode $t$ errors for codes having the same parameters as the codes used as key and $(ii)$ it is difficult to distinguish codes used as public keys from arbitrary ones. When proposing another family of codes, we must ensure that both of the hardness assumptions are still valid.
 Algebraic geometry (AG) codes appear to be good candidates for McEliece cryptosystem, since they are defined as evaluation codes on any curve (rather than only considering the projective line in the case of GRS codes). Moreover, they also come with an efficient decoding algorithm (see the survey of H\o hold and Pellikaan \cite{HP95}).
-In 1996, Janwa and Moreno \cite{JM96} proposed to use AG codes, concatenation or subfield subcode of these codes in McEliece cryptosystem. As for concatenated ones, they were broken by Sendrier \cite{Sen94}. For AG codes, Faure and Minder proposed an attack in \cite{FM08,Min07,Fau09} for codes on genus $\geq 2$ curves. The scheme based on AG codes have been completely broken by Couvreur, Marquez-Corbella and Pellikaan \cite{CMR17}, who proposed a filtration--based attack on AG codes for any genus, enabling decoding just by handling the public key and without knowledge of the curve and/or the divisor. However, the authors underlined that subfield subcodes of AG codes (SSAG codes in short) are resistant to this filtration attack. Moreover, some of these codes have a good designed minimum distance, such as Cartier codes \cite{Cou14}. This resistance to structural attacks, as well as their good parameters motivated several works on SSAG codes. Recently, Zhao and Chen \cite{ZC22} analysed the parameters and the decoding performance of one--point elliptic subfield subcodes, showing that in the binary case, decoding results on these codes outperform the similar rate in the case of BCH codes. Also, the authors in \cite{PJ14,EKN21} focus on one--point Hermitian codes, and manage to compute the exact dimension of their subfield subcodes. 
+In 1996, Janwa and Moreno \cite{JM96} proposed to use AG codes, concatenation or subfield subcode of these codes in McEliece cryptosystem. As for concatenated ones, they were broken by Sendrier \cite{Sen94}. For AG codes, Faure and Minder proposed an attack in \cite{FM08,Min07,Fau09} for codes on genus $\leq 2$ curves. The scheme based on AG codes have been completely broken by Couvreur, Marquez-Corbella and Pellikaan \cite{CMR17}, who proposed a filtration--based attack on AG codes for any genus, enabling decoding just by handling the public key and without knowledge of the curve and/or the divisor. However, the authors underlined that subfield subcodes of AG codes (SSAG codes in short) are resistant to this filtration attack. Moreover, some of these codes have a good designed minimum distance, such as Cartier codes \cite{Cou14}. This resistance to structural attacks, as well as their good parameters motivated several works on SSAG codes. Barelli \cite{B18} studied the security of quasi--cyclic AG and SSAG codes designed from cyclic covers of the projective line and of plane curves. Recently, Zhao and Chen \cite{ZC22} analysed the parameters and the decoding performance of one--point elliptic subfield subcodes, showing that in the binary case, decoding results on these codes outperform the similar rate in the case of BCH codes. Also, the authors in \cite{PJ14,EKN21} focus on one--point Hermitian codes, and manage to compute the exact dimension of their subfield subcodes. 
 \medskip
 
 Let $\fqm$ be a finite extension of $\fq$. Given an AG code $\calC :=C_{\calL}(\calX,\calP,G) \subseteq \fqm^n$, its subfield subcode over $\fq$ is defined by 
 $$C_{\calL}(\calX,\calP,G)|_{\fq} := \calC \cap \fq^n.$$  
 In this paper, we introduce a specific class of SSAG codes, namely Goppa--like AG codes. The idea of this construction is to introduce  some randomness into the family of SSAG codes drawn as private key by mimicking the role of the Goppa polynomial in the case of classical Goppa codes. Given an effective divisor $G\in \Div(\calX)$ on the curve, we will consider SSAG codes associated to divisors of the form $D+(g)$, for a large family of functions $g \in \fqm(\calX)$ on the curve. A Goppa--like AG code is then defined as the subfield subcode over $\fq$ of $C_{\calL}(\calX,P,D+(g))^{\perp}$. This construction coincides with classical Goppa codes in the genus zero case. With a good choice of the curve and divisor, it is possible to encode and decode these codes in a timely manner, this generalization has the potential to significantly improve on the original McEliece proposal. This encourages the present study of structural attacks on Goppa--like AG codes. 
-Our starting point is the paper by Mora and Tilich \cite{MT21}, which benefited from the trace structure of the dual code of a subfield subcode to display a distinguisher for high rate Goppa codes. Their techniques rely on two features of GRS codes. First, their behaviour with respect to the Schur product is well known. From this, the authors gave a sharp upper bound for the dimension of the square of the dual of alternant codes. In the particular case of Goppa codes, where the multiplicator has the form $\mathbf{y}=(g(x_1)^{-1},g(x_2)^{-1},\dots,g(x_n)^{-1})$ for some degree $r$ polynomial $g$, they managed to get an even sharper upper bound by performing Euclidean division by powers of $g$.
-As Goppa--like AG codes extend Goppa codes, it is natural to wonder if one can derive a structural attack on these codes from Mora and Tillich's attack. The genus of the curve plays a significant role in the parameters of AG codes. The greater the genus, the more $\F_q$--points the curve $\calX$ may have and so the longer the code can be. But the parameters $[n,k,d]$ of an AG code satisfies $n-g+1 \leq k+d \leq n+1$, which means that an AG code is $g$--far from optimality. Also, the correction capacity naturally suffers from a big genus: the naive correction algorithm can correct up to $\frac{d-1-g}{2}$ errors. Only refined techniques, based on error locating pairs \cite{CP20}, manage to remove the term related to the genus. Therefore, caution should be exercised when it comes to the impact of the genus on the properties of AG codes.
+Our starting point is the paper by Mora and Tillich \cite{MT21}, which benefited from the trace structure of the dual code of a subfield subcode to display a distinguisher for high rate Goppa codes. Their techniques rely on two features of GRS codes. First, their behaviour with respect to the Schur product is well known. From this, the authors gave a sharp upper bound for the dimension of the square of the dual of alternant codes. In the particular case of Goppa codes, where the multiplicator has the form $\mathbf{y}=(g(x_1)^{-1},g(x_2)^{-1},\dots,g(x_n)^{-1})$ for some degree $r$ polynomial $g$, they managed to get an even sharper upper bound by performing Euclidean division by powers of $g$.
+As Goppa--like AG codes extend Goppa codes, it is natural to wonder if one can derive a structural attack on these codes from Mora and Tillich's attack. The genus of the curve plays a significant role in the parameters of AG codes. The greater the genus, the more $\F_q$--points the curve $\calX$ may have and so the longer the code can be. But the parameters $[n,k,d]$ of an AG code satisfy $n-g+1 \leq k+d \leq n+1$, which means that an AG code is $g$--far from optimality. Also, the correction capacity naturally suffers from a big genus: the naive correction algorithm can correct up to $\frac{d-1-g}{2}$ errors. Only refined techniques, based on error locating arrays \cite{CP20}, manage to remove the term related to the genus. Therefore, caution should be exercised when it comes to the impact of the genus on the properties of AG codes.
 Even if Mora and Tillich's attack does not threaten the Goppa codes used in the NIST competition, SSAG--based propositions may be vulnerable to a similar structural attack. 
 
 \medskip
@@ -153,11 +156,40 @@ Even if Mora and Tillich's attack does not threaten the Goppa codes used in the 
 In the present work, we are interested in the case of Goppa--like one--point AG codes from $\calC_{a,b}$ curves, a class of curves introduced in \cite{Miu93}. Since then, these curves have been extensively studied. They are especially interesting since we know an explicit monomial basis of the AG code associated to any multiple of its unique point at infinity, allowing us to efficiently encode one-point codes \cite{BRS21}. Furthermore, they remain quite general: for examples, elliptic curves, Kummer or Artin-Schreier curves are $C_{a,b}$ curves. It is also natural to wonder how the genus affects the distinguisher: in particular, we give a sufficient condition of the minimal degree our divisor has to satisfy in order to mount the distinguisher. This bound is increasing with the genus of the curve, and coincides with the one given in \cite{MT21} in the case of classical Goppa codes. Consequently, when the genus gets higher, we are not able to distinguish codes associated to low degree divisors. In the worst cases, we might not be able to distinguish anything.
 AG codes, as generalizations of GRS codes, have exactly the same behaviour with respect to the Schur product. Moreover, some well-chosen AG codes are defined by the evaluation of \textit{multivariate} polynomials. In this case, we prove that performing division algorithm via Gr\"obner bases enable us to estimate the dimension of the square of the dual of Goppa--like AG codes. Even better, computations tend to show that the bound we obtain on the dimension is sharp whenever the one--point Goppa--like code seems random (\emph{i.e} the function $g$ is sufficiently random). The counterpart is, as it was the case in \cite{MT21} for classical Goppa codes, that we can only distinguish high rate codes (more precisely, our maximum distinguishable rate are roughly the same). A comparison of their results and ours is carried out in the case of Goppa--like codes defined over an elliptic curve. However, as previously discussed, if the genus becomes too large, the distinguisher may become ineffective: in particular, we show that Goppa--like AG codes constructed from the Hermitian curve resist our distinguisher, which is encouraging if we intend to base a McEliece's like cryptosystem on such class of codes.
 However, as it is already the case for the distinguisher of classical Goppa codes \cite{MT21}, it seems complicated to turn this distinguisher into an efficient structural attack. But, having an algebraic explanation of the structure of the square of the dual of one--point Goppa--like codes is still desirable if we want to perform an attack using square code considerations. It also provides a rigorous method for selecting initial parameters that ensure the security of our cryptosystem.
-\TODO{ Citer Elise \cite{B18}.}
 
-We hope that this work will lead to several proposal/improvements on SSAG code based McElice cryptosystem in the future.
 
-\medskip
+
+\subsection*{Application of Goppa-like AG codes to McEliece cryptosystem}
+
+We hope that this work will lead to several proposal/improvements on SSAG code based McElice cryptosystem in the future. 
+
+\TODO{Meilleure intégration dans l'intro : en déplaçant ce paragraphe ici, on a trop de répétitions avec le début de l'intro.}
+
+ \textit{Information-set decoding} (ISD) algorithm which was introduced by Prange \cite{} in 1962 is the best known algorithm for decoding a random-looking code without any obvious structure. However, for the McEliece Cryptosystem, a family of codes must be chosen based on the efficiency of the decoding algorithm and the indistinguishability from random codes.
+This choice should not be limited to the binary case. A subfield subcode of a linear code over $\mathbb{F}_{q^m}$ of length $n$ is a subspace of $\mathbb{F}_{q}^n$ with codewords of coordinates in $\mathbb{F}_q$. The binary Goppa codes were proposed in McEliece's original variant, but they suffer from the drawback of having large key sizes. In \cite{}, Peters showed that for $q > 2$, a subfield subcode of a linear can improve the key size while maintaining the same level of security against a decoding attack (ISD). Recently, there have been many attempts to reduce the key sizes of the McEliece
+cryptosystem based on codes over larger fields. We investigated Goppa-like AG codes over finite fields with different characteristics by analysing the computational cost of the ISD algorithm for parameters relevant to post-quantum cryptography. In Table \ref{table:goppa-herm}, we provided parameters that resist the Goppa-like AG code distinguisher and improve key sizes when compared to the subfield subcodes of 1-point Hermitian codes parameters reported in \cite[Table~3]{EKN21crypto}.
+
+
+\begin{table}[h]
+	\begin{center}
+		\begin{tabular}{l*{8}{c}r}
+			$q$&  $s$ & $n$ & $k$ & $t$ & Prange complexity & Key--Size(bit)\\			\hline
+			${11}$	&265&1320& 898& 77& 153& 1\,136\,868 \\
+			${13}$&312&2188& 1718& 77& 198& 2\,422\,380  \\
+			${16}$&354& 4078& 3608& 56& 199& 6\,783\,040   \\
+			${13}$& 490& 2189& 1363& 166& 270& 3\,377\,514 \\
+			${16}$& 460 &4080& 3398& 109& 313& 9\,269\,744
+		\end{tabular}
+		\caption{Goppa-Like Hermitian codes parameters $\Gamma(\calP,sP_\infty,g)$ over $\fq$} \label{table:goppa-herm}
+	\end{center}
+\end{table}
+\TODO{References, unify the table format}
+\TODO{McEliece cryptosystem, ISD and its computational cost, CFS signature scheme (why this distinguisher attack can break CFS easily?) \jade{je ne pense pas qu'on devrait parler de CFS}}
+
+
+%\medskip
+
+\subsection*{Outline of the paper}
 
 The paper is organized as follows. Section \ref{sec:preli} is dedicated to basic definitions about linear codes, AG codes and $C_{a,b}$ curves. In Section \ref{sec:Goppa}, we introduce the notion of Goppa--like AG codes and we give a first bound for the dimension of the square of their dual. In Section \ref{sec:AG-C_a,b}, we refine the bound for Goppa--like AG codes from $C_{a,b}$ curves, associated to one--point divisors. Section \ref{sec:analysis} concludes this paper with a discussion about this bound on elliptic curves and on the Hermitian curve.
 
@@ -251,7 +283,7 @@ The structure of the AG codes may provide sharper bounds on the dimension of sub
 
 	Then
 \[	\dim_{\fq} \Tr{C_{\calL}(\calX,\calP,G)} \leq  \left\{\begin{array}{ll}
-	m\left(\ell(G) - \ell(G_1)\right) & \text{if } G_1 \geq 0, \\
+	m\left(\ell(G) - \ell(G_1)\right)+1 & \text{if } G_1 \geq 0, \\
 	m\left(\ell(G) - \ell(G_1)\right) & \text{if } G_1 \not\geq 0, 
 \end{array} \right.\]	
 	and	
@@ -273,10 +305,10 @@ With additional hypotheses on $G$ and $\displaystyle \left[ \frac{G}{q} \right]$
 
 Regarding the minimum distance, Wirtz \cite{W88} improved the bound on the minimum distance of subfield subcodes of differential codes.
 
-\begin{thm}[{\cite[Theorem~2]{W88}}]
+\begin{thm}[{\cite[Theorem~2]{W88}}]\label{thm:Wirtz}
 	Take the same notation as in Theorem \ref{thm:dim_ssag} and assume $\deg G_1 > 2 \mathfrak{g}-2$.
 	Set $U:=\{P \in \Supp(G) \mid \nu_P(G) \geq 0 \text{ and } \nu_P(G) = q-1 \mod q\}$ and $G_U=\sum_{P \in U} P$. Then
-	\[	\dim_{\fq} C_{\Omega}(\calX,\calP,G)|_{\fq} = 	\dim_{\fq} C_{\Omega}(\calX,\calP,G+G_U)|_{\fq} \]
+	\[	\dim_{\fq} C_{\Omega}(\calX,\calP,G)|_{\fq} = 	\dim_{\fq} C_{\Omega}(\calX,\calP,G+G_U)|_{\fq}, \]
 	hence the minimum distance of $\dim_{\fq} C_{\Omega}(\calX,\calP,G)|_{\fq}$ satisfies
 	\[d\left(	\dim_{\fq} C_{\Omega}(\calX,\calP,G)|_{\fq} \right) \geq \deg G + \deg G_U -2\mathfrak{g}+2.\]
 \end{thm}
@@ -340,7 +372,26 @@ which is much smaller than the expected dimension given in Lemma \ref{lem:known_
  \end{align*}
 \end{proof}
 
-According to the above corollary, the dimension of the square of the dual of a SSAG code is less than the expected value for random codes, which is $\binom{mk+1}{2}$, due to the algebraic structure of AG codes. However, this bound is far from optimal, and our aim for the rest of the paper is to improve it in some specific cases.
+According to the above corollary, the dimension of the square of the dual of a SSAG code is less than the expected value for random codes, which is $\binom{mk+1}{2}$, due to the algebraic structure of AG codes. However, this bound does not benefit from all this structure, notably the following property.
+
+\begin{lemma}\label{lem:Schur-Product-Power}
+	 Let $\mathcal{C} := C_{\calL}(\calX,\mathcal{P},G)$ be a $k$--dimensional AG code on $\calX$. For every $i \geq 0$, we have
+	 \[\calC \star \calC^{q^i} \subseteq C_{\calL}(\calX,\mathcal{P},(q^i+1)G)\]
+\end{lemma}
+
+\begin{proof}
+	For $i \geq 0$ and $f_1,f_2 \in \calL(G)$, we have 
+	$$(f_1f_2^{q^i}) = (f_1)+q^i(f_2) \geq -G +(-q^iG) = -(q^i+1)G,$$
+	which proves the inclusion of spaces
+	$$ \calL(G)\cdot \calL(G)^{q^i} \subseteq \calL((q^i+1)G),$$
+	hence the inclusion of the associated codes.
+\end{proof}
+
+\begin{remark}
+This property looks similar to Proposition \ref{prop:mumford_result}. To the best of our knowledge, there is no sufficient criterion for the equality in the literature. From our experiments, it may happens that $\ell(G)^2 > \ell((q^i+1)G)$ without the equality holding, which means that the generators of $\calL(G)\cdot \calL(G)^{q^i}$ may be linearly dependent. 
+\end{remark}
+
+Thanks to Lemma \ref{lem:Schur-Product-Power}, it will be possible to better handle the terms $\Tr{\calC\star \calC^{q^i}}$ in Equation \eqref{eq:key_equation}. Our aim for the rest of the paper is to improve the bound of Corollary \ref {coro:1st_bound_mumford} in some specific cases.
 
 \subsection{$C_{a,b}$ curves} \label{section:C_a,b_codes}
 Throughout this paper, we will be dealing with algebraic geometry codes defined over a $C_{a,b}$ curve. This section is dedicated to some properties on this well--studied class of curves. For further details, we refer to \cite{Miu93}. 
@@ -367,7 +418,7 @@ where each Riemann--Roch space $\calL(s P_\infty)$ has an explicit basis as foll
 In summary, any function that is regular on all $\calX_{a,b}$ except maybe at $P_\infty$ is a bivariate polynomial in the functions $x$ and $y$. 
 
 \begin{definition}[Weighted degree]
-Given a monomial of the form $x^iy^j \in \calO_{P_\infty}$, , we define its weighted degree by
+Given a monomial of the form $x^iy^j \in \calO_{P_\infty}$, we define its weighted degree by
 \[ \degab{x^iy^j} := ai+bj.\]
 %
 Any function $f \in \calO_{P_\infty}$ can be written in the form $$f = x^{\beta}y^{\alpha} + f'(x,y),$$
@@ -383,14 +434,14 @@ polynomials. We will notably perform division, using Gr\"obner bases, and, as ex
 \textit{generally} smaller than the dividend's.
 \end{remark}
 
-
+\TODO{Parameters codes one-point on $C_{a,b}$}
 
 \section{Goppa--like AG codes}\label{sec:Goppa}
 \subsection{Definition, parameters and context in the literature}\label{subsec:def-Goppa}
 Let $D$ be an effective divisor of positive degree $s$ on a smooth and irreducible projective curve $\calX$ over $\fqm$. Take a rational function $g \in \fqm(\calX)$ such that $g \notin \calL(D)$. Given a set of points $\calP \in \calX(\fqm)$ such that $\calP \cap \Supp(g) = \varnothing$ and $\calP \cap \Supp(D) = \varnothing$, we consider the AG code
 \[\calC := \calC_{\calL}(\calX,\calP,D+(g))=\set{\left(f(P)g(P)^{-1}\right)_{P \in \calP} \mid f \in \calL(D)}.\]
 \begin{definition} \label{def:Goppa--like_AG_code}
-The Goppa--like AG code associated to $\calC$ is defined as the dual of its subfield subcode, \emph{i.e.}
+The Goppa--like AG code associated to $\calC$ is defined as the subfield subcode of its dual code, \emph{i.e.}
 \[ \Gamma(\calP,D,g) := \calC^{\perp}|_{\fq}.\]
 \end{definition}%
 %
@@ -398,11 +449,11 @@ Such a code has length $n = \# \calP$. As stated in \cite[Theorem~1]{JM96}, its 
 \[\dim_{\fq} \Gamma(\calP,D,g) \geq n-m \dim_{\fqm} \calC_{\calL}(\calX,\calP,D+(g)) =n-m(\deg D - \mathfrak{g} +1 )\]
 if $2\mathfrak{g} - 2 < \deg D < n$. Its minimum distance is bounded from below by $\deg D - 2 \mathfrak{g} + 2$.
 
-\TODO{Modifier :}
-
-\begin{proof}
-Since $g \notin \calL(D)$, the divisor $G$ is not effective. Hence, any divisor $G_1$ satisfying the conditions of Equation \ref{eq:divisor_G_1} is also non effective. The result follows from {\cite[Theorem~9.1.6]{Sti09}} when $G_1\not\geq 0$.
-\end{proof}
+\begin{remark}
+These estimations of the dimension and the minimum distance may be improved by Theorem~\ref{thm:dim_ssag} and \ref{thm:Wirtz}. Regarding the dimension, it is worth noting that, since $g \notin \calL(D)$, the divisor $G$ is not effective. Hence, any divisor $G_1$ satisfying the conditions of Equation \ref{eq:divisor_G_1} is also non effective, which means that
+\[	\dim_{\fq}  \Gamma(\calP,D,g) \geq 	n-m\left(\ell(G) - \ell(G_1)\right). \]
+Without additional conditions on the divisor $D$ and the function $g$, the divisor $G_U$ for $G=D+(g)$ (see Theorem~\ref{thm:Wirtz} for definition) is zero. Generally, we cannot expect for a better bound for the minimum distance. 
+\end{remark}
 
 
 
@@ -455,15 +506,18 @@ where $\calL(D+(g))\cdot \calL(D+(g))^{q^i}$ corresponds to the evaluation space
    $$\dim_{\fq} \Tr{\calC\star \calC^{q^i}} \leq m\left(s\left(q^i+1\right)+1-\mathfrak{g}\right).$$
 \end{lemma}
 \begin{proof}
-For $i \geq 0$ and $f_1,f_2 \in \calL(D)$, we have 
-$$(f_1f_2^{q^i}) = (f_1)+q^i(f_2) \geq -D +(-q^iD) = -(q^i+1)D,$$
-which proves the inclusion
-$$ \calL(D)\cdot \calL(D)^{q^i} \subseteq \calL((q^i+1)D).$$
-Since $C_{\calL}(\calX,\calP,(q^i+1)D) = \set{(f(P))_{P \in \calP} \mid f \in \calL((q^i+1)D)}$, we deduce 
-$$ \dim_{\fqm} \calL(D) \cdot \calL(D)^{q^i} \leq \dim_{\fqm}\left(C_{\calL}(\calX,\calP,(q^i+1)D)\right) = s(q^i+1)+1-\mathfrak{g},$$
+From Lemma~\ref{lem:Schur-Product-Power}, we deduce that 
+\[\dim_{\fqm} \calC\star \calC^{q^i} \leq \dim_{\fqm} \calL((q^i+1)G) = \dim_{\fqm} \calL((q^i+1)D) = s(q^i+1)+1-\mathfrak{g},\]
 the last equality coming from the Riemann-Roch theorem (since $\deg D =s \geq 2\mathfrak{g}-1$). The result follows from \eqref{eq:equiv_divisors} and the usual upper bound on the dimension of the trace of a code. 
 \end{proof}
-This simple Lemma yields an upper bound on the dimension of the square of the dual of Goppa--like codes.
+
+\begin{remark}
+	It seems that we could have benefited from Theorem~\ref{thm:dim_ssag} to get a sharper bound in the previous lemma. Indeed, for every $i \geq 1$, we have 
+	\[\left[\frac{(q^i+1)G}{q}\right]=q^{i-1}G_+ - (q^i+1)G_-,\]
+	writing $G=G_ +-G_-$. However, in the context of Goppa--like codes, we have $G=D+(g)$ where $g \notin \calL(D)$, hence $G_- \neq 0$. Without further hypotheses on the divisor $D$ and the function $g$, the degree of the divisor $\left[\frac{(q^i+1)G}{q}\right]$ may be too low to bound the dimension of its Riemman--Roch space from below via Riemann--Roch theorem.
+\end{remark}
+
+This simple lemma yields an upper bound on the dimension of the square of the dual of Goppa--like codes.
 \begin{proposition} \label{prop:bound_dim_using_inclusions}
     Let $\calC := \calC_{\calL}(\calX,\calP,D+(g))$ be an AG code as above, and suppose $s \geq 2\mathfrak{g}-1$. Set $k := \dim_{\fqm}\calC = s+1-\mathfrak{g}$ and  $e := \min\left(\left\lfloor \frac{m}{2} \right\rfloor,\left\lfloor \log_q\left(\frac{k^2}{s}\right)\right\rfloor\right)$. Then
     $$\dim_{\fq} (\Gamma(\calP,D,g)^{\perp})^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).$$
@@ -929,28 +983,6 @@ Its genus is given by $\mathfrak{g}_{\calH} = \frac{q_0(q_0-1)}{2}$ and it is a 
     \end{itemize}
 \end{proof}
 Consequently, it is still reasonable to consider the Hermitian curve to build efficient SSAG code--based cryptosystem.
-
-\section{Application of Goppa-like AG codes to McEliece cryptosystem}
-The McEliece cryptosystem's security is based on the fact that the published code behaves randomly. An attacker is confronted with the classic decoding problem: find the closest codeword to a given vector in the ambient space of a linear code $C$, assuming that a unique closest codeword exists. \textit{Information-set decoding} (ISD) algorithm which was introduced by Prange \cite{} in 1962 is the best known algorithm for decoding a random-looking code without any obvious structure. However, for the McEliece Cryptosystem, a family of codes must be chosen based on the efficiency of the decoding algorithm and the indistinguishability from random codes.
-This choice should not be limited to the binary case. A subfield subcode of a linear code over $\mathbb{F}_{q^m}$ of length $n$ is a subspace of $\mathbb{F}_{q}^n$ with codewords of coordinates in $\mathbb{F}_q$. The binary Goppa codes were proposed in McEliece's original variant, but they suffer from the drawback of having large key sizes. In \cite{}, Peters showed that for $q > 2$, a subfield subcode of a linear can improve the key size while maintaining the same level of security against a decoding attack (ISD). Recently, there have been many attempts to reduce the key sizes of the McEliece
-cryptosystem based on codes over larger fields. We investigated Goppa-like AG codes over finite fields with different characteristics by analysing the computational cost of the ISD algorithm for parameters relevant to post-quantum cryptography. In the table below, we provided parameters that resist the Goppa-like AG code distinguisher and improve key sizes when compared to the subfield subcodes of 1-point Hermitian codes parameters reported in \cite[Table~3]{EKN21crypto}.
-
-
-\begin{table}[h]
-	\begin{center}
-		\begin{tabular}{l*{8}{c}r}
-			$q$&  $s$ & $n$ & $k$ & $t$ & Prange complexity & Key--Size(bit)\\			\hline
-			${11}$	&265&1320& 898& 77& 153& 1\,136\,868 \\
-			${13}$&312&2188& 1718& 77& 198& 2\,422\,380  \\
-			${16}$&354& 4078& 3608& 56& 199& 6\,783\,040   \\
-			${13}$& 490& 2189& 1363& 166& 270& 3\,377\,514 \\
-			${16}$& 460 &4080& 3398& 109& 313& 9\,269\,744
-		\end{tabular}
-		\caption{Goppa-Like Hermitian codes parameters $\Gamma(\calP,sP_\infty,g)$ over $\fq$} 
-	\end{center}
-\end{table}
-\TODO{References, unify the table format}
-\TODO{McEliece cryptosystem, ISD and its computational cost, CFS signature scheme (why this distinguisher attack can break CFS easily?)}
 
 \noindent
 \textbf{Acknowledgements.} %The two authors would like to express their gratitude to the anonymous referee for relevant comments that lead to this improved version of the paper.
