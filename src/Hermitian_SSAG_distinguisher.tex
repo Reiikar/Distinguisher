@@ -142,8 +142,8 @@ In 1996, Janwa and Moreno \cite{JM96} proposed to use AG codes, concatenation or
 \medskip
 
 Let $\fqm$ be a finite extension of $\fq$. Given an AG code $\calC :=C_{\calL}(\calX,\calP,G) \subseteq \fqm^n$, its subfield subcode over $\fq$ is defined by 
-$$\ssag{\calX,\calP,G} := \calC \cap \fq^n.$$  
-In this paper, we introduce a specific class of SSAG codes, namely Goppa--like AG codes. The idea of this construction is to introduce  some randomness into the family of SSAG codes drawn as private key by mimicking the role of the Goppa polynomial in the case of classical Goppa codes. Given an effective divisor $D\in \Div(\calX)$ on the curve, we will consider SSAG codes associated to divisors of the form $D+(g)$, for a large family of functions $g \in \fqm(\calX)$ on the curve. A Goppa--like AG code is then defined as the subfield subcode over $\fq$ of $C_{\calL}(\calX,P,D+(g))^{\perp}$. This construction coincides with classical Goppa codes in the genus zero case. With a good choice of the curve and divisor, it is possible to encode and decode these codes in a timely manner, this generalization has the potential to significantly improve on the original McEliece proposal. This encourages the present study of structural attacks on Goppa--like AG codes. 
+$$C_{\calL}(\calX,\calP,G)|_{\fq} := \calC \cap \fq^n.$$  
+In this paper, we introduce a specific class of SSAG codes, namely Goppa--like AG codes. The idea of this construction is to introduce  some randomness into the family of SSAG codes drawn as private key by mimicking the role of the Goppa polynomial in the case of classical Goppa codes. Given an effective divisor $G\in \Div(\calX)$ on the curve, we will consider SSAG codes associated to divisors of the form $D+(g)$, for a large family of functions $g \in \fqm(\calX)$ on the curve. A Goppa--like AG code is then defined as the subfield subcode over $\fq$ of $C_{\calL}(\calX,P,D+(g))^{\perp}$. This construction coincides with classical Goppa codes in the genus zero case. With a good choice of the curve and divisor, it is possible to encode and decode these codes in a timely manner, this generalization has the potential to significantly improve on the original McEliece proposal. This encourages the present study of structural attacks on Goppa--like AG codes. 
 Our starting point is the paper by Mora and Tilich \cite{MT21}, which benefited from the trace structure of the dual code of a subfield subcode to display a distinguisher for high rate Goppa codes. Their techniques rely on two features of GRS codes. First, their behaviour with respect to the Schur product is well known. From this, the authors gave a sharp upper bound for the dimension of the square of the dual of alternant codes. In the particular case of Goppa codes, where the multiplicator has the form $\mathbf{y}=(g(x_1)^{-1},g(x_2)^{-1},\dots,g(x_n)^{-1})$ for some degree $r$ polynomial $g$, they managed to get an even sharper upper bound by performing Euclidean division by powers of $g$.
 As Goppa--like AG codes extend Goppa codes, it is natural to wonder if one can derive a structural attack on these codes from Mora and Tillich's attack. The genus of the curve plays a significant role in the parameters of AG codes. The greater the genus, the more $\F_q$--points the curve $\calX$ may have and so the longer the code can be. But the parameters $[n,k,d]$ of an AG code satisfies $n-g+1 \leq k+d \leq n+1$, which means that an AG code is $g$--far from optimality. Also, the correction capacity naturally suffers from a big genus: the naive correction algorithm can correct up to $\frac{d-1-g}{2}$ errors. Only refined techniques, based on error locating pairs \cite{CP20}, manage to remove the term related to the genus. Therefore, caution should be exercised when it comes to the impact of the genus on the properties of AG codes.
 Even if Mora and Tillich's attack does not threaten the Goppa codes used in the NIST competition, SSAG--based propositions may be vulnerable to a similar structural attack. 
@@ -208,38 +208,78 @@ Let $\calC$ be a linear code of lenght $n$ over $\fqm$. Then
 
 \subsubsection{Definitions}
 
-Let $\calX$ be a smooth and irreducible projective curve over $\fqm$ of genus $\mathfrak{g}$. A \emph{divisor} on $\calX$ over $\fqm$ is a formal sum of places over $\fqm$, \emph{i.e.} of the form $D=\sum \nu_P(D) P$, where $\nu_P(D)$ are integers which are all zero except for a finite number of places $P$. We denote by $\Div(\calX)$ the set of $\fqm$--divisors on $\calX$ (we omit the dependence on $\fqm$).
-Given $D \in \Div(\calX)$, we define its \emph{support} $\Supp(D)$ as the finite set of places $P$ such that $\nu_P(D)$ is non--zero and its \emph{degree} $\deg D$ as $\deg D=\sum \nu_P(D) \deg(P)$. We say that a divisor $D \in \Div(\calX)$ is \emph{effective} if for all $P \in \Supp(D)$, we have $\nu_P(D) \geq 0$, in which case we write $D \geq 0$.
-A non--zero function $f \in \fqm(\calX)$ defines a divisor, called \emph{principal}, denoted by $(f)=\sum \nu_P(f) P$. The \emph{Riemann-Roch space} of $D$ is defined as the $\fqm$ vector space
-$$ \calL(D) := \set{f \in \fqm(\calX) \mid (f) + D \geq 0} \cup \set{0},$$
-of dimension $\ell(D)$.
-Let $\calP \subseteq \fqm(\calX)$ be a set of $n$ distinct rational points such that $\Supp(D) \cap \calP = \varnothing$.
+Let $\calX$ be a smooth and irreducible projective curve over $\fqm$ of genus $\mathfrak{g}$. A \emph{divisor} on $\calX$ over $\fqm$ is a formal sum of places over $\fqm$, \emph{i.e.} of the form $G=\sum \nu_P(G) P$, where $\nu_P(G)$ are integers which are all zero except for a finite number of places $P$. We denote by $\Div(\calX)$ the set of $\fqm$--divisors on $\calX$ (we omit the dependence on $\fqm$).
+Given $G \in \Div(\calX)$, we define its \emph{support} $\Supp(G)$ as the finite set of places $P$ such that $\nu_P(G)$ is non--zero and its \emph{degree} $\deg G$ as $\deg G=\sum \nu_P(G) \deg(P)$. We say that a divisor $G \in \Div(\calX)$ is \emph{effective} if for all $P \in \Supp(G)$, we have $\nu_P(G) \geq 0$, in which case we write $G \geq 0$.
+A non--zero function $f \in \fqm(\calX)$ defines a divisor, called \emph{principal}, denoted by $(f)=\sum \nu_P(f) P$. The \emph{Riemann-Roch space} of a divisor $G$ is defined as the $\fqm$ vector space
+$$ \calL(G) := \set{f \in \fqm(\calX) \mid (f) + G \geq 0} \cup \set{0},$$
+of dimension $\ell(G)$.
+Let $\calP \subseteq \fqm(\calX)$ be a set of $n$ distinct rational points such that $\Supp(G) \cap \calP = \varnothing$.
 We can consider the AG code 
-$$\calC := \calC_{\calL}(\calX,\calP,D) := \set{\left(f(P)\right)_{P \in \calP} \mid f \in \calL(D)},$$
-which is a linear code of length $n$ and dimension $k \leq \ell(D)$ over $\fqm$. If $n \geq \deg D$, then its dimension is exactly equal to $\ell(D)$ and its minimum distance is bounded from below by the \emph{designed distance} $d^*=n-\deg D$.\\
+$$\calC := \calC_{\calL}(\calX,\calP,G) := \set{\left(f(P)\right)_{P \in \calP} \mid f \in \calL(G)},$$
+which is a linear code of length $n$ and dimension $k \leq \ell(G)$ over $\fqm$. If $n \geq \deg G$, then its dimension is exactly equal to $\ell(G)$ and its minimum distance is bounded from below by the \emph{designed distance} $d^*=n-\deg G$.\\
 From Riemann-Roch theorem, we have
-$$ \ell(D) \geq \deg(D) +1 - \mathfrak{g},$$ 
-with equality if $\deg(D) \geq 2\mathfrak{g}-1$.\\
+$$ \ell(G) \geq \deg(G) +1 - \mathfrak{g},$$ 
+with equality if $\deg(G) \geq 2\mathfrak{g}-1$.\\
 
 The dual of an AG code can be described as a residue code (see \cite{Sti09} for more details), \emph{i.e.}
-$$ C_{\calL}(\calX,\calP,D)^{\perp} = C_{\Omega}(\calX,\calP,D).$$ 
+$$ C_{\calL}(\calX,\calP,G)^{\perp} = C_{\Omega}(\calX,\calP,G).$$ 
 Residue and evaluation codes are connected by the following result.
 
 \begin{proposition} [{\cite[Proposition~2.2.10]{Sti09}}] \label{prop:dual_AG_codes}
-Let $C_{\calL}(\calX,\calP,D)$ be an AG-code defined on a curve $\calX$. Then 
-\[C_{\calL}(\calX,\calP,D)^{\perp} = C_{\calL}(\calX,\calP,D^{\perp}),\]
-with $D^{\perp} = D_{\calP}-D+W$, where $D_{\calP} = \sum\limits_{P \in \calP} P$ and $W=(\omega)$ is a canonical divisor such that for all $P \in \calP$, $\nu_P(\omega)=-1$ and $\mathrm{Res}_{\omega}(P)=1$. 
+Let $C_{\calL}(\calX,\calP,G)$ be an AG-code defined on a curve $\calX$. Then 
+\[C_{\calL}(\calX,\calP,G)^{\perp} = C_{\calL}(\calX,\calP,G^{\perp}),\]
+with $G^{\perp} = D_{\calP}-G+W$, where $D_{\calP} = \sum\limits_{P \in \calP} P$ and $W=(\omega)$ is a canonical divisor such that for all $P \in \calP$, $\nu_P(\omega)=-1$ and $\mathrm{Res}_{\omega}(P)=1$. 
 \end{proposition}
 
-In the case of AG codes, we have a special notation for the subfield subcode, namely
-\[\ssag{\calX,\calP,D} := C_{\calL}(\calX,\calP,D)|_{\fq}.\]
+%In the case of AG codes, we have a special notation for , namely
+%\[\ssag{\calX,\calP,G} := C_{\calL}(\calX,\calP,G)|_{\fq}.\]
 
-In general, it is hard to find the true dimension of $\ssag{\calX,\calP,D}$, but a trivial estimate can be derived from Delsarte's theorem (Theorem~\ref{th:delsarte}).
+In general, it is hard to find the true dimension of the subfield subcode of an AG code, but a trivial estimate can be derived from Delsarte's theorem (Theorem~\ref{th:delsarte}):
 \begin{equation}\label{eq:dim_ssag}
-	\dim_{\fq} \ssag{\calX,\calP,D} \geq n - m(\dim_{\fqm} C_{\calL}(\calX,\calP,D^{\perp})).
+	\dim_{\fq} C_{\calL}(\calX,\calP,G)|_{\fq} \geq n - m\dim_{\fqm} C_{\Omega}(\calX,\calP,G).
 \end{equation}
 
-The minimum distance of $\ssag{\calX,\calP,D}$ is at least the one of the AG code $C_{\calL}(\calX,\calP,D)$ above. It is thus bounded from below by the designed distance $d^*=n-\deg D$.% Furthermore, in some particular cases, the minimum distance of subfield subcode of a linear code can be much greater. 
+The minimum distance of the SSAG code $C_{\calL}(\calX,\calP,G)|_{\fq}$ is at least the one of the AG code $C_{\calL}(\calX,\calP,G)$ above. It is thus bounded from below by the designed distance $d^*=n-\deg G$.% 
+
+The structure of the AG codes may provide sharper bounds on the dimension of subfield subcodes and trace codes of AG codes.
+
+\begin{thm}[{\cite[Theorem~9.1.6]{Sti09}}]\label{thm:dim_ssag}
+	With the notation as above, let $G_1$ be any divisor such that 
+	\begin{equation} \label{eq:divisor_G_1}
+		G \geq qG_1 \ \mathrm{and} \ G \geq G_1.
+	\end{equation}
+
+	Then
+\[	\dim_{\fq} \Tr{C_{\calL}(\calX,\calP,G)} \leq  \left\{\begin{array}{ll}
+	m\left(\ell(G) - \ell(G_1)\right) & \text{if } G_1 \geq 0, \\
+	m\left(\ell(G) - \ell(G_1)\right) & \text{if } G_1 \not\geq 0, 
+\end{array} \right.\]	
+	and	
+\[	\dim_{\fq} C_{\Omega}(\calX,\calP,G)|_{\fq} \geq  \left\{\begin{array}{ll}
+	n-1-m\left(\ell(G) - \ell(G_1)\right) & \text{if } G_1 \geq 0, \\
+	n-m\left(\ell(G) - \ell(G_1)\right) & \text{if } G_1 \not\geq 0. 
+\end{array} \right.\]
+\end{thm}
+
+\begin{remark}\label{rk:G/q}
+	The biggest divisor (with respect to the degree) satisfying \eqref{eq:divisor_G_1} is given by 
+	\begin{equation}\label{eq:G/q}
+		\left[ \frac{G}{q} \right]:= \sum\limits_{P \in \Supp(G^+)} \left\lfloor\frac{\nu_P(G^+)}{q}\right\rfloor P + \sum\limits_{P \in \Supp(G^-)}\nu_P(G^-)P,
+	\end{equation}
+	where $G^+ = D+(g)_0$ and $G^-=(g)_\infty$ are such that $G=G^+-G^-$.
+\end{remark}
+
+With additional hypotheses on $G$ and $\displaystyle \left[ \frac{G}{q} \right]$, {\cite[Theorem~1]{Le16}} gives an exact formula for such a code.
+
+Regarding the minimum distance, Wirtz \cite{W88} improved the bound on the minimum distance of subfield subcodes of differential codes.
+
+\begin{thm}[{\cite[Theorem~2]{W88}}]
+	Take the same notation as in Theorem \ref{thm:dim_ssag} and assume $\deg G_1 > 2 \mathfrak{g}-2$.
+	Set $U:=\{P \in \Supp(G) \mid \nu_P(G) \geq 0 \text{ and } \nu_P(G) = q-1 \mod q\}$ and $G_U=\sum_{P \in U} P$. Then
+	\[	\dim_{\fq} C_{\Omega}(\calX,\calP,G)|_{\fq} = 	\dim_{\fq} C_{\Omega}(\calX,\calP,G+G_U)|_{\fq} \]
+	hence the minimum distance of $\dim_{\fq} C_{\Omega}(\calX,\calP,G)|_{\fq}$ satisfies
+	\[d\left(	\dim_{\fq} C_{\Omega}(\calX,\calP,G)|_{\fq} \right) \geq \deg G + \deg G_U -2\mathfrak{g}+2.\]
+\end{thm}
 
 
 \subsubsection{First estimation of the dimension of the square of the trace of an AG code}
@@ -279,15 +319,15 @@ This is especially true for Reed-Solomon codes (see \cite{MT21}, Proposition 11)
  \[ \calL(F) \cdot \calL(G) = \calL(F+G),\]
  where $\calL(F) \cdot \calL(G) := \Span{ f \cdot g : (f,g) \in \calL(F) \times \calL(G)}$.
 \end{proposition}
-As a consequence, for an AG code  $C_{\calL}(\calX,\mathcal{P},D)$ with $\deg(D) \geq 2\mathfrak{g}+1$, we have
-\[ C_{\calL}(\calX,\mathcal{P},D)^{\star2} = C_{\calL}(\calX,\calP,2D).\]
+As a consequence, for an AG code  $C_{\calL}(\calX,\mathcal{P},G)$ with $\deg(G) \geq 2\mathfrak{g}+1$, we have
+\[ C_{\calL}(\calX,\mathcal{P},G)^{\star2} = C_{\calL}(\calX,\calP,2G).\]
 The Riemann-Roch theorem thus gives
-\[ \dim_{\fqm}(C_{\calL}(\calX,\mathcal{P},D)^{\star2}) = 2\deg(D)+1-\mathfrak{g}= \deg(D) + \dim_{\fqm}(C_{\calL}(\calX,\mathcal{P},D)), \]
+\[ \dim_{\fqm}(C_{\calL}(\calX,\mathcal{P},G)^{\star2}) = 2\deg(G)+1-\mathfrak{g}= \deg(G) + \dim_{\fqm}(C_{\calL}(\calX,\mathcal{P},G)), \]
 which is much smaller than the expected dimension given in Lemma \ref{lem:known_bounds} 2. (thus providing a distinguisher for AG-codes). Combined with \eqref{eq:key_equation}, we get a first upper bound on the dimension of the square of the trace of an AG code.
 
 \begin{coro} \label{coro:1st_bound_mumford}
- Let $\mathcal{C} := C_{\calL}(\calX,\mathcal{P},D)$ be a $k$--dimensional AG code on $\calX$ associated with a degree $s \geq 2\mathfrak{g}+1$ divisor. Then
- \[ \dim_{\fq}\Tr{\calC}^{\star2} := \dim_{\fq} (\ssag{\calX,\calP,D^{\perp}}^{\perp})^{\star2}  \leq \binom{mk+1}{2} - \dfrac{m}{2} (k(k-1)-2s).\]
+ Let $\mathcal{C} := C_{\calL}(\calX,\mathcal{P},G)$ be a $k$--dimensional AG code on $\calX$ associated with a degree $s \geq 2\mathfrak{g}+1$ divisor. Then
+ \[ \dim_{\fq}\Tr{\calC}^{\star2} := \dim_{\fq} \left((\calC^\perp|_{\fq})^{\perp}\right)^{\star2}  \leq \binom{mk+1}{2} - \dfrac{m}{2} (k(k-1)-2s).\]
 \end{coro}
 
 \begin{proof}
@@ -358,38 +398,13 @@ Such a code has length $n = \# \calP$. As stated in \cite[Theorem~1]{JM96}, its 
 \[\dim_{\fq} \Gamma(\calP,D,g) \geq n-m \dim_{\fqm} \calC_{\calL}(\calX,\calP,D+(g)) =n-m(\deg D - \mathfrak{g} +1 )\]
 if $2\mathfrak{g} - 2 < \deg D < n$. Its minimum distance is bounded from below by $\deg D - 2 \mathfrak{g} + 2$.
 
-The structure of the AG code $\calC$ may provide sharper bounds on the dimension depending on the divisor $G$.
-
-\begin{thm}[{\cite[Theorem~9.1.6]{Sti09}}]
-With the notation as above, set $G=D+(g)$. Let $G_1$ be any divisor such that 
-\begin{equation} \label{eq:divisor_G_1}
-G \geq qG_1 \ \mathrm{and} \ G \geq G_1.
-\end{equation}
-Then $\dim_{\fq} \Gamma(\calP,D,g)  \geq n-m\left(\ell(D) - \ell(G_1)\right)$.
-
-\end{thm}
+\TODO{Modifier :}
 
 \begin{proof}
 Since $g \notin \calL(D)$, the divisor $G$ is not effective. Hence, any divisor $G_1$ satisfying the conditions of Equation \ref{eq:divisor_G_1} is also non effective. The result follows from {\cite[Theorem~9.1.6]{Sti09}} when $G_1\not\geq 0$.
 \end{proof}
 
-\begin{remark}\label{rk:G/q}
-The biggest divisor (with respect to the degree) satisfying \eqref{eq:divisor_G_1} is given by 
-\begin{equation}\label{eq:G/q}
-\left[ \frac{G}{q} \right]:= \sum\limits_{P \in \Supp(G^+)} \left\lfloor\frac{\nu_P(G^+)}{q}\right\rfloor P + \sum\limits_{P \in \Supp(G^-)}\nu_P(G^-)P,
-\end{equation}
- where $G^+ = D+(g)_0$ and $G^-=(g)_\infty$ are such that $G=G^+-G^-$.
-\end{remark}
 
-\TODO{Je me tâte à bouger tout ça dans les SSAG et à le spécifier ici dans le cas Goppa-like.}
-
-With additional hypotheses on $G$ and $\displaystyle \left[ \frac{G}{q} \right]$, {\cite[Theorem~1]{Le16}} gives an exact formula for such a code.
-
-%\begin{thm}
-%	Set $U:=\{P \in \Supp(G) \mid \nu_P(G) \geq 0 \text{ and } \nu_P(G) = q-1 \mod q\}$ and $G_U=\sum_{P \in U} P$. Then
-%	
-%	
-%\end{thm}
 
 \subsubsection{Why the terminology \textit{Goppa--like}?}
 
