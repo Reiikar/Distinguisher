@@ -1,4 +1,4 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper]{amsart}
 
 %%%%%%%% BIBLIOGRAPHIE %%%%%%%%
 %\usepackage[backend=biber]{biblatex} %Imports biblatex package  //version biber et pas biblatex, ne marche pas direct sur texmaker.
@@ -83,26 +83,47 @@
 \newcommand\sabira[1]{\textcolor{blue}{#1}}
 %%%%%-------- Keywords--------------
 
-\makeatletter
-\newcommand{\subjclass}[2][2020]{%
-	\let\@oldtitle\@title%
-	\gdef\@title{\@oldtitle\footnotetext{#1 \emph{Mathematics subject classification.} #2.}}%
-}
-\newcommand{\keywords}[1]{%
-	\let\@@oldtitle\@title%
-	\gdef\@title{\@@oldtitle\footnotetext{\emph{Keywords.} #1.}}%
-}
-\makeatother
+%\makeatletter
+%\newcommand{\subjclass}[2][2020]{%
+%	\let\@oldtitle\@title%
+%	\gdef\@title{\@oldtitle\footnotetext{#1 \emph{Mathematics subject classification.} #2.}}%
+%}
+%\newcommand{\keywords}[1]{%
+%	\let\@@oldtitle\@title%
+%	\gdef\@title{\@@oldtitle\footnotetext{\emph{Keywords.} #1.}}%
+%}
+%\makeatother
 
 
 %\providecommand{\keywords}[1]{\textbf{Keywords---} #1}
-%-----Début---------%
+
+
+%-----METADONNES---------%
 \title{Goppa--like SSAG code from $C_{a,b}$ curves and their behaviour by squaring their dual}
-\author{Mathieu Lhotel, Sabira El Khalfaoui, Jade Nardi}
+
+
+\author{Mathieu Lhotel}
+\address{Laboratoire de Mathématiques de Besançon, UMR 6623 CNRS Université de Bourgogne Franche-Comté, France}
+\email{mathieu.lhotel@univ-fcomte.fr}
+
+\author{Sabira El Khalfaoui}
+\address{Univ Rennes, IRMAR - UMR 6625, F-35000 Rennes, France}
+\email{sabira.elkhalfaoui@univ-rennes1.fr}
+
+\author{Jade Nardi}
+\address{Univ Rennes, CNRS, IRMAR - UMR 6625, F-35000 Rennes, France}
+\email{jade.nardi@univ-rennes1.fr}
+
+
+
+
 \date{\today}
 \keywords{AG codes, Subfield subcodes, $C_{a,b}$ curves, Goppa--like AG codes, Trace codes, Schur product}
 \subjclass{11T71, 14G50, 14H05, 11G20}
 
+
+
+%---------------START--------------------------------
 
 \begin{document}
 %\parindent=0pt % Aucune indentation.
@@ -112,8 +133,6 @@
 In this paper, we introduce a family of codes that can be used a McEliece cryptosystem like, called \emph{Goppa--like AG codes}. These are a generalization of classical Goppa codes constructed from any curve of genus $\mathfrak{g} \geq 0$. Focusing on codes from $C_{a,b}$ curves, we study the behaviour of the dimension of the square of their dual to determine their resistance to distinguisher attacks similar to the one for alternant and Goppa codes developed by Mora and Tillich \cite{MT21}. We also propose numerical experiments to measure how sharp is our bound.
 \end{abstract}
  
-\keywords{AG codes, $C_{a,b}$ curves, Goppa--like AG codes, Trace codes, Schur product.}
-
 
 \section*{Introduction}
 McEliece cryptosystem is one of the last code-based candidates for standardization of post--quantum cryptrographic to the NIST competition since the third round. It guarantees the smallest ciphertexts among all the candidates, but it suffers from the largest public keys. Over the past forty years, there were many attempts in replacing the family of binary Goppa codes by other structured families of codes to reduce the key size.
@@ -899,7 +918,7 @@ Consequently, it is still reasonable to consider the Hermitian curve to build ef
 \section{Application of Goppa-like AG codes to McEliece cryptosystem}
 The McEliece cryptosystem's security is based on the fact that the published code behaves randomly. An attacker is confronted with the classic decoding problem: find the closest codeword to a given vector in the ambient space of a linear code $C$, assuming that a unique closest codeword exists. \textit{Information-set decoding} (ISD) algorithm which was introduced by Prange \cite{} in 1962 is the best known algorithm for decoding a random-looking code without any obvious structure. However, for the McEliece Cryptosystem, a family of codes must be chosen based on the efficiency of the decoding algorithm and the indistinguishability from random codes.
 This choice should not be limited to the binary case. A subfield subcode of a linear code over $\mathbb{F}_{q^m}$ of length $n$ is a subspace of $\mathbb{F}_{q}^n$ with codewords of coordinates in $\mathbb{F}_q$. The binary Goppa codes were proposed in McEliece's original variant, but they suffer from the drawback of having large key sizes. In \cite{}, Peters showed that for $q > 2$, a subfield subcode of a linear can improve the key size while maintaining the same level of security against a decoding attack (ISD). Recently, there have been many attempts to reduce the key sizes of the McEliece
-cryptosystem based on codes over larger fields. We investigated Goppa-like AG codes over finite fields with different characteristics by analysing the computational cost of the ISD algorithm for parameters relevant to post-quantum cryptography. In the table below, we provided parameters that resist the Goppa-like AG code distinguisher and improve key sizes when compared to the subfield subcodes of 1-point Hermitian codes parameters reported in \cite{}.
+cryptosystem based on codes over larger fields. We investigated Goppa-like AG codes over finite fields with different characteristics by analysing the computational cost of the ISD algorithm for parameters relevant to post-quantum cryptography. In the table below, we provided parameters that resist the Goppa-like AG code distinguisher and improve key sizes when compared to the subfield subcodes of 1-point Hermitian codes parameters reported in \cite[Table~3]{EKN21crypto}.
 
 
 \begin{table}[h]
@@ -917,6 +936,10 @@ cryptosystem based on codes over larger fields. We investigated Goppa-like AG co
 \end{table}
 \TODO{References, unify the table format}
 \TODO{McEliece cryptosystem, ISD and its computational cost, CFS signature scheme (why this distinguisher attack can break CFS easily?)}
+
+\noindent
+\textbf{Acknowledgements.} %The two authors would like to express their gratitude to the anonymous referee for relevant comments that lead to this improved version of the paper.
+This work was funded in part by the grant ANR-21-CE39-0009-BARRACUDA from the French National Research Agency. The first and the third authors are supported by the French government ‘‘Investissements d’Avenir" program ANR-11-LABX-0020-01.
 
 
 \clearpage
