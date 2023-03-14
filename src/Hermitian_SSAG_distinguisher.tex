@@ -162,8 +162,9 @@ However, as it is already the case for the distinguisher of classical Goppa code
 
 
 \subsection*{Application of Goppa-like AG codes to McEliece cryptosystem}
-\jade{$t$ est la capacité de correction, pas la distance minimale, non ?}
-For a McEliece cryptosystem constructed on an $[n,k,t]_q$ linear code $\calC$, the public key has the size of $k(n-k)\lceil \log_2(q) \rceil$ if the generator matrix $G$ of $\calC$ is in its systematic form. The choice of such code should not be limited to the binary case. In \cite{petersIsd}, Peters showed that for $q > 2$, a subfield subcode of a linear can improve the key size while maintaining the same level of security against a decoding attack. 
+
+
+For a McEliece cryptosystem constructed on an $[n,k]_q$ linear code $\calC$ with an error capability $t$ , the public key has the size of $k(n-k)\lceil \log_2(q) \rceil$ if the generator matrix $G$ of $\calC$ is in its systematic form. The choice of such code should not be limited to the binary case. In \cite{petersIsd}, Peters showed that for $q > 2$, a subfield subcode of a linear can improve the key size while maintaining the same level of security against a decoding attack. 
 
 
 
@@ -171,7 +172,7 @@ For a McEliece cryptosystem constructed on an $[n,k,t]_q$ linear code $\calC$, t
 
 \[ C_\text{Prange}= \frac{\binom{n}{t}}{\binom{n-k}{t}}C_\text{Gauss}(n,k,q),\]
 
-where $C_\text{Gauss}(n,k,q)$ is the cost of the Gauss-Jordan elimination of an $k\times n$ matrix over $\mathbb{F}_q$. Based on such attacks, we analysed the parameters of Goppa-like AG codes, \jade{since they seem the have the lowest complexity. $\leftarrow$ je ne comprends pas ce que tu entends par là}
+where $C_\text{Gauss}(n,k,q)$ is the cost of the Gauss-Jordan elimination of an $k\times n$ matrix over $\mathbb{F}_q$. We analysed the parameters of Goppa-like AG codes based on information set decoding attack,since it seems to have the lowest complexity.
  
  
 
