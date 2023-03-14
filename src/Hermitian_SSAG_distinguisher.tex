@@ -162,20 +162,21 @@ However, as it is already the case for the distinguisher of classical Goppa code
 
 
 \subsection*{Application of Goppa-like AG codes to McEliece cryptosystem}
+\jade{$t$ est la capacité de correction, pas la distance minimale, non ?}
+For a McEliece cryptosystem constructed on an $[n,k,t]_q$ linear code $\calC$, the public key has the size of $k(n-k)\lceil \log_2(q) \rceil$ if the generator matrix $G$ of $\calC$ is in its systematic form. The choice of such code should not be limited to the binary case. In \cite{petersIsd}, Peters showed that for $q > 2$, a subfield subcode of a linear can improve the key size while maintaining the same level of security against a decoding attack. 
 
-For a McEliece cryptosystem constructed on an $[n,k,t]_q$ linear code $\calC$, the public key has the size of $k(n-k)\lceil \log_2(q) \rceil$ if the generator matrix $G$ of $C$ is in its systematic form. The choice of such code should not be limited to the binary case. In \cite{petersIsd}, Peters showed that for $q > 2$, a subfield subcode of a linear can improve the key size while maintaining the same level of security against a decoding attack. 
 
 
+\textit{Information-set decoding} (ISD) algorithm which was introduced by Prange \cite{prange} in 1962 is the best known algorithm for decoding a random-looking code without any obvious structure. Given an $n\times (n-k)$ parity check matrix $H$ and $s$ is a column vector of length $n-k$ obtained through $H$, the total time complexity for finding the row vector $e$ with length $n$ and weight $t$ such that $s=eH^{T}$ is
 
-\textit{Information-set decoding} (ISD) algorithm which was introduced by Prange \cite{prange} in 1962 is the best known algorithm for decoding a random-looking code without any obvious structure. Given an $n\times (n-k)$ parity check matrix $H$ and $s$ is a column vector of length $n-k$ obtained through $H$, the total time complexity for finding the row vector $e$ with length $n$ and wight $t$ such that $s=eH^{T}$ is:
+\[ C_\text{Prange}= \frac{\binom{n}{t}}{\binom{n-k}{t}}C_\text{Gauss}(n,k,q),\]
 
-\[ C_{Prange}= \frac{\binom{n}{t}}{\binom{n-k}{t}}C_{Gauss}(n,k,q),\]
-
-where $C_{Gauss}(n,k,q)$ is the cost of the Gauss-Jordan elimination of an $k\times n$ matrix over $\mathbb{F}_q$. Based on such attacks, we analysed the parameters of Goppa-like AG codes, since they seem the have the lowest complexity.
+where $C_\text{Gauss}(n,k,q)$ is the cost of the Gauss-Jordan elimination of an $k\times n$ matrix over $\mathbb{F}_q$. Based on such attacks, we analysed the parameters of Goppa-like AG codes, \jade{since they seem the have the lowest complexity. $\leftarrow$ je ne comprends pas ce que tu entends par là}
  
  
 
 In this work, we also investigated Goppa-like AG codes over finite fields with different characteristics by analysing the computational cost of the ISD algorithm for parameters relevant to post-quantum cryptography. In Table \ref{table:goppa-herm}, we provided parameters that resist the Goppa-like AG code distinguisher and improve key sizes when compared to the subfield subcodes of 1-point Hermitian codes parameters reported in \cite[Table~3]{EKN21crypto}.
+\jade{Ne devrait-on pas dire que ça améliore aussi le cas Goppa binaire ?}
 
 \begin{table}[h]
 	\begin{center}
@@ -209,7 +210,7 @@ In this work, we also investigated Goppa-like AG codes over finite fields with d
 
 \subsection*{Outline of the paper}
 
-The paper is organized as follows. Section \ref{sec:preli} is dedicated to basic definitions about linear codes, AG codes and $C_{a,b}$ curves. In Section \ref{sec:Goppa}, we introduce the notion of Goppa--like AG codes and we give a first bound for the dimension of the square of their dual. In Section \ref{sec:AG-C_a,b}, we refine the bound for Goppa--like AG codes from $C_{a,b}$ curves, associated to one--point divisors. Section \ref{sec:analysis} concludes this paper with a discussion about this bound on elliptic curves and on the Hermitian curve.
+The paper is organized as follows. Section \ref{sec:preli} is dedicated to basic definitions about linear codes, subfield subcodes and trace codes, AG codes and $C_{a,b}$ curves. In Section \ref{sec:Goppa}, we introduce the notion of Goppa--like AG codes and we give a first bound for the dimension of the square of their dual. In Section \ref{sec:AG-C_a,b}, we refine the bound for Goppa--like AG codes from $C_{a,b}$ curves, associated to one--point divisors. Section \ref{sec:analysis} concludes this paper with a discussion about this bound on elliptic curves and on the Hermitian curve.
 
 \section{Preliminaries}\label{sec:preli}
 \subsection{Linear codes, subfield subcode and trace code}
@@ -236,8 +237,8 @@ Let $\calC$ and $\calD$ be two linear codes over $\fqm$ with same length $n$ and
 
 Especially, by \cite[Theorem~2.3]{CCMZ15}, if $\calC$ is sufficiently random and $\calC^{\star2}$ does not fill the full space, we expect to have 
 \[ \dim_{\fqm}(\calC^{\star2}) = \binom{k_{\calC}+1}{2}.\]
-\TODO{Référence pour les codes binaires}
-Given a linear code $\calC$ over $\fqm$, there exists two constructions of codes on the subfield $\fq$, namely its subfield subcode and its trace code. The \emph{subfield subcode} of $\calC$, denoted by $\calC|_{\fq}$, is the linear code over $\fq$ defined by 
+
+Given a linear code $\calC$ over $\fqm$, there exist two constructions of codes on the subfield $\fq$, namely its subfield subcode and its trace code. The \emph{subfield subcode} of $\calC$, denoted by $\calC|_{\fq}$, is the linear code over $\fq$ defined by 
 \[\calC|_{\fq}=\calC \cap \mathbb{F}_q^n.\]
 Again, if $\calC$ is a $[n,k,d]_{q^m}$ code, then $\calC|_{\fq}$ is a $[n,\geq n-m(n-k),\geq d]_q$ code.
 Let $\operatorname{Tr}_{\mathbb{F}_{q^m}/\fq}$ be the trace operator on $\mathbb{F}_{q^m}$ with respect to $\mathbb{F}_q$, \emph{i.e.} defined by
