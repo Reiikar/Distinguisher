@@ -168,8 +168,10 @@ We hope that this work will lead to several proposal/improvements on SSAG code b
 
 \TODO{Meilleure intégration dans l'intro : en déplaçant ce paragraphe ici, on a trop de répétitions avec le début de l'intro.}
 
+For a McEliece cryptosystem constructed on an $[n,k,t]_q$ linear code $\calC$, its public key has the size of $k(n-k)\lceil \log_2(q) \rceil$ if the generator matrix $G$ of $C$ is in its systematic form. 
+When choosing such a code, the efficiency of the decoding algorithm and the code's indistinguishability from random codes must be considered. Moreover, this choice should not be limited to the binary case. A subfield subcode of a linear code over $\mathbb{F}_{q^m}$ of length $n$ is a subspace of $\mathbb{F}_{q}^n$ with codewords of coordinates in $\mathbb{F}_q$. The binary Goppa codes were proposed in McEliece's original variant, but they suffer from the drawback of having large key sizes. In \cite{petersIsd}, Peters showed that for $q > 2$, a subfield subcode of a linear can improve the key size while maintaining the same level of security against a decoding attack. 
 
-To instantiate McEliece cyrptosystem, we choose a linear code $\calC$ over $\mathbb{F}_q$ of length $n$ and dimension $k$ denoted by $[n,k,t]_q$, with $C$ serving as a public key. Let $A_C$ be an efficient decoding algorithm of $C$ with error capability $t$ that is used as a secret key. To encrypt a plaintext $m$, we simply use the encoding process with the generator matrix $G$ of $C$ and a random error vector $e$ such that $c=mG+e$ where $wt(e) \leq t$. We assume that $G$ is in its systematic form, which allows to store the public key more efficiently and reduces its size to $k(n-k)\lceil \log_2(q) \rceil$ (for more details, see \cite{overbeck2009code}).
+
 
 \textit{Information-set decoding} (ISD) algorithm which was introduced by Prange \cite{prange} in 1962 is the best known algorithm for decoding a random-looking code without any obvious structure. Given an $n\times (n-k)$ parity check matrix $H$ and $s$ is a column vector of length $n-k$ obtained through $H$, the total time complexity for finding the row vector $e$ with length $n$ and wight $t$ such that $s=eH^{T}$ is:
 
@@ -177,11 +179,7 @@ To instantiate McEliece cyrptosystem, we choose a linear code $\calC$ over $\mat
 
 where $C_{Gauss}(n,k,q)$ is the cost of the Gauss-Jordan elimination of an $k\times n$ matrix over $\mathbb{F}_q$. Based on such attacks, we analysed the parameters of Goppa-like AG codes, since they seem the have the lowest complexity.
  
-\sabira{?link these two paragraphs} 
-
-\textbf{Key size reduction and security.} For the McEliece Cryptosystem, a family of codes must be chosen based on the efficiency of the decoding algorithm and the indistinguishability from random codes. This choice should not be limited to the binary case. A subfield subcode of a linear code over $\mathbb{F}_{q^m}$ of length $n$ is a subspace of $\mathbb{F}_{q}^n$ with codewords of coordinates in $\mathbb{F}_q$. The binary Goppa codes were proposed in McEliece's original variant, but they suffer from the drawback of having large key sizes. In \cite{petersIsd}, Peters showed that for $q > 2$, a subfield subcode of a linear can improve the key size while maintaining the same level of security against a decoding attack (ISD). 
-
-
+ 
 
 Recently, there have been many attempts to reduce the key sizes of the McEliece cryptosystem based on codes over larger fields. We investigated Goppa-like AG codes over finite fields with different characteristics by analysing the computational cost of the ISD algorithm for parameters relevant to post-quantum cryptography. In Table \ref{table:goppa-herm}, we provided parameters that resist the Goppa-like AG code distinguisher and improve key sizes when compared to the subfield subcodes of 1-point Hermitian codes parameters reported in \cite[Table~3]{EKN21crypto}.
 
