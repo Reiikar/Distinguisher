@@ -234,9 +234,9 @@ Let $\calC$ and $\calD$ be two linear codes over $\fqm$ with same length $n$ and
  \end{enumerate}
 \end{lemma}
 
-Especially, if $\calC$ is sufficiently random and $\calC^{\star2}$ does not fill the full space, we expect to have 
+Especially, by \cite[Theorem~2.3]{CCMZ15}, if $\calC$ is sufficiently random and $\calC^{\star2}$ does not fill the full space, we expect to have 
 \[ \dim_{\fqm}(\calC^{\star2}) = \binom{k_{\calC}+1}{2}.\]
-
+\TODO{Référence pour les codes binaires}
 Given a linear code $\calC$ over $\fqm$, there exists two constructions of codes on the subfield $\fq$, namely its subfield subcode and its trace code. The \emph{subfield subcode} of $\calC$, denoted by $\calC|_{\fq}$, is the linear code over $\fq$ defined by 
 \[\calC|_{\fq}=\calC \cap \mathbb{F}_q^n.\]
 Again, if $\calC$ is a $[n,k,d]_{q^m}$ code, then $\calC|_{\fq}$ is a $[n,\geq n-m(n-k),\geq d]_q$ code.
@@ -259,15 +259,15 @@ Let $\calC$ be a linear code of lenght $n$ over $\fqm$. Then
 \subsubsection{Definitions}
 
 Let $\calX$ be a smooth and irreducible projective curve over $\fqm$ of genus $\mathfrak{g}$. A \emph{divisor} on $\calX$ over $\fqm$ is a formal sum of places over $\fqm$, \emph{i.e.} of the form $G=\sum \nu_P(G) P$, where $\nu_P(G)$ are integers which are all zero except for a finite number of places $P$. We denote by $\Div(\calX)$ the set of $\fqm$--divisors on $\calX$ (we omit the dependence on $\fqm$).
-Given $G \in \Div(\calX)$, we define its \emph{support} $\Supp(G)$ as the finite set of places $P$ such that $\nu_P(G)$ is non--zero and its \emph{degree} $\deg G$ as $\deg G=\sum \nu_P(G) \deg(P)$. We say that a divisor $G \in \Div(\calX)$ is \emph{effective} if for all $P \in \Supp(G)$, we have $\nu_P(G) \geq 0$, in which case we write $G \geq 0$.
+Given $G \in \Div(\calX)$, we define its \emph{support} $\Supp(G)$ as the finite set of places $P$ such that $\nu_P(G)$ is non--zero and its \emph{degree} as $\deg G=\sum \nu_P(G) \deg(P)$. We say that a divisor $G \in \Div(\calX)$ is \emph{effective} if for all $P \in \Supp(G)$, we have $\nu_P(G) \geq 0$, in which case we write $G \geq 0$.
 A non--zero function $f \in \fqm(\calX)$ defines a divisor, called \emph{principal}, denoted by $(f)=\sum \nu_P(f) P$. The \emph{Riemann-Roch space} of a divisor $G$ is defined as the $\fqm$ vector space
 $$ \calL(G) := \set{f \in \fqm(\calX) \mid (f) + G \geq 0} \cup \set{0},$$
 of dimension $\ell(G)$.
 Let $\calP \subseteq \fqm(\calX)$ be a set of $n$ distinct rational points such that $\Supp(G) \cap \calP = \varnothing$.
 We can consider the AG code 
 $$\calC := \calC_{\calL}(\calX,\calP,G) := \set{\left(f(P)\right)_{P \in \calP} \mid f \in \calL(G)},$$
-which is a linear code of length $n$ and dimension $k \leq \ell(G)$ over $\fqm$. If $n \geq \deg G$, then its dimension is exactly equal to $\ell(G)$ and its minimum distance is bounded from below by the \emph{designed distance} $d^*=n-\deg G$.\\
-From Riemann-Roch theorem, we have
+which is a $[n, k \geq \ell(G)]_{\fqm}$ code. If $n > \deg G$, then its dimension is exactly equal to $\ell(G)$ and its minimum distance is bounded from below by the \emph{designed distance} $d^*=n-\deg G$.\\
+From the Riemann--Roch theorem, we have
 $$ \ell(G) \geq \deg(G) +1 - \mathfrak{g},$$ 
 with equality if $\deg(G) \geq 2\mathfrak{g}-1$.\\
 
@@ -277,7 +277,7 @@ Residue and evaluation codes are connected by the following result.
 
 \begin{proposition} [{\cite[Proposition~2.2.10]{Sti09}}] \label{prop:dual_AG_codes}
 Let $C_{\calL}(\calX,\calP,G)$ be an AG-code defined on a curve $\calX$. Then 
-\[C_{\calL}(\calX,\calP,G)^{\perp} = C_{\calL}(\calX,\calP,G^{\perp}),\]
+\[C_{\Omega}(\calX,\calP,G) = C_{\calL}(\calX,\calP,G^{\perp}),\]
 with $G^{\perp} = D_{\calP}-G+W$, where $D_{\calP} = \sum\limits_{P \in \calP} P$ and $W=(\omega)$ is a canonical divisor such that for all $P \in \calP$, $\nu_P(\omega)=-1$ and $\mathrm{Res}_{\omega}(P)=1$. 
 \end{proposition}
 
@@ -316,7 +316,7 @@ The structure of the AG codes may provide sharper bounds on the dimension of sub
 	\begin{equation}\label{eq:G/q}
 		\left[ \frac{G}{q} \right]:= \sum\limits_{P \in \Supp(G^+)} \left\lfloor\frac{\nu_P(G^+)}{q}\right\rfloor P + \sum\limits_{P \in \Supp(G^-)}\nu_P(G^-)P,
 	\end{equation}
-	where $G^+ = D+(g)_0$ and $G^-=(g)_\infty$ are such that $G=G^+-G^-$.
+	where $G^+$ and $G^-$ are effective divisors such that $G=G^+-G^-$.
 \end{remark}
 
 With additional hypotheses on $G$ and $\displaystyle \left[ \frac{G}{q} \right]$, {\cite[Theorem~1]{Le16}} gives an exact formula for such a code.
@@ -327,15 +327,15 @@ Regarding the minimum distance, Wirtz \cite{W88} improved the bound on the minim
 	Take the same notation as in Theorem \ref{thm:dim_ssag} and assume $\deg G_1 > 2 \mathfrak{g}-2$.
 	Set $U:=\{P \in \Supp(G) \mid \nu_P(G) \geq 0 \text{ and } \nu_P(G) = q-1 \mod q\}$ and $G_U=\sum_{P \in U} P$. Then
 	\[	\dim_{\fq} C_{\Omega}(\calX,\calP,G)|_{\fq} = 	\dim_{\fq} C_{\Omega}(\calX,\calP,G+G_U)|_{\fq}, \]
-	hence the minimum distance of $\dim_{\fq} C_{\Omega}(\calX,\calP,G)|_{\fq}$ satisfies
-	\[d\left(	\dim_{\fq} C_{\Omega}(\calX,\calP,G)|_{\fq} \right) \geq \deg G + \deg G_U -2\mathfrak{g}+2.\]
+	hence the minimum distance of $C_{\Omega}(\calX,\calP,G)|_{\fq}$ satisfies
+	\[d\left(C_{\Omega}(\calX,\calP,G)|_{\fq} \right) \geq \deg G + \deg G_U -2\mathfrak{g}+2.\]
 \end{thm}
 
 
 \subsubsection{First estimation of the dimension of the square of the trace of an AG code}
 
 In this paper, we aim to bound the dimension of the square of the dual of a SSAG code. From Delsarte's theorem, this is equivalent to study the square of the trace of the corresponding AG code. 
-This fact is possible thanks to a result from \cite{MT21}, valid for any linear code:
+This is possible thanks to the following result from \cite{MT21}, which is valid for any linear code.
 
 \begin{proposition}[{\cite[Proposition~15]{MT21}}] \label{prop:Tr_BoundSchurSquare}
  Let $\calC$ be a linear code over $\fqm$. Then we have 
@@ -361,7 +361,7 @@ The above corollary implies that if the dimension of a square code is smaller th
 \[ \dim_{\fqm} (\calC^{\star 2}) < \binom{\dim_{\fqm} (\calC)+1}{2},\]
 then this property is retained for the trace code, \emph{i.e.}
 \[\dim_{\fq} \Tr{\calC}^{\star 2} < \binom{\dim_{\fq} \Tr{\calC}+1}{2}.\]
-This is especially true for Reed-Solomon codes (see \cite{MT21}, Proposition 11) and more generally for AG codes with some lower bound condition on the degree of its divisor.
+This is especially true for Reed-Solomon codes (see \cite{MT21}, Proposition 11) and more generally for AG codes.
 
 
 \begin{proposition} [{\cite[Theorem~6]{Mum70}}] \label{prop:mumford_result}
@@ -369,19 +369,22 @@ This is especially true for Reed-Solomon codes (see \cite{MT21}, Proposition 11)
  \[ \calL(F) \cdot \calL(G) = \calL(F+G),\]
  where $\calL(F) \cdot \calL(G) := \Span{ f \cdot g : (f,g) \in \calL(F) \times \calL(G)}$.
 \end{proposition}
-As a consequence, for an AG code  $C_{\calL}(\calX,\mathcal{P},G)$ with $\deg(G) \geq 2\mathfrak{g}+1$, we have
-\[ C_{\calL}(\calX,\mathcal{P},G)^{\star2} = C_{\calL}(\calX,\calP,2G).\]
-The Riemann-Roch theorem thus gives
-\[ \dim_{\fqm}(C_{\calL}(\calX,\mathcal{P},G)^{\star2}) = 2\deg(G)+1-\mathfrak{g}= \deg(G) + \dim_{\fqm}(C_{\calL}(\calX,\mathcal{P},G)), \]
+As a consequence, for an AG code  $C_{\calL}(\calX,\mathcal{P},G)$, we have
+\[ C_{\calL}(\calX,\mathcal{P},G)^{\star2} \subseteq C_{\calL}(\calX,\calP,2G).\]
+with equality with $\deg(G) \geq 2\mathfrak{g}+1$.
+If $\deg G \geq \mathfrak{g}$, applying the Riemann--Roch theorem to the divisors $G$ and $2G$ thus gives
+\begin{equation}\label{eq:dim_square}
+	\dim_{\fqm}(C_{\calL}(\calX,\mathcal{P},G)^{\star2}) \leq \dim_{\fqm} C_{\calL}(\calX,\calP,2G) = 2\deg(G)+1-\mathfrak{g} \leq \deg(G) + \dim_{\fqm}(C_{\calL}(\calX,\mathcal{P},G)),
+\end{equation}
 which is much smaller than the expected dimension given in Lemma \ref{lem:known_bounds} 2. (thus providing a distinguisher for AG-codes). Combined with \eqref{eq:key_equation}, we get a first upper bound on the dimension of the square of the trace of an AG code.
 
 \begin{coro} \label{coro:1st_bound_mumford}
- Let $\mathcal{C} := C_{\calL}(\calX,\mathcal{P},G)$ be a $k$--dimensional AG code on $\calX$ associated with a degree $s \geq 2\mathfrak{g}+1$ divisor. Then
+ Let $\mathcal{C} := C_{\calL}(\calX,\mathcal{P},G)$ be a $k$--dimensional AG code on $\calX$ associated with a degree $s \geq \mathfrak{g}$ divisor. Then
  \[ \dim_{\fq}\Tr{\calC}^{\star2} := \dim_{\fq} \left((\calC^\perp|_{\fq})^{\perp}\right)^{\star2}  \leq \binom{mk+1}{2} - \dfrac{m}{2} (k(k-1)-2s).\]
 \end{coro}
 
 \begin{proof}
- From Proposition \ref{prop:mumford_result}, we have $\dim_{\fqm}(\calC)^{\star2} = 2s+1-g = k+s$, since we have equality in the Riemann-Roch theorem. Thus, \eqref{eq:mumford_bound} leads to
+ From Proposition \ref{prop:mumford_result} and Equation \eqref{eq:dim_square}, we have $\dim_{\fqm}(\calC)^{\star2} \leq 2s+1-g \leq k+s$. Thus, Equation \eqref{eq:mumford_bound} leads to
  \begin{align*}
   \dim_{\fq}\Tr{\calC}^{\star2} &\leq m(k+s) + \binom{m}{2}k^2 \\
   &\leq (2k+2s+mk^2-k^2) \dfrac{m}{2} \\
@@ -390,7 +393,7 @@ which is much smaller than the expected dimension given in Lemma \ref{lem:known_
  \end{align*}
 \end{proof}
 
-According to the above corollary, the dimension of the square of the dual of a SSAG code is less than the expected value for random codes, which is $\binom{mk+1}{2}$, due to the algebraic structure of AG codes. However, this bound does not benefit from all this structure, notably the following property.
+According to the above corollary, the dimension of the square of the dual of a SSAG code is less than the expected value for random codes, which is $\binom{mk+1}{2}$, due to the algebraic structure of AG codes. However, this bound does not fully benefit from this rich structure, notably the following property.
 
 \begin{lemma}\label{lem:Schur-Product-Power}
 	 Let $\mathcal{C} := C_{\calL}(\calX,\mathcal{P},G)$ be a $k$--dimensional AG code on $\calX$. For every $i \geq 0$, we have
@@ -398,9 +401,9 @@ According to the above corollary, the dimension of the square of the dual of a S
 \end{lemma}
 
 \begin{proof}
-	For $i \geq 0$ and $f_1,f_2 \in \calL(G)$, we have 
-	$$(f_1f_2^{q^i}) = (f_1)+q^i(f_2) \geq -G +(-q^iG) = -(q^i+1)G,$$
-	which proves the inclusion of spaces
+	Fix $i \geq 0$. Let $f_1,f_2 \in \calL(G)$. Then the product $f_1f_2^{q^i}$ belong to $\calL((q^i+1)G)$ as
+	$$(f_1f_2^{q^i}) + (q^i+1)G = \left((f_1) + G\right) + q^i\left((f_2) + G\right) \geq 0.$$
+	This proves the inclusion of spaces
 	$$ \calL(G)\cdot \calL(G)^{q^i} \subseteq \calL((q^i+1)G),$$
 	hence the inclusion of the associated codes.
 \end{proof}
@@ -424,7 +427,9 @@ where $f_{a,b} \in \fqm[X,Y]$ and the sum is taken over all couples $(i,j) \in \
 Any curve $\calX_{a,b}$ defined by an equation as in \eqref{eq:equation_C_ab} has a unique point at infinity, denoted by $P_{\infty}$. Moreover, as a plane curve, its genus is given by
 \[\mathfrak{g}_{a,b}:=\dfrac{(a-1)(b-1)}{2}.\]
 
-\paragraph{The point at infinity.} We will consider codes obtained by evaluating functions on $\calX_{a,b}$ which are regular everywhere, except maybe at the unique point at infinity $P_\infty$. These functions then belong to the ring 
+\subsubsection{The point at infinity $P_\infty$ and its regular ring $\calO_{P_\infty}$}
+
+We will consider codes obtained by evaluating functions on $\calX_{a,b}$ which are regular everywhere, except maybe at the unique point at infinity $P_\infty$. These functions then belong to the ring 
 \begin{equation}\label{eq:O_Pinf}
 \mathcal{O}_{P_\infty}=\bigcup_{s \geq 0} \calL(s P_\infty)
 \end{equation} %
@@ -438,9 +443,15 @@ In summary, any function that is regular on all $\calX_{a,b}$ except maybe at $P
 \begin{definition}[Weighted degree]
 Given a monomial of the form $x^iy^j \in \calO_{P_\infty}$, we define its weighted degree by
 \[ \degab{x^iy^j} := ai+bj.\]
+
+From this degree, we can define a the monomial order $\prec$ over $\calO_{P_\infty} \simeq \fqm[x,y]$ as follows: $x^uy^v \prec x^{u'}y^{v'}$ if
+\begin{equation}\label{eq:def_mon_order}
+\degab{x^uy^v} < \degab{x^{u'}y^{v'}} \text{ or } \left(\degab{x^uy^v} = \degab{x^{u'}y^{v'}}  \text{ and } u < u'\right).
+\end{equation}
+
 %
 Any function $f \in \calO_{P_\infty}$ can be written in the form $$f = x^{\beta}y^{\alpha} + f'(x,y),$$
-with $\alpha \leq a-1$ and $f' \in \calL(sP_{\infty})$ such that any monomial $x^iy^j$ of $f'$ satisfies $ai+bj < \degab{x^{\beta}y^{\alpha}}$ and $j \leq a-1$. We can then define the leading term of $f$ as $\mathrm{LT}(f) := x^{\beta}y^{\alpha},$ and extend the definition of weighted degree to any such function by setting 
+with $\alpha \leq a-1$ and $f' \in \calO_{P_\infty}$ such that any monomial $x^iy^j$ of $f'$ satisfies $ai+bj < \degab{x^{\beta}y^{\alpha}}$ and $j \leq a-1$. The leading term of $f$ with respect to the monomial order $\prec$ is thus $\mathrm{LT}(f) := x^{\beta}y^{\alpha}$. This extends the definition of weighted degree to any such function by setting 
 \[\degab{f} := \degab{\mathrm{LT}(f)}.\]
 \end{definition}
 It is easy to check that for any function $f \in \calO_{P_\infty}$, its weighted degree $\degab{f}$ is equal to the smallest integer $s$ such that $f$ belongs to the Riemann--Roch space $\calL(sP_{\infty})$.
@@ -452,11 +463,10 @@ polynomials. We will notably perform division, using Gr\"obner bases, and, as ex
 \textit{generally} smaller than the dividend's.
 \end{remark}
 
-\TODO{Parameters codes one-point on $C_{a,b}$}
 
 \section{Goppa--like AG codes}\label{sec:Goppa}
 \subsection{Definition, parameters and context in the literature}\label{subsec:def-Goppa}
-Let $D$ be an effective divisor of positive degree $s$ on a smooth and irreducible projective curve $\calX$ over $\fqm$. Take a rational function $g \in \fqm(\calX)$ such that $g \notin \calL(D)$. Given a set of points $\calP \in \calX(\fqm)$ such that $\calP \cap \Supp(g) = \varnothing$ and $\calP \cap \Supp(D) = \varnothing$, we consider the AG code
+Let $D$ be an effective divisor of positive degree $s$ on a smooth and irreducible projective curve $\calX$ over $\fqm$. Take a rational function $g \in \fqm(\calX)$ such that $g \notin \calL(D)$. Given a set of $\fqm$--points $\calP \in \calX(\fqm)$ such that $\calP \cap \Supp(g) = \varnothing$ and $\calP \cap \Supp(D) = \varnothing$, we consider the AG code
 \[\calC := \calC_{\calL}(\calX,\calP,D+(g))=\set{\left(f(P)g(P)^{-1}\right)_{P \in \calP} \mid f \in \calL(D)}.\]
 \begin{definition} \label{def:Goppa--like_AG_code}
 The Goppa--like AG code associated to $\calC$ is defined as the subfield subcode of its dual code, \emph{i.e.}
@@ -470,7 +480,7 @@ if $2\mathfrak{g} - 2 < \deg D < n$. Its minimum distance is bounded from below 
 \begin{remark}
 These estimations of the dimension and the minimum distance may be improved by Theorem~\ref{thm:dim_ssag} and \ref{thm:Wirtz}. Regarding the dimension, it is worth noting that, since $g \notin \calL(D)$, the divisor $G$ is not effective. Hence, any divisor $G_1$ satisfying the conditions of Equation \ref{eq:divisor_G_1} is also non effective, which means that
 \[	\dim_{\fq}  \Gamma(\calP,D,g) \geq 	n-m\left(\ell(G) - \ell(G_1)\right). \]
-Without additional conditions on the divisor $D$ and the function $g$, the divisor $G_U$ for $G=D+(g)$ (see Theorem~\ref{thm:Wirtz} for definition) is zero. Generally, we cannot expect for a better bound for the minimum distance. 
+Without additional conditions on the divisor $D$ and the function $g$, the divisor $G_U$ for $G=D+(g)$ defined in Theorem~\ref{thm:Wirtz} is zero. Generally, we cannot expect for a better bound for the minimum distance. 
 \end{remark}
 
 
@@ -479,11 +489,13 @@ Without additional conditions on the divisor $D$ and the function $g$, the divis
 
 In \cite{JM96}, Janwa and Moreno define \emph{Goppa codes} on smooth and irreducible projective curves. Compared to their definition, Definition~\ref{def:Goppa--like_AG_code} introduces a function $g$ which defines a multiplicator for the AG code over $\fqm$ that is algebraically related to the support $\calP$.
 
-Introducing this function $g$ eases the use of SSAG as public keys for McEliece cryptosystem. Given an correcting error capability $t$, one can fix a divisor $D$ of degree $\deg D \geq 2t + 2\mathfrak{g}+1$. Then the family of codes in which the public key is picked can be defined by running a family of functions $g$ outside $\calL(D)$.
+Introducing this function $g$ eases the use of SSAG as public keys for McEliece cryptosystem. Given an correcting error capability $t$, one can fix a divisor $D$ whose degree satisfies $\deg D \geq 2t + 2\mathfrak{g}+1$. Then the family of codes in which the public key is picked can be defined by running a family of functions $g$ outside $\calL(D)$.
 
 \medskip
 
 We prefer the terminology \emph{Goppa--like AG codes} instead of simply Goppa codes for two reasons. First, AG codes were historically called geometric Goppa codes. Our terminology involving both the words \textquote{Goppa} and \textquote{AG} removes this possible ambiguity. Second, we want to emphasise the use of a different curve than the projective line $\PP^1$, like we differentiate AG codes from Reed--Solomon codes.
+
+\jade{Parle-t-on des codes alternants ?}
 
 This denomination is obviously motivated by the fact that here, the rational function $g$ plays the role of the Goppa polynomial. As described in \cite[Example~9.1.8]{Sti09}, Goppa codes are nothing but Goppa--like AG codes from the projective line $\calX=\PP^1$. In fact, given $r \geq 0$, the Generalized Reed--Solomon (GRS) code of degree $r$, support $\mathbf{x} \in \fqm^n$ and multiplier $\mathbf{y} \in (\fqm^*)^n$ is defined as
 \[\GRS_r(\mathbf{x},\mathbf{y})=\{(y_1f(x_1),y_2f(x_2),\dots,y_nf(x_n)) \mid f \in \fqm[X] \text{ such that } \deg f < r \}.\]
@@ -492,7 +504,8 @@ Take a univariate polynomial $g$ of degree $r$ such that $g(x_i) \neq 0$ for eve
 where $\mathbf{y}=(g(x_1)^{-1},g(x_2)^{-1},\dots,g(x_n)^{-1})$.
 Represent the $\fqm$--points of $\PP^1$ by the couples $\PP^1(\fqm)=\{[1:x] \mid x \in \fqm\} \cup \{P_\infty\}$ for $P_\infty=[0:1]$. Take $\calP=\{[1:x_1],[1:x_2],\dots,[1:x_n]\}$ and $D=(r-1)P_\infty$. Finally, the polynomial $g$ can be seen as a function on $\PP^1$ which lies in $L(rP_\infty)$ but not in $L((r-1)P_\infty)$. Then both constructions match: $\Gamma_r(\mathbf{x},g)=\Gamma(\calP,D,g)$.
 
-\subsubsection{Relation with Cartier codes.} Cartier codes \cite{Cou14} are also defined as a geometric realization of Goppa codes, since well-known properties of Goppa codes naturally extend to them.
+\subsubsection{Relation with Cartier codes.} Cartier codes \cite{Cou14} are also defined as a geometric realization of Goppa codes, since well-known properties of Goppa codes naturally extend to them. For instance Theorem \ref{thm:Wirtz} holds for Cartier code without the assumption on the degree of the divisor.
+
 The link with Goppa--like AG codes is the following: by definition, a Cartier code is a subcode of the subfield subcode of a residue code (see \cite[Proposition 4.3]{Cou14}), which actually means that for the good choice of divisor, a Cartier code is a subcode of the corresponding Goppa--like AG code. Moreover, \cite[Theorem 5.1]{Cou14} provides a sufficient condition for both constructions to be equal. More precisely, let us consider a Goppa--like AG code $\Gamma(\calP,D,g)$  and set $G := D+(g)$. Then the Cartier code $\mathrm{Car}_q(\calP,G)$ (see \cite[Definition 4.2]{Cou14}) satisfies $\mathrm{Car}_q(\calP,G) \subseteq \Gamma(\calP,D,g)$, and 
 $$ \dim_{\fq} \left( \Gamma(\calP,D,g)/ \mathrm{Car}_q(\calP,G)\right) \leq m \cdot i(G_1),$$
 where $G_1$ is any divisor such that 
@@ -512,45 +525,45 @@ as defined in Section \ref{def:Goppa--like_AG_code}. Applying \eqref{eq:key_equa
 
 Below, we discuss how to improve the upper bound given in Corollary \ref{coro:1st_bound_mumford}, which is valid for all subfield subcodes of AG codes. The idea is to use the specific algebraic structure of our code inherited from the choice of its divisor.
 \noindent In fact, notice that the code $\calC$ is monomially equivalent to $C_{\calL}(\calX,\calP,D)$. 
-More precisely, since $\calL(D+(g)) = g^{-1} \cdot \calL(D),$
-we can easily see that
-\begin{equation} \label{eq:equiv_divisors}
-\dim_{\fqm} \calL(D+(g))\cdot \calL(D+(g))^{q^i} = \dim_{\fqm} \calL(D)\cdot \calL(D)^{q^i},
-\end{equation}
-where $\calL(D+(g))\cdot \calL(D+(g))^{q^i}$ corresponds to the evaluation space of the product code $\calC \star \calC^{q^i}$. We can use the fact that $D$ is effective to estimate the dimension of the terms appearing in the sum of \eqref{eq:key_equation_Goppa--like}:
+More precisely, using the equality $\calL(D+(g)) = g^{-1} \cdot \calL(D),$
+we can easily deduce the following result.
+%\begin{equation} \label{eq:equiv_divisors}
+%\dim_{\fqm} \calL(D+(g))\cdot \calL(D+(g))^{q^i} = \dim_{\fqm} \calL(D)\cdot \calL(D)^{q^i},
+%\end{equation}
+%where $\calL(D+(g))\cdot \calL(D+(g))^{q^i}$ corresponds to the evaluation space of the product code $\calC \star \calC^{q^i}$. We can use the fact that $D$ is effective to estimate the dimension of the terms appearing in the sum of \eqref{eq:key_equation_Goppa--like}:
 
 \begin{lemma} \label{lem:bound_dim_Tr(C*C^q^i)}
-  Suppose $s \geq 2\mathfrak{g}-1$. Then for all $i \geq 0$, we have 
+  Suppose $s \geq \mathfrak{g}$. Then for all $i \geq 0$, we have 
    $$\dim_{\fq} \Tr{\calC\star \calC^{q^i}} \leq m\left(s\left(q^i+1\right)+1-\mathfrak{g}\right).$$
 \end{lemma}
 \begin{proof}
 From Lemma~\ref{lem:Schur-Product-Power}, we deduce that 
 \[\dim_{\fqm} \calC\star \calC^{q^i} \leq \dim_{\fqm} \calL((q^i+1)G) = \dim_{\fqm} \calL((q^i+1)D) = s(q^i+1)+1-\mathfrak{g},\]
-the last equality coming from the Riemann-Roch theorem (since $\deg D =s \geq 2\mathfrak{g}-1$). The result follows from \eqref{eq:equiv_divisors} and the usual upper bound on the dimension of the trace of a code. 
+the last equality coming from the Riemann-Roch theorem (since $\deg (q^i+1)D =s \geq 2\mathfrak{g}-1$). The result follows from the usual upper bound on the dimension of the trace of a code. 
 \end{proof}
 
-\begin{remark}
-	It seems that we could have benefited from Theorem~\ref{thm:dim_ssag} to get a sharper bound in the previous lemma. Indeed, for every $i \geq 1$, we have 
-	\[\left[\frac{(q^i+1)G}{q}\right]=q^{i-1}G_+ - (q^i+1)G_-,\]
-	writing $G=G_ +-G_-$. However, in the context of Goppa--like codes, we have $G=D+(g)$ where $g \notin \calL(D)$, hence $G_- \neq 0$. Without further hypotheses on the divisor $D$ and the function $g$, the degree of the divisor $\left[\frac{(q^i+1)G}{q}\right]$ may be too low to bound the dimension of its Riemman--Roch space from below via Riemann--Roch theorem.
+\begin{remark}\label{rmk:improvements}
+	At first glance, it seems that we could have benefited from Theorem~\ref{thm:dim_ssag} to get a sharper bound in the previous lemma. Indeed, for every $i \geq 1$, we have 
+	\[\left[\frac{(q^i+1)G}{q}\right]=q^{i-1}G^+ - (q^i+1)G^-,\]
+	writing $G=G^+-G^-$ with $G^+, \: G^- \geq 0$. However, in the context of Goppa--like codes, we have $G=D+(g)$ where $g \notin \calL(D)$, hence $G^- \neq 0$. Without further hypotheses on the divisor $D$ and the function $g$, the degree of the divisor $\left[\frac{(q^i+1)G}{q}\right]$ may be too low to bound the dimension of its Riemman--Roch space from below via Riemann--Roch theorem.
 \end{remark}
 
 This simple lemma yields an upper bound on the dimension of the square of the dual of Goppa--like codes.
 \begin{proposition} \label{prop:bound_dim_using_inclusions}
-    Let $\calC := \calC_{\calL}(\calX,\calP,D+(g))$ be an AG code as above, and suppose $s \geq 2\mathfrak{g}-1$. Set $k := \dim_{\fqm}\calC = s+1-\mathfrak{g}$ and  $e := \min\left(\left\lfloor \frac{m}{2} \right\rfloor,\left\lfloor \log_q\left(\frac{k^2}{s}\right)\right\rfloor\right)$. Then
+    Let $\calC := \calC_{\calL}(\calX,\calP,D+(g))$ be an AG code as above, and suppose $s \geq \mathfrak{g}$. Set $k := \dim_{\fqm}\calC$ and  $e := \min\left(\left\lfloor \frac{m}{2} \right\rfloor,\left\lfloor \log_q\left(\frac{k^2}{s}\right)\right\rfloor\right)$. Then
     $$\dim_{\fq} (\Gamma(\calP,D,g)^{\perp})^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).$$
 \end{proposition}
 \begin{proof}
-    From Proposition \ref{prop:Tr_BoundSchurSquare} and Lemma \ref{lem:bound_dim_Tr(C*C^q^i)}, we have 
+ For any $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$, Proposition \ref{prop:Tr_BoundSchurSquare} implies that
     \begin{align*}
         \dim_{\fq}(\Gamma(\calP,D,g)^{\perp})^{\star 2}
-        & \leq \sum\limits_{i=0}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star \calC^{q^i}} \\
-        & \leq \sum\limits_{i=0}^{e} m(s(q^i+1)+1-\mathfrak{g})  + \sum\limits_{i=e+1}^{\lfloor m/2 \rfloor} \Tr{\calC \star \calC^{q^i}} \\
-        & \leq \sum\limits_{i=0}^{e} m(sq^i+k) + \left( \frac{m-1}{2} -e \right)mk^2 \\
-        & \leq \frac{m}{2}\left(2k(e+1)+2s\left(\dfrac{q^{e+1}-1}{q-1}\right)+k^2(m-1)-2ek^2  \right) \\
-        & \leq \binom{mk+1}{2} -  \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).
+        & \leq \sum\limits_{i=0}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star \calC^{q^i}} &\\
+        & \leq \sum\limits_{i=0}^{e} m(s(q^i+1)+1-\mathfrak{g})  + \sum\limits_{i=e+1}^{\lfloor m/2 \rfloor} \Tr{\calC \star \calC^{q^i}} & \text{(by Lemma \ref{lem:bound_dim_Tr(C*C^q^i)})}\\
+        & \leq \sum\limits_{i=0}^{e} m(sq^i+k) + \left( \frac{m-1}{2} -e \right)mk^2 & \text{(by the Riemann--Roch theorem)}\\
+        & \leq \frac{m}{2}\left(2k(e+1)+2s\left(\dfrac{q^{e+1}-1}{q-1}\right)+k^2(m-1)-2ek^2  \right) &\\
+        & \leq \binom{mk+1}{2} -  \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).&
     \end{align*}
-Here, the inequality holds for any $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$. To get the best bound, we maximize the expression $$ \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right)$$ with respect to $e$. Removing the constant parts, this is equivalent to find the maximum of the function
+To get the best bound, we maximize the expression $$ \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right)$$ with respect to $e$. Removing the constant parts, this is equivalent to find the maximum of the function
 $$T(e) = ek^2-s\dfrac{q^{e+1}}{q-1}$$
 over $\set{0,\dots,\lfloor \frac{m}{2} \rfloor}$ in the discrete domain of non-negative integers.  
 We compute the discrete derivative:
@@ -582,10 +595,14 @@ As a result, each pair of consecutive terms in the sum $\sum\limits_{i=0}^{\lflo
 \[\bigcap_{0\leq j \leq \lfloor m/2\rfloor} \left( \sum_{\substack{0\leq i \leq \lfloor m/2 \rfloor\\ i\neq j}} \Tr{\calC \star \calC^{q^i}} \right)= \varnothing.\]
 \end{proof}
 
-As recalled in Section \ref{subsec:def-Goppa}, Goppa--like AG codes coincide with Cartier code as soon as $\deg \left\lfloor \frac{D+(g)}{q} \right\rfloor > 2 \mathfrak{g}-2$. In this case, the code $\calC_1$ has dimension at least $\mathfrak{g}$. This means that when the Goppa--like code is also a Cartier code, the dimension of the square of its dual is very unlikely to meet the bound given in Proposition \ref{prop:bound_dim_using_inclusions}.
+\begin{remark}
+	As noted in Remark \ref{rmk:improvements}, when picking the function $g$ at random, the code $\calC_1$ is likely to be reduced to zero.
+\end{remark}
+
+As recalled in Section \ref{subsec:def-Goppa}, Goppa--like AG codes coincide with Cartier code as soon as $\deg \left[ \frac{D+(g)}{q} \right] > 2 \mathfrak{g}-2$. In this case, the code $\calC_1$ has dimension at least $\mathfrak{g}$. This means that when the Goppa--like code is also a Cartier code, the dimension of the square of its dual is very unlikely to meet the bound given in Proposition \ref{prop:bound_dim_using_inclusions}.
 
 \begin{remark}
-	When considering Goppa codes for the McEliece cryptosystem, it is common to ask for the polynomial $g$ to have only simple roots. In this case, we have $ \left\lfloor \frac{(r-1)P_\infty+(g)}{q} \right\rfloor = -P_\infty$ and the code $\calC_1$ defined in Proposition \ref{prop:non-eq} is always zero. The situation above thus never occurs.
+	When considering Goppa codes for the McEliece cryptosystem, it is common to ask for the polynomial $g$ to have only simple roots. In this case, we have $ \left[ \frac{(r-1)P_\infty+(g)}{q} \right] = -P_\infty$ and the code $\calC_1$ defined in Proposition \ref{prop:non-eq} is always zero. The situation above thus never occurs.
 \end{remark}
 
 \section{One--point Goppa--like AG code on $C_{a,b}$-curves}\label{sec:AG-C_a,b}
@@ -598,23 +615,21 @@ Below, we define a specific class of Goppa--like AG codes on a $C_{a,b}$ curve, 
 Let $s'>s$ be two integers such that there exists a function $g \in \calL(s'P_\infty)$ with $\degab{g}=s'$. Given a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$, we define the one--point Goppa--like AG code associated to $\calP,s$ and $g$ as 
 \[\Gamma(\calP,sP_\infty,g) := \calC_{\calL}(\calX_{a,b},\calP,(sP_\infty+(g))^{\perp})|_{\fq}.\]
 \end{definition}
-This definition might be restrictive, but it is reasonable as these codes can be encoded quickly thanks to the nice basis of $\calL(sP_\infty)$ (see \eqref{eq:basis_L(sP_inf)}), which is desirable if we aim to build a McEliece cryptosystem based on this family of codes. Moreover, this property will be key in the upcoming sections as it allows a better understanding of the square of the dual of any one--point Goppa--like AG code, under some condition on $s$ and $s'$. \\
+This definition might be restrictive, but it is reasonable as these codes can be encoded quickly thanks to the nice basis of $\calL(sP_\infty)$ (see Equation \eqref{eq:basis_L(sP_inf)}), which is desirable if we aim to build a McEliece cryptosystem based on this family of codes. Moreover, this property will be key in the upcoming sections as it allows a better understanding of the square of the dual of any one--point Goppa--like AG code, under some condition on $s$ and $s'$. \\
 
-\noindent In the next sections, we generalize the result given in \cite{MT21} in the case of classical Goppa codes, by defining a weighted Euclidean division on the ring $\calO_{P_\infty}$ (see Eq \eqref{eq:O_Pinf}), whose elements are seen as bivariate polynomials. 
+\noindent In the next sections, we generalize the result given in \cite{MT21} in the case of classical Goppa codes, by defining a weighted Euclidean division on the ring $\calO_{P_\infty}$ (see Equation \eqref{eq:O_Pinf}), whose elements are seen as bivariate polynomials. 
 \subsection{Weighted Euclidean division}
 \noindent The following proposition generalizes the classical Euclidean division of polynomial in the case of function in $\calO_{P_\infty}$ with respect to the weighted degree $\deg_{a,b}$.
 
 \begin{proposition}\label{prop:div_grob}
-Let $m$ be a positive integer and let $g \in \calO_{P_\infty}$. Write $g=x^\beta y^\alpha +g'(x,y)$ with $\alpha < a$ and $g' \in \calO_{P_\infty}$ such that $\degab{x^\beta y^\alpha}>\degab{g'}$.
+Let $m$ be a positive integer and let $g \in \calO_{P_\infty}$. Write $\LT{g}=x^\beta y^\alpha$ with $\alpha < a$.
 For any function $f \in \calO_{P_\infty}$, we can write $f=f_1g+f_2$ with 
 \[f_2 \in \calR(g):= \Span{x^u y^v \mid u \leq \beta + b-1 \text{ and } v\leq a-1 \text{ not both }  u \geq \beta \text{ and } v \geq \alpha}.\]
 Moreover, we have $\degab{f_2} \leq \degab{f}$ and $\dim_{\fqm} \calR(g) = \degab{g}=s'.$ 
 \end{proposition}
 
 \begin{proof}
-  Since $f \in \calO_{P_\infty}$, we can see $f$ as a bivariate polynomial in $x$ and $y$ (see Equation \ref{eq:O_Pinf}). In the polynomial ring $\F_{q^m}[x,y]$, we perform the division of $f$ by a Gr\"obner basis of the ideal generated by the equation $f_{a,b}$ of the curve $\calX_{a,b}$ and the polynomial $g$ with respect to the monomial order $\prec$ defined as follows : $x^uy^v \prec x^{u'}y^{v'}$ if
- \[ \degab{x^uy^v} < \degab{x^{u'}y^{v'}} \text{ or } \left(\degab{x^uy^v} = \degab{x^{u'}y^{v'}}  \text{ and } u < u'\right).\]
- With respect to this order, the leading term og $g$ is $\LT{g}=x^\beta y^\alpha$. The fact that $f_2$ lies in $\calR(g)$ and the result on the dimension of $\calR(g)$ both follow from \cite[Proposition 4]{GH00}.
+  Since $f \in \calO_{P_\infty}$, we can see $f$ as a bivariate polynomial in $x$ and $y$ (see Equation \ref{eq:O_Pinf}). In the polynomial ring $\F_{q^m}[x,y]$, we perform the division of $f$ by a Gr\"obner basis of the ideal generated by the equation $f_{a,b}$ of the curve $\calX_{a,b}$ and the polynomial $g$ with respect to the monomial order $\prec$ defined in Equation \eqref{eq:def_mon_order}. The fact that $f_2$ lies in $\calR(g)$ and the result on the dimension of $\calR(g)$ both follow from \cite[Proposition 4]{GH00}.
  
  Finally, if we had $\degab{f} < \degab{f_2}$ with $f=f_1 g +f_2$, this would mean that $\LT{f_2}=-\LT{f_1 g}=\lambda x^uy^v$ for some $\lambda \in \F_{q^m}^*$ with both $u \geq \beta$ and $v \geq \alpha$, which is not possible by definition of $\calR\left(g\right)$.
 \end{proof}
@@ -666,7 +681,7 @@ First let us set some notation. Fix $i \in \set{1,\dots,\lfloor m/2 \rfloor}$. W
   \beta_i=\beta(q^i-q^{i-1}+1) + b \, \frac{\alpha(q^i-q^{i-1}+1)-\alpha_i}{a}= \frac{s'(q^i-q^{i-1}+1)-b\alpha_i}{a}.
  \end{equation}
 %
-Depending on the weighted degree $s'$ of $g$, we can compute the exact dimension of $M_i(s,g)$ defined in \eqref{eq:def_Mi}.
+Depending on the weighted degree $s'$ of $g$, we can compute the exact dimension of the vector space $M_i(s,g)$ defined in Equation \eqref{eq:def_Mi}.
 \begin{proposition} \label{prop:dim_M_i's}
 %Let $i \in \set{1,\dots,\lfloor m/2 \rfloor}$. Set $\alpha_i \in \set{0,\dots,a-1}$ to be the remainder of the Euclidean division of $\alpha (q^i-q^{i-1}+1)$ by $a$ and set $\beta_i = \dfrac{s'(q^i-q^{i-1}+1)-b\alpha_i}{a}$.   
     \begin{enumerate}
@@ -789,7 +804,7 @@ Thus
 \end{align*}
 which is true since in particular $f \in \calL(s(q^i+1)P_\infty)$ and $s<s'$. Since the weighted degree decreases, we can repeat the division process until eventually we obtain a quotient $f_1$ equal to zero, which proves that $\calT_i(s,g) \subseteq \calT_{i+1}(s,g)$.
 
-In the case $i^*=0$, we can repeat the same process expected that we also have to prove that $\calT_0(s,g) \subseteq \calT_1(s,g)$, which differs from the others cases due to the definition of $\calT_0$. We treat this case separately: let $\Tr{\frac{f}{g^2}} \in \calT_0(s,g)$, for some $f \in \calL(2sP_\infty)$. Using Proposition \ref{prop:div_grob}, this time replacing $f$ with $fg^{q-1}$ and $g$ with $g^{q+1}$ yields
+In the case $i^*=0$, we also have to prove that $\calT_0(s,g) \subseteq \calT_1(s,g)$, which differs from the others cases due to the definition of $\calT_0$. Let $\Tr{\frac{f}{g^2}} \in \calT_0(s,g)$, for some $f \in \calL(2sP_\infty)$. Using Proposition \ref{prop:div_grob}, this time replacing $f$ with $fg^{q-1}$ and $g$ with $g^{q+1}$ yields
 $$fg^{q-1} = f_1g^q + f_2,$$ with $f_2 \in \calR(g^q) = M_1(s,g)$ (using \eqref{eq:structure_M_i} again).
 Thus, we can write
     $$ \Tr{\frac{f}{g^2}} = \Tr{\frac{f_1^qg}{g^{q+1}}}  + \Tr{\frac{f_2}{g^{q+1}}}, $$
@@ -799,7 +814,7 @@ with $\Tr{\frac{f_2}{g^{q+1}}} \in \calT_1(s,g)$. Since $\degab{f_1} = \degab{fg
                                                & \iff (q-1)\degab{f} < 2s'(q-1)\\
                                                & \iff \degab{f} < 2s',
 \end{align*}
-which holds since $s<s'$ and $f \in \calL(2sP_\infty)$. Repeating the division process until we found a quotient equal to zero shows that $\calT_0(s,g) \subseteq \calT_1(s,g)$. The others cases work as the case $i^* \geq 1$.
+which holds since $s<s'$ and $f \in \calL(2sP_\infty)$. Repeating the division process until we found a quotient equal to zero shows that $\calT_0(s,g) \subseteq \calT_1(s,g)$. The others inclusions hold as in the case $i^* \geq 1$.
 \end{proof}
 Combining \eqref{eq:Tr(C*C^q^i)_dans_T_i} with both the above propositions lead to a better understanding of the dimension of the square of the dual of one--point Goppa--like AG codes. 
 \begin{coro} \label{coro:folklore_upper_bound}
@@ -848,14 +863,14 @@ $$\dim_{\fq} (\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2}\leq \binom{mk+1}{2} -
 
 \begin{proof}
 The condition $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$ exactly implies that $i^*=0$ and $$\calT_0(s,g) \subseteq \calT_1(s,g) \subseteq \dots \subseteq \calT_{\lfloor \frac{m}{2}\rfloor}(s,g),$$ 
-see Proposition \ref{prop:inclusion_T_i's}. Thus, using Corollary \ref{coro:folklore_upper_bound}, we get
+by Proposition~\ref{prop:inclusion_T_i's}. Thus, using Corollary~\ref{coro:folklore_upper_bound} and the inequality $\dim_{\fq}\calT_e(s,g) \leq m \dim_{\fqm} R(g^{q^e-q^{e-1}+1})$, we get
 \begin{align*}
         \dim_{\fq} (\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2}
         & \leq \min \left(ms'(q^e-q^{e-1}+1) + \left( \frac{m-1}{2} -e \right)mk^2 \right)\\
         & \leq \min \left(\frac{m}{2}\left(2s'(q^e-q^{e-1}+1)+k^2(m-1)-2k^2e  \right)\right) \\
         & \leq \min\left(\binom{mk+1}{2} - \dfrac{m}{2}\left(k^2(2e+1)+k-2s'(q^e-q^{e-1}+1)\right)\right).
 \end{align*}
-the minimum being taking over $e \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$. We also used $\dim_{\fq}\calT_e(s,g) \leq m \dim_{\fqm} R(g^{q^e-q^{e-1}+1})$.
+the minimum being taking over $e \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$. 
 To get the best bound, we need to maximize the function
 $$T(e) = ek^2-s'(q^e-q^{e-1}+1)$$
 over $\set{1,\dots,\lfloor \frac{m}{2} \rfloor}$.
@@ -872,7 +887,8 @@ Several computational experiments showed then when the code $\calC:=\calC_{\calL
 
 \begin{expl}
 Set $q=3$ and $m = 3$. We consider the curve $\calX$ over $\fqm = \F_{729}$ defined by $$ y^2+y = x^3+x+2.$$
-$\calX$ is a particular case of $C_{2,3}$ curve with genus $\mathfrak{g}=1$. Set $s'=s+1$ for $s \geq 0$, and $g \in \fqm(\calX)$ such that $g=x^{\beta}y^{\alpha} + g'$, where $a\beta+b\alpha=s+1$ and $g'$ is sampled at random in $\calL(sP_\infty)$. For each such $g$, consider $\calP_g := \calX(\fqm) \backslash \Supp(g)$. Using Magma, we then compare the true dimension of the square of the dual of $\calC_g := \Gamma(\calP_g,sP_\infty,g)$ with the upper bound given in Theorem \ref{thm:bound_with_T_i's_inclusion} for $s \in \set{4,\dots,10}$. Results can be found in \emph{Table \ref{table:expl_sharpness}}.
+\jade{Est-ce bien une courbe elliptique ?}
+This elliptic curve $\calX$ is a particular case of $C_{2,3}$ curve with genus $\mathfrak{g}=1$. Set $s'=s+1$ for $s \geq 0$, and $g \in \fqm(\calX)$ such that $g=x^{\beta}y^{\alpha} + g'$, where $a\beta+b\alpha=s+1$ and $g'$ is sampled at random in $\calL(sP_\infty)$. For each such $g$, consider $\calP_g := \calX(\fqm) \backslash \Supp(g)$. Using {\scshape{Magma}}, we then compare the true dimension of the square of the dual of $\calC_g := \Gamma(\calP_g,sP_\infty,g)$ with the upper bound given in Theorem \ref{thm:bound_with_T_i's_inclusion} for $s \in \set{4,\dots,10}$. Results can be found in \emph{Table \ref{table:expl_sharpness}}.
 
 \begin{table}[h]
 \begin{center}
@@ -900,7 +916,7 @@ $\calX$ is a particular case of $C_{2,3}$ curve with genus $\mathfrak{g}=1$. Set
 \end{table}
 
 
-In our computing experiments, we can check that $g$ always has simple zeros, hence $\left\lfloor \frac{sP_\infty+(g)}{3} \right\rfloor =-P_\infty$. This example illustrates how the bound can be sharp when we are outside the scope of Proposition \ref{prop:non-eq}. 
+In our computing experiments, we can check that $g$ always has simple zeros, hence $\left[ \frac{sP_\infty+(g)}{3} \right] =-P_\infty$. This example illustrates how the bound can be sharp when we are outside the scope of Proposition \ref{prop:non-eq}. 
 
 \end{expl}
 
@@ -919,7 +935,7 @@ using the Hasse-Weil bound. In order to protect the code against the distinguish
 \frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right)\geq q^m-1+2\mathfrak{g}_{a,b}\sqrt{q^m}.
 \end{equation}
 
-In what follows, we focus on two specific classes of $C_{a,b}$--curves: first, we will the maximal (with respect to the dimension) codes we can distinguish in the case where $\calX_{a,b}$ is an elliptic curve. This case is relevant since it is the closest to the case of classical Goppa codes, and we will see that our results are very similar to the one given in \cite{MT21}. Next up, we focus on the particular case of the Hermitian curve, which also turns out to be a $\calX_{a,b}$ curve. It is well-known to be a good candidate to construct efficient codes as it is a maximal curve. Due to its high genus, we then show that any one--point Goppa--like code defined on it can not be distinguished.
+In what follows, we focus on two specific classes of $C_{a,b}$ curves. First, we will determine the maximal (with respect to the dimension) codes we can distinguish in the case where $\calX_{a,b}$ is an elliptic curve. This case is relevant since it is the closest to the case of classical Goppa codes, and we will see that our results are very similar to the one given in \cite{MT21}. Next up, we focus on the particular case of the Hermitian curve, which also turns out to be a $\calX_{a,b}$ curve. It is well-known to be a good candidate to construct efficient codes as it is a maximal curve. Due to its high genus, we then show that any one--point Goppa--like code defined on it can not be distinguished.
 
 \subsection{High rate distinguishable codes in the case of elliptic curves}
 
@@ -961,8 +977,8 @@ As it was noticed in \cite{MT21} and as we can see above, we are only able to di
 
 \subsection{Codes on the Hermitian curve}
 
-As the Hermitian curve is a particular case of $C_{a,b}$ curve and is well--known to be a good candidate for designing long codes, we investigate the behavior of one--point Goppa--like AG code constructed on it with respect to our distinguisher.
-In particular, we show that all these codes resist to it, since  \eqref{eq:cond_not_to_distinguish} always holds in the Hermitian settings, essentially because the genus of the curve is too high. Let us first recall some known results about the Hermitian curve (\cite{Sti09}). 
+As the Hermitian curve is a particular case of $C_{a,b}$ curve, we investigate the behavior of one--point Goppa--like AG code constructed on it with respect to our distinguisher.
+In particular, we show that all these codes resist to it, since  \eqref{eq:cond_not_to_distinguish} always holds in the this setting, essentially because the genus of the Hermitian curve is too high. Let us first recall some known results about the Hermitian curve (\cite{Sti09}). 
 
 Let $m \geq 1$  be an even integer and denote by $q_0 := q^{m/2}$, so that $\fqm = \fqo$. The Hermitian curve $\calH$ over $\fqo$ is defined by the equation
 $$\calH : y^{q_0}+y = x^{q_0+1}.$$
@@ -1000,7 +1016,7 @@ Its genus is given by $\mathfrak{g}_{\calH} = \frac{q_0(q_0-1)}{2}$ and it is a 
         which proves \eqref{eq:dont_distinguish_Hermitian_case} in this case and conclude the proof.
     \end{itemize}
 \end{proof}
-Consequently, it is still reasonable to consider the Hermitian curve to build efficient SSAG code--based cryptosystem.
+Consequently, in the light of Table \ref{table:goppa-herm}, it is still reasonable to consider the Hermitian curve to build efficient SSAG code--based cryptosystem.
 
 \noindent
 \textbf{Acknowledgements.} %The two authors would like to express their gratitude to the anonymous referee for relevant comments that lead to this improved version of the paper.
