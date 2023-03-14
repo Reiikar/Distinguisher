@@ -222,13 +222,13 @@ The paper is organized as follows. Section \ref{sec:preli} is dedicated to basic
 
 In this section, we briefly introduce some notation and basic definitions for linear codes, subfield subcodes, and trace codes. Furthermore, we present significant results that employ component--wise product and trace map. For further details about linear codes, we refer the reader to \cite{MS86}.
 
-\noindent Let $\fqm$ be a finite extension of the field $\fq$ with $q$ elements, where $m \geq 1$. A linear code $\calC$ over $\fqm$ is a subspace of $\fqm^n$. The integer $n$ is called its length and we denote by $k$ its dimension, and $d$ its minimum distance. We say that $\calC$ is a $[n,k,d]_{q^m}$ code or that it has parameters $[n,k,d]_{q^m}$. Given a linear code of length $n$, its dual code $\calC^{\perp}$ is defined by 
+\noindent Let $\fqm$ be a finite extension of the field $\fq$ with $q$ elements, where $m \geq 1$. A \emph{linear code} $\calC$ over $\fqm$ is a vector subspace of $\fqm^n$. The integer $n$ is called its \emph{length} and we denote by $k$ its \emph{dimension} and by $d$ its \emph{minimum distance}. We say that $\calC$ is a $[n,k,d]_{q^m}$ code or that it has parameters $[n,k,d]_{q^m}$ (we may omit the minimum distance in this notation). Given a linear code of length $n$, its dual code $\calC^{\perp}$ is defined by 
 \[\calC^{\perp}=\left\lbrace \mathbf{x} \in \fqm^n \mid \mathbf{c} \cdot \mathbf{x}=0, \text{ for all } \mathbf{c} \in \calC \right\rbrace,\]  
 where $\cdot$ denotes the usual scalar product. It is easy to verify that if $\calC$ is a $[n,k]_{q^m}$ code, then $\calC^{\perp}$ is a $[n,n-k]_{q^m}$ code.
 Given any linear code with length $n$ and dimension $k$, its rate is defined by the ratio $R := \frac{k}{n}$.
 The Schur product of two vectors $\mathbf{a}$,$\mathbf{b} \in \fqm^n$ is defined as 
 \[ \mathbf{a} \star \mathbf{b} := (a_1b_1,\cdots,a_nb_n). \]
-This definition can be extended to codes in the following way: If $\calC$ and $\calD$ are two codes over $\fqm$ with same length $n$, their Schur product is defined as:
+This definition can be extended to codes in the following way: If $\calC$ and $\calD$ are two codes over $\fqm$ with same length $n$, their Schur product is defined as the following component--wise product:
 \[ \calC \star \calD := \Span{\mathbf{c} \star \mathbf{d} \mid \mathbf{c} \in \calC, \mathbf{d} \in \calD}. \]
 Moreover, if $\calC = \calD$, we call $\calC^{\star 2} := \calC \star \calC$ the square of $\calC$. The following lemma gives a first estimation of the dimension of Schur product of codes.
 
@@ -236,12 +236,12 @@ Moreover, if $\calC = \calD$, we call $\calC^{\star 2} := \calC \star \calC$ the
 Let $\calC$ and $\calD$ be two linear codes over $\fqm$ with same length $n$ and respective dimension $k_{\calC}$ and $k_{\calD}$. We have
 \begin{enumerate}
  \item $\dim_{\fqm}(\calC \star \calD) \leq \min\{k_{\calC}k_{\calD},n\}$;
- \item If $\calC$ is sufficiently random, we have
-\[ \dim_{\mathbb{F}_{q^m}}(\calC^{\star2}) \leq \mathrm{min}\left(n,\binom{k_{\calC}+1}{2}\right) . \]
-Especially, if $\calC^{\star2}$ does not fill the full space, we expect to have 
- \[ \dim_{\fqm}(\calC^{\star2}) = \binom{k_{\calC}+1}{2}.\]
+ \item $\displaystyle \dim_{\mathbb{F}_{q^m}}(\calC^{\star2}) \leq \mathrm{min}\left(n,\binom{k_{\calC}+1}{2}\right)$.
  \end{enumerate}
 \end{lemma}
+
+Especially, if $\calC$ is sufficiently random and $\calC^{\star2}$ does not fill the full space, we expect to have 
+\[ \dim_{\fqm}(\calC^{\star2}) = \binom{k_{\calC}+1}{2}.\]
 
 Given a linear code $\calC$ over $\fqm$, there exists two constructions of codes on the subfield $\fq$, namely its subfield subcode and its trace code. The \emph{subfield subcode} of $\calC$, denoted by $\calC|_{\fq}$, is the linear code over $\fq$ defined by 
 \[\calC|_{\fq}=\calC \cap \mathbb{F}_q^n.\]
