@@ -261,7 +261,7 @@ Let $\calX$ be a smooth and irreducible projective curve over $\fqm$ of genus $\
 Given $G \in \Div(\calX)$, we define its \emph{support} $\Supp(G)$ as the finite set of places $P$ such that $\nu_P(G)$ is non--zero and its \emph{degree} as $\deg G=\sum \nu_P(G) \deg(P)$. We say that a divisor $G \in \Div(\calX)$ is \emph{effective} if for all $P \in \Supp(G)$, we have $\nu_P(G) \geq 0$, in which case we write $G \geq 0$. This permits to define an order on the group of divisors by setting $G_1 \geq G_2$ if and only if $G_1-G_2 \geq 0$.
 
 
-A non--zero function $f \in \fqm(\calX)$ defines a divisor, called \emph{principal}, denoted by $(f)=\sum \nu_P(f) P$. The \emph{Riemann-Roch space} of a divisor $G$ is defined as the $\fqm$ vector space
+A non--zero function $f \in \fqm(\calX)$ defines a divisor, called \emph{principal}, denoted by $(f)=\sum \nu_P(f) P$. The \emph{Riemann--Roch space} of a divisor $G$ is defined as the $\fqm$ vector space
 $$ \calL(G) := \set{f \in \fqm(\calX) \mid (f) + G \geq 0} \cup \set{0},$$
 of dimension $\ell(G)$.
 Let $\calP \subseteq \fqm(\calX)$ be a set of $n$ distinct rational points such that $\Supp(G) \cap \calP = \varnothing$.
@@ -290,7 +290,7 @@ In general, it is hard to find the true dimension of the subfield subcode of an 
 	\dim_{\fq} C_{\calL}(\calX,\calP,G)|_{\fq} \geq n - m\dim_{\fqm} C_{\Omega}(\calX,\calP,G).
 \end{equation}
 
-The minimum distance of the SSAG code $C_{\calL}(\calX,\calP,G)|_{\fq}$ is at least $d^*$ the one of the AG code $C_{\calL}(\calX,\calP,G)$ above. 
+The minimum distance of the SSAG code $C_{\calL}(\calX,\calP,G)|_{\fq}$ is at least the one of the AG code $C_{\calL}(\calX,\calP,G)$ above. It is thus bounded from below by the designed distance $d^*=n-\deg G$.% 
 
 The structure of the AG codes may provide sharper bounds on the dimension of subfield subcodes and trace codes of AG codes.
 
@@ -322,7 +322,7 @@ The structure of the AG codes may provide sharper bounds on the dimension of sub
 
 With additional hypotheses on $G$ and $\displaystyle \left[ \frac{G}{q} \right]$, {\cite[Theorem~1]{Le16}} gives an exact formula for such a code.
 
-Regarding the parameters of subfield subcodes of differential codes , Wirtz \cite{W88} improved the bound on their the minimum distance.
+Regarding the parameters of subfield subcodes of differential codes, Wirtz \cite{W88} improved the bound on their the minimum distance.
 
 \begin{thm}[{\cite[Theorem~2]{W88}}]\label{thm:Wirtz}
 	Take the same notation as in Theorem \ref{thm:dim_ssag} and assume $\deg G_1 > 2 \mathfrak{g}-2$.
@@ -545,7 +545,7 @@ the last equality coming from the Riemann--Roch theorem (since $\deg (q^i+1)D =s
 \begin{remark}\label{rmk:improvements}
 	At first glance, it seems that we could have benefited from Theorem~\ref{thm:dim_ssag} to get a sharper bound in the previous lemma. Indeed, for every $i \geq 1$, we have 
 	\[\left[\frac{(q^i+1)G}{q}\right]=q^{i-1}G^+ - (q^i+1)G^-,\]
-	writing $G=G^+-G^-$ with $G^+, \: G^- \geq 0$. However, in the context of Goppa--like codes, we have $G=D+(g)$ where $g \notin \calL(D)$, hence $G^- \neq 0$. Without further hypotheses on the divisor $D$ and the function $g$, the degree of the divisor $\left[\frac{(q^i+1)G}{q}\right]$ may be too low to bound the dimension of its Riemman--Roch space from below via Riemann--Roch theorem.
+	writing $G=G^+-G^-$ with $G^+, \: G^- \geq 0$. However, in the context of Goppa--like codes, we have $G=D+(g)$ where $g \notin \calL(D)$, hence $G^- \neq 0$. Without further hypotheses on the divisor $D$ and the function $g$, the degree of the divisor $\left[\frac{(q^i+1)G}{q}\right]$ may be too low to bound the dimension of its Riemman--Roch space from below via the Riemann--Roch theorem.
 \end{remark}
 
 This simple lemma yields an upper bound on the dimension of the square of the dual of Goppa--like codes.
