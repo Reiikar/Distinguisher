@@ -167,13 +167,12 @@ However, as it is already the case for the distinguisher of classical Goppa code
 
 For a McEliece cryptosystem constructed on a $[n,k]_q$ linear code $\calC$ with an error capability $t$ , the public key has size $k(n-k)\lceil \log_2(q) \rceil$, whenever the generator matrix $\mathbf{G}$ of $\calC$ is in systematic form. The choice of such a code should not be limited to the binary case: Peters \cite{petersIsd} showed that for $q > 2$, the subfield subcode construction over $\fq$ can improve the key size while maintaining the same level of security against a decoding attack. 
 
-\emph{Information--set decoding} (ISD) algorithm, introduced by Prange \cite{prange}, is the best known algorithm for decoding a random--looking code without any knowledge of its structure. Given a $n\times (n-k)$ parity check matrix $\mathbf{H}$ and a column vector $\mathbf{s}$ of length $n-k$ obtained through $\mathbf{H}$, the total complexity for finding the row vector $\mathbf{e}$ with length $n$, weight $t$ and satisfying $\mathbf{s}=\mathbf{eH}^{T}$ is given by 
+\emph{Information--set decoding} (ISD) algorithm, introduced by Prange \cite{prange}, is the best known algorithm for decoding a random--looking code without any knowledge of its structure. Given a $(n-k) \times n$ parity check matrix $\mathbf{H}$ and a column vector $\mathbf{s}$ of length $n-k$ obtained through $\mathbf{H}$, the total complexity of finding the row vector $\mathbf{e} \in \fq^n$ of weight $t$ and satisfying $\mathbf{s}=\mathbf{H}\mathbf{e}^{T}$ is given by 
 $$ C_\text{Prange}= \frac{\binom{n}{t}}{\binom{n-k}{t}}C_\text{Gauss}(n,k,q),$$
 
-where $C_\text{Gauss}(n,k,q)$ is the cost of the Gauss--Jordan elimination of an $k\times n$ matrix over $\mathbb{F}_q$. We analyse the parameters of Goppa--like AG codes based on information set decoding attack, since it seems to have the lowest complexity.
+where $C_\text{Gauss}(n,k,q)$ is the cost of the Gauss--Jordan elimination of an $k\times n$ matrix over $\mathbb{F}_q$. We analyse the parameters of Goppa--like AG codes based on information set decoding attack.
  
-In this work, we also investigate Goppa--like AG codes over finite fields with different characteristics by analysing the computational cost of the ISD algorithm for parameters relevant to post--quantum cryptography. In Table \ref{table:goppa-herm}, we provide parameters that resist the distinguisher given in this paper and improve key sizes when compared to the subfield subcodes of 1--point Hermitian codes parameters reported in \cite[Table~3]{EKN21crypto}.
-\jade{Ne devrait-on pas dire que ça améliore aussi le cas Goppa binaire ?}
+In this work, we also investigate Goppa--like AG codes over finite fields with different characteristics by analysing the computational cost of the ISD algorithm for parameters relevant to post--quantum cryptography. In Table \ref{table:goppa-herm}, we provide parameters that resist the distinguisher given in this paper and improve key sizes compared to the subfield subcodes of 1--point Hermitian codes parameters reported in \cite[Tables~2 and 3]{EKN21crypto}, which already reduced key sizes compared to binary Goppa codes.
 
 \begin{table}[h]
 	\begin{center}
@@ -197,7 +196,8 @@ In this work, we also investigate Goppa--like AG codes over finite fields with d
 			${16}$& 460 &4080& 3398& 109& 313& 9\,269\,744\\
 			\hline
 		\end{tabular}
-		\caption{Goppa-Like Hermitian codes parameters $\Gamma(\calP,sP_\infty,g)$ over $\F_{q^2}$} \label{table:goppa-herm}
+		\vspace*{0.3em}
+		\caption{Goppa-Like Hermitian codes parameters $\Gamma(\calP,sP_\infty,g)$ over $\F_{q^2}$.} \label{table:goppa-herm}
 	\end{center}
 \end{table}
 
@@ -229,7 +229,7 @@ Moreover, if $\calC = \calD$, we call $\calC^{\star 2} := \calC \star \calC$ the
 Let $\calC$ and $\calD$ be two linear codes over $\fqm$ with same length $n$ and respective dimension $k_{\calC}$ and $k_{\calD}$. We have
 \begin{enumerate}
  \item $\dim_{\fqm}(\calC \star \calD) \leq \min\{k_{\calC}k_{\calD},n\}$;
- \item $\displaystyle \dim_{\mathbb{F}_{q^m}}(\calC^{\star2}) \leq \mathrm{min}\left(n,\binom{k_{\calC}+1}{2}\right)$.
+ \item\label{it:dim_C^2} $\displaystyle \dim_{\mathbb{F}_{q^m}}(\calC^{\star2}) \leq \mathrm{min}\left(n,\binom{k_{\calC}+1}{2}\right)$.
  \end{enumerate}
 \end{lemma}
 
@@ -313,7 +313,7 @@ The structure of the AG codes may provide sharper bounds on the dimension of sub
 \end{thm}
 
 \begin{remark}\label{rk:G/q}
-	The biggest divisor (with respect to the degree) satisfying \eqref{eq:divisor_G_1} is given by 
+	The biggest divisor (with respect to the degree) satisfying the conditions in Equation \eqref{eq:divisor_G_1} is given by 
 	\begin{equation}\label{eq:G/q}
 		\left[ \frac{G}{q} \right]:= \sum\limits_{P \in \Supp(G^+)} \left\lfloor\frac{\nu_P(G^+)}{q}\right\rfloor P + \sum\limits_{P \in \Supp(G^-)}\nu_P(G^-)P,
 	\end{equation}
@@ -377,7 +377,7 @@ If $\deg G \geq \mathfrak{g}$, applying the Riemann--Roch theorem to the divisor
 \begin{equation}\label{eq:dim_square}
 	\dim_{\fqm}(C_{\calL}(\calX,\mathcal{P},G)^{\star2}) \leq \dim_{\fqm} C_{\calL}(\calX,\calP,2G) = 2\deg(G)+1-\mathfrak{g} \leq \deg(G) + \dim_{\fqm}(C_{\calL}(\calX,\mathcal{P},G)),
 \end{equation}
-which is much smaller than the expected dimension given in Lemma \ref{lem:known_bounds} 2. (thus providing a distinguisher for AG codes). Combined with \eqref{eq:key_equation}, we get a first upper bound on the dimension of the square of the trace of an AG code.
+which is much smaller than the expected dimension given in Lemma \ref{lem:known_bounds} (\ref{it:dim_C^2}). (thus providing a distinguisher for AG codes). Combined with Equation \eqref{eq:key_equation}, we get a first upper bound on the dimension of the square of the trace of an AG code.
 
 \begin{coro} \label{coro:1st_bound_mumford}
  Let $\mathcal{C} := C_{\calL}(\calX,\mathcal{P},G)$ be a $k$--dimensional AG code on $\calX$ associated with a degree $s \geq \mathfrak{g}$ divisor. Then
@@ -410,7 +410,8 @@ According to the above corollary, the dimension of the square of the dual of a S
 \end{proof}
 
 \begin{remark}
-This property looks similar to Proposition \ref{prop:mumford_result}. To the best of our knowledge, there is no sufficient criterion for the equality in the literature. From our experiments, it may happen that $\ell(G)^2 > \ell((q^i+1)G)$ without the equality holding, which means that the generators of $\calL(G)\cdot \calL(G)^{q^i}$ may be linearly dependent. 
+	\TODO{reformuler}
+The property above for $i=0$ follows from Proposition \ref{prop:mumford_result}. To the best of our knowledge, there is no sufficient criterion for the equality in the literature for $i \geq 1$. From our experiments, it may happen that $\ell(G)^2 > \ell((q^i+1)G)$ without the equality holding, which means that the generators of $\calL(G)\cdot \calL(G)^{q^i}$ may be linearly dependent. 
 \end{remark}
 
 Thanks to Lemma \ref{lem:Schur-Product-Power}, it will be possible to better handle the terms $\Tr{\calC\star \calC^{q^i}}$ in Equation \eqref{eq:key_equation}. Our aim for the rest of the paper is to improve the bound of Corollary \ref {coro:1st_bound_mumford} in some specific cases.
@@ -909,7 +910,8 @@ This elliptic curve $\calX$ is a particular case of $C_{2,3}$ curve with genus $
     $781$ &$10$& $721$ & $781$&$762$ & $762$ \\
     \hline
 \end{tabular}
-\caption{Sharpness of the bound} \label{table:expl_sharpness}
+\vspace*{0.3em}
+\caption{Sharpness of the bound.} \label{table:expl_sharpness}
 \end{center}
 \end{table}
 
@@ -967,7 +969,8 @@ Let $\calX_{a,b}$ be an elliptic curve, \emph{i.e.} $a=2$ and $b=3$. For some se
       $17$ & $3$ & $4820$ & $92$ & $0,943$ \\
     \hline
 \end{tabular}
-\caption{Largest distinguishable Goppa--like AG code in elliptic case}
+\vspace*{0.3em}
+\caption{Largest distinguishable Goppa--like AG code in elliptic case.}
 \end{center}
 \end{table}
 
@@ -1021,7 +1024,7 @@ Consequently, in the light of Table \ref{table:goppa-herm}, it is still reasonab
 This work was funded in part by the grant ANR-21-CE39-0009-BARRACUDA from the French National Research Agency. The first and the third authors are supported by the French government ‘‘Investissements d’Avenir" program ANR-11-LABX-0020-01. Through the LMB, the second author received support from the  EIPHI Graduate School (contract ANR-17-EURE-0002).
 
 
-\clearpage
+%\clearpage
 \bibliography{biblio}
 \bibliographystyle{alpha}
 
