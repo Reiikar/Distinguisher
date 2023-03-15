@@ -210,14 +210,14 @@ In this work, we also investigate Goppa--like AG codes over finite fields with d
 The paper is organized as follows. Section \ref{sec:preli} is dedicated to basic definitions about linear codes, subfield subcodes and trace codes, AG codes and $C_{a,b}$ curves. In Section \ref{sec:Goppa}, we introduce the notion of Goppa--like AG codes and we give a first bound for the dimension of the square of their dual. In Section \ref{sec:AG-C_a,b}, we refine the bound for Goppa--like AG codes from $C_{a,b}$ curves, associated to one--point divisors. Section \ref{sec:analysis} concludes this paper with a discussion about this bound on elliptic curves and on the Hermitian curve.
 
 \section{Preliminaries}\label{sec:preli}
-\subsection{Linear codes, subfield subcode and trace code}
+\subsection{Linear codes, subfield subcodes and trace codes}
 
 In this section, we briefly introduce some notation and basic definitions for linear codes, subfield subcodes, and trace codes. Furthermore, we present significant results that employ component--wise product and trace map. For further details about linear codes, we refer the reader to \cite{MS86}.
 
 \noindent Let $\fqm$ be a finite extension of the field $\fq$ with $q$ elements, where $m \geq 1$. A \emph{linear code} $\calC$ over $\fqm$ is a vector subspace of $\fqm^n$. The integer $n$ is called its \emph{length} and we denote by $k$ its \emph{dimension} and by $d$ its \emph{minimum distance}. We say that $\calC$ is a $[n,k,d]_{q^m}$ code or that it has parameters $[n,k,d]_{q^m}$ (we may omit the minimum distance in this notation). Given a linear code of length $n$, its dual code $\calC^{\perp}$ is defined by 
 \[\calC^{\perp}=\left\lbrace \mathbf{x} \in \fqm^n \mid \mathbf{c} \cdot \mathbf{x}=0, \text{ for all } \mathbf{c} \in \calC \right\rbrace,\]  
 where $\cdot$ denotes the usual scalar product. It is easy to verify that if $\calC$ is a $[n,k]_{q^m}$ code, then $\calC^{\perp}$ is a $[n,n-k]_{q^m}$ code.
-A generator matrix $\mathbf{M}$ of a $[n,k]_{q^m}$ linear code $\calC$ is a $k \times n$ matrix over $\fqm$ whose rows are a basis of $\calC$ as a vector space, while a parity check matrix $\mathbf{H}$ of $\calC$ is a any generator matrix of its dual.
+A generator matrix $\mathbf{G}$ of a $[n,k]_{q^m}$ linear code $\calC$ is a $k \times n$ matrix over $\fqm$ whose rows are a basis of $\calC$ as a vector space, while a parity check matrix $\mathbf{H}$ of $\calC$ is a any generator matrix of its dual.
 For a linear code with length $n$ and dimension $k$, its rate is defined by the ratio $R := \frac{k}{n}$.
 The Schur product of two vectors $\mathbf{a}$,$\mathbf{b} \in \fqm^n$ is defined as 
 \[ \mathbf{a} \star \mathbf{b} := (a_1b_1,\cdots,a_nb_n). \]
@@ -290,7 +290,7 @@ In general, it is hard to find the true dimension of the subfield subcode of an 
 	\dim_{\fq} C_{\calL}(\calX,\calP,G)|_{\fq} \geq n - m\dim_{\fqm} C_{\Omega}(\calX,\calP,G).
 \end{equation}
 
-The minimum distance of the SSAG code $C_{\calL}(\calX,\calP,G)|_{\fq}$ is at least the one of the AG code $C_{\calL}(\calX,\calP,G)$ above. It is thus bounded from below by the designed distance $d^*=n-\deg G$.% 
+The minimum distance of the SSAG code $C_{\calL}(\calX,\calP,G)|_{\fq}$ is at least $d^*$ the one of the AG code $C_{\calL}(\calX,\calP,G)$ above. 
 
 The structure of the AG codes may provide sharper bounds on the dimension of subfield subcodes and trace codes of AG codes.
 
@@ -322,7 +322,7 @@ The structure of the AG codes may provide sharper bounds on the dimension of sub
 
 With additional hypotheses on $G$ and $\displaystyle \left[ \frac{G}{q} \right]$, {\cite[Theorem~1]{Le16}} gives an exact formula for such a code.
 
-Regarding the minimum distance, Wirtz \cite{W88} improved the bound on the minimum distance of subfield subcodes of differential codes.
+Regarding the parameters of subfield subcodes of differential codes , Wirtz \cite{W88} improved the bound on their the minimum distance.
 
 \begin{thm}[{\cite[Theorem~2]{W88}}]\label{thm:Wirtz}
 	Take the same notation as in Theorem \ref{thm:dim_ssag} and assume $\deg G_1 > 2 \mathfrak{g}-2$.
@@ -919,7 +919,7 @@ In our computing experiments, we can check that $g$ always has simple zeros, hen
 
 \end{expl}
 
-In the last section, we will discuss how to efficiently chose the parameters of a one--point Goppa--like AG code in order to resist this distinguisher.
+In the last section, we will discuss how to efficiently choose the parameters of a one--point Goppa--like AG code in order to resist this distinguisher.
 
 \section{Analysis of the distinguisher}\label{sec:analysis}
 
