@@ -108,6 +108,51 @@ aspectratio=169, % Uncomment to set the aspect ratio to a 16:9 ratio which match
 	\end{beamercolorbox}%
 }
 \makeatletter
+
+
+
+\vfuzz=25pt %Evite les alertes "Over full \vbox" jusqu'à 25pt.
+
+%---------------- Tikz Packages ------------------
+\usepackage{tikz}
+\usetikzlibrary{tikzmark} %Permet de créer des noeuds dans du texte pour annoter dans un tikz ultérieur. Très pratique pour annoter les formules moches.
+\usetikzlibrary{arrows,patterns,positioning,fit}
+\usetikzlibrary{matrix,arrows,shapes,shapes.misc}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{decorations.markings,calc}
+\usetikzlibrary{overlay-beamer-styles,backgrounds} %Pour utiliser alt dans tikz
+\tikzset{>=stealth} % Change le style de flèche dans tikz
+
+%--------- Un bout de code pour récupérer la couleur d'un noeud rectangulaire ou circulaire : noeud.f pour la couleur du fill, noeud.d pour celle du draw ---------------
+% Voir https://tex.stackexchange.com/questions/602047/is-obtaining-the-color-of-a-node-possible
+
+\makeatletter
+\def\pgf@sh@fbg@circle{%
+	\@ifundefinedcolor{pgffillcolor}{}{\xglobal\colorlet{\pgf@node@name.f}{pgffillcolor}}%
+	\@ifundefinedcolor{pgfstrokecolor}{}{\xglobal\colorlet{\pgf@node@name.d}{pgfstrokecolor}}%
+}
+\def\pgf@sh@fbg@rectangle{%
+	\@ifundefinedcolor{pgffillcolor}{}{\xglobal\colorlet{\pgf@node@name.f}{pgffillcolor}}%
+	\@ifundefinedcolor{pgfstrokecolor}{}{\xglobal\colorlet{\pgf@node@name.d}{pgfstrokecolor}}%
+}
+\makeatother
+
+%-Après avoir défini un \tikzmarknode{noeuf}{texte}, on crée un noeuf rectangulaire (aux coins arrondis) autour d'une certaine couleur et on annote avec une flèche.
+
+\newcommand\highlightnode[2]{ %args: noeud, couleur
+	\node (#1-frame)[rounded corners,fit=(#1),inner sep=2pt,fill=#2,fill opacity=0.17] {};
+}
+
+\newcommand\framenode[6][(0,0)]{ %args: (shift) noeud, position, couleur, texte , booléen flèche 0 = non / 1 = oui
+	\highlightnode{#2}{#4}
+	\node [#2-frame.f,#3 of = #2, shift={#1}](#2-text){#5};
+	\ifx1#6 	\draw[#2-frame.f,<-] (#2-frame) -- (#2-text); \fi		
+}
+
+
+
+
+
 \usepackage[symbol]{footmisc}
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
@@ -136,7 +181,7 @@ aspectratio=169, % Uncomment to set the aspect ratio to a 16:9 ratio which match
 		\frametitle{Linear code}
 		Let $q$ be a prime power and $m \geq 1$. 
 		\begin{block}{Definition: Linear code}
-			A \textbf{linear code} $\calC$ is a vector subspace of $\fq^n$. $[n,k,d]_{q}$ (or $[n,k]_{q}$) denotes its parameters.
+			A \textbf{linear code} $\calC$ is a vector subspace of $\fq^n$. $[n,k]_{q}$ denotes its parameters.
 		\end{block}
 
 	 Its \textbf{dual code} $\calC^{\perp}$ is a $[n,n-k]_{q}$ code defined by 
@@ -488,36 +533,46 @@ Equivalently, we have $\Tr{\calC}= \left(\calC^{\perp}|_{\fq}\right)^{\perp}$.
 %\vspace{-0.8em}
 	We set $\calC = \GRS_r(\mathbf{x},\mathbf{y})$ and $\mathbf{y}=\frac{1}{g(\mathbf{x})}$. For $0\leq i\leq e$ where $e=\lfloor \log_q(r)\rfloor$.
 	\begin{itemize}
-		\item $\calC\star \calC^{q^i}=\GRS_{(r-1)(q^i+1)+1}(\mathbf{x},\mathbf{y^{q^i+1}})$.
-		\item Let $f \in \fq[x]_{<(r-1)(q^i+1)+1}$, computing the Euclidean division of $f$ by $g^{q^i -q^{i-1}+1}$
+		\item $\calC\star \calC^{q^i}=\GRS_{\tikzmarknode{deg1}{(r-1)(q^i+1)+1}}(\mathbf{x},\mathbf{y^{q^i+1}})$.
+		\item Let $f \in \fq[x]_{<\tikzmarknode{deg1-1}{(r-1)(q^i+1)+1}}$, computing the Euclidean division of $f$ by $g^{q^i -q^{i-1}+1}$
 		%\vspace{-0.7em}
 		\[ \Tr{\frac{f}{g^{q^i +1}}}=\Tr{\frac{f'}{g^{q^i +1}}},\]
 		%\vspace{-0.9em}
-		where $\deg f' < r(q^i -q^{i-1}+1)<(r-1)(q^{i
-			+1})+1$.
+		where $\deg f' < r(q^i -q^{i-1}+1)<\tikzmarknode{deg1-2}{(r-1)(q^{i
+			+1})+1}$.
 		
 		$\Rightarrow \: \Tr{\GRS_{(r-1)(q^i+1)+1}(\mathbf{x},\mathbf{y^{q^i+1}})} = \Tr{\GRS_{r(q^i -q^{i-1}+1)}(\mathbf{x},\mathbf{y^{q^i+1}})} = T_i$.
 		\item $T_i \subset T_{i+1}$...
 	\end{itemize}
+
+%--------------Overlay --------------------------------
+\begin{tikzpicture}[overlay,remember picture,nodes={align=center,inner ysep=1pt},<-]
+	\highlightnode{deg1}{orange}
+	\highlightnode{deg1-1}{deg1-frame.f}
+	\highlightnode{deg1-2}{deg1-frame.f}
+	
+\end{tikzpicture}
+
 \end{frame}
 \begin{frame}
 	\frametitle{Goppa codes distinguisher \cite{MT21}}
-	\begin{itemize}
+	%\begin{itemize}
 		%\item $\sum\limits_{i=0}^{e} \Tr{\GRS_r(\mathbf{x},\mathbf{y})\star \GRS_r(\mathbf{x},\mathbf{y})^{q^i}} \subseteq \Tr{\GRS_{r(q^e -q^{e-1}+1)}(\mathbf{x},\mathbf{y^{q^e+1}})}$.
-		\item $\dim\left( Tr(\calC)^{*2}\right) \leq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \dim \left( \Tr{\calC\star \calC^{q^i}}\right).$
+		%\item $\dim\left( Tr(\calC)^{*2}\right) \leq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \dim \left( \Tr{\calC\star \calC^{q^i}}\right).$
 		%\item $\dim_{\fq}\Tr{\calC\star \calC^{q^i}}\leq m\dim_{\fqm} \calC^2$ for $i \in \{e+1,\cdots, \lfloor{m/2} \rfloor\}$.
-	\end{itemize}
+	%\end{itemize}
+	
+	$\Tr{\calC\star \calC^{q^i}}=\Tr{\GRS_{\tikzmarknode{deg1-3}{(r-1)(q^i+1)+1}}(\mathbf{x},\mathbf{y^{q^i+1}})}= \Tr{\GRS_{r(q^i -q^{i-1}+1)}(\mathbf{x},\mathbf{y^{q^i+1}})} = T_i$
+	
 	\vspace{-0.9em}
 \begin{align*}
-	\dim_{\fq}Tr(\calC)^{*2}\leq& \dim_{\fq}\Tr{\GRS_{r(q^e -q^{e-1}+1)}(\mathbf{x},\mathbf{y^{q^e+1}})}+ \sum\limits_{i=e+1}^{\lfloor{m/2} \rfloor} \dim_{\fq}\Tr{\calC\star \calC^{q^i}}\\
+	\dim\left( Tr(\calC)^{*2}\right) \leq& \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \dim \left( \Tr{\calC\star \calC^{q^i}}\right)\\
+									\leq& \dim_{\fq}T_e+ \sum\limits_{i=e+1}^{\lfloor{m/2} \rfloor} \dim_{\fq}\Tr{\calC\star \calC^{q^i}} \text{ for any } e\\
 	\leq& mr(q^e -q^{e-1}+1) + \left( \frac{m-2}{2}-e\right) mr^2\\
 	\leq& \mathcolor{ballblue}{\underbrace{\binom{rm+1}{2}}}_{\text{\textcolor{red}{random code}}}  - \frac{m}{2}r((2e+1)r - 2(q-1)q^{e-1}-1).
 \end{align*}
-\vspace{-0.5em}
-\begin{itemize}
-	\item $\dim_{\fq}Tr(\calC)^{*2} = \dim_{\fq}(\Gamma_r(\mathbf{x},g)^{\perp})^{\star 2}\leq \mathcolor{ballblue}{\underbrace{\binom{rm+1}{2}}}_{\text{\textcolor{red}{random code}}}  - \frac{m}{2}r((2e_{\Gamma}+1)r - 2(q-1)q^{e_{\Gamma}-1}-1)$,\vspace{-0.7em}
-	with $e_{\Gamma}= \lceil\log_q(\frac{r}{(q - 1)^2})+1\rceil$ \cite{MT21}.
-\end{itemize}
+Minimizing w.r.t. $e$, we get Mora--Tillich's bound.
+
 %	\begin{tcolorbox}[colback=aliceblue]
 %		For $r\geq q-1$ \cite{MT21},
 %		\vspace{-0.9em}
@@ -535,30 +590,58 @@ Equivalently, we have $\Tr{\calC}= \left(\calC^{\perp}|_{\fq}\right)^{\perp}$.
 	\begin{block}{Definition \cite{Miu93}}
 		Let $a,b$ be coprime positive integers. A $C_{a,b}$ curve over $\fqm$ is a curve $\calX_{a,b}$ having an irreducible, affine and non--singular plane model with equation
 		%\begin{equation} \label{eq:equation_C_ab}
-		\[f_{a,b}(x,y) = \alpha_{0a}y^a + \alpha_{b0}x^b + \sum_{ai+bj < ab} \alpha_{ij}x^iy^j = 0,\]	
+		\[f_{a,b}(x,y) = \alpha_{0a}y^a + \alpha_{b0}x^b + \sum_{ai+bj < ab} \alpha_{ij}x^iy^j = 0\]	
 		%\end{equation}
-		with $\alpha_{0a}$ and $\alpha_{b0} \neq 0$.
+		\vskip-1.5em
+		
+		\hfill 		with $\alpha_{0a}$ and $\alpha_{b0} \neq 0$.
 	\end{block}
 	
+	Examples: elliptic curves, Hermitian curve...
+	
 	\begin{itemize}
-		\item It has a unique point at infinity, denoted by $P_{\infty}$. Its genus is $\mathfrak{g}_{a,b}:=\dfrac{(a-1)(b-1)}{2}.$
+		\item Its genus is $\mathfrak{g}_{a,b}=\dfrac{(a-1)(b-1)}{2}.$
+		\item It has a unique point at infinity, denoted by $P_{\infty}$.
 		%Riemann--Roch space $\calL(s P_\infty)$ has an explicit basis as follows:
-		\item $\calL(sP_{\infty}) = \Span{x^iy^j \mid 0 \leq i, 0\leq j\leq a-1 \ \mathrm{and} \ ai+bj \leq s}.$
+		\item Polynomials in $\fq[x,y]$ are functions with poles only at $P_\infty$. Define $\degab{x^iy^j}= ai+bj.$
+		
+		\item $\calL(sP_{\infty}) = \Span{x^iy^j \mid 0 \leq i, 0\leq j\leq a-1 \ \mathrm{and} \ \degab{x^iy^j} \leq s}.$
 		 %Given a monomial of the form $x^iy^j$, we define its weighted degree by
-		\item $\degab{x^iy^j} := ai+bj.$
+	
 	\end{itemize}
+
+\begin{block}{Proposition \cite{GH00}}
+	For any functions $f, \: g \in \fq[x,y]$, we can write $f=f_1g+f_2$ with 
+	\[f_2 \in \calR(g):= \Span{x^u y^v \mid u \leq \beta + b-1 \text{ and } v\leq a-1 \text{ not both }  u \geq \beta \text{ and } v \geq \alpha}.\]
+	Moreover, we have $\degab{f_2} \leq \degab{f}$ and $\dim_{\fqm} \calR(g) = \degab{g}.$ 
+\end{block}
+
 \end{frame}
 \begin{frame}
 \frametitle{One-point Goppa-like AG code on $C_{a,b}$-curves}
 \begin{block}{Definition: One--point Goppa--like AG code on $C_{a,b}$-curves}
-	Let $s'>s$ be two integers such that there exists a function $g \in \calL(s'P_\infty)$ with $\degab{g}=s'$. Given a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$, we define the \textbf{one--point Goppa--like AG code} associated to $\calP,s$ and $g$ as 
+	Let $s'>s$ such that there exists a function $g$ with $\degab{g}=s'$.
+	
+	Given a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$, we define the \textbf{one--point Goppa--like AG code} associated to $\calP,s$ and $g$ as 
 	\[\Gamma(\calP,sP_\infty,g) := \calC_{\calL}(\calX_{a,b},\calP,(sP_\infty+(g))^{\perp})|_{\fq}.\]
 \end{block}
-\begin{block}{Proposition \cite{GH00}}
-	For any function $f \in \bigcup_{s \geq 0} \calL(s P_\infty)$, we can write $f=f_1g+f_2$ with 
-	\[f_2 \in \calR(g):= \Span{x^u y^v \mid u \leq \beta + b-1 \text{ and } v\leq a-1 \text{ not both }  u \geq \beta \text{ and } v \geq \alpha}.\]
-	Moreover, we have $\degab{f_2} \leq \degab{f}$ and $\dim_{\fqm} \calR(g) = \degab{g}.$ 
-\end{block}
+	We set $\calC = \calC_{\calL}(\calX_{a,b},\calP,(sP_\infty+(g))$, $D = sP_\infty+(g)$.
+
+\[\left(\Gamma(\calP,sP_\infty,g)^\perp\right)^{\star 2} = \Tr{C}^{\star 2} \subseteq \sum \Tr{\tikzmarknode{C*Cqi}{C \star C^{q^i}}} \]
+
+	
+\begin{itemize}
+	\item $\calL(D).\calL(D)^{q^i}\subseteq \calL((q^i +1)D) \implies \tikzmarknode{C*Cqi-1}{\calC\star\calC^{q^i}} \subseteq \calC_{\calL}(\calX_{a,b},\calP,(q^i +1)D)$.
+	%\item[\textrightarrow] $\mathcolor{ballblue}{\calC\star \calC^{q^i}=\GRS_{(r-1)(q^i+1)+1}(\mathbf{x},\mathbf{y^{q^i+1}}).}$
+	\item[$\Rightarrow$] $\Tr{\calC\star\calC^{q^i}} \textcolor{red}{\subseteq} \Tr{\calC_{\calL}(\calX_{a,b},\calP,(q^i +1)D)}$.
+\end{itemize}
+
+\begin{tikzpicture}[overlay,remember picture,nodes={align=center,inner ysep=1pt}]
+	\highlightnode{C*Cqi}{blue}
+	\highlightnode{C*Cqi-1}{C*Cqi-frame.f}
+\end{tikzpicture}
+
+
 
 \end{frame}
 \begin{frame}
@@ -568,33 +651,34 @@ Equivalently, we have $\Tr{\calC}= \left(\calC^{\perp}|_{\fq}\right)^{\perp}$.
 		Take $i \geq 1$ and $s'>s \geq 0$. Let $g \in \calL\left(s'P_\infty\right)$ and $f \in \calL\left(\left(s'(q^i+1)-1\right)P_\infty\right)$. Then there exists $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that $\Tr{\frac{f}{g^{q^i+1}}} = \Tr{\frac{f'}{g^{q^i+1}}} $.
 	\end{block}
 
-	We set $\calC = \calC_{\calL}(\calX_{a,b},\calP,(sP_\infty+(g))$, $D = sP_\infty+(g)$.
+
 	\begin{itemize}
-		\item $\calL(D).\calL(D)^{q^i}\subseteq \calL((q^i +1)D) \implies \calC\star\calC^{q^i} \subseteq \calC_{\calL}(\calX_{a,b},\calP,(q^i +1)D)$.
-		\item[\textrightarrow] $\mathcolor{ballblue}{\calC\star \calC^{q^i}=\GRS_{(r-1)(q^i+1)+1}(\mathbf{x},\mathbf{y^{q^i+1}}).}$
-		\item $\Tr{\calC\star\calC^{q^i}} \subseteq \Tr{\calC_{\calL}(\calX_{a,b},\calP,(q^i +1)D)}$, this implies $$\dim_{\fq}(\Tr{\calC\star\calC^{q^i}}) \leq m(s(q^i +1)-\mathfrak{g} +1)$$.
-		\vspace{-0.7em}
+%		\item $\calL(D).\calL(D)^{q^i}\subseteq \calL((q^i +1)D) \implies \calC\star\calC^{q^i} \subseteq \calC_{\calL}(\calX_{a,b},\calP,(q^i +1)D)$.
+%		\item[\textrightarrow] $\mathcolor{ballblue}{\calC\star \calC^{q^i}=\GRS_{(r-1)(q^i+1)+1}(\mathbf{x},\mathbf{y^{q^i+1}}).}$
+%		\item $\Tr{\calC\star\calC^{q^i}} \subseteq \Tr{\calC_{\calL}(\calX_{a,b},\calP,(q^i +1)D)}$, this implies $$\dim_{\fq}(\Tr{\calC\star\calC^{q^i}}) \leq m(s(q^i +1)-\mathfrak{g} +1)$$.
+%		\vspace{-0.7em}
 		\item $\Tr{\frac{f}{g^{q^i+1}}} = \Tr{\frac{f'}{g^{q^i+1}}}$ with $\degab{f}<\degab{f'}$.
 		\item[\textrightarrow] $\mathcolor{ballblue}{f \in \fq[x]_{<(r-1)(q^i+1)+1}, \Tr{\frac{f}{g^{q^i +1}}}=\Tr{\frac{f'}{g^{q^i +1}}}, \deg f'<r(q^i -q^{i-1}+1).}$
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{One--point Goppa--like AG code on $C_{a,b}$-curves}
-	\begin{itemize}
 		\item For $\mathcolor{gold}{s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1}$, and $e\in \{0,\cdots,\lfloor \frac{m}{2}\rfloor\}$, we have
 		\vspace{-0.6em}
 		
-	 $$ \sum \limits_{i=0}^{e}\Tr{\calC\star\calC^{q^i}} \subseteq \Tr{\calR(g^{q^{i}-q^{i-1}+1})}.$$
-	 \item[\textrightarrow] $\mathcolor{ballblue}{\sum\limits_{i=0}^{e} \Tr{\GRS_r(\mathbf{x},\mathbf{y})\star \GRS_r(\mathbf{x},\mathbf{y})^{q^i}} \subseteq \Tr{\GRS_{r(q^i -q^{i-1}+1)}(\mathbf{x},\mathbf{y^{q^i+1}})}}$
-		\item $\dim_{\fq}\sum \limits_{i=0}^{e}\Tr{\calC\star\calC^{q^i}} \leq ms'(q^e - q^{e-1} +1)$.
+		$$ \sum \limits_{i=0}^{e}\Tr{\calC\star\calC^{q^i}} \subseteq \Tr{\calR(g^{q^{e}-q^{e-1}+1})}.$$
 	\end{itemize}
-\vspace{-0.7em}
-\begin{align*}
-	\dim_{\fq}Tr(\calC)^{*2} &\leq \dim_{\fq}\sum \limits_{i=0}^{e}\Tr{\calC\star\calC^{q^i}} + \dim_{\fq}\sum \limits_{i=e+1}^{\lfloor \frac{m}{2}\rfloor}\Tr{\calC\star\calC^{q^i}}\\
-	&\leq \binom{mk+1}{2} - \dfrac{m}{2}(k^2(2e+1)+k-2s'(q^{e}-q^{e-1}+1)).
-\end{align*}
 \end{frame}
+%
+%\begin{frame}
+%	\frametitle{One--point Goppa--like AG code on $C_{a,b}$-curves}
+%	\begin{itemize}
+%		
+%	 \item[\textrightarrow] $\mathcolor{ballblue}{\sum\limits_{i=0}^{e} \Tr{\GRS_r(\mathbf{x},\mathbf{y})\star \GRS_r(\mathbf{x},\mathbf{y})^{q^i}} \subseteq \Tr{\GRS_{r(q^i -q^{i-1}+1)}(\mathbf{x},\mathbf{y^{q^i+1}})}}$
+%		\item $\dim_{\fq}\sum \limits_{i=0}^{e}\Tr{\calC\star\calC^{q^i}} \leq ms'(q^e - q^{e-1} +1)$.
+%	\end{itemize}
+%\vspace{-0.7em}
+%\begin{align*}
+%	\dim_{\fq}Tr(\calC)^{*2} &\leq \dim_{\fq}\sum \limits_{i=0}^{e}\Tr{\calC\star\calC^{q^i}} + \dim_{\fq}\sum \limits_{i=e+1}^{\lfloor \frac{m}{2}\rfloor}\Tr{\calC\star\calC^{q^i}}\\
+%	&\leq \binom{mk+1}{2} - \dfrac{m}{2}(k^2(2e+1)+k-2s'(q^{e}-q^{e-1}+1)).
+%\end{align*}
+%\end{frame}
 
 
 \begin{frame}
@@ -684,7 +768,7 @@ Equivalently, we have $\Tr{\calC}= \left(\calC^{\perp}|_{\fq}\right)^{\perp}$.
 	\end{table}
 	
 \end{frame}
-\section{Analysis and Application}
+%\section{Analysis and Application}
 %------------------------------------------------
 \begin{frame}
 	\frametitle{Analysis of the distinguisher}
