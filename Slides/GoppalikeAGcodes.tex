@@ -1,0 +1,729 @@
+\documentclass[
+10pt, % Set the default font size, options include: 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, 20pt
+%
+aspectratio=169, % Uncomment to set the aspect ratio to a 16:9 ratio which matches the aspect ratio of 1080p and 4K screens and projectors
+]{beamer}
+
+\usepackage{xcolor,colortbl}
+\usepackage{booktabs}
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+\usepackage[utf8]{inputenc}
+\usepackage{caption}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{verbatim}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{hyperref} %Références cliquables
+\usepackage{cleveref}
+\usepackage{csquotes}
+\usepackage{mathtools}
+\usepackage{relsize}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usepackage{fontawesome5}
+\usetikzlibrary{snakes,arrows,shapes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{gold}{rgb}{0.83, 0.69, 0.22}
+\definecolor{gamboge}{rgb}{0.89, 0.61, 0.06}
+\definecolor{aliceblue}{rgb}{0.94, 0.97, 1.0}
+\definecolor{ballblue}{rgb}{0.13, 0.67, 0.8}
+\definecolor{charcoal}{rgb}{0.21, 0.27, 0.31}
+\definecolor{lightkhaki}{rgb}{0.94, 0.9, 0.55}
+\definecolor{applegreen}{rgb}{0.55, 0.71, 0.0}
+\setbeamercolor{block title}{use=structure,fg=charcoal,bg=ballblue}
+\setbeamercolor{block body}{use=structure,fg=charcoal,bg=aliceblue}
+
+\setbeamercolor{progress bar}{fg=ballblue,bg=aliceblue}
+\setbeamercolor*{structure}{bg=aliceblue,fg=ballblue}
+\setbeamercolor{block title alerted}{fg=charcoal,bg=gamboge}
+%body
+\setbeamercolor{block body alerted}{fg= black,bg=lightkhaki}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\theoremstyle{plain}% default
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{xca}[exmp]{Exercise}
+\theoremstyle{remark}
+
+
+%--------------- Commands
+
+%------------Commands-----------%
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calX}{\mathcal{X}}
+\newcommand{\fqm}{\mathbb{F}_{q^m}}
+\newcommand{\fq}{\mathbb{F}_{q}}
+\newcommand{\fqo}{\mathbb{F}_{q_0^2}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Tr}[1]{\operatorname{Tr}_{\mathbb{F}_{q^m}/\fq}\left(#1\right)}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\Floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\Span}[1]{\operatorname{Span}\left\lbrace #1\right\rbrace }
+\newcommand{\LT}[1]{\operatorname{LT}\left(#1\right)}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\Div}{\operatorname{Div}}
+\newcommand{\ssag}[1]{\operatorname{\mathsf{SSAG}}_{q}\left(#1\right)}
+\newcommand{\GRS}{\operatorname{\mathsf{GRS}}}
+\newcommand{\gen}{\mathfrak{g}}
+\newcommand{\degab}[1]{\deg_{a,b}\left(#1\right)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\myeq{\mathrel{\stackrel{\makebox[0pt]{\mbox{\normalfont\tiny def}}}{=}}}
+\setbeamertemplate{frametitle}{%
+	\nointerlineskip%
+	\begin{beamercolorbox}[wd=\paperwidth,ht=2.0ex,dp=0.6ex]{frametitle}
+		\hspace*{1ex}\insertframetitle%
+	\end{beamercolorbox}%
+}
+\makeatletter
+\usepackage[symbol]{footmisc}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title %%%%%%%%%%%%%%%%%%%%%
+\title[Goppa-Like AG codes Distinguisher]{Goppa–Like AG Codes From $C_{a,b}$ Curves And Their Behaviour Under Squaring Their Duals}
+%\subtitle{Subtitle}
+\author[SEK]{\textbf{Sabira El Khalfaoui} \vspace{0.3cm}\\\vspace{1cm} \textit{\textcolor{ballblue}{Joint work with}} \textbf{Mathieu Lhotel, Jade Nardi}}
+
+
+
+\institute[]{\large{\textbf{IRMAR} \\ \smallskip \textit{\textcolor{ballblue}{GAE seminar}}}}
+\date[Mai 2023]
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{frame}{Table of contents}
+		\setbeamertemplate{section in toc}[sections numbered]
+		\tableofcontents%[hideallsubsections]
+	\end{frame}
+	
+	\section{Preliminaries}
+	
+	\begin{frame}
+		\frametitle{Linear code}
+		Let $q$ be a prime power and $m \geq 1$. 
+		\begin{block}{Definition: Linear code}
+			A \textbf{linear code} $\calC$ is a vector subspace of $\fq^n$. $[n,k,d]_{q}$ (or $[n,k]_{q}$) denotes its parameters.
+		\end{block}
+
+	 Its \textbf{dual code} $\calC^{\perp}$ is a $[n,n-k]_{q}$ code defined by 
+	\[\calC^{\perp}=\left\lbrace \mathbf{x} \in \fq^n \mid \mathbf{c} \cdot \mathbf{x}=0, \text{ for all } \mathbf{c} \in \calC \right\rbrace, (\text{$\cdot$ is the usual scalar product.})\]  
+	
+		\begin{block}{Definition: \textbf{Generalized Reed--Solomon (GRS)}}
+			Let $\mathbf{x}=(x_1,\cdots,x_n) \in \fq^n$ be a vector with distinct entries (\textbf{support}) and \textbf{multiplier} $\mathbf{y} \in (\fq^*)^n$.
+			\vspace{-0.7em}
+			\[\GRS_r(\mathbf{x},\mathbf{y})=\{(y_1f(x_1),y_2f(x_2),\dots,y_nf(x_n)) \mid f \in \fq[X] \text{ such that } \deg f < r \}.\]
+		\end{block}
+	\begin{tcolorbox}[colback=aliceblue]
+		Let $\mathbf{x}=(x_1,\cdots,x_n) \in \fq^n$ be a (\textbf{support}) and $\mathbf{y} = \mathbf{1}$.
+		\vspace{-0.7em}
+		\[RS_r(\mathbf{x})=\{(f(x_1),f(x_2),\dots,f(x_n)) \mid f \in \fq[X] \text{ such that } \deg f < r \}.\]
+	\end{tcolorbox}
+	\end{frame}
+
+\begin{frame}
+	\frametitle{Subfield Subcode}
+	\begin{block}{Definition: Subfield subcode}
+		Let $\calC\subseteq \fqm^n$ be a linear code.
+		Its \textbf{subfield subcode} $\calC|_{\fq}$ is defined by 
+		\[\calC|_{\fq}=\calC \cap \mathbb{F}_q^n.\]
+	\end{block}
+\begin{block}{Definition: Goppa code}
+	Let $\mathbf{x}=(x_1,\cdots,x_n) \in \fqm^n$ be a vector with distinct entries and $g \in \fqm [x]_{<r}$ be a polynomial such that $\forall i, g(x_i)\neq 0$, the \textbf{Goppa code} associated to $(\mathbf{x}, g)$ is defined as: \[\Gamma_r(\mathbf{x},g)= \GRS_r(\mathbf{x},g(\mathbf{x})^{-1})^\perp|_{\fq}.\]
+	where $g(\mathbf{x})^{-1}=(g(\mathbf{x_1})^{-1},\dots,g(\mathbf{x_n})^{-1})$
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Algebraic geometry (AG) code}
+	Let $\calX$ be a \textbf{smooth and irreducible projective curve} over $\fq$ of \textbf{genus} $\mathfrak{g}$.
+	
+	\begin{itemize}
+		\item Let $\calP = \left\lbrace P_1,\cdots,P_n \right\rbrace$ be an $n$-tuple of pairwise distinct $\fq$\textbf{-rational points} of $\calX$.
+		\item A \textbf{divisor} $G$ on $\calX$ is $G=\sum n_P P$, for almost all $n_P=0$.
+		\item Its \textbf{degree} is $\deg G = \sum n_P$ and \textbf{support} $\Supp(G)=\left\lbrace P \in \calX \, |\, n_P\neq 0\right\rbrace $.
+		\item Let $G$ be an $\fq$\textbf{-divisor} of $\calX$ such that $\Supp(G) \cap \calP= \varnothing$.
+		\item The \textbf{Riemann--Roch space} of a \textbf{divisor} $G$ is a $\fq$ vector space
+		$$ \calL(G) := \set{f \in \fq(\calX) \mid (f) + G \geq 0} \cup \set{0}.$$
+	\end{itemize}
+\begin{tcolorbox}[colback=lightkhaki]
+	We have an \textbf{evalution map} $ev_{\calP} \colon \calL(G)	\rightarrow   \fq^n $ defined by $ev_{\calP}(f)=\left( f(P_1),\dots,f(P_n) \right)$.
+%	\vspace{-1.2em}
+%	\[ev_{\calP} \colon \left\{
+%	\begin{array}{ccc}
+%		\calL(G)& 	\rightarrow&   \fqm^n\\      
+%		f   &  \mapsto &   \left( f(P_1),\dots,f(P_n) \right) \end{array}\right. \]
+\end{tcolorbox}
+\begin{block}{Definition: AG code}
+	The \textbf{AG code} associated to the triplet $(\calX, \calP, G)$ is:
+	\vspace{-0.8em}
+	\[ \calC_{\calL}(\calX,\calP,G)= \left\lbrace ev_{\calP}(f)=(f(P_1),\cdots,f(P_n))\,|\, f \in \calL(G)\right\rbrace. \] 
+\end{block}
+\vspace{-0.8em}
+It is an $[n, k \geq \ell(G)]_{\fq}$ code with $n=\#\calP$, $\ell(G) = \dim\calL(G)$.
+\end{frame}
+\begin{frame}
+	\frametitle{AG codes and their subfield subcodes }
+%		\vspace{-0.8em}
+%	\begin{tcolorbox}[colback= lightkhaki]
+%		RS code is an AG code:
+%		\vspace{-0.8em}
+%		\[RS_r(\mathbf{x})= \calC_{\calL}(\calX,\calP,(r-1)P_{\infty}),\]
+%		$\calX = \mathbb{P}^1$ over $\fq$, $\calP$ is the set of affine points of $\mathbb{P}^1$, $\calL((r-1)P_{\infty})=\Span{1,x,\cdots,x^{r-1}}$.
+%		\vspace{-0.8em}
+%	\end{tcolorbox}
+\begin{block}{From Riemann-Roch Theorem \cite{Sti09}}
+	We have 
+	\[\ell(G)\geq \deg G +1-\mathfrak{g},\]
+	with equality hold if $\deg (G) \geq 2\mathfrak{g} -1$.
+\end{block}
+		\begin{block}{Dual of AG code }
+		The \textbf{dual code} of $C_{\calL}(\calX,\calP,G)$ is an AG code that satisfies:
+		\[ C_{\calL}(\calX,\calP,G)^{\perp} = C_{\calL}(\calX,\calP,G^{\perp}),\]
+		with $G^{\perp} = D_{\calP}-G+W$, where $D_{\calP} = \sum\limits_{P \in \calP} P$, and $W=(\omega)$ is a canonical divisor of degree $2\mathfrak{g} - 2$.
+	\end{block}
+	\vspace{-0.8em}
+\begin{tcolorbox}[colback= aliceblue]
+	The subfield subcode (\textbf{SSAG}) of an AG code $C_{\calL}(\calX,\calP,G)$ defined over $\fqm$ is
+	\[C_{\calL}(\calX,\calP,G)\cap \fq^n.\]
+\end{tcolorbox}
+\end{frame}
+%-----------------------------------------
+\section{Schur product - Square code - Distinguisher}
+%-----------------------------------------
+\begin{frame}
+	\frametitle{Schur Product and Square code Distinguisher}
+	In $\fq^n$ we denote by $\star$ the \textbf{Schur product}:
+	\[ \mathbf{c} \star \mathbf{d} \myeq (a_1b_1,\cdots,a_nb_n). \]
+	%	\begin{block}{Definition: Schur product}
+		%		The Schur product of two vectors $\mathbf{a}$,$\mathbf{b} \in \fqm^n$ is defined as 
+		%		\[ \mathbf{a} \star \mathbf{b} := (a_1b_1,\cdots,a_nb_n). \]
+		%	\end{block}
+	Then, the \textbf{Schur product} of two code $\calC, \calD \subseteq \fq^n$:
+	\[ \mathbf{\calC } \star \mathbf{\calD }\myeq \Span{\mathbf{c} \star \mathbf{d} \mid \mathbf{c} \in \calC, \mathbf{d} \in \calD}. \]
+	%	\begin{block}{Schur Product of codes}
+		%		If $\calC$ and $\calD$ are two codes over $\fqm$ with same length $n$, their Schur product is defined as the following component--wise product:
+		%		\[ \calC \star \calD := \Span{\mathbf{c} \star \mathbf{d} \mid \mathbf{c} \in \calC, \mathbf{d} \in \calD}. \]
+		%	\end{block}
+	If $\calC = \calD$, then we denote by $\mathbf{\calC^2 \myeq \calC \star \calC} $.
+	\begin{alertblock}{Distinguisher-Square code}
+		Let $\calC$ be an $[n, k_{\calC}]_q$ random linear code, we expect that
+		\[\displaystyle \dim_{\mathbb{F}_{q}}(\calC^{\star2}) \leq \mathrm{min}\left(n,\binom{k_{\calC}+1}{2}\right).\]
+	\end{alertblock}
+	We can use this property to identify certain linear codes from random ones.
+	\begin{tcolorbox}[colback=aliceblue]
+		 If $r \leq \frac{n+1}{2}$:
+		$\dim_{\fq}(\GRS_r(\mathbf{x},\mathbf{y}))^{\star 2}=\dim_{\fq}(\GRS_{2r-1}(\mathbf{x},\mathbf{y\star y}))= 2r+1.$
+	\end{tcolorbox}
+\end{frame}
+\begin{frame}
+	\frametitle{Schur product of Algebraic Geometry codes}
+	\begin{itemize}
+		\item[\textrightarrow] The product of $\calL(F)$ and $\calL(G)$ is defined as:
+		$\calL(F) \cdot \calL(G) := \Span{ f \cdot g : (f,g) \in \calL(F) \times \calL(G)}$.
+		\item[\textrightarrow] For a given $f,g \in \calL(G)$, we have $ev_{\calP}(f.g)=ev_{\calP}(f)\star ev_{\calP}(g)$.
+	\end{itemize}
+	\begin{block}{{\cite[Theorem]{Mum70}}}
+		Let $F,G$ be two divisors on $\calX$. Then
+		\vspace{-0.9em}
+		\[ \calL(F) \cdot \calL(G) \subseteq \calL(F+G),\]
+		equality holds if $\deg(G) \geq 2\mathfrak{g}+1$ and  $\deg(F) \geq 2\mathfrak{g}$.
+	\end{block}
+\begin{alertblock}{Corollary: Schur product of AG codes}
+	Let $F,G$ be two divisors on $\calX$ both with disjoint support with $\calP$. Then
+	\vspace{-0.9em}
+	\[C_{\calL}(\calX,\mathcal{P},F)\star C_{\calL}(\calX,\mathcal{P},G)\subseteq C_{\calL}(\calX,\mathcal{P},F+G).\]
+	Equality holds if $\deg(G) \geq 2\mathfrak{g}+1$ and  $\deg(F) \geq 2\mathfrak{g}$.
+\end{alertblock}
+	\begin{itemize}
+		\item For $G=F$ and $\deg(G) \geq 2\mathfrak{g}+1$, we have $C_{\calL}(\calX,\mathcal{P},G)^{\star2} = C_{\calL}(\calX,\calP,2G)$.
+		\item For $\deg(G) \geq 2\mathfrak{g}+1$, we have $\dim_{\fq}(C_{\calL}(\calX,\mathcal{P},G)^{\star2})=2\deg G - \mathfrak{g} + 1$.
+	\end{itemize}
+\end{frame}
+\section{Motivation}
+\begin{frame}
+	\frametitle{McEliece Cryptosystem}
+	\textbf{McEliece cryptosysem} was the first code-based public key encryption introduced in 1978.	%was introduced in 1978. 
+	Its \textbf{security} is based on \textcolor{ballblue}{i)} the hardness of \textbf{decoding} random linear codes \textcolor{ballblue}{ii)} the \textbf{indistinguishabilty} of the chosen codes from random ones.
+	
+\textbf{McEliece's original proposal} \cite{mceliece1978public} is based on \textbf{binary Goppa code} \textcolor{red}{\textrightarrow} Large key size.
+
+\vspace{1em}
+
+%\textcolor{applegreen}{\faCheckCircle} It is still resistant to attack. \textcolor{red}{\faExclamationTriangle} Large key size.
+\textcolor{ballblue}{\textbf{How To Reduce The Key Size?}}
+\vskip-0.7em
+\begin{columns}[T,onlytextwidth]
+	\column{0.6\textwidth}
+	\begin{itemize}
+		\item[\textcolor{ballblue}{\faIcon{file-alt}}] \textbf{GRS} codes with $m = 1$ by \textbf{Niederreiter} 1986.
+		\item[\textcolor{red}{\faFrownOpen}] Broken by
+		\textbf{Sidelnikov and Shestakov}.
+		\item[\textcolor{ballblue}{\faIcon{file-alt}}] \textbf{AG codes} and \textbf{\textcolor{applegreen}{SSAG}} by \textbf{Janwa, Moreno} 1996.
+		\item[\textcolor{red}{\faFrownOpen}]\textbf{ AG codes} for genus $\leq 2$ is broken by \textbf{Faure Minder} 2008. For any genus by \textbf{Couvreur, Marquez–Corbella, Pellikaan} 2014 - 2017
+	\end{itemize}
+	\column{0.4\textwidth}
+	\begin{enumerate}
+		\item[\textcolor{ballblue}{\faIcon{file-alt}}] \textbf{Subcodes} of \textbf{GRS codes} by \textbf{Berger, Loidreau} 2001.
+		\item[\textcolor{red}{\faFrownOpen}] Broken by \textbf{Wieschebrink} 2010.
+		\item[\textcolor{applegreen}{\faIcon{file-alt}}] In \cite{EKN21crypto} we suggest "the $\mathbb{F}_{q^2}/\fq$ \textbf{subfield subcodes} of $1$\textbf{-point Hermitian codes}".
+	\end{enumerate}
+\end{columns}
+\begin{tcolorbox}[colback=aliceblue]
+	\textcolor{applegreen}{\faIcon{file-alt}} In this work we propose to use \textbf{Goppa-like AG codes}.
+\end{tcolorbox}
+\end{frame}
+\begin{frame}
+	\frametitle{Goppa-like AG code construction VS Classical Goppa code}
+\begin{columns}[c]
+	\hspace{-30pt}
+	\begin{column}{0.7\textwidth}
+		\textbf{Goppa-like AG code}
+		\begin{itemize}
+		\item Let $\calL(D)$ be the \textbf{Riemann-Roch space} such that $D$ is an \textbf{effective divisor} ($D \geq 0$) of positive degree $s$ on the curve $\calX$ over $\fqm$.
+		\item Let $g \in \fqm(\calX)$ such that $g \in \calL(D')$ where $\deg D' = s'$ and $s'>s$. 
+		%\textcolor{ballblue}{\textrightarrow $g$ plays the role of the \textbf{multiplier} in \textbf{GRS} code}.
+		\item Given $\calP \in \calX(\fqm)$ such that $\calP \cap \Supp(g) = \varnothing$ and $\calP \cap \Supp(D) = \varnothing$.
+		%The AG code associated with the divisor $D+(g)$
+		\item $\calL(D+(g)) = g^{-1}\calL(D)$. \textcolor{ballblue}{\textrightarrow $ev_{\calP}(fg^{-1})=\left( f(P_1)g^{-1}(P_1),\dots,f(P_n)g^{-1}(P_n) \right)$}. %\textcolor{ballblue}{\textrightarrow the \textbf{evalution map} $ev_{\calP} \colon \calL(D+(g))	\rightarrow   \fqm^n $ defined by $ev_{\calP}(fg^{-1})=\left( f(P_1)g^{-1}(P_1),\dots,f(P_n)g^{-1}(P_n) \right)$}.
+		\item $\calC := \calC_{\calL}(\calX,\calP,D+(g))=\set{\left(f(P)g(P)^{-1}\right)_{P \in \calP} \mid f \in \calL(D)}.$
+	\end{itemize}
+		
+		%%%%%%%%%%%%%%%%%%%%
+		\begin{block}{The \textbf{Goppa--like} AG code associated to $\calC$}
+		$$ \Gamma(\calP,D,g) := \calC^{\perp}|_{\fq}.$$
+		\end{block}
+	\end{column}
+	\hspace{-30pt}
+	\vrule{}
+	\begin{column}{0.3\textwidth}
+		
+		\textcolor{ballblue}{\textbf{Classical Goppa codes}}
+		\vspace{1em}
+		\begin{itemize}
+			\item $\fqm[x]_{<r}$,
+			\vspace{1em}
+			\item $g \in \fqm[x]_{= r}$,
+			\vspace{0.5em}
+			\item $\mathbf{x}=(x_1,\cdots,x_n)$,
+			\vspace{0.5em}
+			\item $\forall i, g(x_i)\neq 0$,
+			\vspace{0.5em}
+			\item $\GRS_r(\mathbf{x}, g(\mathbf{x})^{-1})$,
+		\end{itemize}
+	 \textcolor{ballblue}{$(g(x_1)^{-1}f(x_1),\dots,g(x_n)^{-1}f(x_n)) $}
+	 \begin{itemize}
+	 	\item $\Gamma_r(\mathbf{x},g)= \GRS_r(\mathbf{x},g(\mathbf{x})^{-1})^\perp|_{\fq}$
+	 \end{itemize}
+ \vspace{3em}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Motivation I: McEliece Cryptosystem - New Variants}
+	\textbf{\textcolor{applegreen}{Variants based on Subfield Subcodes of AG codes}}
+		\begin{table}[h]
+		\begin{center}
+			\scalebox{0.8}{
+			\begin{tabular}{|c|c|c|c|c|c|c|}
+				\hline
+				$q$&  $s$ & $n$ & $k$ & $t$ & Security bits\footnote{\textbf{With respect to Prange algorithm}}& Key--Size(bit)\\
+				\hline \hline
+				
+				${11}$	&1\,174 & 1\,331 & 927 & 78 & $142.33$ & $1\,123\,524$ \\
+				
+				\hline \hline
+				${13}$&2\,039 & 2\,197 & 1\,735 & 79 & $185.89$ & $3\,206\,280$ \\
+				
+				\hline 
+				${16}$&3\,980 & 4\,096 & 3\,634 & 58 & 187.40& 6\,715\,632   \\
+				
+				\hline \hline
+				${13}$& 1\,861 & 2\,197 & 1\,398 & 168 & 263.01& 4\,468\,008\\
+				
+				\hline 
+				${16}$& 3\,874 & 4\,096 & 3\,422 & 111 & 300.65 & 9\,225\,712\\
+				\hline
+			\end{tabular}}
+			%\vspace*{0.1em}
+			\caption{McEliece cryptosystem based on \textbf{1-point Hermitian subfield subcodes}}
+		\end{center}
+	\end{table}
+\vspace*{-0.8em}
+	\begin{table}[h]
+		\begin{center}
+			\scalebox{0.8}{
+			\begin{tabular}{|c|c|c|c|c|c|c|}
+				\hline
+				$q$&  $s$ & $n$ & $k$ & $t$ & Security bits& Key--Size(bit)\\
+				\hline \hline
+				
+				${11}$	&265&1320& 898& 77& \cellcolor{applegreen}\textbf{153}& 1\,136\,868 \\
+				
+				\hline \hline
+				\rowcolor{applegreen} \textbf{13}&\textbf{312}&\textbf{2188}& \textbf{1718}& \textbf{77}& \textbf{198}& \textbf{2\,422\,380}  \\
+				
+				\hline 
+				${16}$&354& 4078& 3608& 56& \cellcolor{applegreen}\textbf{199}& 6\,783\,040   \\
+				
+				\hline \hline
+				\rowcolor{applegreen}\textbf{13}& \textbf{490}& \textbf{2189}& \textbf{1363}& \textbf{166}& \textbf{270}& \textbf{3\,377\,514} \\
+				
+				\hline 
+				${16}$& 460 &4080& 3398& 109& \cellcolor{applegreen}\textbf{313}& 9\,269\,744\\
+				\hline
+			\end{tabular}}
+			%\vspace*{0.1em}
+			\caption{\textbf{Goppa-Like Hermitian codes }parameters $\Gamma(\calP,sP_\infty,g)$ over $\F_{q^2}$.} \label{table:goppa-herm}
+		\end{center}
+	\end{table}
+\vspace*{-0.8em}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Motivation II: Mora and Tilich result \cite{MT21}}
+	\begin{block}{Distinguishing Goppa codes for $r \geq q-1$ \cite{MT21}}
+		
+		\[\dim_{\fq}(\Gamma_r(\mathbf{x},g)^{\perp})^{\star 2}\leq \mathcolor{ballblue}{\underbrace{\binom{rm+1}{2}}}_{\text{\textcolor{red}{random code}}}  - \frac{m}{2}r((2e_{\Gamma}+1)r - 2(q-1)q^{e_{\Gamma}-1}-1),\]
+		%\vspace{-0.8em}
+		with $e_{\Gamma}= \lceil\log_q(\frac{r}{(q - 1)^2})+1\rceil$.
+	\end{block}
+%\cite{bernstein2019classic}
+\begin{table}[h]
+	\begin{center}
+		\scalebox{0.7}{
+			\begin{tabular}{|c|c|c|c|c|c|c|}
+				\hline
+				\textbf{McEliece parameter set}& \textbf{n}&\textbf{ m}& \textbf{r\footnote[1]{The code order suggested for Classical McEliece cryptosystem in \cite{bernstein2019classic}.} }&\textbf{ R\footnote[2]{The code rate suggested for Classical McEliece cryptosystem in \cite{bernstein2019classic}.}}& \textbf{Largest distinguishable r}&\textbf{ Corresponding R}\\
+				\hline \hline
+				
+				mceliece348864& 3488& 12& 64& 0.77982& 12& 0.95872\\
+				\hline
+				mceliece460896& 4608& 13& 96 &0.72917& 12& 0.96615\\
+				\hline
+				mceliece6688128& 6688& 13& 128& 0.75120& 15& 0.97084\\
+				\hline
+				mceliece6960119& 6960& 13& 119& 0.77773& 16& 0.97011\\
+				\hline
+				mceliece8192128& 8192& 13& 128& 0.79688& 19& 0.96985\\
+				\hline
+		\end{tabular}}
+		%\vspace*{0.1em}
+		\captionsetup{margin=10pt,font=footnotesize}
+		\caption{Comparison between \textbf{Classic McEliece} and \textbf{smallest distinguishable
+			code rates} \cite{MT21}.}
+	\end{center}
+\end{table}
+\vspace{-1.2em}
+\textcolor{red}{\faFrownOpen} \textcolor{gamboge}{This threats the \textbf{CFS signature scheme} that is based on \textbf{very high rate Goppa codes.}}
+\vspace{1.5em}
+\end{frame}
+%---------------------------------------
+\section{Trace Code and Subfield Subcode}
+%----------------------------------------
+\begin{frame}
+	\frametitle{Trace Code}
+	\begin{block}{Trace operator on $\mathbb{F}_{q^m}$}
+		\[\Tr{x} = x + x^q + ... + x^{q^{m-1}} \in \fq.\]
+	\end{block}
+
+Let $\calC \subseteq \fqm^n$. The \textbf{trace code} $\Tr{\calC}=\{(\Tr{c_1},\cdots,\Tr{c_n})\,|\, c\in \calC\}$ over $\fq$ is a \textbf{linear code} of length $n$ over $\fq$ with
+%\begin{equation}
+\[\dim_{\mathbb{F}_q} \Tr{\calC} \leq \min\{mk,n\}.\]	
+%\end{equation}
+\vspace{-1.2em}
+\begin{block}{Delsarte's theorem}
+	Let $\calC$ be a \textbf{linear code} of lenght $n$ over $\fqm$. Then
+	\[\left(\calC|_{\fq}\right)^{\perp} = \Tr{\calC^{\perp}}.\]
+\end{block}
+Equivalently, we have $\Tr{\calC}= \left(\calC^{\perp}|_{\fq}\right)^{\perp}$.
+\vspace{-0.5em}
+\begin{tcolorbox}[colback=gold]
+	\[\Tr{\GRS_r(\mathbf{x},g(x)^{-1})} =( \GRS_r(\mathbf{x},g(\mathbf{x})^{-1})^\perp|_{\fq})^\perp= (\Gamma_r(\mathbf{x},g))^{\perp}.\]
+\end{tcolorbox}
+\end{frame}
+\begin{frame}
+	\frametitle{Goppa codes distinguisher \cite{MT21}}
+	\begin{block}{Proposition \cite{MT21}}
+		Let $\calC$ be a linear code over $\fqm$. We have
+		\vspace{-0.9em}
+		$$Tr(\calC)^{*2}\subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr{\calC\star \calC^{q^i}}$$
+		where $\calC^{q^i} \myeq \{c^{q^i} \,| \, c \in \calC \}  $.
+	\end{block}
+%\vspace{-0.8em}
+	We set $\calC = \GRS_r(\mathbf{x},\mathbf{y})$ and $\mathbf{y}=\frac{1}{g(\mathbf{x})}$. For $0\leq i\leq e$ where $e=\lfloor \log_q(r)\rfloor$.
+	\begin{itemize}
+		\item $\calC\star \calC^{q^i}=\GRS_{(r-1)(q^i+1)+1}(\mathbf{x},\mathbf{y^{q^i+1}})$.
+		\item Let $f \in \fq[x]_{<(r-1)(q^i+1)+1}$, computing the Euclidean division of $f$ by $g^{q^i -q^{i-1}+1}$
+		%\vspace{-0.7em}
+		\[ \Tr{\frac{f}{g^{q^i +1}}}=\Tr{\frac{f'}{g^{q^i +1}}},\]
+		%\vspace{-0.9em}
+		where $\deg f' < r(q^i -q^{i-1}+1)<(r-1)(q^{i
+			+1})+1$.
+		
+		$\Rightarrow \: \Tr{\GRS_{(r-1)(q^i+1)+1}(\mathbf{x},\mathbf{y^{q^i+1}})} = \Tr{\GRS_{r(q^i -q^{i-1}+1)}(\mathbf{x},\mathbf{y^{q^i+1}})} = T_i$.
+		\item $T_i \subset T_{i+1}$...
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{Goppa codes distinguisher \cite{MT21}}
+	\begin{itemize}
+		%\item $\sum\limits_{i=0}^{e} \Tr{\GRS_r(\mathbf{x},\mathbf{y})\star \GRS_r(\mathbf{x},\mathbf{y})^{q^i}} \subseteq \Tr{\GRS_{r(q^e -q^{e-1}+1)}(\mathbf{x},\mathbf{y^{q^e+1}})}$.
+		\item $\dim\left( Tr(\calC)^{*2}\right) \leq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \dim \left( \Tr{\calC\star \calC^{q^i}}\right).$
+		%\item $\dim_{\fq}\Tr{\calC\star \calC^{q^i}}\leq m\dim_{\fqm} \calC^2$ for $i \in \{e+1,\cdots, \lfloor{m/2} \rfloor\}$.
+	\end{itemize}
+	\vspace{-0.9em}
+\begin{align*}
+	\dim_{\fq}Tr(\calC)^{*2}\leq& \dim_{\fq}\Tr{\GRS_{r(q^e -q^{e-1}+1)}(\mathbf{x},\mathbf{y^{q^e+1}})}+ \sum\limits_{i=e+1}^{\lfloor{m/2} \rfloor} \dim_{\fq}\Tr{\calC\star \calC^{q^i}}\\
+	\leq& mr(q^e -q^{e-1}+1) + \left( \frac{m-2}{2}-e\right) mr^2\\
+	\leq& \mathcolor{ballblue}{\underbrace{\binom{rm+1}{2}}}_{\text{\textcolor{red}{random code}}}  - \frac{m}{2}r((2e+1)r - 2(q-1)q^{e-1}-1).
+\end{align*}
+\vspace{-0.5em}
+\begin{itemize}
+	\item $\dim_{\fq}Tr(\calC)^{*2} = \dim_{\fq}(\Gamma_r(\mathbf{x},g)^{\perp})^{\star 2}\leq \mathcolor{ballblue}{\underbrace{\binom{rm+1}{2}}}_{\text{\textcolor{red}{random code}}}  - \frac{m}{2}r((2e_{\Gamma}+1)r - 2(q-1)q^{e_{\Gamma}-1}-1)$,\vspace{-0.7em}
+	with $e_{\Gamma}= \lceil\log_q(\frac{r}{(q - 1)^2})+1\rceil$ \cite{MT21}.
+\end{itemize}
+%	\begin{tcolorbox}[colback=aliceblue]
+%		For $r\geq q-1$ \cite{MT21},
+%		\vspace{-0.9em}
+%		\[\dim_{\fq}(\Gamma_r(\mathbf{x},g)^{\perp})^{\star 2}\leq \mathcolor{ballblue}{\underbrace{\binom{rm+1}{2}}}_{\text{\textcolor{red}{random code}}}  - \frac{m}{2}r((2e_{\Gamma}+1)r - 2(q-1)q^{e_{\Gamma}-1}-1),\]
+%		%\vspace{-0.8em}
+%		with $e_{\Gamma}= \lceil\log_q(\frac{r}{(q - 1)^2})+1\rceil$.
+%		\vspace{-0.6em}
+%	\end{tcolorbox}
+\end{frame}
+%--------------------------------------------------------------
+\section{1--point Goppa--Like AG Code On $C_{a,b}$ curve}
+%--------------------------------------------------------------
+\begin{frame}
+	\frametitle{$C_{a,b}$ curve}
+	\begin{block}{Definition \cite{Miu93}}
+		Let $a,b$ be coprime positive integers. A $C_{a,b}$ curve over $\fqm$ is a curve $\calX_{a,b}$ having an irreducible, affine and non--singular plane model with equation
+		%\begin{equation} \label{eq:equation_C_ab}
+		\[f_{a,b}(x,y) = \alpha_{0a}y^a + \alpha_{b0}x^b + \sum_{ai+bj < ab} \alpha_{ij}x^iy^j = 0,\]	
+		%\end{equation}
+		with $\alpha_{0a}$ and $\alpha_{b0} \neq 0$.
+	\end{block}
+	
+	\begin{itemize}
+		\item It has a unique point at infinity, denoted by $P_{\infty}$. Its genus is $\mathfrak{g}_{a,b}:=\dfrac{(a-1)(b-1)}{2}.$
+		%Riemann--Roch space $\calL(s P_\infty)$ has an explicit basis as follows:
+		\item $\calL(sP_{\infty}) = \Span{x^iy^j \mid 0 \leq i, 0\leq j\leq a-1 \ \mathrm{and} \ ai+bj \leq s}.$
+		 %Given a monomial of the form $x^iy^j$, we define its weighted degree by
+		\item $\degab{x^iy^j} := ai+bj.$
+	\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{One-point Goppa-like AG code on $C_{a,b}$-curves}
+\begin{block}{Definition: One--point Goppa--like AG code on $C_{a,b}$-curves}
+	Let $s'>s$ be two integers such that there exists a function $g \in \calL(s'P_\infty)$ with $\degab{g}=s'$. Given a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$, we define the \textbf{one--point Goppa--like AG code} associated to $\calP,s$ and $g$ as 
+	\[\Gamma(\calP,sP_\infty,g) := \calC_{\calL}(\calX_{a,b},\calP,(sP_\infty+(g))^{\perp})|_{\fq}.\]
+\end{block}
+\begin{block}{Proposition \cite{GH00}}
+	For any function $f \in \bigcup_{s \geq 0} \calL(s P_\infty)$, we can write $f=f_1g+f_2$ with 
+	\[f_2 \in \calR(g):= \Span{x^u y^v \mid u \leq \beta + b-1 \text{ and } v\leq a-1 \text{ not both }  u \geq \beta \text{ and } v \geq \alpha}.\]
+	Moreover, we have $\degab{f_2} \leq \degab{f}$ and $\dim_{\fqm} \calR(g) = \degab{g}.$ 
+\end{block}
+
+\end{frame}
+\begin{frame}
+	\frametitle{One--point Goppa--like AG code on $C_{a,b}$-curves}
+	
+	\begin{block}{Lemma \cite{lhotel2023goppa}}
+		Take $i \geq 1$ and $s'>s \geq 0$. Let $g \in \calL\left(s'P_\infty\right)$ and $f \in \calL\left(\left(s'(q^i+1)-1\right)P_\infty\right)$. Then there exists $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that $\Tr{\frac{f}{g^{q^i+1}}} = \Tr{\frac{f'}{g^{q^i+1}}} $.
+	\end{block}
+
+	We set $\calC = \calC_{\calL}(\calX_{a,b},\calP,(sP_\infty+(g))$, $D = sP_\infty+(g)$.
+	\begin{itemize}
+		\item $\calL(D).\calL(D)^{q^i}\subseteq \calL((q^i +1)D) \implies \calC\star\calC^{q^i} \subseteq \calC_{\calL}(\calX_{a,b},\calP,(q^i +1)D)$.
+		\item[\textrightarrow] $\mathcolor{ballblue}{\calC\star \calC^{q^i}=\GRS_{(r-1)(q^i+1)+1}(\mathbf{x},\mathbf{y^{q^i+1}}).}$
+		\item $\Tr{\calC\star\calC^{q^i}} \subseteq \Tr{\calC_{\calL}(\calX_{a,b},\calP,(q^i +1)D)}$, this implies $$\dim_{\fq}(\Tr{\calC\star\calC^{q^i}}) \leq m(s(q^i +1)-\mathfrak{g} +1)$$.
+		\vspace{-0.7em}
+		\item $\Tr{\frac{f}{g^{q^i+1}}} = \Tr{\frac{f'}{g^{q^i+1}}}$ with $\degab{f}<\degab{f'}$.
+		\item[\textrightarrow] $\mathcolor{ballblue}{f \in \fq[x]_{<(r-1)(q^i+1)+1}, \Tr{\frac{f}{g^{q^i +1}}}=\Tr{\frac{f'}{g^{q^i +1}}}, \deg f'<r(q^i -q^{i-1}+1).}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{One--point Goppa--like AG code on $C_{a,b}$-curves}
+	\begin{itemize}
+		\item For $\mathcolor{gold}{s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1}$, and $e\in \{0,\cdots,\lfloor \frac{m}{2}\rfloor\}$, we have
+		\vspace{-0.6em}
+		
+	 $$ \sum \limits_{i=0}^{e}\Tr{\calC\star\calC^{q^i}} \subseteq \Tr{\calR(g^{q^{i}-q^{i-1}+1})}.$$
+	 \item[\textrightarrow] $\mathcolor{ballblue}{\sum\limits_{i=0}^{e} \Tr{\GRS_r(\mathbf{x},\mathbf{y})\star \GRS_r(\mathbf{x},\mathbf{y})^{q^i}} \subseteq \Tr{\GRS_{r(q^i -q^{i-1}+1)}(\mathbf{x},\mathbf{y^{q^i+1}})}}$
+		\item $\dim_{\fq}\sum \limits_{i=0}^{e}\Tr{\calC\star\calC^{q^i}} \leq ms'(q^e - q^{e-1} +1)$.
+	\end{itemize}
+\vspace{-0.7em}
+\begin{align*}
+	\dim_{\fq}Tr(\calC)^{*2} &\leq \dim_{\fq}\sum \limits_{i=0}^{e}\Tr{\calC\star\calC^{q^i}} + \dim_{\fq}\sum \limits_{i=e+1}^{\lfloor \frac{m}{2}\rfloor}\Tr{\calC\star\calC^{q^i}}\\
+	&\leq \binom{mk+1}{2} - \dfrac{m}{2}(k^2(2e+1)+k-2s'(q^{e}-q^{e-1}+1)).
+\end{align*}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Distinguisher of Goppa--like AG code on $C_{a,b}$-curves}
+	\begin{block}{Theorem \cite{lhotel2023goppa} }
+		Let $\mathcolor{gamboge}{s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1}$ and $e^* := \min\left(\left\lfloor \frac{m}{2} \right\rfloor, \left\lceil \log_q\left(\frac{k^2}{s'(q-1)^2}\right)\right\rceil+1\right)$. Then
+		\vspace{-0.7em}
+		$$\dim_{\fq} (\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2}\leq \mathcolor{ballblue}{\underbrace{\binom{mk+1}{2}}}_{\text{\textcolor{red}{random code}}} - \dfrac{m}{2}(k^2(2e^*+1)+k-2s'(q^{e^*}-q^{e^*-1}+1)). $$
+	\end{block}
+\vspace{-0.7em}
+\textcolor{ballblue}{\textbf{Sharpness of the bound}}
+\vspace*{-0.7em}
+	\begin{itemize}
+		\item Let $\calX_{2,3}$ be an elliptic curve over $\fqm = \F_{3^6}$ defined by $ y^2+y = x^3+x+2.$
+		\item $s'=s+1$ for $s \geq 0$, and $g \in \calL(s'P_{\infty})$. We set $\calC_g := \Gamma(\calP,sP_\infty,g)$.
+	\end{itemize}
+	\vspace*{-0.7em}
+	\begin{table}[h]
+		\begin{center}
+			\scalebox{0.8}{
+			\begin{tabular}{|c|c|c|c|c|c|}
+				\hline
+				n &$s$&$\dim_{\fq}\calC_g$ & $\dim_{\fq}((\calC_g)^{\star 2})$&$\dim_{\fq}((\calC_g^{\perp})^{\star2})$ & Upper bound\\
+				\hline \hline
+				$781$ &$4$& $757$& $781$&$234$ & $234$ \\
+				\hline 
+				$783$ &$5$& $753$& $783$ &$327$ & $327$   \\
+				\hline \hline
+				$782$ &$6$& $746$&$782$ &$402$ & $402$  \\
+				\hline
+				$783$ &$7$& $741$& $783$&$483$ & $483$  \\
+				\hline \hline
+				$782$ &$8$& $734$& $782$&$570$ & $570$   \\
+				\hline
+				$782$ &$9$& $728$& $782$&$663$ & $663$ \\
+				\hline
+				$781$ &$10$& $721$ & $781$&$762$ & $762$ \\
+				\hline
+			\end{tabular}
+			}
+			\caption{Sharpness of the bound.} \label{table:expl_sharpness}
+		\end{center}
+	\end{table}
+\end{frame}
+\begin{frame}
+	\frametitle{High rate distinguishable codes: Elliptic curve case }
+	
+	\begin{itemize}
+		\item Let $\Gamma(\calP,sP_\infty,g)$ be a one-point Goppa-like AG code on the elliptic curve  $\calX_{2,3}$ over $\fqm$.
+		\item Compute the maximal distinguishable value of $s$ with $s'=s+1$ and $g\in \calL(s'P_{\infty})$.
+	\end{itemize}
+	
+	\begin{table}[h]
+		\begin{center}
+			\scalebox{0.9}{
+			\begin{tabular}{|c|c|c||c|c|c|c|c|c|}
+				\hline
+				$q$ & $m$ & $n$ & Largest distinguishable $s$ & Corresponding rate\\
+				\hline \hline
+				$2$ & $12$ & $4218$ & $14$ & $0,963$ \\
+				\hline 
+				$2$ & $13$ & $6688$ & $18$ & $0,982$  \\
+				\hline \hline
+				$3$ & $7$ & $2186$ & $15$ & $0,962$ \\
+				\hline
+				$3$ & $8$ & $6393$ & $24$ & $0,977$ \\
+				\hline \hline
+				$5$ & $5$ & $3043$ & $27$ & $0,961$  \\
+				\hline
+				$5$ & $6$ & $4500$ & $22$ & $0,971$ \\
+				\hline
+				$5$  & $6$ & $6688$ & $30$ & $0,976$ \\
+				\hline \hline
+				$7$ & $4$ & $2395$ & $27$ & $0,957$ \\
+				\hline
+				$7$ & $5$ & $4650$ & $26$ & $0,971$ \\
+				\hline
+				$7$ & $5$ & $8192$ & $37$ & $0,979$ \\
+				\hline \hline
+				$17$ & $3$ & $4820$ & $92$ & $0,943$ \\
+				\hline
+			\end{tabular}
+		}
+			\vspace*{0.3em}
+			\caption{Largest distinguishable Goppa--like AG code in elliptic case.}
+		\end{center}
+	\end{table}
+	
+\end{frame}
+\section{Analysis and Application}
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Analysis of the distinguisher}
+	\textcolor{applegreen}{\textbf{How can we choose appropriate parameters for McEliece Cryptosystem}?}
+	\begin{itemize}
+		\item Let $\calC := C_\calL(\calX_{a,b},\calP,sP_\infty +(g))$, with $\degab{g} = s'>s\geq 2\mathfrak{g}_{a,b}-1$. If $\mathcolor{gold}{s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1}$ , then
+		%\begin{equation} \label{eq:best_upper_bound}
+		\[ \dim_{\fq} (\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2} \leq \min \left(\frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right),n\right),\]	
+		%\end{equation}
+		where $e^* := \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1$.
+		\item \textbf{Hasse--Weil bound }
+		\[\color{ballblue}{n = \# \calP = |\calX_{a,b}(\fqm)|-2 \leq q^m-1+2\mathfrak{g}_{a,b}\sqrt{q^m}},\]
+		\item The \textbf{parameters} have to be chosen such that 
+		%\begin{equation} \label{eq:cond_not_to_distinguish}
+		\[\color{ballblue}{\frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right)\geq q^m-1+2\mathfrak{g}_{a,b}\sqrt{q^m}}.\]	
+		%\end{equation}
+		
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{One-point Goppa like AG codes on Hermitian curves}
+	\begin{block}{Definition }
+		Let $m \geq 1$ be an even integer and $q_0 := q^{m/2}$.The \textbf{Hermitian curve} $\calH$ over $\fqo$ is defined by the equation
+		\[\calH : y^{q_0}+y = x^{q_0+1}.\]
+		Its genus is given by $\mathfrak{g}_{\calH} = \frac{q_0(q_0-1)}{2}$ and it is a \textbf{maximal curve}, \emph{i.e.} $\#\calH(\fqo) = q_0^3+1$.
+	\end{block}
+	
+	\begin{block}{Proposition \cite{lhotel2023goppa}} 
+		Suppose $\mathcolor{gamboge}{s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1}$. Then for any choice of $g$ and $\calP$, the \textbf{one--point Goppa--like Hermitian code} $\Gamma(\calP,sP_\infty,g)$ resists the given distinguisher.
+	\end{block}
+\begin{tcolorbox}[colback=aliceblue]
+	$$\dim_{\fq} (\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2}\leq \mathcolor{ballblue}{\underbrace{\binom{mk+1}{2}}}_{\text{\textcolor{red}{random code}}} - \dfrac{m}{2}(k^2(2e^*+1)+k-2s'(q^{e^*}-q^{e^*-1}+1)). $$
+\end{tcolorbox}
+\end{frame}
+	\begin{frame}[allowframebreaks]{References}
+		
+		\bibliography{demo}
+		\bibliographystyle{alpha}
+		
+	\end{frame}
+	
+\end{document}
