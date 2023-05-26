@@ -1,0 +1,169 @@
+%%%%%% TEMPLATE FOR COMBINATORICS 2020 ABSTRACTS %%%%%%%%%%%
+% PLEASE DO NOT MODIFY ANY OF THE COMMANDS IN THE PREAMBLE %
+% AND ABSTAIN FROM CUSTOM-DEFINED MACROS IN THE FILE       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\ifdefined\FinalVersion
+\openabstract
+\else
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage[margin=2cm]{geometry}
+\newcommand{\PaperTitle}[1]{#1}
+\newcommand{\BookTitle}[1]{\emph{#1}}
+\newcommand{\JournalName}[1]{\emph{#1}}
+\newcommand{\BookPublisher}[1]{#1}
+\newcommand{\arXiv}[1]{(arXiv:#1)}
+\newcommand{\YearP}[1]{\bf{#1}}
+\newcommand{\bailout}{%
+	\ifnum\value{page}>1
+	\typeout{Error! More than one page}
+	\undefinedcommand
+	\fi
+	\ifdefined\MSCok\relax\else\errmessage{missing MSC}\fi
+}
+
+
+%%%TITLE PAGE
+\makeatletter
+\global\let\@jointwith\relax
+\global\let\@affiliation\relax
+\def\jointwith#1{\gdef\@jointwith{(Joint work with #1)}}
+\def\affiliation#1{\gdef\@affiliation{#1}}
+\newcommand{\Keywords}[1]{\par\noindent{\bfseries Keywords}: #1}
+\newcommand{\MSC}[1]{\def\MSCok{\relax}\par\noindent{\bfseries MSC}: #1}
+\renewcommand\maketitle{\par
+	\begingroup
+	\renewcommand\thefootnote{\@fnsymbol\c@footnote}%
+	\def\@makefnmark{\rlap{\@textsuperscript{\normalfont\@thefnmark}}}%
+	\long\def\@makefntext##1{\parindent 1em\noindent
+		\hb@xt@1.8em{%
+			\hss\@textsuperscript{\normalfont\@thefnmark}}##1}%
+	\if@twocolumn
+	\ifnum \col@number=\@ne
+	\@maketitle
+	\else
+	\twocolumn[\@maketitle]%
+	\fi
+	\else
+	\newpage
+	\global\@topnum\z@   % Prevents figures from going at top of page.
+	\@maketitle
+	\fi
+	\thispagestyle{empty}\@thanks
+	\endgroup
+	\setcounter{footnote}{0}%
+	\global\let\thanks\relax
+	\global\let\@jointwith\relax
+	\global\let\@affiliation\relax
+	\global\let\maketitle\relax
+	\global\let\@maketitle\relax
+	\global\let\@thanks\@empty
+	\global\let\@author\@empty
+	\global\let\@date\@empty
+	\global\let\@title\@empty
+	\global\let\title\relax
+	\global\let\author\relax
+	\global\let\date\relax
+	\global\let\and\relax
+}
+\def\@maketitle{%
+	\newpage
+	\null
+	\vskip 2em%
+	\begin{center}%
+		\let \footnote \thanks
+		{\LARGE \@title \par}%
+		\vskip 1.5em%
+		{\large
+			\lineskip .5em%
+			\begin{tabular}[t]{c}%
+				\@author \\
+				{\sc\small \@affiliation} \\
+				{\small \@jointwith}
+			\end{tabular}\par}%
+		\vskip 1em%
+		%{\large \@date}%
+	\end{center}%
+	\par
+	\vskip 1.5em}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IF NEEDED ADD EXTRA PACKAGES AND DEFINITIONS HERE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \usepackage{...}
+%
+%
+%\usepackage{enumerate}
+%\usepackage{microtype}
+\begin{document}
+	\pagestyle{empty}
+	\fi
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%ADAPT AND CHANGE THE INFORMATION BELOW
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%%% Please write your name as \author{{First Name} Surname}
+	\title{Goppa--like AG codes from $C_{a,b}$ curves and the dimension of the square of their dual}
+	\author{{Jade} Nardi}
+	\affiliation{Univ Rennes, CNRS, IRMAR}%--- {Department of Mathematics and Computer Science}}
+\jointwith{Sabira El Khalfaoui, Mathieu Lhotel}
+\maketitle
+
+%\begin{abstract}
+	McEliece cryptosystem is one of the last code–based candidates for standardization of post–quantum cryptrographic to the NIST competition since the third round. It guarantees the smallest ciphertexts among all the candidates, but it suffers from the largest public keys. Over the past forty years, there were many attempts in replacing the family of binary Goppa codes by other structured families of codes in order to reduce the key size.
+
+	In this talk, we will introduce a new family of codes that can be used in this context, called \emph{Goppa--like AG codes}. These codes generalize Goppa codes and can be constructed from any curve of genus $\mathfrak{g} \geq 0$.
+	As subfield subcodes, they resist to the known structural attacks to AG codes \cite{CMP17}.
+	
+	Recently, Mora and Tillich established a bound for the dimension of the dual of Goppa codes, which for high rate Goppa codes is abnormally small compared to random codes. This makes high rate Goppa codes distinguishable from random ones, which does not threaten the McEliece cryptosystem but is likely to break the code--based CFS signature \cite{CFS01}. As Mora and Tillich's bound relies on some properties of Reed--Solomon codes that they share with AG codes, notably their behaviour under component--wise product, it is natural to wonder how it applies to Goppa--like AG codes. %Focusing on codes from $C_{a,b}$ curves, we study the behaviour of the dimension of the square of their dual to determine their resistance to distinguisher attacks.
+	
+	After studying Mora and Tillich's strategy to bound the dimension of the dual of classical Goppa codes, we will present how we generalize it to a family of Goppa--like AG codes from $C_{a,b}$ curves and we propose numerical experiments to measure how much our bound is sharp.
+	
+	\medskip
+	
+	The talk is based on the preprint \cite{ELN23} which is available on ArXiv.
+%\end{abstract}
+\vskip1cm
+\Keywords{AG codes, Subfield subcodes, $C_{a,b}$ curves, Goppa--like AG codes, Trace codes, Schur product}
+\MSC{11T71, 14G50, 14H05, 11G20}
+\par\vskip.5cm
+\begin{small}
+\begin{thebibliography}{99}
+	\bibitem{CFS01}
+		Nicolas T. Courtois, Matthieu Finiasz and Nicolas Sendrier -
+		\PaperTitle{How to achieve a McEliece-based digital signature scheme},
+		\JournalName{Advances in Cryptology—ASIACRYPT 2001: 7th International Conference on the Theory and Application of Cryptology and Information Security Gold Coast, Australia, December 9--13, 2001 Proceedings 7}, 2001.
+	
+	\bibitem{CMP17}
+	Alain Couvreur, Irene  M{\'a}rquez-Corbella and Ruud Pellikaan -
+	\PaperTitle{Cryptanalysis of McEliece cryptosystem based on algebraic geometry codes and their subcodes},
+	\JournalName{IEEE Transactions on Information Theory}, 2017.
+	
+	\bibitem{MT21}
+	Rocco Mora and Jean-Pierre Tillich -
+	\PaperTitle{On the dimension and structure of the square of the dual of a Goppa code},
+	\JournalName{Designs, Codes and Cryptography}, 2023.
+	
+	\bibitem{ELN23}
+	Sabira El Khalfaoui, Mathieu Lhotel and Jade Nardi -
+	\PaperTitle{Goppa--like AG codes from $C_{a,b}$ curves and their behaviour under squaring their dual},
+	\JournalName{arXiv preprint: 2303.08687}, 2023.
+\end{thebibliography}
+\end{small}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% DO NOT CHANGE ANYTHING AFTER THIS LINE
+
+\ifdefined\FinalVersion
+\closeabstract
+\else
+%\bailout
+\end{document}
+\fi
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
