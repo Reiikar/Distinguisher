@@ -6,6 +6,7 @@
 
 
 
+
 %\usepackage{amsaddr}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
@@ -23,6 +24,8 @@
 
 
 %%%%%%COMMENTS%%%%%%
+\newcommand\TODO[1]{\textcolor{red}{TO DO: #1}}
+\newcommand\DONE[1]{\textcolor{blue}{DONE: #1}}
 \newcommand\jade[1]{{\textcolor{purple}{#1}}}
 \newcommand\elena[1]{{\textcolor{blue}{#1}}}
 
@@ -65,70 +68,84 @@ readable.
 results of [NEK21] in Table 1 to give a clear comparison. Add some examples in Section 2 to make
 a comparison with results in Section 3.
 \end{itemize}
+
 Hence, I suggest a revision. Some more comments are listed:
+
+
+\TODO{on a tenu compte de toutes les typos et fautes d'orthographes. Chacun des points plus compliqués sont détaillés.}
+
 \begin{itemize}
-\item  Page 1. Section Introduction. Line 16. “The scheme ... have”;
-\item  Page 1. Subfield subcodes of AG codes. Line -7. Note the symbols of codes and curve. Check the
-use of C and C;
-\item  Page 2. It is better to give a clear description of the advantages of the upper bound of the dimension
-of codes.
-\item  Page 2. Line 14 in Contributions of this paper. “performing ... enable ...”;
-\item  Page 3. Line -13. “a [n, k]”. Many similar errors in the paper;
+ 
+\item  Page 1. Subfield subcodes of AG codes. Line -7. Note the symbols of codes and curve. Check the use of $\mathcal{C}$ and C; 
+
+\DONE{ We corrected the use of caligraphical letter in $C_{a,b}$, and we also add some context about the definition of the AG code $\mathcal{C}$.}
+ 
+\item 
+\TODO{Dire pourquoi une borne sur la dimension fournit un distingueur:  Page 2. It is better to give a clear description of the advantages of the upper bound of the dimension of codes.}
+
+
 \item  Page 5. Please check the use of $Tr(C)^2$ and $ C^{q^i}$
-. It seems that $Tr(C)^2$ means $Tr(C^2)$.
-Many similar problems in the paper. Please give a description of Cqi
-.
+. It seems that $Tr(C)^2$ means $Tr(C^2)$. Many similar problems in the paper.
+
+\DONE{Actually it is really the square of the Trace and not the Trace of the square. To make it more readable, we changed the notation of the Trace by removing the underscore $\mathbb{F}_{q^m}/\mathbb{F}_q$.}
+
+ Please give a description of $C^{q^i}$.
+ 
+\DONE{We added a description below equation \eqref{eq:key_equation}.}
+
 \item  Page 6. Note that $\deg G = s$. There are many symbols in the paper. Please give a clear description.
-\item  Page 7. Line 1. “the product ... belong ...”;
-\item  Page 8. Line 2 in Remark 2.2. “Theorem 1.4 and 1.6”; Line 1 in Section 2.1.1. “define”; Line 5 in
-Section 2.1.1. “an correcting ”;
-\item  Page 11. It is better to give some examples at the end of Section 2;
-\item  Page 13. Line -9. “there is a few cases ...”;
-\item  Page 15. Corollary 3.7. Line 3. A ( was omitted. Please check the rest of the paper;
-\item  Page 18. Check the format of references. Update Reference [MT21].
+
+\DONE{The definition of the degree of a divisor can be found at page 4. We also changed the notation $\deg G$ into $\deg(G)$ where it was not already the case.}
+
+
+\item  \TODO{Mettre un exemple avant la sous-section 2.2 avec un cas égalité ou inégalité entre Goppa-like et Cartier. Reprendre le même exemple après 2.6 dans le cas ou la borne n'est effectivement pas atteinte, i.e. quand $g$ est une puissance q-ème i.e. $\mathcal{C}_1$ : Page 11. It is better to give some examples at the end of Section 2};
+
+
+\item  \TODO{script Python : Page 18. Check the format of references. Update Reference [MT21].}
+
 \end{itemize} 
+
+
 \section*{Second review's comment}
 
+\TODO{on a tenu compte de toutes les typos et fautes d'orthographes. Chacun des points plus compliqués sont détaillés.}
+
 \begin{itemize}
-\item Page 1, line 6: "The security of McEliece cryptosystem." This should be something like "The security of the McEliece cryptosystem". Similar minor grammatical issues occur elsewhere in the paper as well. I recommend a careful check of the entire paper.
 
-\item Page 1, line 13: "H\o hold and Pellikaan" should be "H\o holdt and Pellikaan".
 
-\item Page 2, line 1: "$C_L(X,P,D+(g))$". Elsewhere the P is in mathcal font, but not here.
+\item \DONE{Page 6, line 4: In the second upper bound for the dimension of the Schur square of a trace code in Corollary 1.8, a pair of brackets is missing. More precisely, the formula $m \cdot dim C^2-\binom{dim(C)+1}{2}$ should be $m \cdot \left( dim C^2-\binom{dim(C)+1}{2}\right)$}
 
-\item Page 3, line -13: "a [n,k]". This should be "an [n,k]", since when pronouncing the letter n, one starts with a vowel sound.
+\item \DONE{Page 6, proof of Corollary 1.10: In the proof an upper bound on the dimension of $Tr(C)^2$ is given in a series of formulas involving four $\le$ signs. Actually the final three inequalities are equalities. It would be easier for the reader to replace these three inequalities with equalities.}
 
-\item Page 6, line 4: In the second upper bound for the dimension of the Schur square of a trace code in Corollary 1.8, a pair of brackets is missing. More precisely, the formula $m \cdot dim C^2-\binom{dim(C)+1}{2}$ should be $m \cdot \left( dim C^2-\binom{dim(C)+1}{2}\right)$
 
-\item Page 6, proof of Corollary 1.10: In the proof an upper bound on the dimension of $Tr(C)^2$ is given in a series of formulas involving four $\le$ signs. Actually the final three inequalities are equalities. It would be easier for the reader to replace these three inequalities with equalities.
+\item \DONE{the condition have been added : Page 7, Definition 13: the constants $\alpha_{0a}$ and $\alpha_{b0}$ are not allowed to be zero. Please add this condition.}
 
-\item Page 7, line 1: "belong to" should be "belongs to"
+\item \TODO { changer la notation de $\mathcal{O}_\infty$ parce que c'est pas le bon truc. Est-ce que ça a un autre nom ? : Page 7, Equation 10: The notation $\mathcal{O}_{P_\infty}$ for the ring $\cup_{s \ge 0} L(sP_\infty)$ is quite misleading. It is very common to use the notation $\mathcal{O}_{P_\infty}$ for the local ring at $P_\infty$. This is the ring consisting of all functions that do not have a pole at$ P_\infty$. The authors consider in some sense the opposite situation: the ring of all functions with no poles except possibly at $P_\infty$. Please use some other notation.}
 
-\item Page 7, Definition 13: the constants $\alpha_{0a}$ and $\alpha_{b0}$ are not allowed to be zero. Please add this condition.
-
-\item Page 7, Equation 10: The notation $\mathcal{O}_{P_\infty}$ for the ring $\cup_{s \ge 0} L(sP_\infty)$ is quite misleading. It is very common to use the notation $\mathcal{O}_{P_\infty}$ for the local ring at $P_\infty$. This is the ring consisting of all functions that do not have a pole at$ P_\infty$. The authors consider in some sense the opposite situation: the ring of all functions with no poles except possibly at $P_\infty$. Please use some other notation.
 
 \item Page 7, line -4: "$f=x^\beta y^\alpha+f'(x,y)$". The authors write that any $f \in \cup_{s \ge 0} L(sP_\infty)$ can be written in this form, but this is strictly speaking not true. One needs to allow for a leading coefficient different from one as well. Please write something like "$f=c\cdot x^\beta y^\alpha+f'(x,y)$ for some nonzero $c$." This also affects the leading term expression later on.
+\DONE{ We took the modification into consideration. We also changed the notation of LT(f) into LM(f)} + \TODO{ajout remarque du fait qu'on travaille sur un corps, donc ça reviens essenciellement au même}
 
-\item Page 8, Remark 1.15: "It is worth noting that $\mathcal{O}_{P\infty}$ is a valuation ring with valuation $v_{P_\infty}$". This is not true. Indeed, the only valuation ring with valuation $v_{P_\infty}$ is the local ring at $P_\infty$. Please modify the remark. It is true that $\deg_{a,b}(f)=-v_{P_\infty}(f)$, which is perhaps the main point of the remark.
 
-\item Page 8, Definition 2.1: Later on the notation G is used for the divisor D+(g). It would help the reader if this is mentioned already here, since later on, for example in Remark 2.2, the notation G is used without explanation.
+\item  \TODO{À modifier un peu après avoir modifier la notation $\mathcal{O}_{P_{\inf}}$ : enlever tout ce qui mentionne l'anneau de valuation à l'infini : Page 8, Remark 1.15: "It is worth noting that $\mathcal{O}_{P\infty}$ is a valuation ring with valuation $v_{P_\infty}$". This is not true. Indeed, the only valuation ring with valuation $v_{P_\infty}$ is the local ring at $P_\infty$. Please modify the remark. It is true that $\deg_{a,b}(f)=-v_{P_\infty}(f)$, which is perhaps the main point of the remark.}
 
-\item Page 9, line 6: "for the good choice of divisor". I think the authors mean something like "for an appropriate choice of the divisor"
+\item \DONE{The definition of $G$ has been added right before Definition \ref{def:Goppa--like_AG_code}Page 8, Definition 2.1: Later on the notation G is used for the divisor D+(g). It would help the reader if this is mentioned already here, since later on, for example in Remark 2.2, the notation G is used without explanation.}
 
-\item Page 10, line 3: In the second summation in this line, there is "$\dim_{F_{q}}$" missing in front of the code $Tr(C*C^{q^i})$
 
-\item Page 11, line 2: The formula "$C_1 \subseteq C^{q^i} \cap C^{q^{m-1}}$" should be "$C_1 \subseteq C \cap C^{q^{m-1}}$". 
 
-\item Page 11, line 4: "$Tr(C*C_1^{q^i}) \subseteq ..." should be "Tr(C_1*C_1^{q^i}) \subseteq$ ..."
+\item \DONE{The missing dimension has been added : Page 10, line 3: In the second summation in this line, there is "$\dim_{F_{q}}$" missing in front of the code $Tr(C*C^{q^i})$}
 
-\item Page 11, line 7: in the formula involving the intersection of summations of certain trace codes, the right-hand side is the empty set symbol. Since any code contains 0, I suspect the right-hand side should have been \{0\} instead of $\emptyset$.
+\item \DONE{The formula has been corrected: }Page 11, line 2: The formula "$C_1 \subseteq C^{q^i} \cap C^{q^{m-1}}$" should be "$C_1 \subseteq C \cap C^{q^{m-1}}$". 
 
-\item Page 11, Remark 2.8: what is the parameter r? It is probably the degree of g, but I do not recall the authors mentioned this earlier. Please add a short explanation.
+\item \TODO{Le résultat est vrai en l'état avec $\mathcal{C}$. C'est aussi vrai avec $\mathcal{C}_1$ mais on s'en moque. L'expliquer : }Page 11, line 4: "$Tr(C*C_1^{q^i}) \subseteq ..." should be "Tr(C_1*C_1^{q^i}) \subseteq$ ..."
 
-\item Page 11, Proposition 3.2: Since g is the element one wants to divide by (with remainder), I needs to add the condition that $g \neq 0$.
+\item \DONE{The symbol has been changed : }Page 11, line 7: in the formula involving the intersection of summations of certain trace codes, the right-hand side is the empty set symbol. Since any code contains 0, I suspect the right-hand side should have been \{0\} instead of $\emptyset$.
 
-\item Page 12, Lemma 3.3: Previously the trace function Tr was only used and defined for elements from a finite field with $q^m$ elements, but now it is applied to a function. This means that not longer $Tr(f)=Tr(f^q)$. However, this is used in the proof of the lemma. There is little harm, since later on the results are not applied to functions but to codewords corresponding to them. Please explain briefly before the lemma what exactly is meant with $Tr(f)$ is $f$ is a function, or reformulate in terms of codewords.
+\item \DONE{ We added a reference to classical Goppa codes as defined at the bottom of page 8 (i.e. Equation \eqref{eq:classical_Goppa}). Here, $r$ is the order of the Goppa code : } Page 11, Remark 2.8: what is the parameter r? It is probably the degree of g, but I do not recall the authors mentioned this earlier. Please add a short explanation.
+
+\item \DONE{The condition on $g$ has been added : Page 11, Proposition 3.2: Since g is the element one wants to divide by (with remainder), I needs to add the condition that $g \neq 0$}.
+
+\item \TODO{Page 12, Lemma 3.3: Previously the trace function Tr was only used and defined for elements from a finite field with $q^m$ elements, but now it is applied to a function. This means that not longer $Tr(f)=Tr(f^q)$. However, this is used in the proof of the lemma. There is little harm, since later on the results are not applied to functions but to codewords corresponding to them. Please explain briefly before the lemma what exactly is meant with $Tr(f)$ is $f$ is a function, or reformulate in terms of codewords.}
 
 \item Page 13, first line after Definition 3.2. "Lemma 3.3 entails that ...". Lemma 3.3 only applies to $i \ge 1$. Please add a short remark concerning the case i=0. 
 
