@@ -1,0 +1,211 @@
+\usepackage{etoolbox}
+\usepackage[utf8]{inputenc}
+
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{dsfont}
+\usepackage{faktor}
+\usepackage{ latexsym }
+\usepackage{amssymb }
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{array}
+
+\usepackage{fontawesome5}
+\usepackage{MnSymbol,wasysym} %Pour des smileys
+
+\usepackage{multirow,bigdelim}
+\usepackage{multicol}
+
+\usepackage[framemethod=default]{mdframed}
+\usepackage{pifont}
+
+\newcolumntype{C}[1]{>{\centering\let\newline\\ \arraybackslash\hspace{0pt}}m{#1}}
+
+\usefonttheme[onlymath]{serif} %De belles formules
+\usepackage{xcolor}
+
+
+\newcommand\F{\mathbb{F}}
+\newcommand\Fq{\mathbb{F}_q}
+\newcommand\Fqm{\mathbb{F}_{q^m}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\A{\mathbb{A}}
+\newcommand\PP{\mathbb{P}}
+\newcommand\N{\mathbb{N}}
+\newcommand\T{\mathbb{T}}
+\newcommand\R{\mathbb{R}}
+
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calX}{\mathcal{X}}
+\newcommand{\calY}{\mathcal{Y}}
+
+\newcommand\bfc{\vec{c}}
+\newcommand\bfd{\vec{d}}
+\newcommand\bfm{\vec{m}}
+\newcommand\bfx{\vec{x}}
+\newcommand\bfy{\vec{y}}
+\newcommand\bfz{\vec{z}}
+
+
+\newcommand\RS{\mathsf{RS}}
+\newcommand\GRS{\mathsf{GRS}}
+\newcommand{\set}[1]{\left\{#1\right\}}
+
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+
+\newcommand{\ps}[2]{\left\langle #1,#2 \right\rangle}
+\renewcommand{\epsilon}{\varepsilon}
+
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\Tr}{Tr}
+\newcommand{\degab}[1]{\deg_{a,b}\left(#1\right)}
+
+
+% Bien aligner ses incides multi-lignes
+
+\makeatletter
+\newcommand{\subalign}[1]{%
+	\vcenter{%
+		\Let@ \restore@math@cr \default@tag
+		\baselineskip\fontdimen10 \scriptfont\tw@
+		\advance\baselineskip\fontdimen12 \scriptfont\tw@
+		\lineskip\thr@@\fontdimen8 \scriptfont\thr@@
+		\lineskiplimit\lineskip
+		\ialign{\hfil$\m@th\scriptstyle##$&$\m@th\scriptstyle{}##$\hfil\crcr
+			#1\crcr
+		}%
+	}%
+}
+\makeatother
+
+
+\mdfdefinestyle{mdf}{innerleftmargin=0.3em,innerrightmargin=0.3em,innertopmargin=0.3em,innerbottommargin=0.3em,linecolor=white}
+
+
+
+
+
+%-----Commandes Beamer %-----------------------
+
+\DeclareOptionBeamer{compress}{\beamer@compresstrue}
+\ProcessOptionsBeamer
+
+\mode<presentation>
+
+\useoutertheme[footline=authortitle, footline=frame number,subsection=false]{miniframes}
+\useinnertheme{circles}
+\usecolortheme{whale}
+\usecolortheme{orchid}
+
+\definecolor{beamer@blendedblue}{rgb}{0.137,0.466,0.741}
+
+\setbeamercolor{structure}{fg=black}
+\setbeamercolor{titlelike}{parent=structure}
+\setbeamercolor{frametitle}{bg=structure!70,fg=white}
+\setbeamerfont{frametitle}{size=\small,series=\bfseries}
+\setbeamercolor{title}{fg=black}
+\setbeamercolor{item}{fg=black}
+\setbeamertemplate{page number in head/foot}[totalframenumber] %Pour ajouter le numéro des slides
+\setbeamerfont{block title}{size=\small,series=\bfseries}
+
+\setbeamercolor{block title example}{fg=white,bg=teal}
+\setbeamercolor{block body example}{fg=black,bg=teal!10}
+
+
+\setbeamercolor{block title alerted}{fg=white,bg=red!45!yellow}
+\setbeamercolor{block body alerted}{fg=black,bg=red!40!yellow!10}
+
+
+\setbeamertemplate{frametitle}{%
+	\nointerlineskip%
+	\begin{beamercolorbox}[wd=\paperwidth,ht=2.0ex,dp=0.6ex]{frametitle}
+		\hspace*{1ex}\insertframetitle%
+	\end{beamercolorbox}%
+}
+
+%Pour mettre les miniframes (ronds) sur la même ligne que ls sections
+\makeatletter
+\patchcmd{\slideentry}{\advance\beamer@tempdim by -.05cm}{\advance\beamer@tempdim by\beamer@vboxoffset\advance\beamer@tempdim by\beamer@boxsize\advance\beamer@tempdim by 1.2\pgflinewidth}{}{}
+\patchcmd{\slideentry}{\kern\beamer@tempdim}{\advance\beamer@tempdim by 2pt\advance\beamer@tempdim by\wd\beamer@sectionbox\kern\beamer@tempdim}{}{}
+\makeatother
+
+\mode<all>
+%\includeonlyframes{current}
+
+\setbeamersize{text margin left=0.8cm,text margin right=0.8cm}
+
+\setbeamertemplate{navigation symbols}{}  %Bye bye les boutons du bas
+
+%----------------Espaces autour équations%---------
+
+\makeatletter
+\g@addto@macro\normalsize{%
+	\setlength\belowdisplayskip{0.2em}
+	\setlength\abovedisplayskip{0.2em}
+}
+
+%----------------
+
+
+\vfuzz=25pt %Evite les alertes "Over full \vbox" jusqu'à 25pt.
+
+%---------------- Tikz Packages ------------------
+\usepackage{tikz}
+\usetikzlibrary{tikzmark} %Permet de créer des noeuds dans du texte pour annoter dans un tikz ultérieur. Très pratique pour annoter les formules moches.
+\usetikzlibrary{arrows,patterns,positioning,fit}
+\usetikzlibrary{matrix,arrows,shapes,shapes.misc}
+\usetikzlibrary{decorations.pathreplacing,angles,quotes}
+\usetikzlibrary{decorations.markings,calc}
+\usetikzlibrary{overlay-beamer-styles,backgrounds} %Pour utiliser alt dans tikz
+\tikzset{>=stealth} % Change le style de flèche dans tikz
+
+%--------- Un bout de code pour récupérer la couleur d'un noeud rectangulaire ou circulaire : noeud.f pour la couleur du fill, noeud.d pour celle du draw ---------------
+% Voir https://tex.stackexchange.com/questions/602047/is-obtaining-the-color-of-a-node-possible
+
+\makeatletter
+\def\pgf@sh@fbg@circle{%
+	\@ifundefinedcolor{pgffillcolor}{}{\xglobal\colorlet{\pgf@node@name.f}{pgffillcolor}}%
+	\@ifundefinedcolor{pgfstrokecolor}{}{\xglobal\colorlet{\pgf@node@name.d}{pgfstrokecolor}}%
+}
+\def\pgf@sh@fbg@rectangle{%
+	\@ifundefinedcolor{pgffillcolor}{}{\xglobal\colorlet{\pgf@node@name.f}{pgffillcolor}}%
+	\@ifundefinedcolor{pgfstrokecolor}{}{\xglobal\colorlet{\pgf@node@name.d}{pgfstrokecolor}}%
+}
+\makeatother
+
+%-Après avoir défini un \tikzmarknode{noeuf}{texte}, on crée un noeuf rectangulaire (aux coins arrondis) autour d'une certaine couleur et on annote avec une flèche.
+
+\newcommand\highlightnode[2]{ %args: noeud, couleur
+	\node (#1-frame)[rounded corners,fit=(#1),inner sep=2pt,fill=#2,fill opacity=0.17] {};
+}
+
+\newcommand\framenode[6][(0,0)]{ %args: (shift) noeud, position, couleur, texte , booléen flèche 0 = non / 1 = oui
+	\highlightnode{#2}{#4}
+	\node [#2-frame.f,#3 of = #2, shift={#1}](#2-text){#5};
+	\ifx1#6 	\draw[#2-frame.f,<-] (#2-frame) -- (#2-text); \fi		
+}
+
+%-----------Couleurs-------------
+\colorlet{bgreen}{green!60!black} 
+\colorlet{bred}{red!70!black} 
+\colorlet{alertcolor}{red!60!yellow}
+\renewcommand{\alert}[1]{\textcolor{alertcolor}{#1}}
+\newcommand{\new}[1]{\textcolor{blue!60!green}{#1}}
+\newcommand{\blue}[1]{\textcolor{beamer@blendedblue!70!black}{#1}}
+\newcommand{\rawblue}[1]{\textcolor{blue}{#1}}
+\newcommand{\details}[1]{\scalebox{0.8}{\textcolor{structure!20!black!80}{#1}}}
+
+
+
+
+
