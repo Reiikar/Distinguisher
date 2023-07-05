@@ -175,6 +175,8 @@ where $C_\text{Gauss}(n,k,q)$ is the cost of the Gauss--Jordan elimination of an
  
 In this work, we also investigate Goppa--like AG codes over finite fields with different characteristics by analysing the computational cost of the ISD algorithm for parameters relevant to post--quantum cryptography. In Table \ref{table:goppa-herm}, we provide parameters that resist the distinguisher given in this paper and improve key sizes compared to the subfield subcodes of 1--point Hermitian codes parameters reported in \cite[Tables~2 and 3]{EKN21crypto}, which already reduced key sizes compared to binary Goppa codes.
 
+\mathieu{Il faudrait préciser que c'est l'exposant de la complexité de Prange et que m=2. J'ai aussi passé les tailles de clés en Bytes, c'est plus courant selon Alain.}
+
 \begin{table}[h]
 	\begin{center}
 		\begin{tabular}{|c|c|c|c|c|c|c|}
@@ -182,19 +184,19 @@ In this work, we also investigate Goppa--like AG codes over finite fields with d
 			$q$&  $s$ & $n$ & $k$ & $t$ & Prange complexity & Key--Size(bit)\\
 			\hline \hline
 			
-		${11}$	&265&1320& 898& 77& 153& 1\,136\,868 \\
+		${11}$	&265&1320& 898& 77& 153& \,142\,108 \\
 		
 			\hline \hline
-			${13}$&312&2188& 1718& 77& 198& 2\,422\,380  \\
+			${13}$&312&2188& 1718& 77& 198& 302\,798  \\
 			
 			\hline 
-		${16}$&354& 4078& 3608& 56& 199& 6\,783\,040   \\
+		${16}$&354& 4078& 3608& 56& 199& 847\,880   \\
 		
 			\hline \hline
-		${13}$& 490& 2189& 1363& 166& 270& 3\,377\,514 \\
+		${13}$& 490& 2189& 1363& 166& 270& 422\,189 \\
 		
 			\hline 
-			${16}$& 460 &4080& 3398& 109& 313& 9\,269\,744\\
+			${16}$& 460 &4080& 3398& 109& 313& 1\,158\,718\\
 			\hline
 		\end{tabular}
 		\vspace*{0.3em}
@@ -528,7 +530,7 @@ Thus, using Remark \ref{rk:G/q}, the Cartier code $\mathrm{Car}_q(\calP,G)$ coin
 \jade{TODO: Exemple d'égalité ou d'inégalité entre Goppa et Cartier.}
 
 \subsection{On the dimension of the square of the dual of a Goppa--like AG code} \label{section:1st_improvement}
-In this section, we aim to generalize the properties found by the authors of \cite{MT21} in Section 6, in the context of Goppa--like AG code. Let us consider the AG code 
+In this section, we aim to generalize the properties found by the authors of \cite{MT21} in Section 6, in the context of Goppa--like AG codes. Let us consider the AG code 
 $$\calC := \calC_{\calL}(\calX,\calP,D+(g))$$
 as defined in Section \ref{def:Goppa--like_AG_code}. Applying Equation \eqref{eq:key_equation} yields   
 \begin{equation} \label{eq:key_equation_Goppa--like} 
@@ -565,26 +567,30 @@ This simple lemma yields an upper bound on the dimension of the square of the du
     Let $\calC := \calC_{\calL}(\calX,\calP,D+(g))$ be an AG code as above, and suppose $s \geq \mathfrak{g}$. Set $k := \dim_{\fqm}\calC$ and  $e := \min\left(\left\lfloor \frac{m}{2} \right\rfloor,\left\lfloor \log_q\left(\frac{k^2}{s}\right)\right\rfloor\right)$. Then
     $$\dim_{\fq} (\Gamma(\calP,D,g)^{\perp})^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).$$
 \end{proposition}
+
+\mathieu{Alain suggérait de mettre une autre notation que le "e" de la proposition dans la preuve, car on ne sait pas le quel c'est au début. Je propose $e_0$.}
+
 \begin{proof}
- For any $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$, Proposition \ref{prop:Tr_BoundSchurSquare} implies that
+ For any $e_0 \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$, Proposition \ref{prop:Tr_BoundSchurSquare} implies that
     \begin{align*}
         \dim_{\fq}(\Gamma(\calP,D,g)^{\perp})^{\star 2}
         & \leq \sum\limits_{i=0}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star \calC^{q^i}} &\\
-        & \leq \sum\limits_{i=0}^{e} m(s(q^i+1)+1-\mathfrak{g})  + \sum\limits_{i=e+1}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star \calC^{q^i}} & \text{(by Lemma \ref{lem:bound_dim_Tr(C*C^q^i)})}\\
-        & \leq \sum\limits_{i=0}^{e} m(sq^i+k) + \left( \frac{m-1}{2} -e \right)mk^2 & \text{(by the Riemann--Roch theorem)}\\
-        & \leq \frac{m}{2}\left(2k(e+1)+2s\left(\dfrac{q^{e+1}-1}{q-1}\right)+k^2(m-1)-2ek^2  \right) &\\
-        & \leq \binom{mk+1}{2} -  \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).&
+        & \leq \sum\limits_{i=0}^{e_0} m(s(q^i+1)+1-\mathfrak{g})  + \sum\limits_{i=e_0+1}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star \calC^{q^i}} \quad \text{(by Lemma \ref{lem:bound_dim_Tr(C*C^q^i)})}\\
+        & \leq \sum\limits_{i=0}^{e_0} m(sq^i+k) + \left( \frac{m-1}{2} -e_0 \right)mk^2 \quad \text{(by the Riemann--Roch theorem)}\\
+        & \leq \frac{m}{2}\left(2k(e_0+1)+2s\left(\dfrac{q^{e_0+1}-1}{q-1}\right)+k^2(m-1)-2e_0k^2  \right) &\\
+        & \leq \binom{mk+1}{2} -  \dfrac{m}{2}\left(k(k-1)(2e_0+1)-2s\left(\dfrac{q^{e_0+1}-1}{q-1}\right)\right).&
     \end{align*}
-To get the best bound, we maximize the expression $$ \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right)$$ with respect to $e$. Removing the constant parts, this is equivalent to find the maximum of the function
-$$T(e) = ek^2-s\dfrac{q^{e+1}}{q-1}$$
+    \mathieu{Notice that at the third line, we can replace $\lfloor \frac{m}{2} \rfloor$ with $\frac{m-1}{2}$ while bounding the second part of the sum thanks to Equation \eqref{eq:dim_m/2}}.
+To get the best bound, we maximize the expression $$ \dfrac{m}{2}\left(k(k-1)(2e_0+1)-2s\left(\dfrac{q^{e_0+1}-1}{q-1}\right)\right)$$ with respect to $e_0$. Removing the constant parts, this is equivalent to find the maximum of the function
+$$T(e_0) = e_0k^2-s\dfrac{q^{e_0+1}}{q-1}$$
 over $\set{0,\dots,\lfloor \frac{m}{2} \rfloor}$ in the discrete domain of non-negative integers.  
 We compute the discrete derivative:
 \begin{align*}
-    \Delta T(e) = T(e+1)-T(e) &= (e+1)k^2-s\dfrac{q^{e+2}}{q-1} - \left(ek^2-s\dfrac{q^{e+1}}{q-1}\right) \\
-                              &= k^2 - sq^{e+1}.
+    \Delta T(e_0) = T(e_0+1)-T(e_0) &= (e_0+1)k^2-s\dfrac{q^{e_0+2}}{q-1} - \left(e_0k^2-s\dfrac{q^{e_0+1}}{q-1}\right) \\
+                              &= k^2 - sq^{e_0+1}.
 \end{align*}
-This function is decreasing with $e$, and the smallest value for which $\Delta T(e) \leq 0$ corresponds to its maximum. It is the smallest value of $e$ such that $k^2 \leq sq^{e+1}$, \emph{i.e.}
-$$e =  \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor.$$
+This function is decreasing with $e_0$, and the smallest value for which $\Delta T(e_0) \leq 0$ corresponds to its maximum. It is the smallest value of $e_0$ such that $k^2 \leq sq^{e_0+1}$, \emph{i.e.}
+$$e_0 := e =  \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor.$$
 \end{proof}
 
 \subsubsection{Sharpness of the bound} \label{section:sharpness}
@@ -613,7 +619,7 @@ As a result, each pair of consecutive terms in the sum $\sum\limits_{i=0}^{\lflo
 	As noted in Remark \ref{rmk:improvements}, when picking the function $g$ at random, the code $\calC_1$ is likely to be reduced to zero.
 \end{remark}
 
-As recalled in Section \ref{subsec:def-Goppa}, Goppa--like AG codes coincide with Cartier code as soon as $\deg\left(\left[ \frac{D+(g)}{q} \right] \right) > 2 \mathfrak{g}-2$. In this case, the code $\calC_1$ has dimension at least $\mathfrak{g}$. This means that when the Goppa--like code is also a Cartier code, the dimension of the square of its dual is very unlikely to meet the bound given in Proposition \ref{prop:bound_dim_using_inclusions}.
+As recalled in Section \ref{subsec:def-Goppa}, Goppa--like AG codes coincide with Cartier code as soon as $\deg\left(\left[ \frac{D+(g)}{q} \right] \right)> 2 \mathfrak{g}-2$. In this case, the code $\calC_1$ has dimension at least $\mathfrak{g}$. This means that when the Goppa--like code is also a Cartier code, the dimension of the square of its dual is very unlikely to meet the bound given in Proposition \ref{prop:bound_dim_using_inclusions}.
 
 \begin{remark}
 	When considering classical Goppa codes defined in Equation \eqref{eq:classical_Goppa} for the McEliece cryptosystem, it is common to ask for the degree $r$ polynomial $g$ to have only simple roots. In this case, we have $ \left[ \frac{(r-1)P_\infty+(g)}{q} \right] = -P_\infty$ and the code $\calC_1$ defined in Proposition \ref{prop:non-eq} is always zero. The situation above thus never occurs.
@@ -633,14 +639,22 @@ This definition might be restrictive, but it is reasonable as these codes can be
 
 \noindent In the next sections, we generalize the result given in \cite{MT21} in the case of classical Goppa codes, by defining a weighted Euclidean division on the ring $\calO_{P_\infty}$ (see Equation \eqref{eq:O_Pinf}), whose elements are seen as bivariate polynomials. 
 \subsection{Weighted Euclidean division}
-\noindent The following proposition generalizes the classical Euclidean division of univariate polynomials in the case of function in $\calO_{P_\infty}$ with respect to the weighted degree $\deg_{a,b}$.
+\noindent The following proposition generalizes the classical Euclidean division of univariate polynomials in the case of function in $\calO_{P_\infty}$ with respect to the weighted degree $\deg_{a,b}$. \mathieu{Before that, we need the following definition:} 
+
+\mathieu{
+\begin{definition}
+For any function $h \in \calO_{P_\infty}$ with leading term $\LT{h}=x^\beta y^\alpha$ and $\alpha < a$, we define over $\fqm$ the space
+$$ \calR(h) := \Span{x^u y^v \mid u \leq \beta + b-1 \text{ and } v\leq a-1 \text{ not both }  u \geq \beta \text{ and } v \geq \alpha}.$$ 
+\end{definition}
+}
+
 
 \begin{proposition}\label{prop:div_grob}
 	\jade{TODO: $g$ doit être non nul.}
-Let $m$ be a positive integer and $g \in \calO_{P_\infty}$. Write $\LM{g}=x^\beta y^\alpha$ with $\alpha < a$.
-For any function $f \in \calO_{P_\infty}$, we can write $f=f_1g+f_2$ with 
-\[f_2 \in \calR(g):= \Span{x^u y^v \mid u \leq \beta + b-1 \text{ and } v\leq a-1 \text{ not both }  u \geq \beta \text{ and } v \geq \alpha}.\]
-Moreover, we have $\degab{f_2} \leq \degab{f}$ and $\dim_{\fqm} \calR(g) = \degab{g}.$ 
+Let $m$ be a positive integer and $g \in \calO_{P_\infty}$. \TODO{Enlever ça, on a définit le R(g) avant ? $\rightarrow$ Write $\LM{g}=x^\beta y^\alpha$ with $\alpha < a$.}
+\mathieu{Then for any function $f \in \calO_{P_\infty}$, there exist $f_1,f_2 \in \calO_{P_\infty}$ such that
+\[ f=f_1g+f_2 \ \text{with} \ f_2 \in \calR(g).\]
+Moreover, we have $\degab{f_2} \leq \degab{f}$ and $\dim_{\fqm} \calR(g) = \degab{g}.$} 
 \end{proposition}
 
 \begin{proof}
@@ -653,7 +667,7 @@ Moreover, we have $\degab{f_2} \leq \degab{f}$ and $\dim_{\fqm} \calR(g) = \dega
 	This means that not longer $Tr(f) = Tr(f^q)$. However, this is used in the proof of the lemma. There is little harm, since later on the results are not applied.}
 
 \begin{lemma} \label{lem:weighted_division}
-Take $i \geq 1$ and $s'>s \geq 0$. Let also $g \in \calL\left(s'P_\infty\right)$ and $f \in \calL\left(\left(s'(q^i+1)-1\right)P_\infty\right)$. Then there exists $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that $\Tr{\frac{f}{g^{q^i+1}}} = \Tr{\frac{f'}{g^{q^i+1}}} $.
+Take $i \geq 1$ and $s'>s \geq 0$. Let also $g \in \calL\left(s'P_\infty\right)$ such that $\degab{g}= s'$ and $f \in \calL\left(\left(s'(q^i+1)-1\right)P_\infty\right)$. Then there exists $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that $\Tr{\frac{f}{g^{q^i+1}}} = \Tr{\frac{f'}{g^{q^i+1}}} $.
 \end{lemma}
 
 \begin{proof}
@@ -667,7 +681,12 @@ $\degab{f_1} =\degab{f} - s'(q^i-q^{i-1}+1)$, and
  \degab{f_1^qg}  &= q \degab{f_1} + s'\\
      &= q\degab{f} - s'(q-1)(q^i+1).
  \end{align*} 
-Then  $\degab{f_1^qg} < \degab{f}$ if and only if $\degab{f} < s'(q^i+1)$, which holds by definition of $f$. Repeating the division process on $f_1^qg$, as the weighted degree decreases, we can find a function $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that $\Tr{\frac{f}{g^{q^i+1}}} = \Tr{\frac{f'}{g^{q^i+1}}} $.
+Then  $\degab{f_1^qg} < \degab{f}$ if and only if $\degab{f} < s'(q^i+1)$, which holds by definition of $f$. 
+
+\mathieu{Alain voulait un peu plus de détails sur l'itération des divisions, je propose ça : 
+Performing a new division by replacing $f$ with $f_1^qg$ gives a new decomposition $f_1^qg = f_1'g^{q^i-q^{i-1}+1} + f'_2$, with $f'_2 \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ and $\degab{f'_2} \leq \degab{f}$. In particular, we can decompose $\Tr{\frac{f_1^qg}{g^{q^i+1}}}$ into a sum of traces as we did for $\Tr{\frac{f}{g^{q^i+1}}}$. If $f'_1 = 0$, the result is proved. Otherwise, we can repeat another time the division process. As the weighted degree of the successive quotients decreases, we ultimately end up with a quotient equal to zero. Hence, we can find a function $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that $\Tr{\frac{f}{g^{q^i+1}}} = \Tr{\frac{f'}{g^{q^i+1}}} $.}
+
+Repeating the division process on $f_1^qg$, as the weighted degree decreases, we can find a function $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that $\Tr{\frac{f}{g^{q^i+1}}} = \Tr{\frac{f'}{g^{q^i+1}}} $.
 \end{proof}
 \jade{TODO : donner du sens à ça $\downarrow$. Parle-t-on de codes ou d'ev de fonctions ?}
 
@@ -680,10 +699,13 @@ and we set $$\calT_0(s,g) := \Tr{g^{-2} \cdot \calL(2sP_\infty}).$$
 \noindent Let $i \geq 1$ and $f \in \calL(sP_\infty) \cdot \calL(sP_\infty)^{q^i} \subseteq \calL(s(q^i+1)P_\infty)$. Lemma \ref{lem:weighted_division} entails that 
 $$\Tr{\dfrac{f}{g^{q^i+1}}} \in \calT_i(s,g).$$
 \jade{TODO : et pour $i=0$ ? Petite remarque.}
-Thus, for all $i \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$, we have \begin{equation} \label{eq:Tr(C*C^q^i)_dans_T_i}
-\Tr{\calC \star \calC^{q^i}} \subseteq \calT_i(s,g),
+
+\mathieu{ rappel de ce qu'est C $\rightarrow$
+Hence, if $\calC = \calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$, we obtain 
+\begin{equation} \label{eq:Tr(C*C^q^i)_dans_T_i}
+\Tr{\calC \star \calC^{q^i}} \subseteq \calT_i(s,g), 
 \end{equation}
-which can be used to improve the bound given in Proposition \ref{prop:bound_dim_using_inclusions}, provided that we can efficiently compute the dimension of the trace codes $\calT_i(s,g)$. This is studied in the next section.
+for all $i \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$.} The above inclusions can be used to improve the bound given in Proposition \ref{prop:bound_dim_using_inclusions}, provided that we can efficiently compute the dimension of the trace codes $\calT_i(s,g)$. This is studied in the next section.
 %--------Last changes----------%
 \subsection{Upper bound in Goppa--like case}
 In the proposition below, we study the intersection 
@@ -714,23 +736,14 @@ Depending on the weighted degree $s'$ of $g$, we can compute the exact dimension
         we have 
           $$\dim_{\fqm}(M_i(s,g)) = \sum\limits_{v=v^*}^{a-1} \left\lfloor \dfrac{s(q^i+1)-bv}{a} \right\rfloor + v^*(\beta_i+b) + a-v^*.$$
         
-        \item Else, there exists $v^* \in \set{\alpha_i+1,\dots,a}$ such that
+        \item Otherwise, there exists $v^* \in \set{\alpha_i+1,\dots,a}$ such that
         $$ s(q^i+1)+a-b(v^*-\alpha_i) < s'(q^i-q^{i-1}+1) \leq  s(q^i+1)+a-b(v^*-1-\alpha_i),$$
         in which case 
         $$\dim_{\fqm}(M_i(s,g)) = \sum\limits_{v=v^*}^{a-1} \left\lfloor \dfrac{s(q^i+1)-bv}{a} \right\rfloor + v^*\beta_i + \alpha_ib +a-v^*.$$
     \end{enumerate}
 \end{proposition}
-\begin{proof}
 
-%By assumption, we have $\mathrm{LM}(g)=x^{\beta}y^{\alpha}$, with $\alpha \leq a-1$ and $\degab{g}=a\beta +b\alpha=s'$. 
-%Thus, $\mathrm{LM}(g^{q^i-q^{i-1}+1})=x^{\beta (q^i-q^{i-1}+1)}y^{\alpha (q^i-q^{i-1}+1)}$. Since $\alpha (q^i-q^{i-1}+1)$ might be bigger that $a-1$, we perform the following euclidean division:
-%$$\alpha (q^i-q^{i-1}+1) = \delta a + \alpha_i, \ 0 \leq \alpha_i \leq a-1.$$
-%Using the equation of the curve, we can then suppose that $\mathrm{LM}(g^{q^i-q^{i-1}+1})=x^{\beta_i}y^{\alpha '}$, with 
-%$$\beta_i := \beta (q^i-q^{i-1}+1) + \left\lfloor \frac{\alpha (q^i-q^{i-1}+1)-\alpha_i}{a} \right\rfloor \ \mathrm{and} \ \alpha_i \in \set{0,\dots,a-1}.$$
-%Since $\degab{g^{q^i-q^{i-1}+1}} = s'(q^i-q^{i-1}+1),$ we also have 
-%\begin{equation} \label{eq:value_beta_prime}
-%\beta_i = \dfrac{s'(q^i-q^{i-1}+1)-b\alpha_i}{a}.
-%\end{equation}
+\begin{proof}
 Using the notation above, we can write
 \begin{align*}
 \calR\left(g^{q^i-q^{i-1}+1}\right) &:= \mathrm{Span}_{\fqm} \left\{x^uy^v \mid u \leq \beta_i+b-1 , v \leq a-1 \ \mathrm{not \ both} \ u \geq \beta_i \ \mathrm{and} \ v \geq \alpha_i\right\} \\
@@ -834,7 +847,7 @@ with $\Tr{\frac{f_2}{g^{q+1}}} \in \calT_1(s,g)$. Since $\degab{f_1} = \degab{fg
                                                & \iff (q-1)\degab{f} < 2s'(q-1)\\
                                                & \iff \degab{f} < 2s',
 \end{align*}
-which holds since $s<s'$ and $f \in \calL(2sP_\infty)$. Repeating the division process until we found a quotient equal to zero shows that $\calT_0(s,g) \subseteq \calT_1(s,g)$. The other inclusions hold as in the case $i^* \geq 1$.
+which holds since $s<s'$ and $f \in \calL(2sP_\infty)$. Repeating the division process until we find a quotient equal to zero shows that $\calT_0(s,g) \subseteq \calT_1(s,g)$. The other inclusions hold as in the case $i^* \geq 1$.
 \end{proof}
 Combining \eqref{eq:Tr(C*C^q^i)_dans_T_i} with both the above propositions lead to a better understanding of the dimension of the square of the dual of one--point Goppa--like AG codes. 
 \begin{coro} \label{coro:folklore_upper_bound}
@@ -842,7 +855,7 @@ Combining \eqref{eq:Tr(C*C^q^i)_dans_T_i} with both the above propositions lead 
  Then, for all $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$, the dimension of $\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2}$ is bounded from above by
  
 \[\dim_{\fq} \left(\Gamma(\calP,sP_\infty,g)^{\perp}\right)^{\star 2} \leq   \left(\frac{m-1}{2}-e\right)mk^2+\dim_{\fq}\left(\sum\limits_{i=0}^e \calT_i(s,g) \right). \]
- Moreover, if $i^* \leq e \leq \lfloor \frac{m}{2} \rfloor$, we have 
+ Moreover, if $i^* \leq e \leq \lfloor \frac{m}{2} \rfloor$ \mathieu{is the integer satysfying Equation \eqref{eq:cond_s_s'_i_star}} , we have 
  \begin{align*}
   \dim_{\fq} \Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2} \leq   & \left(\frac{m-1}{2}-e\right)mk^2 + ms'(q^e-q^{e-1}+1) \\
   & + \dim_{\fq}\left(\sum\limits_{i=0}^{i^*-1} \calT_i(s,g)\right) - \dim_{\fq} \left( \calT_e(s,g) \cap   \sum\limits_{i=0}^{i^*-1} \calT_i(s,g)\right).
@@ -871,10 +884,14 @@ From \eqref{eq:key_equation} and under the assumption on $s$ and $s'$, we have
         \end{align*}
  for all $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$. If $i^* \leq e \leq \lfloor \frac{m}{2} \rfloor$,  Proposition \ref{prop:inclusion_T_i's} gives
 \[\sum\limits_{i=i^*}^e \calT_i(s,g) = \calT_e(s,g),\]
-which concludes the proof.
+\mathieu{la aussi, il demandait plus de détails (oui, il est relou) $\rightarrow$ 
+Consequently, we can write 
+$$\dim_{\fq} \left(\sum\limits_{i=0}^{e}\calT_i(s,g)\right) = \dim_{\fq} \left(\sum\limits_{i=0}^{i^*-1}\calT_i(s,g)\right) + \dim_{\fq}\calT_e(s,g) - \dim_{\fq} \left( \calT_e(s,g) \cap   \sum\limits_{i=0}^{i^*-1} \calT_i(s,g)\right).$$
+To finish the proof, we use the fact that $M_e(s,g) = \calR\left(g^{q^e-q^{e-1}+1}\right)$ (see. Proposition \ref{prop:dim_M_i's}, 2), hence we have 
+$$\dim_{\fq}\calT_e(s,g) \leq m \cdot \dim_{\fqm} \calR\left(g^{q^e-q^{e-1}+1}\right) = m s' (q^e-q^{e-1}+1).$$}
 \end{proof}
 
-Despite the fact that the upper bound given in Corollary \ref{coro:folklore_upper_bound} can be numerically computed with the knowledge of the degree $s$ and the function $g$, it is hard to give a close formula for any parameters, since the intersections of the trace codes $\calT_i(s,g)$'s are hard to manipulate. However, if we suppose that $i^*=0$, we can sharpen the above result.
+Despite the fact that the upper bound given in Corollary \ref{coro:folklore_upper_bound} can be numerically computed with the knowledge of the degree $s$ and the function $g$, it is hard to give a close formula for any parameter, since the intersections of the trace codes $\calT_i(s,g)$'s are hard to manipulate. However, if we suppose that $i^*=0$, we can sharpen the above result.
 
 \begin{thm} \label{thm:bound_with_T_i's_inclusion} 
 Suppose that $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$ and let $e^* := \min\left(\left\lfloor \frac{m}{2} \right\rfloor, \left\lceil \log_q\left(\frac{k^2}{s'(q-1)^2}\right)\right\rceil+1\right)$. Then
@@ -948,11 +965,11 @@ In the previous section, we provided an (experimentally) sharp upper bound on th
 \begin{equation} \label{eq:best_upper_bound}
 \dim_{\fq} (\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2} \leq \min \left(\frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right),n\right),
 \end{equation}
-where $e^* := \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1$. Thus, the code is distinguishable from a random one only if the right hand--side of \eqref{eq:best_upper_bound} is smaller than the lenght $n$ of the code. It is possible to study when this case occurs, by starting to bound from above the maximal possible lenght: since $\calP \cap \Supp(g) = \varnothing,$ this maximum is reached when $\calP = \calX_{a,b}(\fqm) \backslash \Supp(g)$ and $g$ has only one zero (\emph{i.e.} $\#\Supp(g)=2$), that is
-$$n = \# \calP = |\calX_{a,b}(\fqm)|-2 \leq q^m-1+2\mathfrak{g}_{a,b}\sqrt{q^m},$$
+where $e^* := \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1$. Thus, the code is distinguishable from a random one if the right hand--side of \eqref{eq:best_upper_bound} is smaller than the lenght $n$ of the code. It is possible to study when this case occurs, by starting to bound from above the maximal possible lenght: since $\calP \cap \Supp(g) = \varnothing,$ this maximum is reached when $\calP = \calX_{a,b}(\fqm) \backslash \{P_\infty\}$ and $g$ has no rational zero that is
+$$n = \# \calP = |\calX_{a,b}(\fqm)|-1 \leq q^m+2\mathfrak{g}_{a,b}\sqrt{q^m},$$
 using the Hasse--Weil bound. In order to protect the code against the distinguisher, the parameters have to be chosen such that 
 \begin{equation} \label{eq:cond_not_to_distinguish}
-\frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right)\geq q^m-1+2\mathfrak{g}_{a,b}\sqrt{q^m}.
+\frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right)\geq q^m+2\mathfrak{g}_{a,b}\sqrt{q^m}.
 \end{equation}
 
 In what follows, we focus on two specific classes of $C_{a,b}$ curves. First, we determine the maximal (with respect to the dimension) codes we can distinguish in the case where $\calX_{a,b}$ is an elliptic curve. This case is relevant since it is the closest to the case of classical Goppa codes, and we will see that our results are very similar to the one given in \cite{MT21}. Next up, we focus on the particular case of the Hermitian curve, which also turns out to be a $\calX_{a,b}$ curve. It is well--known to be a good candidate to construct efficient codes as it is a maximal curve. Due to its high genus, we then show that any one--point Goppa--like code defined on it cannot be distinguished.
@@ -998,7 +1015,7 @@ As it was noticed in \cite{MT21} and as we can see above, we are only able to di
 
 \subsection{Codes on the Hermitian curve}
 
-As the Hermitian curve is a particular case of $C_{a,b}$ curve, we investigate the behaviour of one--point Goppa--like AG code constructed on it with respect to our distinguisher.
+As the Hermitian curve is a particular case of $C_{a,b}$ curve, we investigate the behaviour of one--point Goppa--like AG codes constructed on it with respect to our distinguisher.
 In particular, we show that all these codes resist to it, since  \eqref{eq:cond_not_to_distinguish} always holds in this setting, essentially because the genus of the Hermitian curve is too high with respect to the size of the field. Let us first recall some known results about the Hermitian curve (\cite{Sti09}). 
 
 Let $m \geq 1$  be an even integer and denote by $q_0 := q^{m/2}$, so that $\fqm = \fqo$. The Hermitian curve $\calH$ over $\fqo$ is defined by the equation
@@ -1010,30 +1027,30 @@ Its genus is given by $\mathfrak{g}_{\calH} = \frac{q_0(q_0-1)}{2}$ and it is a 
 \end{proposition}
 
 \begin{proof}
-    As discussed at the beginning of the section, the code cannot be distinguished whenever \eqref{eq:cond_not_to_distinguish} holds. In this case, we know exactly the number of rational points, and thus the length $n$ of the Goppa--like code is at most $q_0^3-1$. Since $m$ is even, we are left to prove that 
+    As discussed at the beginning of the section, the code cannot be distinguished whenever \eqref{eq:cond_not_to_distinguish} holds. In this case, we know exactly the number of rational points, and thus the length $n$ of the Goppa--like code is at most $q_0^3$. Since $m$ is even, we are left to prove that 
     \begin{equation} \label{eq:dont_distinguish_Hermitian_case}
-    \mathfrak{B}(e^*) := ms'(q^{e^*}-q^{e^*-1}+1) + \left( \frac{m}{2}-e^*\right)mk^2 \geq q_0^3-1,
+    \mathfrak{B}(e^*) := ms'(q^{e^*}-q^{e^*-1}+1) + \left( \frac{m}{2}-e^*\right)mk^2 \geq q_0^3,
     \end{equation}
-    where $k := s+1-\mathfrak{g}_{\calH}$ stands  for the dimension of the corresponding AG code.
+    where $k  := \dim_{\fqm} C_{\mathcal{L}}(\calH, \calP, sP_\infty + (g)) = s+1-\mathfrak{g}_{\calH}$.
     \begin{itemize}
         \item [-] If $e^* < \frac{m}{2}$, then $\mathfrak{B}(e^*) > mk^2$. Using the assumption on $s$ and $s'$, we know that $s \geq 2\mathfrak{g}_{\calH}+q-1$. This yields $k \geq \mathfrak{g}_{\calH}+q$ and thus
         \begin{align*}
-\mathfrak{B}(e^*) - (q_0^3-1) 
-&> m(\mathfrak{g}_{\calH}^2+2\mathfrak{g}_{\calH}q+q^2)-(q_0^3-1)&\\
-& > \frac{m}{4}(q_0^4-2q_0^3+q_0^2) + mq(q_0^2-q_0+q) -q_0^3+1 &\\
-& \geq \frac{1}{2}(q_0^4-2q_0^3+q_0^2)+4(q_0^2-q_0+2)-q_0^3+1 \quad &(m\geq 2 \ \mathrm{and} \ q\geq 2)&\\
+\mathfrak{B}(e^*) - q_0^3 
+&> m(\mathfrak{g}_{\calH}^2+2\mathfrak{g}_{\calH}q+q^2)-q_0^3&\\
+& > \frac{m}{4}(q_0^4-2q_0^3+q_0^2) + mq(q_0^2-q_0+q) -q_0^3 &\\
+& \geq \frac{1}{2}(q_0^4-2q_0^3+q_0^2)+4(q_0^2-q_0+2)-q_0^3 \quad &(m\geq 2 \ \mathrm{and} \ q\geq 2)&\\
 & > \frac{q_0}{2} (q_0^3-4q_0^2+9q_0-8) > 0,&
         \end{align*}
         since $q_0 \geq 2$. Inequality \eqref{eq:dont_distinguish_Hermitian_case} holds in this case.
         \item[-] If $e^* = \frac{m}{2},$ then since $q_0=q^{m/2}$, we have $\mathfrak{B}\left(\frac{m}{2}\right) = ms'(q_0-q_0q^{-1}+1)$. Moreover, $s'>s$ implies $s' \geq 2\mathfrak{g}_{\calH}+q$, and
         \begin{align*}
-           \mathfrak{B}\left(\frac{m}{2}\right) - (q_0^3-1) 
-           &\geq m(2\mathfrak{g}_{\calH}+q)(q_0-q_0q^{-1}+1)-q_0^3+1 \\ 
-           &\geq 2\left(q_0^2(q_0-1)\left(\frac{q-1}{q}\right)+q_0(q_0-1)+q_0(q-1)+q\right)-q_0^3+1 \\
-           & \geq q_0^3\left(2\left(\frac{q-1}{q}\right)-1\right) + 2q_0^2\left(1-\left(\frac{q-1}{q}\right)\right) + 2(q_0(q-2)+q)+1.
+           \mathfrak{B}\left(\frac{m}{2}\right) - q_0^3 
+           &\geq m(2\mathfrak{g}_{\calH}+q)(q_0-q_0q^{-1}+1)-q_0^3 \\ 
+           &\geq 2\left(q_0^2(q_0-1)\left(\frac{q-1}{q}\right)+q_0(q_0-1)+q_0(q-1)+q\right)-q_0^3 \\
+           & \geq q_0^3\left(2\left(\frac{q-1}{q}\right)-1\right) + 2q_0^2\left(1-\left(\frac{q-1}{q}\right)\right) + 2(q_0(q-2)+q).
         \end{align*}
         Clearly, the last expression is minimal for $q=2$, so we finally gets
-        $$\mathfrak{B}\left(\frac{m}{2}\right) \geq q_0^2 + 5 >0,$$
+        $$\mathfrak{B}\left(\frac{m}{2}\right) \geq q_0^2 + 4 >0,$$
         which proves \eqref{eq:dont_distinguish_Hermitian_case} in this case and conclude the proof.
     \end{itemize}
 \end{proof}
