@@ -166,10 +166,9 @@ However, as it is already the case for the distinguisher of classical Goppa code
 
 \subsection*{Application of Goppa-like AG codes to the McEliece cryptosystem}
 
-\jade{TODO: On ne peut pas baser Mceliece sur un seul code : à reformuler}
-For a McEliece cryptosystem constructed on an $[n,k]_q$ linear code $\calC$ with an error capability $t$ , the public key has size $k(n-k)\lceil \log_2(q) \rceil$, whenever the generator matrix $\mathbf{G}$ of $\calC$ is in systematic form. The choice of such a code should not be limited to the binary case: Peters \cite{petersIsd} showed that for $q > 2$, the subfield subcode construction over $\fq$ can improve the key size while maintaining the same level of security against a decoding attack. 
+For a McEliece cryptosystem based on a family of $[n,k]_q$ linear codes, the public key has size $k(n-k)\lceil \log_2(q) \rceil$, whenever the generator matrix $\mathbf{G}$ of the public code is given in systematic form. The choice of such codes should not be limited to the binary case: Peters \cite{petersIsd} showed that for $q > 2$, the subfield subcode construction over $\fq$ can improve the key size while maintaining the same level of security against a decoding attack. 
 
-\emph{Information--set decoding} (ISD) algorithm, introduced by Prange \cite{prange}, is the best known algorithm for decoding a random--looking code without any knowledge of its structure. Given a $(n-k) \times n$ parity check matrix $\mathbf{H}$ and a column vector $\mathbf{s}$ of length $n-k$ obtained through $\mathbf{H}$, the total complexity of finding the row vector $\mathbf{e} \in \fq^n$ of weight $t$ and satisfying $\mathbf{s}=\mathbf{H}\mathbf{e}^{T}$ is given by 
+\emph{Information--set decoding} (ISD) algorithm, introduced by Prange \cite{prange}, is the best known algorithm for decoding a random--looking code without any knowledge of its structure. Let us denote by $t$ the error capability of the family of codes we consider.  Given a $(n-k) \times n$ parity check matrix $\mathbf{H}$ and a column vector $\mathbf{s}$ of length $n-k$ obtained through $\mathbf{H}$, the total complexity of finding the row vector $\mathbf{e} \in \fq^n$ of weight $t$ and satisfying $\mathbf{s}=\mathbf{H}\mathbf{e}^{T}$ is given by 
 $$ C_\text{Prange}= \frac{\binom{n}{t}}{\binom{n-k}{t}}C_\text{Gauss}(n,k,q),$$
 
 where $C_\text{Gauss}(n,k,q)$ is the cost of the Gauss--Jordan elimination of an $k\times n$ matrix over $\mathbb{F}_q$. We analyse the parameters of Goppa--like AG codes based on information set decoding attack.
@@ -438,7 +437,7 @@ Any curve $\calX_{a,b}$ defined by an equation as in \eqref{eq:equation_C_ab} ha
 \subsubsection{The point at infinity $P_\infty$ and its regular ring $\calO_{P_\infty}$}
 
 We will consider codes obtained by evaluating functions on $\calX_{a,b}$ which are regular everywhere, except maybe at the unique point at infinity $P_\infty$. These functions then belong to the ring 
-\jade{TODO : changer $\calO_{P_\infty}$ car c'est pas du tout ça.}
+\jade{TODO : changer $\calO_{P_\infty}$ car c'est pas du tout ça. C'est plutôt the coordinate ring of the affine curve $\calX \setminus \{P_\infty\}$. Il faut le baptiser.}
 \begin{equation}\label{eq:O_Pinf}
 \mathcal{O}_{P_\infty}=\bigcup_{s \geq 0} \calL(s P_\infty)
 \end{equation} %
