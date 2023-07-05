@@ -24,6 +24,7 @@ perso/
 # *.eps
 *.gz
 src/*.pdf
+review/*.pdf
 slides/*.pdf
 figures/*.pdf
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
