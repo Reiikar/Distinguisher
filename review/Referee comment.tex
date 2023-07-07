@@ -72,7 +72,7 @@ a comparison with results in Section 3.
 Hence, I suggest a revision. Some more comments are listed:
 
 
-\TODO{on a tenu compte de toutes les typos et fautes d'orthographes. Chacun des points plus compliqués sont détaillés.}
+\TODO{On a tenu compte de toutes les typos et fautes d'orthographes. Chacun des points plus compliqués sont détaillés. De plus, on a tenu compte des remarques des rapporteurs}
 
 \begin{itemize}
  
@@ -120,14 +120,14 @@ Hence, I suggest a revision. Some more comments are listed:
 
 \item \DONE{the condition have been added : Page 7, Definition 13: the constants $\alpha_{0a}$ and $\alpha_{b0}$ are not allowed to be zero. Please add this condition.}
 
-\item \TODO { changer la notation de $\mathcal{O}_\infty$ parce que c'est pas le bon truc. Est-ce que ça a un autre nom ? : Page 7, Equation 10: The notation $\mathcal{O}_{P_\infty}$ for the ring $\cup_{s \ge 0} L(sP_\infty)$ is quite misleading. It is very common to use the notation $\mathcal{O}_{P_\infty}$ for the local ring at $P_\infty$. This is the ring consisting of all functions that do not have a pole at$ P_\infty$. The authors consider in some sense the opposite situation: the ring of all functions with no poles except possibly at $P_\infty$. Please use some other notation.}
+\item \DONE { changer la notation de $\mathcal{O}_\infty$ parce que c'est pas le bon truc. Est-ce que ça a un autre nom ? : Page 7, Equation 10: The notation $\mathcal{O}_{P_\infty}$ for the ring $\cup_{s \ge 0} L(sP_\infty)$ is quite misleading. It is very common to use the notation $\mathcal{O}_{P_\infty}$ for the local ring at $P_\infty$. This is the ring consisting of all functions that do not have a pole at$ P_\infty$. The authors consider in some sense the opposite situation: the ring of all functions with no poles except possibly at $P_\infty$. Please use some other notation.}
 
 
 \item Page 7, line -4: "$f=x^\beta y^\alpha+f'(x,y)$". The authors write that any $f \in \cup_{s \ge 0} L(sP_\infty)$ can be written in this form, but this is strictly speaking not true. One needs to allow for a leading coefficient different from one as well. Please write something like "$f=c\cdot x^\beta y^\alpha+f'(x,y)$ for some nonzero $c$." This also affects the leading term expression later on.
 \DONE{ We took the modification into consideration. We also changed the notation of LT(f) into LM(f)} + \TODO{ajout remarque du fait qu'on travaille sur un corps, donc ça reviens essenciellement au même}
 
 
-\item  \TODO{À modifier un peu après avoir modifier la notation $\mathcal{O}_{P_{\inf}}$ : enlever tout ce qui mentionne l'anneau de valuation à l'infini : Page 8, Remark 1.15: "It is worth noting that $\mathcal{O}_{P\infty}$ is a valuation ring with valuation $v_{P_\infty}$". This is not true. Indeed, the only valuation ring with valuation $v_{P_\infty}$ is the local ring at $P_\infty$. Please modify the remark. It is true that $\deg_{a,b}(f)=-v_{P_\infty}(f)$, which is perhaps the main point of the remark.}
+\item  \DONE{À modifier un peu après avoir modifier la notation $\mathcal{O}_{P_{\inf}}$ : enlever tout ce qui mentionne l'anneau de valuation à l'infini : Page 8, Remark 1.15: "It is worth noting that $\mathcal{O}_{P\infty}$ is a valuation ring with valuation $v_{P_\infty}$". This is not true. Indeed, the only valuation ring with valuation $v_{P_\infty}$ is the local ring at $P_\infty$. Please modify the remark. It is true that $\deg_{a,b}(f)=-v_{P_\infty}(f)$, which is perhaps the main point of the remark.}
 
 \item \DONE{The definition of $G$ has been added right before Definition \ref{def:Goppa--like_AG_code}Page 8, Definition 2.1: Later on the notation G is used for the divisor D+(g). It would help the reader if this is mentioned already here, since later on, for example in Remark 2.2, the notation G is used without explanation.}
 
@@ -137,7 +137,7 @@ Hence, I suggest a revision. Some more comments are listed:
 
 \item \DONE{The formula has been corrected: }Page 11, line 2: The formula "$C_1 \subseteq C^{q^i} \cap C^{q^{m-1}}$" should be "$C_1 \subseteq C \cap C^{q^{m-1}}$". 
 
-\item \TODO{Le résultat est vrai en l'état avec $\mathcal{C}$. C'est aussi vrai avec $\mathcal{C}_1$ mais on s'en moque. L'expliquer : }Page 11, line 4: "$Tr(C*C_1^{q^i}) \subseteq ..." should be "Tr(C_1*C_1^{q^i}) \subseteq$ ..."
+\item \TODO{Le résultat est vrai en l'état avec $\mathcal{C}$. C'est aussi vrai avec $\mathcal{C}_1$ mais on s'en moque. L'expliquer : on a ajouter un peu de détails }Page 11, line 4: "$Tr(C*C_1^{q^i}) \subseteq ..." should be "Tr(C_1*C_1^{q^i}) \subseteq$ ..."
 
 \item \DONE{The symbol has been changed : }Page 11, line 7: in the formula involving the intersection of summations of certain trace codes, the right-hand side is the empty set symbol. Since any code contains 0, I suspect the right-hand side should have been \{0\} instead of $\emptyset$.
 
@@ -147,11 +147,11 @@ Hence, I suggest a revision. Some more comments are listed:
 
 \item \TODO{Page 12, Lemma 3.3: Previously the trace function Tr was only used and defined for elements from a finite field with $q^m$ elements, but now it is applied to a function. This means that not longer $Tr(f)=Tr(f^q)$. However, this is used in the proof of the lemma. There is little harm, since later on the results are not applied to functions but to codewords corresponding to them. Please explain briefly before the lemma what exactly is meant with $Tr(f)$ is $f$ is a function, or reformulate in terms of codewords.}
 
-\item Page 13, first line after Definition 3.2. "Lemma 3.3 entails that ...". Lemma 3.3 only applies to $i \ge 1$. Please add a short remark concerning the case i=0. 
+\item \TODO{we added a Page 13, first line after Definition 3.2. "Lemma 3.3 entails that ...". Lemma 3.3 only applies to $i \ge 1$. Please add a short remark concerning the case i=0.} 
 
-\item Page 13, second line after Definition 3.2: "$Tr(f/q^{i+1})$" should be "$Tr(f/g^{q^i+1})$"
+\item \DONE{ Corrected : Page 13, second line after Definition 3.2: "$Tr(f/q^{i+1})$" should be "$Tr(f/g^{q^i+1})$"}
 
-\item Page 13, last line before subsection 3.3: "the trace codes $T_i(s,g)$". The sets $T_i(s,g)$ were defined in Definition 3.2 as sets of functions and not as codes. Did I misunderstand something? Please clarify.
+\item \TODO{Défined as codes : Page 13, last line before subsection 3.3: "the trace codes $T_i(s,g)$". The sets $T_i(s,g)$ were defined in Definition 3.2 as sets of functions and not as codes. Did I misunderstand something? Please clarify.}
 \end{itemize}
 
 \end{document}
