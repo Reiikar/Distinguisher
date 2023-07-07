@@ -190,11 +190,8 @@ In this work, we also investigate Goppa--like AG codes over finite fields with d
 	\begin{center}
 		\begin{tabular}{|c|c|c|c|c|c|c|}
 			\hline
-<<<<<<< HEAD
 			$q$&  $s$ & $n$ & $k$ & $t$ & Prange complexity & Key--Size(Bytes)\\
-=======
-			$q$&  $s$ & $n$ & $k$ & $t$ & Prange complexity & Key--Size (Bytes)\\
->>>>>>> 13792fbd37e54a8ce7c2695a07d8258b6403f4e0
+
 			\hline \hline
 			
 		${11}$	&265&1320& 898& 77& 153& \,142\,108 \\
@@ -290,7 +287,7 @@ of dimension $\ell(G)$.
 Let $\calP \subseteq \fqm(\calX)$ be a set of $n$ distinct rational points such that $\Supp(G) \cap \calP = \varnothing$. By numbering the points in $\calP=\set{P_1,\dots,P_n}$, we define an evaluation map
 \begin{equation}\label{eq:ev_P}
 	\ev_{\calP} : \left\{\begin{array}{rcl}
-		\calL(G) 	& \rightarrow & \fq^n \\
+		\calL(G) 	& \rightarrow & \fqm^n \\
 		f 			& \mapsto	  &  (f(P_1),\dots,f(P_n)) 
 	\end{array} \right.
 \end{equation}
@@ -677,54 +674,71 @@ Moreover, we have $\degab{f_2} \leq \degab{f}$.
  Finally, if we had $\degab{f} < \degab{f_2}$ with $f=f_1 g +f_2$, this would mean that $\LM{f_2}=-\LM{f_1 g}=\lambda x^uy^v$ for some $\lambda \in \F_{q^m}^*$ with both $u \geq \beta$ and $v \geq \alpha$, which is not possible by definition of $\calR\left(g\right)$.
 \end{proof}
 
-\jade{TODO RELOU : Previously the trace function $Tr$ was only used and defined	for elements from a finite field with qm elements, but now it is applied to a function.
-	This means that not longer $Tr(f) = Tr(f^q)$. However, this is used in the proof of the lemma. There is little harm, since later on the results are not applied.}
+\jade{J'ai retravaillé la partie ci-dessous...}
 
-\jade{J'ai simplifié l'énoncé ci-dessous, en virant les $\calL(G)$.}
+\subsection{Study of the codes $\Tr{\calC \star \calC^{q^i}}$}
+
+In this paragraph, we will use the weighted  Euclidean division above to better control the elements in $\Tr{\calC \star \calC^{q^i}}$ for $\calC = \calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$, where we fixed $s'>s \geq 0$, $g \in \calS$ with $\degab{g}= s'$ and a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$.
+
+Before diving into technical proofs, let us fix some notation that we will use in the rest of the paper. We extend the evaluation map defined in Equation \eqref{eq:ev_P} on all the ring $\calS$:
+\[	\ev_{\calP} : \left\{\begin{array}{rcl}
+		\calS 	& \rightarrow & \fqm^n \\
+		f 			& \mapsto	  &  (f(P_1),\dots,f(P_n)) 
+	\end{array} \right.
+\]
+Now, $\ev_{\calP}$ is an algebra homomorphism, where $\fq^n$ is endowed with the product $\star$, \textit{i.e.} $\ev_{\calP}(f)\star\ev_{\calP}(f')=\ev_{\calP}(f\cdot f')$ for any $f, \: f' \in  \calS$. 
+
+For two functions $f,\: f' \in \calS$, we will write $f \equiv_{\calP} f'$ if $\ev_{\calP}(f)=\ev_{\calP}(f')$.
+
+We also extend the trace operator on $\calS$ by defining $\Tr{f}=f+f^q+\dots + f^{q^{m-1}}$ for every $f \in \calS$.
+Since the map $\ev_{\calP}$ is an algebra homomorphism, we have $\ev_{\calP} \left(\Tr{f}\right)=\Tr{\ev_{\calP}(f)}$. Moreover, for any function $f \in \calS$, we have
+\begin{equation}\label{eq:prop_trace}
+	\Tr{f^q} \equiv_{\calP}\Tr{f}.
+\end{equation}
+ 
+
+
+
 
 \begin{lemma} \label{lem:weighted_division}
-Take $i \geq 1$ and $s'>s \geq 0$. Let $f,\: g \in \calS$ such that $\degab{f} < s'(q^i+1)$ and $\degab{g}= s'$. Fix a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$.
-
-Then there exists $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that the vectors  $\ev_{\calP}\left(\frac{f}{g^{q^i+1}}\right)$ and $\ev_{\calP}\left(\frac{f'}{g^{q^i+1}}\right) $ have the same trace over $\fq$.
+Take $i \geq 1$. Let $f\in \calS$ such that $\degab{f} < s'(q^i+1)$. Then there exists $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that the vectors  $\Tr{\frac{f}{g^{q^i+1}}} \equiv_{\calP}\Tr{\frac{f'}{g^{q^i+1}}}$.
 \end{lemma}
 
 \begin{proof}
-By Proposition \ref{prop:div_grob}, we can write $f=f_1 g^{q^i-q^{i-1}+1} +f_2$ with
- $f_2 \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ and $\degab{f_2} \leq \degab{f}$. Dividing by $g^{q^i+1}$, we get
- \[\frac{f}{g^{q^i+1}}= \frac{f_1}{g^{q^{i-1}}} +\frac{f_2}{g^{q^i+1}}.\]
- 
-\[ = \Tr{\frac{f_1^qg}{g^{q^i+1}}} +\Tr{\frac{f_2}{g^{q^i+1}}}. \]
- 
- By definition, the second term has the expected form. Let us examine the first term. If $f_1=0$, we are done. Otherwise, the definition of $f_1$ gives
-$\degab{f_1} =\degab{f} - s'(q^i-q^{i-1}+1)$, and
- \begin{align*}
- \degab{f_1^qg}  &= q \degab{f_1} + s'\\
-     &= q\degab{f} - s'(q-1)(q^i+1).
- \end{align*} 
-Then  $\degab{f_1^qg} < \degab{f}$ if and only if $\degab{f} < s'(q^i+1)$, which holds by definition of $f$. 
-
-Repeating the division process on $f_1^qg$, as the weighted degree decreases, we can find a function $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that $\Tr{\frac{f}{g^{q^i+1}}} = \Tr{\frac{f'}{g^{q^i+1}}} $.
+	By Proposition \ref{prop:div_grob}, we can write $f=f_1 g^{q^i-q^{i-1}+1} +f_2$ with
+	$f_2 \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ and $\degab{f_2} \leq \degab{f}$. Therefore, using Equation \eqref{eq:prop_trace}, we get
+	\[\begin{aligned}
+	\Tr{\frac{f}{g^{q^i+1}}}&=\Tr{\frac{f_1 g^{q^i-q^{i-1}+1}}{g^{q^i+1}}} +\Tr{\frac{f_2}{g^{q^i+1}}}\\
+							&\equiv_{\calP} \Tr{\frac{f_1^qg}{g^{q^i+1}}} +\Tr{\frac{f_2}{g^{q^i+1}}}.
+\end{aligned}\]
+	
+	By definition, the second term has the expected form. Let us examine the first term. If $f_1=0$, we are done. Otherwise, the definition of $f_1$ gives
+	$\degab{f_1} =\degab{f} - s'(q^i-q^{i-1}+1)$, and
+	\begin{align*}
+		\degab{f_1^qg}  &= q \degab{f_1} + s'\\
+		&= q\degab{f} - s'(q-1)(q^i+1).
+	\end{align*} 
+	Then  $\degab{f_1^qg} < \degab{f}$ if and only if $\degab{f} < s'(q^i+1)$, which holds by definition of $f$. 
+	
+	Repeating the division process on $f_1^qg$, as the weighted degree decreases, we can find a function $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that $\Tr{\frac{f}{g^{q^i+1}}} \equiv_{\calP} \Tr{\frac{f'}{g^{q^i+1}}} $.
 \end{proof}
-\jade{TODO : donner du sens à ça $\downarrow$. Parle-t-on de codes ou d'ev de fonctions ?}
 
 \begin{definition} \label{def:T_i's}
 For any $1 \leq i \leq \lfloor\frac{m}{2}\rfloor$, we define
-$$\calT_i(s,g):= \Tr{g^{-(q^i+1)}\cdot \left( \calR\left(g^{q^i-q^{i-1}+1}\right)  \cap \calL(s(q^i+1)P_\infty)\right)}$$
-and we set $$\calT_0(s,g) := \Tr{g^{-2} \cdot \calL(2sP_\infty}).$$
+$$\calT_i(s,g):=\set{\ev_{\calP}\left(\Tr{\frac{f}{g^{q^i+1}}}\right) \mid f \in \calR\left(g^{q^i-q^{i-1}+1}\right)  \cap \calL(s(q^i+1)P_\infty)}$$
+and we set $$\calT_0(s,g) := \set{\ev_{\calP}\left(\Tr{\frac{f}{g^{2}}}\right) \mid f \in \calL(2sP_\infty)}.$$
 \end{definition}
 
+The vector spaces $\calT_i(s,g)$ have been designed so that we have
+\[ 
+\Tr{\calC \star \calC^{q^i}} \subseteq \calT_i(s,g)
+\]
+for all $i \in \set{0,\dots,\left\lfloor \frac{m}{2} \right\rfloor}$. Indeed, it is straightforward for $i=0$ and it follows from Lemma \ref{lem:weighted_division} for $i \geq 1$, noticing that $f \in \calL(sP_\infty) \cdot \calL(sP_\infty)^{q^i} \subseteq \calL(s(q^i+1)P_\infty)$. 
+
+We will benefit from these inclusions to improve the bound given in Proposition \ref{prop:bound_dim_using_inclusions}, provided that we can efficiently compute the dimension of the trace codes $\calT_i(s,g)$. This is studied in the next section.
 
 
-
-\noindent Let $i \geq 1$ and $f \in \calL(sP_\infty) \cdot \calL(sP_\infty)^{q^i} \subseteq \calL(s(q^i+1)P_\infty)$. Lemma \ref{lem:weighted_division} entails that 
-$$\Tr{\dfrac{f}{g^{q^i+1}}} \in \calT_i(s,g).$$
-\jade{TODO : et pour $i=0$ ? Petite remarque. RENVERSER l'ordre pour motiver l'introduction de $\calT_i$}
-
-Hence, with $\calC = \calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$, we obtain 
-\begin{equation} \label{eq:Tr(C*C^q^i)_dans_T_i}
-\Tr{\calC \star \calC^{q^i}} \subseteq \calT_i(s,g), 
-\end{equation}
-for all $i \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$. The above inclusions can be used to improve the bound given in Proposition \ref{prop:bound_dim_using_inclusions}, provided that we can efficiently compute the dimension of the trace codes $\calT_i(s,g)$. This is studied in the next section.
+\jade{... jusque là.}
 %--------Last changes----------%
 \subsection{Upper bound in Goppa--like case}
 In the proposition below, we study the intersection 
