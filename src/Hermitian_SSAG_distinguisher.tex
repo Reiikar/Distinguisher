@@ -42,10 +42,12 @@
 \newtheorem{remark}[thm]{Remark}
 
 
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\trace}{Tr}
+
 %------------Commands-----------%
 \newcommand{\calA}{\mathcal{A}}
 \newcommand{\calB}{\mathcal{B}}
-\newcommand{\calS}{\mathcal{S}}
 \newcommand{\calP}{\mathcal{P}}
 \newcommand{\calH}{\mathcal{H}}
 \newcommand{\calL}{\mathcal{L}}
@@ -53,6 +55,7 @@
 \newcommand{\calD}{\mathcal{D}}
 \newcommand{\calO}{\mathcal{O}}
 \newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
 \newcommand{\calT}{\mathcal{T}}
 \newcommand{\calX}{\mathcal{X}}
 \newcommand{\fqm}{\mathbb{F}_{q^m}}
@@ -62,8 +65,8 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\PP}{\mathbb{P}}
 \newcommand{\R}{\mathbb{R}}
-\newcommand{\Trm}[1]{\operatorname{Tr}_{\mathbb{F}_{q^m}/\fq}\left(#1\right)}
-\newcommand{\Tr}[1]{\operatorname{Tr}\left(#1\right)}
+\newcommand{\Trm}[1]{\trace_{\mathbb{F}_{q^m}/\fq}\!\left(#1\right)}
+\newcommand{\Tr}[1]{\trace\!\left(#1\right)}
 \newcommand{\set}[1]{\left\{#1\right\}}
 \newcommand{\Floor}[1]{\left\lfloor #1 \right\rfloor}
 \newcommand{\Span}[1]{\operatorname{Span}\left(#1\right)}
@@ -75,6 +78,8 @@
 \newcommand{\GRS}{\operatorname{\mathsf{GRS}}}
 \newcommand{\gen}{\mathfrak{g}}
 \newcommand{\degab}[1]{\deg_{a,b}\left(#1\right)}
+
+
 
 %%----Commentaires----%%%
 \newcommand\jade[1]{\textcolor{purple}{#1}}
@@ -108,7 +113,7 @@
 \email{sabira.elkhalfaoui@univ-rennes1.fr}
 
 \author{Mathieu Lhotel}
-\address{Laboratoire de Mathématiques de Besançon, UMR 6623 CNRS Université de Bourgogne Franche-Comté, France}
+\address{Université de Franche-Comté, CNRS LmB, F-25000 Besançon, France}
 \email{mathieu.lhotel@univ-fcomte.fr}
 
 \author{Jade Nardi}
@@ -179,13 +184,17 @@ where $C_\text{Gauss}(n,k,q)$ is the cost of the Gauss--Jordan elimination of an
  
 In this work, we also investigate Goppa--like AG codes over finite fields with different characteristics by analysing the computational cost of the ISD algorithm for parameters relevant to post--quantum cryptography. In Table \ref{table:goppa-herm}, we provide parameters that resist the distinguisher given in this paper and improve key sizes compared to the subfield subcodes of 1--point Hermitian codes parameters reported in \cite[Tables~2 and 3]{EKN21crypto}, which already reduced key sizes compared to binary Goppa codes.
 
-\mathieu{Il faudrait préciser que c'est l'exposant de la complexité de Prange et que m=2. J'ai aussi passé les tailles de clés en Bytes, c'est plus courant selon Alain.}
+\mathieu{Il faudrait préciser que c'est l'exposant de la complexité de Prange.}
 
 \begin{table}[h]
 	\begin{center}
 		\begin{tabular}{|c|c|c|c|c|c|c|}
 			\hline
+<<<<<<< HEAD
 			$q$&  $s$ & $n$ & $k$ & $t$ & Prange complexity & Key--Size(Bytes)\\
+=======
+			$q$&  $s$ & $n$ & $k$ & $t$ & Prange complexity & Key--Size (Bytes)\\
+>>>>>>> 13792fbd37e54a8ce7c2695a07d8258b6403f4e0
 			\hline \hline
 			
 		${11}$	&265&1320& 898& 77& 153& \,142\,108 \\
@@ -204,7 +213,7 @@ In this work, we also investigate Goppa--like AG codes over finite fields with d
 			\hline
 		\end{tabular}
 		\vspace*{0.3em}
-		\caption{Goppa-Like Hermitian codes parameters $\Gamma(\calP,sP_\infty,g)$ over $\F_{q^2}$.} \label{table:goppa-herm}
+		\caption{Goppa-Like Hermitian codes parameters $\Gamma(\calP,sP_\infty,g)$ over $\F_{q^2}$ ($m=2$).} \label{table:goppa-herm}
 	\end{center}
 \end{table}
 
@@ -217,6 +226,7 @@ In this work, we also investigate Goppa--like AG codes over finite fields with d
 \subsection*{Outline of the paper}
 
 The paper is organized as follows. Section \ref{sec:preli} is dedicated to basic definitions about linear codes, subfield subcodes and trace codes, AG codes and $C_{a,b}$ curves. In Section \ref{sec:Goppa}, we introduce the notion of Goppa--like AG codes and we give a first bound for the dimension of the square of their dual. In Section \ref{sec:AG-C_a,b}, we refine the bound for Goppa--like AG codes from $C_{a,b}$ curves, associated to one--point divisors. Section \ref{sec:analysis} concludes this paper with a discussion about this bound on elliptic curves and on the Hermitian curve.
+
 
 \section{Preliminaries}\label{sec:preli}
 \subsection{Linear codes, subfield subcodes and trace codes}
@@ -253,7 +263,7 @@ Let $\operatorname{Tr}_{\mathbb{F}_{q^m}/\fq}$ be the trace operator on $\mathbb
 for any $x \in \fqm$. We can extend this definition to any vector $\mathbf{c} \in \fqm^n$ by $$\Trm{\mathbf{c}}= (\Trm{c_1},\cdots,\Trm{c_n}).$$
 
 
-\jade{Pour alléger les notations}, we shall write $\Tr{\cdot}$ instead of $\Trm{\cdot}$ in the following.
+To make the notation less cumbersome, we shall write $\Tr{\cdot}$ instead of $\Trm{\cdot}$ in the following.
 
 Given a linear code $\calC$ of length $n$ and dimension $k$ over $\fqm$, its \emph{trace code} over $\fq$ is the image under the trace operator, that is $\Tr{\calC}$. It is a linear code of length $n$ over $\fq$, whose dimension satisfies
 \begin{equation}\label{eq:dim_trace}
@@ -277,9 +287,15 @@ Given $G \in \Div(\calX)$, we define its \emph{support} $\Supp(G)$ as the finite
 A non--zero function $f \in \fqm(\calX)$ defines a divisor, called \emph{principal}, denoted by $(f)=\sum \nu_P(f) P$. The \emph{Riemann--Roch space} of a divisor $G$ is defined as the $\fqm$ vector space
 $$ \calL(G) := \set{f \in \fqm(\calX) \mid (f) + G \geq 0} \cup \set{0},$$
 of dimension $\ell(G)$.
-Let $\calP \subseteq \fqm(\calX)$ be a set of $n$ distinct rational points such that $\Supp(G) \cap \calP = \varnothing$.
+Let $\calP \subseteq \fqm(\calX)$ be a set of $n$ distinct rational points such that $\Supp(G) \cap \calP = \varnothing$. By numbering the points in $\calP=\set{P_1,\dots,P_n}$, we define an evaluation map
+\begin{equation}\label{eq:ev_P}
+	\ev_{\calP} : \left\{\begin{array}{rcl}
+		\calL(G) 	& \rightarrow & \fq^n \\
+		f 			& \mapsto	  &  (f(P_1),\dots,f(P_n)) 
+	\end{array} \right.
+\end{equation}
 We can consider the AG code 
-$$\calC := \calC_{\calL}(\calX,\calP,G) := \set{\left(f(P)\right)_{P \in \calP} \mid f \in \calL(G)},$$
+\[\calC := \calC_{\calL}(\calX,\calP,G) := \set{\ev_{\calP}(f) \mid f \in \calL(G)},\]
 which is a $[n, k \geq \ell(G)]_{\fqm}$ code. If $n > \deg (G)$, then its dimension is exactly equal to $\ell(G)$ and its minimum distance is bounded from below by the \emph{designed distance} $d^*=n-\deg (G)$.\\
 From the Riemann--Roch theorem, we have
 $$ \ell(G) \geq \deg(G) +1 - \mathfrak{g},$$ 
@@ -441,12 +457,11 @@ where $f_{a,b} \in \fqm[X,Y]$ with $\alpha_{0a}, \: \alpha_{b0} \neq 0$, and the
 Any curve $\calX_{a,b}$ defined by an equation as in \eqref{eq:equation_C_ab} has a unique point at infinity, denoted by $P_{\infty}$. Moreover, as a plane curve, its genus is given by
 \[\mathfrak{g}_{a,b}:=\dfrac{(a-1)(b-1)}{2}.\]
 
-\subsubsection{The point at infinity $P_\infty$ and its regular ring $\calO_{P_\infty}$}
+\subsubsection{The point at infinity $P_\infty$ and the ring $\calS$}
 
-We will consider codes obtained by evaluating functions on $\calX_{a,b}$ which are regular everywhere, except maybe at the unique point at infinity $P_\infty$. These functions then belong to the ring 
-\jade{TODO : changer $\calO_{P_\infty}$ car c'est pas du tout ça. C'est plutôt the coordinate ring of the affine curve $\calX \setminus \{P_\infty\}$. Il faut le baptiser.}
+We will consider codes obtained by evaluating functions on $\calX_{a,b}$ which are regular everywhere, except maybe at the unique point at infinity $P_\infty$. These functions then belong to the coordinate ring of the affine curve $\calX_{a,b} \setminus \set{P_\infty}$, which we denote by $\calS$.
 \begin{equation}\label{eq:O_Pinf}
-\mathcal{O}_{P_\infty}=\bigcup_{s \geq 0} \calL(s P_\infty)
+\calS=\bigcup_{s \geq 0} \calL(s P_\infty)
 \end{equation} %
 where each Riemann--Roch space $\calL(s P_\infty)$ has an explicit basis as follows:
 \begin{equation} \label{eq:basis_L(sP_inf)}
@@ -456,27 +471,24 @@ where each Riemann--Roch space $\calL(s P_\infty)$ has an explicit basis as foll
 In summary, any function that is regular on all $\calX_{a,b}$ except maybe at $P_\infty$ is a bivariate polynomial in the functions $x$ and $y$. 
 
 \begin{definition}[Weighted degree]
-Given a monomial of the form $x^iy^j \in \calO_{P_\infty}$, we define its weighted degree by
+Given a monomial of the form $x^iy^j \in \calS$, we define its weighted degree by
 \[ \degab{x^iy^j} := ai+bj.\]
 
-From this degree, we can define a monomial order $\prec$ over $\calO_{P_\infty} \simeq \fqm[x,y]$ as follows: $x^uy^v \prec x^{u'}y^{v'}$ if
+From this degree, we can define a monomial order $\prec$ over $\calS \simeq \fqm[x,y]$ as follows: $x^uy^v \prec x^{u'}y^{v'}$ if
 \begin{equation}\label{eq:def_mon_order}
 \degab{x^uy^v} < \degab{x^{u'}y^{v'}} \text{ or } \left(\degab{x^uy^v} = \degab{x^{u'}y^{v'}}  \text{ and } u < u'\right).
 \end{equation}
 
 %
-Any function $f \in \calO_{P_\infty}$ can be written in the form $$f = c \cdot x^{\beta}y^{\alpha} + f'(x,y),$$
-with $c \neq 0$, $\alpha \leq a-1$ and $f' \in \calO_{P_\infty}$ such that any monomial $x^iy^j$ of $f'$ satisfies $ai+bj < \degab{x^{\beta}y^{\alpha}}$ and $j \leq a-1$. The leading monomial of $f$ with respect to the monomial order $\prec$ is thus defined by $\mathrm{LM}(f) := x^{\beta}y^{\alpha}$. This extends the definition of weighted degree to any such function by setting 
+Any function $f \in \calS$ can be written in the form $$f = c \cdot x^{\beta}y^{\alpha} + f'(x,y),$$
+with $c \neq 0$, $\alpha \leq a-1$ and $f' \in \calS$ such that any monomial $x^iy^j$ of $f'$ satisfies $ai+bj < \degab{x^{\beta}y^{\alpha}}$ and $j \leq a-1$. The leading monomial of $f$ with respect to the monomial order $\prec$ is thus defined by $\mathrm{LM}(f) := x^{\beta}y^{\alpha}$. This extends the definition of weighted degree to any such function by setting 
 \[\degab{f} := \degab{\mathrm{LM}(f)}.\]
 \end{definition}
-It is easy to check that for any $f \in \calO_{P_\infty}$, its weighted degree $\degab{f}$ is equal to the smallest integer $s$ such that $f$ belongs to the Riemann--Roch space $\calL(sP_{\infty})$.
+It is easy to check that for any $f \in \calS$, its weighted degree $\degab{f}$ is equal to the smallest integer $s$ such that $f$ belongs to the Riemann--Roch space $\calL(sP_{\infty})$.
 %
 This way, any function in $\calL(sP_\infty)$ can be seen as a polynomial in $x$ and $y$ such that $\degab{f}\leq s$. 
 \begin{remark}
-	\jade{TODO : virer les trucs en rapport avec $\calO_{P_\infty}$}
-It is worth noting that $\calO_{P_\infty}$ is a valuation ring, with valuation $v_{P_\infty}$. Then for every $f \in \calO_{P_\infty}$, we have $\degab{f}=-v_{P_\infty}(f)$. We prefer handling the weighted degree rather than the valuation due to its similarities with the degree of univariate 
-polynomials. We will notably perform division, using Gr\"obner bases, and, as expected in the univariate case, the degree of the remainder is 
-\textit{generally} smaller than the dividend's.
+For every $f \in \calS$, we have $\degab{f}=-v_{P_\infty}(f)$.
 \end{remark}
 
 
@@ -484,7 +496,7 @@ polynomials. We will notably perform division, using Gr\"obner bases, and, as ex
 \subsection{Definition, parameters and context in the literature}\label{subsec:def-Goppa}
 
 Let $D$ be an effective divisor of positive degree $s$ on a smooth and irreducible projective curve $\calX$ over $\fqm$. Take a rational function $g \in \fqm(\calX)$ such that $g \notin \calL(D)$. Given a set of $\fqm$--points $\calP \in \calX(\fqm)$ such that $\calP \cap \Supp(g) = \varnothing$ and $\calP \cap \Supp(D) = \varnothing$, we consider the AG code
-\[\calC := \calC_{\calL}(\calX,\calP,D+(g))=\set{\left(f(P)g(P)^{-1}\right)_{P \in \calP} \mid f \in \calL(D)}.\]
+\[\calC := \calC_{\calL}(\calX,\calP,D+(g))=\set{\ev_{\calP}(fg^{-1}) \mid f \in \calL(D)}.\]
 From now on, we set $G=D+(g)$. Note that we have $\deg(G)=\deg(D)$.
 \begin{definition} \label{def:Goppa--like_AG_code}
 The Goppa--like AG code associated to $\calC$ is defined as the subfield subcode of its dual code, \emph{i.e.}
@@ -571,33 +583,31 @@ the last equality coming from the Riemann--Roch theorem (since $\deg \left((q^i+
 
 This simple lemma yields an upper bound on the dimension of the square of the dual of Goppa--like codes.
 \begin{proposition} \label{prop:bound_dim_using_inclusions}
-    Let $\calC := \calC_{\calL}(\calX,\calP,D+(g))$ be an AG code as above, and suppose $s \geq \mathfrak{g}$. Set $k := \dim_{\fqm}\calC$ and  $e := \min\left(\left\lfloor \frac{m}{2} \right\rfloor,\left\lfloor \log_q\left(\frac{k^2}{s}\right)\right\rfloor\right)$. Then
-    $$\dim_{\fq} (\Gamma(\calP,D,g)^{\perp})^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).$$
+    Let $\calC := \calC_{\calL}(\calX,\calP,D+(g))$ be an AG code as above, and suppose $s \geq \mathfrak{g}$. Set $k := \dim_{\fqm}\calC$ and  $e_0 := \min\left(\left\lfloor \frac{m}{2} \right\rfloor,\left\lfloor \log_q\left(\frac{k^2}{s}\right)\right\rfloor\right)$. Then
+    $$\dim_{\fq} (\Gamma(\calP,D,g)^{\perp})^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2}\left(k(k-1)(2e_0+1)-2s\left(\dfrac{q^{e_0+1}-1}{q-1}\right)\right).$$
 \end{proposition}
 
-\mathieu{Alain suggérait de mettre une autre notation que le "e" de la proposition dans la preuve, car on ne sait pas le quel c'est au début. Je propose $e_0$.}
-
 \begin{proof}
- For any $e_0 \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$, Proposition \ref{prop:Tr_BoundSchurSquare} implies that
+ For any $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$, Proposition \ref{prop:Tr_BoundSchurSquare} implies that
     \begin{align*}
         \dim_{\fq}(\Gamma(\calP,D,g)^{\perp})^{\star 2}
         & \leq \sum\limits_{i=0}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star \calC^{q^i}} &\\
-        & \leq \sum\limits_{i=0}^{e_0} m(s(q^i+1)+1-\mathfrak{g})  + \sum\limits_{i=e_0+1}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star \calC^{q^i}} \quad \text{(by Lemma \ref{lem:bound_dim_Tr(C*C^q^i)})}\\
-        & \leq \sum\limits_{i=0}^{e_0} m(sq^i+k) + \left( \frac{m-1}{2} -e_0 \right)mk^2 \quad \text{(by the Riemann--Roch theorem)}\\
-        & \leq \frac{m}{2}\left(2k(e_0+1)+2s\left(\dfrac{q^{e_0+1}-1}{q-1}\right)+k^2(m-1)-2e_0k^2  \right) &\\
-        & \leq \binom{mk+1}{2} -  \dfrac{m}{2}\left(k(k-1)(2e_0+1)-2s\left(\dfrac{q^{e_0+1}-1}{q-1}\right)\right).&
+        & \leq \sum\limits_{i=0}^{e} m(s(q^i+1)+1-\mathfrak{g})  + \sum\limits_{i=e+1}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star \calC^{q^i}} \quad \text{(by Lemma \ref{lem:bound_dim_Tr(C*C^q^i)})}\\
+        & \leq \sum\limits_{i=0}^{e} m(sq^i+k) + \left( \frac{m-1}{2} -e \right)mk^2 \quad \text{(by the Riemann--Roch theorem)}\\
+        & \leq \frac{m}{2}\left(2k(e+1)+2s\left(\dfrac{q^{e+1}-1}{q-1}\right)+k^2(m-1)-2ek^2  \right) &\\
+        & \leq \binom{mk+1}{2} -  \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).&
     \end{align*}
-    \mathieu{Notice that at the third line, we can replace $\lfloor \frac{m}{2} \rfloor$ with $\frac{m-1}{2}$ while bounding the second part of the sum thanks to Equation \eqref{eq:dim_m/2}}.
-To get the best bound, we maximize the expression $$ \dfrac{m}{2}\left(k(k-1)(2e_0+1)-2s\left(\dfrac{q^{e_0+1}-1}{q-1}\right)\right)$$ with respect to $e_0$. Removing the constant parts, this is equivalent to find the maximum of the function
-$$T(e_0) = e_0k^2-s\dfrac{q^{e_0+1}}{q-1}$$
+    Notice that at the third line, we can replace $\lfloor \frac{m}{2} \rfloor$ with $\frac{m-1}{2}$ while bounding the second part of the sum thanks to Equation \eqref{eq:dim_m/2}.
+To get the best bound, we maximize the expression $$ \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right)$$ with respect to $e$. Removing the constant parts, this is equivalent to find the maximum of the function
+$$F(e) = ek^2-s\dfrac{q^{e+1}}{q-1}$$
 over $\set{0,\dots,\lfloor \frac{m}{2} \rfloor}$ in the discrete domain of non-negative integers.  
 We compute the discrete derivative:
 \begin{align*}
-    \Delta T(e_0) = T(e_0+1)-T(e_0) &= (e_0+1)k^2-s\dfrac{q^{e_0+2}}{q-1} - \left(e_0k^2-s\dfrac{q^{e_0+1}}{q-1}\right) \\
-                              &= k^2 - sq^{e_0+1}.
+    \Delta F(e) = F(e+1)-F(e) &= (e+1)k^2-s\dfrac{q^{e+2}}{q-1} - \left(ek^2-s\dfrac{q^{e+1}}{q-1}\right) \\
+                              &= k^2 - sq^{e+1}.
 \end{align*}
-This function is decreasing with $e_0$, and the smallest value for which $\Delta T(e_0) \leq 0$ corresponds to its maximum. It is the smallest value of $e_0$ such that $k^2 \leq sq^{e_0+1}$, \emph{i.e.}
-$$e_0 := e =  \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor.$$
+This function is decreasing with $e$, and the smallest value for which $\Delta F(e) \leq 0$ corresponds to its maximum. It is the smallest value of $e$ such that $k^2 \leq sq^{e+1}$, \emph{i.e.}
+$$e_0 :=  \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor.$$
 \end{proof}
 
 \subsubsection{Sharpness of the bound} \label{section:sharpness}
@@ -614,7 +624,7 @@ Unfortunately, the condition $g \notin \calL(D)$ does not guarantee that the bou
 \end{proposition}
 
 \begin{proof}
-Any non--zero codeword $\mathbf{c} \in  \calC_1 \subset \calC$ satisfies $\mathbf{c}^q \in \calC$. As $\mathbf{c}$ lies in $\fqm^n$, we have $\mathbf{c}^{q^m}=\mathbf{c} \in \calC^{q^{m-1}}$. Therefore,  we have $\calC_1 \subseteq \calC^{q} \cap \calC^{q^{m-1}}$, and for every $i \in \set{1,\dots,\lfloor \frac{m}{2}\rfloor}$, we have $\calC_1^{q^i} \subseteq \calC^{q^i} \cap \calC^{q^{i-1}}$. Then
+Any non--zero codeword $\mathbf{c} \in  \calC_1 \subset \calC$ satisfies $\mathbf{c}^q \in \calC$. As $\mathbf{c}$ lies in $\fqm^n$, we have $\mathbf{c}^{q^m}=\mathbf{c} \in \calC^{q^{m-1}}$. Therefore,  we have $\calC_1 \subseteq \calC^{q} \cap \calC^{q^{m-1}}$, and for every $i \in \set{1,\dots,\lfloor \frac{m}{2}\rfloor}$, we have $\calC_1^{q^i} \subseteq \calC^{q^i} \cap \calC^{q^{i-1}}$. By taking the star product with $\calC$, we have $\calC \star \calC_1^{q^i} \subseteq \left(\calC \star  \calC^{q^i}\right) \cap \left(\calC \star  \calC^{q^{i-1}}\right)$, hence
 \[\Tr{\calC\star\calC_1^{q^i}} \subseteq \Tr{\calC\star\calC^{q^i}} \cap \Tr{\calC\star\calC^{q^{i-1}}}.\]
 As a result, each pair of consecutive terms in the sum $\sum\limits_{i=0}^{\lfloor m/2 \rfloor} \Tr{\calC \star \calC^{q^i}}$ has non--trivial intersection. However, using \cite[Theorem~2]{T19}, equality with the upper bound only occurs if
 \[\bigcap_{0\leq j \leq \lfloor m/2\rfloor} \left( \sum_{\substack{0\leq i \leq \lfloor m/2 \rfloor\\ i\neq j}} \Tr{\calC \star \calC^{q^i}} \right)= \{0\}.\]
@@ -644,28 +654,25 @@ Let $s'>s$ be two integers such that there exists a function $g \in \calL(s'P_\i
 \end{definition}
 This definition might be restrictive, but it is reasonable as these codes can be encoded quickly thanks to the nice basis of $\calL(sP_\infty)$ (see Equation \eqref{eq:basis_L(sP_inf)}), which is desirable if we aim to build a McEliece cryptosystem based on this family of codes. Moreover, this property will be key in the upcoming sections as it allows a better understanding of the square of the dual of any one--point Goppa--like AG code, under some condition on $s$ and $s'$. \\
 
-\noindent In the next sections, we generalize the result given in \cite{MT21} in the case of classical Goppa codes, by defining a weighted Euclidean division on the ring $\calO_{P_\infty}$ (see Equation \eqref{eq:O_Pinf}), whose elements are seen as bivariate polynomials. 
+\noindent In the next sections, we generalize the result given in \cite{MT21} in the case of classical Goppa codes, by defining a weighted Euclidean division on the ring $\calS$ (see Equation \eqref{eq:O_Pinf}), whose elements are seen as bivariate polynomials. 
 \subsection{Weighted Euclidean division}
-\noindent The following proposition generalizes the classical Euclidean division of univariate polynomials in the case of function in $\calO_{P_\infty}$ with respect to the weighted degree $\deg_{a,b}$. \mathieu{Before that, we need the following definition:} 
+\noindent The following proposition generalizes the classical Euclidean division of univariate polynomials in the case of functions in $\calS$ with respect to the weighted degree $\deg_{a,b}$. Before that, we need the following definition.
 
-\mathieu{
 \begin{definition}
-For any function $h \in \calO_{P_\infty}$ with leading term $\LT{h}=x^\beta y^\alpha$ and $\alpha < a$, we define over $\fqm$ the space
+For any function $h \in \calS$ with leading term $\LM{h}=x^\beta y^\alpha$ and $\alpha < a$, we define over $\fqm$ the space
 $$ \calR(h) := \Span{x^u y^v \mid u \leq \beta + b-1 \text{ and } v\leq a-1 \text{ not both }  u \geq \beta \text{ and } v \geq \alpha}.$$ 
 \end{definition}
-}
 
+Note that the dimension of $\calR(h)$ is equal to $\degab{h}$.
 
 \begin{proposition}\label{prop:div_grob}
-	\jade{TODO: $g$ doit être non nul.}
-Let $m$ be a positive integer and $g \in \calO_{P_\infty}$. \TODO{Enlever ça, on a définit le R(g) avant ? $\rightarrow$ Write $\LM{g}=x^\beta y^\alpha$ with $\alpha < a$.}
-\mathieu{Then for any function $f \in \calO_{P_\infty}$, there exist $f_1,f_2 \in \calO_{P_\infty}$ such that
+Fix a nonzero function $g \in \calS$. Then for any function $f \in \calS$, there exist $f_1,f_2 \in \calS$ such that
 \[ f=f_1g+f_2 \ \text{with} \ f_2 \in \calR(g).\]
-Moreover, we have $\degab{f_2} \leq \degab{f}$ and $\dim_{\fqm} \calR(g) = \degab{g}.$} 
+Moreover, we have $\degab{f_2} \leq \degab{f}$.
 \end{proposition}
 
 \begin{proof}
-  Since $f \in \calO_{P_\infty}$, we can see $f$ as a bivariate polynomial in $x$ and $y$ (see Equation \ref{eq:O_Pinf}). In the polynomial ring $\F_{q^m}[x,y]$, we perform the division of $f$ by a Gr\"obner basis of the ideal generated by the equation $f_{a,b}$ of the curve $\calX_{a,b}$ and the polynomial $g$ with respect to the monomial order $\prec$ defined in Equation \eqref{eq:def_mon_order}. The fact that $f_2$ lies in $\calR(g)$ and the result on the dimension of $\calR(g)$ both follow from \cite[Proposition 4]{GH00}.
+  Since $f \in \calS$, we can see $f$ as a bivariate polynomial in $x$ and $y$ (see Equation \ref{eq:O_Pinf}). In the polynomial ring $\F_{q^m}[x,y]$, we perform the division of $f$ by a Gr\"obner basis of the ideal generated by the equation $f_{a,b}$ of the curve $\calX_{a,b}$ and the polynomial $g$ with respect to the monomial order $\prec$ defined in Equation \eqref{eq:def_mon_order}. The fact that $f_2$ lies in $\calR(g)$ follows from \cite[Proposition 4]{GH00}.
  
  Finally, if we had $\degab{f} < \degab{f_2}$ with $f=f_1 g +f_2$, this would mean that $\LM{f_2}=-\LM{f_1 g}=\lambda x^uy^v$ for some $\lambda \in \F_{q^m}^*$ with both $u \geq \beta$ and $v \geq \alpha$, which is not possible by definition of $\calR\left(g\right)$.
 \end{proof}
@@ -690,9 +697,6 @@ $\degab{f_1} =\degab{f} - s'(q^i-q^{i-1}+1)$, and
  \end{align*} 
 Then  $\degab{f_1^qg} < \degab{f}$ if and only if $\degab{f} < s'(q^i+1)$, which holds by definition of $f$. 
 
-\mathieu{Alain voulait un peu plus de détails sur l'itération des divisions, je propose ça : 
-Performing a new division by replacing $f$ with $f_1^qg$ gives a new decomposition $f_1^qg = f_1'g^{q^i-q^{i-1}+1} + f'_2$, with $f'_2 \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ and $\degab{f'_2} \leq \degab{f}$. In particular, we can decompose $\Tr{\frac{f_1^qg}{g^{q^i+1}}}$ into a sum of traces as we did for $\Tr{\frac{f}{g^{q^i+1}}}$. If $f'_1 = 0$, the result is proved. Otherwise, we can repeat another time the division process. As the weighted degree of the successive quotients decreases, we ultimately end up with a quotient equal to zero. Hence, we can find a function $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that $\Tr{\frac{f}{g^{q^i+1}}} = \Tr{\frac{f'}{g^{q^i+1}}} $.}
-
 Repeating the division process on $f_1^qg$, as the weighted degree decreases, we can find a function $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that $\Tr{\frac{f}{g^{q^i+1}}} = \Tr{\frac{f'}{g^{q^i+1}}} $.
 \end{proof}
 \jade{TODO : donner du sens à ça $\downarrow$. Parle-t-on de codes ou d'ev de fonctions ?}
@@ -703,16 +707,18 @@ $$\calT_i(s,g):= \Tr{g^{-(q^i+1)}\cdot \left( \calR\left(g^{q^i-q^{i-1}+1}\right
 and we set $$\calT_0(s,g) := \Tr{g^{-2} \cdot \calL(2sP_\infty}).$$
 \end{definition}
 
+
+
+
 \noindent Let $i \geq 1$ and $f \in \calL(sP_\infty) \cdot \calL(sP_\infty)^{q^i} \subseteq \calL(s(q^i+1)P_\infty)$. Lemma \ref{lem:weighted_division} entails that 
 $$\Tr{\dfrac{f}{g^{q^i+1}}} \in \calT_i(s,g).$$
-\jade{TODO : et pour $i=0$ ? Petite remarque.}
+\jade{TODO : et pour $i=0$ ? Petite remarque. RENVERSER l'ordre pour motiver l'introduction de $\calT_i$}
 
-\mathieu{ rappel de ce qu'est C $\rightarrow$
-Hence, if $\calC = \calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$, we obtain 
+Hence, with $\calC = \calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$, we obtain 
 \begin{equation} \label{eq:Tr(C*C^q^i)_dans_T_i}
 \Tr{\calC \star \calC^{q^i}} \subseteq \calT_i(s,g), 
 \end{equation}
-for all $i \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$.} The above inclusions can be used to improve the bound given in Proposition \ref{prop:bound_dim_using_inclusions}, provided that we can efficiently compute the dimension of the trace codes $\calT_i(s,g)$. This is studied in the next section.
+for all $i \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$. The above inclusions can be used to improve the bound given in Proposition \ref{prop:bound_dim_using_inclusions}, provided that we can efficiently compute the dimension of the trace codes $\calT_i(s,g)$. This is studied in the next section.
 %--------Last changes----------%
 \subsection{Upper bound in Goppa--like case}
 In the proposition below, we study the intersection 
@@ -862,7 +868,7 @@ Combining \eqref{eq:Tr(C*C^q^i)_dans_T_i} with both the above propositions lead 
  Then, for all $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$, the dimension of $\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2}$ is bounded from above by
  
 \[\dim_{\fq} \left(\Gamma(\calP,sP_\infty,g)^{\perp}\right)^{\star 2} \leq   \left(\frac{m-1}{2}-e\right)mk^2+\dim_{\fq}\left(\sum\limits_{i=0}^e \calT_i(s,g) \right). \]
- Moreover, if $i^* \leq e \leq \lfloor \frac{m}{2} \rfloor$ \mathieu{is the integer satysfying Equation \eqref{eq:cond_s_s'_i_star}} , we have 
+ Moreover, if $i^* \leq e \leq \lfloor \frac{m}{2} \rfloor$ is the integer satisfying Equation \eqref{eq:cond_s_s'_i_star} , we have 
  \begin{align*}
   \dim_{\fq} \Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2} \leq   & \left(\frac{m-1}{2}-e\right)mk^2 + ms'(q^e-q^{e-1}+1) \\
   & + \dim_{\fq}\left(\sum\limits_{i=0}^{i^*-1} \calT_i(s,g)\right) - \dim_{\fq} \left( \calT_e(s,g) \cap   \sum\limits_{i=0}^{i^*-1} \calT_i(s,g)\right).
@@ -891,11 +897,10 @@ From \eqref{eq:key_equation} and under the assumption on $s$ and $s'$, we have
         \end{align*}
  for all $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$. If $i^* \leq e \leq \lfloor \frac{m}{2} \rfloor$,  Proposition \ref{prop:inclusion_T_i's} gives
 \[\sum\limits_{i=i^*}^e \calT_i(s,g) = \calT_e(s,g),\]
-\mathieu{la aussi, il demandait plus de détails (oui, il est relou) $\rightarrow$ 
 Consequently, we can write 
 $$\dim_{\fq} \left(\sum\limits_{i=0}^{e}\calT_i(s,g)\right) = \dim_{\fq} \left(\sum\limits_{i=0}^{i^*-1}\calT_i(s,g)\right) + \dim_{\fq}\calT_e(s,g) - \dim_{\fq} \left( \calT_e(s,g) \cap   \sum\limits_{i=0}^{i^*-1} \calT_i(s,g)\right).$$
 To finish the proof, we use the fact that $M_e(s,g) = \calR\left(g^{q^e-q^{e-1}+1}\right)$ (see. Proposition \ref{prop:dim_M_i's}, 2), hence we have 
-$$\dim_{\fq}\calT_e(s,g) \leq m \cdot \dim_{\fqm} \calR\left(g^{q^e-q^{e-1}+1}\right) = m s' (q^e-q^{e-1}+1).$$}
+$$\dim_{\fq}\calT_e(s,g) \leq m \cdot \dim_{\fqm} \calR\left(g^{q^e-q^{e-1}+1}\right) = m s' (q^e-q^{e-1}+1).$$
 \end{proof}
 
 Despite the fact that the upper bound given in Corollary \ref{coro:folklore_upper_bound} can be numerically computed with the knowledge of the degree $s$ and the function $g$, it is hard to give a close formula for any parameter, since the intersections of the trace codes $\calT_i(s,g)$'s are hard to manipulate. However, if we suppose that $i^*=0$, we can sharpen the above result.
