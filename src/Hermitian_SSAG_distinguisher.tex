@@ -676,14 +676,20 @@ Moreover, we have $\degab{f_2} \leq \degab{f}$.
 \jade{TODO RELOU : Previously the trace function $Tr$ was only used and defined	for elements from a finite field with qm elements, but now it is applied to a function.
 	This means that not longer $Tr(f) = Tr(f^q)$. However, this is used in the proof of the lemma. There is little harm, since later on the results are not applied.}
 
+\jade{J'ai simplifié l'énoncé ci-dessous, en virant les $\calL(G)$.}
+
 \begin{lemma} \label{lem:weighted_division}
-Take $i \geq 1$ and $s'>s \geq 0$. Let also $g \in \calL\left(s'P_\infty\right)$ such that $\degab{g}= s'$ and $f \in \calL\left(\left(s'(q^i+1)-1\right)P_\infty\right)$. Then there exists $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that $\Tr{\frac{f}{g^{q^i+1}}} = \Tr{\frac{f'}{g^{q^i+1}}} $.
+Take $i \geq 1$ and $s'>s \geq 0$. Let $f,\: g \in \calS$ such that $\degab{f} < s'(q^i+1)$ and $\degab{g}= s'$. Fix a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$.
+
+Then there exists $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that the vectors  $\ev_{\calP}\left(\frac{f}{g^{q^i+1}}\right)$ and $\ev_{\calP}\left(\frac{f'}{g^{q^i+1}}\right) $ have the same trace over $\fq$.
 \end{lemma}
 
 \begin{proof}
 By Proposition \ref{prop:div_grob}, we can write $f=f_1 g^{q^i-q^{i-1}+1} +f_2$ with
- $f_2 \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ and $\degab{f_2} \leq \degab{f}$. Therefore
- \[\Tr{\frac{f}{g^{q^i+1}}}=\Tr{\frac{f_1 g^{q^i-q^{i-1}+1}}{g^{q^i+1}}} +\Tr{\frac{f_2}{g^{q^i+1}}}= \Tr{\frac{f_1^qg}{g^{q^i+1}}} +\Tr{\frac{f_2}{g^{q^i+1}}}. \]
+ $f_2 \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ and $\degab{f_2} \leq \degab{f}$. Dividing by $g^{q^i+1}$, we get
+ \[\frac{f}{g^{q^i+1}}= \frac{f_1}{g^{q^{i-1}}} +\frac{f_2}{g^{q^i+1}}.\]
+ 
+\[ = \Tr{\frac{f_1^qg}{g^{q^i+1}}} +\Tr{\frac{f_2}{g^{q^i+1}}}. \]
  
  By definition, the second term has the expected form. Let us examine the first term. If $f_1=0$, we are done. Otherwise, the definition of $f_1$ gives
 $\degab{f_1} =\degab{f} - s'(q^i-q^{i-1}+1)$, and
