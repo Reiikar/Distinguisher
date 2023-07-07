@@ -144,6 +144,7 @@ The security of the McEliece cryptosystem is based on two assumptions: $(i)$ in 
 Algebraic geometry (AG) codes appear to be good candidates for the McEliece cryptosystem, since they are evaluation codes built from algebraic curves (GRS codes are a typical example of AG codes on a genus zero curve). Moreover, they also come with an efficient decoding algorithm (see the survey of H\o holdt and Pellikaan \cite{HP95}).
 In 1996, Janwa and Moreno \cite{JM96} proposed to use AG codes, concatenation or subfield subcode of these codes in the McEliece cryptosystem. As for concatenated ones, they were broken by Sendrier \cite{Sen94}. For AG codes, Faure and Minder proposed an attack in \cite{FM08,Min07,Fau09} for codes of genus at most $2$. The scheme based on AG codes has been completely broken by Couvreur, Marquez-Corbella and Pellikaan \cite{CMR17}, who proposed a filtration--based attack on AG codes for any genus, enabling decoding just by handling the public key and without knowledge of the curve and/or the divisor. However, the authors underlined that subfield subcodes of AG codes (SSAG codes in short) are resistant to this filtration attack. Moreover, some of these codes have a good designed minimum distance, such as Cartier codes \cite{Cou14}. This resistance to structural attacks, as well as their good parameters motivated several works on SSAG codes. Barelli \cite{B18} studied the security of quasi--cyclic SSAG codes designed from cyclic covers of the projective line and of plane curves. Recently, Zhao and Chen \cite{ZC22} analysed the parameters and the decoding performance of one--point elliptic subfield subcodes, showing that in the binary case, decoding results on these codes outperform the similar rate in the case of BCH codes. Also, the authors in \cite{PJ14,EKN21} focus on one--point Hermitian codes, and manage to compute the exact dimension of their subfield subcodes, in order to get a better estimate for the key size when using them in the McEliece cryptosystem.
 
+
 \subsection*{Subfield subcodes of AG codes}
 Let $\fqm$ be a finite extension of $\fq$. Let $\calC$ be an AG code, \textit{i.e.} $\calC :=C_{\calL}(\calX,\calP,G) \subseteq \fqm^n$ where $\calX$ is an algebraic curve defined over $\fqm$, $\calP \subseteq \calX(\fqm)$ and $G \in \Div(\calX)$. The subfield subcode of $\calC$ over $\fq$ is defined by 
 $$C_{\calL}(\calX,\calP,G)|_{\fq} := \calC \cap \fq^n.$$  
@@ -159,7 +160,9 @@ Even if Mora and Tillich's attack does not threaten the Goppa codes used in the 
 
 \subsection*{Contributions of this paper}
 In the present work, we are interested in the case of Goppa--like one--point AG codes from $C_{a,b}$ curves, a class of curves introduced in \cite{Miu93}. These curves have been extensively studied and they are especially interesting to design AG codes. As we know explicit monomial basis of the AG code associated to any multiple of its unique point at infinity, it allows us to efficiently encode one--point codes \cite{BRS21}. Furthermore, they remain quite general: for examples, elliptic curves, Kummer or Artin-Schreier curves are $C_{a,b}$ curves. It is also natural to wonder how the genus affects the distinguisher: in particular, we give a sufficient condition of the minimal degree our divisor has to satisfy in order to mount the distinguisher. This bound is increasing with the genus of the curve, and coincides with the one given in \cite{MT21} in the case of classical Goppa codes. Consequently, when the genus gets higher, we are not able to distinguish codes associated to low degree divisors. In the worst cases, we might not be able to distinguish anything.
+
 AG codes, as generalizations of GRS codes, have exactly the same behaviour with respect to the Schur product. Moreover, some well--chosen AG codes are defined by the evaluation of \textit{multivariate} polynomials. In this case, we prove that performing division algorithms via Gr\"obner bases enables us to estimate the dimension of the square of the dual of Goppa--like AG codes. Even better, computations tend to show that the bound we obtain on the dimension is sharp whenever the one--point Goppa--like code seems random (\emph{i.e} the function $g$ is sufficiently random). The counterpart is, as it was the case in \cite{MT21} for classical Goppa codes, that we can only distinguish high rate codes. More precisely, our maximum distinguishable rate is roughly the same as in \cite{MT21}. As comparison of their results and ours is carried out in the case of Goppa--like codes defined over an elliptic curve. However, as previously discussed, if the genus becomes too large, the distinguisher may become ineffective: in particular, we show that Goppa--like AG codes constructed from the Hermitian curve resist our distinguisher, which is encouraging if we intend to base the McEliece cryptosystem on such class of codes.
+
 However, as it is already the case for the distinguisher of classical Goppa codes \cite{MT21}, it seems complicated to turn this distinguisher into an efficient structural attack. But, having an algebraic explanation of the structure of the square of the dual of one--point Goppa--like codes is still desirable if we want to perform an attack using square code considerations. It also provides a rigorous method for selecting initial parameters that ensure the security of our cryptosystem.
 
 
@@ -169,6 +172,7 @@ However, as it is already the case for the distinguisher of classical Goppa code
 For a McEliece cryptosystem based on a family of $[n,k]_q$ linear codes, the public key has size $k(n-k)\lceil \log_2(q) \rceil$, whenever the generator matrix $\mathbf{G}$ of the public code is given in systematic form. The choice of such codes should not be limited to the binary case: Peters \cite{petersIsd} showed that for $q > 2$, the subfield subcode construction over $\fq$ can improve the key size while maintaining the same level of security against a decoding attack. 
 
 \emph{Information--set decoding} (ISD) algorithm, introduced by Prange \cite{prange}, is the best known algorithm for decoding a random--looking code without any knowledge of its structure. Let us denote by $t$ the error capability of the family of codes we consider.  Given a $(n-k) \times n$ parity check matrix $\mathbf{H}$ and a column vector $\mathbf{s}$ of length $n-k$ obtained through $\mathbf{H}$, the total complexity of finding the row vector $\mathbf{e} \in \fq^n$ of weight $t$ and satisfying $\mathbf{s}=\mathbf{H}\mathbf{e}^{T}$ is given by 
+
 $$ C_\text{Prange}= \frac{\binom{n}{t}}{\binom{n-k}{t}}C_\text{Gauss}(n,k,q),$$
 
 where $C_\text{Gauss}(n,k,q)$ is the cost of the Gauss--Jordan elimination of an $k\times n$ matrix over $\mathbb{F}_q$. We analyse the parameters of Goppa--like AG codes based on information set decoding attack.
@@ -247,6 +251,7 @@ Again, if $\calC$ is a $[n,k,d]_{q^m}$ code, then $\calC|_{\fq}$ is a $[n,\geq n
 Let $\operatorname{Tr}_{\mathbb{F}_{q^m}/\fq}$ be the trace operator on $\mathbb{F}_{q^m}$ with respect to $\mathbb{F}_q$, \emph{i.e.} defined by
 \[\Trm{x} = x + x^q + ... + x^{q^{m-1}},\]
 for any $x \in \fqm$. We can extend this definition to any vector $\mathbf{c} \in \fqm^n$ by $$\Trm{\mathbf{c}}= (\Trm{c_1},\cdots,\Trm{c_n}).$$
+
 
 \jade{Pour alléger les notations}, we shall write $\Tr{\cdot}$ instead of $\Trm{\cdot}$ in the following.
 
@@ -502,7 +507,9 @@ Without additional conditions on the divisor $D$ and the function $g$, the divis
 
 In \cite{JM96}, Janwa and Moreno define \emph{Goppa codes} on smooth and irreducible projective curves. Compared to their definition, Definition~\ref{def:Goppa--like_AG_code} introduces a function $g$ which defines a multiplicator for the AG code over $\fqm$ that is algebraically related to the support $\calP$.
 
+
 Introducing this function $g$ facilitates the use of SSAG codes as public keys for the McEliece cryptosystem. Given a correcting error capability $t$, we can fix a divisor $D$ whose degree satisfies $\deg (D) \geq 2t + 2\mathfrak{g}+1$. Then the family of codes in which the public key is picked can be defined by running a family of functions $g$ outside $\calL(D)$.
+
 
 \medskip
 
