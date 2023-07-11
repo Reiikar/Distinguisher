@@ -478,9 +478,11 @@ From this degree, we can define a monomial order $\prec$ over $\calS \simeq \fqm
 
 %
 Any function $f \in \calS$ can be written in the form $$f = c \cdot x^{\beta}y^{\alpha} + f'(x,y),$$
-with $c \neq 0$, $\alpha \leq a-1$ and $f' \in \calS$ such that any monomial $x^iy^j$ of $f'$ satisfies $ai+bj < \degab{x^{\beta}y^{\alpha}}$ and $j \leq a-1$. The leading monomial of $f$ with respect to the monomial order $\prec$ is thus defined by $\mathrm{LM}(f) := x^{\beta}y^{\alpha}$. This extends the definition of weighted degree to any such function by setting 
+with $c \neq 0$, $\alpha \leq a-1$ and $f' \in \calS$ such that any monomial $x^iy^j$ of $f'$ satisfies $ai+bj < \degab{x^{\beta}y^{\alpha}}$ and $j \leq a-1$. The leading monomial of $f$ with respect to the monomial order $\prec$ is thus defined by \mathieu{$\mathrm{LM}(f) := c \cdot x^{\beta}y^{\alpha}$}. This extends the definition of weighted degree to any such function by setting 
 \[\degab{f} := \degab{\mathrm{LM}(f)}.\]
 \end{definition}
+\mathieu{Note that if $c \neq 1$, we set $\degab{c \cdot x^{\beta}y^{\alpha}} = \degab{x^{\beta}y^{\alpha}}$. Up to a division by $c \neq 0$, we from now on always assume that $c=1$.}
+
 It is easy to check that for any $f \in \calS$, its weighted degree $\degab{f}$ is equal to the smallest integer $s$ such that $f$ belongs to the Riemann--Roch space $\calL(sP_{\infty})$.
 %
 This way, any function in $\calL(sP_\infty)$ can be seen as a polynomial in $x$ and $y$ such that $\degab{f}\leq s$. 
@@ -530,7 +532,7 @@ Take a univariate polynomial $g$ of degree $r$ such that $g(x_i) \neq 0$ for eve
 \begin{equation}\label{eq:classical_Goppa}\Gamma_r(\mathbf{x},g)= \GRS_r(\mathbf{x},\mathbf{y})^\perp|_{\fq}
 	\end{equation}
 where $\mathbf{y}=(g(x_1)^{-1},g(x_2)^{-1},\dots,g(x_n)^{-1})$.
-Represent the $\fqm$--points of $\PP^1$ by the couples $\PP^1(\fqm)=\{[1:x] \mid x \in \fqm\} \cup \{P_\infty\}$ for $P_\infty=[0:1]$. Take $\calP=\{[1:x_1],[1:x_2],\dots,[1:x_n]\}$ and $D=(r-1)P_\infty$. Finally, the polynomial $g$ can be seen as a function on $\PP^1$ which lies in $L(rP_\infty)$ but not in $L((r-1)P_\infty)$. Then both constructions match: $\Gamma_r(\mathbf{x},g)=\Gamma(\calP,D,g)$.
+Represent the $\fqm$--points of $\PP^1$ by the couples $\PP^1(\fqm)=\{[1:x] \mid x \in \fqm\} \cup \{P_\infty\}$ for $P_\infty=[0:1]$. Take $\calP=\{[1:x_1],[1:x_2],\dots,[1:x_n]\}$ and $D=(r-1)P_\infty$. Finally, the polynomial $g$ can be seen as a function on $\PP^1$ which lies in $\calL(rP_\infty)$ but not in $\calL((r-1)P_\infty)$. Then both constructions match: $\Gamma_r(\mathbf{x},g)=\Gamma(\calP,D,g)$.
 
 \subsubsection{Relation with Cartier codes.} Cartier codes \cite{Cou14} are also defined as a geometric realization of Goppa codes, since well--known properties of Goppa codes naturally extend to them. For instance, Theorem \ref{thm:Wirtz} holds for Cartier code without assumption on the degree of the divisor.
 
@@ -546,7 +548,7 @@ Thus, using Remark \ref{rk:G/q}, the Cartier code $\mathrm{Car}_q(\calP,G)$ coin
 \begin{example} \label{ex:Goppa_vs_Cartier}
 Let $q=3$ and $m=4$. We consider the elliptic curve defined over $\fqm$ by the equation 
 $$ E : y^2 = x^3+2x+1.$$
-As usual, we denote by $P_\infty$ the unique point at infinity on $E$. Wa take $D$ as a one-point divisr supported by $P_\infty$, \emph{i.e} $D = sP_\infty$. For a fixed degree $s=7$, we consider two choices of function $g$:
+As usual, we denote by $P_\infty$ the unique point at infinity on $E$. We take $D$ as a one--point divisor supported by $P_\infty$, \emph{i.e} $D = sP_\infty$. For a fixed degree $s=7$, we consider two choices of function $g$:
 \begin{enumerate}
 \item First, let $g_1 = x^4 \notin \calL(D)$ (since $\nu_{P_\infty}(g_1)=-8$). In this case, $g$ has 2 zeros (say $P_1$ and $P_2$), which are those of $x$. More precisely, we have
 $$(g_1) = 4(P_1+P_2)-8P_\infty.$$ 
@@ -554,7 +556,7 @@ Hence, if we set $G = D+(g_1)$, the divisor $\left[\frac{G}{q}\right] = P_1+P_2-
 
 \item Second, take $g_2 = x^4 + xy$. Again, we have $g_2 \notin \calL(D)$ since it has same valuation at $P_\infty$ as $g_1$. This time, we can verify that $g_2$ has $8$ distincts rational zeros, say $R_1,\dots, R_8$, \emph{i.e}
 $$(g_2) = R_1 + \dots + R_8 - 8P_\infty.$$   
-Consequently, we easily check that $\deg\left(\left[\frac{G}{q} \right]\right) = -1 \leq 2g(E)-2$. Some computations realized on Magma show that the codes $\Gamma(\calP,D,g_1)$ and $\mathrm{Car}_3(\calP,G)$ are not equal in this case.
+Consequently, we easily check that $\deg\left(\left[\frac{G}{q} \right]\right) = -1 \leq 2g(E)-2$. Some computations realized on Magma show that the codes $\Gamma(\calP,D,g_2)$ and $\mathrm{Car}_3(\calP,G)$ are not equal in this case.
 \end{enumerate}
 Magma results are summarized in Table \ref{table:example1}.
 \begin{table}[h]
@@ -686,7 +688,7 @@ This definition might be restrictive, but it is reasonable as these codes can be
 \noindent The following proposition generalizes the classical Euclidean division of univariate polynomials in the case of functions in $\calS$ with respect to the weighted degree $\deg_{a,b}$. Before that, we need the following definition.
 
 \begin{definition}
-For any function $h \in \calS$ with leading term $\LM{h}=x^\beta y^\alpha$ and $\alpha < a$, we define over $\fqm$ the space
+For any function $h \in \calS$ with leading monomial $\LM{h}=x^\beta y^\alpha$ and $\alpha < a$, we define over $\fqm$ the space
 $$ \calR(h) := \Span{x^u y^v \mid u \leq \beta + b-1 \text{ and } v\leq a-1 \text{ not both }  u \geq \beta \text{ and } v \geq \alpha}.$$ 
 \end{definition}
 
@@ -760,9 +762,9 @@ and we set $$\calT_0(s,g) := \set{\ev_{\calP}\left(\Tr{\frac{f}{g^{2}}}\right) \
 \end{definition}
 
 The vector spaces $\calT_i(s,g)$ have been designed so that we have
-\[ 
+\begin{equation} \label{eq:Tr(C*C^q^i)_dans_T_i} 
 \Tr{\calC \star \calC^{q^i}} \subseteq \calT_i(s,g)
-\]
+\end{equation}
 for all $i \in \set{0,\dots,\left\lfloor \frac{m}{2} \right\rfloor}$. Indeed, it is straightforward for $i=0$ and it follows from Lemma \ref{lem:weighted_division} for $i \geq 1$, noticing that $f \in \calL(sP_\infty) \cdot \calL(sP_\infty)^{q^i} \subseteq \calL(s(q^i+1)P_\infty)$. 
 
 We will benefit from these inclusions to improve the bound given in Proposition \ref{prop:bound_dim_using_inclusions}, provided that we can efficiently compute the dimension of the trace codes $\calT_i(s,g)$. This is studied in the next section.
@@ -871,15 +873,15 @@ Then
 $$\calT_{i^*}(s,g) \subseteq \calT_{i^*+1}(s,g) \subseteq \dots \subseteq \calT_{\lfloor \frac{m}{2}\rfloor}(s,g).$$
 \end{proposition}
 \begin{proof}
-From Proposition \ref{prop:dim_M_i's} (2), we know that \eqref{eq:cond_s_s'_i_star} implies $$M_{i^*+1}(s,g) = R(g^{q^{i^*+1}-q^{i^*+1-1}+1}).$$ 
+From Proposition \ref{prop:dim_M_i's} (2), we know that \eqref{eq:cond_s_s'_i_star} implies $$M_{i^*+1}(s,g) = \calR(g^{q^{i^*+1}-q^{i^*+1-1}+1}).$$ 
 Since the function $$i \mapsto \dfrac{s(q^i+1)+1-2\mathfrak{g}_{a,b}}{q^i-q^{i-1}+1}$$ 
 is increasing with $i$, we also have
 \begin{equation} \label{eq:structure_M_i}
-M_{i}(s,g) = R(g^{q^{i}-q^{i-1}+1}), \ \forall \ i \in \set{i^*,\dots,\left\lfloor \frac{m}{2}\right\rfloor+1}.
+M_{i}(s,g) = \calR(g^{q^{i}-q^{i-1}+1}), \ \forall \ i \in \set{i^*,\dots,\left\lfloor \frac{m}{2}\right\rfloor+1}.
 \end{equation} 
 We now prove the inclusions between the $\calT_i's$, assuming first that $i^* \neq 0$ (since the definition of $\calT_0$ is a bit different). Let $i \in \set{i^*,\dots,\lfloor \frac{m}{2}-1 \rfloor}$, and recall that 
-$$\calT_i(s,g) := \set{\Tr{\frac{f}{g^{q^i+1}}} \mid f \in \calR(g^{q^i-q^{i-1}+1})\cap \calL(s(q^i+1)P_\infty)}.$$
-Given $\Tr{\frac{f}{g^{q^i+1}}}$ in $\calT_i(s,g)$, we want to show that it belongs to $\calT_{i+1}(s,g)$. Applying Proposition \ref{prop:div_grob} by replacing $f$ with $fg^{q^{i+1}-q^i}$ and $g$ by $g^{q^{i+1}-q^i+1}$, we obtain
+$$\calT_i(s,g):=\set{\ev_{\calP}\left(\Tr{\frac{f}{g^{q^i+1}}}\right) \mid f \in \calR\left(g^{q^i-q^{i-1}+1}\right)  \cap \calL(s(q^i+1)P_\infty)}.$$
+Given $\ev_{\calP}\left(\Tr{\frac{f}{g^{q^i+1}}}\right)$ in $\calT_i(s,g)$, we want to show that it belongs to $\calT_{i+1}(s,g)$. Applying Proposition \ref{prop:div_grob} by replacing $f$ with $fg^{q^{i+1}-q^i}$ and $g$ by $g^{q^{i+1}-q^i+1}$, we obtain
 \begin{equation} \label{eq:division_i}
 fg^{q^{i+1}-q^i} = f_1g^{q^{i+1}-q^i+1} + f_2,
 \end{equation}
@@ -887,9 +889,9 @@ with $f_2 \in \calR(g^{q^{i+1}-q^i+1}) = M_i(s,g)$ (using \eqref{eq:structure_M_
 \begin{align*}
     \Tr{\frac{f}{g^{q^i+1}}} &= \Tr{\frac{fg^{q^{i+1}-q^i}}{g^{q^{i+1}+1}}} \\
                              &= \Tr{\frac{f_1g^{q^{i+1}-q^i+1}}{g^{q^{i+1}+1}}} + \Tr{\frac{f_2}{g^{q^{i+1}+1}}} \\
-                             &= \Tr{\frac{f_1^qg}{g^{q^{i+1}+1}}} + \Tr{\frac{f_2}{g^{q^{i+1}+1}}}.
+                             &\equiv_{\calP} \Tr{\frac{f_1^qg}{g^{q^{i+1}+1}}} + \Tr{\frac{f_2}{g^{q^{i+1}+1}}}.
 \end{align*}
-By assumption, we immediately have that $\Tr{\frac{f_2}{g^{q^{i+1}+1}}} \in \calT_{i+1}(s,g).$
+By assumption, we immediately have that $\ev_{\calP}\left(\Tr{\frac{f_2}{g^{q^{i+1}+1}}}\right) \in \calT_{i+1}(s,g).$
 If $f_1=0$, we are done. Otherwise, we have from \eqref{eq:division_i}:
 $$\degab{f_1} = \degab{fg^{q^{i+1}-q^i}} - \degab{g^{q^{i+1}-q^i+1}} = \degab{f}-s'.$$
 Thus
@@ -900,11 +902,11 @@ Thus
 \end{align*}
 which is true since in particular $f \in \calL(s(q^i+1)P_\infty)$ and $s<s'$. Since the weighted degree decreases, we can repeat the division process until eventually we obtain a quotient $f_1$ equal to zero, which proves that $\calT_i(s,g) \subseteq \calT_{i+1}(s,g)$.
 
-In the case $i^*=0$, we also have to prove that $\calT_0(s,g) \subseteq \calT_1(s,g)$, which differs from the other cases due to the definition of $\calT_0$. Let $\Tr{\frac{f}{g^2}} \in \calT_0(s,g)$, for some $f \in \calL(2sP_\infty)$. Using Proposition \ref{prop:div_grob}, this time replacing $f$ with $fg^{q-1}$ and $g$ with $g^{q+1}$ yields
+In the case $i^*=0$, we also have to prove that $\calT_0(s,g) \subseteq \calT_1(s,g)$, which differs from the other cases due to the definition of $\calT_0$. Let $\ev_{\calP}\left(\Tr{\frac{f}{g^2}}\right) \in \calT_0(s,g)$, for some $f \in \calL(2sP_\infty)$. Using Proposition \ref{prop:div_grob}, this time replacing $f$ with $fg^{q-1}$ and $g$ with $g^{q+1}$ yields
 $$fg^{q-1} = f_1g^q + f_2,$$ with $f_2 \in \calR(g^q) = M_1(s,g)$ (using \eqref{eq:structure_M_i} again).
 Thus, we can write
     $$ \Tr{\frac{f}{g^2}} = \Tr{\frac{f_1^qg}{g^{q+1}}}  + \Tr{\frac{f_2}{g^{q+1}}}, $$
-with $\Tr{\frac{f_2}{g^{q+1}}} \in \calT_1(s,g)$. Since $\degab{f_1} = \degab{fg^{q-1}} - \degab{g^q} = \degab{f}-s'$, we have 
+with $\ev_{\calP}\left(\Tr{\frac{f_2}{g^{q+1}}}\right) \in \calT_1(s,g)$. Since $\degab{f_1} = \degab{fg^{q-1}} - \degab{g^q} = \degab{f}-s'$, we have 
 \begin{align*}
      \degab{f_1^qg} < \degab{fg^{q-1}} & \iff q\degab{f} +(1-q)s' < \degab{f} + s'(q-1)\\
                                                & \iff (q-1)\degab{f} < 2s'(q-1)\\
