@@ -72,9 +72,11 @@
 The main result of this paper is Theorem \ref{thm:bound_with_T_i's_inclusion} on the upper bound of the dimension of codes. Some problems
 of this paper are :
 \begin{itemize}
-\item  There are many symbols. Please give a clear description of symbols, which can make the paper more
-readable. \TODO{Answer this.}
-\item  Please give more clear comparisons and show the clear advantages of this paper. Add some some results of [NEK21] in Table 1 to give a clear comparison. Add some examples in Section 2 to make a comparison with results in Section 3. \TODO{on avait laisser ça de côté.}
+\item  There are many symbols. Please give a clear description of symbols, which can make the paper more readable. \TODO{Answer this and be polite.}
+\item  Please give more clear comparisons and show the clear advantages of this paper. Add some results of [NEK21] in Table 1 to give a clear comparison. Add some examples in Section 2 to make a comparison with results in Section 3. 
+
+\textit{We added two more tables to compare our construction with binary Goppa codes and 1--point Hermitian codes. We also added 2 examples in Section \ref{sec:Goppa}.}
+
 \end{itemize}
 
 Hence, I suggest a revision. Some more comments are listed: \\
@@ -89,13 +91,12 @@ Hence, I suggest a revision. Some more comments are listed: \\
  
 \item Page 2. It is better to give a clear description of the advantages of the upper bound of the dimension of codes.
 
-\TODO{Dire pourquoi une borne sur la dimension fournit un distingueur.}  
+\TODO{Dire pourquoi une borne sur la dimension fournit un distingueur. Rajouter quelques lignes dans l'intro.}  
 
 
-\item  Page 5. Please check the use of $\Tr{\calC}^{\star 2}$ and $\calC^{q^i}$
-. It seems that $\Tr{\calC}^{\star 2}$ means $\Tr{\calC^2}$. Many similar problems in the paper.
+\item  Page 5. Please check the use of $\Tr{\calC}^{\star 2}$ and $\calC^{q^i}$. It seems that $\Tr{\calC}^{\star 2}$ means $\Tr{\calC^{\star 2}}$. Many similar problems in the paper.
 
-\textit{At this point, we really want to talk about the square of the trace and not the trace of the square. \TODO{We never deal with $\Tr{\calC^2}$ ?} To make it more readable, we changed the notation of the Trace by removing the underscore $\mathbb{F}_{q^m}/\mathbb{F}_q$ once correctly defined (i.e. after Equation \eqref{eq:dim_trace}).}
+\textit{At this point, we really want to talk about the square of the trace and not the trace of the square. To make it more readable, we changed the notation of the Trace by removing the underscore $\mathbb{F}_{q^m}/\mathbb{F}_q$ once correctly defined (i.e. after Equation \eqref{eq:dim_trace}).}
 
 \noindent Please give a description of $\calC^{q^i}$.
  
@@ -140,11 +141,11 @@ Hence, I suggest a revision. Some more comments are listed: \\
 
 \item Page 7, Equation 10: The notation $\mathcal{O}_{P_\infty}$ for the ring $\cup_{s \ge 0} \mathcal{L}(sP_\infty)$ is quite misleading. It is very common to use the notation $\mathcal{O}_{P_\infty}$ for the local ring at $P_\infty$. This is the ring consisting of all functions that do not have a pole at$ P_\infty$. The authors consider in some sense the opposite situation: the ring of all functions with no poles except possibly at $P_\infty$. Please use some other notation.
 
-\textit{In fact it was a mistake from us. We changed the notation $\mathcal{O}_{P_\infty}$ into $\mathcal{S}$ which actually is the coordinate ring of the affine curve $\calX_{a,b} \setminus \{P_\infty\}$. We changed the rest of the paper accordingly to this new notation.}
+\textit{Thank you for pointing out this mistake. We changed the notation $\mathcal{O}_{P_\infty}$ into $\mathcal{S}$ which actually is the coordinate ring of the affine curve $\calX_{a,b} \setminus \{P_\infty\}$. We changed the rest of the paper accordingly to this new notation.}
 
 \item Page 7, line -4: "$f=x^\beta y^\alpha+f'(x,y)$". The authors write that any $f \in \cup_{s \ge 0} \mathcal{L}(sP_\infty)$ can be written in this form, but this is strictly speaking not true. One needs to allow for a leading coefficient different from one as well. Please write something like "$f=c\cdot x^\beta y^\alpha+f'(x,y)$ for some nonzero $c$." This also affects the leading term expression later on.
 
-\textit{We add a nonzero constant $c$ in front of the expression and we also changed the expression of the leading monomial $\operatorname{LM}(f)$ (note that we changed $\operatorname{LT}(f)$ into $\operatorname{LM}(f)$). \TODO{ keep $\rightarrow$ We also added a short remark below Equation \eqref{eq:def_mon_order} to explain why later, we assume that $c=1$ while dealing with leading monomial (i.e. in Section \ref{subsection : Upper_bound_Goppa-like}).} }
+\textit{We add a nonzero constant $c$ in front of the expression and we also changed the expression of the leading monomial $\operatorname{LM}(f)$ (note that we changed $\operatorname{LT}(f)$ into $\operatorname{LM}(f)$).}
 
 + \TODO{ajout remarque du fait qu'on travaille sur un corps, donc ça reviens essenciellement au même}
 
@@ -167,9 +168,9 @@ Hence, I suggest a revision. Some more comments are listed: \\
 
 \textit{The formula has been corrected.}
 
-\item Page 11, line 4: "$\Tr{\calC*\calC_1^{q^i}} \subseteq ..." should be "\Tr{\calC_1*\calC_1^{q^i}} \subseteq$ ..."
+\item Page 11, line 4: "$\Tr{\calC \star \calC_1^{q^i}} \subseteq ..."$ should be $"\Tr{\calC_1 \star \calC_1^{q^i}} \subseteq$ ..."
 
-\textit{Actually, the result works with both $\calC_1$ and $\calC$. \TODO{This is not really important : explain shortly why}.}
+\textit{Actually, the result works with both $\calC_1$ and $\calC$. In the proof, we added a explanation  "By taking th star product ..." to make it clearer.} 
 
 \item Page 11, line 7: in the formula involving the intersection of summations of certain trace codes, the right-hand side is the empty set symbol. Since any code contains 0, I suspect the right-hand side should have been $\{0\}$ instead of $\varnothing$.
 
@@ -179,13 +180,13 @@ Hence, I suggest a revision. Some more comments are listed: \\
 
 \textit{We added a reference to classical Goppa codes (Equation \eqref{eq:classical_Goppa}). Here, $r$ is the order of the Goppa code.} 
 
-\item Page 11, Proposition \ref{prop:div_grob}: Since g is the element one wants to divide by (with remainder), I needs to add the condition that $g \neq 0$.
+\item Page 11, Proposition \ref{prop:div_grob}: Since $g$ is the element one wants to divide by (with remainder), I needs to add the condition that $g \neq 0$.
 
 \textit{The condition on $g$ has been added. We also add Definition \ref{def:remainder_space} : it allows us to introduce the notation $\mathcal{R}(h)$ for any function $h \in \mathcal{S}$ as we use it for several functions later on.} 
 
 \item Page 12, Lemma \ref{lem:weighted_division}: Previously the trace function Tr was only used and defined for elements from a finite field with $q^m$ elements, but now it is applied to a function. This means that not longer $\Tr{f}=\Tr{f^q}$. However, this is used in the proof of the lemma. There is little harm, since later on the results are not applied to functions but to codewords corresponding to them. Please explain briefly before the lemma what exactly is meant with $Tr(f)$ is $f$ is a function, or reformulate in terms of codewords.
 
-\textit{We added a discussion before Lemma \ref{lem:weighted_division} (see. Section \ref{subsection:study_Tr(C*C_q)}) to explain what we mean by the trace of a function: first, we extend the evaluation map $\ev_{\calP}$ to the ring $\mathcal{S}$ as well as the trace operator by setting $\Tr{f}:=f+f^q+\dots + f^{q^{m-1}}$. Then, given $f,f' \in \mathcal{S}$, we say that $f \equiv_{\calP} f'$ if $\ev_{\calP}(f)=\ev_{\calP}(f')$. Hence, we have $\Tr{f^q} \equiv_{\calP}\Tr{f}$ (see Equation \eqref{eq:prop_trace}). In particular, we have equality of the corresponding evaluation codewords. These new notations are then used for the rest of the paper.}
+\textit{We added a discussion before Lemma \ref{lem:weighted_division} (see. Section \ref{subsection:study_Tr(C*C_q)}) to explain what we mean by the trace of a function: first, we extend the evaluation map $\ev_{\calP}$ to the ring $\mathcal{S}$ as well as the trace operator by setting $\Tr{f}:=f+f^q+\dots + f^{q^{m-1}}$. Then, given $f,f' \in \mathcal{S}$, we say that $f \equiv_{\calP} f'$ if $\ev_{\calP}(f)=\ev_{\calP}(f')$. Hence, we have $\Tr{f^q} \equiv_{\calP}\Tr{f}$ (see Equation \eqref{eq:prop_trace}). In particular, we have equality of the corresponding evaluation codewords. These new notation are then used for the rest of the paper.}
 
 \item Page 13, first line after Definition \ref{def:T_i's}. "Lemma \ref{lem:weighted_division} entails that ...". Lemma \ref{lem:weighted_division} only applies to $i \ge 1$. Please add a short remark concerning the case $i=0$.
 
