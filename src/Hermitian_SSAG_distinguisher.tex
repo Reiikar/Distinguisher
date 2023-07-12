@@ -467,7 +467,7 @@ where each Riemann--Roch space $\calL(s P_\infty)$ has an explicit basis as foll
 
 In summary, any function that is regular on all $\calX_{a,b}$ except maybe at $P_\infty$ is a bivariate polynomial in the functions $x$ and $y$. 
 
-\begin{definition}[Weighted degree]
+\begin{definition}[Weighted degree] 
 Given a monomial of the form $x^iy^j \in \calS$, we define its weighted degree by
 \[ \degab{x^iy^j} := ai+bj.\]
 
@@ -486,7 +486,7 @@ with $c \neq 0$, $\alpha \leq a-1$ and $f' \in \calS$ such that any monomial $x^
 It is easy to check that for any $f \in \calS$, its weighted degree $\degab{f}$ is equal to the smallest integer $s$ such that $f$ belongs to the Riemann--Roch space $\calL(sP_{\infty})$.
 %
 This way, any function in $\calL(sP_\infty)$ can be seen as a polynomial in $x$ and $y$ such that $\degab{f}\leq s$. 
-\begin{remark}
+\begin{remark} \label{rq:link_degab_valuation}
 For every $f \in \calS$, we have $\degab{f}=-v_{P_\infty}(f)$.
 \end{remark}
 
@@ -667,7 +667,7 @@ As a result, each pair of consecutive terms in the sum $\sum\limits_{i=0}^{\lflo
 
 As recalled in Section \ref{subsec:def-Goppa}, Goppa--like AG codes coincide with Cartier code as soon as $\deg\left(\left[ \frac{D+(g)}{q} \right] \right)> 2 \mathfrak{g}-2$. In this case, the code $\calC_1$ has dimension at least $\mathfrak{g}$. This means that when the Goppa--like code is also a Cartier code, the dimension of the square of its dual is very unlikely to meet the bound given in Proposition \ref{prop:bound_dim_using_inclusions}.
 
-\begin{remark}
+\begin{remark} \label{rq:classical_Goppa_case}
 	When considering classical Goppa codes defined in Equation \eqref{eq:classical_Goppa} for the McEliece cryptosystem, it is common to ask for the degree $r$ polynomial $g$ to have only simple roots. In this case, we have $ \left[ \frac{(r-1)P_\infty+(g)}{q} \right] = -P_\infty$ and the code $\calC_1$ defined in Proposition \ref{prop:non-eq} is always zero. The situation above thus never occurs.
 \end{remark}
 
@@ -687,7 +687,7 @@ This definition might be restrictive, but it is reasonable as these codes can be
 \subsection{Weighted Euclidean division}
 \noindent The following proposition generalizes the classical Euclidean division of univariate polynomials in the case of functions in $\calS$ with respect to the weighted degree $\deg_{a,b}$. Before that, we need the following definition.
 
-\begin{definition}
+\begin{definition} \label{def:remainder_space}
 For any function $h \in \calS$ with leading monomial $\LM{h}=x^\beta y^\alpha$ and $\alpha < a$, we define over $\fqm$ the space
 $$ \calR(h) := \Span{x^u y^v \mid u \leq \beta + b-1 \text{ and } v\leq a-1 \text{ not both }  u \geq \beta \text{ and } v \geq \alpha}.$$ 
 \end{definition}
@@ -708,7 +708,7 @@ Moreover, we have $\degab{f_2} \leq \degab{f}$.
 
 \jade{J'ai retravaillé la partie ci-dessous...}
 
-\subsection{Study of the codes $\Tr{\calC \star \calC^{q^i}}$}
+\subsection{Study of the codes $\Tr{\calC \star \calC^{q^i}}$} \label{subsection:study_Tr(C*C_q)}
 
 In this paragraph, we will use the weighted  Euclidean division above to better control the elements in $\Tr{\calC \star \calC^{q^i}}$ for $\calC = \calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$, where we fixed $s'>s \geq 0$, $g \in \calS$ with $\degab{g}= s'$ and a set of points  $\calP \subset \calX_{a,b}(\F_{q^m})$ such that $\calP \cap \Supp(g) = \varnothing$.
 
@@ -772,7 +772,7 @@ We will benefit from these inclusions to improve the bound given in Proposition 
 
 \jade{... jusque là.}
 %--------Last changes----------%
-\subsection{Upper bound in Goppa--like case}
+\subsection{Upper bound in Goppa--like case} \label{subsection : Upper_bound_Goppa-like}
 In the proposition below, we study the intersection 
 \begin{equation}\label{eq:def_Mi}
 M_i(s,g):=   \calR\left(g^{q^{i}-q^{i-1}+1}\right) \cap \calL(s(q^i+1)P_\infty)

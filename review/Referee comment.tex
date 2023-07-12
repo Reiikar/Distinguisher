@@ -34,15 +34,23 @@
 
 %%%% Macros are here:
 
+\DeclareMathOperator{\trace}{Tr}
+\DeclareMathOperator{\ev}{ev}
+
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\End}{\mathrm{End}}
 \newcommand{\Fq}[1][]{\mathbb{F}_{q^{#1}}}
+\newcommand{\fqm}{\mathbb{F}_{q^m}}
 \newcommand{\Roots}{\mathrm{Roots}}
-
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calX}{\mathcal{X}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\Tr}[1]{\trace\!\left(#1\right)}
 \newcommand{\CPhi}{C_\Phi}
+
 
 \setlength\parindent{0pt} %NOINDENT
 
@@ -54,104 +62,143 @@
 \begin{document}
 
 \maketitle
-We took in account all the comments of the referees and we modified the manuscript accordingly. To help the referees to better navigate in this answer and the revised version, we have listed all the comments below, followed by our answer. 
+
+\textit{We took into account all the comments of the referees and we modified the manuscript accordingly. To help the referees to better navigate in this answer and the revised version, we have listed all the comments below, followed by our answer.} 
+
 \section*{Common comments}
  
 \section*{First review's comment}
 
-The main result of this paper is Theorem 3.8 on the upper bound of the dimension of codes. Some problems
+The main result of this paper is Theorem \ref{thm:bound_with_T_i's_inclusion} on the upper bound of the dimension of codes. Some problems
 of this paper are :
 \begin{itemize}
 \item  There are many symbols. Please give a clear description of symbols, which can make the paper more
-readable.
-\item  Please give more clear comparisons and show the clear advantages of this paper. Add some some
-results of [NEK21] in Table 1 to give a clear comparison. Add some examples in Section 2 to make
-a comparison with results in Section 3.
+readable. \TODO{Answer this.}
+\item  Please give more clear comparisons and show the clear advantages of this paper. Add some some results of [NEK21] in Table 1 to give a clear comparison. Add some examples in Section 2 to make a comparison with results in Section 3. \TODO{on avait laisser ça de côté.}
 \end{itemize}
 
-Hence, I suggest a revision. Some more comments are listed:
+Hence, I suggest a revision. Some more comments are listed: \\
 
-
-\TODO{On a tenu compte de toutes les typos et fautes d'orthographes. Chacun des points plus compliqués sont détaillés. De plus, on a tenu compte des remarques des rapporteurs}
+\textit{Typos and spelling mistakes have been corrected. Major modifications are listed bellow.} \\
 
 \begin{itemize}
  
-\item  Page 1. Subfield subcodes of AG codes. Line -7. Note the symbols of codes and curve. Check the use of $\mathcal{C}$ and C; 
+\item  Page 1. Subfield subcodes of AG codes. Line -7. Note the symbols of codes and curve. Check the use of $\calC$ and C; 
 
-\DONE{ We corrected the use of caligraphical letter in $C_{a,b}$, and we also add some context about the definition of the AG code $\mathcal{C}$.}
+\textit{We corrected the use of caligraphical letter in $C_{a,b}$, and we also add some context about the definition of the AG code $\calC$. The notation $\calC$ always represents a code, while $\calX$ is reserved for curves.}
  
-\item 
-\TODO{Dire pourquoi une borne sur la dimension fournit un distingueur:  Page 2. It is better to give a clear description of the advantages of the upper bound of the dimension of codes.}
+\item Page 2. It is better to give a clear description of the advantages of the upper bound of the dimension of codes.
+
+\TODO{Dire pourquoi une borne sur la dimension fournit un distingueur.}  
 
 
-\item  Page 5. Please check the use of $Tr(C)^2$ and $ C^{q^i}$
-. It seems that $Tr(C)^2$ means $Tr(C^2)$. Many similar problems in the paper.
+\item  Page 5. Please check the use of $\Tr{\calC}^{\star 2}$ and $\calC^{q^i}$
+. It seems that $\Tr{\calC}^{\star 2}$ means $\Tr{\calC^2}$. Many similar problems in the paper.
 
-\DONE{Actually it is really the square of the Trace and not the Trace of the square. To make it more readable, we changed the notation of the Trace by removing the underscore $\mathbb{F}_{q^m}/\mathbb{F}_q$.}
+\textit{At this point, we really want to talk about the square of the trace and not the trace of the square. \TODO{We never deal with $\Tr{\calC^2}$ ?} To make it more readable, we changed the notation of the Trace by removing the underscore $\mathbb{F}_{q^m}/\mathbb{F}_q$ once correctly defined (i.e. after Equation \eqref{eq:dim_trace}).}
 
- Please give a description of $C^{q^i}$.
+\noindent Please give a description of $\calC^{q^i}$.
  
-\DONE{We added a description below equation \eqref{eq:key_equation}.}
+\textit{We added a description below Equation \eqref{eq:key_equation}.}
 
-\item  Page 6. Note that $\deg G = s$. There are many symbols in the paper. Please give a clear description.
+\item Page 6. Note that $\deg G = s$. There are many symbols in the paper. Please give a clear description.
 
-\DONE{The definition of the degree of a divisor can be found at page 4. We also changed the notation $\deg G$ into $\deg(G)$ where it was not already the case.}
-
-
-\item  \TODO{Mettre un exemple avant la sous-section 2.2 avec un cas égalité ou inégalité entre Goppa-like et Cartier. Reprendre le même exemple après 2.6 dans le cas ou la borne n'est effectivement pas atteinte, i.e. quand $g$ est une puissance q-ème i.e. $\mathcal{C}_1$ : Page 11. It is better to give some examples at the end of Section 2};
+\textit{The definition of the degree of a divisor can be found at page 4. We also changed the notation $\deg G$ into $\deg(G)$ where it was not already the case.}
 
 
-\item  \TODO{script Python : Page 18. Check the format of references. Update Reference [MT21].}
+\item Page 11. It is better to give some examples at the end of Section 2;
+
+\textit{We added Example \ref{ex:Goppa_vs_Cartier} to compare bith Cartier and Goppa-like construction. We present 2 cases: an equality one and an inequality one.}
+\TODO{Add another example after Proposition \ref{prop:non-eq} to illustrate it.}
+
+
+\item Page 18. Check the format of references. Update Reference [MT21].
+
+\TODO{script Python.} 
 
 \end{itemize} 
 
 
 \section*{Second review's comment}
 
-\TODO{on a tenu compte de toutes les typos et fautes d'orthographes. Chacun des points plus compliqués sont détaillés.}
+\textit{Typos and spelling mistakes have been corrected. Major modifications are listed bellow.} \\
 
 \begin{itemize}
 
+\item Page 6, line 4: In the second upper bound for the dimension of the Schur square of a trace code in Corollary \ref{coro:first_bound_square_of_trace}, a pair of brackets is missing. More precisely, the formula $m \cdot dim_{\fqm} \calC^{\star 2}-\binom{dim_{\fqm}\calC+1}{2}$ should be $m \cdot \left( dim_{\fqm} \calC^{\star 2} -\binom{dim_{\fqm} \calC+1}{2}\right)$
 
-\item \DONE{Page 6, line 4: In the second upper bound for the dimension of the Schur square of a trace code in Corollary 1.8, a pair of brackets is missing. More precisely, the formula $m \cdot dim C^2-\binom{dim(C)+1}{2}$ should be $m \cdot \left( dim C^2-\binom{dim(C)+1}{2}\right)$}
+\textit{We add the missing bracket.}
 
-\item \DONE{Page 6, proof of Corollary 1.10: In the proof an upper bound on the dimension of $Tr(C)^2$ is given in a series of formulas involving four $\le$ signs. Actually the final three inequalities are equalities. It would be easier for the reader to replace these three inequalities with equalities.}
+\item Page 6, proof of Corollary \ref{coro:1st_bound_mumford}: In the proof an upper bound on the dimension of $\Tr{\calC}^{\star 2}$ is given in a series of formulas involving four $\le$ signs. Actually the final three inequalities are equalities. It would be easier for the reader to replace these three inequalities with equalities.
 
-
-\item \DONE{the condition have been added : Page 7, Definition 13: the constants $\alpha_{0a}$ and $\alpha_{b0}$ are not allowed to be zero. Please add this condition.}
-
-\item \DONE { changer la notation de $\mathcal{O}_\infty$ parce que c'est pas le bon truc. Est-ce que ça a un autre nom ? : Page 7, Equation 10: The notation $\mathcal{O}_{P_\infty}$ for the ring $\cup_{s \ge 0} L(sP_\infty)$ is quite misleading. It is very common to use the notation $\mathcal{O}_{P_\infty}$ for the local ring at $P_\infty$. This is the ring consisting of all functions that do not have a pole at$ P_\infty$. The authors consider in some sense the opposite situation: the ring of all functions with no poles except possibly at $P_\infty$. Please use some other notation.}
+\textit{We took you remark into account and changed the proof accordingly.}
 
 
-\item Page 7, line -4: "$f=x^\beta y^\alpha+f'(x,y)$". The authors write that any $f \in \cup_{s \ge 0} L(sP_\infty)$ can be written in this form, but this is strictly speaking not true. One needs to allow for a leading coefficient different from one as well. Please write something like "$f=c\cdot x^\beta y^\alpha+f'(x,y)$ for some nonzero $c$." This also affects the leading term expression later on.
-\DONE{ We took the modification into consideration. We also changed the notation of LT(f) into LM(f)} + \TODO{ajout remarque du fait qu'on travaille sur un corps, donc ça reviens essenciellement au même}
+\item Page 7, Definition 13: the constants $\alpha_{0a}$ and $\alpha_{b0}$ are not allowed to be zero. Please add this condition.
+
+\textit{The conditions have been added.} 
+
+\item Page 7, Equation 10: The notation $\mathcal{O}_{P_\infty}$ for the ring $\cup_{s \ge 0} \mathcal{L}(sP_\infty)$ is quite misleading. It is very common to use the notation $\mathcal{O}_{P_\infty}$ for the local ring at $P_\infty$. This is the ring consisting of all functions that do not have a pole at$ P_\infty$. The authors consider in some sense the opposite situation: the ring of all functions with no poles except possibly at $P_\infty$. Please use some other notation.
+
+\textit{In fact it was a mistake from us. We changed the notation $\mathcal{O}_{P_\infty}$ into $\mathcal{S}$ which actually is the coordinate ring of the affine curve $\calX_{a,b} \setminus \{P_\infty\}$. We changed the rest of the paper accordingly to this new notation.}
+
+\item Page 7, line -4: "$f=x^\beta y^\alpha+f'(x,y)$". The authors write that any $f \in \cup_{s \ge 0} \mathcal{L}(sP_\infty)$ can be written in this form, but this is strictly speaking not true. One needs to allow for a leading coefficient different from one as well. Please write something like "$f=c\cdot x^\beta y^\alpha+f'(x,y)$ for some nonzero $c$." This also affects the leading term expression later on.
+
+\textit{We add a nonzero constant $c$ in front of the expression and we also changed the expression of the leading monomial LM($f$) (note that we changed LT($f$) into LM($f$)). \TODO{ keep $\rightarrow$ We also added a short remark below Equation \eqref{eq:def_mon_order} to explain why later, we assume that $c=1$ while dealing with leading monomial (i.e. in Section \ref{subsection : Upper_bound_Goppa-like}).} }
+
++ \TODO{ajout remarque du fait qu'on travaille sur un corps, donc ça reviens essenciellement au même}
 
 
-\item  \DONE{À modifier un peu après avoir modifier la notation $\mathcal{O}_{P_{\inf}}$ : enlever tout ce qui mentionne l'anneau de valuation à l'infini : Page 8, Remark 1.15: "It is worth noting that $\mathcal{O}_{P\infty}$ is a valuation ring with valuation $v_{P_\infty}$". This is not true. Indeed, the only valuation ring with valuation $v_{P_\infty}$ is the local ring at $P_\infty$. Please modify the remark. It is true that $\deg_{a,b}(f)=-v_{P_\infty}(f)$, which is perhaps the main point of the remark.}
+\item Page 8, Remark \ref{rq:link_degab_valuation}: "It is worth noting that $\mathcal{O}_{P\infty}$ is a valuation ring with valuation $\nu_{P_\infty}$". This is not true. Indeed, the only valuation ring with valuation $\nu_{P_\infty}$ is the local ring at $P_\infty$. Please modify the remark. It is true that $\deg_{a,b}(f)=-\nu_{P_\infty}(f)$, which is perhaps the main point of the remark.
 
-\item \DONE{The definition of $G$ has been added right before Definition \ref{def:Goppa--like_AG_code}Page 8, Definition 2.1: Later on the notation G is used for the divisor D+(g). It would help the reader if this is mentioned already here, since later on, for example in Remark 2.2, the notation G is used without explanation.}
+\textit{We changed the remark, only keeping the link between the valuation at $P_\infty$ and the weighted degree.}
 
 
+\item Page 8, Definition 2.1: Later on the notation $G$ is used for the divisor D+(g). It would help the reader if this is mentioned already here, since later on, for example in Remark 2.2, the notation $G$ is used without explanation.
 
-\item \DONE{The missing dimension has been added : Page 10, line 3: In the second summation in this line, there is "$\dim_{F_{q}}$" missing in front of the code $Tr(C*C^{q^i})$}
+\textit{The definition of $G$ has been added right before Definition \ref{def:Goppa--like_AG_code}.}
 
-\item \DONE{The formula has been corrected: }Page 11, line 2: The formula "$C_1 \subseteq C^{q^i} \cap C^{q^{m-1}}$" should be "$C_1 \subseteq C \cap C^{q^{m-1}}$". 
 
-\item \TODO{Le résultat est vrai en l'état avec $\mathcal{C}$. C'est aussi vrai avec $\mathcal{C}_1$ mais on s'en moque. L'expliquer : on a ajouter un peu de détails }Page 11, line 4: "$Tr(C*C_1^{q^i}) \subseteq ..." should be "Tr(C_1*C_1^{q^i}) \subseteq$ ..."
+\item Page 10, line 3: In the second summation in this line, there is "$\dim_{F_{q}}$" missing in front of the code $\Tr{\calC \star \calC^{q^i}}$.
 
-\item \DONE{The symbol has been changed : }Page 11, line 7: in the formula involving the intersection of summations of certain trace codes, the right-hand side is the empty set symbol. Since any code contains 0, I suspect the right-hand side should have been \{0\} instead of $\emptyset$.
+\textit{The missing dimension has been added.}
 
-\item \DONE{ We added a reference to classical Goppa codes as defined at the bottom of page 8 (i.e. Equation \eqref{eq:classical_Goppa}). Here, $r$ is the order of the Goppa code : } Page 11, Remark 2.8: what is the parameter r? It is probably the degree of g, but I do not recall the authors mentioned this earlier. Please add a short explanation.
+\item Page 11, line 2: The formula "$\calC_1 \subseteq \calC^{q^i} \cap \calC^{q^{m-1}}$" should be "$\calC_1 \subseteq \calC \cap \calC^{q^{m-1}}$". 
 
-\item \DONE{The condition on $g$ has been added : Page 11, Proposition 3.2: Since g is the element one wants to divide by (with remainder), I needs to add the condition that $g \neq 0$}.
+\textit{The formula has been corrected.}
 
-\item \TODO{Page 12, Lemma 3.3: Previously the trace function Tr was only used and defined for elements from a finite field with $q^m$ elements, but now it is applied to a function. This means that not longer $Tr(f)=Tr(f^q)$. However, this is used in the proof of the lemma. There is little harm, since later on the results are not applied to functions but to codewords corresponding to them. Please explain briefly before the lemma what exactly is meant with $Tr(f)$ is $f$ is a function, or reformulate in terms of codewords.}
+\item Page 11, line 4: "$\Tr{\calC*\calC_1^{q^i}} \subseteq ..." should be "\Tr{\calC_1*\calC_1^{q^i}} \subseteq$ ..."
 
-\item \TODO{we added a Page 13, first line after Definition 3.2. "Lemma 3.3 entails that ...". Lemma 3.3 only applies to $i \ge 1$. Please add a short remark concerning the case i=0.} 
+\textit{Actually, the result works with both $\calC_1$ and $\calC$. \TODO{This is not really important : explain shortly why}.}
 
-\item \DONE{ Corrected : Page 13, second line after Definition 3.2: "$Tr(f/q^{i+1})$" should be "$Tr(f/g^{q^i+1})$"}
+\item Page 11, line 7: in the formula involving the intersection of summations of certain trace codes, the right-hand side is the empty set symbol. Since any code contains 0, I suspect the right-hand side should have been $\{0\}$ instead of $\varnothing$.
 
-\item \TODO{Défined as codes : Page 13, last line before subsection 3.3: "the trace codes $T_i(s,g)$". The sets $T_i(s,g)$ were defined in Definition 3.2 as sets of functions and not as codes. Did I misunderstand something? Please clarify.}
+\textit{The symbol has been changed.}
+
+\item Page 11, Remark \ref{rq:classical_Goppa_case}: what is the parameter $r$? It is probably the degree of $g$, but I do not recall the authors mentioned this earlier. Please add a short explanation.
+
+\textit{We added a reference to classical Goppa codes (Equation \eqref{eq:classical_Goppa}). Here, $r$ is the order of the Goppa code.} 
+
+\item Page 11, Proposition \ref{prop:div_grob}: Since g is the element one wants to divide by (with remainder), I needs to add the condition that $g \neq 0$.
+
+\textit{The condition on $g$ has been added. We also add Definition \ref{def:remainder_space} : it allows us to introduce the notation $\mathcal{R}(h)$ for any function $h \in \mathcal{S}$ as we use it for several functions later on.} 
+
+\item Page 12, Lemma \ref{lem:weighted_division}: Previously the trace function Tr was only used and defined for elements from a finite field with $q^m$ elements, but now it is applied to a function. This means that not longer $\Tr{f}=\Tr{f^q}$. However, this is used in the proof of the lemma. There is little harm, since later on the results are not applied to functions but to codewords corresponding to them. Please explain briefly before the lemma what exactly is meant with $Tr(f)$ is $f$ is a function, or reformulate in terms of codewords.
+
+\textit{We added a discussion before Lemma \ref{lem:weighted_division} (see. Section \ref{subsection:study_Tr(C*C_q)}) to explain what we mean by the trace of a function: first, we extend the evaluation map $\ev_{\calP}$ to the ring $\mathcal{S}$ as well as the trace operator by setting $\Tr{f}:=f+f^q+\dots + f^{q^{m-1}}$. Then, given $f,f' \in \mathcal{S}$, we say that $f \equiv_{\calP} f'$ if $\ev_{\calP}(f)=\ev_{\calP}(f')$. Hence, we have $\Tr{f^q} \equiv_{\calP}\Tr{f}$ (see Equation \eqref{eq:prop_trace}). In particular, we have equality of the corresponding evaluation codewords. These new notations are then used for the rest of the paper.}
+
+\item Page 13, first line after Definition \ref{def:T_i's}. "Lemma \ref{lem:weighted_division} entails that ...". Lemma \ref{lem:weighted_division} only applies to $i \ge 1$. Please add a short remark concerning the case $i=0$.
+
+\textit{A short remark for the case $i=0$ has been added.} 
+
+\item Page 13, second line after Definition \ref{def:T_i's}: "$\Tr{\frac{f}{q^{i+1}}}$" should be "$\Tr{\frac{f}{g^{q^i+1}}}$".
+
+\textit{The mistake has been corrected.}
+
+\item Page 13, last line before Subsection \ref{subsection : Upper_bound_Goppa-like}: "the trace codes $\mathcal{T}_i(s,g)$". The sets $\mathcal{T}_i(s,g)$ were defined in Definition \ref{def:T_i's} as sets of functions and not as codes. Did I misunderstand something? Please clarify.
+
+\textit{We changed the definition of the $\mathcal{T}_i(s,g)'s$ (see Definition \ref{def:T_i's}). They are now defined as codes whose codewords are the evaluation at the set of points $\mathcal{P}$ of traces of functions. Hence, the terminology "trace codes" makes sense.}
+
 \end{itemize}
 
 \end{document}
