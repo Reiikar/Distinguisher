@@ -180,11 +180,59 @@ For a McEliece cryptosystem based on a family of $[n,k]_q$ linear codes, the pub
 
 $$ C_\text{Prange}= \frac{\binom{n}{t}}{\binom{n-k}{t}}C_\text{Gauss}(n,k,q),$$
 
-where $C_\text{Gauss}(n,k,q)$ is the cost of the Gauss--Jordan elimination of an $k\times n$ matrix over $\mathbb{F}_q$. We analyse the parameters of Goppa--like AG codes based on information set decoding attack.
+where $C_\text{Gauss}(n,k,q)=$ is the cost of the partial Gauss--Jordan elimination of an $k\times n$ matrix over $\mathbb{F}_q$. We analyse the parameters of Goppa--like AG codes based on information set decoding attack.
  
-In this work, we also investigate Goppa--like AG codes over finite fields with different characteristics by analysing the computational cost of the ISD algorithm for parameters relevant to post--quantum cryptography. In Table \ref{table:goppa-herm}, we provide parameters that resist the distinguisher given in this paper and improve key sizes compared to the subfield subcodes of 1--point Hermitian codes parameters reported in \cite[Tables~2 and 3]{EKN21crypto}, which already reduced key sizes compared to binary Goppa codes.
+In this work, we also investigate Goppa--like AG codes over finite fields with different characteristics by analysing the computational cost of the ISD algorithm for parameters relevant to post--quantum cryptography. In Table \ref{table:goppa-herm}, we provide parameters that resist the distinguisher given in this paper and improve key sizes compared to the subfield subcodes of one--point Hermitian codes parameters reported in \cite[Tables~2 and 3]{EKN21crypto}, which already reduced key sizes compared to binary Goppa codes.
 
 \mathieu{Il faudrait préciser que c'est l'exposant de la complexité de Prange.}
+
+\jade{TODO : Bytes}
+
+
+\begin{table}[h]
+	\begin{center}
+			\begin{tabular}{|c|c|c|c|c|c|}
+				\hline
+				Level of security&  $n$ & $k$ & $t=r$ & Security bits& Key--Size(bit)\\
+				\hline \hline
+				Category 1 	&	3\,488 &2\,720 &64  &143 &2\,088\,960 \\\hline
+				Category 3 	&	4\,608 &3\,360 &96  &185 &4\,193\,280 \\\hline
+				Category 5 	&	6\,688 &5\,024 &128 &263 &8\,359\,936 \\
+				&	8\,192 &6\,528 &128 &300 &10\,862\,592 \\\hline
+		\end{tabular}
+		\vspace*{0.3em}
+		\caption{McEliece cryptosystem based on \textbf{binary Goppa codes} \jade{citer spécifications}}
+	\end{center}
+\end{table}
+
+\begin{table}[h]
+	\begin{center}
+		
+			\begin{tabular}{|c|c|c|c|c|c|c|}
+				\hline
+				$q$&  $s$ & $n$ & $k$ & $t$ & Security bits& Key--Size(bit)\\
+				\hline \hline
+				
+				${11}$	&1\,174 & 1\,331 & 927 & 78 & $142$ & $1\,123\,524$ \\
+				
+				\hline \hline
+				${13}$&2\,039 & 2\,197 & 1\,735 & 79 & $185$ & $3\,206\,280$ \\
+				
+				\hline 
+				${16}$&3\,980 & 4\,096 & 3\,634 & 58 & 187& 6\,715\,632   \\
+				
+				\hline \hline
+				${13}$& 1\,861 & 2\,197 & 1\,398 & 168 & 263& 4\,468\,008\\
+				
+				\hline 
+				${16}$& 3\,874 & 4\,096 & 3\,422 & 111 & 300 & 9\,225\,712\\
+				\hline
+		\end{tabular}
+		\vspace*{0.3em}
+		\caption{McEliece cryptosystem based on one--point Hermitian subfield subcodes \cite{EKN21crypto}}
+	\end{center}
+\end{table}
+
 
 \begin{table}[h]
 	\begin{center}
@@ -478,10 +526,9 @@ From this degree, we can define a monomial order $\prec$ over $\calS \simeq \fqm
 
 %
 Any function $f \in \calS$ can be written in the form $$f = c \cdot x^{\beta}y^{\alpha} + f'(x,y),$$
-with $c \neq 0$, $\alpha \leq a-1$ and $f' \in \calS$ such that any monomial $x^iy^j$ of $f'$ satisfies $ai+bj < \degab{x^{\beta}y^{\alpha}}$ and $j \leq a-1$. The leading monomial of $f$ with respect to the monomial order $\prec$ is thus defined by \mathieu{$\mathrm{LM}(f) := c \cdot x^{\beta}y^{\alpha}$}. This extends the definition of weighted degree to any such function by setting 
+with $c \neq 0$, $\alpha \leq a-1$ and $f' \in \calS$ such that any monomial $x^iy^j$ of $f'$ satisfies $ai+bj < \degab{x^{\beta}y^{\alpha}}$ and $j \leq a-1$. The leading monomial of $f$ with respect to the monomial order $\prec$ is thus defined by $\mathrm{LM}(f) := x^{\beta}y^{\alpha}$. This extends the definition of weighted degree to any such function by setting 
 \[\degab{f} := \degab{\mathrm{LM}(f)}.\]
 \end{definition}
-\mathieu{Note that if $c \neq 1$, we set $\degab{c \cdot x^{\beta}y^{\alpha}} = \degab{x^{\beta}y^{\alpha}}$. Up to a division by $c \neq 0$, we from now on always assume that $c=1$.}
 
 It is easy to check that for any $f \in \calS$, its weighted degree $\degab{f}$ is equal to the smallest integer $s$ such that $f$ belongs to the Riemann--Roch space $\calL(sP_{\infty})$.
 %
@@ -640,6 +687,8 @@ $$e_0 :=  \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor.$$
 
 \subsubsection{Sharpness of the bound} \label{section:sharpness}
 
+\jade{On devrait dire qu'on retrouve FGO (à ajouter la bib) pour $\calX=\PP^1$.}
+
 Definition \ref{def:Goppa--like_AG_code} of a Goppa--like AG code $\Gamma(\calP,D,g) := \calC^{\perp}|_{\fq}$ requires very few hypotheses. Besides the conditions on the supports of $D$ and $(g)$, which guarantee that the code is well--defined, we only ask for the function $g$ not to belong to the Riemann--Roch space $\calL(D)$. This hypothesis is enforced to make sure that the dimension of $\Tr{\calC}^{\star 2}$ is not abnormally small compared to the expected value given in Corollary \ref{coro:first_bound_square_of_trace}, and thus to make Goppa--like AG codes resistant to a distinguisher based on the square of their dual.
 
 First, if the function $g$ lied in $\calL(D)$ (or more generally if the vector of the evaluations $(g(P))_{P \in \calP}$ belonged to $C_\calL(\calX,\calP,D)$), then the code $\calC= \calC_{\calL}(\calX,\calP,D+(g))$ would contain the evaluation of the constant function $1=\frac{g}{g}$, \textit{i.e.} the unit vector $(1,\dots,1)$. In this case, the vector $(1,\dots,1)$ would belong to $\calC^{q^i}$ for every $i \in \{0,\dots, \lfloor{m/2} \rfloor\}$ and each term in the sum on the right hand--side would contain a copy of $\Tr{\calC}$. This non--trivial intersection between the codes $\Tr{\calC\star \calC^{q^i}}$ would contribute with a negative term in the above bound.
@@ -658,7 +707,8 @@ As a result, each pair of consecutive terms in the sum $\sum\limits_{i=0}^{\lflo
 \[\bigcap_{0\leq j \leq \lfloor m/2\rfloor} \left( \sum_{\substack{0\leq i \leq \lfloor m/2 \rfloor\\ i\neq j}} \Tr{\calC \star \calC^{q^i}} \right)= \{0\}.\]
 \end{proof}
 
-\begin{example} We take the same settings as in Example \ref{ex:Goppa_vs_Cartier}. Taking $g_1 = x^4$, we saw that $\deg\left(\left[\frac{G}{q}\right]\right) = 1$. Using Magma, we can show that the dimension of the code $\calC_1$ defined in \ref{prop:non-eq} equals 1. \mathieu{bon, il faudrait trouvé autre chose parce la, notre code est plein de dim 88 et la borne vaut 266, donc bien sur elle est pas atteinte... Concrètement, avec ce genre de paramètres, notre borne dépasse la longueur à partir de s=3, et je ne peux pas avoir de $C_1$ non trivial pour de si petit $s$}
+\begin{example}
+	\jade{FOG prévoit égalité pour un alternant générique. Une façon d'être non génrique, c'est d'avoir $\calC_1 \neq \{0\}$.}
 \end{example}
 
 \begin{remark}
@@ -705,8 +755,6 @@ Moreover, we have $\degab{f_2} \leq \degab{f}$.
  
  Finally, if we had $\degab{f} < \degab{f_2}$ with $f=f_1 g +f_2$, this would mean that $\LM{f_2}=-\LM{f_1 g}=\lambda x^uy^v$ for some $\lambda \in \F_{q^m}^*$ with both $u \geq \beta$ and $v \geq \alpha$, which is not possible by definition of $\calR\left(g\right)$.
 \end{proof}
-
-\jade{J'ai retravaillé la partie ci-dessous...}
 
 \subsection{Study of the codes $\Tr{\calC \star \calC^{q^i}}$} \label{subsection:study_Tr(C*C_q)}
 
@@ -769,8 +817,6 @@ for all $i \in \set{0,\dots,\left\lfloor \frac{m}{2} \right\rfloor}$. Indeed, it
 
 We will benefit from these inclusions to improve the bound given in Proposition \ref{prop:bound_dim_using_inclusions}, provided that we can efficiently compute the dimension of the trace codes $\calT_i(s,g)$. This is studied in the next section.
 
-
-\jade{... jusque là.}
 %--------Last changes----------%
 \subsection{Upper bound in Goppa--like case} \label{subsection : Upper_bound_Goppa-like}
 In the proposition below, we study the intersection 
