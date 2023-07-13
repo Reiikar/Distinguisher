@@ -37,7 +37,7 @@
 \newtheorem{expl}[thm]{Example}
 \theoremstyle{definition}
 \newtheorem{definition}[thm]{Definition}
-\newtheorem{example}{Example}
+\newtheorem{example}[thm]{Example}
 \theoremstyle{remark}
 \newtheorem{remark}[thm]{Remark}
 
@@ -186,22 +186,20 @@ In this work, we also investigate Goppa--like AG codes over finite fields with d
 
 \mathieu{Il faudrait préciser que c'est l'exposant de la complexité de Prange.}
 
-\jade{TODO : Bytes}
-
 
 \begin{table}[h]
 	\begin{center}
 			\begin{tabular}{|c|c|c|c|c|c|}
 				\hline
-				Level of security&  $n$ & $k$ & $t=r$ & Security bits& Key--Size(bit)\\
+				Security level&  $n$ & $k$ & $t=r$ & Security bits& Key--Size(Bytes)\\
 				\hline \hline
-				Category 1 	&	3\,488 &2\,720 &64  &143 &2\,088\,960 \\\hline
-				Category 3 	&	4\,608 &3\,360 &96  &185 &4\,193\,280 \\\hline
-				Category 5 	&	6\,688 &5\,024 &128 &263 &8\,359\,936 \\
-				&	8\,192 &6\,528 &128 &300 &10\,862\,592 \\\hline
+				Category 1 	&	3\,488 &2\,720 &64  &143 &261\,120 \\\hline
+				Category 3 	&	4\,608 &3\,360 &96  &185 &524\,160 \\\hline
+				Category 5 	&	6\,688 &5\,024 &128 &263 &1\,044\,992 \\
+				&	8\,192 &6\,528 &128 &300 &1\,357\,824 \\\hline
 		\end{tabular}
 		\vspace*{0.3em}
-		\caption{McEliece cryptosystem based on \textbf{binary Goppa codes} \jade{citer spécifications}}
+		\caption{McEliece cryptosystem based on \textbf{binary Goppa codes} \cite{ClassicMCE}}
 	\end{center}
 \end{table}
 
@@ -210,22 +208,22 @@ In this work, we also investigate Goppa--like AG codes over finite fields with d
 		
 			\begin{tabular}{|c|c|c|c|c|c|c|}
 				\hline
-				$q$&  $s$ & $n$ & $k$ & $t$ & Security bits& Key--Size(bit)\\
+				$q$&  $s$ & $n$ & $k$ & $t$ & Security bits& Key--Size(Bytes)\\
 				\hline \hline
 				
-				${11}$	&1\,174 & 1\,331 & 927 & 78 & $142$ & $1\,123\,524$ \\
+				${11}$	&1\,174 & 1\,331 & 927 & 78 & $142$ & $140\,440$ \\
 				
 				\hline \hline
-				${13}$&2\,039 & 2\,197 & 1\,735 & 79 & $185$ & $3\,206\,280$ \\
+				${13}$&2\,039 & 2\,197 & 1\,735 & 79 & $185$ & $400\,785$ \\
 				
 				\hline 
-				${16}$&3\,980 & 4\,096 & 3\,634 & 58 & 187& 6\,715\,632   \\
+				${16}$&3\,980 & 4\,096 & 3\,634 & 58 & 187& 839\,454   \\
 				
 				\hline \hline
-				${13}$& 1\,861 & 2\,197 & 1\,398 & 168 & 263& 4\,468\,008\\
+				${13}$& 1\,861 & 2\,197 & 1\,398 & 168 & 263& 558\,501\\
 				
 				\hline 
-				${16}$& 3\,874 & 4\,096 & 3\,422 & 111 & 300 & 9\,225\,712\\
+				${16}$& 3\,874 & 4\,096 & 3\,422 & 111 & 300 & 1\,153\,214\\
 				\hline
 		\end{tabular}
 		\vspace*{0.3em}
@@ -595,17 +593,17 @@ Thus, using Remark \ref{rk:G/q}, the Cartier code $\mathrm{Car}_q(\calP,G)$ coin
 \begin{example} \label{ex:Goppa_vs_Cartier}
 Let $q=3$ and $m=4$. We consider the elliptic curve defined over $\fqm$ by the equation 
 $$ E : y^2 = x^3+2x+1.$$
-As usual, we denote by $P_\infty$ the unique point at infinity on $E$. We take $D$ as a one--point divisor supported by $P_\infty$, \emph{i.e} $D = sP_\infty$. For a fixed degree $s=7$, we consider two choices of function $g$:
+As usual, we denote by $P_\infty$ the unique point at infinity on $E$. We take $D$ as a one--point divisor supported by $P_\infty$, \emph{i.e} $D = sP_\infty$. For a fixed degree $s=7$, we consider two choices of function $g$, each time such that $g \in \calL(8P_\infty)$:
 \begin{enumerate}
-\item First, let $g_1 = x^4 \notin \calL(D)$ (since $\nu_{P_\infty}(g_1)=-8$). In this case, $g$ has 2 zeros (say $P_1$ and $P_2$), which are those of $x$. More precisely, we have
+\item First, let $g_1 = x^4 \notin \calL(D)$. In this case, $g$ has 2 zeros (say $P_1$ and $P_2$), which are those of $x$. More precisely, we have
 $$(g_1) = 4(P_1+P_2)-8P_\infty.$$ 
 Hence, if we set $G = D+(g_1)$, the divisor $\left[\frac{G}{q}\right] = P_1+P_2-P_\infty$ has degree $1 > 2g(E)-2=0$, meaning that the codes $\Gamma(\calP,D,g_1)$ and $\mathrm{Car}_3(\calP,G)$ are equal over $\mathbb{F}_3$.
 
-\item Second, take $g_2 = x^4 + xy$. Again, we have $g_2 \notin \calL(D)$ since it has same valuation at $P_\infty$ as $g_1$. This time, we can verify that $g_2$ has $8$ distincts rational zeros, say $R_1,\dots, R_8$, \emph{i.e}
+\item Second, take $g_2 = x^4 + xy$. This time, we can verify that $g_2$ has $8$ distincts rational zeros, say $R_1,\dots, R_8$, \emph{i.e}
 $$(g_2) = R_1 + \dots + R_8 - 8P_\infty.$$   
 Consequently, we easily check that $\deg\left(\left[\frac{G}{q} \right]\right) = -1 \leq 2g(E)-2$. Some computations realized on Magma show that the codes $\Gamma(\calP,D,g_2)$ and $\mathrm{Car}_3(\calP,G)$ are not equal in this case.
 \end{enumerate}
-Magma results are summarized in Table \ref{table:example1}.
+Magma results are summarized in Table \ref{table:example1}, where $\calP = E(\fqm) \setminus \Supp(g)$.
 \begin{table}[h]
 	\begin{center}
 		\begin{tabular}{|c|c|c|c|c|c|}
@@ -687,7 +685,7 @@ $$e_0 :=  \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor.$$
 
 \subsubsection{Sharpness of the bound} \label{section:sharpness}
 
-\jade{On devrait dire qu'on retrouve FGO (à ajouter la bib) pour $\calX=\PP^1$.}
+\jade{On devrait dire qu'on retrouve \cite{FGO+13} pour $\calX=\PP^1$.}
 
 Definition \ref{def:Goppa--like_AG_code} of a Goppa--like AG code $\Gamma(\calP,D,g) := \calC^{\perp}|_{\fq}$ requires very few hypotheses. Besides the conditions on the supports of $D$ and $(g)$, which guarantee that the code is well--defined, we only ask for the function $g$ not to belong to the Riemann--Roch space $\calL(D)$. This hypothesis is enforced to make sure that the dimension of $\Tr{\calC}^{\star 2}$ is not abnormally small compared to the expected value given in Corollary \ref{coro:first_bound_square_of_trace}, and thus to make Goppa--like AG codes resistant to a distinguisher based on the square of their dual.
 
@@ -707,15 +705,34 @@ As a result, each pair of consecutive terms in the sum $\sum\limits_{i=0}^{\lflo
 \[\bigcap_{0\leq j \leq \lfloor m/2\rfloor} \left( \sum_{\substack{0\leq i \leq \lfloor m/2 \rfloor\\ i\neq j}} \Tr{\calC \star \calC^{q^i}} \right)= \{0\}.\]
 \end{proof}
 
-\begin{example}
-	\jade{FOG prévoit égalité pour un alternant générique. Une façon d'être non génrique, c'est d'avoir $\calC_1 \neq \{0\}$.}
+\mathieu{Ma proposition d'exemple $\downarrow$}
+
+\begin{example} \label{ex:non_equality_bound}
+In \cite{FGO+13}, the authors predict that for "generic" alternant codes (\emph{i.e} Goppa--like AG codes constructed on the projective line), the bound given in Proposition \ref{prop:bound_dim_using_inclusions} is sharp. A consequence of Proposition \ref{prop:non-eq} is that a way to be "non--generic" is to have $\calC_1 \neq \{0\}$. We now illustrate this in a toy example. \\
+Let $q=5$ and $m=4$. Let $P_\infty$ be the point at infinity on the projective line $\PP^1$ over $\fqm$. Using Magma, we compare the bound given in Proposition \ref{prop:bound_dim_using_inclusions} with the true dimension of the corresponding code. In Table \ref{table:example2} bellow, we take $\calP = \PP^1(\fqm) \setminus \Supp(g)$, $D = sP_\infty$ and $P_0$ stands for the zero of $x$ in the rational function field $\fqm(x)$.
+\begin{table}[h]
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|c|c|}
+			\hline
+			$n$&  $s = \deg(D)$ & Choice of $g$ & $\left[ \frac{D+(g)}{q} \right]$ & $\dim_{\fqm} \calC_1$  & $\dim_{\fq} (\Gamma(\calP,D,g)^{\perp})^{\star 2}$ & Bound in Prop \ref{prop:non-eq}\\
+			\hline \hline
+			624 & 9 & $g = x^{10}$ & $2P_0-P_\infty$ & 2 & 255 & 496\\
+			\hline
+			624 & 10 & $g = x^{11}$ & $2P_0-P_\infty$ & 2 & 295 & 570\\ 
+			\hline
+		\end{tabular}
+		\vspace*{0.3em}
+		\caption{Illustration of Proposition \ref{prop:non-eq}} \label{table:example2}
+	\end{center}
+\end{table}
 \end{example}
+
 
 \begin{remark}
 	As noted in Remark \ref{rmk:improvements}, when picking the function $g$ at random, the code $\calC_1$ is likely to be reduced to zero.
 \end{remark}
 
-As recalled in Section \ref{subsec:def-Goppa}, Goppa--like AG codes coincide with Cartier code as soon as $\deg\left(\left[ \frac{D+(g)}{q} \right] \right)> 2 \mathfrak{g}-2$. In this case, the code $\calC_1$ has dimension at least $\mathfrak{g}$. This means that when the Goppa--like code is also a Cartier code, the dimension of the square of its dual is very unlikely to meet the bound given in Proposition \ref{prop:bound_dim_using_inclusions}.
+As recalled in Section \ref{subsec:def-Goppa}, Goppa--like AG codes coincide with Cartier code as soon as $$\deg\left(\left[ \frac{D+(g)}{q} \right] \right)> 2 \mathfrak{g}-2.$$ In this case, the code $\calC_1$ has dimension at least $\mathfrak{g}$. This means that when the Goppa--like code is also a Cartier code, the dimension of the square of its dual is very unlikely to meet the bound given in Proposition \ref{prop:bound_dim_using_inclusions}.
 
 \begin{remark} \label{rq:classical_Goppa_case}
 	When considering classical Goppa codes defined in Equation \eqref{eq:classical_Goppa} for the McEliece cryptosystem, it is common to ask for the degree $r$ polynomial $g$ to have only simple roots. In this case, we have $ \left[ \frac{(r-1)P_\infty+(g)}{q} \right] = -P_\infty$ and the code $\calC_1$ defined in Proposition \ref{prop:non-eq} is always zero. The situation above thus never occurs.
@@ -1019,14 +1036,14 @@ by Proposition~\ref{prop:inclusion_T_i's}. Thus, using Corollary~\ref{coro:folkl
 \end{align*}
 the minimum being taking over $e \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$. 
 To get the best bound, we need to maximize the function
-$$T(e) = ek^2-s'(q^e-q^{e-1}+1)$$
+$$F(e) = ek^2-s'(q^e-q^{e-1}+1)$$
 over $\set{1,\dots,\lfloor \frac{m}{2} \rfloor}$.
 We compute the discrete derivative:
 \begin{align*}
-    \Delta T(e) = T(e+1)-T(e) &= (e+1)k^2- s'(q^{e+1}-q^e+1) - ek^2 + s'(q^e-q^{e-1}+1) \\
+    \Delta F(e) = F(e+1)-F(e) &= (e+1)k^2- s'(q^{e+1}-q^e+1) - ek^2 + s'(q^e-q^{e-1}+1) \\
                               &= k^2 - s'q^{e-1}(q-1)^2.
 \end{align*}
-This function is decreasing with $e$, and the smallest value for which $\Delta T(e) \leq 0$ corresponds to its maximum. It is the smallest value of $e$ such that $k^2 \leq s'q^{e-1}(q-1)^2$, \emph{i.e.}
+This function is decreasing with $e$, and the smallest value for which $\Delta F(e) \leq 0$ corresponds to its maximum. It is the smallest value of $e$ such that $k^2 \leq s'q^{e-1}(q-1)^2$, \emph{i.e.}
 $$e =  \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1.$$
 \end{proof}
 
