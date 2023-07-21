@@ -72,10 +72,13 @@
 The main result of this paper is Theorem \ref{thm:bound_with_T_i's_inclusion} on the upper bound of the dimension of codes. Some problems
 of this paper are :
 \begin{itemize}
-\item  There are many symbols. Please give a clear description of symbols, which can make the paper more readable. \TODO{Answer this and be polite.}
+\item  There are many symbols. Please give a clear description of symbols, which can make the paper more readable. \TODO{Answer this and be polite.
+\textit{We cannot completely avoid technicalities. Some inaccuracies in the notation that both reviewers pointed out have been fixed in this revised version. We have also made an effort to add references to the definition of notation when used later.}}
+
+
 \item  Please give more clear comparisons and show the clear advantages of this paper. Add some results of [NEK21] in Table 1 to give a clear comparison. Add some examples in Section 2 to make a comparison with results in Section 3. 
 
-\textit{We added two more tables to compare our construction with binary Goppa codes and 1--point Hermitian codes. We also added 2 examples in Section \ref{sec:Goppa}.}
+\textit{\TODO{We added two more tables to compare our construction with binary Goppa codes and 1--point Hermitian codes.} We also added 2 examples in Section \ref{sec:Goppa}.}
 
 \end{itemize}
 
@@ -91,7 +94,7 @@ Hence, I suggest a revision. Some more comments are listed: \\
  
 \item Page 2. It is better to give a clear description of the advantages of the upper bound of the dimension of codes.
 
-\TODO{Dire pourquoi une borne sur la dimension fournit un distingueur. Rajouter quelques lignes dans l'intro.}  
+\textit{We have added some sentences in the beginning of the paragraph \textbf{Distinguisher attack} in the introduction to explain why the upper bound provides a distinguisher.}
 
 
 \item  Page 5. Please check the use of $\Tr{\calC}^{\star 2}$ and $\calC^{q^i}$. It seems that $\Tr{\calC}^{\star 2}$ means $\Tr{\calC^{\star 2}}$. Many similar problems in the paper.
@@ -145,17 +148,14 @@ Hence, I suggest a revision. Some more comments are listed: \\
 
 \item Page 7, line -4: "$f=x^\beta y^\alpha+f'(x,y)$". The authors write that any $f \in \cup_{s \ge 0} \mathcal{L}(sP_\infty)$ can be written in this form, but this is strictly speaking not true. One needs to allow for a leading coefficient different from one as well. Please write something like "$f=c\cdot x^\beta y^\alpha+f'(x,y)$ for some nonzero $c$." This also affects the leading term expression later on.
 
-\textit{We add a nonzero constant $c$ in front of the expression and we also changed the expression of the leading monomial $\operatorname{LM}(f)$ (note that we changed $\operatorname{LT}(f)$ into $\operatorname{LM}(f)$).}
-
-+ \TODO{ajout remarque du fait qu'on travaille sur un corps, donc ça reviens essenciellement au même}
-
+\textit{Thank you for noticing this. We add a nonzero constant $c$ in front of the expression. To avoid dealing with these constants, we have decided to work with leading \emph{monomials} instead of leading terms. We have changed $\operatorname{LT}(f)$ into $\operatorname{LM}(f)$. Working with polynomials with coefficients in a field, it comes down to the same thing.}
 
 \item Page 8, Remark \ref{rq:link_degab_valuation}: "It is worth noting that $\mathcal{O}_{P\infty}$ is a valuation ring with valuation $\nu_{P_\infty}$". This is not true. Indeed, the only valuation ring with valuation $\nu_{P_\infty}$ is the local ring at $P_\infty$. Please modify the remark. It is true that $\deg_{a,b}(f)=-\nu_{P_\infty}(f)$, which is perhaps the main point of the remark.
 
 \textit{We changed the remark, only keeping the link between the valuation at $P_\infty$ and the weighted degree.}
 
 
-\item Page 8, Definition 2.1: Later on the notation $G$ is used for the divisor D+(g). It would help the reader if this is mentioned already here, since later on, for example in Remark 2.2, the notation $G$ is used without explanation.
+\item Page 8, Definition 2.1: Later on the notation $G$ is used for the divisor $D+(g)$. It would help the reader if this is mentioned already here, since later on, for example in Remark 2.2, the notation $G$ is used without explanation.
 
 \textit{The definition of $G$ has been added before Definition \ref{def:Goppa--like_AG_code}.}
 
@@ -174,7 +174,7 @@ Hence, I suggest a revision. Some more comments are listed: \\
 
 \item Page 11, line 7: in the formula involving the intersection of summations of certain trace codes, the right-hand side is the empty set symbol. Since any code contains 0, I suspect the right-hand side should have been $\{0\}$ instead of $\varnothing$.
 
-\textit{The symbol has been changed.}
+\textit{You are completely right. This has been fixed.}
 
 \item Page 11, Remark \ref{rq:classical_Goppa_case}: what is the parameter $r$? It is probably the degree of $g$, but I do not recall the authors mentioned this earlier. Please add a short explanation.
 

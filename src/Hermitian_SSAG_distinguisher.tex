@@ -16,6 +16,7 @@
 \usepackage{hyperref} %Références cliquables
 \usepackage{cleveref}
 \usepackage{csquotes}
+\usepackage{multirow}
 
 
 \PassOptionsToPackage{unicode}{hyperref}
@@ -156,9 +157,13 @@ $$C_{\calL}(\calX,\calP,G)|_{\fq} := \calC \cap \fq^n.$$
 In this paper, we introduce a specific class of SSAG codes, namely Goppa--like AG codes. The idea of this construction is to introduce  some randomness into the family of SSAG codes drawn as private key by mimicking the role of the Goppa polynomial in the case of classical Goppa codes. Given an effective divisor $D\in \Div(\calX)$ on the curve, we will consider SSAG codes associated to divisors of the form $D+(g)$, for a large family of functions $g \in \fqm(\calX)$ on the curve. A Goppa--like AG code is then defined as the subfield subcode over $\fq$ of $C_{\calL}(\calX,\calP,D+(g))^{\perp}$. In the genus zero case, this construction gives codes which are Hamming equivalent to classical Goppa codes. With a good choice of the curve and divisor, it is possible to encode and decode these codes in a timely manner; this generalization has the potential to significantly improve on the original McEliece proposal. This encourages the present study of structural attacks on Goppa--like AG codes. 
 
 \subsection*{Distinguisher attack}
-\jade{Expliquer plus clairement pourquoi une borne sur la dimension fabrique un distingueur.}
-Our starting point is the paper by Mora and Tillich \cite{MT21}, which benefited from the trace structure of the dual code of a subfield subcode to display a distinguisher for high rate Goppa codes. Their techniques rely on two features of GRS codes. First, their behaviour with respect to the Schur product is well known. From this, the authors gave a sharp upper bound for the dimension of the square of the dual of alternant codes. In the particular case of Goppa codes, where the multiplicator has the form $\mathbf{y}=(g(x_1)^{-1},g(x_2)^{-1},\dots,g(x_n)^{-1})$ for some degree $r$ polynomial $g$, they managed to get an even sharper upper bound by performing Euclidean division by powers of $g$.
-As Goppa--like AG codes extend Goppa codes, it is natural to wonder if one can derive a structural attack on these codes from Mora and Tillich's attack. The genus of the curve plays a significant role in the parameters of AG codes. The greater the genus, the more $\F_q$--points the curve $\calX$ may have and so the longer the code can be. But the parameters $[n,k,d]$ of an AG code satisfy $n-\mathfrak{g}+1 \leq k+d \leq n+1$, which means that an AG code is $\mathfrak{g}$--far from optimality. Also, the correction capacity naturally suffers from a big genus: the naive correction algorithm can correct up to $\frac{d-1-\mathfrak{g}}{2}$ errors. Only refined techniques, based on error locating arrays \cite{CP20}, manage to remove the term related to the genus. Therefore, caution should be exercised when it comes to the impact of the genus on the properties of AG codes.
+Our starting point is the paper by Mora and Tillich \cite{MT21}, which benefited from the trace structure of the dual code of a subfield subcode to provide a sharp bound for the dimension of the square of the dual of alternant codes. This gives a distinguisher for these codes, as this bound is significantly smaller than expected. Informally they give a bound of the form
+\[\dim \left(\left(\GRS_r(\mathbf{x},\mathbf{y})|_{\fq}\right)^\perp\right) ^{\star 2} \leq D  - \delta\]
+where $D=\dim \left(\left(C_{|\fq}\right)^\perp\right) ^{\star 2}$ for a random $r$-dimensional code $C$ and $\delta>0$ (see \S \ref{subsec:def} for the definition of the square).
+Mora and Tillich's techniques rely on two features of GRS codes. First, their behaviour with respect to the Schur product is well known. In the particular case of Goppa codes, where the multiplicator has the form
+  $\mathbf{y}=(g(x_1)^{-1},g(x_2)^{-1},\dots,g(x_n)^{-1})$ for some degree $r$ polynomial $g$, they managed to get an even sharper upper bound by performing Euclidean division by powers of $g$.
+  
+As Goppa--like AG codes extend Goppa codes, it is natural to wonder if one can derive a structural attack on these codes from Mora and Tillich's attack. The genus $\mathfrak{g}$ of the curve plays a significant role in the parameters of AG codes. The greater the genus, the more $\F_q$--points the curve $\calX$ may have and so the longer the code can be. But the parameters $[n,k,d]$ of an AG code satisfy $n-\mathfrak{g}+1 \leq k+d \leq n+1$, which means that an AG code is $\mathfrak{g}$--far from optimality. Also, the correction capacity naturally suffers from a big genus: the naive correction algorithm can correct up to $\frac{d-1-\mathfrak{g}}{2}$ errors. Only refined techniques, based on error locating arrays \cite{CP20}, manage to remove the term related to the genus. Therefore, caution should be exercised when it comes to the impact of the genus on the properties of AG codes.
 Even if Mora and Tillich's attack does not threaten the Goppa codes used in the NIST competition, SSAG--based propositions may be vulnerable to a similar structural attack. 
 
 \medskip
@@ -272,7 +277,7 @@ The paper is organized as follows. Section \ref{sec:preli} is dedicated to basic
 
 
 \section{Preliminaries}\label{sec:preli}
-\subsection{Linear codes, subfield subcodes and trace codes}
+\subsection{Linear codes, subfield subcodes and trace codes}\label{subsec:def}
 
 In this section, we briefly introduce some notation and basic definitions for linear codes, subfield subcodes, and trace codes. Furthermore, we present significant results that employ component--wise product and trace map. For further details about linear codes, we refer the reader to \cite{MS86}.
 
@@ -705,20 +710,30 @@ As a result, each pair of consecutive terms in the sum $\sum\limits_{i=0}^{\lflo
 \[\bigcap_{0\leq j \leq \lfloor m/2\rfloor} \left( \sum_{\substack{0\leq i \leq \lfloor m/2 \rfloor\\ i\neq j}} \Tr{\calC \star \calC^{q^i}} \right)= \{0\}.\]
 \end{proof}
 
-\mathieu{Ma proposition d'exemple $\downarrow$}
+\jade{Au lieu de faire une succession de remarques, j'ai tout fusionné en une. Mais j'aime bien l'exemple !}
+
+\begin{remark}
+In \cite{FGO+13}, the authors predict that the bound given in Proposition \ref{prop:bound_dim_using_inclusions} is sharp for "generic" alternant codes (\emph{i.e} Goppa--like AG codes constructed on the projective line). A consequence of Proposition \ref{prop:non-eq} is that a way to be "non--generic" is to have $\calC_1 \neq \{0\}$. We illustrate this in Example \ref{ex:non_equality_bound}. 	
+
+As noted in Remark \ref{rmk:improvements}, when picking the function $g$ at random, the code $\calC_1$ is likely to be reduced to zero. Regarding classical Goppa codes (defined in Equation \eqref{eq:classical_Goppa}) used for the McEliece cryptosystem, it is common to ask for the degree $r$ polynomial $g$ to have only simple roots. In this case, we have $ \left[ \frac{(r-1)P_\infty+(g)}{q} \right] = -P_\infty$ and the code $\calC_1$ defined in Proposition \ref{prop:non-eq} is always zero. The situation of Example \ref{ex:non_equality_bound} thus never occurs.
+
+As recalled in Section \ref{subsec:def-Goppa}, Goppa--like AG codes coincide with Cartier code as soon as $$\deg\left(\left[ \frac{D+(g)}{q} \right] \right)> 2 \mathfrak{g}-2.$$ In this case, the code $\calC_1$ has dimension at least $\mathfrak{g}$. This means that when the Goppa--like code is also a Cartier code on a curve $\calX$ with positive genus $\mathfrak{g} >0$, the dimension of the square of its dual cannot meet the bound given in Proposition \ref{prop:bound_dim_using_inclusions}.
+\end{remark}
+
+
+
 
 \begin{example} \label{ex:non_equality_bound}
-In \cite{FGO+13}, the authors predict that for "generic" alternant codes (\emph{i.e} Goppa--like AG codes constructed on the projective line), the bound given in Proposition \ref{prop:bound_dim_using_inclusions} is sharp. A consequence of Proposition \ref{prop:non-eq} is that a way to be "non--generic" is to have $\calC_1 \neq \{0\}$. We now illustrate this in a toy example. \\
-Let $q=5$ and $m=4$. Let $P_\infty$ be the point at infinity on the projective line $\PP^1$ over $\fqm$. Using Magma, we compare the bound given in Proposition \ref{prop:bound_dim_using_inclusions} with the true dimension of the corresponding code. In Table \ref{table:example2} bellow, we take $\calP = \PP^1(\fqm) \setminus \Supp(g)$, $D = sP_\infty$ and $P_0$ stands for the zero of $x$ in the rational function field $\fqm(x)$.
+Let $q=5$ and $m=4$. Let $P_\infty$ be the point at infinity on the projective line $\calX=\PP^1$ over $\fqm$. Using Magma, we compare the bound given in Proposition \ref{prop:bound_dim_using_inclusions} with the true dimension of the corresponding code. In Table \ref{table:example2} bellow, we take $\calP = \PP^1(\fqm) \setminus \Supp(g)$, $D = sP_\infty$ and $P_0$ stands for the zero of $x$ in the rational function field $\fqm(x)$.
 \begin{table}[h]
 	\begin{center}
 		\begin{tabular}{|c|c|c|c|c|c|c|}
 			\hline
 			$n$&  $s = \deg(D)$ & Choice of $g$ & $\left[ \frac{D+(g)}{q} \right]$ & $\dim_{\fqm} \calC_1$  & $\dim_{\fq} (\Gamma(\calP,D,g)^{\perp})^{\star 2}$ & Bound in Prop \ref{prop:non-eq}\\
 			\hline \hline
-			624 & 9 & $g = x^{10}$ & $2P_0-P_\infty$ & 2 & 255 & 496\\
-			\hline
-			624 & 10 & $g = x^{11}$ & $2P_0-P_\infty$ & 2 & 295 & 570\\ 
+			\multirow{2}{*}{624} & 9 & $g = x^{10}$ & \multirow{2}{*}{$2P_0-P_\infty$} & \multirow{2}{*}{2} & 255 & 496\\
+			\cline{2-3}	\cline{6-7}
+								 & 10 & $g = x^{11}$& 						& 					& 295 & 570\\ 
 			\hline
 		\end{tabular}
 		\vspace*{0.3em}
@@ -727,16 +742,6 @@ Let $q=5$ and $m=4$. Let $P_\infty$ be the point at infinity on the projective l
 \end{table}
 \end{example}
 
-
-\begin{remark}
-	As noted in Remark \ref{rmk:improvements}, when picking the function $g$ at random, the code $\calC_1$ is likely to be reduced to zero.
-\end{remark}
-
-As recalled in Section \ref{subsec:def-Goppa}, Goppa--like AG codes coincide with Cartier code as soon as $$\deg\left(\left[ \frac{D+(g)}{q} \right] \right)> 2 \mathfrak{g}-2.$$ In this case, the code $\calC_1$ has dimension at least $\mathfrak{g}$. This means that when the Goppa--like code is also a Cartier code, the dimension of the square of its dual is very unlikely to meet the bound given in Proposition \ref{prop:bound_dim_using_inclusions}.
-
-\begin{remark} \label{rq:classical_Goppa_case}
-	When considering classical Goppa codes defined in Equation \eqref{eq:classical_Goppa} for the McEliece cryptosystem, it is common to ask for the degree $r$ polynomial $g$ to have only simple roots. In this case, we have $ \left[ \frac{(r-1)P_\infty+(g)}{q} \right] = -P_\infty$ and the code $\calC_1$ defined in Proposition \ref{prop:non-eq} is always zero. The situation above thus never occurs.
-\end{remark}
 
 \section{One--point Goppa--like AG code on $C_{a,b}$-curves}\label{sec:AG-C_a,b}
 The bound given in section \ref{section:1st_improvement} can be improved by considering more structured codes, \emph{i.e.} one--point Goppa--like AG codes on $C_{a,b}$ curves.
