@@ -448,7 +448,13 @@ This is especially true for Reed--Solomon codes (see \cite{MT21}, Proposition 11
  \[ \calL(F) \cdot \calL(G) = \calL(F+G),\]
  where $\calL(F) \cdot \calL(G) := \Span{ f \cdot g : (f,g) \in \calL(F) \times \calL(G)}$.
 \end{proposition}
-As a consequence, for an AG code  $C_{\calL}(\calX,\mathcal{P},G)$, we have
+If $\Supp(F) \cap \calP = \Supp(G) \cap \calP = \varnothing$, then denoting all the evaluation maps defined in Equation \eqref{eq:ev_P} by $\ev_{\calP}$ (regardless of their domain), we have 
+\begin{equation}\label{eq:ev_star}
+\forall \: (f,g) \in \calL(F) \times \calL(G), \: \ev_{\calP}(f) \star \ev_{\calP}(f) = \ev_{\calP}(f\cdot g). 
+\end{equation}
+As a consequence, for associated AG codes, we have  $C_{\calL}(\calX,\mathcal{P},G)$
+\[ C_{\calL}(\calX,\mathcal{P},F) \star C_{\calL}(\calX,\mathcal{P},F) \subseteq C_{\calL}(\calX,\calP,F+G).\]
+In particular, for the Schur square, we have
 \[ C_{\calL}(\calX,\mathcal{P},G)^{\star2} \subseteq C_{\calL}(\calX,\calP,2G).\]
 with equality if $\deg(G) \geq 2\mathfrak{g}+1$.
 If $\deg (G) \geq \mathfrak{g}$, applying the Riemann--Roch theorem to the divisors $G$ and $2G$ thus gives
@@ -470,6 +476,10 @@ which is much smaller than the expected dimension given in Lemma \ref{lem:known_
   &= \binom{mk+1}{2} - \dfrac{m}{2}(k(k-1)-2s) .
  \end{align*}
 \end{proof}
+
+\begin{remark}
+	For $\calX=\PP^1$, we recover \cite[Theorem 17]{MT21}.
+\end{remark}
 
 According to the above corollary, the dimension of the square of the dual of an SSAG code is less than the expected value for random codes (which is $\binom{mk+1}{2}$), due to the algebraic structure of AG codes. However, this bound does not fully benefit from this rich structure, notably the following property.
 
@@ -688,9 +698,11 @@ This function is decreasing with $e$, and the smallest value for which $\Delta F
 $$e_0 :=  \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor.$$
 \end{proof}
 
-\subsubsection{Sharpness of the bound} \label{section:sharpness}
+\begin{remark}
+	For $\calX=\PP^1$, Proposition \ref{prop:bound_dim_using_inclusions} boils down to \cite[Theorem 19]{MT21} with $k=s+1$.
+\end{remark}
 
-\jade{On devrait dire qu'on retrouve \cite{FGO+13} pour $\calX=\PP^1$.}
+\subsubsection{Sharpness of the bound} \label{section:sharpness}
 
 Definition \ref{def:Goppa--like_AG_code} of a Goppa--like AG code $\Gamma(\calP,D,g) := \calC^{\perp}|_{\fq}$ requires very few hypotheses. Besides the conditions on the supports of $D$ and $(g)$, which guarantee that the code is well--defined, we only ask for the function $g$ not to belong to the Riemann--Roch space $\calL(D)$. This hypothesis is enforced to make sure that the dimension of $\Tr{\calC}^{\star 2}$ is not abnormally small compared to the expected value given in Corollary \ref{coro:first_bound_square_of_trace}, and thus to make Goppa--like AG codes resistant to a distinguisher based on the square of their dual.
 
@@ -712,7 +724,7 @@ As a result, each pair of consecutive terms in the sum $\sum\limits_{i=0}^{\lflo
 
 \jade{Au lieu de faire une succession de remarques, j'ai tout fusionné en une. Mais j'aime bien l'exemple !}
 
-\begin{remark}
+\begin{remark}\label{rk:discuss_bound}
 In \cite{FGO+13}, the authors predict that the bound given in Proposition \ref{prop:bound_dim_using_inclusions} is sharp for "generic" alternant codes (\emph{i.e} Goppa--like AG codes constructed on the projective line). A consequence of Proposition \ref{prop:non-eq} is that a way to be "non--generic" is to have $\calC_1 \neq \{0\}$. We illustrate this in Example \ref{ex:non_equality_bound}. 	
 
 As noted in Remark \ref{rmk:improvements}, when picking the function $g$ at random, the code $\calC_1$ is likely to be reduced to zero. Regarding classical Goppa codes (defined in Equation \eqref{eq:classical_Goppa}) used for the McEliece cryptosystem, it is common to ask for the degree $r$ polynomial $g$ to have only simple roots. In this case, we have $ \left[ \frac{(r-1)P_\infty+(g)}{q} \right] = -P_\infty$ and the code $\calC_1$ defined in Proposition \ref{prop:non-eq} is always zero. The situation of Example \ref{ex:non_equality_bound} thus never occurs.
@@ -724,7 +736,7 @@ As recalled in Section \ref{subsec:def-Goppa}, Goppa--like AG codes coincide wit
 
 
 \begin{example} \label{ex:non_equality_bound}
-Let $q=5$ and $m=4$. Let $P_\infty$ be the point at infinity on the projective line $\calX=\PP^1$ over $\fqm$. Using Magma, we compare the bound given in Proposition \ref{prop:bound_dim_using_inclusions} with the true dimension of the corresponding code. In Table \ref{table:example2} bellow, we take $\calP = \PP^1(\fqm) \setminus \Supp(g)$, $D = sP_\infty$ and $P_0$ stands for the zero of $x$ in the rational function field $\fqm(x)$.
+Let $q=5$ and $m=4$. Let $P_\infty$ be the point at infinity on the projective line $\calX=\PP^1$ over $\fqm$. Using Magma, we compare the bound given in Proposition \ref{prop:bound_dim_using_inclusions} with the true dimension of the corresponding code. In Table \ref{table:example2} below, we take $\calP = \PP^1(\fqm) \setminus \Supp(g)$, $D = sP_\infty$ and $P_0$ stands for the zero of $x$ in the rational function field $\fqm(x)$.
 \begin{table}[h]
 	\begin{center}
 		\begin{tabular}{|c|c|c|c|c|c|c|}
@@ -908,7 +920,7 @@ We thus have a description of a basis of both spaces $\calR(g^{q^i-q^{i-1}+1})$ 
 \end{equation}
 It remains to compute the corresponding minima with respect to $v$:
 \begin{itemize}
-    \item[(i)] If $0 \leq v \leq \alpha_i-1$, by using \eqref{eq:value_beta_prime}, we get
+    \item[(i)] If $0 \leq v \leq \alpha_i-1$, by using Equation \eqref{eq:value_beta_prime}, we get
     \begin{align*}
         \beta_i+b \leq \ell_v^i +1 \iff s'(q^i-q^{i-1}+1) \leq F(v) := s(q^i+1)+a-b(a+v-\alpha_i).
     \end{align*}
