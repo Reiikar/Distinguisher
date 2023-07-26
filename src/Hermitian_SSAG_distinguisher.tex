@@ -152,18 +152,18 @@ McEliece cryptosystem is one of the last code--based candidates for standardizat
 
 The security of the McEliece cryptosystem is based on two assumptions: $(i)$ in average, it is hard to decode $t$ errors for codes having the same parameters as the codes used as keys and $(ii)$ it is difficult to distinguish codes used as public keys from arbitrary ones. When proposing another family of codes, one must ensure that both of the hardness assumptions are still valid.
 Algebraic geometry (AG) codes appear to be good candidates for the McEliece cryptosystem, since they are evaluation codes built from algebraic curves (GRS codes are a typical example of AG codes on a genus zero curve). Moreover, they also come with an efficient decoding algorithm (see the survey of H\o holdt and Pellikaan \cite{HP95}).
-In 1996, Janwa and Moreno \cite{JM96} proposed to use AG codes, concatenation or subfield subcode of these codes in the McEliece cryptosystem. As for concatenated ones, they were broken by Sendrier \cite{Sen94}. For AG codes, Faure and Minder proposed an attack in \cite{FM08,Min07,Fau09} for codes of genus at most $2$. The scheme based on AG codes has been completely broken by Couvreur, Marquez-Corbella and Pellikaan \cite{CMR17}, who proposed a filtration--based attack on AG codes for any genus, enabling decoding just by handling the public key and without knowledge of the curve and/or the divisor. However, the authors underlined that subfield subcodes of AG codes (SSAG codes in short) are resistant to this filtration attack. Moreover, some of these codes have a good designed minimum distance, such as Cartier codes \cite{Cou14}. This resistance to structural attacks, as well as their good parameters motivated several works on SSAG codes. Barelli \cite{B18} studied the security of quasi--cyclic SSAG codes designed from cyclic covers of the projective line and of plane curves. Recently, Zhao and Chen \cite{ZC22} analysed the parameters and the decoding performance of one--point elliptic subfield subcodes, showing that in the binary case, decoding results on these codes outperform the similar rate in the case of BCH codes. Also, the authors in \cite{PJ14,EKN21} focus on one--point Hermitian codes, and manage to compute the exact dimension of their subfield subcodes, in order to get a better estimate for the key size when using them in the McEliece cryptosystem.
+In 1996, Janwa and Moreno \cite{JM96} proposed to use AG codes, concatenation or subfield subcode of these codes in the McEliece cryptosystem. As for concatenated ones, they were broken by Sendrier \cite{Sen94}. For AG codes, Faure and Minder proposed an attack in \cite{FM08,Min07,Fau09} for codes of genus at most $2$. The scheme based on AG codes has been completely broken by Couvreur, Marquez-Corbella and Pellikaan \cite{CMR17}, who proposed a filtration--based attack on AG codes for any genus, enabling decoding just by handling the public key and without knowledge of the curve and/or the divisor. However, the authors underlined that subfield subcodes of AG codes (SSAG codes in short) are resistant to this filtration attack. Moreover, some of these codes have a good designed minimum distance, such as Cartier codes \cite{Cou14}. This resistance to structural attacks, as well as their good parameters, motivated several works on SSAG codes. Barelli \cite{B18} studied the security of quasi--cyclic SSAG codes designed from cyclic covers of the projective line and of plane curves. Recently, Zhao and Chen \cite{ZC22} analysed the parameters and the decoding performance of one--point elliptic subfield subcodes, showing that in the binary case, decoding results on these codes outperform the similar rate in the case of BCH codes. Also, the authors in \cite{PJ14,EKN21} focus on one--point Hermitian codes, and manage to compute the exact dimension of their subfield subcodes, in order to get a better estimate for the key size when using them in the McEliece cryptosystem.
 
 
 \subsection*{Subfield subcodes of AG codes}
 Let $\fqm$ be a finite extension of $\fq$. Let $\calC$ be an AG code, \textit{i.e.} $\calC :=C_{\calL}(\calX,\calP,G) \subseteq \fqm^n$ where $\calX$ is an algebraic curve defined over $\fqm$, $\calP \subseteq \calX(\fqm)$ and $G \in \Div(\calX)$. The subfield subcode of $\calC$ over $\fq$ is defined by 
 $$C_{\calL}(\calX,\calP,G)|_{\fq} := \calC \cap \fq^n.$$  
-In this paper, we introduce a specific class of SSAG codes, namely Goppa--like AG codes. The idea of this construction is to introduce  some randomness into the family of SSAG codes drawn as private key by mimicking the role of the Goppa polynomial in the case of classical Goppa codes. Given an effective divisor $D\in \Div(\calX)$ on the curve, we will consider SSAG codes associated to divisors of the form $D+(g)$, for a large family of functions $g \in \fqm(\calX)$ on the curve. A Goppa--like AG code is then defined as the subfield subcode over $\fq$ of $C_{\calL}(\calX,\calP,D+(g))^{\perp}$. In the genus zero case, this construction gives codes which are Hamming equivalent to classical Goppa codes. With a good choice of the curve and divisor, it is possible to encode and decode these codes in a timely manner; this generalization has the potential to significantly improve on the original McEliece proposal. This encourages the present study of structural attacks on Goppa--like AG codes. 
+In this paper, we introduce a specific class of SSAG codes, namely Goppa--like AG codes. The idea of this construction is to introduce  some randomness into the family of SSAG codes drawn as private key by mimicking the role of the Goppa polynomial in the case of classical Goppa codes. Given an effective divisor $D\in \Div(\calX)$ on the curve, we consider SSAG codes associated to divisors of the form $D+(g)$, for a large family of functions $g \in \fqm(\calX)$ on the curve. A Goppa--like AG code is then defined as the subfield subcode over $\fq$ of $C_{\calL}(\calX,\calP,D+(g))^{\perp}$. In the genus zero case, this construction gives codes which are Hamming equivalent to classical Goppa codes. With a good choice of the curve and divisor, it is possible to encode and decode these codes in a timely manner; this generalization has the potential to significantly improve on the original McEliece proposal. This encourages the present study of structural attacks on Goppa--like AG codes. 
 
 \subsection*{Distinguisher attack}
 Our starting point is the paper by Mora and Tillich \cite{MT21}, which benefited from the trace structure of the dual code of a subfield subcode to provide a sharp bound for the dimension of the square of the dual of alternant codes. This gives a distinguisher for these codes: whoever with a generator matrix (or a parity check matrix) of such a code can calculate this dimension in polynomial time and notice that it is significantly smaller than expected. Informally they give a bound of the form
 \[\dim \left(\left(\GRS_r(\mathbf{x},\mathbf{y})|_{\fq}\right)^\perp\right) ^{\star 2} \leq D  - \delta\]
-where $D=\dim \left(\left(C_{|\fq}\right)^\perp\right) ^{\star 2}=\binom{mr+1}{2}$ for a random $r$-dimensional code $C$ and $\delta>0$ (see \S \ref{subsec:def} for formal definitions).
+where $D=\dim_{\fq} \left(\left(C_{|\fq}\right)^\perp\right) ^{\star 2}=\binom{mr+1}{2}$ is the expected value for a random $r$-dimensional code $\calC$ and $\delta>0$ (see \S \ref{subsec:def} for formal definitions).
 Mora and Tillich's techniques rely on two features of GRS codes. First, their behaviour with respect to the Schur product is well known. In the particular case of Goppa codes, where the multiplicator has the form
   $\mathbf{y}=(g(x_1)^{-1},g(x_2)^{-1},\dots,g(x_n)^{-1})$ for some degree $r$ polynomial $g$, they managed to get an even sharper upper bound by performing Euclidean division by powers of $g$.
   
@@ -173,11 +173,11 @@ Even if Mora and Tillich's attack does not threaten the Goppa codes used in the 
 \medskip
 
 \subsection*{Contributions of this paper}
-In the present work, we are interested in the case of Goppa--like one--point AG codes from $C_{a,b}$ curves, a class of curves introduced in \cite{Miu93}. These curves have been extensively studied and they are especially interesting to design AG codes. As we know explicit monomial basis of the AG code associated to any multiple of its unique point at infinity, it allows us to efficiently encode one--point codes \cite{BRS21}. Furthermore, they remain quite general: for examples, elliptic curves, Kummer or Artin-Schreier curves are $C_{a,b}$ curves. It is also natural to wonder how the genus affects the distinguisher: in particular, we give a sufficient condition of the minimal degree our divisor has to satisfy in order to mount the distinguisher. This bound is increasing with the genus of the curve, and coincides with the one given in \cite{MT21} in the case of classical Goppa codes. Consequently, when the genus gets higher, we are not able to distinguish codes associated to low degree divisors. In the worst cases, we might not be able to distinguish anything.
+In the present work, we are interested in the case of Goppa--like one--point AG codes from $C_{a,b}$ curves, a class of curves introduced in \cite{Miu93}. These curves have been extensively studied and they are especially interesting to design AG codes. As we know explicit monomial basis of the AG code associated to any multiple of its unique point at infinity, it allows us to efficiently encode one--point codes \cite{BRS21}. Furthermore, they remain quite general: for examples, elliptic curves, Kummer or Artin-Schreier curves are $C_{a,b}$ curves. It is also natural to wonder how the genus affects the distinguisher: in particular, we give a sufficient condition in terms of  the minimal degree our divisor has to satisfy in order to mount the distinguisher. This bound is increasing with the genus of the curve, and coincides with the one given in \cite{MT21} in the case of classical Goppa codes. Consequently, when the genus gets higher, we are not able to distinguish codes associated to low degree divisors. In the worst cases, we might not be able to distinguish anything.
 
-AG codes, as generalizations of GRS codes, have exactly the same behaviour with respect to the Schur product. Moreover, some well--chosen AG codes are defined by the evaluation of \textit{multivariate} polynomials. In this case, we prove that performing division algorithms via Gr\"obner bases enables us to estimate the dimension of the square of the dual of Goppa--like AG codes. Even better, computations tend to show that the bound we obtain on the dimension is sharp whenever the one--point Goppa--like code seems random (\emph{i.e} the function $g$ is sufficiently random). The counterpart is, as it was the case in \cite{MT21} for classical Goppa codes, that we can only distinguish high rate codes. More precisely, our maximum distinguishable rate is roughly the same as in \cite{MT21}. As comparison of their results and ours is carried out in the case of Goppa--like codes defined over an elliptic curve. However, as previously discussed, if the genus becomes too large, the distinguisher may become ineffective: in particular, we show that Goppa--like AG codes constructed from the Hermitian curve resist our distinguisher, which is encouraging if we intend to base the McEliece cryptosystem on such class of codes.
+AG codes, as generalizations of GRS codes, have exactly the same behaviour with respect to the Schur product. Moreover, some well--chosen AG codes are defined by the evaluation of \textit{multivariate} polynomials. In this case, we prove that performing division algorithms via Gr\"obner bases enables us to estimate the dimension of the square of the dual of Goppa--like AG codes. Even better, computations tend to show that the bound we obtain on the dimension is sharp whenever the one--point Goppa--like AG code seems random (\emph{i.e} the function $g$ is sufficiently random). The counterpart is, as it was the case in \cite{MT21} for classical Goppa codes, that we can only distinguish high rate codes. More precisely, our maximum distinguishable rate is roughly the same as in \cite{MT21}. A comparison of their results and ours is carried out in the case of Goppa--like AG codes defined over an elliptic curve. However, as previously discussed, if the genus becomes too large, the distinguisher may become ineffective: in particular, we show that Goppa--like AG codes constructed from the Hermitian curve resist our distinguisher, which is encouraging if we intend to base the McEliece cryptosystem on such class of codes.
 
-However, as it is already the case for the distinguisher of classical Goppa codes \cite{MT21}, it seems complicated to turn this distinguisher into an efficient structural attack. But, having an algebraic explanation of the structure of the square of the dual of one--point Goppa--like codes is still desirable if we want to perform an attack using square code considerations. It also provides a rigorous method for selecting initial parameters that ensure the security of our cryptosystem.
+However, as it is already the case for the distinguisher of classical Goppa codes \cite{MT21}, it seems complicated to turn this distinguisher into an efficient structural attack. But, having an algebraic explanation of the structure of the square of the dual of one--point Goppa--like AG codes is still desirable if we want to perform an attack using square code considerations. It also provides a rigorous method for selecting initial parameters that ensure the security of our cryptosystem.
 
 
 
@@ -282,7 +282,7 @@ The paper is organized as follows. Section \ref{sec:preli} is dedicated to basic
 \section{Preliminaries}\label{sec:preli}
 \subsection{Linear codes, subfield subcodes and trace codes}\label{subsec:def}
 
-In this section, we briefly introduce some notation and basic definitions for linear codes, subfield subcodes, and trace codes. Furthermore, we present significant results that employ component--wise product and trace map. For further details about linear codes, we refer the reader to \cite{MS86}.
+In this section, we briefly introduce some notation and basic definitions for linear codes, subfield subcodes, and trace codes. Furthermore, we present significant results that employ component--wise product and the trace map. For further details about linear codes, we refer the reader to \cite{MS86}.
 
 \noindent Let $\fqm$ be a finite extension of the field $\fq$ with $q$ elements, where $m \geq 1$. A \emph{linear code} $\calC$ over $\fqm$ is a vector subspace of $\fqm^n$. The integer $n$ is called its \emph{length} and we denote by $k$ its \emph{dimension} and by $d$ its \emph{minimum distance}. We say that $\calC$ is a $[n,k,d]_{q^m}$ code or that it has parameters $[n,k,d]_{q^m}$ (we may omit the minimum distance in this notation). Given a linear code of length $n$, its dual code $\calC^{\perp}$ is defined by 
 \[\calC^{\perp}=\left\lbrace \mathbf{x} \in \fqm^n \mid \mathbf{c} \cdot \mathbf{x}=0, \text{ for all } \mathbf{c} \in \calC \right\rbrace,\]  
@@ -336,7 +336,7 @@ Given $G \in \Div(\calX)$, we define its \emph{support} $\Supp(G)$ as the finite
 
 
 A non--zero function $f \in \fqm(\calX)$ defines a divisor, called \emph{principal}, denoted by $(f)=\sum \nu_P(f) P$. The \emph{Riemann--Roch space} of a divisor $G$ is defined as the $\fqm$ vector space
-$$ \calL(G) := \set{f \in \fqm(\calX) \mid (f) + G \geq 0} \cup \set{0},$$
+$$ \calL(G) := \set{f \in \fqm(\calX) \mid (f) + G \geq 0} \cup \{0\},$$
 of dimension $\ell(G)$.
 Let $\calP \subseteq \fqm(\calX)$ be a set of $n$ distinct rational points such that $\Supp(G) \cap \calP = \varnothing$. By numbering the points in $\calP=\set{P_1,\dots,P_n}$, we define an evaluation map
 \begin{equation}\label{eq:ev_P}
@@ -346,7 +346,7 @@ Let $\calP \subseteq \fqm(\calX)$ be a set of $n$ distinct rational points such 
 	\end{array} \right.
 \end{equation}
 We can consider the AG code 
-\[\calC := \calC_{\calL}(\calX,\calP,G) := \set{\ev_{\calP}(f) \mid f \in \calL(G)},\]
+\[\calC := \calC_{\calL}(\calX,\calP,G) := \{\ev_{\calP}(f) \mid f \in \calL(G)\},\]
 which is a $[n, k \geq \ell(G)]_{\fqm}$ code. If $n > \deg (G)$, then its dimension is exactly equal to $\ell(G)$ and its minimum distance is bounded from below by the \emph{designed distance} $d^*=n-\deg (G)$.\\
 From the Riemann--Roch theorem, we have
 $$ \ell(G) \geq \deg(G) +1 - \mathfrak{g},$$ 
@@ -357,7 +357,7 @@ $$ C_{\calL}(\calX,\calP,G)^{\perp} = C_{\Omega}(\calX,\calP,G).$$
 Residue and evaluation codes are connected by the following result.
 
 \begin{proposition} [{\cite[Proposition~2.2.10]{Sti09}}] \label{prop:dual_AG_codes}
-Let $C_{\calL}(\calX,\calP,G)$ be an AG-code defined on a curve $\calX$. Then 
+Let $C_{\calL}(\calX,\calP,G)$ be an AG code defined on a curve $\calX$. Then 
 \[C_{\Omega}(\calX,\calP,G) = C_{\calL}(\calX,\calP,G^{\perp}),\]
 with $G^{\perp} = D_{\calP}-G+W$, where $D_{\calP} = \sum\limits_{P \in \calP} P$ and $W=(\omega)$ is a canonical divisor such that for all $P \in \calP$, $\nu_P(\omega)=-1$ and $\mathrm{Res}_{\omega}(P)=1$. 
 \end{proposition}
@@ -372,10 +372,10 @@ In general, it is hard to find the true dimension of the subfield subcode of an 
 
 The minimum distance of the SSAG code $C_{\calL}(\calX,\calP,G)|_{\fq}$ is at least the one of the AG code $C_{\calL}(\calX,\calP,G)$ above. It is thus bounded from below by the designed distance $d^*=n-\deg (G)$.% 
 
-The structure of the AG codes may provide sharper bounds on the dimension of subfield subcodes and trace codes of AG codes.
+In particular cases, the structure of AG codes may provide sharper bounds on the dimension of their subfield subcodes and trace codes.
 
 \begin{thm}[{\cite[Theorem~9.1.6]{Sti09}}]\label{thm:dim_ssag}
-	With the notation as above, let $G_1$ be any divisor such that 
+	With notation as above, let $G_1$ be any divisor such that 
 	\begin{equation} \label{eq:divisor_G_1}
 		G \geq qG_1 \ \mathrm{and} \ G \geq G_1.
 	\end{equation}
@@ -443,7 +443,7 @@ The above corollary implies that if the dimension of a square code is smaller th
 \[ \dim_{\fqm} (\calC^{\star 2}) < \binom{\dim_{\fqm} (\calC)+1}{2},\]
 then this property is retained for the trace code, \emph{i.e.}
 \[\dim_{\fq} \Tr{\calC}^{\star 2} < \binom{\dim_{\fq} \Tr{\calC}+1}{2}.\]
-This is especially true for Reed--Solomon codes (see \cite{MT21}, Proposition 11) and more generally for AG codes.
+This is especially true for Reed--Solomon codes (see \cite[Proposition 11]{MT21}) and more generally for AG codes.
 
 
 \begin{proposition} [{\cite[Theorem~6]{Mum70}}] \label{prop:mumford_result}
@@ -455,10 +455,10 @@ If $\Supp(F) \cap \calP = \Supp(G) \cap \calP = \varnothing$, then denoting all 
 \begin{equation}\label{eq:ev_star}
 \forall \: (f,g) \in \calL(F) \times \calL(G), \: \ev_{\calP}(f) \star \ev_{\calP}(g) = \ev_{\calP}(f\cdot g). 
 \end{equation}
-As a consequence, for associated AG codes, we have  $C_{\calL}(\calX,\mathcal{P},G)$
+As a consequence, for associated AG codes, we have
 \[ C_{\calL}(\calX,\mathcal{P},F) \star C_{\calL}(\calX,\mathcal{P},G) \subseteq C_{\calL}(\calX,\calP,F+G).\]
-In particular, for the Schur square, we have
-\[ C_{\calL}(\calX,\mathcal{P},G)^{\star2} \subseteq C_{\calL}(\calX,\calP,2G).\]
+Regarding the Schur square, it implies that
+\[ C_{\calL}(\calX,\mathcal{P},G)^{\star2} \subseteq C_{\calL}(\calX,\calP,2G),\]
 with equality if $\deg(G) \geq 2\mathfrak{g}+1$.
 If $\deg (G) \geq \mathfrak{g}$, applying the Riemann--Roch theorem to the divisors $G$ and $2G$ thus gives
 \begin{equation}\label{eq:dim_square}
@@ -472,7 +472,7 @@ which is much smaller than the expected dimension given in Lemma \ref{lem:known_
 
 \begin{coro} \label{coro:1st_bound_mumford}
  Let $\mathcal{C} := C_{\calL}(\calX,\mathcal{P},G)$ be a $k$--dimensional AG code on $\calX$ associated with a degree $s \geq \mathfrak{g}$ divisor. Then
- \[ \dim_{\fq}\Tr{\calC}^{\star2} := \dim_{\fq} \left((\calC^\perp|_{\fq})^{\perp}\right)^{\star2}  \leq \binom{mk+1}{2} - \dfrac{m}{2} (k(k-1)-2s).\]
+ \[ \dim_{\fq}\Tr{\calC}^{\star2} = \dim_{\fq} \left((\calC^\perp|_{\fq})^{\perp}\right)^{\star2}  \leq \binom{mk+1}{2} - \dfrac{m}{2} (k(k-1)-2s).\]
 \end{coro}
 
 \begin{proof}
@@ -504,7 +504,7 @@ According to the above corollary, the dimension of the square of the dual of an 
 \end{proof}
 
 \begin{remark}
-The property above for $i=0$ follows from Proposition \ref{prop:mumford_result}. To the best of our knowledge, there is no sufficient criterion for the equality for $i \geq 1$ in the literature. Given a basis $\set{f_1,\dots,f_k}$ of the Riemann--Roch space $\calL(G)$, the vector space $\calL(G)\cdot \calL(G)^{q^i}$ is spanned by the set $\set{f_u f_v^{q^i} \mid 1 \leq u \leq v \leq k}$. From our experiments, it may happen that the cardinality of this family is larger than $\ell((q^i+1)G)$ without the equality holding, which means that these generators may be linearly dependent in $\calL((q^i+1)G)$ and do not form a basis of $\calL(G)\cdot \calL(G)^{q^i}$.
+The property above for $i=0$ follows from Proposition \ref{prop:mumford_result}. To the best of our knowledge, there is no sufficient criterion for the equality when $i \geq 1$ in the literature. Given a basis $\set{f_1,\dots,f_k}$ of the Riemann--Roch space $\calL(G)$, the vector space $\calL(G)\cdot \calL(G)^{q^i}$ is spanned by the set $\set{f_u f_v^{q^i} \mid 1 \leq u \leq v \leq k}$. From our experiments, it may happen that the cardinality of this family is larger than $\ell((q^i+1)G)$ without the equality holding, which means that these generators may be linearly dependent in $\calL((q^i+1)G)$ and do not form a basis of $\calL(G)\cdot \calL(G)^{q^i}$.
 \end{remark}
 
 Thanks to Lemma \ref{lem:Schur-Product-Power}, it will be possible to better handle the terms $\Tr{\calC\star \calC^{q^i}}$ in Equation \eqref{eq:key_equation}. Our aim for the rest of the paper is to improve the bound of Corollary \ref {coro:1st_bound_mumford} in some specific cases.
@@ -524,9 +524,9 @@ Any curve $\calX_{a,b}$ defined as in Equation \eqref{eq:equation_C_ab} has a un
 
 \subsubsection{The point at infinity $P_\infty$ and the ring $\calS$}
 
-We will consider codes obtained by evaluating functions on $\calX_{a,b}$ which are regular everywhere, except maybe at the unique point at infinity $P_\infty$. These functions then belong to the coordinate ring of the affine curve $\calX_{a,b} \setminus \set{P_\infty}$, which we denote by $\calS$.
+We will consider codes obtained by evaluating functions on $\calX_{a,b}$ which are regular everywhere, except maybe at the unique point at infinity $P_\infty$. These functions then belong to the coordinate ring of the affine curve $\calX_{a,b} \setminus \set{P_\infty}$, which we denote by $\calS$. We have
 \begin{equation}\label{eq:O_Pinf}
-\calS=\bigcup_{s \geq 0} \calL(s P_\infty)
+\calS=\bigcup_{s \geq 0} \calL(s P_\infty),
 \end{equation} %
 where each Riemann--Roch space $\calL(s P_\infty)$ has an explicit basis as follows:
 \begin{equation} \label{eq:basis_L(sP_inf)}
@@ -574,7 +574,7 @@ Such a code has length $n = \# \calP$. As stated in \cite[Theorem~1]{JM96}, its 
 if $2\mathfrak{g} - 2 < \deg (D) < n$. Its minimum distance is bounded from below by $\deg (D) - 2 \mathfrak{g} + 2$.
 
 \begin{remark}
-These estimations of the dimension and the minimum distance may be improved by Theorems~\ref{thm:dim_ssag} and \ref{thm:Wirtz}. Regarding the dimension, it is worth noting that, since $g \notin \calL(D)$, the divisor $G$ is not effective. Hence, any divisor $G_1$ satisfying the conditions of Equation \eqref{eq:divisor_G_1} is also non--effective, which means that
+These estimations on the dimension and the minimum distance may be improved by Theorems~\ref{thm:dim_ssag} and \ref{thm:Wirtz}. Regarding the dimension, it is worth noting that, since $g \notin \calL(D)$, the divisor $G$ is not effective. Hence, any divisor $G_1$ satisfying the conditions of Equation \eqref{eq:divisor_G_1} is also non--effective, which means that
 \[	\dim_{\fq}  \Gamma(\calP,D,g) \geq 	n-m\left(\ell(G) - \ell(G_1)\right). \]
 Without additional conditions on the divisor $D$ and the function $g$, the divisor $G_U$ for $G=D+(g)$ defined in Theorem~\ref{thm:Wirtz} is zero. Generally, we cannot expect for a better bound for the minimum distance. 
 \end{remark}
@@ -596,7 +596,8 @@ We prefer the terminology \emph{Goppa--like AG codes} instead of simply Goppa co
 This denomination is obviously motivated by the fact that here, the rational function $g$ plays the role of the Goppa polynomial. As described in \cite[Example~9.1.8]{Sti09}, Goppa codes are nothing but Goppa--like AG codes from the projective line $\calX=\PP^1$. In fact, given $r \geq 0$, the Generalized Reed--Solomon (GRS) code of degree $r$, support $\mathbf{x} \in \fqm^n$ and multiplier $\mathbf{y} \in (\fqm^*)^n$ is defined as
 \[\GRS_r(\mathbf{x},\mathbf{y})=\{(y_1f(x_1),y_2f(x_2),\dots,y_nf(x_n)) \mid f \in \fqm[X] \text{ such that } \deg (f) < r \}.\]
 Take a univariate polynomial $g$ of degree $r$ such that $g(x_i) \neq 0$ for every  $i \in \{1,\dots,n\}$. Then the Goppa code of order $r$ and support $\mathbf{x} \in \fqm^n$ is defined as
-\begin{equation}\label{eq:classical_Goppa}\Gamma_r(\mathbf{x},g)= \GRS_r(\mathbf{x},\mathbf{y})^\perp|_{\fq}
+\begin{equation}\label{eq:classical_Goppa}
+\Gamma_r(\mathbf{x},g)= \GRS_r(\mathbf{x},\mathbf{y})^\perp|_{\fq},
 	\end{equation}
 where $\mathbf{y}=(g(x_1)^{-1},g(x_2)^{-1},\dots,g(x_n)^{-1})$.
 Represent the $\fqm$--points of $\PP^1$ by the couples $\PP^1(\fqm)=\{[1:x] \mid x \in \fqm\} \cup \{P_\infty\}$ for $P_\infty=[0:1]$. Take $\calP=\{[1:x_1],[1:x_2],\dots,[1:x_n]\}$ and $D=(r-1)P_\infty$. Finally, the polynomial $g$ can be seen as a function on $\PP^1$ which lies in $\calL(rP_\infty)$ but not in $\calL((r-1)P_\infty)$. Then both constructions match: $\Gamma_r(\mathbf{x},g)=\Gamma(\calP,D,g)$.
@@ -617,7 +618,7 @@ Let $q=3$ and $m=4$. We consider the elliptic curve defined over $\fqm$ by the e
 $$ E : y^2 = x^3+2x+1.$$
 As usual, we denote by $P_\infty$ the unique point at infinity on $E$. We take $D$ as a one--point divisor supported by $P_\infty$, \emph{i.e} $D = 7P_\infty$. We consider two choices of function $g\in \calL(8P_\infty) \setminus \calL(7P_\infty)$:
 \begin{enumerate}
-\item First, let $g_1 = x^4$. In this case, $g$ has 2 zeroes (say $P_1$ and $P_2$), which are those of $x$. More precisely, we have
+\item First, let $g_1 = x^4$. In this case, $g$ has 2 zeroes (say $P_1$ and $P_2$), which are those of $x$. More precisely, the divisor of $g_1$ is given by
 $$(g_1) = 4(P_1+P_2)-8P_\infty.$$ 
 Hence, if we set $G = D+(g_1)$, the divisor $\left[\frac{G}{q}\right] = P_1+P_2-P_\infty$ has degree $1 > 2g(E)-2=0$, meaning that the codes $\Gamma(\calP,D,g_1)$ and $\mathrm{Car}_3(\calP,G)$ are equal over $\mathbb{F}_3$.
 
@@ -667,13 +668,13 @@ we can easily deduce the following result.
 \begin{proof}
 From Lemma~\ref{lem:Schur-Product-Power}, we deduce that 
 \[\dim_{\fqm} \calC\star \calC^{q^i} \leq \dim_{\fqm} \calL((q^i+1)G) = \dim_{\fqm} \calL((q^i+1)D) = s(q^i+1)+1-\mathfrak{g},\]
-the last equality coming from the Riemann--Roch theorem (since $\deg \left((q^i+1)D\right) =s \geq 2\mathfrak{g}-1$). The result follows from the usual upper bound on the dimension of the trace of a code. 
+the last equality coming from the Riemann--Roch theorem (since $\deg \left((q^i+1)D\right) =(q^i+1)s \geq 2\mathfrak{g}-1$). The result follows from the usual upper bound on the dimension of the trace of a code. 
 \end{proof}
 
 \begin{remark}\label{rmk:improvements}
 	At first glance, it seems that we could have benefited from Theorem~\ref{thm:dim_ssag} to get a sharper bound in the previous lemma. Indeed, for every $i \geq 1$, we have 
 	\[\left[\frac{(q^i+1)G}{q}\right]=q^{i-1}G^+ - (q^i+1)G^-,\]
-	writing $G=G^+-G^-$ with $G^+, \: G^- \geq 0$. However, in the context of Goppa--like codes, we have $G=D+(g)$ where $g \notin \calL(D)$, hence $G^- \neq 0$. Without further hypotheses on the divisor $D$ and the function $g$, the degree of the divisor $\left[\frac{(q^i+1)G}{q}\right]$ may be too low to bound the dimension of its Riemman--Roch space from below via the Riemann--Roch theorem.
+	writing $G=G^+-G^-$ with $G^+, \: G^- \geq 0$. However, in the context of Goppa--like AG codes, we have $G=D+(g)$ where $g \notin \calL(D)$, hence $G^- \neq 0$. Without further hypotheses on the divisor $D$ and the function $g$, the degree of the divisor $\left[\frac{(q^i+1)G}{q}\right]$ may be too low to bound the dimension of its Riemman--Roch space from below via the Riemann--Roch theorem.
 \end{remark}
 
 This simple lemma yields an upper bound on the dimension of the square of the dual of Goppa--like codes.
@@ -711,7 +712,7 @@ $$e_0 :=  \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor.$$
 
 \subsubsection{Sharpness of the bound} \label{section:sharpness}
 
-Definition \ref{def:Goppa--like_AG_code} of a Goppa--like AG code $\Gamma(\calP,D,g) := \calC^{\perp}|_{\fq}$ requires very few hypotheses. Besides the conditions on the supports of $D$ and $(g)$, which guarantee that the code is well--defined, we only ask for the function $g$ not to belong to the Riemann--Roch space $\calL(D)$. This hypothesis is enforced to make sure that the dimension of $\Tr{\calC}^{\star 2}$ is not abnormally small compared to the expected value given in Corollary \ref{coro:first_bound_square_of_trace}, and thus to make Goppa--like AG codes resistant to a distinguisher based on the square of their dual.
+Definition \ref{def:Goppa--like_AG_code} of a Goppa--like AG code $\Gamma(\calP,D,g) := \calC^{\perp}|_{\fq}$ requires very few hypotheses. Besides the conditions on the supports of $D$ and $(g)$, which guarantee that the code is well--defined, we only ask for the function $g$ not to belong to the Riemann--Roch space $\calL(D)$. This assumption is enforced to make sure that the dimension of $\Tr{\calC}^{\star 2}$ is not abnormally small compared to the expected value given in Corollary \ref{coro:first_bound_square_of_trace}, and thus to make Goppa--like AG codes resistant to a distinguisher based on the square of their dual.
 
 First, if the function $g$ lied in $\calL(D)$ (or more generally if the vector of the evaluations $(g(P))_{P \in \calP}$ belonged to $C_\calL(\calX,\calP,D)$), then the code $\calC= \calC_{\calL}(\calX,\calP,D+(g))$ would contain the evaluation of the constant function $1=\frac{g}{g}$, \textit{i.e.} the unit vector $(1,\dots,1)$. In this case, the vector $(1,\dots,1)$ would belong to $\calC^{q^i}$ for every $i \in \{0,\dots, \lfloor{m/2} \rfloor\}$ and each term in the sum on the right hand--side would contain a copy of $\Tr{\calC}$. This non--trivial intersection between the codes $\Tr{\calC\star \calC^{q^i}}$ would contribute with a negative term in the above bound.
 Secondly, if $g$ belonged to $\calL(D)$, then $D+(g)$ would be effective. This would imply the inclusion $\calL((q^i+1)D) \subset \calL((q^{i+1}+1)D)$ for every $i \geq 0$. Therefore, in the proof of Proposition \ref{prop:bound_dim_using_inclusions}, when bounding from above the dimension of the sum by the sum of the dimensions of the trace codes, we would have no chance to get a sharp bound.
@@ -808,7 +809,7 @@ Before diving into technical proofs, let us fix some notation that we will use i
 		f 			& \mapsto	  &  (f(P_1),\dots,f(P_n)) 
 	\end{array} \right.
 \]
-Now, $\ev_{\calP}$ is an algebra homomorphism, where $\fq^n$ is endowed with the product $\star$, \textit{i.e.} $\ev_{\calP}(f)\star\ev_{\calP}(f')=\ev_{\calP}(f\cdot f')$ for any $f, \: f' \in  \calS$. 
+Now, $\ev_{\calP}$ is an algebra homomorphism, where $\fq^n$ is endowed with the product $\star$, \textit{i.e.} $\ev_{\calP}(f)\star\ev_{\calP}(f'):=\ev_{\calP}(f\cdot f')$ for any $f, \: f' \in  \calS$. 
 
 For two functions $f,\: f' \in \calS$, we will write $f \equiv_{\calP} f'$ if $\ev_{\calP}(f)=\ev_{\calP}(f')$.
 
@@ -1072,10 +1073,10 @@ This function is decreasing with $e$, and the smallest value for which $\Delta F
 $$e =  \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1.$$
 \end{proof}
 
-This theorem generalizes \cite[Corollary 27]{MT21}. Several computational experiments showed then when the code $\calC:=\calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$ is sufficiently random the bound given in Theorem \ref{thm:bound_with_T_i's_inclusion} is sharp, as claimed by Mora and Tillich \cite[Remark 28]{MT21} on ${\calX=\PP^1}$. Let us examine the sharpness of the bound in the following examples.
+This theorem generalizes \cite[Corollary 27]{MT21}. Several computational experiments showed that when the code $\calC:=\calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$ is sufficiently random, the bound given in Theorem \ref{thm:bound_with_T_i's_inclusion} is sharp, as claimed by Mora and Tillich \cite[Remark 28]{MT21} on ${\calX=\PP^1}$. Let us examine the sharpness of the bound in the following examples.
 
 \begin{example}
-	The codes studied in Example \ref{ex:non_equality_bound} are one--point Goppa--like AG codes on ${\calX=\PP^1}$. The bound of Theorem \ref{thm:bound_with_T_i's_inclusion} for $s=9$ and $s=10$ respectively gives 400 and 462, instead of 496 and 570. It is worth noting that this new upper bound is still far from the actual dimensions, namely 255 and 295. This comes for the fact that the function $g$ chosen in Example \ref{ex:non_equality_bound} are powers of $x$, so the associated principal divisor $(g)$ is supported only by $P_0$ and $P_\infty$.
+	The codes studied in Example \ref{ex:non_equality_bound} are one--point Goppa--like AG codes on ${\calX=\PP^1}$. The bound of Theorem \ref{thm:bound_with_T_i's_inclusion} for $s=9$ and $s=10$ respectively gives 400 and 462, instead of 496 and 570. It is worth noting that this new upper bound is still far from the actual dimensions, namely 255 and 295. This comes for the fact that the functions $g$ chosen in Example \ref{ex:non_equality_bound} are powers of $x$, hence their associated principal divisors $(g)$ are supported only by $P_0$ and $P_\infty$.
 \end{example}
 
 \begin{example}
