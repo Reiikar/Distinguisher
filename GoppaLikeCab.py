@@ -10,51 +10,57 @@ Created on Thu Jul 27 13:52:45 2023
 import scipy.special
 import math
 
-q=5;
-m=4;
-assert  m%2 == 0;
-q0=q**(m//2);
-g=q0*(q0-1)//2;
+q=2;
+m=12;
+a=2;
+b=1;
+assert  math.gcd(a,b) == 1;
+g=(a-1)*(b-1)//2;
 #On va se permettre de faire varier la longueur entre e*q0^3 et q0^3 pour 0<e<=1 
  #Fraction du nombre de points rationels total qu'on évalue
-e_min=0.1;
-e_max=0.4
-nbpts=q0**3;
-n=nbpts
+e_min=0.5;
+e_max=1
+n=q**m+2*g*math.floor(math.sqrt(q**m));
+
+
 
 min_t=64; #Le minimum d'erreurs qu'on veut décoder
-min_WK=128; #La sécurité minimum acceptée
-max_KS= 2*10**6#Taille de clé maximum
+min_WK=142; #La sécurité minimum acceptée
+max_KS= 3*10**6#Taille de clé maximum
 
-min_s= 2*min_t+2*g-2;
-max_s=nbpts;
+min_s= min_t;
+max_s=n;
 
 def Study(n,s):
     k=n-m*(s-g+1);
     if k <=0 :
+        #print("Pb dimension!")
         return None;
-    t=s//2-g+1;
+    t=s;
     if t < min_t :
         return None;
+        print("Pb correction!")
     KeySize= math.floor(math.log2(q)*k*(n-k))
     if KeySize > max_KS :
+        print("Pb KS!")
         return None;
     WK=math.floor(math.log2(scipy.special.comb(n, t, exact=True)/scipy.special.comb(n-k, t, exact=True)));
     if WK < min_WK :
+        print("Pb WK! " + str(WK) )
         return None;
     return [n,s,k,t,WK,KeySize];
 
 RES=[]
 for s in range(min_s,max_s) :
     if e_min !=e_max :
+        n_min=math.floor(n*e_min)
+        n_max=math.floor(n*e_max)
+        step=math.floor((n_max-n_min)/10);
         res=[]
-        n_min=math.floor(nbpts*e_min)
-        n_max=math.floor(nbpts*e_max)
-        for i in range(n_max,n_min,-200):
-            if i <= nbpts-s :
-                l=Study(i,s);
-                if l != None:
-                    res.append(l);
+        for i in range(n_max,n_min,-step):
+            l=Study(i,s);
+            if l != None:
+                res.append(l);
         if res != [] :
             RES.append(res)
     else:
