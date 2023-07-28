@@ -19,10 +19,6 @@
 \usepackage{multirow}
 \usepackage{array}
 
- %for a more open "look" in tabulars
-\setlength\tabcolsep{2pt}
-\setlength\extrarowheight{2pt}
-
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{naturalnames}{hyperref}
 
@@ -84,6 +80,7 @@
 \newcommand{\gen}{\mathfrak{g}}
 \newcommand{\degab}[1]{\deg_{a,b}\left(#1\right)}
 
+\newcommand{\STAB}[1]{\begin{tabular}{@{}c@{}}\rotatebox[origin=c]{90}{\textbf{#1}}\end{tabular}}%Pour écrire à la verticale
 
 
 %%----Commentaires----%%%
@@ -193,102 +190,156 @@ $$ C_\text{Prange}= \frac{\binom{n}{t}}{\binom{n-k}{t}}C_\text{Gauss}(n,k,q),$$
 
 where $C_\text{Gauss}(n,k,q)=$ is the cost of the partial Gauss--Jordan elimination of an $k\times n$ matrix over $\mathbb{F}_q$. We analyse the parameters of Goppa--like AG codes based on information set decoding attack.
  
-In this work, we also investigate Goppa--like AG codes over finite fields with different characteristics by analysing the computational cost of the ISD algorithm for parameters relevant to post--quantum cryptography. In Table \ref{table:goppa-herm}, we provide parameters that resist the distinguisher given in this paper and improve key sizes compared to the subfield subcodes of one--point Hermitian codes parameters reported in \cite[Tables~2 and 3]{EKN21crypto}, which already reduced key sizes compared to binary Goppa codes.
+In this work, we also investigate Goppa--like AG codes over finite fields with different characteristics by analysing the computational cost of the ISD algorithm for parameters relevant to post--quantum cryptography. In Table \ref{table:comp}, we provide parameters that resist the distinguisher given in this paper and improve key sizes compared to the subfield subcodes of one--point Hermitian codes \cite[Tables~2 and 3]{EKN21crypto}, which already reduced key sizes compared to binary Goppa codes.
 
 \mathieu{Il faudrait préciser que c'est l'exposant de la complexité de Prange.}
 
 
-\begin{table}[h]
-	\begin{center}
-			\begin{tabular}{|c|c|c|c|c|c|}
-				\hline
-				Security level&  $n$ & $k$ & $t=r$ & Security bits& Key--Size(Bytes)\\
-				\hline \hline
-				Category 1 	&	3\,488 &2\,720 &64  &143 &261\,120 \\\hline
-				Category 3 	&	4\,608 &3\,360 &96  &185 &524\,160 \\\hline
-				Category 5 	&	6\,688 &5\,024 &128 &263 &1\,044\,992 \\
-				&	8\,192 &6\,528 &128 &300 &1\,357\,824 \\\hline
-		\end{tabular}
-		\vspace*{0.3em}
-		\caption{McEliece cryptosystem based on \textbf{binary Goppa codes} \cite{ClassicMCE}}
-	\end{center}
-\end{table}
+
+ %for a more open "look" in tabulars
+\setlength\tabcolsep{5pt}
+\setlength\extrarowheight{3pt}
+
+\jade{Tableaux fusionnés}
 
 \begin{table}[h]
-	\begin{center}
-		
-			\begin{tabular}{|c|c|c|c|c|c|c|}
-				\hline
-				$q$&  $s$ & $n$ & $k$ & $t$ & Security bits& Key--Size(Bytes)\\
-				\hline \hline
-				
-				${11}$	&1\,174 & 1\,331 & 927 & 78 & $142$ & $140\,440$ \\
-				
-				\hline \hline
-				${13}$&2\,039 & 2\,197 & 1\,735 & 79 & $185$ & $400\,785$ \\
-				
-				\hline 
-				${16}$&3\,980 & 4\,096 & 3\,634 & 58 & 187& 839\,454   \\
-				
-				\hline \hline
-				${13}$& 1\,861 & 2\,197 & 1\,398 & 168 & 263& 558\,501\\
-				
-				\hline 
-				${16}$& 3\,874 & 4\,096 & 3\,422 & 111 & 300 & 1\,153\,214\\
-				\hline
-		\end{tabular}
+	\centering
+\begin{tabular}{c|c|c|c|c|c|c|c|c|c|}
+	\cline{2-10}
+	& \textbf{Variant} 	& $q$ 	& $m$ 	& $n$ 	 & $s$ 		& $k$ 		& $t$ 	& \textbf{Security bits}	& \textbf{Key--Size} (Bytes)\\
+\cline{2-10}\noalign{\vspace{0.25ex}}\cline{2-10}
+\multirow{5}{*}{\STAB{Category 1}}		& Classic	& 2		& 12 	& 3\,488 &	--		& 2\,720 	&64  	&143 			&261\,120 \\\cline{2-10}
+						& HSS		& \multirow{3}{*}{11}	& \multirow{4}{*}{2} 	& 1\,331 & 1\,174 	&927 		& 78 	& $142$ & $140\,440$ \\ \cline{2-2}\cline{5-10}
+			  & \multirow{3}{*}{GLH}&	& 		&1\,331&242& 955& 67& 128& 155\, 276\\\cline{5-10}
+						& 			& 	&		&1\,289&248& 901& 70& 128& 151\,171 \\\cline{3-3}\cline{5-10}
+						&			& 13&		&1\,366&426& 668& 136& 142&215\,672  \\
+						
+						\cline{2-10}\noalign{\vspace{0.25ex}}\cline{2-10}
+\multirow{4}{*}{\STAB{Category 3}}		& Classic	& 2	& 13 	& 4\,608 &	--	&3\,360 &96  &185 &524\,160 \\\cline{2-10}
+						& HSS		& \multirow{3}{*}{13}& \multirow{3}{*}{2} 	&2\,197 &2\,039& 1\,735 & 79 & $185$ & $400\,785$ \\\cline{2-2}\cline{5-10}
+			&\multirow{2}{*}{GLH}	&			& 		&2\,197 &346& 1\,659 & 96 & 204 & 412\,849\\
+						&			&	&		&1\,731 &438& 1\,009& 142& 192& 336\,970   \\
+						\cline{2-10}\noalign{\vspace{0.25ex}}\cline{2-10}
+\multirow{7}{*}{\STAB{Category 5}}		& Classic	& 2					& 13				 	& 6\,688 & 	--	&5\,024 &128 &263 &1\,044\,992 \\\cline{2-10}			
+						& HSS		& 13			& \multirow{2}{*}{2} 	& 2\,197 &1\,861& 1\,398 & 168 & 263& 558\,501\\ \cline{3-3}\cline{5-10}
+						& GLH		& 13			& 						& 2\,197  & 506& 1\,339 & 176 & 256 & 531\,411\\
+						\cline{2-10}\noalign{\vspace{0.25ex}}\cline{2-10}
+						& Classic					& 2					& 13						& 8\,192 & 	--	&6\,528 &128 &300 &1\,357\,824 \\\cline{2-10}
+						&HSS						&\multirow{3}{*}{16}&\multirow{3}{*}{2}		& 4\,096 &3\,874& 3\,422 & 111 & 300 & 1\,153\,214\\\cline{2-2}\cline{5-10}
+						& \multirow{2}{*}{GLH}		&					& 						& 4\,096 &478& 3\,378  & 120 & 314 & 1\,212\,702 \\\cline{5-10}
+						&							&					&						&2\,704& 674& 1\,594& 218& 300& 884\,670\\\cline{2-10}
+						
+\end{tabular}
 		\vspace*{0.3em}
-		\caption{McEliece cryptosystem based on one--point Hermitian subfield subcodes \cite{EKN21crypto}}
-	\end{center}
-\end{table}
+		\caption{Comparison between binary Goppa codes (\textit{Classic} \cite{ClassicMCE}), one--point Hermitian subfield subcodes (\textit{HSS} \cite{EKN21crypto}) and Goppa--like Hermitian codes (\textit{GLH})}\label{table:comp}
+	\end{table}
+
+
 The results revealed a trade-off between the two AG code types. In some cases, Goppa-like Hermitian codes offered better key size improvement, while in other cases, Hermitian subfield subcodes performed better in this aspect. The choice between these two AG codes depends on the specific security requirements, the error capability and key size constraints of the application.
 
 
 In general, Goppa-like Hermitian codes offer significant advantages over Classic Goppa codes in terms of key size optimization, error correction capability, and potential post-quantum security.
 
-\begin{table}[h]
-	\begin{center}
-		\begin{tabular}{|c|c|c|c|c|c|c|}
-			\hline
-			\multicolumn{7}{|c|}{$n < q^3$}\\\hline
-			$q$&  $s$ & $n$ & $k$ & $t$ & Prange complexity & Key--Size(Bytes)\\
-			
-			\hline \hline
-			
-			${11}$ &248&1289& 901& 70& 128& 151 \,171 \\
-			
-			\hline
-			${13}$&426&1366& 668& 136& 142& 215\,672  \\
-			
-			\hline \hline
-			
-			${13}$ & 438 & 1731& 1009& 142& 192& 336 \,970   \\
-			
-			\hline \hline
-			
-			${16}$ & 674 &2704& 1594& 218& 300& 884\, 670\\
-			
-			\hline
-			\multicolumn{7}{|c|}{$n = q^3$}\\\hline
-			
-			${11}$ & 242 &1331& 955& 67& 128& 155\, 276\\
-			
-			\hline \hline
-			
-			${13}$ & 346 & 2197 & 1659 & 96 & 204 & 412\, 849\\
-			
-			\hline \hline
-			
-			${13}$ & 506 & 2197 & 1339 & 176 & 256 & 531\,411\\
-			\hline
-			${16}$ & 478 & 4096 & 3378  & 120 & 314 & 1\, 212\, 702 \\
-			\hline
-		\end{tabular}
-		\vspace*{0.3em}
-		\caption{Goppa-Like Hermitian codes parameters $\Gamma(\calP,sP_\infty,g)$ over $\F_{q^2}$ ($m=2$).} \label{table:goppa-herm}
-	\end{center}
-\end{table}
 
+ %for a more open "look" in tabulars
+\setlength\tabcolsep{2pt}
+\setlength\extrarowheight{2pt}
+
+
+
+
+%
+%
+%
+%
+%\begin{table}[h]
+%	\begin{center}
+%			\begin{tabular}{|c|c|c|c|c|c|}
+%				\hline
+%				Category&  $n$ & $k$ & $t=r$ & Security bits& Key--Size(Bytes)\\
+%				\hline \hline
+%				1 	&	3\,488 &2\,720 &64  &143 &261\,120 \\\hline
+%				3 	&	4\,608 &3\,360 &96  &185 &524\,160 \\\hline
+%				\multirow{2}{*}{5} 	&	6\,688 &5\,024 &128 &263 &1\,044\,992 \\\cline{2-5}
+%				&	8\,192 &6\,528 &128 &300 &1\,357\,824 \\\hline
+%		\end{tabular}
+%		\vspace*{0.3em}
+%		\caption{McEliece cryptosystem based on \textbf{binary Goppa codes} \cite{ClassicMCE}}
+%	\end{center}
+%\end{table}
+%
+%\begin{table}[h]
+%	\begin{center}
+%		
+%			\begin{tabular}{|c|c|c|c|c|c|c|}
+%				\hline
+%				$q$&  $s$ & $n$ & $k$ & $t$ & Security bits& Key--Size(Bytes)\\
+%				\hline \hline
+%				
+%				${11}$	&1\,174 & 1\,331 & 927 & 78 & $142$ & $140\,440$ \\
+%				
+%				\hline \hline
+%				${13}$&2\,039 & 2\,197 & 1\,735 & 79 & $185$ & $400\,785$ \\
+%				
+%				\hline 
+%				${16}$&3\,980 & 4\,096 & 3\,634 & 58 & 187& 839\,454   \\
+%				
+%				\hline \hline
+%				${13}$& 1\,861 & 2\,197 & 1\,398 & 168 & 263& 558\,501\\
+%				
+%				\hline 
+%				${16}$& 3\,874 & 4\,096 & 3\,422 & 111 & 300 & 1\,153\,214\\
+%				\hline
+%		\end{tabular}
+%		\vspace*{0.3em}
+%		\caption{McEliece cryptosystem based on one--point Hermitian subfield subcodes \cite{EKN21crypto}}
+%	\end{center}
+%\end{table}
+
+%
+%\begin{table}[h]
+%	\begin{center}
+%		\begin{tabular}{|c|c|c|c|c|c|c|}
+%			\hline
+%			\multicolumn{7}{|c|}{$n < q^3$}\\\hline
+%			$q$&  $s$ & $n$ & $k$ & $t$ & Prange complexity & Key--Size(Bytes)\\
+%			
+%			\hline \hline
+%			
+%			${11}$ &248&1289& 901& 70& 128& 151 \,171 \\
+%			
+%			\hline
+%			${13}$&426&1366& 668& 136& 142& 215\,672  \\
+%			
+%			\hline \hline
+%			
+%			${13}$ & 438 & 1731& 1009& 142& 192& 336 \,970   \\
+%			
+%			\hline \hline
+%			
+%			${16}$ & 674 &2704& 1594& 218& 300& 884\, 670\\
+%			
+%			\hline
+%			\multicolumn{7}{|c|}{$n = q^3$}\\\hline
+%			
+%			${11}$ & 242 &1331& 955& 67& 128& 155\, 276\\
+%			
+%			\hline \hline
+%			
+%			${13}$ & 346 & 2197 & 1659 & 96 & 204 & 412\, 849\\
+%			
+%			\hline \hline
+%			
+%			${13}$ & 506 & 2197 & 1339 & 176 & 256 & 531\,411\\
+%			\hline
+%			${16}$ & 478 & 4096 & 3378  & 120 & 314 & 1\, 212\, 702 \\
+%			\hline
+%		\end{tabular}
+%		\vspace*{0.3em}
+%		\caption{Goppa-Like Hermitian codes parameters $\Gamma(\calP,sP_\infty,g)$ over $\F_{q^2}$ ($m=2$).} \label{table:goppa-herm}
+%	\end{center}
+%\end{table}
+%
 
 \jade{REVIEW: give more clear comparisons and show the clear advantages of this paper.
 	Add some some results of [NEK21] in Table 1 to give a clear comparison.}

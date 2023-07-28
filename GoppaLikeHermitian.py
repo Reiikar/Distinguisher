@@ -10,21 +10,21 @@ Created on Thu Jul 27 13:52:45 2023
 import scipy.special
 import math
 
-q=5;
-m=4;
+q=11;
+m=2;
 assert  m%2 == 0;
 q0=q**(m//2);
 g=q0*(q0-1)//2;
 #On va se permettre de faire varier la longueur entre e*q0^3 et q0^3 pour 0<e<=1 
  #Fraction du nombre de points rationels total qu'on évalue
-e_min=0.1;
-e_max=0.4
+e_min=1;
+e_max=1
 nbpts=q0**3;
 n=nbpts
 
 min_t=64; #Le minimum d'erreurs qu'on veut décoder
 min_WK=128; #La sécurité minimum acceptée
-max_KS= 2*10**6#Taille de clé maximum
+max_KS= 2*10**7#Taille de clé maximum
 
 min_s= 2*min_t+2*g-2;
 max_s=nbpts;
@@ -36,7 +36,7 @@ def Study(n,s):
     t=s//2-g+1;
     if t < min_t :
         return None;
-    KeySize= math.floor(math.log2(q)*k*(n-k))
+    KeySize= math.floor(math.log2(q)*k*(n-k)/8)
     if KeySize > max_KS :
         return None;
     WK=math.floor(math.log2(scipy.special.comb(n, t, exact=True)/scipy.special.comb(n-k, t, exact=True)));
