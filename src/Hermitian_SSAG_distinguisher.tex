@@ -241,35 +241,54 @@ In this work, we also investigate Goppa--like AG codes over finite fields with d
 		\caption{McEliece cryptosystem based on one--point Hermitian subfield subcodes \cite{EKN21crypto}}
 	\end{center}
 \end{table}
+The results revealed a trade-off between the two AG code types. In some cases, Goppa-like Hermitian codes offered better key size improvement, while in other cases, Hermitian subfield subcodes performed better in this aspect. The choice between these two AG codes depends on the specific security requirements, the error capability and key size constraints of the application.
 
+
+In general, Goppa-like Hermitian codes offer significant advantages over Classic Goppa codes in terms of key size optimization, error correction capability, and potential post-quantum security.
 
 \begin{table}[h]
 	\begin{center}
 		\begin{tabular}{|c|c|c|c|c|c|c|}
 			\hline
+			\multicolumn{7}{|c|}{$n < q^3$}\\\hline
 			$q$&  $s$ & $n$ & $k$ & $t$ & Prange complexity & Key--Size(Bytes)\\
-
+			
 			\hline \hline
 			
-		${11}$	&265&1320& 898& 77& 153& \,142\,108 \\
-		
-			\hline \hline
-			${13}$&312&2188& 1718& 77& 198& 302\,798  \\
+			${11}$ &248&1289& 901& 70& 128& 151 \,171 \\
 			
-			\hline 
-		${16}$&354& 4078& 3608& 56& 199& 847\,880   \\
-		
+			\hline
+			${13}$&426&1366& 668& 136& 142& 215\,672  \\
+			
 			\hline \hline
-		${13}$& 490& 2189& 1363& 166& 270& 422\,189 \\
-		
-			\hline 
-			${16}$& 460 &4080& 3398& 109& 313& 1\,158\,718\\
+			
+			${13}$ & 438 & 1731& 1009& 142& 192& 336 \,970   \\
+			
+			\hline \hline
+			
+			${16}$ & 674 &2704& 1594& 218& 300& 884\, 670\\
+			
+			\hline
+			\multicolumn{7}{|c|}{$n = q^3$}\\\hline
+			
+			${11}$ & 242 &1331& 955& 67& 128& 155\, 276\\
+			
+			\hline \hline
+			
+			${13}$ & 346 & 2197 & 1659 & 96 & 204 & 412\, 849\\
+			
+			\hline \hline
+			
+			${13}$ & 506 & 2197 & 1339 & 176 & 256 & 531\,411\\
+			\hline
+			${16}$ & 478 & 4096 & 3378  & 120 & 314 & 1\, 212\, 702 \\
 			\hline
 		\end{tabular}
 		\vspace*{0.3em}
 		\caption{Goppa-Like Hermitian codes parameters $\Gamma(\calP,sP_\infty,g)$ over $\F_{q^2}$ ($m=2$).} \label{table:goppa-herm}
 	\end{center}
 \end{table}
+
 
 \jade{REVIEW: give more clear comparisons and show the clear advantages of this paper.
 	Add some some results of [NEK21] in Table 1 to give a clear comparison.}
