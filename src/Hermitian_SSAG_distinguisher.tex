@@ -22,6 +22,8 @@
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{naturalnames}{hyperref}
 
+\newcolumntype{C}[1]{>{\centering\let\newline\\ \arraybackslash\hspace{0pt}}m{#1}} %Pour spécifier la taille des colonnes
+
 %%%%%---Pour les dessins---%%%%%
 \usepackage{tikz}
 \usetikzlibrary{shapes,positioning}
@@ -138,14 +140,14 @@
 \maketitle
 
 \begin{abstract}
-In this paper, we introduce a family of codes that can be used in a McEliece cryptosystem, called \emph{Goppa--like AG codes}. These codes generalize classical Goppa codes and can be constructed from any curve of genus $\mathfrak{g} \geq 0$. Focusing on codes from $C_{a,b}$ curves, we study the behaviour of the dimension of the square of their dual to determine their resistance to distinguisher attacks similar to the one for alternant and Goppa codes developed by Mora and Tillich \cite{MT21}. We also propose numerical experiments to measure how sharp is our bound.
+In this paper, we introduce a family of codes that can be used in a McEliece cryptosystem, called \emph{Goppa--like AG codes}. These codes generalize classical Goppa codes and can be constructed from any curve of genus $\mathfrak{g} \geq 0$. Focusing on codes from $C_{a,b}$ curves, we study the behaviour of the dimension of the square of their dual to determine their resistance to distinguisher attacks similar to the one for alternant and Goppa codes developed by Mora and Tillich \cite{MT21}. We also propose numerical experiments to measure the sharpness of our bound.
 \end{abstract}
  
 
 \section*{Introduction}
 
 \subsection*{McEliece crytosystem}
-McEliece cryptosystem is one of the last code--based candidates for standardization of post--quantum cryptrographic to the NIST competition since the third round. It guarantees the smallest ciphertexts among all the candidates, but it suffers from the largest public keys. Over the past forty years, there were many attempts in replacing the family of binary Goppa codes by other structured families of codes in order to reduce the key size.
+The McEliece cryptosystem is one of the last code--based candidates for standardization of post--quantum cryptographic to the NIST competition since the third round. It guarantees the smallest ciphertexts among all the candidates, but it suffers from the largest public keys. Over the past forty years, there were many attempts in replacing the family of binary Goppa codes by other structured families of codes in order to reduce the key size.
 
 The security of the McEliece cryptosystem is based on two assumptions: $(i)$ in average, it is hard to decode $t$ errors for codes having the same parameters as the codes used as keys and $(ii)$ it is difficult to distinguish codes used as public keys from arbitrary ones. When proposing another family of codes, one must ensure that both of the hardness assumptions are still valid.
 Algebraic geometry (AG) codes appear to be good candidates for the McEliece cryptosystem, since they are evaluation codes built from algebraic curves (GRS codes are a typical example of AG codes on a genus zero curve). Moreover, they also come with an efficient decoding algorithm (see the survey of H\o holdt and Pellikaan \cite{HP95}).
@@ -186,62 +188,59 @@ For a McEliece cryptosystem based on a family of $[n,k]_q$ linear codes, the pub
 
 \emph{Information--set decoding} (ISD) algorithm, introduced by Prange \cite{prange}, is the best known algorithm for decoding a random--looking code without any knowledge of its structure. Let us denote by $t$ the error capability of the family of codes we consider.  Given a $(n-k) \times n$ parity check matrix $\mathbf{H}$ and a column vector $\mathbf{s}$ of length $n-k$ obtained through $\mathbf{H}$, the total complexity of finding the row vector $\mathbf{e} \in \fq^n$ of weight $t$ and satisfying $\mathbf{s}=\mathbf{H}\mathbf{e}^{T}$ is given by 
 
-$$ C_\text{Prange}= \frac{\binom{n}{t}}{\binom{n-k}{t}}C_\text{Gauss}(n,k,q),$$
+$$ C_\text{Prange}= \frac{\binom{n}{t}}{\binom{n-k}{t}}C_\text{partial Gauss}$$
 
-where $C_\text{Gauss}(n,k,q)=$ is the cost of the partial Gauss--Jordan elimination of an $k\times n$ matrix over $\mathbb{F}_q$. We analyse the parameters of Goppa--like AG codes based on information set decoding attack.
+where $C_\text{partial Gauss}$ is the cost of the partial Gauss--Jordan elimination. We neglect it since the
+Gaussian elimination is exponentially faster than the collision search. %We analyse the parameters of Goppa--like AG codes based on information set decoding attack.
  
-In this work, we also investigate Goppa--like AG codes over finite fields with different characteristics by analysing the computational cost of the ISD algorithm for parameters relevant to post--quantum cryptography. In Table \ref{table:comp}, we provide parameters that resist the distinguisher given in this paper and improve key sizes compared to the subfield subcodes of one--point Hermitian codes \cite[Tables~2 and 3]{EKN21crypto}, which already reduced key sizes compared to binary Goppa codes.
-
-\mathieu{Il faudrait préciser que c'est l'exposant de la complexité de Prange.}
-
-
-
+In this work, we also investigate Goppa--like AG codes over finite fields with different characteristics by analysing the computational cost of the ISD algorithm for parameters relevant to post--quantum cryptography. In Table \ref{table:comp}, we provide parameters of Goppa--like AG codes from the Hermitian curve (for $g$ random) that resist the distinguisher given in this paper and that improve key sizes compared to binary Goppa codes. We also compare to the subfield subcodes of one--point Hermitian codes (HSS) \cite[Tables~2 and 3]{EKN21crypto}, which corresponds to the case where the function $g$ is zero. In this table, $s$ denotes the degree of the one--point divisor $D=sP_\infty$. 
  %for a more open "look" in tabulars
 \setlength\tabcolsep{5pt}
 \setlength\extrarowheight{3pt}
 
-\jade{Tableaux fusionnés}
 
-\begin{table}[h]
+\begin{table}[th]
 	\centering
-\begin{tabular}{c|c|c|c|c|c|c|c|c|c|}
+\begin{tabular}{c|c|c|c|c|c|c|c|C{6em}|C{5.5em}|}
 	\cline{2-10}
-	& \textbf{Variant} 	& $q$ 	& $m$ 	& $n$ 	 & $s$ 		& $k$ 		& $t$ 	& \textbf{Security bits}	& \textbf{Key--Size} (Bytes)\\
+	& \textbf{Variant} 	& $q$ 	& $m$ 	& $n$ 	 & $s$ 		& $k$ 		& $t$ 	& \textbf{Security $\log_2(C_\text{Prange})$}	& \textbf{Key size} (Megabytes)\\
 \cline{2-10}\noalign{\vspace{0.25ex}}\cline{2-10}
-\multirow{5}{*}{\STAB{Category 1}}		& Classic	& 2		& 12 	& 3\,488 &	--		& 2\,720 	&64  	&143 			&261\,120 \\\cline{2-10}
-						& HSS		& \multirow{3}{*}{11}	& \multirow{4}{*}{2} 	& 1\,331 & 1\,174 	&927 		& 78 	& $142$ & $140\,440$ \\ \cline{2-2}\cline{5-10}
-			  & \multirow{3}{*}{GLH}&	& 		&1\,331&242& 955& 67& 128& 155\, 276\\\cline{5-10}
-						& 			& 	&		&1\,289&248& 901& 70& 128& 151\,171 \\\cline{3-3}\cline{5-10}
-						&			& 13&		&1\,366&426& 668& 136& 142&215\,672  \\
+\multirow{5}{*}{\STAB{Category 1}}		& Classical	& 2		& 12 	& 3\,488 &	--		& 2\,720 	&64  	&143 			&261 \\\cline{2-10}
+						& HSS		& \multirow{3}{*}{11}	& \multirow{4}{*}{2} 	& 1\,331 & 1\,174 	&927 		& 78 	& $142$ & 140 \\ \cline{2-2}\cline{5-10}
+			  & \multirow{3}{*}{GLH}&	& 		&1\,331&242& 955& 67& 128& 155\\\cline{5-10}
+						& 			& 	&		&1\,289&248& 901& 70& 128& 151 \\\cline{3-3}\cline{5-10}
+						&			& 13&		&1\,366$^\dag$&426& 668& 136& 142&216  \\
 						
 						\cline{2-10}\noalign{\vspace{0.25ex}}\cline{2-10}
-\multirow{4}{*}{\STAB{Category 3}}		& Classic	& 2	& 13 	& 4\,608 &	--	&3\,360 &96  &185 &524\,160 \\\cline{2-10}
-						& HSS		& \multirow{3}{*}{13}& \multirow{3}{*}{2} 	&2\,197 &2\,039& 1\,735 & 79 & $185$ & $400\,785$ \\\cline{2-2}\cline{5-10}
-			&\multirow{2}{*}{GLH}	&			& 		&2\,197 &346& 1\,659 & 96 & 204 & 412\,849\\
-						&			&	&		&1\,731 &438& 1\,009& 142& 192& 336\,970   \\
+\multirow{4}{*}{\STAB{Category 3}}		& Classical	& 2	& 13 	& 4\,608 &	--	&3\,360 &96  &185 &524 \\\cline{2-10}
+						& HSS		& \multirow{3}{*}{13}& \multirow{3}{*}{2} 	&2\,197 &2\,039& 1\,735 & 79 & $185$ & 401 \\\cline{2-2}\cline{5-10}
+			&\multirow{2}{*}{GLH}	&			& 		&2\,197 &346& 1\,659 & 96 & 204 & 413\\\cline{5-10}
+						&			&	&		&1\,731$^\dag$&438& 1\,009& 142& 192& 337   \\
 						\cline{2-10}\noalign{\vspace{0.25ex}}\cline{2-10}
-\multirow{7}{*}{\STAB{Category 5}}		& Classic	& 2					& 13				 	& 6\,688 & 	--	&5\,024 &128 &263 &1\,044\,992 \\\cline{2-10}			
-						& HSS		& 13			& \multirow{2}{*}{2} 	& 2\,197 &1\,861& 1\,398 & 168 & 263& 558\,501\\ \cline{3-3}\cline{5-10}
-						& GLH		& 13			& 						& 2\,197  & 506& 1\,339 & 176 & 256 & 531\,411\\
-						\cline{2-10}\noalign{\vspace{0.25ex}}\cline{2-10}
-						& Classic					& 2					& 13						& 8\,192 & 	--	&6\,528 &128 &300 &1\,357\,824 \\\cline{2-10}
-						&HSS						&\multirow{3}{*}{16}&\multirow{3}{*}{2}		& 4\,096 &3\,874& 3\,422 & 111 & 300 & 1\,153\,214\\\cline{2-2}\cline{5-10}
-						& \multirow{2}{*}{GLH}		&					& 						& 4\,096 &478& 3\,378  & 120 & 314 & 1\,212\,702 \\\cline{5-10}
-						&							&					&						&2\,704& 674& 1\,594& 218& 300& 884\,670\\\cline{2-10}
+\multirow{7}{*}{\STAB{Category 5}}		& Classical	& 2					& 13				 	& 6\,688 & 	--	&5\,024 &128 &263 &1\,045 \\\cline{2-10}			
+						& HSS		& 13			& \multirow{3}{*}{2} 	& 2\,197 &1\,861& 1\,398 & 168 & 263& 559\\ \cline{2-3}\cline{5-10}
+		& \multirow{2}{*}{GLH}		& 13			& 						& 2\,197  & 506& 1\,339 & 176 & 256 & 531\\ \cline{3-3}\cline{5-10}
+						&			& 16			& 						& 2\,467$^\dag$  & 570 & 1\,565& 166& 256& 706\\\cline{2-10}\noalign{\vspace{0.25ex}}\cline{2-10}
+									
+									
+						& Classical					& 2					& 13						& 8\,192 & 	--	&6\,528 &128 &300 &1\,358 \\\cline{2-10}
+						&HSS						&\multirow{3}{*}{16}&\multirow{3}{*}{2}		& 4\,096 &3\,874& 3\,422 & 111 & 300 & 1\,153\\\cline{2-2}\cline{5-10}
+						& \multirow{2}{*}{GLH}		&					& 						& 4\,096 &478& 3\,378  & 120 & 314 & 1\,213 \\\cline{5-10}
+						&							&					&						&2\,704$^\dag$& 674& 1\,594& 218& 300& 885\\\cline{2-10}
 						
 \end{tabular}
 		\vspace*{0.3em}
-		\caption{Comparison between binary Goppa codes (\textit{Classic} \cite{ClassicMCE}), one--point Hermitian subfield subcodes (\textit{HSS} \cite{EKN21crypto}) and Goppa--like Hermitian codes (\textit{GLH})}\label{table:comp}
+		\caption{Comparison between binary Goppa codes (\textit{Classical} \cite{ClassicMCE}), one--point Hermitian subfield subcodes (\textit{HSS} \cite{EKN21crypto}) and Goppa--like Hermitian codes (\textit{GLH}) in the McEliece cryptosystem.}\label{table:comp}
 	\end{table}
 
+Note that the Goppa--like Hermitian codes given in Table \ref{table:comp} have length at most $q^3$. By considering shorter codes, we get smaller keys and better correction capability $t$, at the expense of the security. For practical use in the McEliece cryptosystem, we need to ensure that for each function $g$ selected, we are able to construct the associated Goppa-like AG code. This is why we must choose $q^3-n$ larger than $s$, so that we can always select $n$ $\fq$--points $\calP$ outside the zero locus of $g$ and define the evaluation code $C_{\calL}(\calX,\calP,D+(g))$ properly. If this condition is fulfilled, the length given in Table \ref{table:comp} is followed by a symbol $\dag$. At each level of security, we can guarantee this property, sometimes by working over larger alphabets and thus deteriorating the parameters.
 
-The results revealed a trade-off between the two AG code types. In some cases, Goppa-like Hermitian codes offered better key size improvement, while in other cases, Hermitian subfield subcodes performed better in this aspect. The choice between these two AG codes depends on the specific security requirements, the error capability and key size constraints of the application.
+%The results revealed a trade-off between the two AG code types. In some cases, Goppa-like Hermitian codes offered better key size improvement, while in other cases, Hermitian subfield subcodes performed better in this aspect. The choice between these two AG codes depends on the specific security requirements, the error capability and key size constraints of the application.
+
+In general, Goppa-like Hermitian codes offer significant advantages over classical binary Goppa codes in terms of key size optimization, error correction capability, and potential post-quantum security.
 
 
-In general, Goppa-like Hermitian codes offer significant advantages over Classic Goppa codes in terms of key size optimization, error correction capability, and potential post-quantum security.
-
-
- %for a more open "look" in tabulars
+ %for a LESS open "look" in tabulars
 \setlength\tabcolsep{2pt}
 \setlength\extrarowheight{2pt}
 
@@ -341,8 +340,6 @@ In general, Goppa-like Hermitian codes offer significant advantages over Classic
 %\end{table}
 %
 
-\jade{REVIEW: give more clear comparisons and show the clear advantages of this paper.
-	Add some some results of [NEK21] in Table 1 to give a clear comparison.}
 
 %\medskip
 
@@ -395,7 +392,7 @@ Given a linear code $\calC$ of length $n$ and dimension $k$ over $\fqm$, its \em
 Subfield subcodes and trace codes are related by the duality operator, as stated by Delsarte's theorem.
 
 \begin{thm}[{\cite[Delsarte's theorem]{Del75}}] \label{th:delsarte}
-Let $\calC$ be a linear code of lenght $n$ over $\fqm$. Then
+Let $\calC$ be a linear code of length $n$ over $\fqm$. Then
 \[\left(\calC \cap \fq^n\right)^{\perp} = \Tr{\calC^{\perp}}.\]
 \end{thm}
 
@@ -1147,7 +1144,7 @@ $$e =  \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1.$$
 
 This theorem generalizes \cite[Corollary 27]{MT21}. Several computational experiments showed that when the code $\calC:=\calC_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$ is sufficiently random, the bound given in Theorem \ref{thm:bound_with_T_i's_inclusion} is sharp, as claimed by Mora and Tillich \cite[Remark 28]{MT21} on ${\calX=\PP^1}$. Let us examine the sharpness of the bound in the following examples.
 
-\begin{example}
+\begin{example}\label{ex:comp}
 	The codes studied in Example \ref{ex:non_equality_bound} are one--point Goppa--like AG codes on ${\calX=\PP^1}$. The bound of Theorem \ref{thm:bound_with_T_i's_inclusion} for $s=9$ and $s=10$ respectively gives 400 and 462, instead of 496 and 570. It is worth noting that this new upper bound is still far from the actual dimensions, namely 255 and 295. This comes for the fact that the functions $g$ chosen in Example \ref{ex:non_equality_bound} are powers of $x$, hence their associated principal divisors $(g)$ are supported only by $P_0$ and $P_\infty$.
 \end{example}
 
@@ -1280,15 +1277,15 @@ Its genus is given by $\mathfrak{g}_{\calH} = \frac{q_0(q_0-1)}{2}$ and it is a 
         \end{align*}
         Clearly, the last expression is minimal for $q=2$, so we finally gets
         $$\mathfrak{B}\left(\frac{m}{2}\right) \geq q_0^2 + 4 >0,$$
-        which proves \eqref{eq:dont_distinguish_Hermitian_case} in this case and conclude the proof.
+        which proves Inequality \eqref{eq:dont_distinguish_Hermitian_case} in this case and conclude the proof.
     \end{itemize}
 \end{proof}
-Consequently, in the light of Table \ref{table:goppa-herm}, it is still reasonable to consider the Hermitian curve to build efficient SSAG code--based cryptosystem.
+Consequently, in the light of Table \ref{table:comp}, it is still reasonable to consider the Hermitian curve to build efficient SSAG code--based cryptosystem.
 
 \bigskip
 
 \noindent
-\textbf{Acknowledgements.} %The two authors would like to express their gratitude to the anonymous referee for relevant comments that lead to this improved version of the paper.
+\textbf{Acknowledgements.} The authors would like to express their gratitude to the anonymous referees for relevant comments that lead to this improved version of the paper.
 This work was funded in part by the French National Research Agency through ANR \textit{Barracuda} (ANR-21-CE39-0009). The first and the third authors are supported by the French government \textit{Investissements d’Avenir} program ANR-11-LABX-0020-01. Through the LMB, the second author received support from the  EIPHI Graduate School (contract ANR-17-EURE-0002).
 
 

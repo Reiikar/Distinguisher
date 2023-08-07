@@ -63,10 +63,15 @@
 
 \maketitle
 
-\textit{We took into account all the comments of the referees and we modified the manuscript accordingly. To help the referees to better navigate in this answer and the revised version, we have listed all the comments below, followed by our answer.} 
+{\itshape
+We took into account all the comments of the referees and we modified the manuscript accordingly. To help the referees to better navigate in this answer and the revised version, we have listed all the comments below, followed by our answer.
 
-\section*{Common comments}
- 
+Note that this work is part of the PhD thesis of the second author, which has been defended since the first submission. We have chosen to implement some remarks of the PhD referees in this revision.
+\begin{itemize}
+	\item Key sizes in Table \ref{table:comp} are now  given in Megabytes instead of bits: it is more standard and it eases the reading.
+	\item Some details about the upper bound have been added in the proof of Prop. \ref{prop:bound_dim_using_inclusions}.
+\end{itemize}
+}
 \section*{First review's comment}
 
 The main result of this paper is Theorem \ref{thm:bound_with_T_i's_inclusion} on the upper bound of the dimension of codes. Some problems
@@ -77,13 +82,15 @@ of this paper are :
 \textit{In this work, we achieve accurate bounds for the dimension of structured codes. We inherently cannot avoid technicalities and intricate notations. Some inaccuracies in the notation that both reviewers pointed out have been fixed in this revised version. We have also made an effort to add references to the first occurrence of symbols when reused later.}
 
 
-\item  Please give more clear comparisons and show the clear advantages of this paper. Add some results of [NEK21] in Table 1 to give a clear comparison. Add some examples in Section 2 to make a comparison with results in Section 3. 
+\item  Please give more clear comparisons and show the clear advantages of this paper. Add some results of [NEK21] in Table 1 to give a clear comparison.
 
-\textit{\TODO{We added two more tables to compare our construction with binary Goppa codes and 1--point Hermitian codes.} We also added 2 examples in Section \ref{sec:Goppa}.}
+\textit{We have reworked the whole paragraph \textbf{Application of Goppa-like AG codes to the McEliece cryptosystem} in the introduction. Now, the parameters for binary Goppa codes and Hermitian subfield subcodes of [NEK21] are displayed in the same table as the ones of Goppa--like Hermitian codes, to make the comparision clearer.}
+	
+	\item Add some examples in Section 2 to make a comparison with results in Section 3. 
+	
+	\textit{We also 2 examples in Section \ref{sec:Goppa} and a comparison between results in Sections 2 and 3 in Example \ref{ex:comp}.}
 
 \end{itemize}
-
-Hence, I suggest a revision. Some more comments are listed: \\
 
 \textit{Typos and spelling mistakes have been corrected. Major modifications are listed below.} \\
 
@@ -100,7 +107,7 @@ Hence, I suggest a revision. Some more comments are listed: \\
 
 \item  Page 5. Please check the use of $\Tr{\calC}^{\star 2}$ and $\calC^{q^i}$. It seems that $\Tr{\calC}^{\star 2}$ means $\Tr{\calC^{\star 2}}$. Many similar problems in the paper.
 
-\textit{At this point, we really want to talk about the square of the trace and not the trace of the square. To make it more readable, we changed the notation of the Trace by removing the underscore $\mathbb{F}_{q^m}/\mathbb{F}_q$ once correctly defined (i.e. after Equation \eqref{eq:dim_trace}).}
+\textit{At this point, we really want to talk about the square of the trace and not the trace of the square. To make it more readable, we changed the notation of the Trace by removing the subscript $\mathbb{F}_{q^m}/\mathbb{F}_q$ (see below Equation \eqref{eq:dim_trace}).}
 
 \noindent Please give a description of $\calC^{q^i}$.
  
@@ -108,12 +115,12 @@ Hence, I suggest a revision. Some more comments are listed: \\
 
 \item Page 6. Note that $\deg G = s$. There are many symbols in the paper. Please give a clear description.
 
-\textit{The definition of the degree of a divisor can be found at page 4. We also changed the notation $\deg G$ into $\deg(G)$ where it was not already the case.}
+\textit{The definition of the degree of a divisor can be found at page 4. It is a very standard definition in algebraic geometry coding theory: we do not believe it is necessary to recall it at each occurrence. However, we added the missing parenthesis in $\deg\left(\cdot\right)$ where they were not already there to clear up some ambiguities.}
 
 
-\item Page 11. It is better to give some examples at the end of Section 2;
+\item Page 11. It is better to give some examples at the end of Section 2.
 
-\textit{We added Example \ref{ex:Goppa_vs_Cartier} to compare bith Cartier and Goppa-like construction. We present 2 cases: an equality one and an inequality one. We also added Example \ref{ex:non_equality_bound} to illustrate Proposition \ref{prop:non-eq}.}
+\textit{We added Example \ref{ex:Goppa_vs_Cartier} to compare both Cartier and Goppa-like construction. We present 2 cases: equality and inequality. We also added Example \ref{ex:non_equality_bound} to illustrate Proposition \ref{prop:non-eq}.}
 
 
 
@@ -145,7 +152,7 @@ Hence, I suggest a revision. Some more comments are listed: \\
 
 \item Page 7, Equation 10: The notation $\mathcal{O}_{P_\infty}$ for the ring $\cup_{s \ge 0} \mathcal{L}(sP_\infty)$ is quite misleading. It is very common to use the notation $\mathcal{O}_{P_\infty}$ for the local ring at $P_\infty$. This is the ring consisting of all functions that do not have a pole at$ P_\infty$. The authors consider in some sense the opposite situation: the ring of all functions with no poles except possibly at $P_\infty$. Please use some other notation.
 
-\textit{Thank you for pointing out this mistake. We changed the notation $\mathcal{O}_{P_\infty}$ into $\mathcal{S}$ which actually is the coordinate ring of the affine curve $\calX_{a,b} \setminus \{P_\infty\}$. We changed the rest of the paper accordingly to this new notation.}
+\textit{Thank you for pointing out this mistake. We changed the notation $\mathcal{O}_{P_\infty}$ into $\mathcal{S}$ which actually is the coordinate ring of the affine curve $\calX_{a,b} \setminus \{P_\infty\}$. We changed the rest of the paper accordingly.}
 
 \item Page 7, line -4: "$f=x^\beta y^\alpha+f'(x,y)$". The authors write that any $f \in \cup_{s \ge 0} \mathcal{L}(sP_\infty)$ can be written in this form, but this is strictly speaking not true. One needs to allow for a leading coefficient different from one as well. Please write something like "$f=c\cdot x^\beta y^\alpha+f'(x,y)$ for some nonzero $c$." This also affects the leading term expression later on.
 
@@ -163,7 +170,7 @@ Hence, I suggest a revision. Some more comments are listed: \\
 
 \item Page 10, line 3: In the second summation in this line, there is "$\dim_{F_{q}}$" missing in front of the code $\Tr{\calC \star \calC^{q^i}}$.
 
-\textit{The missing dimension has been added.}
+\textit{The missing symbol has been added.}
 
 \item Page 11, line 2: The formula "$\calC_1 \subseteq \calC^{q^i} \cap \calC^{q^{m-1}}$" should be "$\calC_1 \subseteq \calC \cap \calC^{q^{m-1}}$". 
 
@@ -183,11 +190,11 @@ Hence, I suggest a revision. Some more comments are listed: \\
 
 \item Page 11, Proposition \ref{prop:div_grob}: Since $g$ is the element one wants to divide by (with remainder), I needs to add the condition that $g \neq 0$.
 
-\textit{The condition on $g$ has been added. We also add Definition \ref{def:remainder_space} : it allows us to introduce the notation $\mathcal{R}(h)$ for any function $h \in \mathcal{S}$ as we use it for several functions later on.} 
+\textit{The condition on $g$ has been added. We also add Definition \ref{def:remainder_space} : it allows us to introduce the notation $\mathcal{R}(h)$ for any function $h \in \mathcal{S}$ as we use it several times later on.} 
 
 \item Page 12, Lemma \ref{lem:weighted_division}: Previously the trace function Tr was only used and defined for elements from a finite field with $q^m$ elements, but now it is applied to a function. This means that not longer $\Tr{f}=\Tr{f^q}$. However, this is used in the proof of the lemma. There is little harm, since later on the results are not applied to functions but to codewords corresponding to them. Please explain briefly before the lemma what exactly is meant with $Tr(f)$ is $f$ is a function, or reformulate in terms of codewords.
 
-\textit{We added a discussion before Lemma \ref{lem:weighted_division} (see. Section \ref{subsection:study_Tr(C*C_q)}) to explain what we mean by the trace of a function: first, we extend the evaluation map $\ev_{\calP}$ to the ring $\mathcal{S}$ as well as the trace operator by setting $\Tr{f}:=f+f^q+\dots + f^{q^{m-1}}$. Then, given $f,f' \in \mathcal{S}$, we say that $f \equiv_{\calP} f'$ if $\ev_{\calP}(f)=\ev_{\calP}(f')$. Hence, we have $\Tr{f^q} \equiv_{\calP}\Tr{f}$ (see Equation \eqref{eq:prop_trace}). In particular, we have equality of the corresponding evaluation codewords. These new notation are then used for the rest of the paper.}
+\textit{Thank you for bringing this problem to our attention. We added a discussion before Lemma \ref{lem:weighted_division} (see. Section \ref{subsection:study_Tr(C*C_q)}) to explain what we mean by the trace of a function: first, we extend the evaluation map $\ev_{\calP}$ to the ring $\mathcal{S}$ as well as the trace operator by setting $\Tr{f}:=f+f^q+\dots + f^{q^{m-1}}$. Then, given $f,f' \in \mathcal{S}$, we say that $f \equiv_{\calP} f'$ if $\ev_{\calP}(f)=\ev_{\calP}(f')$. Hence, we have $\Tr{f^q} \equiv_{\calP}\Tr{f}$ (see Equation \eqref{eq:prop_trace}). In particular, we have equality of the corresponding evaluation codewords. These new notation are then used for the rest of the paper.}
 
 \item Page 13, first line after Definition \ref{def:T_i's}. "Lemma \ref{lem:weighted_division} entails that ...". Lemma \ref{lem:weighted_division} only applies to $i \ge 1$. Please add a short remark concerning the case $i=0$.
 
