@@ -349,6 +349,8 @@
 		\begin{equation} \label{eq:key_equation} \Tr{\calC}^{\star2} := ((\calC^{\perp}|_{_{{\mathbb{F}_q}}})^{\perp})^{\star2} \subseteq \sum\limits_{i=0}^{\lfloor{m/2} \rfloor} \Tr{\calC\star \calC^{q^i}},
 		\end{equation}
 		where $\calC^{q^i}=\set{\left(c_1^{q^i},\dots,c_n^{q^i}\right) \mid \mathbf{c} \in \calC}$.
+		
+		
 		Moreover, if $m$ is even, 
 		\begin{equation} \label{eq:dim_m/2} \dim_{\fq} \Tr{\calC\star \calC^{q^{\frac{m}{2}}}} \leq \frac{m}{2} (\dim_{\fqm}\calC)^2.
 		\end{equation}
@@ -463,7 +465,7 @@
 	\end{equation} %
 	where each Riemann--Roch space $\calL(s P_\infty)$ has an explicit basis as follows:
 	\begin{equation} \label{eq:basis_L(sP_inf)}
-		\calL(sP_{\infty}) = \Span{x^iy^j \mid 0 \leq i, 0\leq j\leq a-1 \ \mathrm{and} \ ai+bj \leq s}.
+		\calL(sP_{\infty}) = \Span{x^iy^j \mid 0 \leq i, \: 0\leq j\leq a-1, \: \ ai+bj \leq s}.
 	\end{equation}
 	
 	In summary, any function that is regular on all $\calX_{a,b}$ except maybe at $P_\infty$ is a bivariate polynomial in the functions $x$ and $y$. 
@@ -491,7 +493,8 @@
 	%
 	This way, any function in $\calL(sP_\infty)$ can be seen as a polynomial in $x$ and $y$ such that $\degab{f}\leq s$. 
 	\begin{remark} \label{rq:link_degab_valuation}
-		For every $f \in \calS$, we have $\degab{f}=-v_{P_\infty}(f)$.
+		For every $f \in \calS$, we have 
+\[		\degab{f}=-v_{P_\infty}(f).\]
 	\end{remark}
 	
 	\section{Goppa--like AG codes}\label{sec:Goppa}
@@ -561,29 +564,33 @@
 		\begin{enumerate}
 			\item First, let $g_1 = x^4$. In this case, $g$ has 2 zeroes (say $P_1$ and $P_2$), which are those of $x$. More precisely, the divisor of $g_1$ is given by
 			$$(g_1) = 4(P_1+P_2)-8P_\infty.$$ 
-			Hence, if we set $G = D+(g_1)$, the divisor $\left[\frac{G}{q}\right] = P_1+P_2-P_\infty$ has degree $1 > 2g(E)-2=0$, meaning that the codes $\Gamma(\calP,D,g_1)$ and $\mathrm{Car}_3(\calP,G)$ are equal over $\mathbb{F}_3$.
+			Hence, if we set $G = D+(g_1)$, the divisor 
+			\[\left[\frac{G}{q}\right] = P_1+P_2-P_\infty\]
+			 has degree $1 > 2g(E)-2=0$, meaning that the codes $\Gamma(\calP,D,g_1)$ and $\mathrm{Car}_3(\calP,G)$ are equal over $\mathbb{F}_3$ and have dimension $64$.
 			
-			\item Second, take $g_2 = x^4 + xy$. This time, we can verify that $g_2$ has $8$ distincts rational zeroes, say $R_1,\dots, R_8$, \emph{i.e}
+			\item Second, take $g_2 = x^4 + xy$. This time, we can verify that $g_2$ has $8$ distinct rational zeroes, say $R_1,\dots, R_8$, \emph{i.e}
 			$$(g_2) = R_1 + \dots + R_8 - 8P_\infty.$$   
-			Consequently, we easily check that $\deg\left(\left[\frac{G}{q} \right]\right) = -1 \leq 2g(E)-2$. Some computations realized on Magma show that the codes $\Gamma(\calP,D,g_2)$ and $\mathrm{Car}_3(\calP,G)$ are not equal in this case.
+			Consequently, we easily check that 
+			\[\deg\left(\left[\frac{G}{q} \right]\right) = -1 \leq 2g(E)-2.\]
+			Some computations realized on Magma show that the code $\Gamma(\calP,D,g_2)$ is a proper subspace of $\mathrm{Car}_3(\calP,G)$ in this case. These codes have dimension $50$ and $54$ respectively.
 		\end{enumerate}
-		Magma results are summarized in Table \ref{table:example1}, where $\calP = E(\fqm) \setminus \Supp(g)$.
-		\begin{table}[h]
-			\begin{center}
-				\caption{Comparison of Cartier and Goppa--like constructions} \label{table:example1}
-				\scalebox{0.8}{
-				\begin{tabular}{|c|c|c|c|c|c|}
-					\hline
-					$n$&  $\deg(D)$ & Choice of $g$ & $\deg\left(\left[\frac{D+(g)}{q} \right]\right)$  & $\dim_{\mathbb{F}_3}(\Gamma(\calP,D,g))$ &$\dim_{\mathbb{F}_3}(\mathrm{Car}_3(\calP,G))$ \\
-					\hline \hline
-					88 & \multirow{2}{*}{7} & $g = x^4$ & 1 & \multicolumn{2}{c|}{64} \\
-					\cline{1-1}\cline{3-6} 
-					82 &  & $g = x^4 + xy$ & $-1$ & 50 & 54 \\ 
-					\hline
-				\end{tabular}
-			}
-			\end{center}
-		\end{table}
+%		Magma results are summarized in Table \ref{table:example1}, where $\calP = E(\fqm) \setminus \Supp(g)$.
+%		\begin{table}[h]
+%			\begin{center}
+%				\caption{Comparison of Cartier and Goppa--like constructions} \label{table:example1}
+%				\scalebox{0.8}{
+%				\begin{tabular}{|c|c|c|c|c|c|}
+%					\hline
+%					$n$&  $\deg(D)$ & Choice of $g$ & $\deg\left(\left[\frac{D+(g)}{q} \right]\right)$  & $\dim_{\mathbb{F}_3}(\Gamma(\calP,D,g))$ &$\dim_{\mathbb{F}_3}(\mathrm{Car}_3(\calP,G))$ \\
+%					\hline \hline
+%					88 & \multirow{2}{*}{7} & $g = x^4$ & 1 & \multicolumn{2}{c|}{64} \\
+%					\cline{1-1}\cline{3-6} 
+%					82 &  & $g = x^4 + xy$ & $-1$ & 50 & 54 \\ 
+%					\hline
+%				\end{tabular}
+%			}
+%			\end{center}
+%		\end{table}
 	\end{example}
 	
 	\subsection{On the dimension of the square of the dual of a Goppa--like AG code} \label{section:1st_improvement}
@@ -626,28 +633,47 @@
 	
 	This simple lemma yields an upper bound on the dimension of the square of the dual of Goppa--like codes.
 	\begin{proposition} \label{prop:bound_dim_using_inclusions}
-		Let $\calC := \calC_{\calL}(\calX,\calP,D+(g))$ be an AG code as above, and suppose $s \geq \mathfrak{g}$. Set $k := \dim_{\fqm}\calC$ and  $e_0 := \min\left(\left\lfloor \frac{m}{2} \right\rfloor,\left\lfloor \log_q\left(\frac{k^2}{s}\right)\right\rfloor\right)$. Then
-		$$\dim_{\fq} (\Gamma(\calP,D,g)^{\perp})^{\star 2} \leq \binom{mk+1}{2} - \dfrac{m}{2}\left(k(k-1)(2e_0+1)-2s\left(\dfrac{q^{e_0+1}-1}{q-1}\right)\right).$$
+		Let $\calC := \calC_{\calL}(\calX,\calP,D+(g))$ be an AG code as above, and suppose $s \geq \mathfrak{g}$. Set $k := \dim_{\fqm}\calC$ and  $e_0 := \min\left(\left\lfloor \frac{m}{2} \right\rfloor,\left\lfloor \log_q\left(\frac{k^2}{s}\right)\right\rfloor\right)$. Then the dimension of $(\Gamma(\calP,D,g)^{\perp})^{\star 2}$ over $\fq$ is bounded from above by
+\[
+ \binom{mk+1}{2} - \dfrac{m}{2}\left(k(k-1)(2e_0+1)-2s\left(\dfrac{q^{e_0+1}-1}{q-1}\right)\right).
+\]		
 	\end{proposition}
 	
 	\begin{proof}
-		For any $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$, Proposition \ref{prop:Tr_BoundSchurSquare} implies that
-		\begin{align*}
-			\dim_{\fq}(\Gamma(\calP,D,g)^{\perp})^{\star 2}
-			& \leq \sum\limits_{i=0}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star \calC^{q^i}} &\\
-			& \leq \sum\limits_{i=0}^{e} m(s(q^i+1)+1-\mathfrak{g})  + \sum\limits_{i=e+1}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star \calC^{q^i}} \quad \text{(by Lemma \ref{lem:bound_dim_Tr(C*C^q^i)})}\\
-			& \leq \sum\limits_{i=0}^{e} m(sq^i+k) + \left( \frac{m-1}{2} -e \right)mk^2 \quad \text{(by the Riemann--Roch theorem)}\\
-			& \leq \frac{m}{2}\left(2k(e+1)+2s\left(\dfrac{q^{e+1}-1}{q-1}\right)+k^2(m-1)-2ek^2  \right) &\\
-			& \leq \binom{mk+1}{2} -  \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).&
-		\end{align*}
-		Notice that at the third line, we can replace $\lfloor \frac{m}{2} \rfloor$ with $\frac{m-1}{2}$ while bounding the second part of the sum thanks to Equation \eqref{eq:dim_m/2}.
+		Proposition \ref{prop:Tr_BoundSchurSquare} implies that
+\[			\dim_{\fq}(\Gamma(\calP,D,g)^{\perp})^{\star 2} \leq \sum\limits_{i=0}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star \calC^{q^i}}.
+\]
+Fix $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$. On one hand, Lemma \ref{lem:bound_dim_Tr(C*C^q^i)} implies that
+\begin{equation}\label{eq:part1_bound}
+\begin{aligned}
+	\sum\limits_{i=0}^{e} \dim_{\fq} \Tr{\calC \star \calC^{q^i}} 	& \leq \sum\limits_{i=0}^{e} m(s(q^i+1)+1-\mathfrak{g}) \\
+																	& \leq \sum\limits_{i=0}^{e} m(sq^i+k),\\
+																	&= ms\left(\dfrac{q^{e+1}-1}{q-1}\right)+mk(e+1),
+\end{aligned}
+\end{equation}
+ the second inequality holding by the Riemann--Roch theorem. On the other hand, using Equation \eqref{eq:dim_m/2} and replacing $\lfloor \frac{m}{2} \rfloor$ with $\frac{m-1}{2}$, we get
+\begin{equation}\label{eq:part2_bound}
+	\sum\limits_{i=e+1}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star \calC^{q^i}} \leq \left( \frac{m-1}{2} -e \right)mk^2
+\end{equation}
+Summing Inequalities \eqref{eq:part1_bound} and \eqref{eq:part2_bound}, we obtain
+\begin{multline}
+		\dim_{\fq}(\Gamma(\calP,D,g)^{\perp})^{\star 2} \leq  \binom{mk+1}{2} \\-  \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).
+\end{multline}
+%		\begin{align*}
+%			& \leq \sum\limits_{i=0}^{e} m(s(q^i+1)+1-\mathfrak{g})  + \sum\limits_{i=e+1}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star \calC^{q^i}} \quad \text{(by Lemma \ref{lem:bound_dim_Tr(C*C^q^i)})}\\
+%			& \leq \sum\limits_{i=0}^{e} m(sq^i+k) + \left( \frac{m-1}{2} -e \right)mk^2 \quad \text{(by the Riemann--Roch theorem)}\\
+%			& \leq \frac{m}{2}\left(2k(e+1)+2s\left(\dfrac{q^{e+1}-1}{q-1}\right)+k^2(m-1)-2ek^2  \right) &\\
+%			& \leq \binom{mk+1}{2} -  \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right).&
+%		\end{align*}
+%		Notice that at the third line, we can replace $\lfloor \frac{m}{2} \rfloor$ with $\frac{m-1}{2}$ while bounding the second part of the sum thanks to Equation \eqref{eq:dim_m/2}.
 		To get the best bound, we maximize the expression $$ \dfrac{m}{2}\left(k(k-1)(2e+1)-2s\left(\dfrac{q^{e+1}-1}{q-1}\right)\right)$$ with respect to $e$. Removing the constant parts, this is equivalent to find the maximum of the function
 		$$F(e) = ek^2-s\dfrac{q^{e+1}}{q-1}$$
 		over $\set{0,\dots,\lfloor \frac{m}{2} \rfloor}$ in the discrete domain of non-negative integers.  
 		We compute the discrete derivative:
 		\begin{align*}
-			\Delta F(e) = F(e+1)-F(e) &= (e+1)k^2-s\dfrac{q^{e+2}}{q-1} - \left(ek^2-s\dfrac{q^{e+1}}{q-1}\right) \\
-			&= k^2 - sq^{e+1}.
+			\Delta F(e) &= F(e+1)-F(e) \\
+						&= (e+1)k^2-s\dfrac{q^{e+2}}{q-1} - \left(ek^2-s\dfrac{q^{e+1}}{q-1}\right) \\
+						&= k^2 - sq^{e+1}.
 		\end{align*}
 		This function is decreasing with $e$, and the smallest value for which $\Delta F(e) \leq 0$ corresponds to its maximum. It is the smallest value of $e$ such that $k^2 \leq sq^{e+1}$, \emph{i.e.}
 		$$e_0 :=  \left\lfloor \log_q\left(\dfrac{k^2}{s}\right)\right\rfloor.$$
@@ -691,7 +717,7 @@
 	\begin{example} \label{ex:non_equality_bound}
 		Let $q=5$ and $m=4$. Let $P_\infty$ be the point at infinity on the projective line $\calX=\PP^1$ over $\fqm$. Using Magma, we compare the bound given in Proposition \ref{prop:bound_dim_using_inclusions} with the true dimension of the corresponding code. In Table \ref{table:example2} below, we take $\calP = \PP^1(\fqm) \setminus \Supp(g)$, $D = sP_\infty$ and $P_0$ stands for the zero of $x$ in the rational function field $\fqm(x)$.
 		\begin{table}[h]
-			
+			\caption{Illustration of Proposition \ref{prop:bound_dim_using_inclusions}} \label{table:example2}			
 			\begin{center}
 				\scalebox{0.65}{
 				\begin{tabular}{|c|c|c|c|c|c|c|}
@@ -705,7 +731,7 @@
 				\end{tabular}
 			}
 				\vspace*{0.3em}
-				\caption{Illustration of Proposition \ref{prop:bound_dim_using_inclusions}} \label{table:example2}
+
 			\end{center}
 		
 		\end{table}
@@ -801,7 +827,13 @@
 	
 	\begin{definition} \label{def:T_i's}
 		For any $1 \leq i \leq \lfloor\frac{m}{2}\rfloor$, we define
-		$$\calT_i(s,g):=\set{\ev_{\calP}\left(\Tr{\frac{f}{g^{q^i+1}}}\right) \mid f \in \calR\left(g^{q^i-q^{i-1}+1}\right)  \cap \calL(s(q^i+1)P_\infty)}$$
+		\begin{equation}\label{eq:def_Mi}
+			M_i(s,g):=   \calR\left(g^{q^{i}-q^{i-1}+1}\right) \cap \calL(s(q^i+1)P_\infty)
+		\end{equation}
+and		
+	\begin{equation}\label{eq:def_Ti}
+	\calT_i(s,g):=\set{\ev_{\calP}\left(\Tr{\frac{f}{g^{q^i+1}}}\right) \mid f \in M_i(s,g)}
+	\end{equation}\label{eq:def_T0}
 		and we set $$\calT_0(s,g) := \set{\ev_{\calP}\left(\Tr{\frac{f}{g^{2}}}\right) \mid f \in \calL(2sP_\infty)}.$$
 	\end{definition}
 	
@@ -815,18 +847,17 @@
 	
 	%--------Last changes----------%
 	\subsection{Upper bound in Goppa--like case} \label{subsection : Upper_bound_Goppa-like}
-	In the proposition below, we study the intersection 
-	\begin{equation}\label{eq:def_Mi}
-		M_i(s,g):=   \calR\left(g^{q^{i}-q^{i-1}+1}\right) \cap \calL(s(q^i+1)P_\infty)
-	\end{equation}
-	for every $i \in \set{1,\dots,\lfloor m/2 \rfloor}$ in order to better grasp the trace codes $\calT_i(s,g)$'s introduced in Definition \ref{def:T_i's}.
+	In the proposition below, we study the intersection $M_i(s,g)$ defined in Equation \eqref{eq:def_Mi} for every $i \in \set{1,\dots,\lfloor m/2 \rfloor}$ in order to better grasp the trace codes $\calT_i(s,g)$'s introduced in Definition \ref{def:T_i's}.
 	First we set some notation: fix $i \in \set{1,\dots,\lfloor m/2 \rfloor}$ and write $\LM{g}=x^\beta y^\alpha$ with $a\beta + b\alpha=s'$. By reducing modulo the equation $f_{a,b}$ of $\calX_{a,b}$, we can write $g^{q^i-q^{i-1}+1}$ such that its leading monomial with respect to the monomial order $\prec$ is
 	\begin{equation}\label{eq:gi}
 		\LM{g^{q^i-q^{i-1}+1}}=x^{\beta_i} y^{\alpha_i}
 	\end{equation}
 	where $\alpha_i \in \set{0,\dots,a-1}$ is the remainder of the Euclidean division of $\alpha (q^i-q^{i-1}+1)$ by $a$ and 
 	\begin{equation}\label{eq:value_beta_prime}
-		\beta_i=\beta(q^i-q^{i-1}+1) + b \, \frac{\alpha(q^i-q^{i-1}+1)-\alpha_i}{a}= \frac{s'(q^i-q^{i-1}+1)-b\alpha_i}{a}.
+		\begin{aligned}
+		\beta_i	&=\beta(q^i-q^{i-1}+1) + b \, \frac{\alpha(q^i-q^{i-1}+1)-\alpha_i}{a}\\
+				&= \frac{s'(q^i-q^{i-1}+1)-b\alpha_i}{a}.
+				\end{aligned}
 	\end{equation}
 	%
 	Depending on the weighted degree $s'$ of $g$, we can compute the exact dimension of the vector space $M_i(s,g)$ defined in Equation \eqref{eq:def_Mi}.
@@ -838,34 +869,40 @@
 			
 			\item If $s'(q^i-q^{i-1}+1) \leq s(q^i+1)+1-2\mathfrak{g}_{a,b}$, then $M_i(s,g) = \calR(g^{q^{i}-q^{i-1}+1})$;
 			
-			\item If there exists $v^* \in \set{1,\dots,\alpha_i-1}$ such that
-			$$ s(q^i+1)+a-b(a+v^*-\alpha_i) < s'(q^i-q^{i-1}+1) \leq  s(q^i+1)+a-b(a+v^*-1-\alpha_i),$$
+			\item Set $F(v) := s(q^i+1)+a-b(a+v-\alpha_i)$. If there exists $v^* \in \set{1,\dots,\alpha_i-1}$ such that
+			$$ F(v^*) < s'(q^i-q^{i-1}+1) \leq  F(v^*-1),$$
 			we have 
-			$$\dim_{\fqm}(M_i(s,g)) = \sum\limits_{v=v^*}^{a-1} \left\lfloor \dfrac{s(q^i+1)-bv}{a} \right\rfloor + v^*(\beta_i+b) + a-v^*.$$
+			\begin{multline*}
+			\dim_{\fqm}(M_i(s,g)) = \sum\limits_{v=v^*}^{a-1} \left\lfloor \dfrac{s(q^i+1)-bv}{a} \right\rfloor\\ + v^*(\beta_i+b) + a-v^*.
+			\end{multline*}
 			
 			\item Otherwise, there exists $v^* \in \set{\alpha_i+1,\dots,a}$ such that
-			$$ s(q^i+1)+a-b(v^*-\alpha_i) < s'(q^i-q^{i-1}+1) \leq  s(q^i+1)+a-b(v^*-1-\alpha_i),$$
-			in which case 
-			$$\dim_{\fqm}(M_i(s,g)) = \sum\limits_{v=v^*}^{a-1} \left\lfloor \dfrac{s(q^i+1)-bv}{a} \right\rfloor + v^*\beta_i + \alpha_ib +a-v^*.$$
+			$$ G(v^*) < s'(q^i-q^{i-1}+1) \leq  G(v^*-1)$$
+			where $G(v) := s(q^i+1)+a-b(v-\alpha_i)$ and
+			\begin{multline*}
+			\dim_{\fqm}(M_i(s,g)) = \sum\limits_{v=v^*}^{a-1} \left\lfloor \dfrac{s(q^i+1)-bv}{a} \right\rfloor\\ + v^*\beta_i + \alpha_ib +a-v^*.
+			\end{multline*}				
 		\end{enumerate}
 	\end{proposition}
 	
 	\begin{proof}
-		Using the notation above, we can write
-		\begin{align*}
-			\calR\left(g^{q^i-q^{i-1}+1}\right) &:= \mathrm{Span}_{\fqm} \left\{x^uy^v \mid u \leq \beta_i+b-1 , v \leq a-1 \ \mathrm{not \ both} \ u \geq \beta_i \ \mathrm{and} \ v \geq \alpha_i\right\} \\
-			&= \mathrm{Span}    \left( \begin{array}{c}
+		Using the notation above, the vector space $\calR\left(g^{q^i-q^{i-1}+1}\right)$ is spanned by monomials $x^uy^v$ such that $u \leq \beta_i+b-1$ , $v \leq a-1$ but not both $u \geq \beta_i$ and $v \geq \alpha_i$. Then it is generated by 
+		\[
+		\begin{array}{c}
 				1,x,\dots,x^{\beta_i +b-1},   \\
 				\cdots \\
 				y^{\alpha_i -1},y^{\alpha_i -1}x,\dots,y^{\alpha_i -1}x^{\beta_i +b-1}, \\
 				y^{\alpha_i},y^{\alpha_i}x,\dots,y^{\alpha_i}x^{\beta_i-1}, \\
 				\cdots \\
-				y^{a-1},y^{a-1}x,\dots,y^{a-1}x^{\beta_i-1}
+				y^{a-1},y^{a-1}x,\dots,y^{a-1}x^{\beta_i-1}.
 			\end{array}
-			\right)
-		\end{align*}
+		\]
 		Next, we define for any $v \in \set{0,\dots,a-1}$:
-		$$\ell^i_v := \max \set{u \geq 0 \mid x^uy^v \in \calL(s(q^i+1)P_\infty)} = \left\lfloor \dfrac{s(q^i+1)-bv}{a}\right\rfloor,$$
+\[\begin{aligned}
+\ell^i_v &:= \max \set{u \geq 0 \mid x^uy^v \in \calL(s(q^i+1)P_\infty)} \\
+		 &= \left\lfloor \dfrac{s(q^i+1)-bv}{a}\right\rfloor,	
+\end{aligned}\]
+
 		implying
 		\begin{equation*}
 			\calL(s(q^i+1)P_\infty) = \mathrm{Span}    \left( \begin{array}{c}
@@ -877,30 +914,39 @@
 			\right).
 		\end{equation*}
 		We thus have a description of a basis of both spaces $\calR(g^{q^i-q^{i-1}+1})$ and $\calL(s(q^i+1)P_\infty)$, leading to an exact formula for the dimension of their intersection $M_i(s,g)$ for any value of $i$:
-		\begin{equation} \label{eq:exact_dimension_M_i}
-			\dim_{\fqm} M_i(s,g) = \sum\limits_{v=0}^{\alpha_i-1} \min(\beta_i+b,\ell_v^i+1) + \sum\limits_{v=\alpha_i}^{a-1} \min(\beta_i,\ell_v^i+1).
-		\end{equation}
+		\begin{multline} \label{eq:exact_dimension_M_i}
+			\dim_{\fqm} M_i(s,g) = \sum\limits_{v=0}^{\alpha_i-1} \min(\beta_i+b,\ell_v^i+1) \\ + \sum\limits_{v=\alpha_i}^{a-1} \min(\beta_i,\ell_v^i+1).
+		\end{multline}
 		It remains to compute the corresponding minima with respect to $v$:
 		\begin{itemize}
 			\item[(i)] If $0 \leq v \leq \alpha_i-1$, by using Equation \eqref{eq:value_beta_prime}, we get
 			\begin{align*}
-				\beta_i+b \leq \ell_v^i +1 \iff s'(q^i-q^{i-1}+1) \leq F(v) := s(q^i+1)+a-b(a+v-\alpha_i).
+				\beta_i+b \leq \ell_v^i +1 \iff s'(q^i-q^{i-1}+1) \leq F(v)
 			\end{align*}
+		where $F(v) := s(q^i+1)+a-b(a+v-\alpha_i)$.
 			\item[(ii)] Otherwise, $\alpha_i \leq v \leq a-1$ and
 			\begin{align*}
-				\beta_i \leq \ell_v^i +1 \iff s'(q^i-q^{i-1}+1) \leq G(v) := s(q^i+1)+a-b(v-\alpha_i).
+				\beta_i \leq \ell_v^i +1 \iff s'(q^i-q^{i-1}+1) \leq G(v)
 			\end{align*}
+		where $G(v) := s(q^i+1)+a-b(v-\alpha_i)$.
 		\end{itemize}
 		Note that both $F$ and $G$ are decreasing with $v$, and we easily check that $F(0) = G(a)$. Thus, we have the following sequence of integers
-		$$F(\alpha_i-1) \leq \dots \leq F(0) = G(a) \leq G(a-1) \leq \dots \leq G(\alpha_i).$$
-		Depending on the value of $s'$, there are a few cases  to consider:
-		\begin{itemize}
-			\item $s'(q^i-q^{i-1}+1) >G(\alpha_i)$, in which case $M_i(s,g) = \calL(s(q^i+1)P_\infty)$;
-			\item $s'(q^i-q^{i-1}+1) \leq F(\alpha_i-1)$, and $M_i(s,g) = \calR(g^{q^i-q^{i-1}+1})$;
-			\item There exists $v^* \in \set{1,...,\alpha_i-1}$ such that $F(v^*) < s'(q^i-q^{i-1}+1) \leq F(v^*-1)$;
-			\item There exists $v^* \in \set{\alpha_i,...,a}$ such that $G(v^*) < s'(q^i-q^{i-1}+1) \leq G(v^*-1)$.
-		\end{itemize}
-		The formulas for the dimension of $M_i(s,g)$ follows from the above computations and \eqref{eq:exact_dimension_M_i}.
+		$$F(\alpha_i-1) \leq \dots \leq F(0) = G(a) \leq G(a-1) \leq \dots \leq G(\alpha_i)$$
+		with 
+		\begin{align*}
+			F(\alpha_i-1)&=s(q^i+1)+1-2\mathfrak{g}_{a,b},\\
+			G(\alpha_i)&= s(q^i+1)+a.
+		\end{align*}
+		Depending on the value of $s'$ with respect to these integers, we get the four cases described in the statement. The formulae for the dimension of $M_i(s,g)$ follow from the above computations and \eqref{eq:exact_dimension_M_i}.
+%		
+%		, there are a few cases  to consider:
+%		\begin{itemize}
+%			\item $s'(q^i-q^{i-1}+1) >G(\alpha_i)$, in which case $M_i(s,g) = \calL(s(q^i+1)P_\infty)$;
+%			\item $s'(q^i-q^{i-1}+1) \leq F(\alpha_i-1)$, and $M_i(s,g) = \calR(g^{q^i-q^{i-1}+1})$;
+%			\item There exists $v^* \in \set{1,...,\alpha_i-1}$ such that $F(v^*) < s'(q^i-q^{i-1}+1) \leq F(v^*-1)$;
+%			\item There exists $v^* \in \set{\alpha_i,...,a}$ such that $G(v^*) < s'(q^i-q^{i-1}+1) \leq G(v^*-1)$.
+%		\end{itemize}
+
 	\end{proof}
 	
 	Note that (1) corresponds to the case where $\calT_i(s,g) = \Tr{g^{-(q^i+1)}\cdot \calL(s(q^i+1)P_\infty)}, $ which will produce the same bound as the one given in Proposition \ref{prop:bound_dim_using_inclusions}.
