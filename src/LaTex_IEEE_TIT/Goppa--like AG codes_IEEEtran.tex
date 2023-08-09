@@ -1,4 +1,4 @@
-\documentclass[lettersize,journal]{IEEEtran}
+\documentclass[journal]{IEEEtran}
 \usepackage{amsmath,amsfonts}
 \usepackage{algorithmic}
 \usepackage{algorithm}
@@ -727,7 +727,6 @@ Summing Inequalities \eqref{eq:part1_bound} and \eqref{eq:part2_bound}, we obtai
 					10 &  295 & 570\\ 
 					\hline
 				\end{tabular}
-
 			\end{center}
 		
 		\end{table}
@@ -1117,13 +1116,13 @@ and
 	
 	In the previous section, we provided an (experimentally) sharp upper bound on the dimension of the square of the dual of a one--point Goppa--like code, which could lead to a distinguisher for the corresponding code. More precisely, let $\calC := C_\calL(\calX_{a,b},\calP,sP_\infty +(g))$ be an AG code as above, with $\degab{g} = s'>s\geq 2\mathfrak{g}_{a,b}-1$. We showed that if $s$ and $s'$ are such that $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$, then the dimension of $(\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2}$ over $\fq$ is bound from above by
 	\begin{equation} \label{eq:best_upper_bound}
-		\min \left\{\frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right),n\right\}
+		\min \left\{m\!\left(2s'(q^{\mathrlap{e^*}}-q^{e^*-1}\!+1)+\frac{k^2}{2}(m-1-2e^*)  \right)\!,n\right\}
 	\end{equation}
 	where $e^* := \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1$. Thus, the code is distinguishable from a random one if the right hand--side of \eqref{eq:best_upper_bound} is smaller than the lenght $n$ of the code. It is possible to study when this case occurs, by starting to bound from above the maximal possible lenght: since $\calP \cap \Supp(g) = \varnothing,$ this maximum is reached when $\calP = \calX_{a,b}(\fqm) \backslash \{P_\infty\}$ and $g$ has no rational zero that is
 	$$n = \# \calP = |\calX_{a,b}(\fqm)|-1 \leq q^m+2\mathfrak{g}_{a,b}\sqrt{q^m},$$
 	using the Hasse--Weil bound. In order to protect the code against the distinguisher, the parameters have to be chosen such that the minimum in Equation \eqref{eq:best_upper_bound} is equal to the length $n$ of the code, \textit{i.e.}, 
 	\begin{multline} \label{eq:cond_not_to_distinguish}
-		\frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right)\\
+		m\left(s'(q^{e^*}-q^{e^*-1}+1)+\frac{k^2}{2}(m-1-2e^*)  \right)\\
 		\geq q^m+2\mathfrak{g}_{a,b}\sqrt{q^m}.
 	\end{multline}
 	
