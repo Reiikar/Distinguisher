@@ -715,22 +715,18 @@ Summing Inequalities \eqref{eq:part1_bound} and \eqref{eq:part2_bound}, we obtai
 	
 	
 	\begin{example} \label{ex:non_equality_bound}
-		Let $q=5$ and $m=4$. Let $P_\infty$ be the point at infinity on the projective line $\calX=\PP^1$ over $\fqm$. Using Magma, we compare the bound given in Proposition \ref{prop:bound_dim_using_inclusions} with the true dimension of the corresponding code. In Table \ref{table:example2} below, we take $\calP = \PP^1(\fqm) \setminus \Supp(g)$, $D = sP_\infty$ and $P_0$ stands for the zero of $x$ in the rational function field $\fqm(x)$.
+		Let $q=5$ and $m=4$. Let $P_\infty$ be the point at infinity on the projective line $\calX=\PP^1$ over $\fqm$. Using Magma, we compare the bound given in Proposition \ref{prop:bound_dim_using_inclusions} with the true dimension of the corresponding code. For $s=9, \, 10$, take $D = sP_\infty$, $g=x^{s+1}$ and $\calP = \PP^1(\fqm) \setminus \Supp(g)$. Denote by $P_0$ the zero of $x$ in the rational function field $\fqm(x)$. Then the codes $\Gamma(\calP,D,g)$ have dimension ${n=624}$, and in both cases, $\left[ \frac{D+(g)}{q} \right]=2P_0-P_\infty$. Then the corresponding code $\calC_1$ has dimension 2. The results are given in Table \ref{table:example2}.
 		\begin{table}[h]
-			\caption{Illustration of Proposition \ref{prop:bound_dim_using_inclusions}} \label{table:example2}			
+			\caption{Illustration of Propositions \ref{prop:bound_dim_using_inclusions} and \ref{prop:non-eq}} \label{table:example2}			
 			\begin{center}
-				\scalebox{0.65}{
-				\begin{tabular}{|c|c|c|c|c|c|c|}
+				\begin{tabular}{|c|c|c|}
 					\hline
-					$n$&  $s = \deg(D)$ & Choice of $g$ & $\left[ \frac{D+(g)}{q} \right]$ & $\dim_{\fqm} \calC_1$  & $\dim_{\fq} (\Gamma(\calP,D,g)^{\perp})^{\star 2}$ & Bound in Prop \ref{prop:bound_dim_using_inclusions}\\
+					$s$ & $\dim_{\fq} (\Gamma(\calP,sP_\infty,x^{s+1})^{\perp})^{\star 2}$ & Proposition \ref{prop:bound_dim_using_inclusions}\\
 					\hline \hline
-					\multirow{2}{*}{624} & 9 & $g = x^{10}$ & \multirow{2}{*}{$2P_0-P_\infty$} & \multirow{2}{*}{2} & 255 & 496\\
-					\cline{2-3}	\cline{6-7}
-					& 10 & $g = x^{11}$& 						& 					& 295 & 570\\ 
+					9 & 255 & 496\\	\hline
+					10 &  295 & 570\\ 
 					\hline
 				\end{tabular}
-			}
-				\vspace*{0.3em}
 
 			\end{center}
 		
@@ -803,12 +799,13 @@ Summing Inequalities \eqref{eq:part1_bound} and \eqref{eq:part2_bound}, we obtai
 	
 	
 	\begin{lemma} \label{lem:weighted_division}
-		Take $i \geq 1$. Let $f\in \calS$ such that $\degab{f} < s'(q^i+1)$. Then there exists $f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ such that the vectors  $\Tr{\frac{f}{g^{q^i+1}}} \equiv_{\calP}\Tr{\frac{f'}{g^{q^i+1}}}$.
+		Take $i \geq 1$. Let $f\in \calS$ such that ${\degab{f} < s'(q^i+1)}$. Then there exists ${f' \in \calR\left(g^{q^i-q^{i-1}+1}\right)}$ such that the vectors  \[\Tr{\frac{f}{g^{q^i+1}}} \equiv_{\calP}\Tr{\frac{f'}{g^{q^i+1}}}.\]
 	\end{lemma}
 	
 	\begin{proof}
-		By Proposition \ref{prop:div_grob}, we can write $f=f_1 g^{q^i-q^{i-1}+1} +f_2$ with
-		$f_2 \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ and $\degab{f_2} \leq \degab{f}$. Therefore, using Equation \eqref{eq:prop_trace}, we get
+		By Proposition \ref{prop:div_grob}, we can write 
+		\[f=f_1 g^{q^i-q^{i-1}+1} +f_2\]
+		 with $f_2 \in \calR\left(g^{q^i-q^{i-1}+1}\right)$ and $\degab{f_2} \leq \degab{f}$. Therefore, using Equation \eqref{eq:prop_trace}, we get
 		\[\begin{aligned}
 			\Tr{\frac{f}{g^{q^i+1}}}&=\Tr{\frac{f_1 g^{q^i-q^{i-1}+1}}{g^{q^i+1}}} +\Tr{\frac{f_2}{g^{q^i+1}}}\\
 			&\equiv_{\calP} \Tr{\frac{f_1^qg}{g^{q^i+1}}} +\Tr{\frac{f_2}{g^{q^i+1}}}.
@@ -833,8 +830,11 @@ Summing Inequalities \eqref{eq:part1_bound} and \eqref{eq:part2_bound}, we obtai
 and		
 	\begin{equation}\label{eq:def_Ti}
 	\calT_i(s,g):=\set{\ev_{\calP}\left(\Tr{\frac{f}{g^{q^i+1}}}\right) \mid f \in M_i(s,g)}
-	\end{equation}\label{eq:def_T0}
-		and we set $$\calT_0(s,g) := \set{\ev_{\calP}\left(\Tr{\frac{f}{g^{2}}}\right) \mid f \in \calL(2sP_\infty)}.$$
+	\end{equation}
+		and we set 
+	\begin{equation}\label{eq:def_T0}
+		\calT_0(s,g) := \set{\ev_{\calP}\left(\Tr{\frac{f}{g^{2}}}\right) \mid f \in \calL(2sP_\infty)}.		
+	\end{equation}
 	\end{definition}
 	
 	The vector spaces $\calT_i(s,g)$ have been designed so that we have
@@ -847,7 +847,7 @@ and
 	
 	%--------Last changes----------%
 	\subsection{Upper bound in Goppa--like case} \label{subsection : Upper_bound_Goppa-like}
-	In the proposition below, we study the intersection $M_i(s,g)$ defined in Equation \eqref{eq:def_Mi} for every $i \in \set{1,\dots,\lfloor m/2 \rfloor}$ in order to better grasp the trace codes $\calT_i(s,g)$'s introduced in Definition \ref{def:T_i's}.
+	In the proposition below, we study the intersection $M_i(s,g)$ defined in Equation \eqref{eq:def_Mi} for every $i \in \set{1,\dots,\lfloor m/2 \rfloor}$ in order to better grasp the trace codes $\calT_i(s,g)$'s introduced in Equation \ref{eq:def_Ti}.
 	First we set some notation: fix $i \in \set{1,\dots,\lfloor m/2 \rfloor}$ and write $\LM{g}=x^\beta y^\alpha$ with $a\beta + b\alpha=s'$. By reducing modulo the equation $f_{a,b}$ of $\calX_{a,b}$, we can write $g^{q^i-q^{i-1}+1}$ such that its leading monomial with respect to the monomial order $\prec$ is
 	\begin{equation}\label{eq:gi}
 		\LM{g^{q^i-q^{i-1}+1}}=x^{\beta_i} y^{\alpha_i}
@@ -871,7 +871,7 @@ and
 			
 			\item Set $F(v) := s(q^i+1)+a-b(a+v-\alpha_i)$. If there exists $v^* \in \set{1,\dots,\alpha_i-1}$ such that
 			$$ F(v^*) < s'(q^i-q^{i-1}+1) \leq  F(v^*-1),$$
-			we have 
+			then we have 
 			\begin{multline*}
 			\dim_{\fqm}(M_i(s,g)) = \sum\limits_{v=v^*}^{a-1} \left\lfloor \dfrac{s(q^i+1)-bv}{a} \right\rfloor\\ + v^*(\beta_i+b) + a-v^*.
 			\end{multline*}
@@ -965,96 +965,107 @@ and
 		Since the function $$i \mapsto \dfrac{s(q^i+1)+1-2\mathfrak{g}_{a,b}}{q^i-q^{i-1}+1}$$ 
 		is increasing with $i$, we also have
 		\begin{equation} \label{eq:structure_M_i}
-			M_{i}(s,g) = \calR(g^{q^{i}-q^{i-1}+1}), \ \forall \ i \in \set{i^*,\dots,\left\lfloor \frac{m}{2}\right\rfloor+1}.
+			i^* \leq i \leq  \left\lfloor \frac{m}{2}\right\rfloor+1 \: \Rightarrow \: M_{i}(s,g) = \calR(g^{q^{i}-q^{i-1}+1}).
 		\end{equation} 
-		We now prove the inclusions between the $\calT_i's$, assuming first that $i^* \neq 0$ (since the definition of $\calT_0$ is a bit different). Let $i \in \set{i^*,\dots,\lfloor \frac{m}{2}-1 \rfloor}$, and recall that 
-		$$\calT_i(s,g):=\set{\ev_{\calP}\left(\Tr{\frac{f}{g^{q^i+1}}}\right) \mid f \in \calR\left(g^{q^i-q^{i-1}+1}\right)  \cap \calL(s(q^i+1)P_\infty)}.$$
+		We now prove the inclusions between the $\calT_i's$, assuming first that $i^* \neq 0$ (since the definition of $\calT_0$ is a bit different). Let $i \in \set{i^*,\dots,\lfloor \frac{m}{2}-1 \rfloor}$. By definition of $\calT_i(s,g)$ (see Equation \eqref{eq:def_Ti}) and the assumption on $i$ (see Equation \eqref{eq:structure_M_i}), we have
+		\[\calT_i(s,g):=\set{\ev_{\calP}\left(\Tr{\frac{f}{g^{q^i+1}}}\right) \mid f \in \calR\left(g^{q^i-q^{i-1}+1}\right)}.\]
 		Given $\ev_{\calP}\left(\Tr{\frac{f}{g^{q^i+1}}}\right)$ in $\calT_i(s,g)$, we want to show that it belongs to $\calT_{i+1}(s,g)$. Applying Proposition \ref{prop:div_grob} by replacing $f$ with $fg^{q^{i+1}-q^i}$ and $g$ by $g^{q^{i+1}-q^i+1}$, we obtain
 		\begin{equation} \label{eq:division_i}
 			fg^{q^{i+1}-q^i} = f_1g^{q^{i+1}-q^i+1} + f_2,
 		\end{equation}
-		with $f_2 \in \calR(g^{q^{i+1}-q^i+1}) = M_i(s,g)$ (using \eqref{eq:structure_M_i}) and $\degab{f_2} \leq \degab{fg^{q^{i+1}-q^i}}$. Next, we write
+		with $f_2 \in \calR(g^{q^{i+1}-q^i+1}) = M_{i+1}(s,g)$ (using Equation \eqref{eq:structure_M_i}) and $\degab{f_2} \leq \degab{fg^{q^{i+1}-q^i}}$. Next, we write
 		\begin{align*}
 			\Tr{\frac{f}{g^{q^i+1}}} &= \Tr{\frac{fg^{q^{i+1}-q^i}}{g^{q^{i+1}+1}}} \\
 			&= \Tr{\frac{f_1g^{q^{i+1}-q^i+1}}{g^{q^{i+1}+1}}} + \Tr{\frac{f_2}{g^{q^{i+1}+1}}} \\
 			&\equiv_{\calP} \Tr{\frac{f_1^qg}{g^{q^{i+1}+1}}} + \Tr{\frac{f_2}{g^{q^{i+1}+1}}}.
 		\end{align*}
-		By assumption, we immediately have that $\ev_{\calP}\left(\Tr{\frac{f_2}{g^{q^{i+1}+1}}}\right) \in \calT_{i+1}(s,g).$
+		By assumption, we immediately have that
+		\[\ev_{\calP}\left(\Tr{\frac{f_2}{g^{q^{i+1}+1}}}\right) \in \calT_{i+1}(s,g).\]
 		If $f_1=0$, we are done. Otherwise, we have from \eqref{eq:division_i}:
-		$$\degab{f_1} = \degab{fg^{q^{i+1}-q^i}} - \degab{g^{q^{i+1}-q^i+1}} = \degab{f}-s'.$$
-		Thus
 		\begin{align*}
-			\degab{f_1^qg} < \degab{fg^{q^{i+1}-q^i}} & \iff q\degab{f} +(1-q)s' < \degab{f} +s'(q^{i+1}-q^i) \\
-			%                                               & \iff (q-1)\degab{f} < s'(q^{i+1}-q^i+q-1) \\
-			& \iff \degab{f} < s'(q^{i}+1),
+		\degab{f_1} &= \degab{fg^{q^{i+1}-q^i}} - \degab{g^{q^{i+1}-q^i+1}} \\
+					&= \degab{f}-s'.
 		\end{align*}
-		which is true since in particular $f \in \calL(s(q^i+1)P_\infty)$ and $s<s'$. Since the weighted degree decreases, we can repeat the division process until eventually we obtain a quotient $f_1$ equal to zero, which proves that $\calT_i(s,g) \subseteq \calT_{i+1}(s,g)$.
+		Thus $\degab{f_1^qg} < \degab{fg^{q^{i+1}-q^i}}$ if and only if 
+		\[q\degab{f} +(1-q)s' < \degab{f} +s'(q^{i+1}-q^i),\]
+		which can be rewritten 
+		\[\degab{f} < s'(q^{i}+1).\]
+		The last inequality holds because $f \in \calL(s(q^i+1)P_\infty)$ and $s<s'$. Since the weighted degree decreases, we can repeat the division process until eventually we obtain a quotient $f_1$ equal to zero, which proves that $\calT_i(s,g) \subseteq \calT_{i+1}(s,g)$.
 		
-		In the case $i^*=0$, we also have to prove that $\calT_0(s,g) \subseteq \calT_1(s,g)$, which differs from the other cases due to the definition of $\calT_0$. Let $\ev_{\calP}\left(\Tr{\frac{f}{g^2}}\right) \in \calT_0(s,g)$, for some $f \in \calL(2sP_\infty)$. Using Proposition \ref{prop:div_grob}, this time replacing $f$ with $fg^{q-1}$ and $g$ with $g^{q+1}$ yields
-		$$fg^{q-1} = f_1g^q + f_2,$$ with $f_2 \in \calR(g^q) = M_1(s,g)$ (using \eqref{eq:structure_M_i} again).
+		\medskip
+		
+		In the case $i^*=0$, we also have to prove that $\calT_0(s,g) \subseteq \calT_1(s,g)$, which differs from the other cases due to the definition of $\calT_0$ (see Equation \eqref{eq:def_T0}). Let $\ev_{\calP}\left(\Tr{\frac{f}{g^2}}\right) \in \calT_0(s,g)$, for some $f \in \calL(2sP_\infty)$. Using Proposition \ref{prop:div_grob}, this time replacing $f$ with $fg^{q-1}$ and $g$ with $g^{q+1}$ yields
+		$$fg^{q-1} = f_1g^q + f_2,$$ with $f_2 \in \calR(g^q) = M_1(s,g)$ (using Equation \eqref{eq:structure_M_i} again).
 		Thus, we can write
 		$$ \Tr{\frac{f}{g^2}} = \Tr{\frac{f_1^qg}{g^{q+1}}}  + \Tr{\frac{f_2}{g^{q+1}}}, $$
-		with $\ev_{\calP}\left(\Tr{\frac{f_2}{g^{q+1}}}\right) \in \calT_1(s,g)$. Since $\degab{f_1} = \degab{fg^{q-1}} - \degab{g^q} = \degab{f}-s'$, we have 
-		\begin{align*}
-			\degab{f_1^qg} < \degab{fg^{q-1}} & \iff q\degab{f} +(1-q)s' < \degab{f} + s'(q-1)\\
-			& \iff (q-1)\degab{f} < 2s'(q-1)\\
-			& \iff \degab{f} < 2s',
-		\end{align*}
-		which holds since $s<s'$ and $f \in \calL(2sP_\infty)$. Repeating the division process until we find a quotient equal to zero shows that $\calT_0(s,g) \subseteq \calT_1(s,g)$. The other inclusions hold as in the case $i^* \geq 1$.
+		with $\ev_{\calP}\left(\Tr{\frac{f_2}{g^{q+1}}}\right) \in \calT_1(s,g)$. As in the previous case, $\degab{f_1} = \degab{f}-s'$. Therefore, similar computations as before show that $\degab{f_1^qg} < \degab{fg^{q-1}}$ if and only if $\degab{f} < 2s'$ which holds since $s<s'$ and $f \in \calL(2sP_\infty)$. Repeating the division process until we find a quotient equal to zero shows that $\calT_0(s,g) \subseteq \calT_1(s,g)$. The other inclusions hold as in the case $i^* \geq 1$.
 	\end{proof}
-	Combining \eqref{eq:Tr(C*C^q^i)_dans_T_i} with both the above propositions lead to a better understanding of the dimension of the square of the dual of one--point Goppa--like AG codes. 
+	Combining the inclusion of Equation \eqref{eq:Tr(C*C^q^i)_dans_T_i} with both the above propositions lead to a better understanding of the dimension of the square of the dual of one--point Goppa--like AG codes. 
 	\begin{coro} \label{coro:folklore_upper_bound}
 		With the same notation as in Proposition \ref{prop:inclusion_T_i's}, set $k:=\dim_{\fqm}C_{\calL}(\calX_{a,b},\calP,sP_\infty+(g))$.
 		Then, for all $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$, the dimension of $\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2}$ is bounded from above by
-		
-		\[\dim_{\fq} \left(\Gamma(\calP,sP_\infty,g)^{\perp}\right)^{\star 2} \leq   \left(\frac{m-1}{2}-e\right)mk^2+\dim_{\fq}\left(\sum\limits_{i=0}^e \calT_i(s,g) \right). \]
-		Moreover, if $i^* \leq e \leq \lfloor \frac{m}{2} \rfloor$ is the integer satisfying Equation \eqref{eq:cond_s_s'_i_star} , we have 
-		\begin{align*}
-			\dim_{\fq} \Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2} \leq   & \left(\frac{m-1}{2}-e\right)mk^2 + ms'(q^e-q^{e-1}+1) \\
-			& + \dim_{\fq}\left(\sum\limits_{i=0}^{i^*-1} \calT_i(s,g)\right) - \dim_{\fq} \left( \calT_e(s,g) \cap   \sum\limits_{i=0}^{i^*-1} \calT_i(s,g)\right).
-		\end{align*}
+		\begin{multline}
+		\dim_{\fq} \left(\Gamma(\calP,sP_\infty,g)^{\perp}\right)^{\star 2} \leq   \left(\frac{m-1}{2}-e\right)mk^2 \\+\dim_{\fq}\left(\sum\limits_{i=0}^e \calT_i(s,g) \right).
+	\end{multline}
+		Moreover, if $i^* \leq e \leq \lfloor \frac{m}{2} \rfloor$ is the integer satisfying Equation \eqref{eq:cond_s_s'_i_star} , we can refine the upper bound as follows. 
+		\begin{multline}
+			\dim_{\fq} \Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2} \leq  \left(\frac{m-1}{2}-e\right)mk^2 \\ + ms'(q^e-q^{e-1}+1) 
+			\\+ \dim_{\fq}\left(\sum\limits_{i=0}^{i^*-1} \calT_i(s,g)\right) \\- \dim_{\fq} \left( \calT_e(s,g) \cap   \sum\limits_{i=0}^{i^*-1} \calT_i(s,g)\right).
+		\end{multline}
 		
 	\end{coro}
 	
 	\begin{proof}
-		From \eqref{eq:key_equation} and under the assumption on $s$ and $s'$, we have
+		Using Proposition \ref{prop:Tr_BoundSchurSquare} and the assumption on $s$ and $s'$ to write , we have
 		\begin{align*}
-			\dim_{\fq}\left(\Gamma(\calP,sP_\infty,g)^{\perp}\right)^{\star 2}
-			& \leq \sum\limits_{i=0}^{\lfloor m/2 \rfloor} \dim_{\fq} \Tr{\calC \star                     \calC^{q^i}} \\
-			& \leq \dim_{\fq} \sum\limits_{i=0}^{e}\calT_i(s,g) + \sum\limits_{i=e+1}^{\lfloor m/2 \rfloor} \Tr{\calC \star \calC^{q^i}} \\
-			& \leq \dim_{\fq} \sum\limits_{i=0}^{e}\calT_i(s,g) + \left( \frac{m-1}{2} -e \right)mk^2,
+			\left(\Gamma(\calP,sP_\infty,g)^{\perp}\right)^{\star 2}
+			& \subseteq \sum\limits_{i=0}^{\lfloor m/2 \rfloor} \Tr{\calC \star                     \calC^{q^i}} \\
+			& \subseteq \sum\limits_{i=0}^{e}\calT_i(s,g) + \sum\limits_{i=e+1}^{\lfloor m/2 \rfloor} \Tr{\calC \star \calC^{q^i}}
 		\end{align*}
-		for all $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$. If $i^* \leq e \leq \lfloor \frac{m}{2} \rfloor$,  Proposition \ref{prop:inclusion_T_i's} gives
+		The upper bound for the dimension of the second term given in Equation \eqref{eq:part2_bound} yields the first bound of the statement for every $e \in \set{0,\dots,\lfloor \frac{m}{2} \rfloor}$.
+		
+		\medskip
+		
+		If $i^* \leq e \leq \lfloor \frac{m}{2} \rfloor$,  Proposition \ref{prop:inclusion_T_i's} gives
 		\[\sum\limits_{i=i^*}^e \calT_i(s,g) = \calT_e(s,g),\]
 		Consequently, we can write 
-		$$\dim_{\fq} \left(\sum\limits_{i=0}^{e}\calT_i(s,g)\right) = \dim_{\fq} \left(\sum\limits_{i=0}^{i^*-1}\calT_i(s,g)\right) + \dim_{\fq}\calT_e(s,g) - \dim_{\fq} \left( \calT_e(s,g) \cap   \sum\limits_{i=0}^{i^*-1} \calT_i(s,g)\right).$$
-		To finish the proof, we use the fact that $M_e(s,g) = \calR\left(g^{q^e-q^{e-1}+1}\right)$ (see. Proposition \ref{prop:dim_M_i's}, 2), hence we have 
-		$$\dim_{\fq}\calT_e(s,g) \leq m \cdot \dim_{\fqm} \calR\left(g^{q^e-q^{e-1}+1}\right) = m s' (q^e-q^{e-1}+1).$$
+		\begin{multline}
+		\dim_{\fq} \left(\sum\limits_{i=0}^{e}\calT_i(s,g)\right) = \dim_{\fq} \left(\sum\limits_{i=0}^{i^*-1}\calT_i(s,g)\right) \\ + \dim_{\fq}\calT_e(s,g)  \\- \dim_{\fq} \left( \calT_e(s,g) \cap   \sum\limits_{i=0}^{i^*-1} \calT_i(s,g)\right).
+		\end{multline}
+		To finish the proof, we use the fact that 
+		\[M_e(s,g) = \calR\left(g^{q^e-q^{e-1}+1}\right)\]
+		(see. Proposition \ref{prop:dim_M_i's}, 2), hence we have
+		\begin{align}
+			\dim_{\fq}\calT_e(s,g) &\leq m \cdot \dim_{\fqm} \calR\left(g^{q^e-q^{e-1}+1}\right)\\ \label{eq:dimTe}
+								   & = m s' (q^e-q^{e-1}+1).
+		\end{align}
 	\end{proof}
 	
 	Despite the fact that the upper bound given in Corollary \ref{coro:folklore_upper_bound} can be numerically computed with the knowledge of the degree $s$ and the function $g$, it is hard to give a close formula for any parameter, since the intersections of the trace codes $\calT_i(s,g)$'s are hard to manipulate. However, if we suppose that $i^*=0$, we can sharpen the above result.
 	
 	\begin{thm} \label{thm:bound_with_T_i's_inclusion} 
 		Suppose that $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$ and let $e^* := \min\left(\left\lfloor \frac{m}{2} \right\rfloor, \left\lceil \log_q\left(\frac{k^2}{s'(q-1)^2}\right)\right\rceil+1\right)$. Then
-		$$\dim_{\fq} (\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2}\leq \binom{mk+1}{2} - \dfrac{m}{2}(k^2(2e^*+1)+k-2s'(q^{e^*}-q^{e^*-1}+1)). $$
+\begin{multline*}
+		\dim_{\fq} (\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2}\leq \binom{mk+1}{2} \\- \dfrac{m}{2}(k^2(2e^*+1)+k-2s'(q^{e^*}-q^{e^*-1}+1)).
+\end{multline*}		
 	\end{thm}
 	
 	\begin{proof}
-		The condition $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$ exactly implies that $i^*=0$ and $$\calT_0(s,g) \subseteq \calT_1(s,g) \subseteq \dots \subseteq \calT_{\lfloor \frac{m}{2}\rfloor}(s,g),$$ 
-		by Proposition~\ref{prop:inclusion_T_i's}. Thus, using Corollary~\ref{coro:folklore_upper_bound} and the inequality $\dim_{\fq}\calT_e(s,g) \leq m \dim_{\fqm} \calR(g^{q^e-q^{e-1}+1})$, we get
-		\begin{align*}
-			\dim_{\fq} (\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2}
-			& \leq \min \left(ms'(q^e-q^{e-1}+1) + \left( \frac{m-1}{2} -e \right)mk^2 \right)\\
-			& \leq \min \left(\frac{m}{2}\left(2s'(q^e-q^{e-1}+1)+k^2(m-1)-2k^2e  \right)\right) \\
-			& \leq \min\left(\binom{mk+1}{2} - \dfrac{m}{2}\left(k^2(2e+1)+k-2s'(q^e-q^{e-1}+1)\right)\right).
-		\end{align*}
-		the minimum being taking over $e \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$. 
+		The condition $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$ exactly implies that $i^*=0$. The second part of Corollary \ref{coro:folklore_upper_bound} gives
+		\begin{multline*}
+				\dim_{\fq} (\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2} \leq ms'(q^e-q^{e-1}+1) \\+ \left( \frac{m-1}{2} -e \right)mk^2
+		\end{multline*}
+	for every $e \in \set{1,\dots,\lfloor \frac{m}{2} \rfloor}$. This can be rewritten 
+			\begin{multline*}
+		\dim_{\fq} (\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2} \leq \binom{mk+1}{2} \\- \dfrac{m}{2}\left(k^2(2e+1)+k-2s'(q^e-q^{e-1}+1)\right)
+	\end{multline*} 
 		To get the best bound, we need to maximize the function
 		$$F(e) = ek^2-s'(q^e-q^{e-1}+1)$$
 		over $\set{1,\dots,\lfloor \frac{m}{2} \rfloor}$.
 		We compute the discrete derivative:
 		\begin{align*}
-			\Delta F(e) = F(e+1)-F(e) &= (e+1)k^2- s'(q^{e+1}-q^e+1) - ek^2 + s'(q^e-q^{e-1}+1) \\
+			\Delta F(e) &= F(e+1)-F(e) \\
+%			&= (e+1)k^2- s'(q^{e+1}-q^e+1) - ek^2 + s'(q^e-q^{e-1}+1) \\
 			&= k^2 - s'q^{e-1}(q-1)^2.
 		\end{align*}
 		This function is decreasing with $e$, and the smallest value for which $\Delta F(e) \leq 0$ corresponds to its maximum. It is the smallest value of $e$ such that $k^2 \leq s'q^{e-1}(q-1)^2$, \emph{i.e.}
@@ -1069,32 +1080,29 @@ and
 	
 	\begin{example}
 		Set $q=3$ and $m = 3$. We consider the curve $\calX$ over $\fqm = \F_{729}$ defined by $$ y^2+y = x^3+x+2.$$
-		This elliptic curve $\calX$ is a particular case of $C_{2,3}$ curve with genus $\mathfrak{g}=1$. Set $s'=s+1$ for $s \geq 0$, and $g \in \fqm(\calX)$ such that $g=x^{\beta}y^{\alpha} + g'$, where $a\beta+b\alpha=s+1$; and $g'$ is sampled at random in $\calL(sP_\infty)$. For each such $g$, consider $\calP_g := \calX(\fqm) \backslash \Supp(g)$. Using {\scshape{Magma}}, we then compare the true dimension of the square of the dual of $\calC_g := \Gamma(\calP_g,sP_\infty,g)$ with the upper bound given in Theorem \ref{thm:bound_with_T_i's_inclusion} for $s \in \set{4,\dots,10}$. Results can be found in Table \ref{table:expl_sharpness}.
-		
+		This elliptic curve $\calX$ is a particular case of $C_{2,3}$ curve with genus $\mathfrak{g}=1$. Set $s'=s+1$ for $s \geq 0$, and $g \in \fqm(\calX)$ such that $g=x^{\beta}y^{\alpha} + g'$, where $a\beta+b\alpha=s+1$; and $g'$ is sampled at random in $\calL(sP_\infty)$. For each such $g$, consider $\calP_g := \calX(\fqm) \backslash \Supp(g)$. Using {\scshape{Magma}}, we then compare the true dimension of the square of the dual of $\calC_g := \Gamma(\calP_g,sP_\infty,g)$ with the upper bound given in Theorem \ref{thm:bound_with_T_i's_inclusion} for $s \in \set{4,\dots,10}$. Results can be found in Table \ref{table:expl_sharpness}. Note that for every of the codes $\calC_g$ we studied there, its square $\calC_g^{\star 2}$ is full, as expected for codes of such high rate.		
 		\begin{table}[h]
 			\begin{center}
-				\caption{Sharpness of the bound.} \label{table:expl_sharpness}
-				\scalebox{0.8}{
-				\begin{tabular}{|c|c|c|c|c|c|}
+				\caption{Sharpness of the bound} \label{table:expl_sharpness}
+				\begin{tabular}{|c|c|c|c|c|}
 					\hline
-					n &$s$&$\dim_{\fq}\calC_g$ & $\dim_{\fq}(\calC_g)^{\star 2}$&$\dim_{\fq}(\calC_g^{\perp})^{\star2}$ & Upper bound in Theorem \ref{thm:bound_with_T_i's_inclusion}\\
+					$n$ &$s$&$\dim_{\fq}\calC_g$ &$\dim_{\fq}(\calC_g^{\perp})^{\star2}$ & Theorem \ref{thm:bound_with_T_i's_inclusion}\\
 					\hline \hline
-					$781$ &$4$& $757$& $781$&$234$ & $234$ \\
+					$781$ &$4$& $757$&$234$ & $234$ \\
 					\hline 
-					$783$ &$5$& $753$& $783$ &$327$ & $327$   \\
+					$783$ &$5$& $753$ &$327$ & $327$   \\
 					\hline \hline
-					$782$ &$6$& $746$&$782$ &$402$ & $402$  \\
+					$782$ &$6$& $746$&$402$ & $402$  \\
 					\hline
-					$783$ &$7$& $741$& $783$&$483$ & $483$  \\
+					$783$ &$7$& $741$&$483$ & $483$  \\
 					\hline \hline
-					$782$ &$8$& $734$& $782$&$570$ & $570$   \\
+					$782$ &$8$& $734$&$570$ & $570$   \\
 					\hline
-					$782$ &$9$& $728$& $782$&$663$ & $663$ \\
+					$782$ &$9$& $728$&$663$ & $663$ \\
 					\hline
-					$781$ &$10$& $721$ & $781$&$762$ & $762$ \\
+					$781$ &$10$& $721$&$762$ & $762$ \\
 					\hline
 				\end{tabular}
-			}	
 			\end{center}
 		\end{table}
 		
@@ -1107,16 +1115,17 @@ and
 	
 	\section{Analysis of the distinguisher}\label{sec:analysis}
 	
-	In the previous section, we provided an (experimentally) sharp upper bound on the dimension of the square of the dual of a one--point Goppa--like code, which could lead to a distinguisher for the corresponding code. More precisely, let $\calC := C_\calL(\calX_{a,b},\calP,sP_\infty +(g))$ be an AG code as above, with $\degab{g} = s'>s\geq 2\mathfrak{g}_{a,b}-1$. We showed that if $s$ and $s'$ are such that $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$, then
+	In the previous section, we provided an (experimentally) sharp upper bound on the dimension of the square of the dual of a one--point Goppa--like code, which could lead to a distinguisher for the corresponding code. More precisely, let $\calC := C_\calL(\calX_{a,b},\calP,sP_\infty +(g))$ be an AG code as above, with $\degab{g} = s'>s\geq 2\mathfrak{g}_{a,b}-1$. We showed that if $s$ and $s'$ are such that $s \geq (s'-s)q+2\mathfrak{g}_{a,b}-1$, then the dimension of $(\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2}$ over $\fq$ is bound from above by
 	\begin{equation} \label{eq:best_upper_bound}
-		\dim_{\fq} (\Gamma(\calP,sP_\infty,g)^{\perp})^{\star 2} \leq \min \left(\frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right),n\right),
+		\min \left\{\frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right),n\right\}
 	\end{equation}
 	where $e^* := \left\lceil \log_q\left(\dfrac{k^2}{s'(q-1)^2}\right)\right\rceil+1$. Thus, the code is distinguishable from a random one if the right hand--side of \eqref{eq:best_upper_bound} is smaller than the lenght $n$ of the code. It is possible to study when this case occurs, by starting to bound from above the maximal possible lenght: since $\calP \cap \Supp(g) = \varnothing,$ this maximum is reached when $\calP = \calX_{a,b}(\fqm) \backslash \{P_\infty\}$ and $g$ has no rational zero that is
 	$$n = \# \calP = |\calX_{a,b}(\fqm)|-1 \leq q^m+2\mathfrak{g}_{a,b}\sqrt{q^m},$$
-	using the Hasse--Weil bound. In order to protect the code against the distinguisher, the parameters have to be chosen such that 
-	\begin{equation} \label{eq:cond_not_to_distinguish}
-		\frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right)\geq q^m+2\mathfrak{g}_{a,b}\sqrt{q^m}.
-	\end{equation}
+	using the Hasse--Weil bound. In order to protect the code against the distinguisher, the parameters have to be chosen such that the minimum in Equation \eqref{eq:best_upper_bound} is equal to the length $n$ of the code, \textit{i.e.}, 
+	\begin{multline} \label{eq:cond_not_to_distinguish}
+		\frac{m}{2}\left(2s'(q^{e^*}-q^{e^*-1}+1)+k^2(m-1-2e^*)  \right)\\
+		\geq q^m+2\mathfrak{g}_{a,b}\sqrt{q^m}.
+	\end{multline}
 	
 	In what follows, we focus on two specific classes of $C_{a,b}$ curves. First, we determine the maximal (with respect to the dimension) codes we can distinguish in the case where $\calX_{a,b}$ is an elliptic curve. This case is relevant since it is the closest to the case of classical Goppa codes, and we will see that our results are very similar to the one given in \cite{MT21}. Next up, we focus on the particular case of the Hermitian curve, which also turns out to be a $\calX_{a,b}$ curve. It is well--known to be a good candidate to construct efficient codes as it is a maximal curve. Due to its high genus, we then show that any one--point Goppa--like code defined on it cannot be distinguished.
 	
@@ -1126,8 +1135,7 @@ and
 	\begin{table}[h]
 		\begin{center}
 			\caption{Largest distinguishable Goppa--like AG code in elliptic case.}
-			\scalebox{0.8}{
-			\begin{tabular}{|c|c|c||c|c|c|c|c|c|}
+			\begin{tabular}{|c|c|c||c|c|}
 				\hline
 				$q$ & $m$ & $n$ & Largest distinguishable $s$ & Corresponding rate\\
 				\hline \hline
@@ -1154,7 +1162,6 @@ and
 				$17$ & $3$ & $4820$ & $92$ & $0,943$ \\
 				\hline
 			\end{tabular}
-		}
 		\end{center}
 	\end{table}
 	
@@ -1182,22 +1189,25 @@ and
 		\begin{itemize}
 			\item [-] If $e^* < \frac{m}{2}$, then $\mathfrak{B}(e^*) > mk^2$. Using the assumption on $s$ and $s'$, we know that $s \geq 2\mathfrak{g}_{\calH}+q-1$. This yields $k \geq \mathfrak{g}_{\calH}+q$ and thus
 			\begin{align*}
-				\mathfrak{B}(e^*) - q_0^3 
-				&> m(\mathfrak{g}_{\calH}^2+2\mathfrak{g}_{\calH}q+q^2)-q_0^3&\\
-				& > \frac{m}{4}(q_0^4-2q_0^3+q_0^2) + mq(q_0^2-q_0+q) -q_0^3 &\\
-				& \geq \frac{1}{2}(q_0^4-2q_0^3+q_0^2)+4(q_0^2-q_0+2)-q_0^3 \quad &(m\geq 2 \ \mathrm{and} \ q\geq 2)&\\
-				& > \frac{q_0}{2} (q_0^3-4q_0^2+9q_0-8) > 0,&
+				\mathfrak{B}(e^*) 
+				&> m(\mathfrak{g}_{\calH}^2+2\mathfrak{g}_{\calH}q+q^2)&\\
+				& > \frac{m}{4}(q_0^4-2q_0^3+q_0^2) + mq(q_0^2-q_0+q)&\\
+				& \geq \frac{1}{2}(q_0^4-2q_0^3+q_0^2)+4(q_0^2-q_0+2)
 			\end{align*}
+		because $m\geq 2$ and $q\geq 2$. Then 
+		\[\mathfrak{B}(e^*) -q_0^3 > \frac{q_0}{2} (q_0^3-4q_0^2+9q_0-8) > 0 \]
 			since $q_0 \geq 2$. Inequality \eqref{eq:dont_distinguish_Hermitian_case} holds in this case.
-			\item[-] If $e^* = \frac{m}{2},$ then since $q_0=q^{m/2}$, we have $\mathfrak{B}\left(\frac{m}{2}\right) = ms'(q_0-q_0q^{-1}+1)$. Moreover, $s'>s$ implies $s' \geq 2\mathfrak{g}_{\calH}+q$, and
+			\item[-] If $e^* = \frac{m}{2},$ then since $q_0=q^{m/2}$, we have 
+			\[\mathfrak{B}\left(\frac{m}{2}\right) = ms'(q_0-q_0q^{-1}+1).\]
+			 Moreover, $s'>s$ implies $s' \geq 2\mathfrak{g}_{\calH}+q$ and $m \geq 2$, so
 			\begin{align*}
-				\mathfrak{B}\left(\frac{m}{2}\right) - q_0^3 
-				&\geq m(2\mathfrak{g}_{\calH}+q)(q_0-q_0q^{-1}+1)-q_0^3 \\ 
-				&\geq 2\left(q_0^2(q_0-1)\left(\frac{q-1}{q}\right)+q_0(q_0-1)+q_0(q-1)+q\right)-q_0^3 \\
-				& \geq q_0^3\left(2\left(\frac{q-1}{q}\right)-1\right) + 2q_0^2\left(1-\left(\frac{q-1}{q}\right)\right) + 2(q_0(q-2)+q).
+				\mathfrak{B}\left(\frac{m}{2}\right)
+				&\geq 2(2\mathfrak{g}_{\calH}+q)(q_0-q_0q^{-1}+1)\\ 
+				&\geq 2\left(q_0^2(q_0-1)\left(1-\frac{1}{q}\right)+q_0(q_0+q-2)+q\right) \\
+				& \geq 2\left( q_0^3\left(1 - \frac{1}{q}\right)+ \frac{q_0^2}{q}+ q_0(q-2)+q\right).
 			\end{align*}
 			Clearly, the last expression is minimal for $q=2$, so we finally gets
-			$$\mathfrak{B}\left(\frac{m}{2}\right) \geq q_0^2 + 4 >0,$$
+			$$\mathfrak{B}\left(\frac{m}{2}\right)-q_0^3 \geq q_0^2 + 4 >0,$$
 			which proves Inequality \eqref{eq:dont_distinguish_Hermitian_case} in this case and conclude the proof.
 		\end{itemize}
 	\end{proof}

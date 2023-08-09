@@ -1,7 +1,7 @@
 \documentclass[12pt,a4paper]{amsart}
 
 \usepackage{xr}
-\externaldocument{../src/Hermitian_SSAG_distinguisher}
+\externaldocument{../src/LaTex_IEEE_TIT/Goppa--like AG codes_IEEEtran}
 %Pour faire les ref au papier sans se faire chier.
 
 
@@ -10,7 +10,7 @@
 %\usepackage{amsaddr}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
-\usepackage{hyperref}
+%\usepackage{hyperref}
 \usepackage{url}
 \usepackage{xcolor}
 \usepackage{verbatim}
@@ -70,7 +70,17 @@ Note that this work is part of the PhD thesis of the second author, which has be
 \begin{itemize}
 	\item Key sizes in Table \ref{table:comp} are now  given in Megabytes instead of bits: it is more standard and it eases the reading.
 	\item Some details about the upper bound have been added in the proof of Prop. \ref{prop:bound_dim_using_inclusions}.
+	\item We have shorten the proof of Theorem \ref{thm:bound_with_T_i's_inclusion} by using the second upper bound of Corollary \ref{coro:folklore_upper_bound} directly.
 \end{itemize}
+
+\medskip
+
+We also reworked some parts to make the paper suitable for the journal two--columns format. A part from some purely aesthetic modifications, here is a list of significant changes.
+\begin{itemize}
+	\item To make Table \ref{table:expl_sharpness} fit in one column, we have removed the column regarding the dimension of the square (which is always equal to the length) and we have added a remark about that just after introducing the table.
+	\item In the proof of Proposition \ref{prop:Hermitian_Goppa_like_are_secured}, we have rewritten the computation for $\mathfrak{B}(e^*)-q_0^3$ into two parts, to avoid long formulae.
+\end{itemize}
+
 }
 \section*{First review's comment}
 
